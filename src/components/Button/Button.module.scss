@@ -1,0 +1,41 @@
+@use 'styles/style.scss' as *;
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 151px;
+  height: 37px;
+  border: 2px solid $color-red;
+  border-radius: 7px;
+
+  font-family: $font-Inter;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: $fw-extrabold;
+  text-align: center;
+  color: $color-white;
+  background-color: $color-red;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 200ms ease-out;
+}
+
+.primary {
+  &:hover,
+  &:active {
+    border-color: lighten($color-red, 15);
+    background-color: lighten($color-red, 15);
+  }
+}
+
+.outline {
+  border: none;
+  background-color: transparent;
+  color: $color-metallic-seaweed;
+  border: 1px solid transparent;
+
+  &:hover {
+    background-color: transparentize($color-metallic-seaweed, 0.7);
+  }
+}

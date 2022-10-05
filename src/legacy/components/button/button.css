@@ -1,0 +1,32 @@
+.btn{
+    border-radius: 0 0 16px 16px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 368px;
+    height: 48px;
+    position: relative;
+    bottom: 12px;
+}
+
+.btn--primary {
+    background: #003C76;
+    font-weight: 500;
+    font-size: 12px;
+    color: #FAFBFC;
+}
+
+.btn--secondary {
+    background: #6FCF97;
+    font-weight: 500;
+    font-size: 12px;
+    color: #FAFBFC;
+}
+
+.btn--small {
+    font-size: 14px;
+}
+
+.btn--medium {
+    font-size: 18px;
+}
