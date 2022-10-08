@@ -6,16 +6,18 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #FAFBFC;
+    background-color: $color-light-grey;
+    position: relative;
 }
 .container {
     width: 80%;
     height: 600px;
-    margin-top: 60px;
-    margin-bottom: 250px;
+    top: 277px;
+    position: relative;
     background-color: $color-white;
     border: 1px solid $color-white;
     border-radius: 16px;
+    box-shadow: 0 4px 4px 0 $color-shadow;
 }
 .tabs {
     display: flex;
@@ -24,12 +26,12 @@
 .selectedTab {
     background-color: $color-white !important;
     border: none;
-    border-left: 1px solid #00B7EB;
+    border-left: 1px solid $color-blue
 }
 .tab {
     width: 302px;
     height: 40px;
-    background-color: #FAFBFC;
+    background-color: $color-light-grey;
     margin: 4px;
     display: flex;
     flex-direction: row;
@@ -43,14 +45,14 @@
     width: 302px;
     height: 216px;
     padding: 25px;
-    margin-right: 21px;
-    margin-top: 40px;
+    position: absolute;
+    top: 73px;
 }
 .tabPanel {
     width: 734px;
     height: 444px;
     padding: 12px 16px;
-    margin-top: 52px;
+    top: 105px;
     gap: 8px;
     right: 0px;
     position: absolute;
@@ -58,8 +60,8 @@
 }
 
 .title {
-    margin-top: 128px;
-    margin-right: 60px;
+    top: 210px;
+    position: relative;
     
     h1 {
         font-size: 56px;
