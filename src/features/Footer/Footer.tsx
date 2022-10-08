@@ -4,7 +4,7 @@ import { FC } from 'react'
 import s from './Footer.module.scss'
 import airport from '/public/assets/images/airport__footer.svg';
 import fb from '/public/assets/images/facebook__footer.svg' // по аналогии сделай
-export const siteLinks = [
+export const siteLinks = [ // TODO move 
     { name: 'Home page', to: '/' },
     { name: 'Destination', to: '/' },
     { name: 'Trip planner', to: '/' },

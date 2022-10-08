@@ -1,0 +1,34 @@
+@use 'styles/style.scss' as *;
+
+.wrapper {
+    background-color: $color-white;
+}
+.subnav {
+    padding: 0 138px;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: $color-layout-blue;
+}
+
+.item {
+    padding: 13px 93px;
+    font-family: Lato;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    color: $color-white;
+    border-right: 1px solid $color-white;
+}
+.item:first-child {
+    border-left: 1px solid $color-white;
+}
+
+.active {
+    background-color: $color-layout-dark-blue;
+}
+.item:hover {
+    background-color: $color-layout-dark-blue;
+}
