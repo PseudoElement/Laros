@@ -1,0 +1,56 @@
+@use '/src/styles/style.scss' as *;
+
+.wrapper {
+  height: 100%;
+  background-color: $color-white;
+  border: 1px solid $color-white;
+  border-radius: 16px;
+  box-shadow: 0 4px 4px 0 $color-shadow;
+  margin-top: 40px;
+  padding: 80px 65px 0;
+  margin-bottom: 80px;
+}
+
+.title {
+  font-family: Lato;
+  font-size: 56px;
+  font-weight: $fw-bold;
+  margin-bottom: 16px;
+}
+.subtitle {
+  width: 766px;
+  font-family: Lato;
+  font-size: 12px;
+  font-weight: $fw-regular;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+.selectBtn {
+  border-radius: 8px;
+  width: 250px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: $fw-regular;
+  color: $color-brochure-placeholder;
+  border: 1px solid $color-modal-header;
+}
+.sort {
+  font-family: Lato;
+  font-size: 20px;
+  font-weight: $fw-bold;
+  margin-bottom: 24px;
+}
+.brochuresList {
+  display: flex;
+  justify-content: space-between;
+  margin: 12px 0;
+  flex-wrap: wrap;
+}
