@@ -1,7 +1,8 @@
 import cn from "classnames";
 import Image from "next/image";
 import Link from "next/link";
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
+import { useCollapsedHeader } from "shared/hooks/useCollapsedHeader";
 import s from './Header.module.scss'
 import { SubNav } from "./SubNav";
 import callImg from '/public/assets/images/call.svg'
@@ -9,7 +10,6 @@ import giftImg from '/public/assets/images/gift.svg'
 import logoFull from '/public/assets/images/laros_logo_rgb_web.svg'
 import logo from '/public/assets/images/logo.svg'
 
-const COLLAPSE_IN_PX = 100;
 const mainNavItems = [
     { name: 'Home', to: '/home' },
     { name: 'About us', to: '/about' },
@@ -17,17 +17,7 @@ const mainNavItems = [
 ]
 
 export const Header: FC = () => {
-    const [isCollapsed, setIsCollapsed] = useState<boolean>(false)
-
-    useEffect(() => {
-        const onScroll = () => setIsCollapsed(window.pageYOffset > COLLAPSE_IN_PX);
-        // clean up code
-        window.removeEventListener('scroll', onScroll);
-        window.addEventListener('scroll', onScroll, { passive: true });
-        return () => window.removeEventListener('scroll', onScroll);
-    }, []);
-
-    console.log(isCollapsed);
+    const isCollapsed = useCollapsedHeader();
 
     return <>
         <div className={s.fixed}>
