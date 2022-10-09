@@ -3,6 +3,10 @@
 .container {
   width: 100%;
   min-height: calc(100vh - 604px);
+  margin-top: 72px;
+}
+.collapsed {
+  margin-top: 40px;
 }
 
 .content {
