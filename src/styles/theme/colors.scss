@@ -1,3 +1,7 @@
+$container-width: 90%;
+$duration: 0.15s;
+
+
 $color-white: #fff;
 
 $color-light-grey: #FAFBFC;
@@ -18,13 +22,20 @@ $color-french-grey: #c5c7cd;
 $color-french-grey-a30: #c5c7cd4d;
 $color-santas-grey: #979dac;
 
+$color-sand: #ffdf8c;
+$gray-line: #f6f6f6; // TODO fix names
+$orange: #fe5f1e;
+$color-light-green: #E2EDCF;
+$color-purple: #DED5EA;
+$color-dark-red: #A0151A;
+$color-brown: #4F3E34;
+$color-blue: #2C216F;
+
 $color-black: #000;
-$color-black-a80: rgba(0, 0, 0, 0.8);
-$color-black-a70: rgba(0, 0, 0, 0.07);
-$color-black-a60: rgba(0, 0, 0, 0.6);
-$color-black-a40: rgba(0, 0, 0, 0.4);
-$color-black-a20: rgba(0, 0, 0, 0.2);
-$color-black-a0: rgba(0, 0, 0, 0);
+$color-layout-blue: rgba(0, 60, 118, 0.75);
+$color-layout-dark-blue: rgba(0, 60, 118, 1);
+$color-modal-bg: #C4C4C4;
+$color-modal-header: #F2F5F8;
 
 $color-red: #ef2b23;
 $color-orange: #f66e08;
@@ -35,11 +46,3 @@ $color-butterfly-blue: #2aabee;
 $color-metallic-seaweed: #028090;
 $color-midnight-blue: #002366;
 
-$color-telegram: #229ed9;
-$color-whatsapp: #25d366;
-
-$shadow-standard-a06: 0px 10px 34px rgba(8, 15, 52, 0.06);
-$shadow-standard-a10: 0px 10px 34px rgba(8, 15, 52, 0.1);
-$shadow-standard-a12: 0px 10px 34px rgba(8, 15, 52, 0.12);
-
-$shadow-picton-blue: 0px 0px 1px 1px $color-picton-blue;
