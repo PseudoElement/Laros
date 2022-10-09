@@ -26,7 +26,7 @@ export const Header: FC = () => {
                     <div className={cn(s.header, { [s.collapsed]: isCollapsed })}>
                         <div className={s.mainNav}>
                             {mainNavItems.map((item) => {
-                                return <div className={s.navItem}>
+                                return <div key={item.to} className={s.navItem}>
                                     <Link href={item.to}>{item.name}</Link>
                                 </div>
                             })}

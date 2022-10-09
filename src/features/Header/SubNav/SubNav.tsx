@@ -14,11 +14,9 @@ const subNavItems = [
 ]
 export const SubNav: FC = () => {
     const { pathname } = useRouter();
-    return <div className={s.wrapper}>
-        <div className={s.subnav}>
-            {subNavItems.map((item) => <div className={cn(s.item, { [s.active]: pathname === item.to })}>
-                <Link href={item.to}>{item.name}</Link>
-            </div>)}
-        </div>
+    return <div className={s.subnav}>
+        {subNavItems.map((item) => <div key={item.to} className={cn(s.item, { [s.active]: pathname === item.to })}>
+            <Link href={item.to}>{item.name}</Link>
+        </div>)}
     </div>
 }

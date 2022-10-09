@@ -1,8 +1,5 @@
 @use 'styles/style.scss' as *;
 
-.wrapper {
-    background-color: $color-white;
-}
 .subnav {
     padding: 0 138px;
     width: 100%;
@@ -21,6 +18,7 @@
     text-align: center;
     color: $color-white;
     border-right: 1px solid $color-white;
+    white-space: nowrap;
 }
 .item:first-child {
     border-left: 1px solid $color-white;
