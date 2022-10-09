@@ -45,9 +45,9 @@ export const Footer: FC = () => {
                     <div className={s.siteLinks}>
                         <div className={s.subtitleFooter}><span>SITE LINKS</span></div>
                         <ul className={s.listLinks}>
-                            {siteLinks.map((link) => {
-                                return <li className={s.itemLink}>
-                                    <Link className={s.link} href={link.to}>{link.name}</Link>
+                            {siteLinks.map((item) => {
+                                return <li key={item.to} className={s.itemLink}>
+                                    <Link className={s.link} href={item.to}>{item.name}</Link>
                                 </li>
                             })}
 
