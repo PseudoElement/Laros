@@ -1,11 +1,19 @@
 import { Container } from 'components/Container';
 import { Modal } from 'components/Modal'
-import { FC, useState } from 'react'
-import { brochuresMock } from 'shared/mocks/brochures';
+import { FC, useEffect } from 'react'
+import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
+import { toggleBrochure } from 'store/slices/brochures/brochures';
+import { getBrochuresThunk } from 'store/slices/brochures/thunk';
 import { BrochureCard } from './BrochureCard';
 import s from './BrochuresPage.module.scss';
 export const BrochuresPage: FC = () => {
-    const brochures = brochuresMock;
+    const brochures = useAppSelector((state) => state.brochures.brochures)
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(getBrochuresThunk())
+    }, [dispatch])
+
     return <>
         <Container>
             <div className={s.wrapper}>
@@ -17,7 +25,7 @@ export const BrochuresPage: FC = () => {
                 <div className={s.sort}>Sort</div>
                 <div className={s.brochuresList}>
                     {
-                        brochures.map((brochure) => <BrochureCard {...brochure} onSelect={(id) => console.log(id)} />
+                        brochures.map((brochure) => <BrochureCard {...brochure} onSelect={(id) => dispatch(toggleBrochure(id))} />
                         )
                     }
                 </div>
