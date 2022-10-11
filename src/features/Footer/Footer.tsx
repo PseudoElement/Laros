@@ -3,7 +3,15 @@ import Link from 'next/link'
 import { FC } from 'react'
 import s from './Footer.module.scss'
 import airport from '/public/assets/images/airport__footer.svg';
-import fb from '/public/assets/images/facebook__footer.svg' // по аналогии сделай
+
+import reisegarantie from '/public/assets/images/reisegarantie__footer.svg';
+import srv from '/public/assets/images/srv__footer.svg';
+import tps from '/public/assets/images/tps__footer.svg';
+
+import fb from '/public/assets/images/facebook__footer.svg'; // по аналогии сделай
+import ig from '/public/assets/images/instagram__footer.svg'; //instagram
+import lk from '/public/assets/images/linkedIn__footer.svg'; //linkedin
+
 export const siteLinks = [ // TODO move 
     { name: 'Home page', to: '/' },
     { name: 'Destination', to: '/' },
@@ -30,13 +38,21 @@ export const Footer: FC = () => {
 
                 <div className={s.partners}>
                     <div className={s.blockImg}>
-                        {/* <Image className={s.imgFirst} src={"/public/images/reisegarantie__footer.svg"} alt="airport icon" layout='fill' /> */}
-                        {/* <Image src="/images/reisegarantie__footer.svg" alt="reise garantie icon" /> */}
+                        <span>
+                        <Image className={s.imgFirst} width={200} height={50} src={airport} alt="airport icon" />
+                        </span>
+                        <span className={s.imgSecond}>
+                        <Image src={reisegarantie} width={200} height={50} alt="reise garantie icon" />
+                        </span>
                     </div>
 
                     <div className={s.blockImg}>
-                        {/* <Image className={s.imgFirst} src="/images/srv__footer.svg" alt="srv icon" />
-                        <Image src="/images/tps__footer.svg" alt="tps icon" /> */}
+                        <span>
+                        <Image className={s.imgFirst} width={200} height={50} src={srv} alt="srv icon" />
+                        </span>
+                        <span className={s.imgSecond}>
+                        <Image src={tps} width={200} height={50} alt="tps icon" />
+                        </span>
                     </div>
                 </div>
 
@@ -89,22 +105,22 @@ export const Footer: FC = () => {
 
                             <ul className={s.socialList}>
                                 <li className={s.socialItem}>
-                                    {/* <Link href="">
-                                        <Image src="/pubilc/assets/images/instagram__footer.svg" layout='fill' alt="instagram" />
-                                    </Link> */}
+                                    <Link href="">
+                                        <Image src={ig} width={13} height={13} alt="instagram"/>
+                                    </Link>
                                 </li>
 
                                 <li className={s.socialItem}>
                                     <Link href="">
-                                        <Image src={fb} width={13} height={13} alt="instagram" />
+                                        <Image src={fb} width={13} height={13} alt="facebook" />
                                         {/* по аналогии сделай */}
                                     </Link>
                                 </li>
 
                                 <li className={s.socialItem}>
-                                    {/* <Link href="">
-                                        <Image src="/pubilc/assets/images/linkedIn__footer.svg" layout='fill' alt="instagram" />
-                                    </Link> */}
+                                    <Link href="">
+                                        <Image src={lk} width={13} height={13} alt="linkedin"/>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
@@ -114,8 +130,8 @@ export const Footer: FC = () => {
             <div className={s.navigation}>
                 <div className={s.nav}>
                     <ul className={s.navList}>
-                        {bottomLinks.map((link) => {
-                            return <li className={s.navItem}>
+                        {bottomLinks.map((link, idx) => {
+                            return <li key={idx} className={s.navItem}>
                                 <Link className={s.navLink} href={link.to}>{link.name}</Link>
                             </li>
                         })}
