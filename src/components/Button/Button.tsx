@@ -6,7 +6,7 @@ import s from './Button.module.scss'
 interface ButtonProps {
   children: ReactNode
   type?: 'button' | 'reset' | 'submit'
-  variant?: 'outline' | 'primary'
+  variant?: 'primary' | 'secondary' | 'outline'
   className?: string
   onClick?: () => void
 }
