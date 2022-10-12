@@ -7,8 +7,8 @@ export const getBrochuresThunk = createAsyncThunk<Brochure[]>(
   'traders/getTradersThunk',
   async payload => {
     const response = await getBrochures()
-    if (response.status === 200 && response.data.results.length) {
-      const brochures: Brochure[] = response.data.results
+    if (response.status === 200 && response.data.data.length) {
+      const brochures: Brochure[] = response.data.data
       return brochures
     }
     return []

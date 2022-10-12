@@ -7,5 +7,5 @@ export interface AxiosPaginatedResponse<T = any> {
   count: number
   next: T | null
   previous: T | null
-  results: T[]
+  data: T[]
 }

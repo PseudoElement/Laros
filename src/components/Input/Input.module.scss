@@ -1,0 +1,35 @@
+@use 'styles/style.scss' as *;
+
+.input {
+  position: relative;
+  width: 100%;
+  height: 55px;
+  border: 1px solid $color-modal-header;
+  border-radius: 8px;
+  padding-top: 8px;
+}
+
+.label {
+  font-family: Lato;
+  font-size: 12px;
+  font-weight: $fw-medium;
+  color: $color-placeholder;
+  padding: 0 8px 8px 8px;
+}
+.field {
+  border: none;
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: $fw-semibold;
+  padding: 0 8px 8px 8px;
+
+  &:focus-visible,
+  &:focus {
+    outline: none;
+  }
+}
+.icon {
+  position: absolute;
+  bottom: 8px;
+  right: 9px;
+}

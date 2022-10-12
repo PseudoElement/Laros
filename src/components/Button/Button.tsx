@@ -7,7 +7,7 @@ interface ButtonProps {
   children: ReactNode
   type?: 'button' | 'reset' | 'submit'
   variant?: 'primary' | 'secondary' | 'outline'
-  className?: string
+  classname?: string
   onClick?: () => void
 }
 
@@ -15,10 +15,10 @@ export const Button: FC<ButtonProps> = ({
   children,
   type = 'button',
   variant = 'primary',
-  className,
+  classname,
   onClick,
 }) => {
-  const buttonClass = cn(s.button, s[variant], className)
+  const buttonClass = cn(s.button, s[variant], classname)
 
   return (
     <button className={buttonClass} type={type} onClick={onClick}>

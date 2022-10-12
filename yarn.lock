@@ -544,6 +544,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-text-mask@^5.4.11":
+  "integrity" "sha512-DIJ3/dS4jd7NK3lEgsOwcgpp+ZlVrNJEiUDRayZRE/PNMbV/nLWmOKGdL0BUS29hnx0CDgITgPudKx0BgbF5fA=="
+  "resolved" "https://registry.npmjs.org/@types/react-text-mask/-/react-text-mask-5.4.11.tgz"
+  "version" "5.4.11"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-transition-group@^4.4.0":
   "integrity" "sha512-juKD/eiSM3/xZYzjuzH6ZwpP+/lejltmiS3QEzV/vmb/Q8+HfDmxu+Baga8UEMGBqV88Nbg4l2hY/K2DkyaLLA=="
   "resolved" "https://registry.npmjs.org/@types/react-transition-group/-/react-transition-group-4.4.5.tgz"

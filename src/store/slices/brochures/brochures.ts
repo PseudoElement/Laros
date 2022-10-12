@@ -8,7 +8,7 @@ export type BrochuresState = {
 }
 
 const initialState: BrochuresState = {
-  brochures: brochuresMock, // TODO mock
+  brochures: [],
 }
 
 export const brochures = createSlice({
@@ -21,17 +21,25 @@ export const brochures = createSlice({
     ) => {
       state.brochures = action.payload
     },
-    toggleBrochure: (state: BrochuresState, action: PayloadAction<number>) => {
+    toggleBrochure: (
+      state: BrochuresState,
+      action: PayloadAction<{ id: number; selected?: boolean }>
+    ) => {
+      const { id, selected } = action.payload
       state.brochures = state.brochures.map(brochure =>
-        brochure.id === action.payload
-          ? { ...brochure, isSelected: !brochure.isSelected }
+        brochure.id === id
+          ? {
+              ...brochure,
+              isSelected:
+                selected !== undefined ? selected : !brochure.isSelected,
+            }
           : brochure
       )
     },
   },
   extraReducers: builder => {
     builder.addCase(getBrochuresThunk.fulfilled, (state, action) => {
-      state.brochures = [...state.brochures, ...action.payload]
+      state.brochures = [...action.payload]
     })
     builder.addCase(getBrochuresThunk.rejected, () => {
       console.error('An error occured')

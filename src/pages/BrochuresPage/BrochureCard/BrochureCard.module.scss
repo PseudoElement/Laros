@@ -7,11 +7,14 @@
   margin-bottom: 39px;
 }
 
+.image {
+  border-radius: 16px 16px 0 0;
+}
 .placeholder {
   height: 338px;
   width: 368px;
   border-radius: 16px 16px 0 0;
-  background-color: $color-brochure-placeholder;
+  background-color: $color-placeholder;
 }
 
 .topic {

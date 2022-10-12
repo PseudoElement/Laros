@@ -11,19 +11,20 @@ interface BrochureCardProps {
     file: string, // TODO check
     isSelected?: boolean,
     onSelect: (id: BrochureCardProps['id']) => void
+    onDownload: (id: BrochureCardProps['id']) => void
 };
 
-export const BrochureCard: FC<BrochureCardProps> = ({ id, name, image, topic, file, isSelected = false, onSelect }) => {
+export const BrochureCard: FC<BrochureCardProps> = ({ id, name, image, topic, file, isSelected = false, onSelect, onDownload }) => {
     const selectClass = cn(s.select, {
         [s.selected]: isSelected
     })
     return (
         <div className={s.card}>
-            {!image ? <Image src={image} height={338} width={368} /> : <div className={s.placeholder} ></div>}
+            {image ? <Image className={s.image} src={image} height={338} width={368} /> : <div className={s.placeholder} ></div>}
             <div className={s.content}>
                 <div className={s.topic} >{topic}</div>
                 <div className={s.name}>{name}</div>
-                <a href={file} download className={s.icon}><DownloadIcon /></a>
+                <a onClick={() => onDownload(id)} className={s.icon}><DownloadIcon /></a>
             </div>
             <div onClick={() => onSelect(id)} className={selectClass}>{isSelected ? 'Selected' : 'Select'}</div>
         </div>
