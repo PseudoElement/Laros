@@ -11,7 +11,7 @@ import { Card } from "./Сard";
 interface DownloadBrochuresModalProps {
     isOpen: boolean;
     links: Brochure[];
-    onClose?: () => void;
+    onClose: () => void;
 }
 
 export const DownloadBrochuresModal: FC<DownloadBrochuresModalProps> = ({ isOpen, links, onClose }) => {

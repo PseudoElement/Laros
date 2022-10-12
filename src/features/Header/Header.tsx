@@ -11,7 +11,7 @@ import logoFull from '/public/assets/images/laros_logo_rgb_web.svg'
 import logo from '/public/assets/images/logo.svg'
 
 const mainNavItems = [
-    { name: 'Home', to: '/home' },
+    { name: 'Home', to: '/' },
     { name: 'About us', to: '/about' },
     { name: 'Brochure', to: '/brochures' }
 ]

@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react'
+import { FC, MouseEvent, ReactNode } from 'react'
 import cn from 'classnames'
 
 import s from './Button.module.scss'
@@ -19,9 +19,12 @@ export const Button: FC<ButtonProps> = ({
   onClick,
 }) => {
   const buttonClass = cn(s.button, s[variant], classname)
-
+  const handleButton = (e: MouseEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    onClick?.();
+  }
   return (
-    <button className={buttonClass} type={type} onClick={onClick}>
+    <button className={buttonClass} type={type} onClick={(e) => handleButton(e)}>
       {children}
     </button>
   )

@@ -1,6 +1,7 @@
 import { Button } from 'components/Button';
 import { Container } from 'components/Container';
 import { DownloadBrochuresModal } from 'features/DownloadBrochuresModal';
+import { SendBrochuresModal } from 'features/SendBrochuresModal';
 import { FC, useEffect, useState } from 'react'
 import { getSelectedBrochures } from 'shared/helpers/brochures';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
@@ -30,7 +31,7 @@ export const BrochuresPage: FC = () => {
                 <div className={s.title}>Brochures</div>
                 <div className={s.nav}>
                     <div className={s.subtitle} >Faucibus enim sit leo, purus, odio erat. Neque scelerisque volutpat morbi proin. Massa quis montes, scelerisque commodo elit erat in urna id. Purus sit odio egestas venenatis viverra blandit amet vitae.</div>
-                    {totalCounter ? <Button classname={s.selectBtn} variant='secondary'>Send me selected ({totalCounter})</Button> : <div className={s.noSelectBtn
+                    {totalCounter ? <Button onClick={() => setIsSendModalOpen(true)} classname={s.selectBtn} variant='secondary'>Send me selected ({totalCounter})</Button> : <div className={s.noSelectBtn
                     }>Send me selected</div>}
                 </div>
                 <div className={s.sort}>Sort</div>
@@ -42,6 +43,7 @@ export const BrochuresPage: FC = () => {
                 </div>
 
             </div>
+            <SendBrochuresModal brochures={totalSelected} isOpen={isSendModalOpen} onClose={() => setIsSendModalOpen(false)} />
             <DownloadBrochuresModal links={totalSelected} isOpen={isDownloadModalOpen} onClose={() => setIsDownloadModalOpen(false)} />
         </Container>
     </>
