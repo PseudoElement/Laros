@@ -17,4 +17,14 @@ export interface DownloadBrochureForm {
   brochures: number[]
 }
 
+export interface SendBrochureForm {
+  full_name: string
+  city: string
+  address: string
+  zip_code: string
+  phone: string
+  email?: string
+  comments?: string
+  brochures: number[]
+}
 export interface SendBrochureForm {}

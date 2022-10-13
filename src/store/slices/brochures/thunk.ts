@@ -1,9 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { DefaultPaginationParams } from 'shared/types/api'
-import { Brochure, DownloadBrochureForm } from 'shared/types/brochures'
+import {
+  Brochure,
+  DownloadBrochureForm,
+  SendBrochureForm,
+} from 'shared/types/brochures'
 import {
   getBrochures,
   sendDownloadBrochuresForm,
+  sendSendBrochuresForm,
 } from 'shared/api/routes/brochures'
 
 export const getBrochuresThunk = createAsyncThunk<Brochure[]>(
@@ -23,6 +27,16 @@ export const sendDownloadBrochureThunk = createAsyncThunk<
   DownloadBrochureForm
 >('brochures/downloadBrochures', async form => {
   const response = await sendDownloadBrochuresForm(form)
+  if (response.status === 200) {
+    return response.data.data
+  }
+})
+
+export const sendSendBrochureThunk = createAsyncThunk<
+  unknown,
+  SendBrochureForm
+>('brochures/sendBrochures', async form => {
+  const response = await sendSendBrochuresForm(form)
   if (response.status === 200) {
     return response.data.data
   }

@@ -17,15 +17,12 @@
   padding: 0 8px 8px 8px;
 }
 .field {
-  border: none;
   font-family: Lato;
   font-size: 14px;
   font-weight: $fw-semibold;
   padding: 0 8px 8px 8px;
-
-  &:focus-visible,
-  &:focus {
-    outline: none;
+  &::placeholder {
+    color: $color-placeholder;
   }
 }
 .icon {
