@@ -114,8 +114,8 @@ export const Footer: FC = () => {
             <div className={s.navigation}>
                 <div className={s.nav}>
                     <ul className={s.navList}>
-                        {bottomLinks.map((link) => {
-                            return <li className={s.navItem}>
+                        {bottomLinks.map((link, idx) => {
+                            return <li key={idx} className={s.navItem}>
                                 <Link className={s.navLink} href={link.to}>{link.name}</Link>
                             </li>
                         })}

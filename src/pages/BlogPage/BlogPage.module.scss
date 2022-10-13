@@ -1,0 +1,148 @@
+@use '/src/styles/style.scss' as *;
+
+.page {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.pictures {
+    width: 100vw;
+    height: 580px;
+    background-image: url('../../../public/assets/images/blogs/Rectangle 93 (3) (1).jpg');
+    background-repeat: no-repeat;
+}
+.button {
+    background-color: #0ABAEE;
+}
+
+.blogs {
+    background: $color-white;
+    width: 100vw;
+    position: relative;
+    .firstBlog {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        height: 720px;
+        background-color: $color-white;
+
+        .content {
+            width: 543px;
+            & > * {
+                margin: 32px;
+            }
+            & > h2 {
+                font-size: 32px;
+            }
+            & > h3 {
+                font-size: 44px;
+                font-family: $font-Lato;
+                color: #1B242D;
+            }
+            & > p {
+                font-size: 14px;
+                color: #1B242D;
+            }
+        }
+        .image {
+            top: 100px;
+            & > span {
+                border-radius: 8px;
+            }
+            & > div{
+                width: 515px;
+                height: 508px;
+                background-color: #F2F5F8;
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+        }
+    }
+    .secondBlog {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: row-reverse;
+        height: 720px;
+        background-color: $color-white;
+        position: relative;
+
+        .content {
+            width: 543px;
+            & > * {
+                margin: 32px;
+            }
+            & > h2 {
+                font-size: 32px;
+            }
+            & > h3 {
+                font-size: 44px;
+                font-family: $font-Lato;
+                color: #1B242D;
+            }
+            & > p {
+                font-size: 14px;
+                color: #1B242D;
+            }
+        }
+        .image {
+            top: 100px;
+            left: 134px;
+            & > span {
+                border-radius: 8px;
+            }
+            & > div{
+                width: 515px;
+                height: 508px;
+                background-color: #F2F5F8;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+    }
+}
+.reviews {
+    height: 512px;
+    background: #F2F5F8;
+    padding-top: 48px;
+    
+
+    .title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        & > h3 {
+            font-family: $font-Lato;
+            color: #1B242D;
+        }
+        & > p {
+            padding-top: 8px;
+        }
+    }
+    .review{
+        position: relative;
+        top: 64px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        & > div {
+            margin: 12px;
+        }
+    }
+}
+.contact {
+    background: url('../../../public/assets/images/blogs/Frame 442.jpg');
+    height: 512px;
+    position: relative;
+    & > button {
+        width: 113px;
+        height: 40px;
+        position: absolute;
+        top: 316px;
+        left: 663px;
+    }
+}
