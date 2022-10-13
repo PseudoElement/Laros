@@ -1,14 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { brochuresMock } from 'shared/mocks/brochures'
 import { Brochure } from 'shared/types/brochures'
-import { getBrochuresThunk } from './thunk'
+import { getBrochuresThunk, sendDownloadBrochureThunk } from './thunk'
 
 export type BrochuresState = {
   brochures: Brochure[]
+  isDownloadFormSent: boolean
 }
 
 const initialState: BrochuresState = {
   brochures: [],
+  isDownloadFormSent: false,
 }
 
 export const brochures = createSlice({
@@ -42,6 +43,13 @@ export const brochures = createSlice({
       state.brochures = [...action.payload]
     })
     builder.addCase(getBrochuresThunk.rejected, () => {
+      console.error('An error occured')
+    })
+    builder.addCase(sendDownloadBrochureThunk.fulfilled, state => {
+      state.isDownloadFormSent = true
+    })
+    builder.addCase(sendDownloadBrochureThunk.rejected, state => {
+      state.isDownloadFormSent = false
       console.error('An error occured')
     })
   },

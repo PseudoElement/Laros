@@ -44,7 +44,7 @@ export const BrochuresPage: FC = () => {
 
             </div>
             <SendBrochuresModal brochures={totalSelected} isOpen={isSendModalOpen} onClose={() => setIsSendModalOpen(false)} />
-            <DownloadBrochuresModal links={totalSelected} isOpen={isDownloadModalOpen} onClose={() => setIsDownloadModalOpen(false)} />
+            <DownloadBrochuresModal brochures={totalSelected} isOpen={isDownloadModalOpen} onClose={() => setIsDownloadModalOpen(false)} />
         </Container>
     </>
 

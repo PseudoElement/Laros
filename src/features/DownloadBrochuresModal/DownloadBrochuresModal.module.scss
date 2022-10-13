@@ -27,6 +27,18 @@
 .formName {
   margin-bottom: 16px;
 }
+.radio {
+  display: flex;
+  align-items: center;
+  padding: 5px 8px 20px;
+}
+.radioLabel {
+  font-family: Lato;
+  font-size: 12px;
+  font-weight: $fw-medium;
+  color: $color-placeholder;
+  margin-right: 25px;
+}
 .actions {
   position: absolute;
   bottom: 0;

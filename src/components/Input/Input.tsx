@@ -19,8 +19,7 @@ export const Input: FC<InputProps> = ({ label, value, type = 'text', required = 
     return (
         <div className={cn(s.input, classname)}>
             <div className={s.label}>{`${label}${required ? '*' : ''}`}</div>
-            {type === 'text' ?
-                <input placeholder={placeholder} value={value} onChange={(e) => onChange(e.target.value)} className={s.field} type={type} /> :
+            {type === 'number' ?
                 <MaskedInput
                     mask={NUMBER_REG_EXP}
                     guide={true}
@@ -30,7 +29,7 @@ export const Input: FC<InputProps> = ({ label, value, type = 'text', required = 
                     id={id}
                     onChange={(e) => onChange(e.target.value)}
                     value={value}
-                />}
+                /> : <input placeholder={placeholder} value={value} onChange={(e) => onChange(e.target.value)} className={s.field} type={type} />}
 
             <span className={s.icon}> <PencilIcon /></span>
         </div>

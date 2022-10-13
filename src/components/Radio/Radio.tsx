@@ -1,10 +1,11 @@
 import { ChangeEvent, FC } from "react"
 import s from './Radio.module.scss';
 import cn from 'classnames';
-type Radio = { value: string, label: string };
+import { Option } from "shared/types";
+
 interface RadioProps {
     name: string;
-    options: Radio[];
+    options: Option[];
     value: string;
     onChange?: (value: string) => void;
     onClick?: (value: string) => void;
