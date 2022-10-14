@@ -1,14 +1,15 @@
 import { PencilIcon } from "components/icons";
-import { FC } from "react"
+import { FC, ReactNode } from "react"
 import s from './Input.module.scss';
 import MaskedInput from 'react-text-mask'; // TODO add types
 import { NUMBER_REG_EXP } from "shared/constants/regExp";
 import cn from 'classnames';
+import { Counter } from "./Counter";
 
 interface InputProps {
     label: string;
     value: string | number;
-    type?: 'text' | 'number' | 'mail' | 'passoword';
+    type?: 'text' | 'number' | 'phone' | 'email' | 'password' | 'date';
     required?: boolean;
     placeholder?: string;
     id: string;
@@ -17,11 +18,11 @@ interface InputProps {
     shorten?: boolean
 };
 export const Input: FC<InputProps> = ({ label, value, type = 'text', required = false, id, onChange, placeholder, classname, shorten }) => {
-    return (
-        <div className={cn(s.input, { [s.shorten]: shorten }, classname)}>
-            <div className={s.label}>{`${label}${required ? '*' : ''}`}</div>
-            {type === 'number' ?
-                <MaskedInput
+
+    const getInput = (type: InputProps['type']): ReactNode => {
+        switch (type) {
+            case 'phone':
+                return <MaskedInput
                     mask={NUMBER_REG_EXP}
                     guide={true}
                     showMask={false}
@@ -30,9 +31,23 @@ export const Input: FC<InputProps> = ({ label, value, type = 'text', required = 
                     id={id}
                     onChange={(e) => onChange(e.target.value)}
                     value={value}
-                /> : <input placeholder={placeholder} value={value} onChange={(e) => onChange(e.target.value)} className={s.field} type={type} />}
-
-            <span className={s.icon}> <PencilIcon /></span>
+                />
+            case 'email':
+                return <input placeholder={placeholder} value={value} onChange={(e) => onChange(e.target.value)} className={s.field} type={type} />
+            case 'number':
+                return <>
+                    <input placeholder={placeholder} value={value} onChange={(e) => onChange(e.target.value)} className={s.field} type={type} />
+                    <Counter value={Number(value)} onChange={onChange} />
+                </>
+            default:
+                return <input placeholder={placeholder} value={value} onChange={(e) => onChange(e.target.value)} className={s.field} type={type} />
+        }
+    }
+    return (
+        <div className={cn(s.input, { [s.shorten]: shorten, [s.numberInput]: type === 'number' }, classname)}>
+            <div className={s.label}>{`${label}${required ? '*' : ''}`}</div>
+            {getInput(type)}
+            {type !== 'number' && <span className={s.icon}> <PencilIcon /></span>}
         </div>
     )
 }

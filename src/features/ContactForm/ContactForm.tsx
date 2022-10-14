@@ -58,7 +58,21 @@ export const ContactForm: FC = () => {
                         name='email'
                         control={control}
                         render={({ field: { onChange, value } }) => (
-                            <Input shorten type='mail' placeholder='Email' onChange={onChange} id='email' value={value} label='Email' />
+                            <Input shorten type='email' placeholder='Email' onChange={onChange} id='email' value={value} label='Email' />
+                        )}
+                    />
+                    <Controller
+                        name='number'
+                        control={control}
+                        render={({ field: { onChange, value } }) => (
+                            <Input shorten type='number' placeholder='' onChange={onChange} id='number' value={value} label='Exact trip days:' />
+                        )}
+                    />
+                    <Controller
+                        name='message'
+                        control={control}
+                        render={({ field: { onChange, value } }) => (
+                            <Input shorten placeholder='Tap to add' onChange={onChange} id='number' value={value} label='Your message:' />
                         )}
                     />
                     <Button onClick={handleSubmit(onSubmit)} type='submit' variant='secondary' classname={s.sendBtn}>Send</Button>
@@ -78,7 +92,7 @@ export const ContactForm: FC = () => {
                         <Image src={map} width={32} height={32} />
                     </div>
                     <div className={s.infoTitle}>Address and working hours</div>
-                    <div className={s.infoDescription}>{`Hauptstrasse 94,\nCH-4147 Aesch\n\sMo: 14:00 - 17:00\nTu-Fr: 10:00 - 12:00 and 14:00 - 17:00s`}</div>
+                    <div className={s.infoDescription}>{`Hauptstrasse 94,\nCH-4147 Aesch\n\nMo: 14:00 - 17:00\nTu-Fr: 10:00 - 12:00 and 14:00 - 17:00s`}</div>
                 </div>
                 <div className={cn(s.infoItem, s.contacts)}>
                     <div className={s.infoIcon}>
@@ -86,8 +100,8 @@ export const ContactForm: FC = () => {
                     </div>
                     <div className={s.infoTitle}>Phone and email</div>
                     <div className={s.infoDescription}>
-                        <a className={s.phone}>+ 41 061 / 756 80 80</a>
-                        <a className={s.mail}>info@laros.ch</a>
+                        <a href='tel:+410617568080' className={s.phone}>+ 41 061 / 756 80 80</a>{`\n\n`}
+                        <a href='mailto:info@laros.ch' className={s.mail}>info@laros.ch</a>
                     </div>
                 </div>
                 <div className={cn(s.infoItem, s.socials)}>

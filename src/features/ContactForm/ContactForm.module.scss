@@ -23,8 +23,25 @@
 }
 .form {
   margin-top: 32px;
+  & > div {
+    margin-bottom: 8px;
+  }
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  padding: 13px 8px 29px;
+}
+.radioLabel {
+  font-family: Lato;
+  font-size: 12px;
+  font-weight: $fw-medium;
+  color: $color-placeholder;
+  margin-right: 25px;
 }
 .sendBtn {
+  margin-top: 16px;
   width: 95px;
 }
 .info {

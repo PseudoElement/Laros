@@ -95,7 +95,7 @@ export const SendBrochuresModal: FC<SendBrochuresModalProps> = ({ brochures, isO
                             name='number'
                             control={control}
                             render={({ field: { onChange, value } }) => (
-                                <Input id='number' required onChange={onChange} value={value} type='number' label='Phone number' classname={s.formName} />
+                                <Input id='number' required onChange={onChange} value={value} type='phone' label='Phone number' classname={s.formName} />
 
                             )}
                         />

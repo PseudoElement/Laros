@@ -53,7 +53,7 @@ export const DownloadBrochuresModal: FC<DownloadBrochuresModalProps> = ({ isOpen
                             name='email'
                             control={control}
                             render={({ field: { onChange, value } }) => (
-                                <Input id='email' onChange={onChange} value={value} type='mail' label='Email' classname={s.formName} />
+                                <Input id='email' onChange={onChange} value={value} type='email' label='Email' classname={s.formName} />
 
                             )}
                         />
