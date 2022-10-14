@@ -14,10 +14,11 @@ interface InputProps {
     id: string;
     onChange: (value: string | number) => void;
     classname?: string;
+    shorten?: boolean
 };
-export const Input: FC<InputProps> = ({ label, value, type = 'text', required = false, id, onChange, placeholder, classname }) => {
+export const Input: FC<InputProps> = ({ label, value, type = 'text', required = false, id, onChange, placeholder, classname, shorten }) => {
     return (
-        <div className={cn(s.input, classname)}>
+        <div className={cn(s.input, { [s.shorten]: shorten }, classname)}>
             <div className={s.label}>{`${label}${required ? '*' : ''}`}</div>
             {type === 'number' ?
                 <MaskedInput

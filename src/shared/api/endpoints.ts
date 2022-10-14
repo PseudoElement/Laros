@@ -4,4 +4,5 @@ export const endpoints = {
     download: '/brochure/download/multiple/',
     send: '/brochure/delivery/',
   },
+  contactForm: '/order/create/',
 }

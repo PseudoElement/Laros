@@ -1,0 +1,72 @@
+@use 'styles/style.scss' as *;
+
+.container {
+  height: 580px;
+  width: 1110px;
+  border-radius: 16px;
+  padding: 72px 40px 40px;
+  background-color: $color-white;
+  display: flex;
+}
+.main {
+  padding-right: 24px;
+}
+.title {
+  font-size: 24px;
+  font-weight: $fw-semibold;
+}
+.description {
+  font-size: 12px;
+  font-weight: $fw-regular;
+  color: $color-checkbox-gray;
+  margin-top: 8px;
+}
+.form {
+  margin-top: 32px;
+}
+.sendBtn {
+  width: 95px;
+}
+.info {
+  padding-left: 56px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.infoItem {
+  padding: 16px 16px 0;
+  background-color: $color-modal-header;
+  border-radius: 8px;
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
+}
+.infoTitle {
+  font-size: 14px;
+  font-weight: $fw-semibold;
+}
+.infoDescription {
+  margin-top: 9px;
+  font-size: 12px;
+  font-weight: $fw-regular;
+  white-space: break-spaces;
+}
+.appointment,
+.addressTime {
+  width: 100%;
+}
+.appointment {
+  background-color: $color-olive;
+}
+.socials {
+  width: 50%;
+}
+.contacts {
+  width: calc(50% - 8px);
+  margin-right: 8px;
+}
+.socialIcons {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  width: 45%;
+}
