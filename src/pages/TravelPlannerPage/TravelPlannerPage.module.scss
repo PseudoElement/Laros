@@ -1,0 +1,222 @@
+@use 'styles/style.scss' as *;
+
+.background {
+  background-image: url(/public/assets/images/trip-planner/trip-planner-bg.jpg);
+  height: 540px;
+  background-repeat: no-repeat;
+  position: relative;
+  bottom: 77px;
+  z-index: -1;
+  background-size: cover;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 67px;
+  padding-top: 260px;
+  margin-left: 12.5%;
+  color: #ffffff;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.content {
+  background-color: #fff;
+  box-shadow: 0px 4px 4px rgba(0, 60, 118, 0.15);
+  border-radius: 16px;
+  width: 1280px;
+  // height: 600px;
+  margin: auto;
+  bottom: 267px;
+}
+
+/*----slider----*/
+.slider {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  max-width: 1150px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  padding-left: 60px;
+  margin-left: 30px;
+}
+
+.slideItem {
+  transition: all 0.3s ease-in;
+}
+
+.container {
+  padding-top: 78px;
+  padding-left: 85px;
+}
+
+.subtitle {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+}
+
+.slide__trip-title {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 26px;
+  position: absolute;
+  margin-top: -333px;
+  text-align: center;
+  margin-left: 33%;
+
+  span {
+    color: #ffffff;
+  }
+}
+
+.slide__trip-title--two {
+  margin-left: 20%;
+}
+
+.blue__trip-wrapper {
+  position: absolute;
+  margin-top: -642px;
+
+  background: #003c76;
+  border-radius: 16px;
+  width: 338px;
+  height: 640px;
+  transition: all 0.3s ease-in;
+
+  display: none;
+}
+
+.blue__trip-wrapper:hover {
+  display: block;
+  transition: all 0.3s ease-in;
+}
+
+.slide__trip-image {
+  border-radius: 16px;
+  margin-right: 24px;
+  transition: all 0.3s ease-in;
+}
+
+.blue__trip-wrapper {
+  transition: all 0.3s ease-in;
+}
+
+.slide__item-trip:hover {
+  transition: all 0.3s ease-in;
+
+  .blue__trip-wrapper {
+    display: block;
+    transition: all 0.3s ease-in;
+  }
+}
+
+.wrapper__title-trip {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 26px;
+  text-align: center;
+  text-transform: capitalize;
+  color: #fafbfc;
+  z-index: 10;
+  margin-top: 80px;
+}
+
+.wrapper__text-trip {
+  color: #fafbfc;
+  max-width: 226px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+  text-transform: capitalize;
+  margin: auto;
+}
+
+.categoriesMore {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #1b242d;
+  margin-left: 85px;
+}
+
+.categoriesList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 24px 85px 0;
+}
+
+.planner__list-item {
+  margin-right: 24px;
+  margin-bottom: 24px;
+}
+
+.planner__default-content {
+  background-image: url(/public/assets/images/trip-planner/planner__category-bg.png);
+  background-repeat: no-repeat;
+  height: 176px;
+  width: 543px;
+  position: relative;
+}
+
+.planner__default-title {
+  position: absolute;
+  top: 50%;
+  left: 46.3%;
+  transform: translate(-50%, -50%);
+
+  span {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    text-transform: capitalize;
+    color: #fff;
+  }
+}
+
+.planner__hover-content {
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+  background: #003c76;
+  border-radius: 16px;
+  height: 176px;
+  width: 543px;
+  display: none;
+}
+
+.planner__default-content:hover {
+  .planner__hover-content {
+    display: block;
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+.planner__hover-title {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  margin-bottom: 8px;
+
+  span {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    text-transform: capitalize;
+    color: #f2f5f8;
+  }
+}
+
+.planner__hover-text {
+  max-width: 440px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+  text-transform: capitalize;
+  color: #f2f5f8;
+  margin: auto;
+}
