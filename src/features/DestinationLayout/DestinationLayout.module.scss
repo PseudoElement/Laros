@@ -1,4 +1,5 @@
 @use 'styles/style.scss' as *;
+
 .container {
   display: flex;
   padding: 0 80px;
@@ -9,6 +10,8 @@
 }
 .list {
   max-height: 264px;
+  overflow-y: scroll;
+  direction: ltr;
 }
 .description {
   padding: 70px 16px 0;

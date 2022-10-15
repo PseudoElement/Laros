@@ -2,26 +2,34 @@ import { FC, ReactNode, useState } from 'react'
 import s from './DestinationLayout.module.scss';
 import { DestionationsList } from './DestionationsList';
 import { truncate } from 'lodash';
+import { Destination } from 'shared/types/destinations';
+import { TRUNCATED_TEXT_SIZE } from 'shared/constants';
+import { getParentDestinations, getRootDestinations, getSubDestinations, isNotFinalDestination } from 'store/slices/destinations/selectors';
+import { useRouter } from 'next/router';
 
 interface DestinationLayoutProps {
     children: ReactNode;
-    destinationId?: number;
+    destinations: Destination[]
+    currentDestination: number | null;
     title?: string;
     description?: string;
 }
 export const defaultDescription = 'Ullamcorper risus interdum lorem vulputate amet id quis massa elementum. Massa nisl urna accumsan proin imperdiet eget. In sagittis, facilisi tristique non.Curabitur id amet cras iaculis netus cras at et massa. Laoreet nulla quis vitae sollicitudin commodo at cursus dui. Felis, sed sit maecenas vitae eget nulla vel. Egestas turpis vivamus lorem pulvinar nunc. Mauris at nulla lorem mauris consequat pretium maecenas gravida viverra. Interdum enim mauris quis porttitor tristique vestibulum. Vitae mi eget vel bibendum a tortor a, turpis fusce. Pulvinar purus, mauris aenean aenean.'
-export const DestinationLayout: FC<DestinationLayoutProps> = ({ children, destinationId, title = 'Destinations', description = defaultDescription }) => {
+export const DestinationLayout: FC<DestinationLayoutProps> = ({ children, destinations, currentDestination, title = 'Destinations', description = defaultDescription }) => {
+    const router = useRouter();
+    const destinationsToDisplay = currentDestination ? getParentDestinations(destinations, currentDestination) : getRootDestinations(destinations)
     const [isTruncated, setIsTruncated] = useState<boolean>(true)
+
     return (
         <div className={s.container}>
             <div className={s.sidebar}>
                 <div className={s.list}>
-                    <DestionationsList destinations={[]} destination={1} />
+                    <DestionationsList onClick={(id) => router.push(`/destinations/${id}`)} destinations={destinationsToDisplay} destination={currentDestination} />
                 </div>
                 <div className={s.description}>
                     <div className={s.select}>Please select the region on the map</div>
                     <div className={s.title}>{title}</div>
-                    <div className={s.text}>{isTruncated ? truncate(description, { length: 160 }) : description}</div>
+                    <div className={s.text}>{isTruncated ? truncate(description, { length: TRUNCATED_TEXT_SIZE }) : description}</div>
                     <div onClick={() => setIsTruncated(false)} className={s.more}>More</div>
                 </div>
             </div>

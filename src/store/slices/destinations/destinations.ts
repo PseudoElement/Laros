@@ -15,7 +15,14 @@ const initialState: DestinationsState = {
 export const destinations = createSlice({
   name: 'destinations',
   initialState,
-  reducers: {},
+  reducers: {
+    setCurrentDestination: (
+      state: DestinationsState,
+      action: PayloadAction<number>
+    ) => {
+      state.currentDestination = action.payload
+    },
+  },
   extraReducers: builder => {
     builder.addCase(getDestinationsThunk.fulfilled, (state, action) => {
       state.destinations = [...action.payload]
@@ -25,5 +32,6 @@ export const destinations = createSlice({
     })
   },
 })
+export const { setCurrentDestination } = destinations.actions
 
 export default destinations.reducer
