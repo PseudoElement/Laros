@@ -1,18 +1,17 @@
 import { Container, Button } from 'components';
 import { Review } from 'features';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { FC, useState } from 'react';
-import s from './BlogPage.module.scss';
+import s from './BlogsPage.module.scss';
+import { reviewsMock } from 'shared/mocks/reviews';
 
-import ava2 from '/public/assets/images/blogs/Ellipse 24 (1).svg'
-import ava from '/public/assets/images/blogs/Ellipse 24.svg';
 import mountain from '/public/assets/images/blogs/firstblog.jpg';
 import airplane from '/public/assets/images/blogs/airplane.jpg';
 
 
 export const BlogPage: FC = () => {
     return <>
-    {/* <Container> */}
         <div className={s.page}>
             <div className={s.pictures}></div>
             <div className={s.blogs}>
@@ -30,7 +29,7 @@ export const BlogPage: FC = () => {
                             egestas vel, morbi senectus amet fermentum tincidunt. Amet imperdiet pharetra, est et
                             quis eu mollis ultricies. Quis mi id scelerisque viverra neque.
                         </p>
-                        <Button className={s.button}>Learn more</Button>
+                        <Link href={'blogs/1'}><Button className={s.button}>Learn more</Button></Link>
                     </div>
                     <div className={s.image}>
                         <div className={s.block}></div>
@@ -56,7 +55,7 @@ export const BlogPage: FC = () => {
                         Elementum in facilisis elementum sed pellentesque donec nunc. Mollis enim auctor
                         volutpat aliquam faucibus enim quis sed nunc.
                         </p>
-                        <Button className={s.button}>Learn more</Button>
+                        <Link href={'blogs/1'}><Button className={s.button}>Learn more</Button></Link>
                     </div>
                     <div className={s.image}>
                         <div className={s.block}></div>
@@ -70,26 +69,16 @@ export const BlogPage: FC = () => {
                 <p>At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.</p>
             </div> 
             <div className={s.review}>
-                <Review 
-                avatar={ava}
-                id={0}
-                name="Darrell Steward"
-                tripname='Trip name'
-                comment='Eu leo facilisi nunc sed nibh risus. Tortor venenatis felis amet duis lorem. Aliquam sapien, tortor non suscipit montes, venenatis.'
-                />
-                <Review 
-                avatar={ava2}
-                id={1}
-                name="Kathryn Murphy"
-                tripname='Trip name'
-                comment='Ut nulla sem tellus ac fermentum vestibulum. Pulvinar vitae, non imperdiet condimentum fermentum feugiat. Ut porttitor sit tristique dolor turpis feugiat.'
-                />
+                {
+                    reviewsMock.map((review) => (
+                        <Review {...review} key={review.id}/>
+                    ))
+                }
             </div>
             </div>
             <div className={s.contact}>
                 <Button className={s.button}>Contact</Button>
             </div>
         </div>
-    {/* </Container> */}
     </>;
 };
