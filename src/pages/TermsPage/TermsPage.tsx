@@ -9,7 +9,7 @@ export const TermsPage: FC = () => {
     return (
         <div className={s.page}>
             <div className={s.title}>
-                <h1>Terms and policies</h1>
+                <h2>Terms and policies</h2>
                 <p>Quis vulputate facilisis a ullamcorper hausdhausdhuashduasd sit netus neque. Nulla erat mattis donec blandit.</p>
         </div>
         <div className={s.container}>

@@ -1,23 +1,32 @@
 @use '/src/styles/style.scss' as *;
 
-
 .page {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: $color-light-grey;
     position: relative;
 }
+.title {
+    margin-top: 128px;
+    margin-right: 340px;
+    font-family: $font-Lato;
+    & > h2 {
+        font-size: 56px;
+    }
+    & > p {
+        margin-top: 16px;
+    }
+}
 .container {
-    width: 80%;
+    width: 1281px !important;
     height: 600px;
-    top: 277px;
-    position: relative;
     background-color: $color-white;
     border: 1px solid $color-white;
     border-radius: 16px;
-    box-shadow: 0 4px 4px 0 $color-shadow;
+    box-shadow: 0 4px 4px 0 rgba(0, 60, 118, 0.15);
+    margin-bottom: 105px;
+    margin-top: 46px;
 }
 .tabs {
     display: flex;
@@ -26,52 +35,32 @@
 .selectedTab {
     background-color: $color-white !important;
     border: none;
-    border-left: 1px solid $color-blue
+    border-left: 1px solid $color-primary;
 }
 .tab {
-    width: 302px;
+    width: 320px;
     height: 40px;
-    background-color: $color-light-grey;
-    margin: 4px;
+    list-style: none;
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 12px 32px;
     gap: 8px;
-    font-weight: 700;
+    background-color: $color-light-grey;
     font-family: $font-Lato;
     outline: none;
 }
 .tabList {
     width: 302px;
     height: 216px;
-    padding: 25px;
+    padding-top: 93px;
+    padding-left: 102px;
     position: absolute;
-    top: 73px;
 }
 .tabPanel {
-    width: 734px;
-    height: 444px;
-    padding: 12px 16px;
-    top: 105px;
-    gap: 8px;
-    right: 0px;
-    position: absolute;
+    width: 702px;
+    padding-top: 107px;
+    right: 120px;
     font-size: 13px;
-    font-family: $font-Lato;
-}
-
-.title {
-    top: 210px;
-    position: relative;
-    
-h1 {
-    font-size: 56px;
-    font-family: $font-Lato;
-
-}
-p {
-    padding-top: 16px;
-    font-family: $font-Lato;
-}
+    position: absolute;
 }
