@@ -33,5 +33,7 @@
 .text {
   margin-bottom: 12px;
   font-size: 12px;
+  line-height: 20px;
+  overflow-y: scroll;
   font-weight: $fw-regular;
 }
