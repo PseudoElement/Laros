@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react'
+import { FC, MouseEvent, ReactNode } from 'react'
 import cn from 'classnames'
 
 import s from './Button.module.scss'
@@ -6,8 +6,8 @@ import s from './Button.module.scss'
 interface ButtonProps {
   children: ReactNode
   type?: 'button' | 'reset' | 'submit'
-  variant?: 'outline' | 'primary'
-  className?: string
+  variant?: 'primary' | 'secondary' | 'outline'
+  classname?: string
   onClick?: () => void
 }
 
@@ -15,13 +15,16 @@ export const Button: FC<ButtonProps> = ({
   children,
   type = 'button',
   variant = 'primary',
-  className,
+  classname,
   onClick,
 }) => {
-  const buttonClass = cn(s.button, s[variant], className)
-
+  const buttonClass = cn(s.button, s[variant], classname)
+  const handleButton = (e: MouseEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    onClick?.();
+  }
   return (
-    <button className={buttonClass} type={type} onClick={onClick}>
+    <button className={buttonClass} type={type} onClick={(e) => handleButton(e)}>
       {children}
     </button>
   )
