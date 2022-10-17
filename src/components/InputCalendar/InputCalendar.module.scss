@@ -32,12 +32,13 @@
 // Columns
 // 1-st
 .calendarIcon {
-  padding: 1px 8px 8px 8px;
+  transform: scale(1.4);
+  padding: 0 8px 8px 8px;
 }
 
 // 2-st
 .label {
-  padding: 8px;
+  padding: 7px 8px 8px 8px;
   font-family: Lato;
   font-size: 12px;
   font-weight: $fw-medium;
@@ -46,7 +47,7 @@
 }
 // 3-st
 .textDate {
-  padding: 8px;
+  padding: 5px 8px 8px 8px;
   width: 80%;
   font-family: Lato;
   font-size: 14px;
@@ -55,6 +56,7 @@
 // 4-st
 .pencilIcon {
   cursor: pointer;
+  transform: scale(1.4);
   margin-right: 8px;
   margin-left: auto;
 }
