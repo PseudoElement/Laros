@@ -3,6 +3,8 @@ import { useRouter } from 'next/router'
 import { FC, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { getDestinationsThunk } from 'store/slices/destinations/thunk'
+import GreeceDestinationMacedonia from '/public/assets/images/destinations/macedonia__small.svg';
+import Image from 'next/image'
 
 export const DestinationPage: FC = () => {
     const dispatch = useAppDispatch()
@@ -15,7 +17,7 @@ export const DestinationPage: FC = () => {
 
     return (
         <DestinationLayout currentDestination={Number(query.id)} destinations={destinations}>
-            Hi
+            <Image src={GreeceDestinationMacedonia} width={400} height={400} />
         </DestinationLayout>
     )
 }

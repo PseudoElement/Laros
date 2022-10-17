@@ -10,13 +10,16 @@ interface DestionationsListProps {
 };
 export const DestionationsList: FC<DestionationsListProps> = ({ destination, destinations, onClick }) => {
     const dispatch = useAppDispatch();
-
+    const mappedDestinations = destinations
     return (
         <div className={s.list}>{destinations.map((place) => {
-            return <div onClick={() => onClick(place.id)} className={cn(s.item, { [s.active]: place.id === destination })}>
+            return <div onClick={() => onClick(null)} className={cn(s.item, { [s.active]: place.id === destination })}>
                 <span className={s.title}>{place.name}</span>
             </div>
+
         })
-        }</div >
+
+        }
+        </div >
     )
 }
