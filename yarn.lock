@@ -412,6 +412,13 @@
   resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.5.tgz"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
 
+"@types/react-calendar@^3.5.3":
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/@types/react-calendar/-/react-calendar-3.5.3.tgz#f9dcf62a14089d1d7352d35f29e43e04a9d248ae"
+  integrity sha512-CRbEPcK+KolZBKeaJ/pm5VzRSA4KVTsz/c61Vdl74y0tuZm7WHIJPaRvVM+3ggInc8TkJrrt8/YKVrkrwGkfrA==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-dom@18.0.6":
   version "18.0.6"
   resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-18.0.6.tgz"
@@ -1980,7 +1987,7 @@ prelude-ls@^1.2.1:
 
 prettier@^2.7.1:
   version "2.7.1"
-  resolved "https://registry.npmjs.org/prettier/-/prettier-2.7.1.tgz"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.7.1.tgz#e235806850d057f97bb08368a4f7d899f7760c64"
   integrity sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==
 
 prop-types@^15.5.6, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.8.1:

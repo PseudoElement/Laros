@@ -1,12 +1,18 @@
 @use 'styles/style.scss' as *;
 
+.react-calendar {
+  position: absolute;
+  z-index: 10;
+}
+
 .inputCalendar {
+  max-width: 371px;
   position: relative;
   width: 100%;
-  height: 55px;
-  border: 1px solid $color-modal-header;
+  height: 33px;
+  border: 2px solid $color-modal-header;
   border-radius: 8px;
-  padding-top: 8px;
+  z-index: 1;
 }
 .shorten {
   height: 33px;
@@ -18,24 +24,37 @@
   }
 }
 
+.gridWrapper {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+// Columns
+// 1-st
+.calendarIcon {
+  padding: 1px 8px 8px 8px;
+}
+
+// 2-st
 .label {
+  padding: 8px;
   font-family: Lato;
   font-size: 12px;
   font-weight: $fw-medium;
   color: $color-placeholder;
-  padding: 0 8px 8px 8px;
+  min-width: 110px;
 }
-.field {
+// 3-st
+.textDate {
+  padding: 8px;
+  width: 80%;
   font-family: Lato;
   font-size: 14px;
-  font-weight: $fw-semibold;
-  padding: 0 8px 8px 8px;
-  &::placeholder {
-    color: $color-placeholder;
-  }
+  text-align: center;
 }
-.icon {
-  position: absolute;
-  bottom: 8px;
-  right: 9px;
+// 4-st
+.pencilIcon {
+  cursor: pointer;
+  margin-right: 8px;
+  margin-left: auto;
 }

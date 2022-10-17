@@ -1,15 +1,17 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Calendar from 'react-calendar'
 
-import { PencilIcon } from 'components/icons'
+import { PencilIcon, CalendarIcon } from 'components/icons'
+
 import { FC } from 'react'
 import s from './InputCalendar.module.scss'
 import cn from 'classnames'
+import 'react-calendar/dist/Calendar.css'
+import dateFormatter from 'shared/helpers/dateFormatter'
 
 interface InputCalendarProps {
   label: string
   value: string | number
-  type?: 'date'
   required?: boolean
   placeholder?: string
   id: string
@@ -20,7 +22,6 @@ interface InputCalendarProps {
 export const InputCalendar: FC<InputCalendarProps> = ({
   label,
   value,
-  type = 'date',
   required = false,
   id,
   onChange,
@@ -29,18 +30,50 @@ export const InputCalendar: FC<InputCalendarProps> = ({
   shorten,
 }) => {
   const [date, setDate] = useState(new Date())
+  const [showCalendar, setShowCalendar] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent): void {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        setShowCalendar(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  })
+
   return (
     <div className={cn(s.inputCalendar, { [s.shorten]: shorten }, classname)}>
-      <div className={s.label}>{`${label}${required ? '*' : ''}`}</div>
-      <span>
-        <Calendar onChange={setDate} value={date} />
-      </span>
-      <span>
-        <span>Selected Date:</span> {date.toDateString()}
-      </span>
-      <span className={s.icon}>
-        <PencilIcon />
-      </span>
+      {showCalendar && (
+        <div ref={ref}>
+          <Calendar onChange={setDate} value={date} />
+        </div>
+      )}
+      <div className={s.gridWrapper}>
+        {!showCalendar && (
+          <div className={s.calendarIcon}>
+            <CalendarIcon />
+          </div>
+        )}
+        {!showCalendar && (
+          <div className={s.label}>{`${label}${required ? '*' : ''}`}</div>
+        )}
+        {!showCalendar && (
+          <div className={s.textDate}>{dateFormatter(date)}</div>
+        )}
+        {!showCalendar && (
+          <span
+            className={s.pencilIcon}
+            onClick={() => setShowCalendar(!showCalendar)}
+            onBlur={() => setShowCalendar(false)}
+          >
+            <PencilIcon />
+          </span>
+        )}
+      </div>
     </div>
   )
 }
