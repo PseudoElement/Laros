@@ -52,19 +52,16 @@ export const InputCalendar: FC<InputCalendarProps> = ({
           <Calendar onChange={setDate} value={date} />
         </div>
       )}
-      <div className={s.gridWrapper}>
-        {!showCalendar && (
+      {!showCalendar && (
+        <div className={s.gridWrapper}>
           <div className={s.calendarIcon}>
             <CalendarIcon />
           </div>
-        )}
-        {!showCalendar && (
+
           <div className={s.label}>{`${label}${required ? '*' : ''}`}</div>
-        )}
-        {!showCalendar && (
+
           <div className={s.textDate}>{dateFormatter(date)}</div>
-        )}
-        {!showCalendar && (
+
           <span
             className={s.pencilIcon}
             onClick={() => setShowCalendar(!showCalendar)}
@@ -72,8 +69,8 @@ export const InputCalendar: FC<InputCalendarProps> = ({
           >
             <PencilIcon />
           </span>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   )
 }
