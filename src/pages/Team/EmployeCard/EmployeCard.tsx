@@ -9,7 +9,7 @@ export const EmployeCard: FC<EmployeCardProps> = ({
   image,
   name,
   post,
-  desc,
+  description,
 }) => {
   return (
     <div className={s.wrapper}>
@@ -23,7 +23,7 @@ export const EmployeCard: FC<EmployeCardProps> = ({
       <div className={s.text}>
         <p className={s.name}>{name}</p>
         <p className={s.post}>{post}</p>
-        <p className={s.desc}>{desc}</p>
+        <p className={s.desc}>{description}</p>
       </div>
     </div>
   )
