@@ -1,5 +1,4 @@
 import { Input } from 'components/Input'
-import { InputCalendar } from 'components/InputCalendar'
 import { Modal } from 'components/Modal'
 import { Radio } from 'components/Radio'
 import { ContactForm } from 'features/ContactForm'

@@ -38,6 +38,7 @@ export const InputCalendar: FC<InputCalendarProps> = ({
     onChange?.(e)
     setDate(e)
   }
+
   return (
     <div className={cn(s.inputCalendar, classname)}>
       {showCalendar && (

@@ -14,9 +14,9 @@ export default function dateFormater(date: Date): string {
     'December',
   ]
   let day: number | string = date.getDate()
-  let month: string | number = date.getMonth()
+  let month: number | string = date.getMonth()
   month = months[month]
-  const year = date.getFullYear()
+  const year: number = date.getFullYear()
   if (day < 10) {
     day = '0' + day
   }
