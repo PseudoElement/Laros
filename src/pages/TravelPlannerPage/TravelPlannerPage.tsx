@@ -45,9 +45,10 @@ export const TravelPlannerPage: FC = () => {
         >
           {mainCategories.map((cat, idx) => {
             return (
+              // @ts-ignore
               <SwiperSlide key={idx}>
                 <div className={s.slideItem}>
-                  <CategoryCard {...cat} vertical />
+                  <CategoryCard {...cat} vertical key={idx} />
                 </div>
               </SwiperSlide>
             )
@@ -61,7 +62,8 @@ export const TravelPlannerPage: FC = () => {
         </div>
         <ul className={s.categoriesList}>
           {moreCategories.map(cat => {
-            return <CategoryCard {...cat} />
+            // @ts-ignore
+            return <CategoryCard {...cat} key={cat} />
           })}
         </ul>
       </div>
