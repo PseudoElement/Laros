@@ -20,11 +20,11 @@ export const Team: FC = () => {
       <div className={s.items}>
         {teamMock.map(el => (
           <EmployeCard
-            key={el.imageUrl}
-            imageUrl={el.imageUrl}
+            key={el.image}
             name={el.name}
-            desc={el.desc}
+            image={el.image}
             post={el.post}
+            description={el.description}
           />
         ))}
       </div>
