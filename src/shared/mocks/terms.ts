@@ -10,6 +10,4 @@ Sit vivamus sagittis volutpat ac aliquet auctor platea facilisis in. Sed feugiat
 
 Varius at suspendisse id gravida sit risus fusce. Tellus morbi non egestas venenatis a etiam. Nec interdum faucibus amet aliquam et adipiscing lectus turpis ut. In dui quis suspendisse in commodo. Integer adipiscing lorem sollicitudin ultricies quam nibh consectetur. Libero pharetra nunc in aliquam viverra id elementum malesuada. Diam non massa, duis gravida vel aliquet. Aliquet aliquam morbi diam sed posuere ullamcorper id. Facilisis lorem viverra quam semper viverra tempus. Ullamcorper orci, nisl pellentesque eget. Non vel faucibus curabitur scelerisque aliquam tincidunt quisque id. Tristique consectetur vitae, sed vulputate dui dui praesent feugiat praesent.
 
-
-Dui viverra malesuada habitant lorem tellus purus arcu, metus dolor. Id id purus sed id ipsum sit. Platea urna ligula viverra euismod morbi risus, eget. Viverra integer egestas praesent amet, consectetur. Tristique turpis dictum et integer augue justo massa ante.
 `
