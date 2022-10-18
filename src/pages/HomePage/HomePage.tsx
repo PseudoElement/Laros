@@ -19,8 +19,6 @@ export const HomePage: FC = () => {
       }}
     >
       <Input
-        value=''
-        required
         label='Earliest depature'
         type='date'
         id='100'

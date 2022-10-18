@@ -57,9 +57,7 @@ export const InputCalendar: FC<InputCalendarProps> = ({
           </div>
 
           <div className={s.label}>{`${label}${required ? '*' : ''}`}</div>
-
           <div className={s.textDate}>{dateFormatter(date)}</div>
-
           <span
             className={s.pencilIcon}
             onClick={() => setShowCalendar(!showCalendar)}
