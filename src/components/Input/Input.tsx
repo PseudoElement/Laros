@@ -75,6 +75,7 @@ export const Input: FC<InputProps> = ({
             label={label}
             onChange={onChange}
             classname={s.field}
+            required={required}
           />
         )
       default:
@@ -97,9 +98,7 @@ export const Input: FC<InputProps> = ({
         classname
       )}
     >
-      <div className={s.label}>{`${type !== 'date' ? label : ''}${
-        required ? '*' : ''
-      }`}</div>
+      <div className={s.label}>{`${type !== 'date' ? label : ''}`}</div>
       {getInput(type)}
       {type !== 'number' && (
         <span className={s.icon}>
