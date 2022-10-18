@@ -5,4 +5,8 @@ export const endpoints = {
     send: '/brochure/delivery/',
   },
   contactForm: '/order/create/',
+  destinations: {
+    get: '/destination/',
+    id: (id: number) => `/destination/${id}`,
+  },
 }

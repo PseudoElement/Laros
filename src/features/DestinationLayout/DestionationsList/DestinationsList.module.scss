@@ -1,0 +1,28 @@
+@use 'styles/style.scss' as *;
+.list {
+  background-color: $color-laros-light-grey;
+  overflow-y: scroll;
+}
+.item {
+  font-size: 12px;
+  font-weight: $fw-medium;
+  height: 64px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  padding-left: 92px;
+}
+.title {
+}
+.active {
+  background-color: $color-white;
+  font-weight: $fw-semibold;
+  &:after {
+    content: '';
+    background-color: $color-lazur;
+    width: 2px;
+    height: 100%;
+    top: 0;
+    right: 0;
+  }
+}
