@@ -1,0 +1,33 @@
+@use '/src/styles/style.scss' as *;
+.background{
+  background-image: url('/assets/images/team/background.png');
+  background-repeat: no-repeat;
+  background-position: top left;
+}
+.wrapper {
+  max-width: 1320px;
+  margin: 80px auto;
+
+  .text{
+    text-align: center;
+    margin: 0 0 51px 0;
+
+    .title{
+      margin: 0 0 40px 0;
+    }
+
+    .desc{
+      font-weight: 400;
+      max-width: 850px;
+      font-size: 12px;
+      margin: 0 auto;
+    }
+  }
+
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 37px;
+  }
+
+}

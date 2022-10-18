@@ -1,0 +1,35 @@
+@use '/src/styles/style.scss' as *;
+
+.wrapper {
+  width: 302px;
+  margin: 0 0 20px 0;
+
+  .photo {
+    width: 302px;
+    height: 320px;
+    border-radius: 8px;
+  }
+
+  .text{
+    max-width: 260px;
+    margin: 24px auto 0 auto;
+
+    .name{
+      font-weight: 500;
+      font-size: 20px;
+      margin: 0 0 8px 0;
+    }
+
+    .post {
+      font-weight: 400;
+      font-size: 14px;
+      margin: 0 0 8px 0;
+    }
+
+    .desc{
+      font-weight: 400;
+      font-size: 12px;
+      opacity: 0.5;
+    }
+  }
+}
