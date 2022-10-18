@@ -1,6 +1,8 @@
 import { useRef, useState } from 'react'
 import Calendar from 'react-calendar'
 
+import { useClickOutside } from 'shared/hooks/useClickOutside'
+
 import { PencilIcon, CalendarIcon } from 'components/icons'
 
 import { FC } from 'react'
@@ -9,7 +11,6 @@ import cn from 'classnames'
 import 'react-calendar/dist/Calendar.css'
 
 import dateFormatter from 'shared/helpers/dateFormatter'
-import { useOnClickOutside } from 'usehooks-ts'
 
 interface InputCalendarProps {
   label: string
@@ -32,7 +33,7 @@ export const InputCalendar: FC<InputCalendarProps> = ({
     setShowCalendar(false)
   }
 
-  useOnClickOutside(ref, handleClickOutside)
+  useClickOutside(ref, handleClickOutside)
 
   const handleChange = (e: Date): void => {
     onChange?.(e)
