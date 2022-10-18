@@ -1,6 +1,7 @@
 import { NextPage } from 'next'
 import { DestinationPage } from 'pages/DestinationPage'
+import { DestinationWorldwidePage } from 'pages/DestinationWorldwidePage'
 
-const Destination: NextPage = () => <DestinationPage />
+const DestinationWorldwide: NextPage = () => <DestinationWorldwidePage />
 
-export default Destination
+export default DestinationWorldwide
