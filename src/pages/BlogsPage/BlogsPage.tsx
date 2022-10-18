@@ -1,81 +1,71 @@
-import React, { FC } from 'react'
-import Image from 'next/image'
+import React, { FC, useEffect, useState } from 'react'
+import Image, { ImageProps } from 'next/image'
 import Link from 'next/link'
 import { Button } from 'components'
+import { BlogHeaderImage } from './../../components/Images/BlogHeaderImage'
 import { Review } from 'features'
 import { reviewsMock } from 'shared/mocks/reviews'
-
-import mountain from '/public/assets/images/blogs/firstblog.jpg'
-import airplane from '/public/assets/images/blogs/airplane.jpg'
+import { Blogs } from 'shared/types/blogs'
+import { blogs } from 'shared/mocks/blogs'
 
 import s from './BlogsPage.module.scss'
-import { BlogHeaderImage } from './../../components/Images/BlogHeaderImage'
+
+interface BlogItemProps {
+  id: number
+  title: string
+  subTitle: string
+  description: string
+  image: ImageProps['src']
+}
+
+const BlogItem: FC<BlogItemProps> = ({
+  id,
+  title,
+  subTitle,
+  description,
+  image,
+}) => {
+  return (
+    <li className={s.blog}>
+      <div className={s.content}>
+        <h2 className={s.mainTitle}>{title}</h2>
+        <h3 className={s.subTitle}>{subTitle}</h3>
+        <p className={s.description}>{description}</p>
+        <Link href={`blogs/${id}`}>
+          <Button className={s.button}>Learn more</Button>
+        </Link>
+      </div>
+      <div className={s.image}>
+        <div className={s.block}></div>
+        <Image src={image} height={520} width={520} alt='blogImage' />
+      </div>
+    </li>
+  )
+}
 
 export const BlogsPage: FC = () => {
+  const [blogsData, setBlogsData] = useState<Blogs[] | null>([])
+
+  useEffect(() => {
+    if (!blogsData?.length) {
+      setBlogsData(blogs)
+    }
+  }, [blogsData])
+  console.log(blogsData)
+
   return (
     <>
       <div className={s.page}>
         <div className={s.pictures}>
           <BlogHeaderImage />
         </div>
-        <div className={s.blogs}>
-          <div className={s.blog}>
-            <div className={s.content}>
-              <h2 className={s.mainTitle}>Diam ac odio id lectus mi..</h2>
-              <h3 className={s.subTitle}>
-                Quis mi id scelerisque viverra neque
-              </h3>
-              <p className={s.description}>
-                Quam sed pellentesque odio sit gravida. Nulla eget sed non
-                hendrerit velit quis cum diam. Ante non et hac elit. Mollis sit
-                a sit cursus donec turpis orci. Pharetra, donec neque eget
-                adipiscing. Auctor nulla orci est vestibulum in non vitae,
-                viverra turpis. Dignissim egestas vel, morbi senectus amet
-                fermentum tincidunt. Amet imperdiet pharetra, est et quis eu
-                mollis ultricies. Quis mi id scelerisque viverra neque.
-              </p>
-              <Link href={'blogs/1'}>
-                <Button className={s.button}>Learn more</Button>
-              </Link>
-            </div>
-            <div className={s.image}>
-              <div className={s.block}></div>
-              <Image src={mountain} height={520} width={520} alt='mountain' />
-            </div>
-          </div>
-          <div className={s.blog}>
-            <div className={s.content}>
-              <h2 className={s.mainTitle}>
-                Morbi dignissim lacinia sit proin gravida enim ac
-              </h2>
-              <h3 className={s.subTitle}>
-                Urna, vestibulum egestas sit diam, mattis pretium
-              </h3>
-              <p className={s.description}>
-                Vitae bibendum ornare nascetur massa. Cras tortor quis risus
-                tristique nec amet morbi. Urna, vestibulum egestas sit diam,
-                mattis pretium. Morbi dignissim lacinia sit proin gravida enim
-                ac. Aliquam massa pretium maecenas nisi, imperdiet. Tellus
-                aenean tincidunt pharetra proin donec amet, id. Eu felis id
-                egestas lobortis rhoncus. Neque id id pellentesque quam ut
-                facilisis. Fames elementum eget et nisi aliquam risus. Risus
-                arcu a, nisi est, consequat convallis massa maecenas sit.
-                Sagittis lectus felis, purus, gravida nec. Faucibus odio
-                hendrerit pretium nunc pharetra varius pellentesque euismod
-                posuere. Elementum in facilisis elementum sed pellentesque donec
-                nunc. Mollis enim auctor volutpat aliquam faucibus enim quis sed
-                nunc.
-              </p>
-              <Link href={'blogs/1'}>
-                <Button className={s.button}>Learn more</Button>
-              </Link>
-            </div>
-            <div className={s.image}>
-              <div className={s.block}></div>
-              <Image src={airplane} height={520} width={520} alt='mountain' />
-            </div>
-          </div>
-        </div>
+        <ul className={s.blogs}>
+          {blogsData?.length
+            ? blogsData.map(blogData => (
+                <BlogItem key={blogData.id} {...blogData} />
+              ))
+            : null}
+        </ul>
         <div className={s.reviews}>
           <div className={s.title}>
             <h3>What people say about us</h3>

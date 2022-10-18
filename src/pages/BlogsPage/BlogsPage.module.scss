@@ -21,77 +21,87 @@
   }
 }
 
+.blogs {
+  background: $color-white;
+  width: 100vw;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
 .button {
   background-color: $color-secondary;
   cursor: pointer;
   width: 134px;
 }
 
-.mainTitle {
-  font-size: 52px;
-  font-family: $font-Corinthia;
-  line-height: 40px;
-  color: $color-brochure-placeholder;
-}
-
-.subTitle {
-  font-size: 44px;
-  line-height: 53px;
-  font-family: $font-Lato;
-  color: $color-black;
-}
-
-.description {
-  font-size: 14px;
-  line-height: 24px;
-  color: $color-black;
-  text-align: justify;
-}
-
-.blogs {
-  background: $color-white;
-  width: 100vw;
+.blog {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 720px;
+  background-color: $color-white;
+  padding: 101px 104px;
   position: relative;
-  .blog {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: 720px;
-    background-color: $color-white;
-    padding: 101px 104px;
-    position: relative;
 
-    .content {
-      width: 543px;
-      margin: 0 85px;
-      & > * {
-        margin-bottom: 32px;
-      }
+  .mainTitle {
+    font-size: 52px;
+    font-family: $font-Corinthia;
+    line-height: 40px;
+    color: $color-brochure-placeholder;
+  }
+
+  .subTitle {
+    font-size: 44px;
+    line-height: 53px;
+    font-family: $font-Lato;
+    color: $color-black;
+  }
+
+  .description {
+    font-size: 14px;
+    line-height: 24px;
+    color: $color-black;
+    text-align: justify;
+  }
+
+  .content {
+    width: 543px;
+    margin: 0 85px;
+
+    & > * {
+      margin-bottom: 32px;
     }
-    .image {
-      top: 100px;
+  }
+
+  .image {
+    top: 100px;
+    image-rendering: optimizeSpeed;
+
+    & > span {
+      border-radius: 8px;
       image-rendering: optimizeSpeed;
-      & > span {
-        border-radius: 8px;
-        image-rendering: optimizeSpeed;
-      }
-      & > div {
-        width: 515px;
-        height: 508px;
-        background-color: $color-modal-header;
-        position: absolute;
-        top: 0;
-        right: 0;
-      }
     }
-    &:nth-child(even) {
-      flex-direction: row-reverse;
-      .image > div {
-        left: 0;
-      }
+
+    & > div {
+      width: 515px;
+      height: 508px;
+      background-color: $color-modal-header;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  &:nth-child(even) {
+    flex-direction: row-reverse;
+
+    .image > div {
+      left: 0;
     }
   }
 }
+
 .reviews {
   height: 512px;
   background: $color-modal-header;
@@ -103,25 +113,30 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
     & > h3 {
       font-family: $font-Lato;
       color: $color-black;
     }
+
     & > p {
       padding-top: 8px;
     }
   }
+
   .review {
     position: relative;
     top: 64px;
     display: flex;
     justify-content: center;
     align-items: center;
+
     & > div {
       margin: 12px;
     }
   }
 }
+
 .contact {
   background: url('../../../public/assets/images/blogs/Frame 442.jpg') center;
   background-size: cover;
