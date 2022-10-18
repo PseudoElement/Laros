@@ -26,36 +26,35 @@
 
 .gridWrapper {
   display: flex;
-  flex-wrap: nowrap;
 }
 
 // Columns
 // 1-st
 .calendarIcon {
+  cursor: pointer;
   transform: scale(1.4);
-  padding: 0 8px 8px 8px;
+  padding: 3px 8px 8px 8px;
 }
 
 // 2-st
 .label {
-  padding: 7px 8px 8px 8px;
-  font-family: Lato;
+  padding: 7px 8px 8px;
   font-size: 12px;
   font-weight: $fw-medium;
   color: $color-placeholder;
-  min-width: 110px;
+  min-width: 120px;
 }
 // 3-st
 .textDate {
   padding: 5px 8px 8px 8px;
   width: 80%;
-  font-family: Lato;
   font-size: 14px;
   text-align: center;
 }
 // 4-st
 .pencilIcon {
   cursor: pointer;
+  padding: 3px 8px 8px 8px;
   transform: scale(1.4);
   margin-right: 8px;
   margin-left: auto;

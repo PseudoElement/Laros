@@ -19,12 +19,12 @@ export const HomePage: FC = () => {
         width: '100%',
       }}
     >
-      <InputCalendar
-        id='100'
+      <Input
+        value=''
         label='Earliest depature'
-        value='value'
         type='date'
-        onChange={() => console.log(' click')}
+        id='100'
+        onChange={e => console.log('get date')}
       />
       <div
         style={{ marginTop: '15px' }}

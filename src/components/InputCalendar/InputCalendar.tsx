@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import Calendar from 'react-calendar'
 
 import { PencilIcon, CalendarIcon } from 'components/icons'
@@ -7,54 +7,50 @@ import { FC } from 'react'
 import s from './InputCalendar.module.scss'
 import cn from 'classnames'
 import 'react-calendar/dist/Calendar.css'
+
 import dateFormatter from 'shared/helpers/dateFormatter'
+import { useOnClickOutside } from 'usehooks-ts'
 
 interface InputCalendarProps {
   label: string
-  value: string | number
   required?: boolean
-  placeholder?: string
-  id: string
-  onChange: (value: string | number) => void
+  onChange?: (value: Date) => void
   classname?: string
-  shorten?: boolean
 }
+
 export const InputCalendar: FC<InputCalendarProps> = ({
   label,
-  value,
   required = false,
-  id,
   onChange,
-  placeholder,
   classname,
-  shorten,
 }) => {
   const [date, setDate] = useState(new Date())
   const [showCalendar, setShowCalendar] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent): void {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
-        setShowCalendar(false)
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  })
+  const handleClickOutside = () => {
+    setShowCalendar(false)
+  }
 
+  useOnClickOutside(ref, handleClickOutside)
+
+  const handleChange = (e: Date): void => {
+    onChange?.(e)
+    setDate(e)
+  }
   return (
-    <div className={cn(s.inputCalendar, { [s.shorten]: shorten }, classname)}>
+    <div className={cn(s.inputCalendar, classname)}>
       {showCalendar && (
         <div ref={ref}>
-          <Calendar onChange={setDate} value={date} />
+          <Calendar onChange={handleChange} value={date} />
         </div>
       )}
       {!showCalendar && (
         <div className={s.gridWrapper}>
-          <div className={s.calendarIcon}>
+          <div
+            className={s.calendarIcon}
+            onClick={() => setShowCalendar(!showCalendar)}
+          >
             <CalendarIcon />
           </div>
 
@@ -65,7 +61,6 @@ export const InputCalendar: FC<InputCalendarProps> = ({
           <span
             className={s.pencilIcon}
             onClick={() => setShowCalendar(!showCalendar)}
-            onBlur={() => setShowCalendar(false)}
           >
             <PencilIcon />
           </span>
