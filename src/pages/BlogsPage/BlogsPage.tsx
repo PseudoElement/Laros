@@ -1,23 +1,23 @@
-import { Container, Button } from 'components';
-import { Review } from 'features';
+import React, { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { FC, useState } from 'react';
-import s from './BlogsPage.module.scss';
+import { Button } from 'components';
+import { Review } from 'features';
 import { reviewsMock } from 'shared/mocks/reviews';
 
 import mountain from '/public/assets/images/blogs/firstblog.jpg';
 import airplane from '/public/assets/images/blogs/airplane.jpg';
 
+import s from './BlogsPage.module.scss';
 
-export const BlogPage: FC = () => {
+export const BlogsPage: FC = () => {
     return <>
         <div className={s.page}>
             <div className={s.pictures}></div>
             <div className={s.blogs}>
                 <div className={s.firstBlog}>
                     <div className={s.content}>
-                        <h2>Diam ac odio id lectus mi..</h2>
+                        <h2 className={s.blogTitle}>Diam ac odio id lectus mi..</h2>
                         <h3>
                             Quis mi id scelerisque
                             viverra neque
@@ -38,7 +38,7 @@ export const BlogPage: FC = () => {
                 </div>
                 <div className={s.secondBlog}>
                     <div className={s.content}>
-                        <h2>Morbi dignissim lacinia sit proin
+                        <h2 className={s.blogTitle}>Morbi dignissim lacinia sit proin
                             gravida enim ac</h2>
                         <h3>
                         Urna, vestibulum egestas sit
