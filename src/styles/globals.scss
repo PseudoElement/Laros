@@ -60,3 +60,26 @@ input::-webkit-inner-spin-button {
 input[type='number'] {
   -moz-appearance: textfield;
 }
+
+.swiper-button-next,
+.swiper-button-prev
+{
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center;
+}
+
+.swiper-button-next {
+  background-image: url(../../public/assets/images/area-images/next__arrow.svg);
+}
+
+.swiper-button-prev {
+  background-image: url(../../public/assets/images/area-images/prev__arrow.svg);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after
+{
+  display: none;
+}
+
