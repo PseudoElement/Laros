@@ -7,9 +7,18 @@
 }
 .pictures {
   width: 100%;
-  height: 668px;
-  background: url('../../../public/assets/images/blogs/blogs-bg.jpg') center;
+  height: 588px;
+  background: url('../../../public/assets/images/blogs/header-bg.jpg') center;
   background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .button {
@@ -18,39 +27,45 @@
   width: 134px;
 }
 
-.blogTitle {
+.mainTitle {
   font-size: 52px;
   font-family: $font-Corinthia;
   line-height: 40px;
   color: $color-brochure-placeholder;
 }
 
+.subTitle {
+  font-size: 44px;
+  line-height: 53px;
+  font-family: $font-Lato;
+  color: $color-black;
+}
+
+.description {
+  font-size: 14px;
+  line-height: 24px;
+  color: $color-black;
+  text-align: justify;
+}
+
 .blogs {
   background: $color-white;
   width: 100vw;
   position: relative;
-  .firstBlog {
+  .blog {
     display: flex;
+    justify-content: flex-end;
     align-items: center;
-    justify-content: space-around;
     height: 720px;
     background-color: $color-white;
+    padding: 101px 104px;
+    position: relative;
 
     .content {
       width: 543px;
+      margin: 0 85px;
       & > * {
-        margin: 32px 0;
-      }
-      & > h3 {
-        font-size: 44px;
-        line-height: 53px;
-        font-family: $font-Lato;
-        color: $color-black;
-      }
-      & > p {
-        font-size: 14px;
-        line-height: 24px;
-        color: $color-black;
+        margin-bottom: 32px;
       }
     }
     .image {
@@ -69,44 +84,9 @@
         right: 0;
       }
     }
-  }
-  .secondBlog {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: row-reverse;
-    height: 720px;
-    background-color: $color-white;
-    position: relative;
-
-    .content {
-      width: 543px;
-      & > * {
-        margin: 32px;
-      }
-      & > h3 {
-        font-size: 44px;
-        font-family: $font-Lato;
-        color: $color-black;
-      }
-      & > p {
-        font-size: 14px;
-        color: $color-black;
-      }
-    }
-    .image {
-      top: 100px;
-      left: 134px;
-      image-rendering: optimizeQuality;
-      & > span {
-        border-radius: 8px;
-      }
-      & > div {
-        width: 515px;
-        height: 508px;
-        background-color: $color-modal-header;
-        position: absolute;
-        top: 0;
+    &:nth-child(even) {
+      flex-direction: row-reverse;
+      .image > div {
         left: 0;
       }
     }
