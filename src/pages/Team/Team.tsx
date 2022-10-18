@@ -7,7 +7,7 @@ import {teamMock} from '../../shared/mocks/team';
 export const Team: FC = () => {
 
   return (
-      <div className={s.background}>
+
       <div className={s.wrapper}>
           <div className={s.text}>
             <h1 className={s.title}>Team of proffesionals</h1>
@@ -15,7 +15,6 @@ export const Team: FC = () => {
           </div>
           <div className={s.items}>
               {teamMock.map((el)=><EmployeCard key={el.imageUrl} imageUrl={el.imageUrl} name={el.name} desc={el.desc} post={el.post} /> )}
-          </div>
           </div>
       </div>
   )
