@@ -1,7 +1,7 @@
-import '../src/styles/globals.scss'
 import 'swiper/scss'
 import 'swiper/scss/navigation'
 import 'swiper/scss/pagination'
+import '../src/styles/globals.scss'
 
 import type { AppProps } from 'next/app'
 import { Layout } from 'features'
