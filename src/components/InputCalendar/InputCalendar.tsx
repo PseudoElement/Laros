@@ -1,5 +1,5 @@
 import { useRef, useState, FC } from 'react'
-import Calendar from 'react-calendar'
+import CalendarWrapper from 'react-calendar'
 
 import { useClickOutside } from 'shared/hooks/useClickOutside'
 
@@ -43,7 +43,13 @@ export const InputCalendar: FC<InputCalendarProps> = ({
     <div className={cn(s.inputCalendar, classname)}>
       {showCalendar && (
         <div ref={ref}>
-          <Calendar onChange={handleChange} value={date} />
+          <CalendarWrapper
+            className={cn(s.wrapper, classname)}
+            onChange={handleChange}
+            value={date}
+            prev2Label={null}
+            minDate={new Date()}
+          />
         </div>
       )}
       {!showCalendar && (

@@ -13,7 +13,6 @@ export const HomePage: FC = () => {
     <div
       style={{
         marginTop: '15px',
-        width: '400px',
         backgroundColor: '#FAFBFC',
         width: '100%',
       }}
@@ -24,11 +23,7 @@ export const HomePage: FC = () => {
         id='100'
         onChange={e => console.log('get date')}
       />
-      <div
-        style={{ marginTop: '15px' }}
-        onClick={() => setIsModalOpen(true)}
-      ></div>
-
+      <div style={{ marginTop: '15px' }} onClick={() => setIsModalOpen(true)} />
       <ContactForm />
       <Radio
         onChange={v => setCheckboxValue(v)}
