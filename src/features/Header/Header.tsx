@@ -24,10 +24,6 @@ export const Header: FC = () => {
     <>
       <Head>
         <title>Laros</title>
-        <meta
-          http-equiv='Content-Security-Policy'
-          content='upgrade-insecure-requests'
-        />
       </Head>
       <div className={s.fixed}>
         <div className={s.container}>
