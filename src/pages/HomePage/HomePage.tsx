@@ -6,7 +6,7 @@ import { FC, useState } from 'react'
 
 export const HomePage: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [input, setInput] = useState<string | number>('')
+  const [input, setInput] = useState<any>('')
   const [checkboxValue, setCheckboxValue] = useState('man')
   //TODO move to example page
   return (
