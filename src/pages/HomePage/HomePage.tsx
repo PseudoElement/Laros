@@ -3,11 +3,14 @@ import { Modal } from 'components/Modal'
 import { Radio } from 'components/Radio'
 import { ContactForm } from 'features/ContactForm'
 import { FC, useState } from 'react'
+import { Tags } from 'features/Tags/Tags'
+import { mockTags } from 'shared/mocks/tags'
 
 export const HomePage: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [input, setInput] = useState<string | number>('')
   const [checkboxValue, setCheckboxValue] = useState('man')
+  const [tags, setTags] = useState(mockTags)
   //TODO move to example page
   return (
     <div
@@ -50,6 +53,7 @@ export const HomePage: FC = () => {
       >
         Hello!
       </Modal>
+      <Tags tags={tags} onChange={setTags} />
     </div>
   )
 }
