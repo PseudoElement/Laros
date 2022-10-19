@@ -11,7 +11,7 @@ export const HomePage: FC = () => {
 
 
   //TODO move to example page
-  return <div style={{ marginTop: '15px', width: '400px', backgroundColor: '#FAFBFC', width: '100%' }}>
+  return <div style={{ marginTop: '15px', backgroundColor: '#FAFBFC', width: '100%' }}>
     <div style={{ marginTop: '15px' }} onClick={() => setIsModalOpen(true)} ></div>
     <ContactForm />
     <Radio onChange={(v) => setCheckboxValue(v)} name='sex' options={[{ label: 'Man', value: 'man' }, { label: 'Woman', value: 'woman' }, { label: 'No', value: 'no' }]} value={checkboxValue} />
