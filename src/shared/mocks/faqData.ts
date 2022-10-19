@@ -1,6 +1,6 @@
-import { faqItem } from 'shared/types/faq'
+import { FAQItem } from 'shared/types/faq'
 
-export const faqData: faqItem[] = [
+export const faqData: FAQItem[] = [
   {
     title:
       'Egestas elementum ultrices tempor, duis vehicula ornare morbi et consectetur.',

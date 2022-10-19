@@ -1,52 +1,40 @@
-import { useState } from 'react'
+import { ReactNode } from 'react'
 import cn from 'classnames'
 
 import s from './Accordeon.module.scss'
-import { faqItem } from 'shared/types/faq'
-import { AccordeonItem } from 'components/AccordeonItem'
 
 interface AccordeonProps {
-  items: faqItem[]
-  every?: boolean
+  title: string
+  content: ReactNode
+  index: number
   activeIndex?: number
   classname?: string
-  classnameItem?: string
+  setActiveIndex: (index: number) => void
 }
 
 export const Accordeon: React.FC<AccordeonProps> = ({
-  items,
-  every = false,
-  activeIndex = 0,
+  title,
+  content,
   classname,
-  classnameItem,
+  setActiveIndex,
+  index,
+  activeIndex = 0,
 }) => {
-  const [currentIndexes, setActiveIndex] = useState<number[]>([activeIndex])
-  const accordeonClass = cn(s.accordeonItemButton, classname)
-
-  const handleSetIndex = (index: number) => {
-    const pos = currentIndexes.findIndex(val => val === index)
-    if (every) {
-      !(pos > -1)
-        ? setActiveIndex(arr => [...arr, index])
-        : setActiveIndex(currentIndexes.filter(val => val !== index))
-    } else {
-      setActiveIndex([index])
-    }
-  }
+  const accordeonTab = cn(s.accordeonTab, classname)
+  const buttonClass = cn(s.accordeonItemButton, {
+    [s.minus]: index === activeIndex,
+  })
 
   return (
-    <div className={accordeonClass}>
-      {items.map(({ title, content }, i) => (
-        <AccordeonItem
-          key={title}
-          title={title}
-          content={content}
-          activeIndexes={currentIndexes}
-          index={i}
-          setActiveIndex={handleSetIndex}
-          classname={classnameItem}
-        />
-      ))}
+    <div className={accordeonTab}>
+      <div className={s.accordeonItem} onClick={() => setActiveIndex(index)}>
+        <div className={s.accordeonItemTitle}>{title}</div>
+        <div className={buttonClass}>{!(activeIndex === index) && '+'}</div>
+      </div>
+
+      {activeIndex === index && (
+        <div className={s.accordeonItemContent}>{content}</div>
+      )}
     </div>
   )
 }
