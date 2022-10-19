@@ -1,5 +1,6 @@
 @use './style.scss' as *;
 @import '/public/assets/fonts/stylesheet.scss';
+//@import '../node_modules/swiper/swiper.scss';
 
 html {
   box-sizing: border-box;
@@ -61,25 +62,35 @@ input[type='number'] {
   -moz-appearance: textfield;
 }
 
-.swiper-button-next,
-.swiper-button-prev
-{
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  background-position: center;
+.swiper {
+  padding-bottom: 32px;
+
+  .swiper-button-next,
+  .swiper-button-prev
+  {
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+  }
+
+  .swiper-button-next {
+    background-image: url(../../public/assets/images/area-images/next__arrow.svg);
+  }
+
+  .swiper-button-prev {
+    background-image: url(../../public/assets/images/area-images/prev__arrow.svg);
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after
+  {
+    display: none;
+  }
+
+  .swiper-wrapper {
+    padding: 0 40px;
+  }
 }
 
-.swiper-button-next {
-  background-image: url(../../public/assets/images/area-images/next__arrow.svg);
-}
 
-.swiper-button-prev {
-  background-image: url(../../public/assets/images/area-images/prev__arrow.svg);
-}
-
-.swiper-button-next::after,
-.swiper-button-prev::after
-{
-  display: none;
-}
 

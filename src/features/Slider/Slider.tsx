@@ -25,8 +25,6 @@ export const Slider: FC<ISliderProps> = ({ title, description, marginTop }) => {
         slidesPerView={3}
         navigation
         pagination={{ clickable: true }}
-        onSwiper={swiper => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
       >
         {mainCategories.map((cat, idx) => {
           return (

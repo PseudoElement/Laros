@@ -1,12 +1,12 @@
 import '../src/styles/globals.scss'
+import 'swiper/scss'
+import 'swiper/scss/navigation'
+import 'swiper/scss/pagination'
+
 import type { AppProps } from 'next/app'
 import { Layout } from 'features'
 import { Provider } from 'react-redux'
 import { store } from 'store'
-
-import 'swiper/scss'
-import 'swiper/scss/navigation'
-import 'swiper/scss/pagination'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
