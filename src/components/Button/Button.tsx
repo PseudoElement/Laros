@@ -19,12 +19,12 @@ export const Button: FC<ButtonProps> = ({
   onClick,
 }) => {
   const buttonClass = cn(s.button, s[variant], classname)
-  const handleButton = (e: MouseEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    onClick?.();
+  const handleButton = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    onClick?.()
   }
   return (
-    <button className={buttonClass} type={type} onClick={(e) => handleButton(e)}>
+    <button className={buttonClass} type={type} onClick={e => handleButton(e)}>
       {children}
     </button>
   )
