@@ -1,21 +1,29 @@
+@use '../../styles/style.scss' as *;
+
+.checkboxWrapper{
+  position: relative;
+  top: 5px;
+  left: 5px;
+}
+
 .label{
   position: absolute;
   width: 12px;
   height: 12px;
-  background-image: url("../../legacy/svg/checkbox/checkbox__border.svg");
+  background-image: url("../../../public/assets/images/checkbox/checkbox__border.svg");
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 1;
 }
 
-.check__input{
+.checkInput{
   position: absolute;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.check__box {
+.checkBox {
   width: 6px;
   height: 6px;
 
@@ -25,7 +33,7 @@
   left: 2.5px;
 }
 
-.check__box__active{
+.checkBoxActive{
   width: 6px;
   height: 6px;
 
@@ -36,6 +44,6 @@
   transform: translate(50%, 50%);
 
   border-radius: 2px;
-  background-color: #00B7EB;
+  background-color: $color-white-blue;
 }
 
