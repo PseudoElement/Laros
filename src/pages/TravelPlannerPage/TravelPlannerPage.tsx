@@ -17,11 +17,14 @@ import SwiperCore, {
 
 import { CategoryCard } from './CategoryCard/CategoryCard'
 import s from './TravelPlannerPage.module.scss'
+import { TripList } from '../TripList'
+
 export const TravelPlannerPage: FC = () => {
   const mainCategories = moreCategoriesMock
   const moreCategories = moreCategoriesMock
   return (
     <>
+      <TripList />
       <div className={s.background}>
         <h1 className={s.title}>Travel planner</h1>
       </div>
