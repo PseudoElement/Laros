@@ -69,15 +69,7 @@ export const Input: FC<InputProps> = ({
             <Counter value={Number(value)} onChange={onChange} />
           </>
         )
-      case 'date':
-        return (
-          <InputCalendar
-            label={label}
-            onChange={onChange}
-            classname={s.field}
-            required={required}
-          />
-        )
+
       default:
         return (
           <input
@@ -90,7 +82,17 @@ export const Input: FC<InputProps> = ({
         )
     }
   }
-  return (
+
+  const CalendarMarkout = (
+    <InputCalendar
+      label={label}
+      onChange={onChange}
+      classname={s.field}
+      required={required}
+    />
+  )
+
+  const InputMarkout = (
     <div
       className={cn(
         s.input,
@@ -98,7 +100,6 @@ export const Input: FC<InputProps> = ({
         classname
       )}
     >
-      <div className={s.label}>{`${type !== 'date' ? label : ''}`}</div>
       {getInput(type)}
       {type !== 'number' && (
         <span className={s.icon}>
@@ -107,4 +108,5 @@ export const Input: FC<InputProps> = ({
       )}
     </div>
   )
+  return type !== 'date' ? InputMarkout : CalendarMarkout
 }

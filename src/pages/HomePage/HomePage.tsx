@@ -17,12 +17,15 @@ export const HomePage: FC = () => {
         width: '100%',
       }}
     >
-      <Input
-        label='Earliest depature'
-        type='date'
-        id='100'
-        onChange={e => console.log('get date')}
-      />
+      <div className='row'>
+        <Input
+          label='Earliest depature'
+          type='date'
+          id='100'
+          onChange={e => console.log('get date')}
+        />
+      </div>
+
       <div style={{ marginTop: '15px' }} onClick={() => setIsModalOpen(true)} />
       <ContactForm />
       <Radio

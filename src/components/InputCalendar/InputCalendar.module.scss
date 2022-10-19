@@ -1,60 +1,5 @@
 @use 'styles/style.scss' as *;
 
-.react-calendar {
-  position: absolute;
-  z-index: 10;
-}
-
-.inputCalendar {
-  max-width: 371px;
-  position: relative;
-  z-index: 1;
-}
-.shorten {
-  height: 33px;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  & .icon {
-    bottom: 6px;
-  }
-}
-
-.gridWrapper {
-  display: flex;
-}
-
-// Columns
-// 1-st
-.calendarIcon {
-  cursor: pointer;
-  transform: scale(1.4);
-  padding: 4px 8px 8px 8px;
-}
-
-// 2-st
-.label {
-  padding: 7px 8px 8px;
-  font-size: 12px;
-  font-weight: $fw-medium;
-  color: $color-placeholder;
-  min-width: 120px;
-}
-// 3-st
-.textDate {
-  padding: 5px 8px 8px 8px;
-  width: 80%;
-  font-size: 14px;
-  text-align: center;
-}
-// 4-st
-.pencilIcon {
-  cursor: pointer;
-  padding: 4px 8px 8px 8px;
-  transform: scale(1.4);
-  margin-right: 8px;
-  margin-left: auto;
-}
 .wrapper {
   flex-shrink: 0;
   min-height: 321px;
@@ -140,4 +85,64 @@
     color: $color-white;
     background: $color-secondary;
   }
+}
+
+.react-calendar {
+  position: absolute;
+  z-index: 10;
+}
+
+.inputCalendar {
+  max-width: 371px;
+  height: 37px;
+  border: 2px solid $color-modal-header;
+  padding-top: 3px;
+  border-radius: 8px;
+  position: relative;
+  z-index: 1;
+}
+.shorten {
+  height: 33px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  & .icon {
+    bottom: 6px;
+  }
+}
+
+.gridWrapper {
+  display: flex;
+}
+
+// Columns
+// 1-st
+.calendarIcon {
+  cursor: pointer;
+  transform: scale(1.4);
+  padding: 4px 8px 8px 8px;
+}
+
+// 2-st
+.label {
+  padding: 7px 8px 8px;
+  font-size: 12px;
+  font-weight: $fw-medium;
+  color: $color-placeholder;
+  min-width: 120px;
+}
+// 3-st
+.textDate {
+  padding: 5px 8px 8px 8px;
+  width: 80%;
+  font-size: 14px;
+  text-align: center;
+}
+// 4-st
+.pencilIcon {
+  cursor: pointer;
+  padding: 4px 8px 8px 8px;
+  transform: scale(1.4);
+  margin-right: 8px;
+  margin-left: auto;
 }
