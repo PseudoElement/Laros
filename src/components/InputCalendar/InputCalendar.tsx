@@ -1,11 +1,10 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, FC } from 'react'
 import Calendar from 'react-calendar'
 
 import { useClickOutside } from 'shared/hooks/useClickOutside'
 
 import { PencilIcon, CalendarIcon } from 'components/icons'
 
-import { FC } from 'react'
 import s from './InputCalendar.module.scss'
 import cn from 'classnames'
 import 'react-calendar/dist/Calendar.css'

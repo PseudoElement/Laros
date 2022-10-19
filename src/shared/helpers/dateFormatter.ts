@@ -1,4 +1,6 @@
-export default function dateFormater(date: Date): string {
+export default function dateFormater(
+  date: Date
+): `${number} ${string}, ${number}` {
   const months = [
     'January',
     'February',
