@@ -33,6 +33,19 @@
   background-color: $color-secondary;
   cursor: pointer;
   width: 134px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  padding: 0 24px;
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: 300;
+  background-color: #003c76;
+  color: #fff;
+
 }
 
 .blog {

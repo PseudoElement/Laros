@@ -31,8 +31,10 @@ const BlogItem: FC<BlogItemProps> = ({
         <h2 className={s.mainTitle}>{title}</h2>
         <h3 className={s.subTitle}>{subTitle}</h3>
         <p className={s.description}>{description}</p>
-        <Link href={`blogs/${id}`}>
-          <Button className={s.button}>Learn more</Button>
+        <Link href={`blogs/${id}`} onClick={() => {}}>
+          <a href='' className={s.button}>
+            Learn more
+          </a>
         </Link>
       </div>
       <div className={s.image}>
