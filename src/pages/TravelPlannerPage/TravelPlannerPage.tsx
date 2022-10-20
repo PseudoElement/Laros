@@ -7,11 +7,14 @@ import 'swiper/css/scrollbar'
 
 import { CategoryCard } from './CategoryCard/CategoryCard'
 import s from './TravelPlannerPage.module.scss'
+import { TripList } from '../TripList'
+
 import { Slider } from '../../features'
 export const TravelPlannerPage: FC = () => {
   const moreCategories = moreCategoriesMock
   return (
     <>
+      <TripList />
       <div className={s.background}>
         <h1 className={s.title}>Travel planner</h1>
       </div>
