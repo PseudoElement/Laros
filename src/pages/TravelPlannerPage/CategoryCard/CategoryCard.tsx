@@ -19,7 +19,6 @@ export const CategoryCard: FC<CategoryCardProps> = ({
   description,
   image,
   vertical = false,
-  key: any,
 }) => {
   return (
     <Link href={`travel_planner/${id}`}>

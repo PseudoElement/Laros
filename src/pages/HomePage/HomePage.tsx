@@ -1,8 +1,12 @@
+
 import { Input } from 'components/Input'
 import { Modal } from 'components/Modal'
 import { Radio } from 'components/Radio'
+import { Slider } from 'features'
 import { ContactForm } from 'features/ContactForm'
+import { CategoryCard } from 'pages/TravelPlannerPage/CategoryCard'
 import { FC, useState } from 'react'
+import { moreCategoriesMock } from 'shared/mocks/tripPlanner'
 
 export const HomePage: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -18,6 +22,29 @@ export const HomePage: FC = () => {
       }}
     >
       <div style={{ marginTop: '15px' }} onClick={() => setIsModalOpen(true)} />
+
+
+
+
+      <div>
+        <Slider>
+          {moreCategoriesMock.map((card, id) => {
+            return (
+              <CategoryCard {...card} key={id} vertical />
+            )
+          })}
+        </Slider>
+      </div>
+      <Slider>
+        {moreCategoriesMock.map((card, id) => {
+          return (
+            <CategoryCard {...card} key={id} />
+          )
+        })}
+      </Slider>
+
+
+
       <ContactForm />
       <Radio
         onChange={v => setCheckboxValue(v)}

@@ -82,7 +82,10 @@ export const Footer: FC = () => {
             <ul className={s.listLinks}>
               {siteLinks.map(item => {
                 return (
-                  <li key={item.to} className={s.itemLink}>
+                  <li
+                    key={item.to + item.name.toLowerCase()}
+                    className={s.itemLink}
+                  >
                     <Link href={item.to}>
                       <a className={s.link}> {item.name}</a>
                     </Link>
