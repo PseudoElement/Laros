@@ -8,6 +8,8 @@ import { CategoryCard } from 'pages/TravelPlannerPage/CategoryCard'
 import { FC, useState } from 'react'
 import {Checkbox} from "../../components/Checkbox";
 import { moreCategoriesMock } from 'shared/mocks/tripPlanner'
+import { Tags } from 'features/Tags/Tags'
+import { mockTags } from 'shared/mocks/tags'
 
 export const HomePage: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -16,6 +18,7 @@ export const HomePage: FC = () => {
 
 
 
+  const [tags, setTags] = useState(mockTags)
   //TODO move to example page
   return <div style={{ marginTop: '15px', backgroundColor: '#FAFBFC', width: '100%' }}>
     <div className='row'>
@@ -57,5 +60,6 @@ export const HomePage: FC = () => {
     <Input placeholder='Mark' id='name' value={input} label='Fullname and surname' onChange={(v) => setInput(v)} />
     <Modal title='Contact Form' isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>Hello!</Modal>
     <Checkbox label={"Текст Чекбокса"}/>
-  </div>
+  <Tags tags={tags} onChange={setTags} />
+    </div>
 }
