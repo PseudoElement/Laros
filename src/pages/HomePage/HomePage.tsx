@@ -10,7 +10,7 @@ import { moreCategoriesMock } from 'shared/mocks/tripPlanner'
 
 export const HomePage: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [input, setInput] = useState<string | number>('')
+  const [input, setInput] = useState<any>('')
   const [checkboxValue, setCheckboxValue] = useState('man')
   //TODO move to example page
   return (
@@ -21,6 +21,15 @@ export const HomePage: FC = () => {
         width: '100%',
       }}
     >
+      <div className='row'>
+        <Input
+          label='Earliest depature'
+          type='date'
+          id='100'
+          onChange={e => console.log('get date')}
+        />
+      </div>
+
       <div style={{ marginTop: '15px' }} onClick={() => setIsModalOpen(true)} />
 
 
