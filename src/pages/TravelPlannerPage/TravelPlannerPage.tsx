@@ -22,11 +22,11 @@ export const TravelPlannerPage: FC = () => {
           marginBottom: '40px',
         }}
       >
-        <Slider
-          title='Some text'
-          description='Some other text'
-          marginTop='24px'
-        />
+        <Slider>
+          {moreCategoriesMock.map((card, id) => {
+            return <CategoryCard {...card} key={id} vertical />
+          })}
+        </Slider>
       </div>
 
       <div className={s.content}>

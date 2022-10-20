@@ -19,13 +19,11 @@ export const Slider: FC<SliderProps> = ({ children, slidesPerView = 3 }) => {
         navigation
         pagination={{ clickable: true }}
       >
-        {
-          children.map((child) =>
-            <SwiperSlide>
-              {child}
-            </SwiperSlide>
-          )
-        }
+        {children.length
+          ? children.map((child, idx) => (
+              <SwiperSlide key={idx}>{child}</SwiperSlide>
+            ))
+          : null}
       </Swiper>
     </div>
   )
