@@ -1,15 +1,18 @@
 import Link from 'next/link'
-import { useState } from 'react'
+import { FC, ReactNode } from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import 'react-tabs/style/react-tabs.css'
-import { useRouter } from 'next/router'
+import { NextRouter, useRouter } from 'next/router'
 
 import s from './RequestsLayout.module.scss'
 import gobackImg from '/public/assets/images/back__arrow.svg'
 import Image from 'next/image'
 
-export const RequestsLayout = ({ children }) => {
-  const router = useRouter()
+interface RequestsLayoutProps {
+  children: ReactNode
+}
+export const RequestsLayout: FC<RequestsLayoutProps> = ({ children }) => {
+  const router: NextRouter = useRouter()
 
   return (
     <>
