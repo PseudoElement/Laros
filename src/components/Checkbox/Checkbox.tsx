@@ -1,22 +1,26 @@
 import { FC, ReactNode } from 'react'
 import s from './Checkbox.module.scss'
+import cn from "classnames"
 
 
 
 interface СheckboxProps {
-    onChange: () => void
-    value: boolean
-    label: ReactNode
+    onChange?: () => void
+    value?: boolean
+    label: string
+    children?: ReactNode
+    className?: string
 }
 
-export const Checkbox: FC<СheckboxProps> = ({onChange, value}) => {
+export const Checkbox: FC<СheckboxProps> = ({children, label,value, onChange, className}) => {
+    const checkboxClass = cn(s.label, className)
+
     return (
-    <div className={s.checkboxWrapper}>
-        <label className={s.label}>
-            <input className={s.checkInput} type="checkbox"/>
-            <span onClick={onChange} className={value ? s.checkBoxActive : s.checkBox}></span>
+        <label className={checkboxClass}>
+            <input className={s.checkbox} checked={value} onChange={onChange} type="checkbox"/>
+            <span className={s.fake}></span>
+            <span>{label || children}</span>
         </label>
-    </div>
     );
 }
 

@@ -1,49 +1,41 @@
 @use '../../styles/style.scss' as *;
 
-.checkboxWrapper{
-  position: relative;
-  top: 5px;
-  left: 5px;
-}
+
 
 .label{
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  background-image: url("../../../public/assets/images/checkbox/checkbox__border.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: 1;
+  display: flex;
+  align-items: center;
 }
 
-.checkInput{
-  position: absolute;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+.checkbox{
+  display: none;
 }
 
-.checkBox {
-  width: 6px;
-  height: 6px;
-
-  position: absolute;
-  z-index: 2;
-  top: 2.5px;
-  left: 2.5px;
-}
-
-.checkBoxActive{
-  width: 6px;
-  height: 6px;
-
-  position: absolute;
-  z-index: 2;
-  top: 0px;
-  left: 0px;
-  transform: translate(50%, 50%);
-
+.fake{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid $color-white-blue;
   border-radius: 2px;
-  background-color: $color-white-blue;
+  position: relative;
+  margin-right: 5px;
 }
 
+.fake::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: $color-white-blue;
+  border-radius: 2px;
+  opacity: 0;
+  transition: .2s;
+}
+
+.checkbox:checked + .fake::before {
+  opacity: 1;
+}
