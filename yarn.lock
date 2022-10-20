@@ -2105,7 +2105,7 @@ react-slick@^0.29.0:
 
 react-tabs@^5.1.0:
   version "5.1.0"
-  resolved "https://registry.npmjs.org/react-tabs/-/react-tabs-5.1.0.tgz"
+  resolved "https://registry.yarnpkg.com/react-tabs/-/react-tabs-5.1.0.tgz#5ef8fad015c71c23b0fff65bd9b3bd419219c27b"
   integrity sha512-jsPVEPuhG7JljTo8Q4ujz4UKRpG90nHlDClAdvV5KrLxCHU+MT/kg7dmhq8fDv8+frciDtaYeFFlTVRLm4N5AQ==
   dependencies:
     clsx "^1.1.0"
