@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react'
 import Image, { ImageProps } from 'next/image'
 import Link from 'next/link'
 import { Button } from 'components'
-import { BlogHeaderImage } from './../../components/Images/BlogHeaderImage'
+import { BlogHeaderImage } from '../../components/Images/BlogHeaderImage'
 import { Review } from 'features'
 import { reviewsMock } from 'shared/mocks/reviews'
 import { Blogs } from 'shared/types/blogs'
@@ -36,7 +36,7 @@ const BlogItem: FC<BlogItemProps> = ({
         </Link>
       </div>
       <div className={s.image}>
-        <div className={s.block}></div>
+        <div className={s.block} />
         <Image src={image} height={520} width={520} alt='blogImage' />
       </div>
     </li>
@@ -51,7 +51,6 @@ export const BlogsPage: FC = () => {
       setBlogsData(blogs)
     }
   }, [blogsData])
-  console.log(blogsData)
 
   return (
     <>
