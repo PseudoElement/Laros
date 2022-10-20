@@ -8,30 +8,6 @@ import s from './RequestsLayout.module.scss'
 import gobackImg from '/public/assets/images/back__arrow.svg'
 import Image from 'next/image'
 
-const MyOldTabs = () => {
-  const [isActive, setIsActive] = useState(false)
-  return (
-    <nav className={s.mini__navigation}>
-      <div className={s.list__navigation}>
-        <Link
-          href='/destinations/flight-request'
-          className={isActive ? 'request__linkActive' : 'request__link'}
-        >
-          <a>Flight Request</a>
-        </Link>
-        <Link
-          href='/destinations/request-package'
-          className={
-            isActive ? `${s.request__linkActive}` : `${s.request__link}`
-          }
-        >
-          <a> Request package</a>
-        </Link>
-      </div>
-    </nav>
-  )
-}
-
 export const RequestsLayout = ({ children }) => {
   const router = useRouter()
 
