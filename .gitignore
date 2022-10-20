@@ -17,7 +17,6 @@
 
 # misc
 .DS_Store
-.idea
 *.pem
 
 # debug
@@ -36,9 +35,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# IDE 
+# IDE
 .vscode/*
 .idea/*
-
-
 
