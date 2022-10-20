@@ -36,7 +36,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# IDE
+# IDE 
 .vscode/*
+.idea/*
 
-yarn.lock
+
+
