@@ -15,19 +15,19 @@
 }
 
 .h2__titleWhite {
-  font-weight: 700;
+  font-weight: $fw-bold;
   font-size: 32px;
   line-height: 0px;
   text-align: center;
-  color: #ffffff;
+  color: $color-white;
   padding-top: 240px;
 }
 
 .top__contentText {
-  font-weight: 400;
+  font-weight: $fw-regular;
   font-size: 12px;
   line-height: 20px;
-  color: #ffffff;
+  color: $color-white;
   max-width: 895px;
   margin: auto;
   padding-top: 40px;
@@ -39,15 +39,15 @@
   margin: auto;
   position: relative;
   bottom: 245px;
-  background-color: #fff;
-  box-shadow: 0px 4px 12px rgba(27, 36, 45, 0.15);
+  background-color: $color-white;
+  box-shadow: 0px 4px 12px $color-modal-bg;
   border-radius: 16px;
   z-index: 20;
 }
 
 .top__contentForm {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.02)),
-    #fafbfc;
+  background: linear-gradient(0deg, $color-white, $color-white),
+    $color-light-grey;
   border-radius: 16px 16px 0 0;
   height: 48px;
   display: flex;
@@ -68,7 +68,7 @@
 .request__span {
   padding-top: 17px;
   margin-left: 10px;
-  font-weight: 700;
+  font-weight: $fw-bold;
   font-size: 12px;
   color: $color-primary;
 }
@@ -76,14 +76,14 @@
 .contact__usRequest {
   padding-top: 17px;
   margin-right: 178px;
-  font-weight: 700;
+  font-weight: $fw-bold;
   font-size: 12px;
   line-height: 20px;
-  color: #00b7eb;
+  color: $color-lazur;
 }
 
 .contact__requestText {
-  font-weight: 400;
+  font-weight: $fw-regular;
   font-size: 12px;
   line-height: 20px;
   color: $color-primary;
@@ -92,19 +92,19 @@
 
 .link__contactUs {
   margin-left: 8px;
-  font-weight: 700;
+  font-weight: $fw-bold;
   font-size: 12px;
   line-height: 20px;
-  color: #00b7eb;
+  color: $color-lazur;
 }
 
 .request__linkActive {
-  font-weight: 700;
+  font-weight: $fw-bold;
   font-size: 16px;
   line-height: 19px;
   text-align: center;
   text-transform: capitalize;
-  color: #21386c;
+  color: $color-primary;
 
   &:first-child {
     margin-right: 24px;
@@ -127,7 +127,7 @@
 }
 
 .request__link {
-  font-weight: 400;
+  font-weight: $fw-regular;
   font-size: 16px;
   line-height: 19px;
   text-align: center;
@@ -157,7 +157,7 @@
     position: absolute;
     padding-top: 12px;
     padding-left: 15px;
-    font-weight: 500;
+    font-weight: $fw-medium;
     font-size: 12px;
     line-height: 14px;
     color: $color-checkbox-gray;
@@ -165,7 +165,7 @@
 }
 
 .pseudo__placeholderRequest {
-  font-weight: 500;
+  font-weight: $fw-medium;
   font-size: 12px;
   line-height: 14px;
   color: $color-checkbox-gray;
