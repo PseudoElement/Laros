@@ -19,7 +19,7 @@ export const Button: FC<ButtonProps> = ({
   onClick,
 }) => {
   const buttonClass = cn(s.button, s[variant], classname)
-  const handleButton = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleButton = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     onClick?.()
   }

@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
-import { HomePage } from 'pages/HomePage'
+import { BlogsPage } from 'pages/BlogsPage'
 
-const Home: NextPage = () => <HomePage />
+const Blogs: NextPage = () => <BlogsPage />
 
-export default Home
+export default Blogs
