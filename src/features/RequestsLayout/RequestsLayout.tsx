@@ -45,33 +45,29 @@ export const RequestsLayout: FC<RequestsLayoutProps> = ({ children }) => {
           </div>
         </div>
 
-        <MyTabs />
+        <nav className={s.tabs__navigation}>
+          <Tabs
+            defaultIndex={0}
+            selectedTabClassName={s.selectedTab}
+            onSelect={index => console.log(index)}
+          >
+            <TabList className={s.tabList}>
+              <Tab className={s.tab}>Flight Reques</Tab>
+              <Tab className={s.tab}>Request package</Tab>
+            </TabList>
+            <TabPanel className={s.tabPanel}>
+              <form action='post' className={s.form__flight}>
+                Form 1 here
+              </form>
+            </TabPanel>
+            <TabPanel className={s.tabPanel}>
+              <form action='post' className={s.form__flight}>
+                Form 2 here
+              </form>
+            </TabPanel>
+          </Tabs>
+        </nav>
       </div>
     </>
   )
 }
-
-const MyTabs = () => (
-  <nav className={s.tabs__navigation}>
-    <Tabs
-      defaultIndex={0}
-      selectedTabClassName={s.selectedTab}
-      onSelect={index => console.log(index)}
-    >
-      <TabList className={s.tabList}>
-        <Tab className={s.tab}>Flight Reques</Tab>
-        <Tab className={s.tab}>Request package</Tab>
-      </TabList>
-      <TabPanel className={s.tabPanel}>
-        <form action='post' className={s.form__flight}>
-          Form 1 here
-        </form>
-      </TabPanel>
-      <TabPanel className={s.tabPanel}>
-        <form action='post' className={s.form__flight}>
-          Form 2 here
-        </form>
-      </TabPanel>
-    </Tabs>
-  </nav>
-)
