@@ -3,7 +3,7 @@
 .modal {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 60, 118, 0.05); // TODO fix bg 
+  background-color: rgba(0, 60, 118, 0.05); // TODO fix bg
   position: fixed;
   top: 0;
   left: 0;
@@ -19,9 +19,6 @@
 }
 
 .modalContent {
-  width: 846px;
-  height: 580px;
-  border-radius: 15px 15px 0 0;
   border-radius: 12px;
   background-color: $color-white;
   position: relative;
