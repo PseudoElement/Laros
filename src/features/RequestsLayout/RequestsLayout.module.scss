@@ -10,7 +10,7 @@
   bottom: 64px;
   z-index: 1;
   background-position: 50% 50%;
-  height: 540px;
+  height: 500px;
   width: 100vw;
 }
 
@@ -20,7 +20,7 @@
   line-height: 0px;
   text-align: center;
   color: $color-white;
-  padding-top: 240px;
+  padding-top: 245px;
 }
 
 .top__contentText {
@@ -30,7 +30,7 @@
   color: $color-white;
   max-width: 895px;
   margin: auto;
-  padding-top: 40px;
+  padding-top: 50px;
 }
 
 .request__form {
@@ -38,7 +38,7 @@
   height: 300px;
   margin: auto;
   position: relative;
-  bottom: 245px;
+  bottom: 195px;
   background-color: $color-white;
   box-shadow: 0px 4px 12px $color-modal-bg;
   border-radius: 16px;
@@ -55,7 +55,7 @@
 }
 
 .go__backRequest {
-  margin-left: 78px;
+  margin-left: 72px;
   padding-top: 17px;
 }
 .goback__button {
@@ -75,7 +75,7 @@
 
 .contact__usRequest {
   padding-top: 17px;
-  margin-right: 178px;
+  margin-right: 50px;
   font-weight: $fw-bold;
   font-size: 12px;
   line-height: 20px;
@@ -87,22 +87,25 @@
   font-size: 12px;
   line-height: 20px;
   color: $color-primary;
-  margin-right: 8px;
 }
 
 .link__contactUs {
-  margin-left: 8px;
+  margin-left: 10px;
   font-weight: $fw-bold;
   font-size: 12px;
   line-height: 20px;
   color: $color-lazur;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 .request__linkActive {
   font-weight: $fw-bold;
   font-size: 16px;
   line-height: 19px;
-  text-align: center;
+  text-align: left;
   text-transform: capitalize;
   color: $color-primary;
 
@@ -130,18 +133,13 @@
   font-weight: $fw-regular;
   font-size: 16px;
   line-height: 19px;
-  text-align: center;
+  text-align: left;
   text-transform: capitalize;
   color: $color-primary;
 
   &:first-child {
     margin-right: 24px;
   }
-}
-
-.form__flight {
-  margin-left: 193px;
-  margin-top: 30px;
 }
 
 .request__primaryField {
@@ -191,17 +189,12 @@
 
 .tabs__navigation {
   font-weight: $fw-bold;
-  margin-top: 62.5px;
-  margin-left: 193px;
+  margin-top: 65px;
+  margin-left: 200px;
   margin-right: 193px;
   padding-bottom: 15px;
 }
 
-.tabList {
-  display: flex;
-  padding: 0;
-  margin: 0;
-}
 .tab {
   outline: none;
   display: flex;
@@ -209,7 +202,7 @@
   align-items: flex-start;
   width: fit-content;
   height: 35px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: $fw-regular;
   line-height: 17px;
   cursor: pointer;
@@ -219,4 +212,17 @@
   font-weight: $fw-bold;
   position: relative;
   border-bottom: 3px solid $color-secondary;
+}
+
+.tabList {
+  display: flex;
+  padding: 0;
+}
+
+.form__flight {
+  margin-top: 45px;
+}
+
+.tabPanel {
+  margin: 0 15px;
 }

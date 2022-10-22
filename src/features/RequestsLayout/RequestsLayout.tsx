@@ -1,5 +1,4 @@
-import Link from 'next/link'
-import { FC, ReactNode } from 'react'
+import { FC, ReactNode, useState } from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import 'react-tabs/style/react-tabs.css'
 import { NextRouter, useRouter } from 'next/router'
@@ -7,15 +6,21 @@ import { NextRouter, useRouter } from 'next/router'
 import s from './RequestsLayout.module.scss'
 import gobackImg from '/public/assets/images/back__arrow.svg'
 import Image from 'next/image'
+import { Modal } from 'components'
+import { ContactForm } from 'features/ContactForm'
 
 interface RequestsLayoutProps {
   children: ReactNode
 }
 export const RequestsLayout: FC<RequestsLayoutProps> = ({ children }) => {
   const router: NextRouter = useRouter()
+  const [openModal, setOpenModal] = useState<boolean>(false)
 
   return (
     <>
+      <Modal isOpen={openModal} onClose={() => setOpenModal(false)}>
+        <ContactForm />
+      </Modal>
       <div className={s.top__contentBg}>
         <h2 className={s.h2__titleWhite}>Worldwide tours</h2>
         <p className={s.top__contentText}>
@@ -39,9 +44,12 @@ export const RequestsLayout: FC<RequestsLayoutProps> = ({ children }) => {
             <span className={s.contact__requestText}>
               Haven’t found what you’ve been looking for?
             </span>
-            <Link className={s.link__contactUs} href=''>
-              <a>Contact us</a>
-            </Link>
+            <button
+              className={s.link__contactUs}
+              onClick={() => setOpenModal(!openModal)}
+            >
+              Contact us
+            </button>
           </div>
         </div>
 
@@ -52,7 +60,7 @@ export const RequestsLayout: FC<RequestsLayoutProps> = ({ children }) => {
             onSelect={index => console.log(index)}
           >
             <TabList className={s.tabList}>
-              <Tab className={s.tab}>Flight Reques</Tab>
+              <Tab className={s.tab}>Flight Request</Tab>
               <Tab className={s.tab}>Request package</Tab>
             </TabList>
             <TabPanel className={s.tabPanel}>
