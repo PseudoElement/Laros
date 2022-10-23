@@ -19,6 +19,7 @@ interface InputProps {
   onChange: (value: string | number | Date) => void
   classname?: string
   shorten?: boolean
+  withCounter?: boolean
 }
 export const Input: FC<InputProps> = ({
   label,
@@ -27,9 +28,10 @@ export const Input: FC<InputProps> = ({
   required = false,
   id,
   onChange,
-  placeholder,
-  classname,
+  placeholder = '',
+  classname = '',
   shorten,
+  withCounter
 }) => {
   const getInput = (type: InputProps['type']): ReactNode => {
     switch (type) {
@@ -66,7 +68,7 @@ export const Input: FC<InputProps> = ({
               className={s.field}
               type={type}
             />
-            <Counter value={Number(value)} onChange={onChange} />
+            {withCounter && <Counter value={Number(value)} onChange={onChange} />}
           </>
         )
 

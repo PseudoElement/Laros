@@ -4,9 +4,10 @@
   position: relative;
   width: 100%;
   height: 55px;
-  border: 1px solid $color-modal-header;
+  border: 1px solid $color-laros-light-grey;
   border-radius: 8px;
   padding-top: 8px;
+  background-color: $color-white;
 }
 .shorten {
   height: 33px;
@@ -27,6 +28,7 @@
   padding: 0 8px 8px 8px;
 }
 .field {
+  width: 100%;
   font-size: 14px;
   font-weight: $fw-semibold;
   padding: 0 8px 8px 8px;

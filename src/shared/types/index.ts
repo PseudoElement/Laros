@@ -5,3 +5,7 @@ export enum Title {
   'Mrs' = 'Mrs',
   'Ms' = 'Ms',
 }
+
+export enum Currency {
+  CHF = 'CHF',
+}
