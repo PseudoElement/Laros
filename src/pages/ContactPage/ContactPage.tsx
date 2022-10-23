@@ -10,7 +10,7 @@ export const ContactPage: FC = () => {
       <div className={s.container}>
         <div className={s.content}>
           <div className={s.formWrapper}>
-            <ContactForm />
+            <ContactForm contactPage />
           </div>
           <div className={s.mapWrapper}></div>
         </div>
