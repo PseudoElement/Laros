@@ -18,8 +18,8 @@ export const DestinationWorldwidePage: FC = () => {
         <DestinationLayout currentDestination={Number(null)} destinations={destinations}>
             <div className={s.container} style={{
                 backgroundImage: `url(${bg.src})`,
-                width: '100%',
-                height: '100%',
+                width: '1040px',
+                height: '730px',
             }}>
                 <div className={s.content}>
                     <div className={s.title}>Worldwide tours</div>
