@@ -14,7 +14,7 @@ import { ChangeLocationModal } from 'features/ChangeLocationModal'
 import { destinationsMock } from 'shared/mocks/destinations'
 
 export const HomePage: FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(true)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const [input, setInput] = useState<any>('')
   const [checkboxValue, setCheckboxValue] = useState('man')
 
