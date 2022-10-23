@@ -14,7 +14,6 @@ export const TravelPlannerPage: FC = () => {
   const moreCategories = moreCategoriesMock
   return (
     <>
-      <TripList />
       <div className={s.background}>
         <h1 className={s.title}>Travel planner</h1>
       </div>
