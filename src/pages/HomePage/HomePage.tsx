@@ -17,7 +17,7 @@ export const HomePage: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [input, setInput] = useState<any>('')
   const [checkboxValue, setCheckboxValue] = useState('man')
-
+  const [counter, setCounter] = useState(3)
 
 
   const [tags, setTags] = useState(mockTags)
@@ -31,6 +31,18 @@ export const HomePage: FC = () => {
         onChange={e => console.log('get date')}
       />
     </div>
+
+    <Input
+      label='Counter'
+      type='number'
+      id='100'
+      onChange={(value) => setCounter(value)}
+      value={counter}
+      withCounter
+      max={5}
+      min={1}
+    />
+
 
     <div style={{ marginTop: '15px' }} onClick={() => setIsModalOpen(true)} ></div>
 
