@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
+    "@types/react-star-rating-component": "^1.4.1",
     "@types/react-text-mask": "^5.4.11",
     "axios": "^1.0.0",
     "classnames": "^2.3.2",
@@ -22,6 +23,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.36.1",
     "react-icons": "^4.4.0",
+    "react-rating-stars-component": "^2.2.0",
     "react-redux": "^8.0.4",
     "react-select": "^5.4.0",
     "react-slick": "^0.29.0",
