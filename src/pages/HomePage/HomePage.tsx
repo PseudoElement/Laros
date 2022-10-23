@@ -8,8 +8,9 @@ import { CategoryCard } from 'pages/TravelPlannerPage/CategoryCard'
 import { FC, useState } from 'react'
 import {Checkbox} from "../../components/Checkbox";
 import { moreCategoriesMock } from 'shared/mocks/tripPlanner'
-import { Tags } from 'features/Tags/Tags'
+import { Tags } from 'features/Tags'
 import { mockTags } from 'shared/mocks/tags'
+
 
 export const HomePage: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -36,7 +37,7 @@ export const HomePage: FC = () => {
 
 
       <div>
-        <Slider>
+        <Slider withNavigation withPagination slidesPerView={3.5}>
           {moreCategoriesMock.map((card, id) => {
             return (
               <CategoryCard {...card} key={id} vertical />
@@ -44,7 +45,7 @@ export const HomePage: FC = () => {
           })}
         </Slider>
       </div>
-      <Slider>
+      <Slider slidesPerView={2} withPagination>
         {moreCategoriesMock.map((card, id) => {
           return (
             <CategoryCard {...card} key={id} />
