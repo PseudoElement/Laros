@@ -8,7 +8,7 @@ import { CategoryCard } from 'pages/TravelPlannerPage/CategoryCard'
 import { FC, useState } from 'react'
 import { Checkbox } from "../../components/Checkbox";
 import { moreCategoriesMock } from 'shared/mocks/tripPlanner'
-import { Tags } from 'features/Tags/Tags'
+import { Tags } from 'components/Tags/Tags'
 import { mockTags } from 'shared/mocks/tags'
 import { ChangeLocationModal } from 'features/ChangeLocationModal'
 import { destinationsMock } from 'shared/mocks/destinations'
