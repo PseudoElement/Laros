@@ -32,7 +32,10 @@
 }
 .title {
   position: absolute;
-  top: 130px;
+  bottom: 16px;
+}
+.selected .title {
+  bottom: 56px;
 }
 .description {
   display: none;
