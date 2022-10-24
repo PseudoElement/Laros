@@ -12,6 +12,8 @@ import { Tags } from 'components/Tags'
 import { mockTags } from 'shared/mocks/tags'
 import { ChangeLocationModal } from 'features/ChangeLocationModal'
 import { destinationsMock } from 'shared/mocks/destinations'
+import { TripCard } from 'pages/TravelPlannerPage/TripCard'
+import { tripCards } from 'shared/mocks/tripCards'
 
 export const ExamplePage: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -19,6 +21,7 @@ export const ExamplePage: FC = () => {
   const [checkboxValue, setCheckboxValue] = useState('man')
   const [counter, setCounter] = useState(3)
   const [tags, setTags] = useState(mockTags)
+  const tripCardData = tripCards[0]
   return (
     <div
       style={{
@@ -107,6 +110,19 @@ export const ExamplePage: FC = () => {
         />
       </div>
       <HotelCard tags={tags} />
+      <div
+        style={{
+          width: '1152px',
+          margin: '0 auto',
+          display: 'flex',
+          justifyContent: 'space-between',
+        }}
+      >
+        <TripCard
+          {...tripCardData}
+          wide
+        />
+      </div>
     </div>
   )
 }
