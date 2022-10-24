@@ -18,8 +18,8 @@ export const LocationCard: FC<LocationCardProps> = ({ id, description, name, ima
             style={
                 {
                     background:
-                        hover ? `linear-gradient(0deg, rgba(16, 30, 68, 0.9), rgba(16, 30, 68, 0.9)), url(${images[0]?.src}), #FAFBFC`
-                            : images[0] ? `linear-gradient(360deg, #1B242D 0%, rgba(27, 36, 45, 0) 35.75%), url(${images[0].src}), #FAFBFC` : '#d9d9d9'
+                        hover ? `linear-gradient(0deg, rgba(16, 30, 68, 0.9), rgba(16, 30, 68, 0.9)), url(${images[0]}), #FAFBFC`
+                            : images[0] ? `linear-gradient(360deg, #1B242D 0%, rgba(27, 36, 45, 0) 35.75%), url(${images[0]}), #FAFBFC` : '#d9d9d9'
                 }
             } onClick={() => onSelect(id)} className={cn(s.card, { [s.selected]: isSelected })}>
             <div className={s.title}>{name}</div>
