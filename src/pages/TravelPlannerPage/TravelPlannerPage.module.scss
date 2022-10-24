@@ -1,33 +1,39 @@
 @use 'styles/style.scss' as *;
 
-.background {
-  background-image: url(/public/assets/images/trip-planner/trip-planner-bg.jpg);
-  height: 540px;
-  background-repeat: no-repeat;
-  position: relative;
-  bottom: 77px;
-  z-index: -1;
+.bg {
+  height: 500px;
+  width: 100%;
   background-size: cover;
+  object-position: -20% 0;
+}
+
+.container {
+  position: relative;
+  min-height: 1364px;
 }
 
 .title {
-  font-weight: 700;
+  position: absolute;
+  top: 218px;
+  left: 165px;
+  font-weight: $fw-bold;
   font-size: 56px;
   line-height: 67px;
-  padding-top: 260px;
-  margin-left: 12.5%;
-  color: #ffffff;
+  color: $color-white;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .content {
-  background-color: #fff;
+  width: 1281px;
+  min-height: 1084px;
+  background-color: $color-white;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  top: 320px;
+  background-color: $color-white;
   box-shadow: 0px 4px 4px rgba(0, 60, 118, 0.15);
   border-radius: 16px;
-  width: 1280px;
-  // height: 600px;
-  margin: auto;
-  bottom: 267px;
 }
 
 /*----slider----*/
@@ -44,11 +50,6 @@
 
 .slideItem {
   transition: all 0.3s ease-in;
-}
-
-.container {
-  padding-top: 78px;
-  padding-left: 85px;
 }
 
 .subtitle {
@@ -207,7 +208,7 @@
     line-height: 19px;
     text-align: center;
     text-transform: capitalize;
-    color: #f2f5f8;
+    color: $color-laros-light-grey;
   }
 }
 
@@ -217,6 +218,6 @@
   font-size: 12px;
   line-height: 17px;
   text-transform: capitalize;
-  color: #f2f5f8;
+  color: $color-laros-light-grey;
   margin: auto;
 }

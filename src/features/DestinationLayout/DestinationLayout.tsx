@@ -5,7 +5,7 @@ import { truncate } from 'lodash';
 import { Destination } from 'shared/types/destinations';
 import { TRUNCATED_TEXT_SIZE } from 'shared/constants';
 import { getParentDestinations, getRootDestinations, getSubDestinations, isNotFinalDestination } from 'store/slices/destinations/selectors';
-import { useRouter } from 'next/router';
+import { defaultDescription } from 'shared/constants/destinations';
 
 interface DestinationLayoutProps {
     children: ReactNode;
@@ -14,9 +14,8 @@ interface DestinationLayoutProps {
     title?: string;
     description?: string;
 }
-export const defaultDescription = 'Ullamcorper risus interdum lorem vulputate amet id quis massa elementum. Massa nisl urna accumsan proin imperdiet eget. In sagittis, facilisi tristique non.Curabitur id amet cras iaculis netus cras at et massa. Laoreet nulla quis vitae sollicitudin commodo at cursus dui. Felis, sed sit maecenas vitae eget nulla vel. Egestas turpis vivamus lorem pulvinar nunc. Mauris at nulla lorem mauris consequat pretium maecenas gravida viverra. Interdum enim mauris quis porttitor tristique vestibulum. Vitae mi eget vel bibendum a tortor a, turpis fusce. Pulvinar purus, mauris aenean aenean.'
+
 export const DestinationLayout: FC<DestinationLayoutProps> = ({ children, destinations, currentDestination, title = 'Destinations', description = defaultDescription }) => {
-    const router = useRouter();
     const destinationsToDisplay = currentDestination ? getParentDestinations(destinations, currentDestination) : getRootDestinations(destinations)
     const [isTruncated, setIsTruncated] = useState<boolean>(true)
 
@@ -24,7 +23,7 @@ export const DestinationLayout: FC<DestinationLayoutProps> = ({ children, destin
         <div className={s.container}>
             <div className={s.sidebar}>
                 <div className={s.list}>
-                    <DestionationsList onClick={(id) => router.push(`/destinations/${id}`)} destinations={destinationsToDisplay} destination={currentDestination} />
+                    <DestionationsList destinations={destinationsToDisplay} destination={currentDestination} />
                 </div>
                 <div className={s.description}>
                     <div className={s.select}>Please select the region on the map</div>

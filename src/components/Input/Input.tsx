@@ -7,7 +7,7 @@ import s from './Input.module.scss'
 import MaskedInput from 'react-text-mask' // TODO add types
 import { NUMBER_REG_EXP } from 'shared/constants/regExp'
 import cn from 'classnames'
-import { Counter } from './Counter'
+import { Counter } from 'components/Counter'
 
 interface InputProps {
   label: string
@@ -19,6 +19,9 @@ interface InputProps {
   onChange: (value: string | number | Date) => void
   classname?: string
   shorten?: boolean
+  withCounter?: boolean
+  min?: number
+  max?: number
 }
 export const Input: FC<InputProps> = ({
   label,
@@ -27,9 +30,12 @@ export const Input: FC<InputProps> = ({
   required = false,
   id,
   onChange,
-  placeholder,
-  classname,
+  placeholder = '',
+  classname = '',
   shorten,
+  withCounter,
+  min,
+  max
 }) => {
   const getInput = (type: InputProps['type']): ReactNode => {
     switch (type) {
@@ -66,7 +72,7 @@ export const Input: FC<InputProps> = ({
               className={s.field}
               type={type}
             />
-            <Counter value={Number(value)} onChange={onChange} />
+            {withCounter && <Counter value={Number(value)} onChange={onChange} min={min} max={max} />}
           </>
         )
 

@@ -1,37 +1,41 @@
-import React from 'react';
-import Slider from 'react-slick' 
+import { Swiper, SwiperSlide } from 'swiper/react'
 
-export const Sliders = () => {
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1
-      };
-    return (
-        <div>
-              <h2> Single Item</h2>
-        <Slider {...settings}>
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div>
-        </Slider>
-        </div>
-    );
-};
+import s from './Slider.module.scss'
+import { A11y, Navigation, Pagination } from 'swiper'
+import { FC, ReactNode } from 'react'
+
+interface SliderProps {
+  children: ReactNode[]
+  slidesPerView?: number
+  withNavigation?: boolean
+  withPagination?: boolean
+}
+
+export const Slider: FC<SliderProps> = ({
+  children,
+  slidesPerView = 3,
+  withNavigation = false,
+  withPagination = false
+}) => {
+
+  const paginationOptions = withPagination && { clickable: true };
+  const navigationOptions = withNavigation && {};
+  return (
+    <div className={s.slider}>
+      <Swiper
+        modules={[Navigation, Pagination, A11y]}
+        spaceBetween={0}
+        slidesPerView={slidesPerView}
+        navigation={navigationOptions}
+        pagination={paginationOptions}
+      >
+        {children.length
+          ? children.map((child, idx) => (
+            <SwiperSlide key={idx}>{child}</SwiperSlide>
+          ))
+          : null}
+      </Swiper>
+    </div>
+  )
+}
+

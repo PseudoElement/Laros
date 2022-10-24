@@ -24,11 +24,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $color-about-tabs;
+  background-color: $color-laros-light-grey;
   padding-top: 0;
   margin: 0;
 }
 .tab {
+  cursor: pointer;
   outline: none;
   display: flex;
   justify-content: center;
