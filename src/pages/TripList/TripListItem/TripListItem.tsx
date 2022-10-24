@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import s from './TripListItem.module.scss'
 import Image from 'next/image'
-import { TripItem } from '../../../shared/types/tripItem'
+import { TripItem } from '../../../shared/types/trip'
 import icon from '/public/assets/images/trip-planner/aero.png'
 
 type TripListItemProps = TripItem
@@ -50,10 +50,10 @@ export const TripListItem: FC<TripListItemProps> = ({
             <div className={s.tags}>
               {tags
                 ? tags.map((el, i) => (
-                    <div key={i} className={s.tag}>
-                      {el}
-                    </div>
-                  ))
+                  <div key={i} className={s.tag}>
+                    {el}
+                  </div>
+                ))
                 : null}
             </div>
             <button className={s.button}>View Offer</button>
