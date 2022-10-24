@@ -2,7 +2,6 @@ import { FC } from 'react'
 import s from './TripListItem.module.scss'
 import Image from 'next/image'
 import { TripItem } from '../../../shared/types/tripItem'
-import cls from 'classnames'
 import icon from '/public/assets/images/trip-planner/aero.png'
 
 type TripListItemProps = TripItem
@@ -19,7 +18,7 @@ export const TripListItem: FC<TripListItemProps> = ({
   return (
     <>
       <div className={s.wrapper}>
-        <Image layout={'fixed'} src={image} className={s.image} />
+        <Image layout={'fixed'} src={image} className={s.image} alt='image' />
         <div className={s.info}>
           <div className={s.text}>
             <div className={s.name}>
@@ -41,6 +40,7 @@ export const TripListItem: FC<TripListItemProps> = ({
             </div>
             <div className={s.startPoint}>
               <Image
+                alt='image'
                 className={s.startPoint_icon}
                 src={icon}
                 layout={'fixed'}
@@ -48,7 +48,13 @@ export const TripListItem: FC<TripListItemProps> = ({
               <p className={s.startPoint_item}>{startPoint}</p>
             </div>
             <div className={s.tags}>
-              {tags ? tags.map(el => <div className={s.tag}>{el}</div>) : null}
+              {tags
+                ? tags.map((el, i) => (
+                    <div key={i} className={s.tag}>
+                      {el}
+                    </div>
+                  ))
+                : null}
             </div>
             <button className={s.button}>View Offer</button>
           </div>
