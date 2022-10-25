@@ -37,6 +37,7 @@ export interface Trip {
   transports: unknown[]
   travel_types: unknown[]
   tags: Meta[]
+  duration: number
 }
 export interface TripItem {
   readonly id: number

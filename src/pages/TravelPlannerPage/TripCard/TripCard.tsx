@@ -8,24 +8,23 @@ import { Currency } from 'shared/types'
 
 interface TripCardProps {
   id: number
-  image: string
+  images: string[]
   name: string
-  from: number
+  price: number
   period: string
   duration: number
-  start: string
   tags: string[]
   sale?: number
   wide?: boolean
 }
 
-export const TripCard: FC<TripCardProps> = ({ name, wide, image, sale, tags, from, period, duration, start }) => {
+export const TripCard: FC<TripCardProps> = ({ name, wide, images = [], sale, tags = [], price, period, duration }) => {
   return (
     <div className={cn(s.wrapper, { [s.wide]: wide })}>
       <div
         className={s.image}
         style={{
-          backgroundImage: `url(${image})`,
+          backgroundImage: `url(${images[0]})`,
         }}
       >
         {sale && (
@@ -43,7 +42,7 @@ export const TripCard: FC<TripCardProps> = ({ name, wide, image, sale, tags, fro
           </div>
           <div className={s.fromWrapper}>
             <div className={s.meta}>From</div>
-            <div className={s.from}>{`${from} ${Currency.CHF}`}</div>
+            <div className={s.from}>{`${price} ${Currency.CHF}`}</div>
             <div className={s.meta}>Pro Person</div>
           </div>
         </div>
@@ -58,10 +57,6 @@ export const TripCard: FC<TripCardProps> = ({ name, wide, image, sale, tags, fro
           </div>
         </div>
         <div className={s.lastRow}>
-          <div className={s.meta}>
-            <FlightIcon />
-            {` Flight Start Srom ${start}`}
-          </div>
           <div className={s.tags}>
             {tags.length ? tags.map(tag => (
               <div className={s[tag]}>{generateTagText(tag)}</div>

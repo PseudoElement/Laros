@@ -57,7 +57,7 @@ export const TripOffersPage: FC = () => {
             <div className={cn(s.offers, view === View.GRID ? s.grid : s.list)}>
                 {isLoading && <div className={s.loading}>Loading...</div>}
                 {!isLoading && trips?.length && trips.map((offer) => {
-                    return <TripCard start={''} {...offer} wide={view === View.LIST} />
+                    return <TripCard {...offer} wide={view === View.LIST} />
                 })}
             </div>
         </div>
