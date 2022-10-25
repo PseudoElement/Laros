@@ -1,5 +1,10 @@
 import { StaticImageData } from 'next/image'
 
+export enum TransferType {
+  PICKUP = 'pickup',
+  RENTAL = 'rental',
+}
+
 export interface Car {
   readonly id: number
   group: string //'A'

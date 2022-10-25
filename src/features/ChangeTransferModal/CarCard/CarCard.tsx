@@ -7,8 +7,11 @@ import luggageIcon from '/public/assets/images/luggage.svg'
 import { Button, CalendarIcon, GeoTagIcon } from 'components';
 import { Currency } from 'shared/types';
 import lineRoute from '/public/assets/images/lineGeoIcon.svg'
-type CarCardProps = Car & { onClick: (id: number) => void };
-export const CarCard: FC<CarCardProps> = ({ id, model, image, description, capacity, luggage, price, to_dest_name, from_dest_name, onClick }) => {
+import cn from 'classnames';
+
+type CarCardProps = Car & { onClick: (id: number) => void, isSelected: boolean };
+
+export const CarCard: FC<CarCardProps> = ({ id, model, image, description, capacity, luggage, price, to_dest_name, from_dest_name, isSelected, onClick }) => {
     return (
         <div className={s.card}>
             <div className={s.image}>
@@ -45,7 +48,7 @@ export const CarCard: FC<CarCardProps> = ({ id, model, image, description, capac
                     <div className={s.priceTitle}>Rent price for { } days:</div> {/* TODO wait API */}
                     <div className={s.priceTotal}>{price} {Currency.CHF}</div>
                 </div>
-                <Button onClick={() => onClick(id)} classname={s.selectBtn}>Select car</Button>
+                <Button onClick={() => onClick(id)} classname={cn(s.selectBtn, { [s.selectedCar]: isSelected })}>{isSelected ? 'Selected' : 'Select car'}</Button>
             </div>
         </div>
     )

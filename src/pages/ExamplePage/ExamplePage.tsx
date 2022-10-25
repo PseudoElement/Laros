@@ -14,9 +14,13 @@ import { ChangeLocationModal } from 'features/ChangeLocationModal'
 import { destinationsMock } from 'shared/mocks/destinations'
 import { TripCard } from 'pages/TravelPlannerPage/TripCard'
 import { tripCards } from 'shared/mocks/tripCards'
+import { ChangeTransferModal } from 'features/ChangeTransferModal'
+import { carsMock } from 'shared/mocks/cars'
+import { TransferType } from 'shared/types/car'
 
 export const ExamplePage: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isChangeCarOpen, setIsChangeCarOpen] = useState(false)
   const [input, setInput] = useState<any>('')
   const [checkboxValue, setCheckboxValue] = useState('man')
   const [counter, setCounter] = useState(3)
@@ -110,6 +114,7 @@ export const ExamplePage: FC = () => {
         />
       </div>
       <HotelCard tags={tags} />
+      <ChangeTransferModal cars={carsMock} type={TransferType.PICKUP} onClick={() => 1} isOpen={isChangeCarOpen} onClose={() => setIsChangeCarOpen(false)} />
       <div
         style={{
           width: '1152px',
