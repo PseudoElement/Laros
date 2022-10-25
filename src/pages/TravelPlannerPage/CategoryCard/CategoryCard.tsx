@@ -7,7 +7,7 @@ import mockVerticalImg from '/public/assets/images/trip-planner/slide__trip-plan
 import cn from 'classnames'
 interface CategoryCardProps {
   id: number
-  title: string
+  name: string
   image: string // next img TODO
   description: string
   vertical?: boolean
@@ -15,7 +15,7 @@ interface CategoryCardProps {
 }
 export const CategoryCard: FC<CategoryCardProps> = ({
   id,
-  title,
+  name,
   description,
   image,
   vertical = false,
@@ -32,7 +32,7 @@ export const CategoryCard: FC<CategoryCardProps> = ({
           />
         </div>
         <div className={s.content}>
-          <div className={s.title}>{title}</div>
+          <div className={s.title}>{name}</div>
           <div className={s.description}>{description}</div>
         </div>
       </div>
