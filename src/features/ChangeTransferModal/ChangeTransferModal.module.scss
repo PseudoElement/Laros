@@ -18,8 +18,12 @@
   max-width: 500px;
   border-radius: 8px;
   padding: 16px;
-  border: 1px solid $color-light-green;
   margin-bottom: 16px;
+  background-color: $color-laros-light-grey;
+}
+.selected {
+  background-color: $color-white;
+  border: 1px solid $color-light-green;
 }
 .currentTitle {
   font-size: 12px;
