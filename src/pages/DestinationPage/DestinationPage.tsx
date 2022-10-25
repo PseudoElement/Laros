@@ -24,8 +24,8 @@ export const DestinationPage: FC = () => {
       currentDestination={Number(query.id)}
       destinations={destinations}
     >
-      {/*<Greece />*/}
-      <Cyrpus />
+      <Greece />
+      {/*<Cyrpus />*/}
     </DestinationLayout>
   )
 }

@@ -273,6 +273,7 @@
   display: flex;
   justify-content: center;
   font-weight: 400;
+
   font-size: 12px;
   line-height: 20px;
   color: #1b242d;
@@ -281,6 +282,7 @@
 .link__detailCartMap {
   display: flex;
   align-items: center;
+  cursor: pointer;
   justify-content: center;
   width: 240px;
   height: 36px;

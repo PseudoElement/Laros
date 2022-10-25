@@ -1,17 +1,27 @@
-import { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
-const useHover = () => {
-  const [isHover, setIsHover] = useState(false)
+const useHover = <T extends HTMLElement>(): [React.RefObject<T>, boolean] => {
+  const [hover, setHover] = useState(false)
 
-  const onMouseEnter = () => {
-    setIsHover(true)
-  }
+  const ref = useRef<T>(null)
 
-  const onMouseLeave = () => {
-    setIsHover(false)
-  }
+  const handleMouseOver = () => setHover(true)
+  const handleMouseOut = () => setHover(false)
 
-  return { isHover, onMouseEnter, onMouseLeave, setIsHover }
+  useEffect(() => {
+    const node = ref.current
+
+    if (node) {
+      node.addEventListener('mouseover', handleMouseOver)
+      node.addEventListener('mouseout', handleMouseOut)
+      return () => {
+        node.removeEventListener('mouseover', handleMouseOver)
+        node.removeEventListener('mouseout', handleMouseOut)
+      }
+    }
+  }, [ref.current])
+
+  return [ref, hover]
 }
 
 export default useHover

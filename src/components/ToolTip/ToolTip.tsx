@@ -1,8 +1,16 @@
-import { CSSProperties, FC, ReactNode, useEffect, useState } from 'react'
+import {
+  CSSProperties,
+  FC,
+  ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import useHover from 'shared/hooks/useHover'
 
 import cn from 'classnames'
 import s from './ToolTip.module.scss'
+import { useClickOutside } from '../../shared/hooks/useClickOutside'
 
 interface ToolTipRpops {
   placement?: 'left' | 'right' | 'top' | 'bottom'
@@ -69,7 +77,7 @@ const ToolTip: FC<ToolTipRpops> = ({
   className,
   arrow = false,
 }) => {
-  const { onMouseEnter, onMouseLeave, isHover } = useHover()
+  const [ref, isHover] = useHover<HTMLDivElement>()
   const [classNames, setClassNames] = useState({
     container: '',
     pointer: '',
@@ -83,16 +91,12 @@ const ToolTip: FC<ToolTipRpops> = ({
   }, [placement])
 
   return (
-    <div
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      className={s.container}
-    >
+    <div ref={ref} className={s.container}>
       {isHover && (
         <div
           className={cn(
-            classNames.container,
             s.tooltipContainer,
+            classNames.container,
             className?.className
           )}
           style={className?.styles}
@@ -101,6 +105,7 @@ const ToolTip: FC<ToolTipRpops> = ({
           {title}
         </div>
       )}
+
       {children}
     </div>
   )

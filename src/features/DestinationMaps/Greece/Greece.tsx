@@ -11,14 +11,14 @@ const Greece = () => {
 
   return (
     <div className={s.container}>
-      {Maps.Greece.map(map => (
+      {Maps.Greece.map(item => (
         <GreeceMap
-          key={map.id}
+          key={item.id}
           isShown={isShown}
           setIsShown={setIsShown}
           setCurrentShown={setCurrentShown}
           currentShown={currentShown}
-          map={map}
+          item={item}
         />
       ))}
     </div>
