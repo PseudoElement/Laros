@@ -1,0 +1,403 @@
+@use '../../../styles/style' as *;
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin-right: 500px;
+  height: 1068px;
+  width: 1280px;
+}
+
+/*Sub */
+
+.sub__gr1 {
+  position: absolute;
+  transition: all 0.2s ease-in;
+  margin-right: 378px;
+  margin-top: 294px;
+  cursor: url(/public/assets/images/destinations/cursor.png), auto;
+}
+
+.sub__gr1:hover {
+  fill: #f5bb2c;
+}
+
+.sub__gr1:hover {
+  stroke-opacity: 0;
+}
+
+.sub__gr1 ellipse {
+  fill: #1b242d;
+  transition: all 0.2s ease-in;
+}
+
+.sub__gr1:hover ellipse {
+  fill: #0abaee;
+}
+
+.sub__gr2 {
+  position: absolute;
+  margin-right: 256px;
+  margin-top: 219px;
+  transition: 0.2s all ease-in;
+  cursor: url(/public/assets/images/destinations/cursor.png), auto;
+}
+
+.sub__gr2:hover {
+  fill: #2f6bb4;
+}
+
+.sub__gr2 ellipse {
+  fill: #1b242d;
+  transition: all 0.2s ease-in;
+}
+
+.sub__gr2:hover ellipse {
+  fill: #0abaee;
+}
+
+.sub__gr3 {
+  position: absolute;
+  margin-top: 20px;
+  margin-left: 100px;
+  transition: 0.2s all ease-in;
+  cursor: url(/public/assets/images/destinations/cursor.png), auto;
+}
+
+.sub__gr3:hover {
+  fill: #f5bc2e;
+  z-index: 1;
+}
+
+.sub__gr3 ellipse {
+  fill: #1b242d;
+  transition: all 0.2s ease-in;
+}
+
+.sub__gr3:hover ellipse {
+  fill: #0abaee;
+}
+
+.sub__gr4 {
+  position: absolute;
+  margin-top: 348px;
+  margin-left: 176px;
+  transition: 0.2s all ease-in;
+  transform: rotate(0.5deg);
+  cursor: url(/public/assets/images/destinations/cursor.png), auto;
+}
+
+.sub__gr4:hover {
+  fill: #22aaa8;
+}
+
+.sub__gr4 ellipse {
+  fill: #1b242d;
+  transition: all 0.2s ease-in;
+}
+
+.sub__gr4:hover ellipse {
+  fill: #0abaee;
+}
+
+.sub__gr5 {
+  position: absolute;
+  margin-top: 500px;
+  margin-right: 200px;
+  transition: 0.2s all ease-in;
+  z-index: 1;
+  cursor: url(/public/assets/images/destinations/cursor.png), auto;
+}
+
+.sub__gr5:hover {
+  fill: #907c72;
+}
+
+.sub__gr5 ellipse {
+  fill: #1b242d;
+  transition: all 0.2s ease-in;
+}
+
+.sub__gr5:hover ellipse {
+  fill: #0abaee;
+}
+
+.sub__gr6 {
+  position: absolute;
+  margin-top: 402px;
+  margin-left: 100px;
+  transition: 0.2s all ease-in;
+  cursor: url(/public/assets/images/destinations/cursor.png), auto;
+}
+
+.sub__gr6:hover {
+  fill: #a2cf6c;
+}
+
+.sub__gr6 ellipse {
+  fill: #1b242d;
+  transition: all 0.2s ease-in;
+}
+
+.sub__gr6:hover ellipse {
+  fill: #0abaee;
+}
+
+.sub__gr7 {
+  position: absolute;
+  transition: 0.2s all ease-in;
+  margin-left: 580px;
+  margin-top: 160px;
+  cursor: url(/public/assets/images/destinations/cursor.png), auto;
+}
+
+.sub__gr7:hover {
+  fill: #907c72;
+}
+
+.sub__gr7 ellipse {
+  fill: #1b242d;
+  transition: all 0.2s ease-in;
+}
+
+.sub__gr7:hover ellipse {
+  fill: #0abaee;
+}
+
+.sub__gr8 {
+  position: absolute;
+  margin-top: 544px;
+  margin-left: 400px;
+  transition: 0.2s all ease-in;
+  cursor: url(/public/assets/images/destinations/cursor.png), auto;
+}
+
+.sub__gr8:hover {
+  fill: #814d99;
+}
+
+.sub__gr8 ellipse {
+  fill: #1b242d;
+  transition: all 0.2s ease-in;
+}
+
+.sub__gr8:hover ellipse {
+  fill: #0abaee;
+}
+
+.sub__gr9 {
+  position: absolute;
+  margin-top: 870px;
+  margin-left: 400px;
+  transition: 0.2s all ease-in;
+  cursor: url(/public/assets/images/destinations/cursor.png), auto;
+}
+
+.sub__gr9:hover {
+  fill: #be007d;
+}
+
+.sub__gr9 ellipse {
+  fill: #1b242d;
+  transition: all 0.2s ease-in;
+}
+
+.sub__gr9:hover ellipse {
+  fill: #0abaee;
+}
+
+.sub__gr10 {
+  position: absolute;
+  margin-top: 620px;
+  margin-left: 900px;
+  transition: 0.2s all ease-in;
+  cursor: url(/public/assets/images/destinations/cursor.png), auto;
+}
+
+.sub__gr10:hover {
+  fill: #aeacad;
+}
+
+.sub__gr10 ellipse {
+  fill: #1b242d;
+  transition: all 0.2s ease-in;
+}
+
+.sub__gr10:hover ellipse {
+  fill: #0abaee;
+}
+
+/*destination cart */
+
+.hidden {
+  display: none;
+}
+
+.destination__cartShown {
+  position: absolute;
+  top: 20%;
+  right: 20%;
+  height: 310px;
+  width: 260px;
+  background-color: #fff;
+  box-shadow: 0 12px 12px rgba(0, 60, 118, 0.15); // Можно убрать тут top right и давать top right каждому
+  border-radius: 8px;
+  z-index: 3;
+}
+
+.destination__cartPicture {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.destination__cartTitle {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #1b242d;
+  margin: 16px 0 8px 16px;
+}
+
+.destination__cartText {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #1b242d;
+  max-width: 220px;
+  margin-bottom: 16px;
+  margin-left: 16px;
+}
+
+.link__blockDestinationMap {
+  display: flex;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #1b242d;
+}
+
+.link__detailCartMap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 240px;
+  height: 36px;
+  background-color: $color-laros-light-grey;
+  border-radius: 8px;
+}
+
+.destination__cartShown_1 {
+  margin-top: -100px;
+  margin-right: 550px;
+}
+
+.destination__cartShown_2 {
+  margin-right: 300px;
+  margin-top: -110px;
+}
+
+.destination__cartShown_3 {
+  margin-right: 200px;
+  margin-top: -120px;
+}
+
+.destination__cartShown_4 {
+  margin-right: 200px;
+  margin-top: -140px;
+}
+
+.destination__cartShown_5 {
+  margin-right: 400px;
+}
+
+.destination__cartShown_6 {
+  position: absolute;
+  margin-right: 200px;
+  margin-top: -20px;
+}
+
+.destination__cartShown_7 {
+  position: absolute;
+  margin-right: -100px;
+  margin-top: -100px;
+}
+
+.destination__cartShown_8 {
+  position: absolute;
+  margin-top: 50px;
+  margin-right: 100px;
+}
+
+.destination__cartShown_9 {
+  position: absolute;
+  margin-top: 380px;
+  margin-right: 40px;
+}
+
+.destination__cartShown_10 {
+  position: absolute;
+  margin-top: 200px;
+  margin-right: -170px;
+}
+
+.destination__cartShown_11 {
+  position: absolute;
+  margin-top: 110px;
+  margin-left: 300px;
+}
+
+.destination__cartShown_12 {
+  position: absolute;
+  margin-top: 180px;
+  margin-left: 300px;
+}
+
+.destination__cartShown_13 {
+  position: absolute;
+  margin-top: 350px;
+  margin-left: 650px;
+}
+
+.destination__cartShown_14 {
+  position: absolute;
+  margin-top: 650px;
+  margin-left: 50px;
+}
+
+.destination__cartShown_15 {
+  position: absolute;
+  margin-top: 650px;
+  margin-left: 50px;
+}
+
+.destination__cartShown_16 {
+  position: absolute;
+  margin-top: -50px;
+  margin-left: -30px;
+}
+
+.destination__cartShown_17 {
+  position: absolute;
+  margin-top: 540px;
+  margin-left: 50px;
+}
+
+.destination__cartShown_18 {
+  position: absolute;
+  margin-top: 470px;
+  margin-left: 350px;
+}
+
+.destination__cartShown_19 {
+  position: absolute;
+  margin-top: 190px;
+  margin-left: 660px;
+}
+
+.destination__cartShown_20 {
+  position: absolute;
+  margin-top: -130px;
+  margin-left: 250px;
+}

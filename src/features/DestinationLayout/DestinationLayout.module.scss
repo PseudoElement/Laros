@@ -40,3 +40,9 @@
   overflow-y: scroll;
   font-weight: $fw-regular;
 }
+
+.content {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}

@@ -1,0 +1,258 @@
+@use '../../../styles/style' as *;
+
+.container {
+  margin-top: 50px;
+  background: url('../../../../public/assets/images/destinations/Cyrpus.png')
+    center;
+  width: 832px;
+  height: 488px;
+  position: relative;
+}
+
+// Location
+
+.test {
+  background: #eee;
+  border-radius: 50%;
+  &::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    background: #0abaee;
+    border-radius: 50%;
+  }
+}
+
+.polis {
+  background: $color-white;
+  border-radius: 50%;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    background: #0abaee;
+    border-radius: 50%;
+  }
+}
+
+.goudi {
+  &::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    background: #0abaee;
+    border-radius: 50%;
+  }
+}
+.lysos {
+  &::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    background: #0abaee;
+    border-radius: 50%;
+  }
+}
+.miliou {
+  &::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    background: #0abaee;
+    border-radius: 50%;
+  }
+}
+.paphos {
+  &::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    background: #0abaee;
+    border-radius: 50%;
+  }
+}
+.omodos {
+  &::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    background: #0abaee;
+    border-radius: 50%;
+  }
+}
+.kakopetria {
+  &::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    background: #0abaee;
+    border-radius: 50%;
+  }
+}
+.kalavassos {
+  &::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    background: #0abaee;
+    border-radius: 50%;
+  }
+}
+.lemesso {
+  &::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    background: #0abaee;
+    border-radius: 50%;
+  }
+}
+.tochni {
+  &::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    background: #0abaee;
+    border-radius: 50%;
+  }
+}
+.chirokita {
+  &::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    background: #0abaee;
+    border-radius: 50%;
+  }
+}
+.lefkosia {
+  &::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    background: #0abaee;
+    border-radius: 50%;
+  }
+}
+.larnaca {
+  &::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    background: #0abaee;
+    border-radius: 50%;
+  }
+}
+.agiaNapa {
+  &::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    background: #0abaee;
+    border-radius: 50%;
+  }
+}
+
+// Destinations
+
+.hidden {
+  display: none;
+}
+
+.destination__cartShown {
+  height: 310px;
+  width: 260px;
+  background-color: #fff;
+  box-shadow: 0 12px 12px rgba(0, 60, 118, 0.15);
+  border-radius: 8px;
+  z-index: 3;
+}
+
+.destination__cartPicture {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.destination__cartTitle {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #1b242d;
+  margin: 16px 0 8px 16px;
+}
+
+.destination__cartText {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #1b242d;
+  max-width: 220px;
+  margin-bottom: 16px;
+  margin-left: 16px;
+}
+
+.link__blockDestinationMap {
+  display: flex;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #1b242d;
+}
+
+.link__detailCartMap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 240px;
+  height: 36px;
+  background-color: $color-laros-light-grey;
+  border-radius: 8px;
+}
