@@ -11,9 +11,9 @@ import mapMarker from '../../../public/assets/images/map-marker.svg'
 import Image from 'next/image'
 
 const myIcon = new Icon({
-  iconUrl: mapMarker,
-  iconSize: [25, 25],
-})
+  iconUrl: mapMarker.src,
+  iconSize: [25, 25]
+});
 
 const Map = () => {
   return (
