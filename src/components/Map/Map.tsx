@@ -4,7 +4,7 @@ import s from './Map.module.scss'
 
 import 'leaflet/dist/leaflet.css'
 
-import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet'
+import { MapContainer, Marker, Popup, TileLayer, useMap, ZoomControl } from 'react-leaflet'
 import { Icon } from 'leaflet'
 
 import mapMarker from '../../../public/assets/images/map-marker.svg'
@@ -23,6 +23,7 @@ const Map = () => {
         center={[51.505, -0.09]}
         zoom={13}
         scrollWheelZoom={false}
+        zoomControl={false}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -33,6 +34,7 @@ const Map = () => {
             A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
         </Marker>
+        <ZoomControl position='topright' />
       </MapContainer>
       <Image src={mapMarker} />
     </>
