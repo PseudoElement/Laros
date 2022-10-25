@@ -11,5 +11,6 @@ export const endpoints = {
   },
   trips: {
     get: '/trip/',
+    categories: '/trip/travel_type/',
   },
 }

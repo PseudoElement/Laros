@@ -1,4 +1,5 @@
 import { StaticImageData } from 'next/image'
+import { Meta } from '.'
 
 export type tag = string
 
@@ -17,6 +18,11 @@ export interface TripDestination {
   destination: number // id
   hotel: number // id
 }
+
+export interface TripCategory extends Meta {
+  description: string
+  image: string
+}
 export interface Trip {
   readonly id: number
   images: string[]
@@ -30,6 +36,7 @@ export interface Trip {
   route: string // TODO check
   transports: unknown[]
   travel_types: unknown[]
+  tags: Meta[]
 }
 export interface TripItem {
   readonly id: number
