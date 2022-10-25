@@ -17,13 +17,14 @@ export const TravelPlannerPage: FC = () => {
       <div
         className={s.content}
       >
-        <Slider>
+        <div className={s.subtitle}>Our top trip categories</div>
+
+        <Slider withNavigation slidesPerView={3.05}>
           {moreCategoriesMock.map((card, id) => {
             return <CategoryCard {...card} key={id} vertical />
           })}
         </Slider>
 
-        <div className={s.subtitle}>Our top trip categories</div>
         <div className={s.categories}>
           <div className={s.categoriesMore}>
             <span>More categories</span>
