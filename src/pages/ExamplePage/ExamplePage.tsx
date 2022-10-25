@@ -6,7 +6,7 @@ import { CategoryCard } from 'pages/TravelPlannerPage/CategoryCard'
 import { moreCategoriesMock } from 'shared/mocks/tripPlanner'
 import { ContactForm } from 'features/ContactForm'
 import { Radio } from 'components/Radio'
-import { Modal } from 'components'
+import { Map, Modal } from 'components'
 import { Checkbox } from 'components/Checkbox'
 import { Tags } from 'components/Tags'
 import { mockTags } from 'shared/mocks/tags'
@@ -34,6 +34,7 @@ export const ExamplePage: FC = () => {
         backgroundColor: '#FAFBFC',
       }}
     >
+      <Map />
       <div
         style={{ marginTop: '15px', backgroundColor: '#FAFBFC', width: '100%' }}
       >
