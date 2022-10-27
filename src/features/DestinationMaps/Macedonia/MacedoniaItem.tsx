@@ -1,11 +1,11 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, memo, useEffect, useState } from 'react'
 import { MapProps } from '../Greece/GreeceMap'
 
 import RegionCard from 'components/RegionCard/RegionCard'
 
-import s from './Cyrpus.module.scss'
+import s from './Macedonia.module.scss'
 
-const CyrpusItem: FC<MapProps> = ({ item, setIsShownCard, isShownCard }) => {
+const MacedoniaItem: FC<MapProps> = ({ item, isShownCard, setIsShownCard }) => {
   const [title, setTitle] = useState('')
 
   const onClose = () => setIsShownCard(null)
@@ -35,4 +35,4 @@ const CyrpusItem: FC<MapProps> = ({ item, setIsShownCard, isShownCard }) => {
   )
 }
 
-export default CyrpusItem
+export default memo(MacedoniaItem)

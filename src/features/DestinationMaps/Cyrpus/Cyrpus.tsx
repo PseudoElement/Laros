@@ -1,24 +1,21 @@
-import { useState } from 'react'
+import { FC, useState } from 'react'
 
-import { Maps } from 'shared/mocks/maps'
+import { Maps } from 'shared/mocks/Maps/maps'
 
 import CyrpusItem from './CyrpusItem'
 
 import s from './Cyrpus.module.scss'
 
-const Cyrpus = () => {
-  const [isShown, setIsShown] = useState(false)
-  const [currentShown, setCurrentShown] = useState(0)
+const Cyrpus: FC = () => {
+  const [isShownCard, setIsShownCard] = useState<number | null>(null)
 
   return (
     <div className={s.container}>
       {Maps.Cyrpus.map(item => (
         <CyrpusItem
           key={item.id}
-          isShown={isShown}
-          setIsShown={setIsShown}
-          setCurrentShown={setCurrentShown}
-          currentShown={currentShown}
+          isShownCard={isShownCard == item.id ? isShownCard : null}
+          setIsShownCard={setIsShownCard}
           item={item}
         />
       ))}

@@ -30,25 +30,25 @@
 
 // Container
 
-.topContainer {
+.position-top {
   bottom: 100%;
   transform: translateY(-0.5rem);
   left: 50%;
 }
 
-.bottomContainer {
+.position-bottom {
   top: 100%;
   transform: translateY(0.5rem);
   left: 50%;
 }
 
-.rightContainer {
+.position-right {
   top: 0;
   left: 100%;
   margin-left: 1rem;
 }
 
-.leftContainer {
+.position-left {
   top: 0;
   right: 100%;
   margin-right: 1rem;
@@ -56,22 +56,22 @@
 
 // Pointer
 
-.topPointer {
+.position-top-pointer {
   top: 100%;
   transform: translateY(-0.5rem) rotate(45deg);
   left: 50%;
 }
 
-.bottomPointer {
+.position-bottom-pointer {
   bottom: 100%;
   transform: translateY(0.5rem) rotate(45deg);
   left: 50%;
 }
 
-.rightPointer {
+.position-right-pointer {
   left: -6px;
 }
 
-.leftPointer {
+.position-left-pointer {
   right: -6px;
 }

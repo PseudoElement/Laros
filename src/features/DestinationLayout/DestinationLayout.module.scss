@@ -12,6 +12,10 @@
   max-height: 264px;
   overflow-y: scroll;
   direction: ltr;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 .description {
   padding: 70px 16px 0;
@@ -43,6 +47,7 @@
 
 .content {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   width: 100%;
 }

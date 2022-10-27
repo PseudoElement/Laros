@@ -1,6 +1,7 @@
 @use '../../../styles/style' as *;
 
 .container {
+  position: relative;
   display: flex;
   justify-content: center;
   margin-right: 500px;
@@ -15,7 +16,7 @@
   transition: all 0.2s ease-in;
   margin-right: 378px;
   margin-top: 294px;
-  cursor: url(/public/assets/images/destinations/cursor.png), auto;
+  cursor: url('/public/assets/images/destinations/cursor.png'), auto;
 }
 
 .sub__gr1:hover {
@@ -227,179 +228,49 @@
   fill: #0abaee;
 }
 
-/*destination cart */
-
-.hidden {
-  display: none;
-}
-
-.destination__cartShown {
-  position: absolute;
-  top: 20%;
-  right: 20%;
-  height: 310px;
-  width: 260px;
-  background-color: #fff;
-  box-shadow: 0 12px 12px rgba(0, 60, 118, 0.15); // Можно убрать тут top right и давать top right каждому
-  border-radius: 8px;
-  z-index: 3;
-}
-
-.destination__cartPicture {
-  display: flex;
-  justify-content: center;
-  margin-top: 8px;
-}
-
-.destination__cartTitle {
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
-  color: #1b242d;
-  margin: 16px 0 8px 16px;
-}
-
-.destination__cartText {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 20px;
-  color: #1b242d;
-  max-width: 220px;
-  margin-bottom: 16px;
-  margin-left: 16px;
-}
-
-.link__blockDestinationMap {
-  display: flex;
-  justify-content: center;
-  font-weight: 400;
-
-  font-size: 12px;
-  line-height: 20px;
-  color: #1b242d;
-}
-
-.link__detailCartMap {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  justify-content: center;
-  width: 240px;
-  height: 36px;
-  background-color: $color-laros-light-grey;
-  border-radius: 8px;
+.wrapper {
+  position: relative;
 }
 
 .destination__cartShown_1 {
-  margin-top: -100px;
-  margin-right: 550px;
+  left: 40%;
+  bottom: 70%;
 }
 
 .destination__cartShown_2 {
-  margin-right: 300px;
-  margin-top: -110px;
+  left: 60%;
+  bottom: 80%;
 }
 
 .destination__cartShown_3 {
-  margin-right: 200px;
-  margin-top: -120px;
+  left: 60%;
+  top: 20%;
 }
 
 .destination__cartShown_4 {
-  margin-right: 200px;
-  margin-top: -140px;
 }
 
 .destination__cartShown_5 {
-  margin-right: 400px;
+  left: 70%;
+  bottom: 90%;
 }
 
 .destination__cartShown_6 {
-  position: absolute;
-  margin-right: 200px;
-  margin-top: -20px;
 }
 
 .destination__cartShown_7 {
-  position: absolute;
-  margin-right: -100px;
-  margin-top: -100px;
+  left: 100%;
+  bottom: 40%;
 }
 
 .destination__cartShown_8 {
-  position: absolute;
-  margin-top: 50px;
-  margin-right: 100px;
+  left: 60%;
 }
 
 .destination__cartShown_9 {
-  position: absolute;
-  margin-top: 380px;
-  margin-right: 40px;
 }
 
 .destination__cartShown_10 {
-  position: absolute;
-  margin-top: 200px;
-  margin-right: -170px;
-}
-
-.destination__cartShown_11 {
-  position: absolute;
-  margin-top: 110px;
-  margin-left: 300px;
-}
-
-.destination__cartShown_12 {
-  position: absolute;
-  margin-top: 180px;
-  margin-left: 300px;
-}
-
-.destination__cartShown_13 {
-  position: absolute;
-  margin-top: 350px;
-  margin-left: 650px;
-}
-
-.destination__cartShown_14 {
-  position: absolute;
-  margin-top: 650px;
-  margin-left: 50px;
-}
-
-.destination__cartShown_15 {
-  position: absolute;
-  margin-top: 650px;
-  margin-left: 50px;
-}
-
-.destination__cartShown_16 {
-  position: absolute;
-  margin-top: -50px;
-  margin-left: -30px;
-}
-
-.destination__cartShown_17 {
-  position: absolute;
-  margin-top: 540px;
-  margin-left: 50px;
-}
-
-.destination__cartShown_18 {
-  position: absolute;
-  margin-top: 470px;
-  margin-left: 350px;
-}
-
-.destination__cartShown_19 {
-  position: absolute;
-  margin-top: 190px;
-  margin-left: 660px;
-}
-
-.destination__cartShown_20 {
-  position: absolute;
-  margin-top: -130px;
-  margin-left: 250px;
+  left: 70%;
+  bottom: 50%;
 }

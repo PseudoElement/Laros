@@ -1,15 +1,15 @@
 import { StaticImageData } from 'next/image'
 
-import SubGr from '/public/assets/images/destinations/1.svg'
-import SubGr2 from '/public/assets/images/destinations/2.svg'
-import SubGr3 from '/public/assets/images/destinations/10.svg'
-import SubGr4 from '/public/assets/images/destinations/8.svg'
-import SubGr5 from '/public/assets/images/destinations/3.svg'
-import SubGr7 from '/public/assets/images/destinations/9.svg'
-import SubGr6 from '/public/assets/images/destinations/7.svg'
-import SubGr8 from '/public/assets/images/destinations/6.svg'
-import SubGr9 from '/public/assets/images/destinations/4.svg'
-import SubGr10 from '/public/assets/images/destinations/5.svg'
+import SubGr from '/public/assets/images/destinations/Greece/1.svg'
+import SubGr2 from '/public/assets/images/destinations/Greece/2.svg'
+import SubGr3 from '/public/assets/images/destinations/Greece/11.svg'
+import SubGr4 from '/public/assets/images/destinations/Greece/8.svg'
+import SubGr5 from '/public/assets/images/destinations/Greece/3.svg'
+import SubGr7 from '/public/assets/images/destinations/Greece/9.svg'
+import SubGr6 from '/public/assets/images/destinations/Greece/7.svg'
+import SubGr8 from '/public/assets/images/destinations/Greece/6.svg'
+import SubGr9 from '/public/assets/images/destinations/Greece/4.svg'
+import SubGr10 from '/public/assets/images/destinations/Greece/5.svg'
 
 export interface Map {
   id: number
@@ -19,17 +19,17 @@ export interface Map {
   image?: StaticImageData
 }
 
-interface TMap {
+interface Maps {
   Greece: Map[]
   Cyrpus: Map[]
   Macedonia: Map[]
 }
 
-export const Maps: TMap = {
+export const Maps: Maps = {
   Greece: [
     {
       id: 1,
-      link: 'lonian-islands',
+      link: 'destinations/lonian-islands',
       cartText:
         'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.',
       cartTitle: 'Central Cyrpus',
@@ -208,5 +208,153 @@ export const Maps: TMap = {
       cartTitle: 'Agia Napa',
     },
   ],
-  Macedonia: [],
+  Macedonia: [
+    {
+      id: 1,
+      link: 'destinations/vergina',
+      cartText:
+        'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.',
+      cartTitle: 'Vergina',
+    },
+    {
+      id: 2,
+      link: 'destinations/kastoria',
+      cartText:
+        'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.',
+      cartTitle: 'Kastoria',
+    },
+    {
+      id: 3,
+      link: 'destinations/sirerochori',
+      cartText:
+        'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.',
+      cartTitle: 'Sirerochori',
+    },
+    {
+      id: 4,
+      link: 'destinations/nimfeo',
+      cartText:
+        'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.',
+      cartTitle: 'Nimfeo',
+    },
+    {
+      id: 5,
+      link: 'destinations/lemos-florina',
+      cartText:
+        'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.',
+      cartTitle: 'Lemos Florina',
+    },
+    {
+      id: 6,
+      link: 'destinations/litochoro',
+      cartText:
+        'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.',
+      cartTitle: 'Litochoro',
+    },
+    {
+      id: 7,
+      link: 'destinations/loutraki',
+      cartText:
+        'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.',
+      cartTitle: 'Loutraki',
+    },
+    {
+      id: 8,
+      link: 'destinations/name',
+      cartText:
+        'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.',
+      cartTitle: 'Name',
+    },
+    {
+      id: 9,
+      link: 'destinations/stavroupolis',
+      cartText:
+        'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.',
+      cartTitle: 'Stavroupolis',
+    },
+    {
+      id: 10,
+      link: 'destinations/thessaloniki',
+      cartText:
+        'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.',
+      cartTitle: 'Thessaloniki',
+    },
+    {
+      id: 11,
+      link: 'destinations/chalkidki',
+      cartText:
+        'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.',
+      cartTitle: 'Chalkidki',
+    },
+    {
+      id: 12,
+      link: 'destinations/stavroupoli',
+      cartText:
+        'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.',
+      cartTitle: 'Stavroupoli',
+    },
+    {
+      id: 13,
+      link: 'destinations/berg-athos',
+      cartText:
+        'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.',
+      cartTitle: 'Berg Athos',
+    },
+    {
+      id: 14,
+      link: 'destinations/kerkini',
+      cartText:
+        'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.',
+      cartTitle: 'Kerkini',
+    },
+    {
+      id: 15,
+      link: 'destinations/kavala',
+      cartText:
+        'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.',
+      cartTitle: 'Kavala',
+    },
+    {
+      id: 16,
+      link: 'destinations/xanthi',
+      cartText:
+        'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.',
+      cartTitle: 'Xanthi',
+    },
+    {
+      id: 17,
+      link: 'destinations/komotini',
+      cartText:
+        'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.',
+      cartTitle: 'Komotini',
+    },
+    {
+      id: 18,
+      link: 'destinations/maronia',
+      cartText:
+        'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.',
+      cartTitle: 'Maronia',
+    },
+    {
+      id: 19,
+      link: 'destinations/alexandropolis',
+      cartText:
+        'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.',
+      cartTitle: 'Alexandropolis',
+    },
+    {
+      id: 20,
+      link: 'destinations/dadia',
+      cartText:
+        'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.',
+      cartTitle: 'Dadia',
+    },
+    {
+      id: 21,
+      link: 'destinations/afytos',
+      cartText:
+        'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.',
+      cartTitle: 'Afytos',
+    },
+  ],
 }

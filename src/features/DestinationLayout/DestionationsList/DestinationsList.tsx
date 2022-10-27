@@ -1,10 +1,17 @@
 import { FC } from 'react'
+import { useRouter } from 'next/router'
+import Image from 'next/image'
+
 import { Destination } from 'shared/types/destinations'
-import s from './DestinationsList.module.scss'
-import cn from 'classnames'
 import { useAppDispatch } from 'shared/hooks/redux'
 import { isRootDestination } from 'store/slices/destinations/selectors'
-import { useRouter } from 'next/router'
+
+import world from '/public/assets/images/destinations/world.png'
+
+import s from './DestinationsList.module.scss'
+import cn from 'classnames'
+import { mockRegions } from 'shared/mocks/regions'
+
 interface DestionationsListProps {
   destinations: Destination[]
   destination: number | null
@@ -42,7 +49,8 @@ export const DestionationsList: FC<DestionationsListProps> = ({
           onClick={() => router.push('/destinations')}
           className={cn(s.item, { [s.active]: destination === 0 })}
         >
-          <span className={s.title}>World</span>
+          <Image alt='' src={world} />
+          <span className={s.title}>Worldwide</span>
         </div>
       )}
     </div>
