@@ -66,8 +66,7 @@ input[type='number'] {
   padding-bottom: 48px !important;
 
   .swiper-button-next,
-  .swiper-button-prev
-  {
+  .swiper-button-prev {
     background-repeat: no-repeat;
     background-size: 100% auto;
     background-position: center;
@@ -82,15 +81,11 @@ input[type='number'] {
   }
 
   .swiper-button-next::after,
-  .swiper-button-prev::after
-  {
+  .swiper-button-prev::after {
     display: none;
   }
 
   .swiper-wrapper {
-    padding: 0 40px;
+    // padding: 0 40px;
   }
 }
-
-
-

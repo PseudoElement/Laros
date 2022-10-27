@@ -9,4 +9,8 @@ export const endpoints = {
     get: '/destination/',
     id: (id: number) => `/destination/${id}`,
   },
+  trips: {
+    get: '/trip/',
+    categories: '/trip/travel_type/',
+  },
 }

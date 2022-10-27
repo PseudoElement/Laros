@@ -24,6 +24,7 @@ export const Tags: FC<TagsProps> = ({ tags, onChange }) => {
       {tags.length
         ? tags.map(({ id, name, isSelected }) => (
             <span
+              key={id}
               className={cn(s.name, { [s.active]: isSelected })}
               onClick={() => handleChange(id)}
             >

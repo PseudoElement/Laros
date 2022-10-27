@@ -1,8 +1,9 @@
-import { TripItem } from '../types/tripItem'
+import { TripItem } from '../types/trip'
 import image from '/public/assets/images/trip-planner/trip__line.png'
 
 export const tripListMock: TripItem[] = [
   {
+    id: 0,
     image: image,
     name: 'Unexplored Peloponnese',
     from: ' 900 CHF',
@@ -12,6 +13,7 @@ export const tripListMock: TripItem[] = [
     tags: ['Sea Lovers', 'Test'],
   },
   {
+    id: 1,
     image: image,
     name: 'Unexplored Peloponnese',
     from: ' 900 CHF',
@@ -21,6 +23,7 @@ export const tripListMock: TripItem[] = [
     tags: ['Sea Lovers'],
   },
   {
+    id: 2,
     image: image,
     name: 'Unexplored Peloponnese',
     from: ' 900 CHF',
@@ -30,6 +33,7 @@ export const tripListMock: TripItem[] = [
     tags: ['Sea Lovers'],
   },
   {
+    id: 3,
     image: image,
     name: 'Unexplored Peloponnese',
     from: ' 900 CHF',
@@ -39,6 +43,7 @@ export const tripListMock: TripItem[] = [
     tags: ['Sea Lovers'],
   },
   {
+    id: 4,
     image: image,
     name: 'Unexplored Peloponnese',
     from: ' 900 CHF',
@@ -48,6 +53,7 @@ export const tripListMock: TripItem[] = [
     tags: ['Sea Lovers'],
   },
   {
+    id: 5,
     image: image,
     name: 'Unexplored Peloponnese',
     from: ' 900 CHF',

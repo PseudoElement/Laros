@@ -1,0 +1,28 @@
+@use '../../../styles/style.scss' as *;
+
+.OtherHotels {
+  padding: 80px 0;
+}
+.OtherHotelsTitle {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+}
+.OtherHotelsSubTitle {
+  margin: 8px 0 40px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: center;
+}
+.OtherHotelsWrap {
+  margin: 0 144px;
+}
+.Slider {
+  background-color: red;
+  border: 2px solid red;
+  color: red;
+  width: 100px;
+  height: 100px;
+}

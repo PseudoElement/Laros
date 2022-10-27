@@ -7,17 +7,26 @@ import { FC, ReactNode } from 'react'
 interface SliderProps {
   children: ReactNode[]
   slidesPerView?: number
+  withNavigation?: boolean
+  withPagination?: boolean
 }
 
-export const Slider: FC<SliderProps> = ({ children, slidesPerView = 3 }) => {
+export const Slider: FC<SliderProps> = ({
+  children,
+  slidesPerView = 3,
+  withNavigation = false,
+  withPagination = false,
+}) => {
+  const paginationOptions = withPagination && { clickable: true }
+  const navigationOptions = withNavigation && {}
   return (
     <div className={s.slider}>
       <Swiper
         modules={[Navigation, Pagination, A11y]}
         spaceBetween={0}
         slidesPerView={slidesPerView}
-        navigation
-        pagination={{ clickable: true }}
+        navigation={navigationOptions}
+        pagination={paginationOptions}
       >
         {children.length
           ? children.map((child, idx) => (

@@ -82,7 +82,7 @@ export const BlogsPage: FC = () => {
           </div>
         </div>
         <div className={s.contact}>
-          <Button className={s.button}>Contact</Button>
+          <Button classname={s.button}>Contact</Button>
         </div>
       </div>
     </>

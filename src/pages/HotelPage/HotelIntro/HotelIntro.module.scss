@@ -1,44 +1,44 @@
-@use '../../styles/style.scss' as *;
+@use '../../../styles/style' as *;
 
-.RoomCard {
+.HotelIntro {
   background-color: $color-light-grey;
-  margin: 0 80px;
+  margin: 80px;
   border-radius: 16px;
   display: flex;
   box-shadow: 0 4px 12px 0 rgba(0, 60, 118, 0.05);
 }
-.RoomCardLeft {
+.HotelIntroLeft {
   width: 65%;
   padding: 56px;
 }
-.RoomCardRight {
+.HotelIntroRight {
   width: 40%;
 
   img {
     border-radius: 0 16px 0 0;
   }
 }
-.RoomCardAddress {
+.HotelIntroAddress {
   font-size: 16px;
   font-weight: 400;
   line-height: 19px;
   color: $color-laros-dark-grey;
   margin: 17px 0 8px;
 }
-.RoomCardHotelName {
+.HotelIntroName {
   font-size: 48px;
   font-weight: 700;
   line-height: 58px;
   color: $color-bg-black;
 }
-.RoomCardDescription {
+.HotelIntroDescription {
   font-size: 12px;
   font-weight: 400;
   line-height: 20px;
   margin-top: 16px;
   color: $color-bg-black;
 }
-.RoomCardSeeMore {
+.HotelIntroSeeMore {
   font-weight: Bold;
   font-size: 12px;
   line-height: 14px;
@@ -59,8 +59,41 @@
   padding: 17px 56px 17px 16px;
   width: 50%;
   border-radius: 8px;
-  border: 1px solid $color-laros-dark-grey;
+  border: 1px solid $color-laros-light-grey;
   font-size: 12px;
   font-weight: 400;
   line-height: 14px;
+}
+.HotelIntroOptionWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+}
+.HotelIntroOptionSelect {
+  width: 70%;
+  margin-left: 24px;
+}
+.HotelIntroOptionTitle {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 17px;
+}
+
+.HotelIntroNumberInput {
+  padding: 17px 56px 17px 16px;
+  width: 50%;
+  border-radius: 8px;
+  border: 1px solid $color-laros-light-grey;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+}
+
+.HotelIntroAddRoom {
+  display: flex;
+  margin: 20px 0;
+  span {
+    margin-right: 8px;
+  }
 }
