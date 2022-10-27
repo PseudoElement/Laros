@@ -22,11 +22,13 @@ export const OtherHotels: FC<OtherHotelsProps> = ({ hotels }) => {
       </div>
 
       <div className={s.OtherHotelsWrap}>
-        <Slider withNavigation={true} withPagination={true}>
-          {hotels.map((hotel, index) => (
-            <HotelCard key={index} {...hotel} />
-          ))}
-        </Slider>
+        {hotels.length ? (
+          <Slider withNavigation={true} withPagination={true}>
+            {hotels.map((hotel, index) => (
+              <HotelCard key={index} {...hotel} />
+            ))}
+          </Slider>
+        ) : null}
       </div>
     </div>
   )

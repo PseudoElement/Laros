@@ -5,7 +5,7 @@ import { A11y, Navigation, Pagination } from 'swiper'
 import { FC, ReactNode } from 'react'
 
 interface SliderProps {
-  children: ReactNode[]
+  children: ReactNode[] | []
   slidesPerView?: number
   withNavigation?: boolean
   withPagination?: boolean

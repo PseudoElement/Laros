@@ -114,7 +114,13 @@ export const ExamplePage: FC = () => {
         />
       </div>
       <HotelCard tags={tags} />
-      <ChangeTransferModal cars={carsMock} type={TransferType.PICKUP} onClick={() => 1} isOpen={isChangeCarOpen} onClose={() => setIsChangeCarOpen(false)} />
+      <ChangeTransferModal
+        cars={carsMock}
+        type={TransferType.PICKUP}
+        onClick={() => 1}
+        isOpen={isChangeCarOpen}
+        onClose={() => setIsChangeCarOpen(false)}
+      />
       <div
         style={{
           width: '1152px',
@@ -123,10 +129,7 @@ export const ExamplePage: FC = () => {
           justifyContent: 'space-between',
         }}
       >
-        <TripCard
-          {...tripCardData}
-          wide
-        />
+        <TripCard {...tripCardData} wide />
       </div>
     </div>
   )

@@ -35,7 +35,7 @@ export const Input: FC<InputProps> = ({
   shorten,
   withCounter,
   min,
-  max
+  max,
 }) => {
   const getInput = (type: InputProps['type']): ReactNode => {
     switch (type) {
@@ -72,7 +72,14 @@ export const Input: FC<InputProps> = ({
               className={s.field}
               type={type}
             />
-            {withCounter && <Counter value={Number(value)} onChange={onChange} min={min} max={max} />}
+            {withCounter && (
+              <Counter
+                value={Number(value)}
+                onChange={onChange}
+                min={min}
+                max={max}
+              />
+            )}
           </>
         )
 

@@ -50,10 +50,10 @@ export const TripListItem: FC<TripListItemProps> = ({
             <div className={s.tags}>
               {tags
                 ? tags.map((el, i) => (
-                  <div key={i} className={s.tag}>
-                    {el}
-                  </div>
-                ))
+                    <div key={i} className={s.tag}>
+                      {el}
+                    </div>
+                  ))
                 : null}
             </div>
             <button className={s.button}>View Offer</button>

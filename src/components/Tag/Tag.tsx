@@ -11,7 +11,7 @@ export interface TagProps {
 }
 
 export const Tag: FC<TagProps> = ({ isSelected, handleChange, name, id }) => {
-  const HandleClick = () => {
+  const handleClick = () => {
     if (handleChange) {
       handleChange(id)
     }
@@ -20,7 +20,7 @@ export const Tag: FC<TagProps> = ({ isSelected, handleChange, name, id }) => {
   return (
     <span
       className={cn(s.name, { [s.active]: isSelected })}
-      onClick={HandleClick}
+      onClick={handleClick}
     >
       {name}
     </span>

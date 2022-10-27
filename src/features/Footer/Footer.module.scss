@@ -1,14 +1,14 @@
 .footer {
   width: 100%;
   border-top: 1px solid #e1e2e3;
-  background: #FAFBFC;
+  background: #fafbfc;
   box-shadow: inset 0px 0.5px 0px rgba(0, 0, 0, 0.1);
 }
 
 .content {
   display: flex;
   justify-content: center;
-  background: #FAFBFC;
+  background: #fafbfc;
 }
 
 .partners {
@@ -84,7 +84,7 @@
 .listInfo {
   display: flex;
   justify-content: space-between;
-  margin-top:50px;
+  margin-top: 50px;
   padding-right: 65px;
   ul {
     padding-left: 0;
@@ -115,7 +115,7 @@
 
 .navList {
   display: flex;
-  margin:0;
+  margin: 0;
   // margin-left: 80px;
 }
 
@@ -123,7 +123,7 @@
   color: #f2f5f8;
   list-style-type: none;
   &:last-child .navLink {
-    border-right:0;
+    border-right: 0;
   }
 }
 

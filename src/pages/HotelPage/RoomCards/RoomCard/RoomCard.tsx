@@ -5,10 +5,11 @@ import s from './RoomCard.module.scss'
 
 export interface RoomCardProps {
   image: string
-  title: string
-  info: string
-  description: string
+  title?: string
+  info?: string
+  description?: string
 }
+
 export const RoomCard: FC<RoomCardProps> = ({
   image,
   description,
@@ -18,7 +19,7 @@ export const RoomCard: FC<RoomCardProps> = ({
   return (
     <div className={s.RoomCard}>
       <div className={s.RoomCardImage}>
-        <Image src={image} alt='' width={'212px'} height={'144px'} />
+        <Image src={image} alt='' width={'220'} height={'144px'} />
       </div>
 
       <div className={s.RoomCardBody}>

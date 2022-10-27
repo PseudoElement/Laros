@@ -1,4 +1,4 @@
-import {HotelGallery, HotelPageProps} from '../types/hotelPage'
+import { HotelGallery, HotelPageProps } from '../types/hotelPage'
 import { HotelsCard } from '../types/hotelsCard'
 
 import img from '../../../public/assets/images/hotelIntroImg.jpg'
@@ -189,5 +189,5 @@ export const gallery: HotelGallery[] = [
     link: '/*',
     image: gallery2.src,
     description: 'Facilisi consequat accumsan',
-  }
+  },
 ]

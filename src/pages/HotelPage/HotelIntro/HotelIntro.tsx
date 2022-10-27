@@ -1,7 +1,6 @@
 import React, { FC, useState } from 'react'
 import Image from 'next/image'
 import { truncate } from 'lodash'
-// @ts-ignore
 import ReactStars from 'react-rating-stars-component'
 
 import { Select } from 'components/Select'

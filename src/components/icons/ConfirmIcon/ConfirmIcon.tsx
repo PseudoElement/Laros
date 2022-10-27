@@ -3,9 +3,9 @@ import { FC } from 'react'
 import confirm from '/public/assets/images/confirmIcon.svg'
 
 export const ConfirmIcon: FC = () => {
-    return (
-        <>
-            <Image src={confirm} alt='icon' width={13} height={13} />
-        </>
-    )
+  return (
+    <>
+      <Image src={confirm} alt='icon' width={13} height={13} />
+    </>
+  )
 }

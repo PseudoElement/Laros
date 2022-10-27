@@ -1,4 +1,4 @@
 export type FAQItem = {
-  title: string,
+  title: string
   content: string
 }

@@ -1,7 +1,9 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
-// @ts-ignore
+
 import ReactStars from 'react-rating-stars-component'
+
+import { Button } from 'components'
 
 import { HotelsCard } from 'shared/types/hotelsCard'
 
@@ -22,8 +24,8 @@ export const HotelCard: FC<HotelCardProps> = ({
   onClick,
 }) => {
   return (
-    <div className={s.container}>
-      <div className={s.slider}>
+    <div className={s.HotelCard}>
+      <div className={s.HotelCardImage}>
         <Image
           src={image}
           objectFit='cover'
@@ -67,7 +69,7 @@ export const HotelCard: FC<HotelCardProps> = ({
         ))}
       </div>
 
-      <button className={s.button}>Learn more</button>
+      <Button classname={s.button}>Learn more</Button>
     </div>
   )
 }
