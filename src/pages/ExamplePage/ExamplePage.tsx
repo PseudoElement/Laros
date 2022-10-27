@@ -17,19 +17,29 @@ import { tripCards } from 'shared/mocks/tripCards'
 import { ChangeTransferModal } from 'features/ChangeTransferModal'
 import { carsMock } from 'shared/mocks/cars'
 import { TransferType } from 'shared/types/car'
+import { InputCalendar } from 'components/InputCalendar'
 
 export const ExamplePage: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isChangeCarOpen, setIsChangeCarOpen] = useState(false)
-  const [input, setInput] = useState<any>('')
+  const [input, setInput] = useState<any>()
   const [checkboxValue, setCheckboxValue] = useState('man')
-  const [counter, setCounter] = useState(3)
+  const [counter, setCounter] = useState<any | Date>('')
+  const [counter1, setCounter1] = useState<any | Date>('')
   const [tags, setTags] = useState(mockTags)
   const tripCardData = tripCards[0]
+
+
+  const [e, setE] = useState('ssssssssss')
+
+  const ee = (ee: string) => {
+    setE(ee)
+  }
   return (
     <div
       style={{
-        marginTop: '15px',
+        marginTop: '45px',
+        margin: '45px',
         width: '100%',
         backgroundColor: '#FAFBFC',
       }}
@@ -37,29 +47,102 @@ export const ExamplePage: FC = () => {
       <div
         style={{ marginTop: '15px', backgroundColor: '#FAFBFC', width: '100%' }}
       >
-        <div className='row'>
+        <div style={{ width: '400px', marginLeft: 50 }}>
+          <InputCalendar label='Earliest depature' />
+        </div>
+        <div style={{ width: '400px', marginLeft: 50 }}>
           <Input
-            label='Earliest depature'
-            type='date'
+            label='Counter'
+            type='number'
             id='100'
-            onChange={e => console.log('get date')}
+            onChange={value => setCounter(value)}
+            value={counter}
+            withCounter
+            max={5}
+            min={1}
           />
         </div>
-        <Input
-          label='Counter'
-          type='number'
-          id='100'
-          onChange={value => setCounter(value)}
-          value={counter}
-          withCounter
-          max={5}
-          min={1}
-        />
+        <div style={{ width: '400px', marginLeft: 50 }}>
+          <Input
+            label='Name&nbsp;&&nbsp;Surname:'
+            placeholder='Enter your Name'
+            onChange={value => setCounter1(value)}
+            id='1'
+            value={counter1}
+          />
+        </div>
+        <div style={{ width: '400px', marginLeft: 50 }}>
+          <Input
+            label='Email:'
+            placeholder='Email'
+            onChange={value => setCounter1(value)}
+            id='1'
+            value={counter1}
+            type='email'
+          />
+        </div>
+        <div style={{ width: '400px', marginLeft: 50 }}>
+          <Input
+            label='Phone&nbsp;number:'
+            placeholder='Enter Phone'
+            onChange={value => setCounter1(value)}
+            id='1'
+            value={counter1}
+            type='phone'
+          />
+        </div>
+        <div style={{ width: '400px', marginTop: 100, marginLeft: 50 }}>
+          <InputCalendar label='Earliest depature' shorten />
+        </div>
+        <div style={{ width: '400px', marginLeft: 50 }}>
+          <Input
+            label='Counter'
+            type='number'
+            id='100'
+            onChange={value => setCounter(value)}
+            value={counter}
+            withCounter
+            max={5}
+            min={1}
+          />
+        </div>
+        <div style={{ width: '400px', marginLeft: 50 }}>
+          <Input
+            label='Name&nbsp;&&nbsp;Surname:'
+            placeholder='Enter your Name'
+            onChange={value => setCounter1(value)}
+            id='1'
+            value={counter1}
+            shorten
+          />
+        </div>
+        <div style={{ width: '400px', marginLeft: 50 }}>
+          <Input
+            label='Email:'
+            placeholder='Email'
+            onChange={value => setCounter1(value)}
+            id='1'
+            value={counter1}
+            type='email'
+            shorten
+          />
+        </div>
+        <div style={{ width: '400px', marginLeft: 50 }}>
+          <Input
+            label='Phone&nbsp;number:'
+            placeholder='Enter Phone'
+            onChange={value => setCounter1(value)}
+            id='1'
+            value={counter1}
+            type='phone'
+            shorten
+          />
+        </div>
         <div
           style={{ marginTop: '15px' }}
           onClick={() => setIsModalOpen(true)}
         ></div>
-        <div>
+        {/* <div>
           <Slider>
             {moreCategoriesMock.map((card, id) => {
               return <CategoryCard {...card} key={id} vertical />
@@ -70,7 +153,7 @@ export const ExamplePage: FC = () => {
           {moreCategoriesMock.map((card, id) => {
             return <CategoryCard {...card} key={id} />
           })}
-        </Slider>
+        </Slider> */}
         //TODO move to example page
         <ContactForm />
         <Radio
@@ -113,6 +196,7 @@ export const ExamplePage: FC = () => {
           onClose={() => setIsModalOpen(false)}
         />
       </div>
+
       <HotelCard tags={tags} />
       <ChangeTransferModal cars={carsMock} type={TransferType.PICKUP} onClick={() => 1} isOpen={isChangeCarOpen} onClose={() => setIsChangeCarOpen(false)} />
       <div
