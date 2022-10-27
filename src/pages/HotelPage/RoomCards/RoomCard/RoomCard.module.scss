@@ -6,11 +6,6 @@
   color: $color-primary-black;
   border-radius: 8px;
   text-align: center;
-  margin-right: 24px;
-
-  &:nth-last-child(1) {
-    margin-right: 0;
-  }
 }
 .RoomCardImage {
   margin-bottom: 10px;

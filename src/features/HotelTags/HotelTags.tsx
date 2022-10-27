@@ -12,10 +12,14 @@ export interface HotelTagsProps {
 export const HotelTags: FC<HotelTagsProps> = ({ tags, limit = 5 }) => {
   return (
     <div className={s.HotelTags}>
-      {tags.slice(0, limit).map(tag => (
-        <Tag key={tag.id} {...tag} />
-      ))}
-      <span className={s.HotelTagsMoreTags}>+{tags.length - limit}</span>
+      {tags.length ? (
+        <>
+          {tags.slice(0, limit).map(tag => (
+            <Tag key={tag.id} {...tag} />
+          ))}
+          <span className={s.HotelTagsMoreTags}>+{tags.length - limit}</span>
+        </>
+      ) : null}
     </div>
   )
 }

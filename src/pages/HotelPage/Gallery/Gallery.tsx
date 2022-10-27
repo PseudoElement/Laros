@@ -20,20 +20,24 @@ export const Gallery: FC<GalleryProps> = ({ gallery }) => {
       </div>
 
       <div className={s.GalleryWrap}>
-        {gallery.map((item, index) => {
-          return (
-            <Link key={index} href={`/destinations/${item.id}`}>
-              <div
-                style={{ backgroundImage: `url(${item.image})` }}
-                className={s.GalleryItem}
-              >
-                <div className={s.GalleryItemDescription}>
-                  {item.description}
-                </div>
-              </div>
-            </Link>
-          )
-        })}
+        {gallery.length ? (
+          <>
+            {gallery.map((item, index) => {
+              return (
+                <Link key={index} href={`/destinations/${item.id}`}>
+                  <div
+                    style={{ backgroundImage: `url(${item.image})` }}
+                    className={s.GalleryItem}
+                  >
+                    <div className={s.GalleryItemDescription}>
+                      {item.description}
+                    </div>
+                  </div>
+                </Link>
+              )
+            })}
+          </>
+        ) : null}
       </div>
     </div>
   )

@@ -1,7 +1,7 @@
 @use '../../../styles/style.scss' as *;
 
 .RoomCards {
-  padding: 80px 142px 98px;
+  padding: 80px 0 98px;
   background-color: $color-primary-dark-blue;
   color: $color-white;
 }
@@ -21,5 +21,7 @@
 }
 .RoomCardsWrap {
   display: flex;
-  justify-content: center;
+  width: 1200px;
+  margin: auto;
+  justify-content: space-around;
 }
