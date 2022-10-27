@@ -65,7 +65,13 @@ const Map = () => {
       <FeatureGroup>
         {gjson.features.map((features, i) => (
           <>
-            <GeoJSON key={i} data={features as any} />
+            <GeoJSON
+              pointToLayer={function (center, latlng) {
+                return L.marker(latlng, { icon: myIcon })
+              }}
+              key={i}
+              data={features as any}
+            />
           </>
         ))}
       </FeatureGroup>
