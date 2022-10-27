@@ -59,12 +59,16 @@ export const ExamplePage: FC = () => {
           style={{ marginTop: '15px' }}
           onClick={() => setIsModalOpen(true)}
         ></div>
-        <div>
-          <Slider>
+        <div style={{ width: '1200px', margin: 'auto' }}>
+          {/* <Slider
+            withNavigation
+            nextEl='moreNext'
+            prevEl='morePrev'
+          >
             {moreCategoriesMock.map((card, id) => {
               return <CategoryCard {...card} key={id} vertical />
             })}
-          </Slider>
+          </Slider> */}
         </div>
         <Slider>
           {moreCategoriesMock.map((card, id) => {
