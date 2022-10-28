@@ -57,7 +57,7 @@ export const ExamplePage: FC = () => {
       }}
     >
       {route && (
-        <div style={{height: '800px'}}>
+        <div style={{height: '800px', width: '1500px'}}>
           <Map route={route} />
         </div>
       )}
@@ -65,7 +65,7 @@ export const ExamplePage: FC = () => {
         style={{ marginTop: '15px', backgroundColor: '#FAFBFC', width: '100%' }}
       >
         <div style={{ width: '400px', marginLeft: 50 }}>
-          <InputCalendar label='Earliest depature' />
+          {/* <InputCalendar label='Earliest depature' /> */}
         </div>
         <div style={{ width: '400px', marginLeft: 50 }}>
           <Input
@@ -109,7 +109,7 @@ export const ExamplePage: FC = () => {
           />
         </div>
         <div style={{ width: '400px', marginTop: 100, marginLeft: 50 }}>
-          <InputCalendar label='Earliest depature' shorten />
+          {/* <InputCalendar label='Earliest depature' shorten /> */}
         </div>
         <div style={{ width: '400px', marginLeft: 50 }}>
           <Input
