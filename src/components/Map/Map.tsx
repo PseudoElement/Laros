@@ -1,5 +1,5 @@
 import React from 'react'
-import L, { Icon, latLng } from 'leaflet'
+import L, { Icon, LatLngExpression } from 'leaflet'
 
 import s from './Map.module.scss'
 
@@ -9,46 +9,59 @@ import 'leaflet-fullscreen/dist/leaflet.fullscreen.css'
 
 import {
   MapContainer,
-  Marker,
-  Popup,
   TileLayer,
   ZoomControl,
   GeoJSON,
   FeatureGroup,
 } from 'react-leaflet'
-import 'leaflet/dist/images/marker-shadow.png'
 
-import mapMarker from '../../../public/assets/images/map-marker.svg'
-import { gjson } from './geojson'
-import { features } from 'process'
+import { GeoJsonObject } from 'geojson'
 
-const Map = () => {
-  const coordinates = gjson.features[0].geometry.coordinates
+L.Control.extend({
+  options: {
+    position: 'topright',
+    title: {
+      false: 'View Fullscreen',
+      true: 'Exit Fullscreen',
+    },
+  },
+})
 
-  const center = ([coordinates[0], coordinates[1]] = [
+interface MapProps {
+  route: string
+}
+
+const Map: React.FC<MapProps> = ({ route: routeString }) => {
+  const route = JSON.parse(routeString)
+
+  const coordinates = route.features[0].geometry.coordinates
+
+  const center: LatLngExpression = ([coordinates[0], coordinates[1]] = [
     coordinates[1],
     coordinates[0],
   ])
 
-  const icon = gjson.features.map(f => f.properties.iconUrl || '')
+  const pointToLayer = (center: any, latlng: any) => {
+    const { iconAnchor, iconColor, iconSize, iconUrl, opacity, popupAnchor } =
+      center.properties
 
-  const myIcon = new Icon({
-    iconUrl: icon[0],
-    // iconUrl: mapMarker.src,
-    iconSize: [25, 25],
-  })
-
-  // L.Icon.Default.mergeOptions({
-  //   iconRetinaUrl: mapMarker.src,
-  //   iconUrl: mapMarker.src,
-  //   shadowUrl: null,
-  // })
+    return L.marker(latlng, {
+      icon: new Icon({
+        iconAnchor: iconAnchor,
+        iconColor: iconColor,
+        iconSize: iconSize,
+        iconUrl: iconUrl,
+        opacity: opacity,
+        popupAnchor: popupAnchor,
+      }),
+    })
+  }
 
   return (
     <MapContainer
       className={s.map}
       fullscreenControl={true}
-      center={center as any}
+      center={center}
       zoom={11}
       scrollWheelZoom={false}
       zoomControl={false}
@@ -57,21 +70,10 @@ const Map = () => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
       />
-      {/* <Marker icon={myIcon} position={center as any}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker> */}
       <FeatureGroup>
-        {gjson.features.map((features, i) => (
+        {route.features.map((features: GeoJsonObject, i: number) => (
           <>
-            <GeoJSON
-              pointToLayer={function (center, latlng) {
-                return L.marker(latlng, { icon: myIcon })
-              }}
-              key={i}
-              data={features as any}
-            />
+            <GeoJSON pointToLayer={pointToLayer} key={i} data={features} />
           </>
         ))}
       </FeatureGroup>

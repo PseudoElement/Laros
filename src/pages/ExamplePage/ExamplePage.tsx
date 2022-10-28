@@ -17,6 +17,7 @@ import { tripCards } from 'shared/mocks/tripCards'
 import { ChangeTransferModal } from 'features/ChangeTransferModal'
 import { carsMock } from 'shared/mocks/cars'
 import { TransferType } from 'shared/types/car'
+import axios from 'axios'
 
 export const ExamplePage: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -26,6 +27,19 @@ export const ExamplePage: FC = () => {
   const [counter, setCounter] = useState(3)
   const [tags, setTags] = useState(mockTags)
   const tripCardData = tripCards[0]
+
+  const [route, setRoute] = useState()
+
+  React.useEffect(() => {
+    async function getRoute() {
+      await axios({
+        method: 'GET',
+        url: 'http://165.227.155.246/api/trip/1',
+      }).then(data => setRoute(data.data.data.route))
+    }
+    getRoute()
+  }, [])
+
   return (
     <div
       style={{
@@ -34,7 +48,11 @@ export const ExamplePage: FC = () => {
         backgroundColor: '#FAFBFC',
       }}
     >
-      <Map />
+      {route && (
+        <div style={{height: '800px'}}>
+          <Map route={route} />
+        </div>
+      )}
       <div
         style={{ marginTop: '15px', backgroundColor: '#FAFBFC', width: '100%' }}
       >
@@ -115,7 +133,13 @@ export const ExamplePage: FC = () => {
         />
       </div>
       <HotelCard tags={tags} />
-      <ChangeTransferModal cars={carsMock} type={TransferType.PICKUP} onClick={() => 1} isOpen={isChangeCarOpen} onClose={() => setIsChangeCarOpen(false)} />
+      <ChangeTransferModal
+        cars={carsMock}
+        type={TransferType.PICKUP}
+        onClick={() => 1}
+        isOpen={isChangeCarOpen}
+        onClose={() => setIsChangeCarOpen(false)}
+      />
       <div
         style={{
           width: '1152px',
@@ -124,10 +148,7 @@ export const ExamplePage: FC = () => {
           justifyContent: 'space-between',
         }}
       >
-        <TripCard
-          {...tripCardData}
-          wide
-        />
+        <TripCard {...tripCardData} wide />
       </div>
     </div>
   )
