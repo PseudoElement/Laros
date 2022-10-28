@@ -41,6 +41,12 @@ export const ExamplePage: FC = () => {
     getRoute()
   }, [])
 
+
+  const [e, setE] = useState('ssssssssss')
+
+  const ee = (ee: string) => {
+    setE(ee)
+  }
   return (
     <div
       style={{
