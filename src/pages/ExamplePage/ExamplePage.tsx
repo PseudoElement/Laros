@@ -18,6 +18,8 @@ import { ChangeTransferModal } from 'features/ChangeTransferModal'
 import { carsMock } from 'shared/mocks/cars'
 import { TransferType } from 'shared/types/car'
 
+import s from './example.module.scss'
+
 export const ExamplePage: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isChangeCarOpen, setIsChangeCarOpen] = useState(false)
@@ -34,6 +36,20 @@ export const ExamplePage: FC = () => {
         backgroundColor: '#FAFBFC',
       }}
     >
+      <div style={{ width: '1200px', margin: 'auto' }}>
+        <Slider
+          withNavigation
+          nextEl='moreNext'
+          prevEl='morePrev'
+          classname={s.slid}
+        >
+          {moreCategoriesMock.map((card, id) => {
+            return <CategoryCard {...card} key={id} vertical />
+          })}
+        </Slider>
+      </div>
+
+
       <div
         style={{ marginTop: '15px', backgroundColor: '#FAFBFC', width: '100%' }}
       >

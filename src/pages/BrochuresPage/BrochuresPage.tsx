@@ -32,18 +32,7 @@ export const BrochuresPage: FC = () => {
   // @ts-ignore
   return (
     <>
-      <div style={{ width: '1200px', margin: 'auto' }}>
-        <Slider
-          withNavigation
-          nextEl='moreNext'
-          prevEl='morePrev'
-          classname={s.slid}
-        >
-          {moreCategoriesMock.map((card, id) => {
-            return <CategoryCard {...card} key={id} vertical />
-          })}
-        </Slider>
-      </div>
+      
 
 
 
