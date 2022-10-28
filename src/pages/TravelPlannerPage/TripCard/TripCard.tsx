@@ -8,29 +8,28 @@ import { Currency } from 'shared/types'
 
 interface TripCardProps {
   id: number
-  image: string
-  region: string
-  from: number
+  images: string[]
+  name: string
+  price: number
   period: string
   duration: number
-  start: string
   tags: string[]
   sale?: number
   wide?: boolean
 }
 
-export const TripCard: FC<TripCardProps> = props => {
+export const TripCard: FC<TripCardProps> = ({ name, wide, images = [], sale, tags = [], price, period, duration }) => {
   return (
-    <div className={cn(s.wrapper, { [s.wide]: props.wide })}>
+    <div className={cn(s.wrapper, { [s.wide]: wide })}>
       <div
         className={s.image}
         style={{
-          backgroundImage: `url(${props.image})`,
+          backgroundImage: `url(${images[0]})`,
         }}
       >
-        {props.sale && (
+        {sale && (
           <div className={s.sale}>
-            {`- ${props.sale}% OFF `}
+            {`- ${sale}% OFF `}
             <SaleIcon />
           </div>
         )}
@@ -39,33 +38,29 @@ export const TripCard: FC<TripCardProps> = props => {
         <div className={s.row}>
           <div className={s.regionName}>
             <div className={s.meta}>Region Name</div>
-            <div>{props.region}</div>
+            <div>{name}</div>
           </div>
           <div className={s.fromWrapper}>
             <div className={s.meta}>From</div>
-            <div className={s.from}>{`${props.from} ${Currency.CHF}`}</div>
+            <div className={s.from}>{`${price} ${Currency.CHF}`}</div>
             <div className={s.meta}>Pro Person</div>
           </div>
         </div>
         <div className={s.row}>
           <div className={s.periodWrapper}>
             <div className={s.meta}>Travel Period</div>
-            <div className={s.period}>{props.period}</div>
+            <div className={s.period}>{period}</div>
           </div>
           <div className={s.durationWrapper}>
             <div className={s.meta}>Duration</div>
-            <div className={s.duration}>{`${props.duration} Days`}</div>
+            <div className={s.duration}>{`${duration} Days`}</div>
           </div>
         </div>
         <div className={s.lastRow}>
-          <div className={s.meta}>
-            <FlightIcon />
-            {` Flight Start Srom ${props.start}`}
-          </div>
           <div className={s.tags}>
-            {props.tags.map(tag => (
+            {tags.length ? tags.map(tag => (
               <div className={s[tag]}>{generateTagText(tag)}</div>
-            ))}
+            )) : null}
           </div>
         </div>
         <Button classname={s.myButton}>View Offer</Button>

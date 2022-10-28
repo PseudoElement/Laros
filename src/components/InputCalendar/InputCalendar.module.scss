@@ -6,7 +6,6 @@
   border-radius: 12px;
   border: none;
   color: $color-secondary;
-  box-shadow: -8px 4px 22px 10px rgba($color-modal-bg, 0.2);
 
   // Navigation
   :global(.react-calendar__navigation) {
@@ -83,7 +82,7 @@
   :global(.react-calendar__tile--active:enabled:focus) {
     border-radius: 100%;
     color: $color-white;
-    background: $color-secondary;
+    background: $color-white;
   }
 }
 
@@ -93,13 +92,14 @@
 }
 
 .inputCalendar {
-  max-width: 371px;
   height: 37px;
-  border: 2px solid $color-modal-header;
+  border: 1px solid $color-modal-header;
+  background-color: $color-white;
   padding-top: 3px;
   border-radius: 8px;
   position: relative;
   z-index: 1;
+  font-weight: $fw-semibold;
 }
 .shorten {
   height: 33px;
@@ -128,7 +128,7 @@
   padding: 7px 8px 8px;
   font-size: 12px;
   font-weight: $fw-medium;
-  color: $color-placeholder;
+  color: $color-checkbox-gray;
   min-width: 120px;
 }
 // 3-st
