@@ -1,6 +1,10 @@
+import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
 import { Tab, TabList, Tabs } from 'react-tabs'
 
 import { Select } from 'components/Select'
+import { Range } from 'components/Range'
+
+import { HotelFilterParams } from 'shared/types/hotel'
 
 import s from './Sorting.module.scss'
 
@@ -16,7 +20,32 @@ const Direction = [
   { icon: '', label: 'Z-A', value: 'desc' },
 ]
 
-const Sorting = () => {
+interface SortingProps {
+  params: Partial<HotelFilterParams>
+  setParams: Dispatch<SetStateAction<Partial<HotelFilterParams>>>
+}
+
+const Sorting: FC<SortingProps> = ({ setParams, params }) => {
+  const [sort, setSort] = useState({
+    price: 0,
+    tags: '',
+    direction: 'asc',
+    subRegion: '',
+    category: '',
+    accomodationType: [],
+  })
+
+  const onChange = (value: number | undefined) =>
+    setSort(prev => ({ ...prev, price: value! }))
+
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      setParams(sort)
+    }, 200)
+
+    return () => clearTimeout(timeOut)
+  }, [sort])
+
   return (
     <>
       <div className={s.selects}>
@@ -24,10 +53,15 @@ const Sorting = () => {
         <Select classname={s.select} options={categories} />
       </div>
       <div className={s.services}>
-        <Select options={AccommodationTypes} />
+        <Select classname={s.select} options={AccommodationTypes} />
         <div className={s.price}>
           <p>Price Range</p>
-          <input type='range' />
+          <Range
+            onChange={onChange}
+            value={sort.price}
+            max={264}
+            currency='CHF'
+          />
         </div>
       </div>
       <div className={s.sorting}>

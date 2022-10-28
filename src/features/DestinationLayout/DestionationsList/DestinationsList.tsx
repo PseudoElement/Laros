@@ -5,12 +5,12 @@ import Image from 'next/image'
 import { Destination } from 'shared/types/destinations'
 import { useAppDispatch } from 'shared/hooks/redux'
 import { isRootDestination } from 'store/slices/destinations/selectors'
+import { mockRegions } from 'shared/mocks/regions'
 
 import world from '/public/assets/images/destinations/world.png'
 
 import s from './DestinationsList.module.scss'
 import cn from 'classnames'
-import { mockRegions } from 'shared/mocks/regions'
 
 interface DestionationsListProps {
   destinations: Destination[]
@@ -21,7 +21,7 @@ export const DestionationsList: FC<DestionationsListProps> = ({
   destinations,
 }) => {
   const dispatch = useAppDispatch()
-  const router = useRouter()
+  const { push, query } = useRouter()
 
   const isRootDestinations = (destinations: Destination[]): boolean => {
     if (destinations.length) {
@@ -33,20 +33,23 @@ export const DestionationsList: FC<DestionationsListProps> = ({
 
   return (
     <div className={s.list}>
-      {destinations.map(place => {
+      {mockRegions.map(place => {
         return (
           <div
             key={place.id}
-            onClick={() => router.push(`/destinations/${place.id}`)}
-            className={cn(s.item, { [s.active]: place.id === destination })}
+            onClick={() => push(`/destinations/${place.id}`)}
+            className={cn(s.item, {
+              [s.active]: place.id === +query?.id!,
+            })}
           >
+            <Image alt='' src={place.image} />
             <span className={s.title}>{place.name}</span>
           </div>
         )
       })}
       {isRootDestinations(destinations) && (
         <div
-          onClick={() => router.push('/destinations')}
+          onClick={() => push('/destinations')}
           className={cn(s.item, { [s.active]: destination === 0 })}
         >
           <Image alt='' src={world} />

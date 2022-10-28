@@ -13,6 +13,17 @@ export interface Room {
   image?: string
   price: string
 }
+
+export type HotelFilterParams = {
+  destination: string
+  capacity: number
+  rating: number
+  tags: string
+  price_lt: string
+  price_gt: number
+  ordering: keyof Hotel
+}
+
 export type Hotel = {
   readonly id: number
   max_capacity?: number

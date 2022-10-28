@@ -9,7 +9,12 @@ export const mockRegions = [
   },
   {
     id: 2,
-    name: 'Cyprus',
+    name: 'Cyrpus',
+    image: cyrpus,
+  },
+  {
+    id: 3,
+    name: 'Macedonia',
     image: cyrpus,
   },
 ]

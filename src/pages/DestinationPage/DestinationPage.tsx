@@ -4,12 +4,11 @@ import { useRouter } from 'next/router'
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { getDestinationsThunk } from 'store/slices/destinations/thunk'
 
-import DestinationAreas from 'features/DestinationAreas/DestinationAreas'
-import DestinationHotels from 'features/DestinationHotels/DestinationHotels'
 import { DestinationLayout } from 'features/DestinationLayout'
-import Greece from 'features/DestinationMaps/Greece/Greece'
-import Cyrpus from 'features/DestinationMaps/Cyrpus/Cyrpus'
-import Macedonia from '../../features/DestinationMaps/Macedonia/Macedonia'
+import DestinationAreas from 'features/DestinationAreas/DestinationAreas'
+
+import { mockAreas } from 'shared/mocks/areas'
+import { getMap } from 'shared/helpers/getMap'
 
 export const DestinationPage: FC = () => {
   const dispatch = useAppDispatch()
@@ -17,12 +16,11 @@ export const DestinationPage: FC = () => {
   const { destinations, currentDestination } = useAppSelector(
     state => state.destinations
   )
+  const { map, name } = getMap(+query?.id!)
 
   useEffect(() => {
     dispatch(getDestinationsThunk())
   }, [])
-
-  console.log(destinations)
 
   return (
     <>
@@ -30,12 +28,9 @@ export const DestinationPage: FC = () => {
         currentDestination={Number(query.id)}
         destinations={destinations}
       >
-        {/*<Macedonia />*/}
-        <Greece />
-        {/*<Cyrpus />*/}
+        {map}
       </DestinationLayout>
-      {/*<DestinationAreas />*/}
-      <DestinationHotels />
+      <DestinationAreas name={name} areas={mockAreas[name]} />
     </>
   )
 }
