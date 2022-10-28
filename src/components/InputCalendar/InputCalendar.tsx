@@ -16,6 +16,7 @@ interface InputCalendarProps {
   required?: boolean
   onChange?: (value: Date) => void
   classname?: string
+  shorten?: boolean
 }
 
 export const InputCalendar: FC<InputCalendarProps> = ({
