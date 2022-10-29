@@ -10,21 +10,22 @@ import Image from 'next/image'
 import cn from 'classnames'
 import s from './Select.module.scss'
 import arrow from '../../../public/assets/images/arrow.svg'
+import { Option } from 'shared/types'
 
 interface OptionsProps {
-  options: {
-    label?: string
-    value?: string
-    icon?: string
-  }[]
+  options: Option[]
   classname?: string
   isMulti?: boolean
+  value?: string,
+  onChange: (value: string) => void
 }
 
 export const SelectComponent: FC<OptionsProps> = ({
   options,
   classname,
   isMulti = false,
+  value,
+  onChange
 }) => {
   const DropdownIndicator: FC<DropdownIndicatorProps> = props => (
     <components.DropdownIndicator {...props}>
@@ -100,14 +101,16 @@ export const SelectComponent: FC<OptionsProps> = ({
   const randomId = useId()
 
   return (
-    <div className={cn(s.select, classname)}>
+    <div className={cn(s.select)}>
       <Select
         instanceId={randomId}
         styles={customStyles}
         options={options}
-        defaultValue={options[0]}
+        defaultValue={value ?? options[0]}
         components={{ Option, DropdownIndicator, Control }}
         isMulti={isMulti}
+        onChange={(val) => onChange(val)}
+        className={classname}
       />
     </div>
   )

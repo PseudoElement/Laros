@@ -15,7 +15,9 @@ interface InputCalendarProps {
   label: string
   required?: boolean
   onChange?: (value: Date) => void
+  value?: Date
   classname?: string
+  shorten?: boolean
 }
 
 export const InputCalendar: FC<InputCalendarProps> = ({
@@ -23,8 +25,9 @@ export const InputCalendar: FC<InputCalendarProps> = ({
   required = false,
   onChange,
   classname,
+  value
 }) => {
-  const [date, setDate] = useState(new Date())
+  const [date, setDate] = useState(value ?? new Date())
   const [showCalendar, setShowCalendar] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 

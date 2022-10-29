@@ -1,10 +1,4 @@
 import { AxiosPromise } from 'axios'
-import { AxiosPaginatedResponse } from 'shared/types/api'
-import {
-  Brochure,
-  DownloadBrochureForm,
-  SendBrochureForm,
-} from 'shared/types/brochures'
 import { ContactForm } from 'shared/types/contact'
 import { api } from '..'
 import { endpoints } from '../endpoints'

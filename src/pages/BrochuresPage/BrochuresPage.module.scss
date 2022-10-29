@@ -17,6 +17,7 @@
   font-weight: $fw-bold;
   margin-bottom: 16px;
 }
+
 .subtitle {
   width: 766px;
   font-family: Lato;
@@ -29,6 +30,7 @@
   justify-content: space-between;
   margin-bottom: 50px;
 }
+
 .noSelectBtn {
   border-radius: 8px;
   width: 250px;
@@ -42,21 +44,26 @@
   color: $color-placeholder;
   border: 1px solid $color-laros-light-grey;
 }
+
 .selectBtn {
   width: 250px;
 }
+
 .sort {
   font-family: Lato;
   font-size: 20px;
   font-weight: $fw-bold;
   margin-bottom: 24px;
 }
+
 .brochuresList {
   display: flex;
   justify-content: start;
   margin: 12px 0;
   flex-wrap: wrap;
+
   & div:not(:last-child) {
     margin-right: 24px;
   }
 }
+

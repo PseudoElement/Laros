@@ -1,14 +1,17 @@
+import { FC } from 'react'
+import Image from 'next/image'
+import { Controller, useForm } from 'react-hook-form'
+import cn from 'classnames'
+import { sendContactFormThunk } from 'store/slices/contactForm/thunk'
+
+import { Button } from 'components/Button'
 import { Input } from 'components/Input'
 import { Radio } from 'components/Radio'
-import { FC } from 'react'
-import { Controller, useForm } from 'react-hook-form'
+
 import { titleOptions } from 'shared/constants/form'
 import { useAppDispatch } from 'shared/hooks/redux'
 import { ContactForm as ContactFormData } from 'shared/types/contact'
-import { sendContactFormThunk } from 'store/slices/contactForm/thunk'
-import s from './ContactForm.module.scss'
-import cn from 'classnames'
-import Image from 'next/image'
+
 import fb from '/public/assets/images/socials/facebook.svg'
 import inst from '/public/assets/images/socials/instagram.svg'
 import linked from '/public/assets/images/socials/linkedin.svg'
@@ -16,9 +19,14 @@ import map from '/public/assets/images/info/map.svg'
 import userPlus from '/public/assets/images/info/user-plus.svg'
 import send from '/public/assets/images/info/send.svg'
 import video from '/public/assets/images/info/video.svg'
-import { Button } from 'components/Button'
 
-export const ContactForm: FC = () => {
+import s from './ContactForm.module.scss'
+
+type ContactFormProps = {
+  contactPage?: boolean
+}
+
+export const ContactForm: FC<ContactFormProps> = ({ contactPage }) => {
   const { handleSubmit, control } = useForm()
   const dispatch = useAppDispatch()
 
@@ -30,9 +38,11 @@ export const ContactForm: FC = () => {
     dispatch(sendContactFormThunk(form as ContactFormData))
   }
   return (
-    <div className={s.container}>
-      <div className={s.main}>
-        <div className={s.title}>Send us a message</div>
+    <div className={cn(s.container, { [s.contactContainer]: contactPage })}>
+      <div className={cn(s.main, { [s.contactMain]: contactPage })}>
+        <div className={s.title}>
+          {contactPage ? 'Contact us' : 'Send us a message'}
+        </div>
         <div className={s.description}>
           In elit volutpat, quam egestas vel ut non. Maecenas sodales amet,
           aliquam, nisl semper justo, vitae enim tortor.
@@ -115,13 +125,14 @@ export const ContactForm: FC = () => {
             onClick={handleSubmit(onSubmit)}
             type='submit'
             variant='secondary'
-            classname={s.sendBtn}
+            classname={cn(s.sendBtn, { [s.contactBtn]: contactPage })}
           >
             Send
           </Button>
         </div>
       </div>
-      <div className={s.info}>
+
+      <div className={cn(s.info, { [s.contactInfo]: contactPage })}>
         <div className={cn(s.infoItem, s.appointment)}>
           <div className={s.infoIcon}>
             <Image src={video} width={32} height={32} />
