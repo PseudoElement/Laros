@@ -3,6 +3,7 @@ import { mockRegions } from 'shared/mocks/regions'
 import Greece from 'features/DestinationMaps/Greece/Greece'
 import Cyrpus from 'features/DestinationMaps/Cyrpus/Cyrpus'
 import Macedonia from 'features/DestinationMaps/Macedonia/Macedonia'
+import { mockMaps } from '../mocks/maps'
 
 interface getMap {
   map: ReactNode
@@ -23,4 +24,12 @@ export const getMap = (id: number): getMap => {
     default:
       return { map: <Greece />, name: 'Greece' }
   }
+}
+
+export const getCurrentMap = (id: number) => {
+  const GreeceMap = mockMaps.Greece.find(item => item.id == id)
+  const CyrpusMap = mockMaps.Cyrpus.find(item => item.id == id)
+  const MacedoniaMap = mockMaps.Macedonia.find(item => item.id == id)
+
+  return GreeceMap || CyrpusMap || MacedoniaMap
 }

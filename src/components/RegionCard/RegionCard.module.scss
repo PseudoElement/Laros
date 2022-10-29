@@ -1,6 +1,6 @@
 @use '/src/styles/style.scss' as *;
 
-.destination__cartShown {
+.cart_shown {
   position: absolute;
   bottom: 100%;
   left: 100%;
@@ -12,13 +12,13 @@
   z-index: 3;
 }
 
-.destination__cartPicture {
+.cart_picture {
   display: flex;
   justify-content: center;
   margin-top: 8px;
 }
 
-.destination__cartTitle {
+.cart_title {
   font-weight: $fw-bold;
   font-size: 16px;
   line-height: 20px;
@@ -26,7 +26,7 @@
   margin: 16px 0 8px 16px;
 }
 
-.destination__cartText {
+.description {
   font-weight: $fw-regular;
   font-size: 12px;
   line-height: 20px;

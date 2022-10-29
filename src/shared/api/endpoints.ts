@@ -34,12 +34,6 @@ export const endpoints = {
       one: (id: number) => `/hotel_tag/${id}`,
     },
   },
-  hotels: {
-    get: '/hotel/',
-    id: (id: number) => `/hotel/${id}`,
-    similarId: (id: number) => `/hotel/similar/${id}`,
-    nearId: (id: number) => `/hotel/near/${id}`,
-  },
 
   hotels_tag: {
     get: '/hotel_tag/',

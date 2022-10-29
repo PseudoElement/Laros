@@ -1,7 +1,6 @@
 import { FC, useState } from 'react'
 
-import { Maps } from 'shared/mocks/Maps/maps'
-
+import { mockMaps } from 'shared/mocks/maps'
 import CyrpusItem from './CyrpusItem'
 
 import s from './Cyrpus.module.scss'
@@ -11,7 +10,7 @@ const Cyrpus: FC = () => {
 
   return (
     <div className={s.container}>
-      {Maps.Cyrpus.map(item => (
+      {mockMaps.Cyrpus.map(item => (
         <CyrpusItem
           key={item.id}
           isShownCard={isShownCard == item.id ? isShownCard : null}

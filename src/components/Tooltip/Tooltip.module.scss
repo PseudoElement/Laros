@@ -7,7 +7,7 @@
   width: max-content;
 }
 
-.tooltipContainer {
+.tooltip_container {
   display: flex;
   position: absolute;
   z-index: 10;
@@ -30,25 +30,25 @@
 
 // Container
 
-.position-top {
+.position_top {
   bottom: 100%;
   transform: translateY(-0.5rem);
   left: 50%;
 }
 
-.position-bottom {
+.position_bottom {
   top: 100%;
   transform: translateY(0.5rem);
   left: 50%;
 }
 
-.position-right {
+.position_right {
   top: 0;
   left: 100%;
   margin-left: 1rem;
 }
 
-.position-left {
+.position_left {
   top: 0;
   right: 100%;
   margin-right: 1rem;
@@ -56,22 +56,22 @@
 
 // Pointer
 
-.position-top-pointer {
+.position_top_pointer {
   top: 100%;
   transform: translateY(-0.5rem) rotate(45deg);
   left: 50%;
 }
 
-.position-bottom-pointer {
+.position_bottom_pointer {
   bottom: 100%;
   transform: translateY(0.5rem) rotate(45deg);
   left: 50%;
 }
 
-.position-right-pointer {
+.position_right_pointer {
   left: -6px;
 }
 
-.position-left-pointer {
+.position_left_pointer {
   right: -6px;
 }

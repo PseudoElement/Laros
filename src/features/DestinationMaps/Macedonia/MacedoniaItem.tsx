@@ -1,6 +1,7 @@
 import { FC, memo, useEffect, useState } from 'react'
 import { MapProps } from '../Greece/GreeceMap'
 
+import { formattedTitle } from 'shared/helpers/formatedTitle'
 import RegionCard from 'components/RegionCard/RegionCard'
 
 import s from './Macedonia.module.scss'
@@ -11,7 +12,7 @@ const MacedoniaItem: FC<MapProps> = ({ item, isShownCard, setIsShownCard }) => {
   const onClose = () => setIsShownCard(null)
 
   useEffect(() => {
-    const newTitle = item.cartTitle.toLowerCase().replace(/\s/g, '')
+    const newTitle = formattedTitle(item?.cartTitle)
 
     setTitle(newTitle)
   }, [])

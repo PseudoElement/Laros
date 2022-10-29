@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 
-import { Maps } from 'shared/mocks/Maps/maps'
+import { mockMaps } from 'shared/mocks/maps'
 
 import MacedoniaItem from './MacedoniaItem'
 
@@ -11,7 +11,7 @@ const Macedonia: FC = () => {
 
   return (
     <div className={s.container}>
-      {Maps.Macedonia.map(item => (
+      {mockMaps.Macedonia.map(item => (
         <MacedoniaItem
           key={item.id}
           isShownCard={isShownCard == item.id ? isShownCard : null}

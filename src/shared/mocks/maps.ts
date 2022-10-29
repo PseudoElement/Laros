@@ -1,4 +1,4 @@
-import { StaticImageData } from 'next/image'
+import { Maps } from 'shared/types/maps'
 
 import SubGr from '/public/assets/images/destinations/Greece/1.svg'
 import SubGr2 from '/public/assets/images/destinations/Greece/2.svg'
@@ -11,21 +11,7 @@ import SubGr8 from '/public/assets/images/destinations/Greece/6.svg'
 import SubGr9 from '/public/assets/images/destinations/Greece/4.svg'
 import SubGr10 from '/public/assets/images/destinations/Greece/5.svg'
 
-export interface Map {
-  id: number
-  link: string
-  cartTitle: string
-  cartText: string
-  image?: StaticImageData
-}
-
-interface Maps {
-  Greece: Map[]
-  Cyrpus: Map[]
-  Macedonia: Map[]
-}
-
-export const Maps: Maps = {
+export const mockMaps: Maps = {
   Greece: [
     {
       id: 1,

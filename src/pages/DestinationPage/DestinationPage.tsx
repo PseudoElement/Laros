@@ -16,7 +16,7 @@ export const DestinationPage: FC = () => {
   const { destinations, currentDestination } = useAppSelector(
     state => state.destinations
   )
-  const { map, name } = getMap(+query?.id!)
+  const { map, name } = getMap(Number(query.id))
 
   useEffect(() => {
     dispatch(getDestinationsThunk())

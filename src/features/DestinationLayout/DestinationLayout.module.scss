@@ -43,6 +43,10 @@
   line-height: 20px;
   overflow-y: scroll;
   font-weight: $fw-regular;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .content {

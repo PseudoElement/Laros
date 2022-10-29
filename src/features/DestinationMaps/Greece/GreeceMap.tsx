@@ -1,15 +1,16 @@
 import { Dispatch, SetStateAction } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
-import { Map as MapType } from 'shared/mocks/Maps/maps'
 import RegionCard from 'components/RegionCard/RegionCard'
+import { Map } from 'shared/types/maps'
 
 import s from './Greece.module.scss'
 
 export interface MapProps {
   isShownCard: number | null
   setIsShownCard: Dispatch<SetStateAction<number | null>>
-  item: MapType
+  item: Map
 }
 
 const GreeceMap = ({ item, setIsShownCard, isShownCard }: MapProps) => {
@@ -18,10 +19,10 @@ const GreeceMap = ({ item, setIsShownCard, isShownCard }: MapProps) => {
   return (
     <div className={s.wrapper}>
       <Link href={`/destinations/areas/${item.id}`}>
-        <img
+        <Image
           height={item.image?.height}
           width={item.image?.width}
-          src={item.image?.src}
+          src={item.image?.src!}
           onMouseEnter={() => setIsShownCard(item.id)}
         />
       </Link>

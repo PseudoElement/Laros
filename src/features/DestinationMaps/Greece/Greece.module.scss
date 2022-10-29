@@ -19,23 +19,6 @@
   cursor: url('/public/assets/images/destinations/cursor.png'), auto;
 }
 
-.sub__gr1:hover {
-  fill: #f5bb2c;
-}
-
-.sub__gr1:hover {
-  stroke-opacity: 0;
-}
-
-.sub__gr1 ellipse {
-  fill: #1b242d;
-  transition: all 0.2s ease-in;
-}
-
-.sub__gr1:hover ellipse {
-  fill: #0abaee;
-}
-
 .sub__gr2 {
   position: absolute;
   margin-right: 256px;
@@ -44,39 +27,12 @@
   cursor: url(/public/assets/images/destinations/cursor.png), auto;
 }
 
-.sub__gr2:hover {
-  fill: #2f6bb4;
-}
-
-.sub__gr2 ellipse {
-  fill: #1b242d;
-  transition: all 0.2s ease-in;
-}
-
-.sub__gr2:hover ellipse {
-  fill: #0abaee;
-}
-
 .sub__gr3 {
   position: absolute;
   margin-top: 20px;
   margin-left: 100px;
   transition: 0.2s all ease-in;
   cursor: url(/public/assets/images/destinations/cursor.png), auto;
-}
-
-.sub__gr3:hover {
-  fill: #f5bc2e;
-  z-index: 1;
-}
-
-.sub__gr3 ellipse {
-  fill: #1b242d;
-  transition: all 0.2s ease-in;
-}
-
-.sub__gr3:hover ellipse {
-  fill: #0abaee;
 }
 
 .sub__gr4 {
@@ -88,19 +44,6 @@
   cursor: url(/public/assets/images/destinations/cursor.png), auto;
 }
 
-.sub__gr4:hover {
-  fill: #22aaa8;
-}
-
-.sub__gr4 ellipse {
-  fill: #1b242d;
-  transition: all 0.2s ease-in;
-}
-
-.sub__gr4:hover ellipse {
-  fill: #0abaee;
-}
-
 .sub__gr5 {
   position: absolute;
   margin-top: 500px;
@@ -108,19 +51,6 @@
   transition: 0.2s all ease-in;
   z-index: 1;
   cursor: url(/public/assets/images/destinations/cursor.png), auto;
-}
-
-.sub__gr5:hover {
-  fill: #907c72;
-}
-
-.sub__gr5 ellipse {
-  fill: #1b242d;
-  transition: all 0.2s ease-in;
-}
-
-.sub__gr5:hover ellipse {
-  fill: #0abaee;
 }
 
 .sub__gr6 {
@@ -131,38 +61,12 @@
   cursor: url(/public/assets/images/destinations/cursor.png), auto;
 }
 
-.sub__gr6:hover {
-  fill: #a2cf6c;
-}
-
-.sub__gr6 ellipse {
-  fill: #1b242d;
-  transition: all 0.2s ease-in;
-}
-
-.sub__gr6:hover ellipse {
-  fill: #0abaee;
-}
-
 .sub__gr7 {
   position: absolute;
   transition: 0.2s all ease-in;
   margin-left: 580px;
   margin-top: 160px;
   cursor: url(/public/assets/images/destinations/cursor.png), auto;
-}
-
-.sub__gr7:hover {
-  fill: #907c72;
-}
-
-.sub__gr7 ellipse {
-  fill: #1b242d;
-  transition: all 0.2s ease-in;
-}
-
-.sub__gr7:hover ellipse {
-  fill: #0abaee;
 }
 
 .sub__gr8 {
@@ -173,19 +77,6 @@
   cursor: url(/public/assets/images/destinations/cursor.png), auto;
 }
 
-.sub__gr8:hover {
-  fill: #814d99;
-}
-
-.sub__gr8 ellipse {
-  fill: #1b242d;
-  transition: all 0.2s ease-in;
-}
-
-.sub__gr8:hover ellipse {
-  fill: #0abaee;
-}
-
 .sub__gr9 {
   position: absolute;
   margin-top: 870px;
@@ -194,38 +85,12 @@
   cursor: url(/public/assets/images/destinations/cursor.png), auto;
 }
 
-.sub__gr9:hover {
-  fill: #be007d;
-}
-
-.sub__gr9 ellipse {
-  fill: #1b242d;
-  transition: all 0.2s ease-in;
-}
-
-.sub__gr9:hover ellipse {
-  fill: #0abaee;
-}
-
 .sub__gr10 {
   position: absolute;
   margin-top: 620px;
   margin-left: 900px;
   transition: 0.2s all ease-in;
   cursor: url(/public/assets/images/destinations/cursor.png), auto;
-}
-
-.sub__gr10:hover {
-  fill: #aeacad;
-}
-
-.sub__gr10 ellipse {
-  fill: #1b242d;
-  transition: all 0.2s ease-in;
-}
-
-.sub__gr10:hover ellipse {
-  fill: #0abaee;
 }
 
 .wrapper {

@@ -4,18 +4,13 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 
 import { DestinationLayout } from 'features/DestinationLayout'
+import DestinationHotels from 'features/DestinationHotels/DestinationHotels'
 
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { getDestinationsThunk } from 'store/slices/destinations/thunk'
-import { Maps, Map } from 'shared/mocks/Maps/maps'
+import { getCurrentMap } from 'shared/helpers/getMap'
 
-const getMap = (id: number) => {
-  const GreeceMap = Maps.Greece.find(item => item.id == id)
-  const CyrpusMap = Maps.Cyrpus.find(item => item.id == id)
-  const MacedoniaMap = Maps.Macedonia.find(item => item.id == id)
-
-  return GreeceMap || CyrpusMap || MacedoniaMap
-}
+import { Map } from 'shared/types/maps'
 
 export const AreaPage = () => {
   const dispatch = useAppDispatch()
@@ -26,7 +21,7 @@ export const AreaPage = () => {
   const [currentMap, setCurrentMap] = useState<Map | null>(null)
 
   useEffect(() => {
-    const currentMap = getMap(query.id as unknown as number)
+    const currentMap = getCurrentMap(Number(query.id))
 
     setCurrentMap(currentMap ? currentMap : null)
 
@@ -34,11 +29,14 @@ export const AreaPage = () => {
   }, [query.id])
 
   return (
-    <DestinationLayout
-      currentDestination={Number(query.id)}
-      destinations={destinations}
-    >
-      {currentMap && <Image alt='' src={currentMap.image!} />}
-    </DestinationLayout>
+    <>
+      <DestinationLayout
+        currentDestination={Number(query.id)}
+        destinations={destinations}
+      >
+        {currentMap && <Image alt='' src={currentMap.image!} />}
+      </DestinationLayout>
+      <DestinationHotels />
+    </>
   )
 }

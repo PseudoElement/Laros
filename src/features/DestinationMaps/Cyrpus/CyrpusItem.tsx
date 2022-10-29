@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 import { MapProps } from '../Greece/GreeceMap'
 
+import { formattedTitle } from 'shared/helpers/formatedTitle'
 import RegionCard from 'components/RegionCard/RegionCard'
 
 import s from './Cyrpus.module.scss'
@@ -11,7 +12,7 @@ const CyrpusItem: FC<MapProps> = ({ item, setIsShownCard, isShownCard }) => {
   const onClose = () => setIsShownCard(null)
 
   useEffect(() => {
-    const newTitle = item.cartTitle.toLowerCase().replace(/\s/g, '')
+    const newTitle = formattedTitle(item?.cartTitle)
 
     setTitle(newTitle)
   }, [])

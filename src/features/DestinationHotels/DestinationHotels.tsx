@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { getHotels } from 'shared/api/routes/hotels'
 import { Hotel, HotelFilterParams } from 'shared/types/hotel'
+
 import { HotelCard } from '../HotelCard'
 import Sorting from './Sorting/Sorting'
 

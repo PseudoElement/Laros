@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 
-import { Maps } from 'shared/mocks/Maps/maps'
+import { mockMaps } from 'shared/mocks/maps'
 import GreeceMap from './GreeceMap'
 
 import s from './Greece.module.scss'
@@ -11,7 +11,7 @@ const Greece: FC = () => {
 
   return (
     <div className={s.container}>
-      {Maps.Greece.map(item => (
+      {mockMaps.Greece.map(item => (
         <div key={item.id} className={cn(s[`sub__gr${item.id}`])}>
           <GreeceMap
             key={item.id}

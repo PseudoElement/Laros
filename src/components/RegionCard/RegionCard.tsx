@@ -39,8 +39,8 @@ const RegionCard: FC<RegionCardProps> = ({
   return (
     <>
       {isOpen && (
-        <div ref={ref} className={cn(s.destination__cartShown, className)}>
-          <div className={s.destination__cartPicture}>
+        <div ref={ref} className={cn(s.cart_shown, className)}>
+          <div className={s.cart_picture}>
             <Image
               src={image ?? Polis}
               width={240}
@@ -48,8 +48,8 @@ const RegionCard: FC<RegionCardProps> = ({
               alt='cart picture image'
             />
           </div>
-          <h3 className={s.destination__cartTitle}>{title}</h3>
-          <p className={s.destination__cartText}>{cartText}</p>
+          <h3 className={s.cart_title}>{title}</h3>
+          <p className={s.description}>{cartText}</p>
           <div className={s.link__blockDestinationMap}>
             <Link href={link}>
               <span className={s.link__detailCartMap}>Learn more</span>

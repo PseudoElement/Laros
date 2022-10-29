@@ -39,7 +39,7 @@ export const DestionationsList: FC<DestionationsListProps> = ({
             key={place.id}
             onClick={() => push(`/destinations/${place.id}`)}
             className={cn(s.item, {
-              [s.active]: place.id === +query?.id!,
+              [s.active]: place.id === Number(query.id),
             })}
           >
             <Image alt='' src={place.image} />
