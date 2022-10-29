@@ -16,7 +16,7 @@ interface InputProps {
   type?: 'text' | 'number' | 'phone' | 'email' | 'password'
   required?: boolean
   placeholder?: string
-  id: string
+  id?: string
   onChange: (value: string | number) => void
   classname?: string
   shorten?: boolean
@@ -98,7 +98,7 @@ export const Input: FC<InputProps> = ({
             min={min}
             max={max}
           />
-          {withCounter && <Counter value={Number(value)} onChange={onChange} min={min} max={max} />}
+          {withCounter && <div className={s.counter}><Counter value={Number(value)} onChange={onChange} min={min} max={max} /></div>}
           {!withCounter && <span className={s.icon}><PencilIcon /></span>}
         </div>
       )

@@ -158,12 +158,11 @@ export const ExamplePage: FC = () => {
           style={{ marginTop: '15px' }}
           onClick={() => setIsModalOpen(true)}
         ></div>
-
         <Slider>
           {moreCategoriesMock.map((card, id) => {
             return <CategoryCard {...card} key={id} />
           })}
-        </Slider> */}
+        </Slider>
         //TODO move to example page
         <ContactForm />
         <Radio
@@ -205,7 +204,7 @@ export const ExamplePage: FC = () => {
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
         />
-      </div>
+      </div >
 
       <HotelCard tags={tags} />
       <ChangeTransferModal cars={carsMock} type={TransferType.PICKUP} onClick={() => 1} isOpen={isChangeCarOpen} onClose={() => setIsChangeCarOpen(false)} />
@@ -222,6 +221,6 @@ export const ExamplePage: FC = () => {
           wide
         />
       </div>
-    </div>
+    </div >
   )
 }
