@@ -22,8 +22,11 @@ body {
   &::-webkit-scrollbar {
     display: none;
   }
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 a {
@@ -44,6 +47,7 @@ p {
 
 input {
   border: none;
+
   &:focus-visible,
   &:focus {
     outline: none;
@@ -84,7 +88,6 @@ input[type='number'] {
   .swiper-button-prev::after {
     display: none;
   }
-
   .swiper-wrapper {
     // padding: 0 40px;
   }

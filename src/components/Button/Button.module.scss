@@ -17,12 +17,6 @@
 .primary {
   background-color: $color-primary;
   color: $color-white;
-
-  // &:hover, //TODO add hover
-  // &:active {
-  //   border-color: lighten($color-red, 15);
-  //   background-color: lighten($color-red, 15);
-  // }
 }
 
 .secondary {
@@ -32,8 +26,4 @@
 .outline {
   background-color: $color-white;
   color: $color-black;
-
-  // &:hover {
-  //   background-color: transparentize($color-metallic-seaweed, 0.7);
-  // }
 }

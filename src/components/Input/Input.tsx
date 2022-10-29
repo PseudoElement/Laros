@@ -8,15 +8,16 @@ import MaskedInput from 'react-text-mask' // TODO add types
 import { NUMBER_REG_EXP } from 'shared/constants/regExp'
 import cn from 'classnames'
 import { Counter } from 'components/Counter'
+import { spawn } from 'child_process'
 
 interface InputProps {
   label: string
   value?: string | number
-  type?: 'text' | 'number' | 'phone' | 'email' | 'password' | 'date'
+  type?: 'text' | 'number' | 'phone' | 'email' | 'password'
   required?: boolean
   placeholder?: string
-  id: string
-  onChange: (value: string | number | Date) => void
+  id?: string
+  onChange: (value: string | number) => void
   classname?: string
   shorten?: boolean
   withCounter?: boolean
@@ -37,10 +38,16 @@ export const Input: FC<InputProps> = ({
   min,
   max,
 }) => {
-  const getInput = (type: InputProps['type']): ReactNode => {
-    switch (type) {
-      case 'phone':
-        return (
+  switch (type) {
+    case 'phone':
+      return (
+        <div
+          className={cn(
+            s.input,
+            { [s.shorten]: shorten },
+            classname)}
+        >
+          {<div className={s.label}>{label}</div>}
           <MaskedInput
             mask={NUMBER_REG_EXP}
             guide={true}
@@ -51,9 +58,17 @@ export const Input: FC<InputProps> = ({
             onChange={e => onChange(e.target.value)}
             value={value}
           />
-        )
-      case 'email':
-        return (
+          <span className={s.icon}><PencilIcon /></span>
+        </div>
+      )
+    case 'email':
+      return (
+        <div className={cn(
+          s.input,
+          { [s.shorten]: shorten },
+          classname)}
+        >
+          {<div className={s.label}>{label}</div>}
           <input
             placeholder={placeholder}
             value={value}
@@ -61,65 +76,51 @@ export const Input: FC<InputProps> = ({
             className={s.field}
             type={type}
           />
-        )
-      case 'number':
-        return (
-          <>
-            <input
-              placeholder={placeholder}
-              value={value}
-              onChange={e => onChange(e.target.value)}
-              className={s.field}
-              type={type}
-            />
-            {withCounter && (
-              <Counter
-                value={Number(value)}
-                onChange={onChange}
-                min={min}
-                max={max}
-              />
-            )}
-          </>
-        )
+          <span className={s.icon}><PencilIcon /></span>
+        </div>
+      )
+    case 'number':
+      return (
+        <div
+          className={cn(
+            s.input,
+            s.numberInput,
+            { [s.shorten]: shorten },
+            classname)}
+        >
+          {<div className={s.label}>{label}</div>}
+          <input
+            placeholder={placeholder}
+            value={value}
+            onChange={e => onChange(e.target.value)}
+            className={s.field}
+            type={type}
+            min={min}
+            max={max}
+          />
+          {withCounter && <div className={s.counter}><Counter value={Number(value)} onChange={onChange} min={min} max={max} /></div>}
+          {!withCounter && <span className={s.icon}><PencilIcon /></span>}
+        </div>
+      )
+    default:
+      return (
+        <div
+          className={cn(
+            s.input,
+            { [s.shorten]: shorten },
+            classname)}
+        >
+          {<div className={s.label}>{label}</div>}
+          <input
+            placeholder={placeholder}
+            value={value}
+            onChange={e => onChange(e.target.value)}
+            className={s.field}
+            type={type}
+          />
+          <span className={s.icon}><PencilIcon /></span>
+        </div>
 
-      default:
-        return (
-          <input
-            placeholder={placeholder}
-            value={value}
-            onChange={e => onChange(e.target.value)}
-            className={s.field}
-            type={type}
-          />
-        )
-    }
+      )
   }
-
-  const CalendarMarkout = (
-    <InputCalendar
-      label={label}
-      onChange={onChange}
-      classname={s.field}
-      required={required}
-    />
-  )
-
-  const InputMarkout = (
-    <div
-      className={cn(
-        s.input,
-        { [s.shorten]: shorten, [s.numberInput]: type === 'number' },
-        classname
-      )}
-    >
-      {getInput(type)}
-      {type !== 'number' && (
-        <span className={s.icon}>
-          <PencilIcon />
-        </span>
-      )}
-    </div>
-  )
-  return type !== 'date' ? InputMarkout : CalendarMarkout
 }
