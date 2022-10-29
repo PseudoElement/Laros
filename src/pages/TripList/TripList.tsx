@@ -8,6 +8,7 @@ export const TripList: FC = () => {
     <div className={s.wrapper}>
       {tripListMock.map(el => (
         <TripListItem
+          key={el.name}
           image={el.image}
           name={el.name}
           from={el.from}
