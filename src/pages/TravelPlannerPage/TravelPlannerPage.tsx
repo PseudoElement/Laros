@@ -7,8 +7,8 @@ import bg from '/public/assets/images/trip_planner_bg.png'
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { getTripCategoriesThunk } from 'store/slices/trips/thunk'
 export const TravelPlannerPage: FC = () => {
-  const dispatch = useAppDispatch();
-  const categories = useAppSelector((state) => state.trips.categories);
+  const dispatch = useAppDispatch()
+  const categories = useAppSelector(state => state.trips.categories)
   const moreCategories = moreCategoriesMock
   useEffect(() => {
     dispatch(getTripCategoriesThunk())
@@ -16,14 +16,14 @@ export const TravelPlannerPage: FC = () => {
 
   return (
     <div className={s.container}>
-      <div className={s.bg} style={{
-        backgroundImage: `url(${bg.src})`,
-      }}>
-      </div>
-      <div className={s.title}>Travel planner</div>
       <div
-        className={s.content}
-      >
+        className={s.bg}
+        style={{
+          backgroundImage: `url(${bg.src})`,
+        }}
+      ></div>
+      <div className={s.title}>Travel planner</div>
+      <div className={s.content}>
         <div className={s.subtitle}>Our top trip categories</div>
 
         <Slider withNavigation slidesPerView={3.05}>

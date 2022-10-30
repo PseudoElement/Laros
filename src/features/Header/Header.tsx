@@ -42,13 +42,13 @@ export const Header: FC = () => {
                 <Image src={isCollapsed ? logo : logoFull} alt='' />
               </div>
               <div className={s.rightNav}>
-                <Link href='/'>
+                <Link href='/contact'>
                   <div className={s.headContactUse}>
                     <Image className={s.headSmIcon} src={callImg} alt='call' />
                     <span> Contact us</span>
                   </div>
                 </Link>
-                <Link href='/vouchers'>
+                <Link href='/voucher'>
                   <div className={s.headGift}>
                     <Image className={s.headSmIcon} src={giftImg} alt='call' />
                     <div>&nbsp;Gift voucher</div>

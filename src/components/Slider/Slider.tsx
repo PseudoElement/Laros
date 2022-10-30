@@ -23,7 +23,6 @@ export const Slider: FC<SliderProps> = ({
   nextEl,
   prevEl,
   classname
-
 }) => {
 
   const paginationOptions = withPagination && { clickable: true };
@@ -39,8 +38,8 @@ export const Slider: FC<SliderProps> = ({
       >
         {children.length
           ? children.map((child, idx) => (
-            <SwiperSlide key={idx}>{child}</SwiperSlide>
-          ))
+              <SwiperSlide key={idx}>{child}</SwiperSlide>
+            ))
           : null}
       </Swiper>
       {
@@ -53,4 +52,3 @@ export const Slider: FC<SliderProps> = ({
     </div>
   )
 }
-
