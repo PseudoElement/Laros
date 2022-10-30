@@ -17,16 +17,6 @@ import {
 
 import { GeoJsonObject } from 'geojson'
 
-L.Control.extend({
-  options: {
-    position: 'topright',
-    title: {
-      false: 'View Fullscreen',
-      true: 'Exit Fullscreen',
-    },
-  },
-})
-
 interface MapProps {
   route: string
 }
