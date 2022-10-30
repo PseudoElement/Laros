@@ -71,12 +71,9 @@ export const ExamplePage: FC = () => {
         </Slider>
       </div>
 
-
-      {route && (
         <div style={{height: '800px', width: '1500px'}}>
           <Map route={route} />
         </div>
-      )}
       <div
         style={{ marginTop: '15px', backgroundColor: '#FAFBFC', width: '100%' }}
       >

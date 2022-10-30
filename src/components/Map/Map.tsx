@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import L, { Icon, LatLngExpression } from 'leaflet'
 
 import s from './Map.module.scss'
@@ -18,18 +18,35 @@ import {
 import { GeoJsonObject } from 'geojson'
 
 interface MapProps {
-  route: string
+  route?: string
+}
+
+type Route = {
+  type: 'FeatureCollection'
+  features: Array<{
+    type: 'Feature'
+    properties: any
+    geometry: { type: string; coordinates: Array<number> }
+  }>
 }
 
 const Map: React.FC<MapProps> = ({ route: routeString }) => {
-  const route = JSON.parse(routeString)
+  const [route, setRoute] = useState<Route>()
+  const [center, setCenter] = useState<LatLngExpression>()
 
-  const coordinates = route.features[0].geometry.coordinates
+  useEffect(() => {
+    if (routeString === undefined) return
+    setRoute(JSON.parse(routeString))
+  }, [routeString])
 
-  const center: LatLngExpression = ([coordinates[0], coordinates[1]] = [
-    coordinates[1],
-    coordinates[0],
-  ])
+  useEffect(() => {
+    if (route === undefined) return
+
+    const coordinates = route.features[0].geometry.coordinates
+    setCenter(
+      ([coordinates[0], coordinates[1]] = [coordinates[1], coordinates[0]])
+    )
+  }, [route])
 
   const pointToLayer = (center: any, latlng: any) => {
     const { iconAnchor, iconColor, iconSize, iconUrl, opacity, popupAnchor } =
@@ -48,27 +65,30 @@ const Map: React.FC<MapProps> = ({ route: routeString }) => {
   }
 
   return (
-    <MapContainer
-      className={s.map}
-      fullscreenControl={true}
-      center={center}
-      zoom={11}
-      scrollWheelZoom={false}
-      zoomControl={false}
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-      />
-      <FeatureGroup>
-        {route.features.map((features: GeoJsonObject, i: number) => (
-          <>
-            <GeoJSON pointToLayer={pointToLayer} key={i} data={features} />
-          </>
-        ))}
-      </FeatureGroup>
-      <ZoomControl position='topright' />
-    </MapContainer>
+    <>
+      {center ? (
+        <MapContainer
+          className={s.map}
+          fullscreenControl={true}
+          center={center}
+          zoom={11}
+          scrollWheelZoom={false}
+          zoomControl={false}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+          />
+          <FeatureGroup>
+            {route &&
+              route.features.map((features: GeoJsonObject, i: number) => (
+                <GeoJSON pointToLayer={pointToLayer} key={i} data={features} />
+              ))}
+          </FeatureGroup>
+          <ZoomControl position='topright' />
+        </MapContainer>
+      ) : null}
+    </>
   )
 }
 
