@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { HotelCard } from 'features/HotelCard'
 import { Input } from 'components/Input'
 import { Slider } from 'features'
@@ -6,7 +6,7 @@ import { CategoryCard } from 'pages/TravelPlannerPage/CategoryCard'
 import { moreCategoriesMock } from 'shared/mocks/tripPlanner'
 import { ContactForm } from 'features/ContactForm'
 import { Radio } from 'components/Radio'
-import { Modal } from 'components'
+import { Modal, ReactPlayer } from 'components'
 import { Checkbox } from 'components/Checkbox'
 import { Tags } from 'components/Tags'
 import { mockTags } from 'shared/mocks/tags'
@@ -46,6 +46,7 @@ export const ExamplePage: FC = () => {
         backgroundColor: '#FAFBFC',
       }}
     >
+      <ReactPlayer url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
       <div style={{ width: '1200px', margin: 'auto' }}>
         <Slider
           withNavigation
@@ -216,10 +217,7 @@ export const ExamplePage: FC = () => {
           justifyContent: 'space-between',
         }}
       >
-        <TripCard
-          {...tripCardData}
-          wide
-        />
+        <TripCard {...tripCardData} wide />
       </div>
     </div >
   )
