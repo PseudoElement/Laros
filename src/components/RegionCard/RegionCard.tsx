@@ -41,12 +41,16 @@ const RegionCard: FC<RegionCardProps> = ({
       {isOpen && (
         <div ref={ref} className={cn(s.cart_shown, className)}>
           <div className={s.cart_picture}>
-            <Image
-              src={image ?? Polis}
-              width={240}
-              height={135}
-              alt='cart picture image'
-            />
+            {image ? (
+              <Image
+                src={image}
+                width={240}
+                height={135}
+                alt='cart picture image'
+              />
+            ) : (
+              <Polis />
+            )}
           </div>
           <h3 className={s.cart_title}>{title}</h3>
           <p className={s.description}>{cartText}</p>

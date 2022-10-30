@@ -28,6 +28,8 @@
 }
 .select,
 .more {
+  cursor: pointer;
+  line-height: 14px;
   font-weight: $fw-semibold;
   color: $color-placeholder;
   font-size: 12px;

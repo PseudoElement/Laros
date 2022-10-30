@@ -38,6 +38,8 @@ const Sorting: FC<SortingProps> = ({ setParams, params }) => {
   const onChange = (value: number | undefined) =>
     setSort(prev => ({ ...prev, price: value! }))
 
+  const changeSelect = (value: string) => setSort(prev => ({ ...prev }))
+
   useEffect(() => {
     const timeOut = setTimeout(() => {
       setParams(sort)
@@ -49,11 +51,24 @@ const Sorting: FC<SortingProps> = ({ setParams, params }) => {
   return (
     <>
       <div className={s.selects}>
-        <Select classname={s.select} isMulti options={regions} />
-        <Select classname={s.select} options={categories} />
+        <Select
+          onChange={changeSelect}
+          classname={s.select}
+          isMulti
+          options={regions}
+        />
+        <Select
+          onChange={changeSelect}
+          classname={s.select}
+          options={categories}
+        />
       </div>
       <div className={s.services}>
-        <Select classname={s.select} options={AccommodationTypes} />
+        <Select
+          onChange={changeSelect}
+          classname={s.select}
+          options={AccommodationTypes}
+        />
         <div className={s.price}>
           <p>Price Range</p>
           <Range
@@ -78,7 +93,11 @@ const Sorting: FC<SortingProps> = ({ setParams, params }) => {
         </div>
         <div className={s.direction}>
           From
-          <Select classname={s.selectDirection} options={Direction} />
+          <Select
+            onChange={changeSelect}
+            classname={s.selectDirection}
+            options={Direction}
+          />
         </div>
       </div>
     </>

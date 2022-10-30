@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-import Image from 'next/image'
+import { ReactNode, useEffect, useState } from 'react'
 
 import { useRouter } from 'next/router'
 
@@ -10,20 +9,22 @@ import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { getDestinationsThunk } from 'store/slices/destinations/thunk'
 import { getCurrentMap } from 'shared/helpers/getMap'
 
-import { Map } from 'shared/types/maps'
+import Arrow from '/public/assets/images/blackArrow.svg'
+
+import s from './AreaPage.module.scss'
 
 export const AreaPage = () => {
   const dispatch = useAppDispatch()
-  const { query } = useRouter()
+  const { query, push } = useRouter()
   const { destinations, currentDestination } = useAppSelector(
     state => state.destinations
   )
-  const [currentMap, setCurrentMap] = useState<Map | null>(null)
+  const [currentMap, setCurrentMap] = useState<ReactNode>(null)
 
   useEffect(() => {
     const currentMap = getCurrentMap(Number(query.id))
 
-    setCurrentMap(currentMap ? currentMap : null)
+    setCurrentMap(currentMap && currentMap)
 
     dispatch(getDestinationsThunk())
   }, [query.id])
@@ -34,7 +35,10 @@ export const AreaPage = () => {
         currentDestination={Number(query.id)}
         destinations={destinations}
       >
-        {currentMap && <Image alt='' src={currentMap.image!} />}
+        <div onClick={() => push('/destinations/1')} className={s.back}>
+          <Arrow className={s.arrow} /> Go back to Greece Map
+        </div>
+        {currentMap}
       </DestinationLayout>
       <DestinationHotels />
     </>

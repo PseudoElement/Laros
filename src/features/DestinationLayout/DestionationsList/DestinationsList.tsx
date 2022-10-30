@@ -1,13 +1,12 @@
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 import { useRouter } from 'next/router'
-import Image from 'next/image'
 
 import { Destination } from 'shared/types/destinations'
 import { useAppDispatch } from 'shared/hooks/redux'
 import { isRootDestination } from 'store/slices/destinations/selectors'
 import { mockRegions } from 'shared/mocks/regions'
 
-import world from '/public/assets/images/destinations/world.png'
+import World from '/public/assets/images/destinations/World.svg'
 
 import s from './DestinationsList.module.scss'
 import cn from 'classnames'
@@ -31,20 +30,48 @@ export const DestionationsList: FC<DestionationsListProps> = ({
     return true
   }
 
+  const region = (regions: { id: number; image: any; name: string }[]) => {
+    return regions.map(region => (
+      <div
+        key={region.id}
+        onClick={() => push(`/destinations/areas/${region.id}`)}
+        className={cn(s.item, {
+          [s.active]: region.id === Number(query.id),
+        })}
+      >
+        <region.image
+          className={cn(s.icon, {
+            [s.iconActive]: region.id === Number(query.id),
+          })}
+        />
+        <span className={s.title}>{region.name}</span>
+      </div>
+    ))
+  }
+
   return (
     <div className={s.list}>
       {mockRegions.map(place => {
         return (
-          <div
-            key={place.id}
-            onClick={() => push(`/destinations/${place.id}`)}
-            className={cn(s.item, {
-              [s.active]: place.id === Number(query.id),
-            })}
-          >
-            <Image alt='' src={place.image} />
-            <span className={s.title}>{place.name}</span>
-          </div>
+          <>
+            <div
+              key={place.id}
+              onClick={() => push(`/destinations/${place.id}`)}
+              className={cn(s.item, {
+                [s.active]: place.id === Number(query.id),
+              })}
+            >
+              <place.image
+                className={cn(s.icon, {
+                  [s.iconActive]: place.id === Number(query.id),
+                })}
+              />
+              <span className={s.title}>{place.name}</span>
+            </div>
+            {place.regions &&
+              place.id === Number(query.id) &&
+              region(place.regions)}
+          </>
         )
       })}
       {isRootDestinations(destinations) && (
@@ -52,7 +79,9 @@ export const DestionationsList: FC<DestionationsListProps> = ({
           onClick={() => push('/destinations')}
           className={cn(s.item, { [s.active]: destination === 0 })}
         >
-          <Image alt='' src={world} />
+          <World
+            className={cn(s.icon, { [s.iconActive]: destination === 0 })}
+          />
           <span className={s.title}>Worldwide</span>
         </div>
       )}

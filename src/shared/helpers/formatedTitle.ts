@@ -1,3 +1,3 @@
 export const formattedTitle = (title: string) => {
-  return title.toLowerCase().replace(/\s/g, '')
+  return title.toLowerCase().replace(/[\(\)\s]/g, '')
 }

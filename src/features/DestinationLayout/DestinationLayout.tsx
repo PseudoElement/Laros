@@ -11,6 +11,7 @@ import {
   isNotFinalDestination,
 } from 'store/slices/destinations/selectors'
 import { defaultDescription } from 'shared/constants/destinations'
+import { Button } from '../../components'
 
 interface DestinationLayoutProps {
   children: ReactNode
@@ -49,9 +50,11 @@ export const DestinationLayout: FC<DestinationLayoutProps> = ({
               ? truncate(description, { length: TRUNCATED_TEXT_SIZE })
               : description}
           </div>
-          <div onClick={() => setIsTruncated(false)} className={s.more}>
-            More
-          </div>
+          {isTruncated && (
+            <div onClick={() => setIsTruncated(false)} className={s.more}>
+              More
+            </div>
+          )}
         </div>
       </div>
       <div className={s.content}>{children}</div>

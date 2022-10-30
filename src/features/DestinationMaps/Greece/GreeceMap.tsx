@@ -1,6 +1,5 @@
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, FC, SetStateAction, SVGProps } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 
 import RegionCard from 'components/RegionCard/RegionCard'
 import { Map } from 'shared/types/maps'
@@ -19,10 +18,8 @@ const GreeceMap = ({ item, setIsShownCard, isShownCard }: MapProps) => {
   return (
     <div className={s.wrapper}>
       <Link href={`/destinations/areas/${item.id}`}>
-        <Image
-          height={item.image?.height}
-          width={item.image?.width}
-          src={item.image?.src!}
+        <item.image
+          className={s[`map${item.id}`]}
           onMouseEnter={() => setIsShownCard(item.id)}
         />
       </Link>
@@ -32,7 +29,7 @@ const GreeceMap = ({ item, setIsShownCard, isShownCard }: MapProps) => {
         cartText={item.cartText}
         title={item.cartTitle}
         link={item.link}
-        className={s[`destination__cartShown_${item.id}`]}
+        className={s[`cartShown_${item.id}`]}
         onClose={onClose}
         isOpen={isShownCard == item.id}
       />

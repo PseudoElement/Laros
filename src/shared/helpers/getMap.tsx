@@ -27,9 +27,7 @@ export const getMap = (id: number): getMap => {
 }
 
 export const getCurrentMap = (id: number) => {
-  const GreeceMap = mockMaps.Greece.find(item => item.id == id)
-  const CyrpusMap = mockMaps.Cyrpus.find(item => item.id == id)
-  const MacedoniaMap = mockMaps.Macedonia.find(item => item.id == id)
+  const currentMap = mockMaps.Greece.find(item => item.id == id)
 
-  return GreeceMap || CyrpusMap || MacedoniaMap
+  return currentMap?.region
 }

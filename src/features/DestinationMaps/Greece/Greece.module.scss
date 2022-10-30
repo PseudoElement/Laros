@@ -14,15 +14,15 @@
 .sub__gr1 {
   position: absolute;
   transition: all 0.2s ease-in;
-  margin-right: 378px;
-  margin-top: 294px;
+  margin-right: 206px;
+  margin-top: 248px;
   cursor: url('/public/assets/images/destinations/cursor.png'), auto;
 }
 
 .sub__gr2 {
   position: absolute;
-  margin-right: 256px;
-  margin-top: 219px;
+  margin-right: 102px;
+  margin-top: 188px;
   transition: 0.2s all ease-in;
   cursor: url(/public/assets/images/destinations/cursor.png), auto;
 }
@@ -30,24 +30,33 @@
 .sub__gr3 {
   position: absolute;
   margin-top: 20px;
-  margin-left: 100px;
+  margin-left: 200px;
   transition: 0.2s all ease-in;
   cursor: url(/public/assets/images/destinations/cursor.png), auto;
 }
 
+.sub__gr3:hover {
+  fill: #f5bc2e;
+  z-index: 1;
+}
+
 .sub__gr4 {
   position: absolute;
-  margin-top: 348px;
-  margin-left: 176px;
+  margin-top: 300px;
+  margin-left: 256px;
   transition: 0.2s all ease-in;
   transform: rotate(0.5deg);
   cursor: url(/public/assets/images/destinations/cursor.png), auto;
 }
 
+.sub__gr4:hover {
+  fill: #22aaa8;
+}
+
 .sub__gr5 {
   position: absolute;
-  margin-top: 500px;
-  margin-right: 200px;
+  margin-top: 424px;
+  margin-right: 48px;
   transition: 0.2s all ease-in;
   z-index: 1;
   cursor: url(/public/assets/images/destinations/cursor.png), auto;
@@ -55,8 +64,8 @@
 
 .sub__gr6 {
   position: absolute;
-  margin-top: 402px;
-  margin-left: 100px;
+  margin-top: 336px;
+  margin-left: 236px;
   transition: 0.2s all ease-in;
   cursor: url(/public/assets/images/destinations/cursor.png), auto;
 }
@@ -64,22 +73,22 @@
 .sub__gr7 {
   position: absolute;
   transition: 0.2s all ease-in;
-  margin-left: 580px;
-  margin-top: 160px;
+  margin-left: 614px;
+  margin-top: 134px;
   cursor: url(/public/assets/images/destinations/cursor.png), auto;
 }
 
 .sub__gr8 {
   position: absolute;
-  margin-top: 544px;
-  margin-left: 400px;
+  margin-top: 460px;
+  margin-left: 470px;
   transition: 0.2s all ease-in;
   cursor: url(/public/assets/images/destinations/cursor.png), auto;
 }
 
 .sub__gr9 {
   position: absolute;
-  margin-top: 870px;
+  margin-top: 720px;
   margin-left: 400px;
   transition: 0.2s all ease-in;
   cursor: url(/public/assets/images/destinations/cursor.png), auto;
@@ -87,8 +96,8 @@
 
 .sub__gr10 {
   position: absolute;
-  margin-top: 620px;
-  margin-left: 900px;
+  margin-top: 520px;
+  margin-left: 980px;
   transition: 0.2s all ease-in;
   cursor: url(/public/assets/images/destinations/cursor.png), auto;
 }
@@ -97,45 +106,86 @@
   position: relative;
 }
 
-.destination__cartShown_1 {
+.cartShown_1 {
   left: 40%;
   bottom: 70%;
 }
 
-.destination__cartShown_2 {
+.cartShown_2 {
   left: 60%;
   bottom: 80%;
 }
 
-.destination__cartShown_3 {
+.cartShown_3 {
   left: 60%;
   top: 20%;
 }
 
-.destination__cartShown_4 {
+.cartShown_4 {
 }
 
-.destination__cartShown_5 {
+.cartShown_5 {
   left: 70%;
   bottom: 90%;
 }
 
-.destination__cartShown_6 {
+.cartShown_6 {
 }
 
-.destination__cartShown_7 {
+.cartShown_7 {
   left: 100%;
   bottom: 40%;
 }
 
-.destination__cartShown_8 {
+.cartShown_8 {
   left: 60%;
 }
 
-.destination__cartShown_9 {
+.cartShown_9 {
 }
 
-.destination__cartShown_10 {
+.cartShown_10 {
   left: 70%;
   bottom: 50%;
+}
+
+.map1:hover {
+  fill: #f5bb2c;
+}
+
+.map2:hover {
+  fill: #2f6bb4;
+}
+
+.map3:hover {
+  fill: #f5bc2e;
+  z-index: 1;
+}
+
+.map4:hover {
+  fill: #22aaa8;
+}
+
+.map6:hover {
+  fill: #907c72;
+}
+
+.map5:hover {
+  fill: #a2cf6c;
+}
+
+.map7:hover {
+  fill: #907c72;
+}
+
+.map8:hover {
+  fill: #814d99;
+}
+
+.map9:hover {
+  fill: #be007d;
+}
+
+.map10:hover {
+  fill: #814d99;
 }
