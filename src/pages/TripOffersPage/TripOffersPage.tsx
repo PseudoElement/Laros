@@ -2,8 +2,6 @@ import { useRouter } from 'next/router';
 import { TripCard } from 'pages/TravelPlannerPage/TripCard';
 import { FC, useEffect, useState } from 'react'
 import { tripPageInfo } from 'shared/mocks/tripInfo';
-import { tripListMock } from 'shared/mocks/tripList';
-import { TripItem } from 'shared/types/trip';
 import s from './TripOffersPage.module.scss';
 import cn from 'classnames';
 import bg from '/public/assets/images/tripListPageBg.png'
@@ -13,7 +11,6 @@ import { useForm } from 'react-hook-form';
 import { Tags } from 'components/Tags';
 import Image from 'next/image';
 import { useGetTrips } from 'shared/hooks/useGetTrips';
-import { divide } from 'lodash';
 
 enum View {
     LIST,
