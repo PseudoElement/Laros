@@ -48,7 +48,7 @@ export const Header: FC = () => {
                     <span> Contact us</span>
                   </div>
                 </Link>
-                <Link href='/vouchers'>
+                <Link href='/voucher'>
                   <div className={s.headGift}>
                     <Image className={s.headSmIcon} src={giftImg} alt='call' />
                     <div>&nbsp;Gift voucher</div>
