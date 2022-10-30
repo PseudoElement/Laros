@@ -42,7 +42,7 @@ export const Header: FC = () => {
                 <Image src={isCollapsed ? logo : logoFull} alt='' />
               </div>
               <div className={s.rightNav}>
-                <Link href='/'>
+                <Link href='/contact'>
                   <div className={s.headContactUse}>
                     <Image className={s.headSmIcon} src={callImg} alt='call' />
                     <span> Contact us</span>
