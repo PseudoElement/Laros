@@ -20,6 +20,7 @@ export const TripFormPage: FC = () => {
     const { query } = useRouter();
     useEffect(() => {
         const tripID = Number(query.trip);
+        if (!tripID) { return }
         const loadTrip = async (trip: number) => {
             try {
                 const tripDetails = await getTrip(trip)
@@ -45,7 +46,7 @@ export const TripFormPage: FC = () => {
             <div className={s.content}>
                 <div className={s.form}>
                     <div className={s.header}>
-                        <div><ChevronLeftIcon /> <div className={s.title}>Back to previous step</div></div>
+                        <div onClick={() => setStep(Steps.FIRST)}><ChevronLeftIcon /> <div className={s.title}>Back to previous step</div></div>
                         <div><ResetIcon /> <div className={s.reset}>Reset all changes</div></div>
                     </div>
                     <div className={s.crumbs}>

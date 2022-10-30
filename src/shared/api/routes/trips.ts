@@ -4,6 +4,10 @@ import { Trip, TripCategory, TripFilterParams } from 'shared/types/trip'
 import { api } from '..'
 import { endpoints } from '../endpoints'
 
+export const getTrip = (id: number): AxiosPromise<Trip> => {
+  return api.get(endpoints.trips.id(id))
+}
+
 export const getTrips = (
   params: Partial<TripFilterParams>
 ): AxiosPromise<AxiosPaginatedResponse<Trip>> => {

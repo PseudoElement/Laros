@@ -8,3 +8,12 @@ export const provideOptionsWithIcon = (
     return { ...option, icon }
   })
 }
+
+export const getTripDays = (
+  start: number,
+  duration: number
+): string | `${number}-${number}` => {
+  if (duration === 1) {
+    return start.toString()
+  } else return `${start}-${start + duration - 1}`
+}

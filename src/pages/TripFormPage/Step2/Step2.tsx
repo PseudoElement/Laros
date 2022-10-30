@@ -21,8 +21,9 @@ export const Step2: FC<Step2Props> = ({ setStep }) => {
     const travelers = [1, 2]
     const onSubmit = (formData: any) => {
         // TODO add type
-
-        setStep(Steps.SECOND)
+        const [name, surname] = formData.full_name.split(' ')
+        const finalForm = { ...formData, name, surname, full_name: undefined }
+        console.log(finalForm)
     }
     return (
         <div className={s.container}>
@@ -76,6 +77,7 @@ export const Step2: FC<Step2Props> = ({ setStep }) => {
                                 placeholder='+41'
                                 onChange={onChange}
                                 value={value}
+                                type='phone'
                                 label='Mobile number'
                                 shorten
                             />
@@ -164,7 +166,7 @@ export const Step2: FC<Step2Props> = ({ setStep }) => {
                 </div>
                 <div className={s.messageSection}>
                     <Controller
-                        name='message'
+                        name='comment'
                         control={control}
                         render={({ field: { onChange, value } }) => (
                             <Input
@@ -180,7 +182,7 @@ export const Step2: FC<Step2Props> = ({ setStep }) => {
                 </div>
                 <div className={s.agentSection}>
                     <Controller
-                        name='is_agent'
+                        name='is_travel_agent'
                         control={control}
                         render={({ field: { onChange, value } }) => (
                             <div className={s.agentRadio}>
@@ -191,7 +193,7 @@ export const Step2: FC<Step2Props> = ({ setStep }) => {
                     />
                 </div>
                 <div className={s.actions}>
-                    <Button onClick={() => handleSubmit(onSubmit)}>Save changes</Button>
+                    <Button onClick={handleSubmit(onSubmit)}>Save changes</Button>
                     <Button variant='outline'>Cancel</Button>
                 </div>
                 <div className={s.terms}>

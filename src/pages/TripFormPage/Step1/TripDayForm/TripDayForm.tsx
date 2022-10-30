@@ -20,7 +20,7 @@ interface TripDayFormProps {
     description: string
     duration: number
     location: string
-    day: number
+    day: string
     type: TransferType
     to: string
     from: string
@@ -65,7 +65,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({ day, total, rooms, hotel, fr
                     </div>
                 </div>
                 <div className={s.section}>
-                    <div className={s.sectionTitle}>{`Accommodation\nbreakfast in:`}</div>
+                    <div className={s.sectionTitle}>{`Accommodation/\nbreakfast in:`}</div>
                     <div className={cn(s.sectionValue, s.hotel)}><span className={s.valueIcon}><PinIcon /></span> <div className={s.valueName}>{hotel.name}</div> <span className={s.infoBtn}><InfoIcon /></span></div>
                     <Button classname={s.editBtn}>Edit</Button>
                 </div>

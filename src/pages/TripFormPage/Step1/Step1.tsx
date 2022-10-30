@@ -2,7 +2,7 @@ import { AddIcon, Button, InfoIcon } from 'components';
 import { Select } from 'components/Select';
 import { FC } from 'react'
 import { Controller, useForm } from 'react-hook-form';
-import { provideOptionsWithIcon } from 'shared/helpers/transformers';
+import { getTripDays, provideOptionsWithIcon } from 'shared/helpers/transformers';
 import { useAppDispatch } from 'shared/hooks/redux';
 import { TransferType } from 'shared/types/car';
 import { Steps } from '../TripFormPage'
@@ -57,8 +57,8 @@ export const Step1: FC<Step1Props> = ({ setStep, trip }) => {
                     />
                 </div>
             </div>
-            {trip?.destinations.map((dest) => {
-                return <TripDayForm hotel={{ name: dest.hotel_name }} description={dest.description ?? 'No description'} duration={dest.duration} rooms={[{ room_name: 'Standard', capacity: 2 }, { room_name: 'Standard', capacity: 2 }]} location={dest.destination_name} day={1} total={trip.duration} type={TransferType.PICKUP} to='Athens airport (ATH)' from=' The Corinth Canal to Nafplion' />
+            {trip?.destinations.map((dest, index) => {
+                return <TripDayForm hotel={{ name: dest.hotel_name }} description={dest.description ?? 'No description'} duration={dest.duration} rooms={[{ room_name: 'Standard', capacity: 2 }, { room_name: 'Standard', capacity: 2 }]} location={dest.destination_name} day={getTripDays(index === 0 ? 1 : trip.destinations[index - 1]?.duration + 1, dest.duration)} total={trip.duration} type={TransferType.PICKUP} to='Athens airport (ATH)' from=' The Corinth Canal to Nafplion' />
             })}
 
             <div className={s.endpoint}>
@@ -85,7 +85,7 @@ export const Step1: FC<Step1Props> = ({ setStep, trip }) => {
                 </div>
             </div>
             <div className={s.actions}>
-                <Button onClick={() => handleSubmit(onSubmit)}>Next step</Button>
+                <Button onClick={() => setStep(Steps.SECOND)}>Next step</Button>
                 <Button variant='outline'>Cancel</Button>
             </div>
         </div>
