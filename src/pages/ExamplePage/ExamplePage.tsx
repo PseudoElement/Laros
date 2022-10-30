@@ -6,7 +6,7 @@ import { CategoryCard } from 'pages/TravelPlannerPage/CategoryCard'
 import { moreCategoriesMock } from 'shared/mocks/tripPlanner'
 import { ContactForm } from 'features/ContactForm'
 import { Radio } from 'components/Radio'
-import { Modal, ReactPlayer } from 'components'
+import { Map, Modal, ReactPlayer } from 'components'
 import { Checkbox } from 'components/Checkbox'
 import { Tags } from 'components/Tags'
 import { mockTags } from 'shared/mocks/tags'
@@ -17,7 +17,7 @@ import { tripCards } from 'shared/mocks/tripCards'
 import { ChangeTransferModal } from 'features/ChangeTransferModal'
 import { carsMock } from 'shared/mocks/cars'
 import { TransferType } from 'shared/types/car'
-import { InputCalendar } from 'components/InputCalendar'
+import axios from 'axios'
 
 import s from './example.module.scss'
 
@@ -30,6 +30,18 @@ export const ExamplePage: FC = () => {
   const [counter1, setCounter1] = useState<any | Date>('')
   const [tags, setTags] = useState(mockTags)
   const tripCardData = tripCards[0]
+
+  const [route, setRoute] = useState()
+
+  React.useEffect(() => {
+    async function getRoute() {
+      await axios({
+        method: 'GET',
+        url: 'http://165.227.155.246/api/trip/1',
+      }).then(data => setRoute(data.data.data.route))
+    }
+    getRoute()
+  }, [])
 
 
   const [e, setE] = useState('ssssssssss')
@@ -60,12 +72,14 @@ export const ExamplePage: FC = () => {
         </Slider>
       </div>
 
-
+        <div style={{height: '800px', width: '1500px'}}>
+          <Map route={route} />
+        </div>
       <div
         style={{ marginTop: '15px', backgroundColor: '#FAFBFC', width: '100%' }}
       >
         <div style={{ width: '400px', marginLeft: 50 }}>
-          <InputCalendar label='Earliest depature' />
+          {/* <InputCalendar label='Earliest depature' /> */}
         </div>
         <div style={{ width: '400px', marginLeft: 50 }}>
           <Input
@@ -109,7 +123,7 @@ export const ExamplePage: FC = () => {
           />
         </div>
         <div style={{ width: '400px', marginTop: 100, marginLeft: 50 }}>
-          <InputCalendar label='Earliest depature' shorten />
+          {/* <InputCalendar label='Earliest depature' shorten /> */}
         </div>
         <div style={{ width: '400px', marginLeft: 50 }}>
           <Input
@@ -208,7 +222,13 @@ export const ExamplePage: FC = () => {
       </div >
 
       <HotelCard tags={tags} />
-      <ChangeTransferModal cars={carsMock} type={TransferType.PICKUP} onClick={() => 1} isOpen={isChangeCarOpen} onClose={() => setIsChangeCarOpen(false)} />
+      <ChangeTransferModal
+        cars={carsMock}
+        type={TransferType.PICKUP}
+        onClick={() => 1}
+        isOpen={isChangeCarOpen}
+        onClose={() => setIsChangeCarOpen(false)}
+      />
       <div
         style={{
           width: '1152px',
