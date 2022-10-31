@@ -9,7 +9,7 @@ import s from './HotelCard.module.scss'
 import hotel_pic from '../../../public/assets/images/area-images/cart__hotel-four.jpg'
 import { mockTags } from 'shared/mocks/tags'
 
-interface HotelCardProps {
+export interface HotelCardProps {
   rating: number
   type: string
   name: string
@@ -32,9 +32,9 @@ export const HotelCard: FC<HotelCardProps> = ({
     <div className={s.container}>
       <div className={s.slider}>
         <Image
-          src={hotel_pic}
+          layout='fill'
           objectFit='cover'
-          height='850'
+          src={hotel_pic}
           alt='Hotel Picture'
         />
       </div>
@@ -64,7 +64,9 @@ export const HotelCard: FC<HotelCardProps> = ({
       </div>
       <div className={s.tags}>
         {tags.map(tag => (
-          <p className={s.tag}>{tag.name}</p>
+          <p key={tag.id} className={s.tag}>
+            {tag.name}
+          </p>
         ))}
       </div>
       <button className={s.button}>Learn more</button>
