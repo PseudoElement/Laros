@@ -131,10 +131,6 @@ export const ContactForm: FC<ContactFormProps> = ({ contactPage }) => {
           </Button>
         </div>
       </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 35f6e0764d8dec44d233fc6077fb654cccc1242d
       <div className={cn(s.info, { [s.contactInfo]: contactPage })}>
         <div className={cn(s.infoItem, s.appointment)}>
           <div className={s.infoIcon}>
