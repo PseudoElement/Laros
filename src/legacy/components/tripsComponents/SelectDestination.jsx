@@ -7,9 +7,9 @@ export const SelectDestination = ({ value, onChangeSubRegion }) => {
   const subRegions = [
     'Attica',
     'Central Greece',
-    'Central Macedonia',
+    'Central Cyrpus',
     'Crete',
-    'Eastern Macedonia and Thrace',
+    'Eastern Cyrpus and Thrace',
     'Epirus',
     'Ionian Islands',
     'North Aegean',

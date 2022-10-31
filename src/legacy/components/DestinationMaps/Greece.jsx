@@ -41,7 +41,7 @@ export const Greece = () => {
         <AnimatePresence>
           <motion.div
             key='question'
-            className='rounded-tr-md relative z-20  rounded-br-md shadow-sm px-1 py-2 bg-blue-200 cursor-pointer font-open border-l-2 border-yellow-500'
+            className='rounded-tr-md relative z-20 rounded-br-md shadow-sm px-1 py-2 bg-blue-200 cursor-pointer font-open border-l-2 border-yellow-500'
             onClick={() => setIsShown(!isShown)}
           ></motion.div>
 

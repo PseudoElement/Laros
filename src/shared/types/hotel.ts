@@ -1,4 +1,4 @@
-import {Tag} from "./tag";
+import { Tag } from './tag'
 
 export interface Room {
   readonly id: number
@@ -19,6 +19,34 @@ export type Hotel = {
   images: string[]
   name: string
   min_price: string
+  description: string
+  is_active: boolean
+  opinion: string
+  address: string | null
+  location: string
+  rating: number
+  tripadvisor_id: number | null
+  link: string
+  period: string
+  destination: number
+  tags: Tag[]
+}
+
+export type HotelFilterParams = {
+  destination: string
+  capacity: number
+  rating: number
+  tags: string
+  price_lt: string
+  price_gt: number
+  ordering: keyof Hotel
+}
+
+export type Hotel = {
+  readonly id: number
+  max_capacity?: number
+  images: string[]
+  name: string
   description: string
   is_active: boolean
   opinion: string

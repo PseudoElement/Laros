@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import { DestinationPage } from 'pages/DestinationPage'
 
-const DestinationId: NextPage = () => <DestinationPage />
+const Id: NextPage = () => <DestinationPage />
 
-export default DestinationId
+export default Id
