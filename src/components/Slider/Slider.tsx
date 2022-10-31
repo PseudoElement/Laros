@@ -23,11 +23,13 @@ export const Slider: FC<SliderProps> = ({
 
   nextEl,
   prevEl,
-  classname
+  classname,
 }) => {
-
-  const paginationOptions = withPagination && { clickable: true };
-  const navigationOptions = withNavigation && { nextEl: `.${nextEl}`, prevEl: `.${prevEl}` };
+  const paginationOptions = withPagination && { clickable: true }
+  const navigationOptions = withNavigation && {
+    nextEl: `.${nextEl}`,
+    prevEl: `.${prevEl}`,
+  }
   return (
     <div className={cn(s.slider, classname)}>
       <Swiper
@@ -43,13 +45,16 @@ export const Slider: FC<SliderProps> = ({
             ))
           : null}
       </Swiper>
-      {
-        withNavigation &&
+      {withNavigation && (
         <>
-          <div className={cn(s.swiperButtonPrev, prevEl, 'swiper-button-prev')}></div>
-          <div className={cn(s.swiperButtonNext, nextEl, 'swiper-button-next')}></div>
+          <div
+            className={cn(s.swiperButtonPrev, prevEl, 'swiper-button-prev')}
+          ></div>
+          <div
+            className={cn(s.swiperButtonNext, nextEl, 'swiper-button-next')}
+          ></div>
         </>
-      }
+      )}
     </div>
   )
 }

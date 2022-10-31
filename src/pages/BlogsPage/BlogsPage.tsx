@@ -18,7 +18,7 @@ interface BlogItemProps {
   image: ImageProps['src']
 }
 
-const BlogItem: FC<BlogItemProps> = ({
+export const BlogItem: FC<BlogItemProps> = ({
   id,
   title,
   subTitle,
@@ -82,7 +82,9 @@ export const BlogsPage: FC = () => {
           </div>
         </div>
         <div className={s.contact}>
-          <Button classname={s.button}>Contact</Button>
+          <Button variant='secondary' classname={s.button}>
+            Contact
+          </Button>
         </div>
       </div>
     </>

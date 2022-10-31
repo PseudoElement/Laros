@@ -5,7 +5,7 @@ import arrow from '/public/assets/images/arrowBrochure.svg'
 export const ArrowIcon: FC = () => {
   return (
     <>
-      <Image src={arrow} width={13} height={13} />
+      <Image src={arrow} width={13} height={13} alt='arrow icon' />
     </>
   )
 }
