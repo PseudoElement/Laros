@@ -43,12 +43,12 @@ export const ExamplePage: FC = () => {
     getRoute()
   }, [])
 
-
   const [e, setE] = useState('ssssssssss')
 
   const ee = (ee: string) => {
     setE(ee)
   }
+  // @ts-ignore
   return (
     <div
       style={{
@@ -72,9 +72,9 @@ export const ExamplePage: FC = () => {
         </Slider>
       </div>
 
-        <div style={{height: '800px', width: '1500px'}}>
-          <Map route={route} />
-        </div>
+      <div style={{ height: '800px', width: '1500px' }}>
+        <Map route={route} />
+      </div>
       <div
         style={{ marginTop: '15px', backgroundColor: '#FAFBFC', width: '100%' }}
       >
@@ -172,13 +172,12 @@ export const ExamplePage: FC = () => {
         <div
           style={{ marginTop: '15px' }}
           onClick={() => setIsModalOpen(true)}
-        ></div>
+        />
         <Slider>
           {moreCategoriesMock.map((card, id) => {
             return <CategoryCard {...card} key={id} />
           })}
         </Slider>
-        //TODO move to example page
         <ContactForm />
         <Radio
           onChange={v => setCheckboxValue(v)}
@@ -214,14 +213,30 @@ export const ExamplePage: FC = () => {
         <Checkbox label={'Текст Чекбокса'} />
         <Tags tags={tags} onChange={setTags} />
         <ChangeLocationModal
+          // @ts-ignore
           destinations={destinationsMock}
           onClick={() => 1}
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
         />
-      </div >
-
-      <HotelCard tags={tags} />
+      </div>
+      <HotelCard
+        tags={tags}
+        address={''}
+        description={''}
+        destination={1}
+        id={1}
+        images={[]}
+        is_active
+        link={''}
+        location={''}
+        min_price={''}
+        name={'te'}
+        opinion={''}
+        period={'1'}
+        rating={1}
+        tripadvisor_id={2}
+      />
       <ChangeTransferModal
         cars={carsMock}
         type={TransferType.PICKUP}
@@ -237,8 +252,8 @@ export const ExamplePage: FC = () => {
           justifyContent: 'space-between',
         }}
       >
-        <TripCard {...tripCardData} wide />
+        <TripCard images={[]} name={''} price={0} {...tripCardData} wide />
       </div>
-    </div >
+    </div>
   )
 }

@@ -37,7 +37,7 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
         <div className={s.voucherSection}>
           <div className={s.title}>Voucher</div>
           <div className={s.voucherInputs}>
-            <div className={s.selectDiv}></div>
+            <div className={s.selectDiv} />
             <Controller
               name='name'
               control={control}
@@ -60,8 +60,8 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
           <div className={s.title}>Billing person details</div>
           <div className={s.billingDescription}>
             Please, share with us the information about the person who sends the
-            gift card. No personal information won't be provided to any third
-            parties.{' '}
+            gift card. No personal information won&apos;t be provided to any
+            third parties.
           </div>
           <Controller
             name='name'

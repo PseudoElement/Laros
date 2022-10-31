@@ -23,9 +23,9 @@ export const Destinations: FC<DestinationsProps> = ({
       <p className={s.title}>{title}</p>
       <p className={s.description}>{description}</p>
       <div className={s.imagesWrapper}>
-        {images.map(item => {
+        {images.map((item, idx) => {
           return (
-            <div className={s.images}>
+            <div className={s.images} key={idx}>
               <Image
                 className={s.image}
                 src={item.img}

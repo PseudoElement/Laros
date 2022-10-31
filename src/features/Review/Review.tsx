@@ -15,6 +15,7 @@ interface ReviewProps {
   avatar: StaticImageData | string
   text: string
   withAvatar: boolean
+  withImages?: boolean
 }
 
 export const Review: FC<ReviewProps> = ({
@@ -25,6 +26,7 @@ export const Review: FC<ReviewProps> = ({
   className,
   text,
   images,
+  withImages,
   withAvatar,
 }) => {
   return (

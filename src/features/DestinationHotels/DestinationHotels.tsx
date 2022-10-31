@@ -28,7 +28,9 @@ const DestinationHotels = () => {
       <Sorting setParams={setParams} params={params} />
       <div className={s.hotels}>
         {hotels.map(hotel => (
+          // @ts-ignore
           <HotelCard
+            // @ts-ignore
             type={'Type (Hotel/hostel ect)'}
             fromPrice={hotel?.max_capacity!}
             key={hotel.id}

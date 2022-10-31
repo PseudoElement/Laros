@@ -27,11 +27,12 @@ export const ChangeLocationModal: FC<ChangeLocationModalProps> = ({
           To change your staying location, please choose one of the following:
         </div>
         <div className={s.cards}>
-          {destinations.map(destination => (
+          {destinations.map((destination, idx) => (
             <LocationCard
               isSelected={selectedHotel === destination.id}
               onCardClick={() => openDestinationModal()}
               onSelect={setSelectedHotel}
+              key={idx}
               {...destination}
             />
           ))}

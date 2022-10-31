@@ -36,6 +36,7 @@ export const Comments: FC<CommentsBlockProps> = comments => {
             avatar={review.avatar}
             images={review.images}
             text={review.text}
+            withImages
           />
         ))}
       </Slider>

@@ -18,8 +18,16 @@ export const InsiderTips: FC<InsiderProps> = ({
       <p className={s.title}>{title}</p>
       <p className={s.description}>{description}</p>
       <div className={s.imageWrapper}>
-        {images.map(item => {
-          return <Image className={s.image} width={0} height={194} src={item} />
+        {images.map((item, idx) => {
+          return (
+            <Image
+              key={idx}
+              className={s.image}
+              width={0}
+              height={194}
+              src={item}
+            />
+          )
         })}
       </div>
     </div>

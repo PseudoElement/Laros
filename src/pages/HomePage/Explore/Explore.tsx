@@ -18,10 +18,11 @@ export const Explore: FC<ExploreBlockProps> = ({ images }) => {
         </p>
       </div>
       <div className={s.images}>
-        {images.map(item => (
+        {images.map((item, idx) => (
           <div
             className={s.exploreItem}
             style={{ backgroundImage: `url(${item.image})` }}
+            key={idx}
           >
             <span className={s.itemName}>{item.title}</span>
           </div>
