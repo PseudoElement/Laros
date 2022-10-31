@@ -6,7 +6,7 @@ import { FC, ReactNode } from 'react'
 import cn from 'classnames'
 
 interface SliderProps {
-  children: ReactNode[]
+  children: ReactNode[] | []
   slidesPerView?: number
   withNavigation?: boolean
   withPagination?: boolean
@@ -20,15 +20,14 @@ export const Slider: FC<SliderProps> = ({
   slidesPerView = 3,
   withNavigation = false,
   withPagination = false,
+
   nextEl,
   prevEl,
   classname,
 }) => {
-  const paginationOptions = withPagination && { clickable: true }
-  const navigationOptions = withNavigation && {
-    nextEl: `.${nextEl}`,
-    prevEl: `.${prevEl}`,
-  }
+
+  const paginationOptions = withPagination && { clickable: true };
+  const navigationOptions = withNavigation && { nextEl: `.${nextEl}`, prevEl: `.${prevEl}` };
   return (
     <div className={cn(s.slider, classname)}>
       <Swiper

@@ -47,7 +47,8 @@ export const SelectComponent: FC<OptionsProps> = ({
   const Control: FC<ControlProps> = props => (
     <components.Control {...props}>
       {options.map((item, i) =>
-        item.label === props.getValue().map((el: any) => el.label)[0] && item.icon ? (
+        item.label === props.getValue().map((el: any) => el.label)[0] &&
+        item.icon ? (
           <div className={s.control}>
             <Image key={i} src={item.icon} width={0} height={0} alt='icon' />
           </div>

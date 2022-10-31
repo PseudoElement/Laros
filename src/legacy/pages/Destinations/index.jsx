@@ -1,12 +1,12 @@
-import React from 'react';
-import {DestinationNavBar} from "../../components/DestinationNavBar";
+import React from 'react'
+import { DestinationNavBar } from '../../components/DestinationNavBar'
 
-import "./Destinations.scss";
+import './Destinations.scss'
 
 export const Destinations = () => {
   return (
-    <div  className="destinations__container">
+    <div className='destinations__container'>
       <DestinationNavBar />
     </div>
   )
-} 
+}

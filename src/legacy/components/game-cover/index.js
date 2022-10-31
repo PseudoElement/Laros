@@ -1,1 +1,1 @@
-export * from './game-cover';
+export * from './game-cover'

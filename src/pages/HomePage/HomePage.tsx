@@ -20,6 +20,7 @@ import { getDestinationsThunk } from '../../store/slices/destinations/thunk'
 import { DestinationsState } from '../../store/slices/destinations/destinations'
 
 export const HomePage: FC = () => {
+
   const [activeMenu, setActiveMenu] = useState<boolean>(false)
 
   return (

@@ -36,17 +36,12 @@ export const Input: FC<InputProps> = ({
   shorten,
   withCounter,
   min,
-  max
+  max,
 }) => {
   switch (type) {
     case 'phone':
       return (
-        <div
-          className={cn(
-            s.input,
-            { [s.shorten]: shorten },
-            classname)}
-        >
+        <div className={cn(s.input, { [s.shorten]: shorten }, classname)}>
           {<div className={s.label}>{label}</div>}
           <MaskedInput
             mask={NUMBER_REG_EXP}
@@ -58,16 +53,14 @@ export const Input: FC<InputProps> = ({
             onChange={e => onChange(e.target.value)}
             value={value}
           />
-          <span className={s.icon}><PencilIcon /></span>
+          <span className={s.icon}>
+            <PencilIcon />
+          </span>
         </div>
       )
     case 'email':
       return (
-        <div className={cn(
-          s.input,
-          { [s.shorten]: shorten },
-          classname)}
-        >
+        <div className={cn(s.input, { [s.shorten]: shorten }, classname)}>
           {<div className={s.label}>{label}</div>}
           <input
             placeholder={placeholder}
@@ -76,6 +69,7 @@ export const Input: FC<InputProps> = ({
             className={s.field}
             type={type}
           />
+
           <span className={s.icon}><PencilIcon /></span>
         </div>
       )
@@ -86,7 +80,8 @@ export const Input: FC<InputProps> = ({
             s.input,
             s.numberInput,
             { [s.shorten]: shorten },
-            classname)}
+            classname
+          )}
         >
           {<div className={s.label}>{label}</div>}
           <input
@@ -98,18 +93,26 @@ export const Input: FC<InputProps> = ({
             min={min}
             max={max}
           />
-          {withCounter && <div className={s.counter}><Counter value={Number(value)} onChange={onChange} min={min} max={max} /></div>}
-          {!withCounter && <span className={s.icon}><PencilIcon /></span>}
+          {withCounter && (
+            <div className={s.counter}>
+              <Counter
+                value={Number(value)}
+                onChange={onChange}
+                min={min}
+                max={max}
+              />
+            </div>
+          )}
+          {!withCounter && (
+            <span className={s.icon}>
+              <PencilIcon />
+            </span>
+          )}
         </div>
       )
     default:
       return (
-        <div
-          className={cn(
-            s.input,
-            { [s.shorten]: shorten },
-            classname)}
-        >
+        <div className={cn(s.input, { [s.shorten]: shorten }, classname)}>
           {<div className={s.label}>{label}</div>}
           <input
             placeholder={placeholder}
@@ -118,9 +121,10 @@ export const Input: FC<InputProps> = ({
             className={s.field}
             type={type}
           />
-          <span className={s.icon}><PencilIcon /></span>
+          <span className={s.icon}>
+            <PencilIcon />
+          </span>
         </div>
-
       )
   }
 }

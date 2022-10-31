@@ -50,6 +50,7 @@ export const DestinationLayout: FC<DestinationLayoutProps> = ({
               ? truncate(description, { length: TRUNCATED_TEXT_SIZE })
               : description}
           </div>
+
           {isTruncated && (
             <div onClick={() => setIsTruncated(false)} className={s.more}>
               More
