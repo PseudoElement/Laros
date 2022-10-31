@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
 
+// @ts-ignore
 import ReactStars from 'react-rating-stars-component'
 
 import { Button } from 'components'
@@ -17,17 +18,26 @@ export const HotelCard: FC<HotelCardProps> = ({
   rating,
   address,
   name,
-  fromPrice,
-  period,
   tags,
   images,
+  id,
+  link,
+  location,
+  max_capacity,
+  period,
+  tripadvisor_id,
+  is_active,
+  opinion,
+  destination,
+  description,
   onClick,
+    min_price
 }) => {
   return (
     <div className={s.HotelCard}>
       <div className={s.HotelCardImage}>
         <Image
-          src={images}
+          src={images[0]}
           objectFit='cover'
           width='368'
           height='180'
@@ -52,7 +62,7 @@ export const HotelCard: FC<HotelCardProps> = ({
       <div className={s.info}>
         <div className={s.block}>
           <p className={s.text}>From</p>
-          <p className={s.price}>{fromPrice} CHF / Night</p>
+          <p className={s.price}>{min_price} CHF / Night</p>
           <p className={s.text}>Pro person</p>
         </div>
         <div className={s.block}>
@@ -62,10 +72,10 @@ export const HotelCard: FC<HotelCardProps> = ({
       </div>
 
       <div className={s.tags}>
-        {tags.map((tag, index) => (
-          <p key={index} className={s.tag}>
+        {tags.slice(0, 2).map((tag, index) => (
+          <span key={index} className={s.tag}>
             {tag.name}
-          </p>
+          </span>
         ))}
       </div>
 

@@ -1,6 +1,8 @@
-import { HotelGallery, HotelPageProps } from '../types/hotelPage'
+import { HotelGallery } from '../types/hotelPage'
+import { Hotel, Room } from '../types/hotel'
 
 import img from '../../../public/assets/images/hotelIntroImg.jpg'
+import map from '../../../public/assets/images/hotelLocationMap.png'
 
 import room1 from '../../../public/assets/images/hotelRooms/Rectangle 96.png'
 import room2 from '../../../public/assets/images/hotelRooms/Rectangle 96 (1).png'
@@ -12,7 +14,6 @@ import gallery1 from '../../../public/assets/images/hotelPageGallery/Frame1.png'
 import gallery2 from '../../../public/assets/images/hotelPageGallery/Frame2.png'
 import gallery3 from '../../../public/assets/images/hotelPageGallery/Frame3.png'
 
-import { Hotel, Room } from '../types/hotel'
 
 export const HotelMock: Hotel = {
   id: 1,
@@ -22,11 +23,12 @@ export const HotelMock: Hotel = {
   description:
     'Malesuada nunc consequat porttitor vitae. Risus vitae ipsum varius eleifend ullamcorper tellus, dolor ipsum suspendisse. Maecenas et urna a, nibh dolor id elit a cras. Etiam lobortis habitant tempor est eleifend vulputate egestas. Lacus mollis vel, eu, congue tellus rhoncus quis adipiscing. Aenean fringilla vulputate maecenas amet, mattis id odio ultrices imperdiet. Et, viverra mauris, cursus molestie. Hendrerit quisque pulvinar montes, duis tincidunt. Sagittis euismod sed dui ac ut eget massa nibh. Massa, vitae dolor nulla ante orci. Sodales neque lacus, magna nisl blandit pellentesque.',
   images: [img.src, img.src, img.src, img.src, img.src, img.src],
-  location: '',
+  location: map.src,
   max_capacity: 0,
   is_active: true,
   opinion: '',
   tripadvisor_id: 1,
+  min_price: '40',
   destination: 2,
   link: '',
   period: '',
@@ -40,6 +42,7 @@ export const HotelMock: Hotel = {
     { id: 7, name: 'Arch of Galerius', isSelected: false },
   ],
 }
+
 export const facilitiesAndAmenities = [
   { id: 1, facility: 'Spa' },
   { id: 2, facility: 'Poolside bar' },
@@ -163,7 +166,7 @@ export const hotelRoomsMock: Room[] = [
   },
 ]
 
-export const otherHotels: Hotel[] = [
+export const nearHotelsMock: Hotel[] = [
   {
     id: 1,
     name: 'Grecotel Astir Egnatia Alexandroupolis',
@@ -179,7 +182,8 @@ export const otherHotels: Hotel[] = [
     tripadvisor_id: 1,
     destination: 2,
     link: '',
-    period: '',
+    period: 'Summer, 2022',
+    min_price: '40',
     tags: [
       { id: 1, name: 'White tower of Thessaloniki', isSelected: false },
       {
@@ -195,7 +199,7 @@ export const otherHotels: Hotel[] = [
     ],
   },
   {
-    id: 1,
+    id: 2,
     name: 'Grecotel Astir Egnatia Alexandroupolis',
     rating: 4,
     address: 'Egnatia Park, Alexandroupoli 681 00, Greece',
@@ -207,9 +211,10 @@ export const otherHotels: Hotel[] = [
     is_active: true,
     opinion: '',
     tripadvisor_id: 1,
+    min_price: '40',
     destination: 2,
     link: '',
-    period: '',
+    period: 'Summer, 2022',
     tags: [
       { id: 1, name: 'White tower of Thessaloniki', isSelected: false },
       {
@@ -225,7 +230,7 @@ export const otherHotels: Hotel[] = [
     ],
   },
   {
-    id: 1,
+    id: 3,
     name: 'Grecotel Astir Egnatia Alexandroupolis',
     rating: 4,
     address: 'Egnatia Park, Alexandroupoli 681 00, Greece',
@@ -237,9 +242,10 @@ export const otherHotels: Hotel[] = [
     is_active: true,
     opinion: '',
     tripadvisor_id: 1,
+    min_price: '40',
     destination: 2,
     link: '',
-    period: '',
+    period: 'Summer, 2022',
     tags: [
       { id: 1, name: 'White tower of Thessaloniki', isSelected: false },
       {
@@ -255,7 +261,7 @@ export const otherHotels: Hotel[] = [
     ],
   },
   {
-    id: 1,
+    id: 4,
     name: 'Grecotel Astir Egnatia Alexandroupolis',
     rating: 4,
     address: 'Egnatia Park, Alexandroupoli 681 00, Greece',
@@ -267,9 +273,103 @@ export const otherHotels: Hotel[] = [
     is_active: true,
     opinion: '',
     tripadvisor_id: 1,
+    min_price: '40',
     destination: 2,
     link: '',
-    period: '',
+    period: 'Summer, 2022',
+    tags: [
+      { id: 1, name: 'White tower of Thessaloniki', isSelected: false },
+      {
+        id: 2,
+        name: 'Archaeological Museum of Thessaloniki',
+        isSelected: false,
+      },
+      { id: 3, name: 'Arch of Galerius', isSelected: false },
+      { id: 4, name: 'Church of St. Demetrios', isSelected: false },
+      { id: 5, name: 'Arch of Galerius', isSelected: false },
+      { id: 6, name: 'Arch of Galerius', isSelected: false },
+      { id: 7, name: 'Arch of Galerius', isSelected: false },
+    ],
+  },
+  {
+    id: 5,
+    name: 'Grecotel Astir Egnatia Alexandroupolis',
+    rating: 4,
+    address: 'Egnatia Park, Alexandroupoli 681 00, Greece',
+    description:
+      'Malesuada nunc consequat porttitor vitae. Risus vitae ipsum varius eleifend ullamcorper tellus, dolor ipsum suspendisse. Maecenas et urna a, nibh dolor id elit a cras. Etiam lobortis habitant tempor est eleifend vulputate egestas. Lacus mollis vel, eu, congue tellus rhoncus quis adipiscing. Aenean fringilla vulputate maecenas amet, mattis id odio ultrices imperdiet. Et, viverra mauris, cursus molestie. Hendrerit quisque pulvinar montes, duis tincidunt. Sagittis euismod sed dui ac ut eget massa nibh. Massa, vitae dolor nulla ante orci. Sodales neque lacus, magna nisl blandit pellentesque.',
+    images: [img.src, img.src, img.src, img.src, img.src, img.src],
+    location: '',
+    max_capacity: 0,
+    is_active: true,
+    opinion: '',
+    tripadvisor_id: 1,
+    min_price: '40',
+    destination: 2,
+    link: '',
+    period: 'Summer, 2022',
+    tags: [
+      { id: 1, name: 'White tower of Thessaloniki', isSelected: false },
+      {
+        id: 2,
+        name: 'Archaeological Museum of Thessaloniki',
+        isSelected: false,
+      },
+      { id: 3, name: 'Arch of Galerius', isSelected: false },
+      { id: 4, name: 'Church of St. Demetrios', isSelected: false },
+      { id: 5, name: 'Arch of Galerius', isSelected: false },
+      { id: 6, name: 'Arch of Galerius', isSelected: false },
+      { id: 7, name: 'Arch of Galerius', isSelected: false },
+    ],
+  },
+  {
+    id: 6,
+    name: 'Grecotel Astir Egnatia Alexandroupolis',
+    rating: 4,
+    address: 'Egnatia Park, Alexandroupoli 681 00, Greece',
+    description:
+      'Malesuada nunc consequat porttitor vitae. Risus vitae ipsum varius eleifend ullamcorper tellus, dolor ipsum suspendisse. Maecenas et urna a, nibh dolor id elit a cras. Etiam lobortis habitant tempor est eleifend vulputate egestas. Lacus mollis vel, eu, congue tellus rhoncus quis adipiscing. Aenean fringilla vulputate maecenas amet, mattis id odio ultrices imperdiet. Et, viverra mauris, cursus molestie. Hendrerit quisque pulvinar montes, duis tincidunt. Sagittis euismod sed dui ac ut eget massa nibh. Massa, vitae dolor nulla ante orci. Sodales neque lacus, magna nisl blandit pellentesque.',
+    images: [img.src, img.src, img.src, img.src, img.src, img.src],
+    location: '',
+    max_capacity: 0,
+    is_active: true,
+    opinion: '',
+    tripadvisor_id: 1,
+    min_price: '40',
+    destination: 2,
+    link: '',
+    period: 'Summer, 2022',
+    tags: [
+      { id: 1, name: 'White tower of Thessaloniki', isSelected: false },
+      {
+        id: 2,
+        name: 'Archaeological Museum of Thessaloniki',
+        isSelected: false,
+      },
+      { id: 3, name: 'Arch of Galerius', isSelected: false },
+      { id: 4, name: 'Church of St. Demetrios', isSelected: false },
+      { id: 5, name: 'Arch of Galerius', isSelected: false },
+      { id: 6, name: 'Arch of Galerius', isSelected: false },
+      { id: 7, name: 'Arch of Galerius', isSelected: false },
+    ],
+  },
+  {
+    id: 7,
+    name: 'Grecotel Astir Egnatia Alexandroupolis',
+    rating: 4,
+    address: 'Egnatia Park, Alexandroupoli 681 00, Greece',
+    description:
+      'Malesuada nunc consequat porttitor vitae. Risus vitae ipsum varius eleifend ullamcorper tellus, dolor ipsum suspendisse. Maecenas et urna a, nibh dolor id elit a cras. Etiam lobortis habitant tempor est eleifend vulputate egestas. Lacus mollis vel, eu, congue tellus rhoncus quis adipiscing. Aenean fringilla vulputate maecenas amet, mattis id odio ultrices imperdiet. Et, viverra mauris, cursus molestie. Hendrerit quisque pulvinar montes, duis tincidunt. Sagittis euismod sed dui ac ut eget massa nibh. Massa, vitae dolor nulla ante orci. Sodales neque lacus, magna nisl blandit pellentesque.',
+    images: [img.src, img.src, img.src, img.src, img.src, img.src],
+    location: '',
+    max_capacity: 0,
+    is_active: true,
+    opinion: '',
+    tripadvisor_id: 1,
+    min_price: '40',
+    destination: 2,
+    link: '',
+    period: 'Summer, 2022',
     tags: [
       { id: 1, name: 'White tower of Thessaloniki', isSelected: false },
       {

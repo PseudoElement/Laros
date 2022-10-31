@@ -18,6 +18,7 @@ export type Hotel = {
   max_capacity?: number
   images: string[]
   name: string
+  min_price: string
   description: string
   is_active: boolean
   opinion: string

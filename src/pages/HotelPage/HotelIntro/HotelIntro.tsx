@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react'
 import Image from 'next/image'
 import { truncate } from 'lodash'
+// @ts-ignore
 import ReactStars from 'react-rating-stars-component'
 
 import { Button } from 'components'
@@ -104,7 +105,7 @@ export const HotelIntro: FC<Hotel> = ({
 
       <div className={s.HotelIntroRight}>
         <div className={s.Map}>
-          {/*<Image src={location} width={542} height={425} alt='' />*/}
+          <Image src={location} width={542} height={425} alt='' />
         </div>
 
         <div className={s.TagsPanel}>
