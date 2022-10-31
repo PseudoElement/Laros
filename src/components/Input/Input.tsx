@@ -69,9 +69,8 @@ export const Input: FC<InputProps> = ({
             className={s.field}
             type={type}
           />
-          <span className={s.icon}>
-            <PencilIcon />
-          </span>
+
+          <span className={s.icon}><PencilIcon /></span>
         </div>
       )
     case 'number':

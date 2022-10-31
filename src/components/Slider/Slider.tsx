@@ -25,11 +25,9 @@ export const Slider: FC<SliderProps> = ({
   prevEl,
   classname,
 }) => {
-  const paginationOptions = withPagination && { clickable: true }
-  const navigationOptions = withNavigation && {
-    nextEl: `.${nextEl}`,
-    prevEl: `.${prevEl}`,
-  }
+
+  const paginationOptions = withPagination && { clickable: true };
+  const navigationOptions = withNavigation && { nextEl: `.${nextEl}`, prevEl: `.${prevEl}` };
   return (
     <div className={cn(s.slider, classname)}>
       <Swiper

@@ -1,6 +1,6 @@
-import Image from 'next/image'
-import { FC } from 'react'
-import sale from '/public/assets/images/sale.svg'
+import Image from "next/image"
+import { FC } from "react"
+import sale from "/public/assets/images/sale.svg"
 
 export const SaleIcon: FC = () => {
   return (
