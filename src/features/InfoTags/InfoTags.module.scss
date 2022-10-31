@@ -1,6 +1,6 @@
 @use '../../styles/style.scss' as *;
 
-.HotelTags {
+.InfoTags {
   display: flex;
   flex-wrap: wrap;
 
@@ -8,7 +8,7 @@
     margin: 0 4px 4px 0;
   }
 }
-.HotelTagsMoreTags {
+.InfoTagsMoreTags {
   font-size: 12px;
   line-height: 14px;
   color: $color-laros-dark-grey;

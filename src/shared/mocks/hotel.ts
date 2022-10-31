@@ -1,5 +1,4 @@
 import { HotelGallery, HotelPageProps } from '../types/hotelPage'
-import { HotelsCard } from '../types/hotelsCard'
 
 import img from '../../../public/assets/images/hotelIntroImg.jpg'
 
@@ -9,166 +8,280 @@ import room3 from '../../../public/assets/images/hotelRooms/Rectangle 96 (2).png
 import room4 from '../../../public/assets/images/hotelRooms/Rectangle 96 (3).png'
 import room5 from '../../../public/assets/images/hotelRooms/Rectangle 96 (4).png'
 
-import hotel from '../../../public/assets/images/area-images/cart__hotel-one.jpg'
-
 import gallery1 from '../../../public/assets/images/hotelPageGallery/Frame1.png'
 import gallery2 from '../../../public/assets/images/hotelPageGallery/Frame2.png'
 import gallery3 from '../../../public/assets/images/hotelPageGallery/Frame3.png'
 
-import imgMap from '../../../public/assets/images/hotelLocationMap.png'
+import { Hotel, Room } from '../types/hotel'
 
-export const HotelMock: HotelPageProps = {
+export const HotelMock: Hotel = {
   id: 1,
   name: 'Grecotel Astir Egnatia Alexandroupolis',
   rating: 4,
   address: 'Egnatia Park, Alexandroupoli 681 00, Greece',
   description:
     'Malesuada nunc consequat porttitor vitae. Risus vitae ipsum varius eleifend ullamcorper tellus, dolor ipsum suspendisse. Maecenas et urna a, nibh dolor id elit a cras. Etiam lobortis habitant tempor est eleifend vulputate egestas. Lacus mollis vel, eu, congue tellus rhoncus quis adipiscing. Aenean fringilla vulputate maecenas amet, mattis id odio ultrices imperdiet. Et, viverra mauris, cursus molestie. Hendrerit quisque pulvinar montes, duis tincidunt. Sagittis euismod sed dui ac ut eget massa nibh. Massa, vitae dolor nulla ante orci. Sodales neque lacus, magna nisl blandit pellentesque.',
-  images: img.src,
-  location: imgMap.src,
-  max_capacity: '',
+  images: [img.src, img.src, img.src, img.src, img.src, img.src],
+  location: '',
+  max_capacity: 0,
   is_active: true,
   opinion: '',
   tripadvisor_id: 1,
   destination: 2,
-  facilitiesAndAmenities: [
-    { id: 1, facility: 'Spa' },
-    { id: 2, facility: 'Poolside bar' },
-    { id: 3, facility: 'Car parking' },
-    { id: 4, facility: 'Swimming pool/ Jacuzzi' },
-    { id: 5, facility: 'Semi open & outdoor restaurant' },
-  ],
+  link: '',
+  period: '',
   tags: [
-    { id: 1, name: 'White tower of Thessaloniki' },
-    { id: 2, name: 'Archaeological Museum of Thessaloniki' },
-    { id: 3, name: 'Arch of Galerius' },
-    { id: 4, name: 'Church of St. Demetrios' },
-    { id: 5, name: 'Arch of Galerius' },
-    { id: 6, name: 'Arch of Galerius' },
-    { id: 7, name: 'Arch of Galerius' },
+    { id: 1, name: 'White tower of Thessaloniki', isSelected: false },
+    { id: 2, name: 'Archaeological Museum of Thessaloniki', isSelected: false },
+    { id: 3, name: 'Arch of Galerius', isSelected: false },
+    { id: 4, name: 'Church of St. Demetrios', isSelected: false },
+    { id: 5, name: 'Arch of Galerius', isSelected: false },
+    { id: 6, name: 'Arch of Galerius', isSelected: false },
+    { id: 7, name: 'Arch of Galerius', isSelected: false },
   ],
 }
+export const facilitiesAndAmenities = [
+  { id: 1, facility: 'Spa' },
+  { id: 2, facility: 'Poolside bar' },
+  { id: 3, facility: 'Car parking' },
+  { id: 4, facility: 'Swimming pool/ Jacuzzi' },
+  { id: 5, facility: 'Semi open & outdoor restaurant' },
+]
 
-export const hotelRooms = [
+export const hotelRoomsMock: Room[] = [
   {
     id: 1,
     image: room1.src,
-    title: 'Single room',
-    info: '25 CHF / Night Pro 1 Person',
     description:
       'Arcu vitae ultricies egestas velit gravida. Vel ornare bibendum cum mattis ut placerat.',
+    capacity: 1,
+    change_price: '',
+    hotel_name: 'Radisson Blu',
+    destination_name: 'Rio',
+    price: 100,
+    title: '',
+    room_name: 'single',
+    season_price: 100,
   },
   {
     id: 2,
-    image: room2.src,
-    title: 'Twin room',
-    info: '25 CHF / Night Pro 1 Person',
+    image: room1.src,
     description:
       'Arcu vitae ultricies egestas velit gravida. Vel ornare bibendum cum mattis ut placerat.',
+    capacity: 1,
+    change_price: '',
+    hotel_name: 'Radisson Blu',
+    destination_name: 'Rio',
+    price: 100,
+    title: '',
+    room_name: 'double',
+    season_price: 100,
   },
   {
     id: 3,
-    image: room3.src,
-    title: 'Double room',
-    info: '25 CHF / Night Pro 1 Person',
+    image: room1.src,
     description:
       'Arcu vitae ultricies egestas velit gravida. Vel ornare bibendum cum mattis ut placerat.',
+    capacity: 1,
+    change_price: '',
+    hotel_name: 'Radisson Blu',
+    destination_name: 'Rio',
+    price: 100,
+    title: '',
+    room_name: 'triple',
+    season_price: 100,
   },
   {
     id: 4,
-    image: room4.src,
-    title: 'Triple room',
-    info: '25 CHF / Night Pro 1 Person',
+    image: room1.src,
     description:
       'Arcu vitae ultricies egestas velit gravida. Vel ornare bibendum cum mattis ut placerat.',
+    capacity: 1,
+    change_price: '',
+    hotel_name: 'Radisson Blu',
+    destination_name: 'Rio',
+    price: 100,
+    title: '',
+    room_name: 'quadriple',
+    season_price: 100,
   },
   {
     id: 5,
-    image: room5.src,
-    title: 'Family room',
-    info: '25 CHF / Night Pro 1 Person',
+    image: room1.src,
     description:
       'Arcu vitae ultricies egestas velit gravida. Vel ornare bibendum cum mattis ut placerat.',
-  },
-]
-
-export const otherHotels: HotelsCard[] = [
-  {
-    id: 1,
-    image: hotel.src,
-    rating: 3,
-    address: 'Hotel • Leof. Dimokratias 422, Alexandroupoli ',
-    name: 'Sea lovers',
-    fromPrice: 42,
-    period: 'Summer, 2022',
-    tags: [
-      { id: 1, name: 'Beach view', isSelected: false },
-      { id: 2, name: 'Sea lovers', isSelected: true },
-    ],
-  },
-  {
-    id: 2,
-    image: hotel.src,
-    rating: 4,
-    address: 'Hotel • Leof. Dimokratias 422, Alexandroupoli ',
-    name: 'Ramada Plaza by Wyndham Thraki',
-    fromPrice: 42,
-    period: 'Summer, 2022',
-    tags: [
-      { id: 1, name: 'Beach view', isSelected: false },
-      { id: 2, name: 'Sea lovers', isSelected: true },
-    ],
-  },
-  {
-    id: 3,
-    image: hotel.src,
-    rating: 4,
-    address: 'Hotel • Leof. Dimokratias 422, Alexandroupoli ',
-    name: 'Avenue Luxury Apartments - Deluxe Studio',
-    fromPrice: 42,
-    period: 'Summer, 2022',
-    tags: [
-      { id: 1, name: 'Beach view', isSelected: false },
-      { id: 2, name: 'Sea lovers', isSelected: true },
-    ],
-  },
-  {
-    id: 4,
-    image: hotel.src,
-    rating: 4,
-    address: 'Hotel • Leof. Dimokratias 422, Alexandroupoli ',
-    name: 'Sea lovers',
-    fromPrice: 42,
-    period: 'Summer, 2022',
-    tags: [
-      { id: 1, name: 'Beach view', isSelected: false },
-      { id: 2, name: 'Sea lovers', isSelected: true },
-    ],
-  },
-  {
-    id: 5,
-    image: hotel.src,
-    rating: 4,
-    address: 'Hotel • Leof. Dimokratias 422, Alexandroupoli ',
-    name: 'Ramada Plaza by Wyndham Thraki',
-    fromPrice: 42,
-    period: 'Summer, 2022',
-    tags: [
-      { id: 1, name: 'Beach view', isSelected: false },
-      { id: 2, name: 'Sea lovers', isSelected: true },
-    ],
+    capacity: 1,
+    change_price: '',
+    hotel_name: 'Radisson Blu',
+    destination_name: 'Rio',
+    price: 100,
+    title: '',
+    room_name: 'single',
+    season_price: 100,
   },
   {
     id: 6,
-    image: hotel.src,
+    image: room1.src,
+    description:
+      'Arcu vitae ultricies egestas velit gravida. Vel ornare bibendum cum mattis ut placerat.',
+    capacity: 1,
+    change_price: '',
+    hotel_name: 'Radisson Blu',
+    destination_name: 'Rio',
+    price: 100,
+    title: '',
+    room_name: 'double',
+    season_price: 100,
+  },
+  {
+    id: 7,
+    image: room1.src,
+    description:
+      'Arcu vitae ultricies egestas velit gravida. Vel ornare bibendum cum mattis ut placerat.',
+    capacity: 1,
+    change_price: '',
+    hotel_name: 'Radisson Blu',
+    destination_name: 'Rio',
+    price: 100,
+    title: '',
+    room_name: 'triple',
+    season_price: 100,
+  },
+  {
+    id: 8,
+    image: room1.src,
+    description:
+      'Arcu vitae ultricies egestas velit gravida. Vel ornare bibendum cum mattis ut placerat.',
+    capacity: 1,
+    change_price: '',
+    hotel_name: 'Radisson Blu',
+    destination_name: 'Rio',
+    price: 100,
+    title: '',
+    room_name: 'quadriple',
+    season_price: 100,
+  },
+]
+
+export const otherHotels: Hotel[] = [
+  {
+    id: 1,
+    name: 'Grecotel Astir Egnatia Alexandroupolis',
     rating: 4,
-    address: 'Hotel • Leof. Dimokratias 422, Alexandroupoli ',
-    name: 'Avenue Luxury Apartments - Deluxe Studio',
-    fromPrice: 42,
-    period: 'Summer, 2022',
+    address: 'Egnatia Park, Alexandroupoli 681 00, Greece',
+    description:
+      'Malesuada nunc consequat porttitor vitae. Risus vitae ipsum varius eleifend ullamcorper tellus, dolor ipsum suspendisse. Maecenas et urna a, nibh dolor id elit a cras. Etiam lobortis habitant tempor est eleifend vulputate egestas. Lacus mollis vel, eu, congue tellus rhoncus quis adipiscing. Aenean fringilla vulputate maecenas amet, mattis id odio ultrices imperdiet. Et, viverra mauris, cursus molestie. Hendrerit quisque pulvinar montes, duis tincidunt. Sagittis euismod sed dui ac ut eget massa nibh. Massa, vitae dolor nulla ante orci. Sodales neque lacus, magna nisl blandit pellentesque.',
+    images: [img.src, img.src, img.src, img.src, img.src, img.src],
+    location: '',
+    max_capacity: 0,
+    is_active: true,
+    opinion: '',
+    tripadvisor_id: 1,
+    destination: 2,
+    link: '',
+    period: '',
     tags: [
-      { id: 1, name: 'Beach view', isSelected: false },
-      { id: 2, name: 'Sea lovers', isSelected: true },
+      { id: 1, name: 'White tower of Thessaloniki', isSelected: false },
+      {
+        id: 2,
+        name: 'Archaeological Museum of Thessaloniki',
+        isSelected: false,
+      },
+      { id: 3, name: 'Arch of Galerius', isSelected: false },
+      { id: 4, name: 'Church of St. Demetrios', isSelected: false },
+      { id: 5, name: 'Arch of Galerius', isSelected: false },
+      { id: 6, name: 'Arch of Galerius', isSelected: false },
+      { id: 7, name: 'Arch of Galerius', isSelected: false },
+    ],
+  },
+  {
+    id: 1,
+    name: 'Grecotel Astir Egnatia Alexandroupolis',
+    rating: 4,
+    address: 'Egnatia Park, Alexandroupoli 681 00, Greece',
+    description:
+      'Malesuada nunc consequat porttitor vitae. Risus vitae ipsum varius eleifend ullamcorper tellus, dolor ipsum suspendisse. Maecenas et urna a, nibh dolor id elit a cras. Etiam lobortis habitant tempor est eleifend vulputate egestas. Lacus mollis vel, eu, congue tellus rhoncus quis adipiscing. Aenean fringilla vulputate maecenas amet, mattis id odio ultrices imperdiet. Et, viverra mauris, cursus molestie. Hendrerit quisque pulvinar montes, duis tincidunt. Sagittis euismod sed dui ac ut eget massa nibh. Massa, vitae dolor nulla ante orci. Sodales neque lacus, magna nisl blandit pellentesque.',
+    images: [img.src, img.src, img.src, img.src, img.src, img.src],
+    location: '',
+    max_capacity: 0,
+    is_active: true,
+    opinion: '',
+    tripadvisor_id: 1,
+    destination: 2,
+    link: '',
+    period: '',
+    tags: [
+      { id: 1, name: 'White tower of Thessaloniki', isSelected: false },
+      {
+        id: 2,
+        name: 'Archaeological Museum of Thessaloniki',
+        isSelected: false,
+      },
+      { id: 3, name: 'Arch of Galerius', isSelected: false },
+      { id: 4, name: 'Church of St. Demetrios', isSelected: false },
+      { id: 5, name: 'Arch of Galerius', isSelected: false },
+      { id: 6, name: 'Arch of Galerius', isSelected: false },
+      { id: 7, name: 'Arch of Galerius', isSelected: false },
+    ],
+  },
+  {
+    id: 1,
+    name: 'Grecotel Astir Egnatia Alexandroupolis',
+    rating: 4,
+    address: 'Egnatia Park, Alexandroupoli 681 00, Greece',
+    description:
+      'Malesuada nunc consequat porttitor vitae. Risus vitae ipsum varius eleifend ullamcorper tellus, dolor ipsum suspendisse. Maecenas et urna a, nibh dolor id elit a cras. Etiam lobortis habitant tempor est eleifend vulputate egestas. Lacus mollis vel, eu, congue tellus rhoncus quis adipiscing. Aenean fringilla vulputate maecenas amet, mattis id odio ultrices imperdiet. Et, viverra mauris, cursus molestie. Hendrerit quisque pulvinar montes, duis tincidunt. Sagittis euismod sed dui ac ut eget massa nibh. Massa, vitae dolor nulla ante orci. Sodales neque lacus, magna nisl blandit pellentesque.',
+    images: [img.src, img.src, img.src, img.src, img.src, img.src],
+    location: '',
+    max_capacity: 0,
+    is_active: true,
+    opinion: '',
+    tripadvisor_id: 1,
+    destination: 2,
+    link: '',
+    period: '',
+    tags: [
+      { id: 1, name: 'White tower of Thessaloniki', isSelected: false },
+      {
+        id: 2,
+        name: 'Archaeological Museum of Thessaloniki',
+        isSelected: false,
+      },
+      { id: 3, name: 'Arch of Galerius', isSelected: false },
+      { id: 4, name: 'Church of St. Demetrios', isSelected: false },
+      { id: 5, name: 'Arch of Galerius', isSelected: false },
+      { id: 6, name: 'Arch of Galerius', isSelected: false },
+      { id: 7, name: 'Arch of Galerius', isSelected: false },
+    ],
+  },
+  {
+    id: 1,
+    name: 'Grecotel Astir Egnatia Alexandroupolis',
+    rating: 4,
+    address: 'Egnatia Park, Alexandroupoli 681 00, Greece',
+    description:
+      'Malesuada nunc consequat porttitor vitae. Risus vitae ipsum varius eleifend ullamcorper tellus, dolor ipsum suspendisse. Maecenas et urna a, nibh dolor id elit a cras. Etiam lobortis habitant tempor est eleifend vulputate egestas. Lacus mollis vel, eu, congue tellus rhoncus quis adipiscing. Aenean fringilla vulputate maecenas amet, mattis id odio ultrices imperdiet. Et, viverra mauris, cursus molestie. Hendrerit quisque pulvinar montes, duis tincidunt. Sagittis euismod sed dui ac ut eget massa nibh. Massa, vitae dolor nulla ante orci. Sodales neque lacus, magna nisl blandit pellentesque.',
+    images: [img.src, img.src, img.src, img.src, img.src, img.src],
+    location: '',
+    max_capacity: 0,
+    is_active: true,
+    opinion: '',
+    tripadvisor_id: 1,
+    destination: 2,
+    link: '',
+    period: '',
+    tags: [
+      { id: 1, name: 'White tower of Thessaloniki', isSelected: false },
+      {
+        id: 2,
+        name: 'Archaeological Museum of Thessaloniki',
+        isSelected: false,
+      },
+      { id: 3, name: 'Arch of Galerius', isSelected: false },
+      { id: 4, name: 'Church of St. Demetrios', isSelected: false },
+      { id: 5, name: 'Arch of Galerius', isSelected: false },
+      { id: 6, name: 'Arch of Galerius', isSelected: false },
+      { id: 7, name: 'Arch of Galerius', isSelected: false },
     ],
   },
 ]

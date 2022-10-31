@@ -5,11 +5,11 @@ import ReactStars from 'react-rating-stars-component'
 
 import { Button } from 'components'
 
-import { HotelsCard } from 'shared/types/hotelsCard'
+import { Hotel } from 'shared/types/hotel'
 
 import s from './HotelCard.module.scss'
 
-export interface HotelCardProps extends HotelsCard {
+export interface HotelCardProps extends Hotel {
   onClick?: (id: number) => void
 }
 
@@ -20,14 +20,14 @@ export const HotelCard: FC<HotelCardProps> = ({
   fromPrice,
   period,
   tags,
-  image,
+  images,
   onClick,
 }) => {
   return (
     <div className={s.HotelCard}>
       <div className={s.HotelCardImage}>
         <Image
-          src={image}
+          src={images}
           objectFit='cover'
           width='368'
           height='180'

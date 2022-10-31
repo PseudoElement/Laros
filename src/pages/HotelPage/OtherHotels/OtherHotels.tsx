@@ -3,12 +3,12 @@ import React, { FC } from 'react'
 import { HotelCard } from 'features/HotelCard'
 import { Slider } from 'components/Slider'
 
-import { HotelsCard } from 'shared/types/hotelsCard'
+import { Hotel } from 'shared/types/hotel'
 
 import s from './OtherHotels.module.scss'
 
 interface OtherHotelsProps {
-  hotels: HotelsCard[]
+  hotels: Hotel[]
 }
 
 export const OtherHotels: FC<OtherHotelsProps> = ({ hotels }) => {

@@ -1,11 +1,12 @@
 import React, { FC } from 'react'
 
-import { RoomCard, RoomCardProps } from './RoomCard/RoomCard'
+import { RoomCard } from './RoomCard/RoomCard'
+import { Room } from 'shared/types/hotel'
 
 import s from './RoomCards.module.scss'
 
 interface RoomCardsProps {
-  rooms: RoomCardProps[]
+  rooms: Room[]
 }
 
 export const RoomCards: FC<RoomCardsProps> = ({ rooms }) => {
@@ -19,7 +20,9 @@ export const RoomCards: FC<RoomCardsProps> = ({ rooms }) => {
 
       <div className={s.RoomCardsWrap}>
         {rooms.map((room, index) => (
-          <RoomCard key={index} {...room} />
+          <div key={index} className={s.RoomCardWrap}>
+            <RoomCard {...room} />
+          </div>
         ))}
       </div>
     </div>

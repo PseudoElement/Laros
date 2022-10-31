@@ -1,7 +1,7 @@
 @use '../../../styles/style.scss' as *;
 
 .RoomCards {
-  padding: 80px 0 98px;
+  padding: 80px 0 100px;
   background-color: $color-primary-dark-blue;
   color: $color-white;
 }
@@ -21,7 +21,11 @@
 }
 .RoomCardsWrap {
   display: flex;
-  width: 1200px;
-  margin: auto;
-  justify-content: space-around;
+  padding: 0 20px;
+  justify-content: center;
+}
+.RoomCardWrap {
+  &:nth-last-child(n+2) {
+    margin-right: 24px;
+  }
 }

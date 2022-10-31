@@ -3,28 +3,35 @@ import Image from 'next/image'
 import { truncate } from 'lodash'
 import ReactStars from 'react-rating-stars-component'
 
-import { Select } from 'components/Select'
 import { Button } from 'components'
-import { HotelTags } from 'features/HotelTags/HotelTags'
+import { InfoTags } from 'features/InfoTags/InfoTags'
+import { Input } from 'components/Input'
+import { InputCalendar } from 'components/InputCalendar'
 
 import trash from '../../../../public/assets/images/Trash.svg'
 import add from '../../../../public/assets/images/plus.svg'
 
 import { TRUNCATED_ROOM_CARD_TEXT_SIZE } from 'shared/constants'
-import { HotelPageProps } from 'shared/types/hotelPage'
+import { Hotel } from 'shared/types/hotel'
 
 import s from './HotelIntro.module.scss'
 
-export const HotelIntro: FC<HotelPageProps> = ({
+export const HotelIntro: FC<Hotel> = ({
   description,
-  name,
-  address,
+  opinion,
   rating,
+  destination,
+  name,
   tags,
+  is_active,
+  link,
   location,
+  max_capacity,
+  period,
+  tripadvisor_id,
+  address,
 }) => {
   const [isTruncated, setIsTruncated] = useState<boolean>(true)
-  const options = ['1', '3', '4']
 
   return (
     <div className={s.HotelIntro}>
@@ -50,34 +57,38 @@ export const HotelIntro: FC<HotelPageProps> = ({
             : description}
         </div>
         {/*======================================================================= button open more Description*/}
-        <div
-          className={s.HotelIntroSeeMore}
-          onClick={() => setIsTruncated(prev => !prev)}
-        >
-          See more
-        </div>
+        {description && (
+          <div
+            className={s.HotelIntroSeeMore}
+            onClick={() => setIsTruncated(prev => !prev)}
+          >
+            See more
+          </div>
+        )}
 
-        <div>
-          <input className={s.InputCalendar} type={'text'} />
-          <input className={s.InputCalendar} type={'text'} />
-        </div>
+        <InputCalendar label={'Your travel period'} />
 
         <div className={s.HotelIntroOptionWrap}>
           <div className={s.HotelIntroOptionTitle}>Room 1</div>
-          <Select options={options} classname={s.HotelIntroOptionSelect} />
           <Image src={trash} alt='' />
         </div>
 
-        <div>
-          <input
-            type={'text'}
-            placeholder={'Adults'}
-            className={s.HotelIntroNumberInput}
-          />
-          <input
+        <div className={s.NumberInputWrap}>
+          <Input
             type={'number'}
+            placeholder={'Adults'}
+            onChange={() => {}}
+            withCounter={true}
+            label={'1'}
+            classname={s.HotelIntroNumberInput}
+          />
+          <Input
+            type={'number'}
+            onChange={() => {}}
             placeholder={'Children (2-12 years old):'}
-            className={s.HotelIntroNumberInput}
+            withCounter={true}
+            label={'1'}
+            classname={s.HotelIntroNumberInput}
           />
         </div>
 
@@ -92,13 +103,17 @@ export const HotelIntro: FC<HotelPageProps> = ({
       </div>
 
       <div className={s.HotelIntroRight}>
-        <div>
-          <Image src={location} width={542} height={425} alt='' />
+        <div className={s.Map}>
+          {/*<Image src={location} width={542} height={425} alt='' />*/}
         </div>
 
         <div className={s.TagsPanel}>
-          <div className={s.TagsTitle}>Highlights:</div>
-          <HotelTags tags={tags} limit={4} />
+          {tags.length ? (
+            <>
+              <div className={s.TagsTitle}>Highlights:</div>
+              <InfoTags tags={tags} limit={4} />
+            </>
+          ) : null}
         </div>
       </div>
     </div>
