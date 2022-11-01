@@ -9,7 +9,7 @@ import Image from 'next/image'
 
 import cn from 'classnames'
 import s from './Select.module.scss'
-import arrow from '../../../public/assets/images/arrow.svg'
+import arrow from '../../../public/assets/images/arrow.svg?url'
 import { Option } from 'shared/types'
 
 interface OptionsProps {
@@ -48,7 +48,7 @@ export const SelectComponent: FC<OptionsProps> = ({
     <components.Control {...props}>
       {options.map((item, i) =>
         item.label === props.getValue().map((el: any) => el.label)[0] &&
-        item.icon ? (
+          item.icon ? (
           <div className={s.control}>
             <Image key={i} src={item.icon} width={0} height={0} alt='icon' />
           </div>
