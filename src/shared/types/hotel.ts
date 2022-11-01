@@ -10,26 +10,8 @@ export interface Room {
   season_price?: number
   description?: string // TODO check API
   change_price?: string // TODO check API
-  image: string
-  price: number
-}
-export type Hotel = {
-  readonly id: number
-  max_capacity?: number
-  images: string[]
-  name: string
-  min_price: string
-  description: string
-  is_active: boolean
-  opinion: string
-  address: string | null
-  location: string
-  rating: number
-  tripadvisor_id: number | null
-  link: string
-  period: string
-  destination: number
-  tags: Tag[]
+  image?: string
+  price: number | string
 }
 
 export type HotelFilterParams = {
@@ -58,4 +40,7 @@ export type Hotel = {
   period: string
   destination: number
   tags: Tag[]
+  min_price?: number | string
+  fromPrice?: number
+  type?: string
 }

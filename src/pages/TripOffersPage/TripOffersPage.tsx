@@ -71,7 +71,15 @@ export const TripOffersPage: FC = () => {
         {!isLoading &&
           trips?.length &&
           trips.map((offer, idx) => {
-            return <TripCard key={idx} {...offer} wide={view === View.LIST} />
+            return (
+              // @ts-ignore
+              <TripCard
+                period={'12'}
+                key={idx}
+                {...offer}
+                wide={view === View.LIST}
+              />
+            )
           })}
       </div>
     </div>

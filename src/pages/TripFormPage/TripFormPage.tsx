@@ -20,7 +20,7 @@ export const TripFormPage: FC = () => {
   const { query } = useRouter()
   useEffect(() => {
     const tripID = Number(query.trip)
-    const loadTrip = async (trip: number) => {
+    const loadTrip = async (trip: number | any) => {
       try {
         const tripDetails = await getTrips(trip)
         setTrip(tripDetails.data.data)

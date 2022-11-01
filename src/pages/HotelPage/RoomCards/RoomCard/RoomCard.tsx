@@ -21,7 +21,12 @@ export const RoomCard: FC<Room> = ({
   return (
     <div className={s.RoomCard}>
       <div className={s.RoomCardImage}>
-        <Image src={image} alt='' width={'220'} height={'144px'} />
+        <Image // @ts-ignore
+          src={image}
+          alt=''
+          width={'220'}
+          height={'144px'}
+        />
       </div>
 
       <div className={s.RoomCardBody}>
