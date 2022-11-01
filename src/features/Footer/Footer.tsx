@@ -2,36 +2,16 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
 import s from './Footer.module.scss'
-import airport from '/public/assets/images/airport__footer.svg'
+import airport from '/public/assets/images/airport__footer.svg?url'
 
-import reisegarantie from '/public/assets/images/reisegarantie__footer.svg'
-import srv from '/public/assets/images/srv__footer.svg'
-import tps from '/public/assets/images/tps__footer.svg'
+import reisegarantie from '/public/assets/images/reisegarantie__footer.svg?url'
+import srv from '/public/assets/images/srv__footer.svg?url'
+import tps from '/public/assets/images/tps__footer.svg?url'
 
-import fb from '/public/assets/images/facebook__footer.svg' // по аналогии сделай
-import ig from '/public/assets/images/instagram__footer.svg' //instagram
-import lk from '/public/assets/images/linkedIn__footer.svg' //linkedin
-
-export const siteLinks = [
-  // TODO move
-  { name: 'Home page', to: '/' },
-  { name: 'Destination', to: '/destinations' },
-  { name: 'Trip planner', to: '/trip_planner' },
-  { name: 'Hotels', to: '/hotels' },
-  { name: 'Special offers', to: '/special_offer' },
-  { name: 'Inspiration', to: '/blogs' },
-  { name: 'About us', to: '/about' },
-  { name: 'Careers', to: '/about/careers' },
-  { name: 'Brochure', to: '/brochures' },
-]
-export const bottomLinks = [
-  { name: 'Travel policy', to: '/terms' },
-  { name: 'Car rental policy', to: '/terms' },
-  { name: 'Travel policy', to: '/terms' },
-  { name: 'Cookies policy', to: '/terms' },
-  { name: 'Terms of use', to: '/terms' },
-  { name: 'Privacy policy', to: '/terms' },
-]
+import fb from '/public/assets/images/facebook__footer.svg?url'
+import ig from '/public/assets/images/instagram__footer.svg?url'
+import lk from '/public/assets/images/linkedIn__footer.svg?url'
+import { bottomLinks, siteLinks } from 'shared/constants/navigation'
 
 export const Footer: FC = () => {
   return (
@@ -151,7 +131,6 @@ export const Footer: FC = () => {
                 <li className={s.socialItem}>
                   <Link href=''>
                     <Image src={fb} width={13} height={13} alt='facebook' />
-                    {/* по аналогии сделай */}
                   </Link>
                 </li>
 
