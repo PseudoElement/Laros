@@ -96,15 +96,15 @@ export const ChangeTransferModal: FC<ChangeTransferModalProps> = ({
               className={s.tabs}
             >
               <TabList className={s.tabList}>
-                {getCarGroups(cars).map(group => {
-                  return <Tab className={s.tab}>{group}</Tab>
+                {getCarGroups(cars).map((group, idx) => {
+                  return <Tab className={s.tab} key={idx}>{group}</Tab>
                 })}
               </TabList>
-              {getCarGroups(cars).map(group => {
+              {getCarGroups(cars).map((group, idx) => {
                 return (
-                  <TabPanel className={s.tabPanel}>
+                  <TabPanel className={s.tabPanel} key={idx}>
                     <div className={s.carsList}>
-                      {getCarsByGroup(cars, group).map(car => {
+                      {getCarsByGroup(cars, group).map((car, idx) => {
                         const isCarSelected =
                           selectedCar === car.id &&
                           transferType === TransferType.RENTAL
@@ -112,6 +112,7 @@ export const ChangeTransferModal: FC<ChangeTransferModalProps> = ({
                           <CarCard
                             isSelected={isCarSelected}
                             onClick={id => selectCar(id)}
+                            key={idx}
                             {...car}
                           />
                         )

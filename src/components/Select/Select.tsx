@@ -16,7 +16,7 @@ interface OptionsProps {
   options: Option[]
   classname?: string
   isMulti?: boolean
-  value?: string,
+  value?: string
   onChange: (value: string) => void
 }
 
@@ -25,7 +25,7 @@ export const SelectComponent: FC<OptionsProps> = ({
   classname,
   isMulti = false,
   value,
-  onChange
+  onChange,
 }) => {
   const DropdownIndicator: FC<DropdownIndicatorProps> = props => (
     <components.DropdownIndicator {...props}>
@@ -109,7 +109,8 @@ export const SelectComponent: FC<OptionsProps> = ({
         defaultValue={value ?? options[0]}
         components={{ Option, DropdownIndicator, Control }}
         isMulti={isMulti}
-        onChange={(val) => onChange(val)}
+        // @ts-ignore
+        onChange={val => onChange(val)}
         className={classname}
       />
     </div>

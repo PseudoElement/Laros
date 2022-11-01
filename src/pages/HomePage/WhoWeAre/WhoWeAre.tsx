@@ -36,8 +36,8 @@ export const WhoWeAre: FC<PostBlockProps> = ({ items }) => {
         <Button classname={s.orange}>See more</Button>
       </div>
       <div className={s.items}>
-        {items.map(item => (
-          <div className={s.item}>
+        {items.map((item, idx) => (
+          <div className={s.item} key={idx}>
             <h3 className={s.itemTitle}>{item.title}</h3>
             <p className={s.itemText}>{item.text}</p>
           </div>

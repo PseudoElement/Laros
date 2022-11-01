@@ -15,8 +15,8 @@ export const PostBlock: FC<PostBlockProps> = ({ posts }) => {
 
   return (
     <div className={s.wrapper}>
-      {fullPost.map(post => (
-        <div className={s.left}>
+      {fullPost.map((post, idx) => (
+        <div className={s.left} key={idx}>
           <h3 className={s.title}>{post.title}</h3>
           <p className={s.subtitle}>{post.subtitle}</p>
           <Image
@@ -33,8 +33,8 @@ export const PostBlock: FC<PostBlockProps> = ({ posts }) => {
 
       <div className={s.rightWrapper}>
         <div className={s.right}>
-          {post.map(post => (
-            <div className={s.post}>
+          {post.map((post, idx) => (
+            <div className={s.post} key={idx}>
               <div className={s.textBlock}>
                 <h3 className={cls(s.title, s.postTitle)}>{post.title}</h3>
                 <p className={s.text}>{post.text}</p>

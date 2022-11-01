@@ -23,6 +23,7 @@ export const SelectComponent: FC = () => {
             title={item.title}
             text={item.text}
             subtitle={item.subtitle}
+            key={index}
           />
         ))}
       </Slider>

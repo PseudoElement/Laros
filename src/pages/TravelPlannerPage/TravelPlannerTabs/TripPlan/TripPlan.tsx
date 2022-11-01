@@ -21,7 +21,7 @@ export const TripPlan: FC<TripProps> = ({ data }) => {
     <div className={s.wrapper}>
       {data.map((item, index, array) => {
         return (
-          <div className={s.card}>
+          <div className={s.card} key={index}>
             <div className={s.textWrapper}>
               <p className={s.date}>{item.date}</p>
               <p className={s.day}>

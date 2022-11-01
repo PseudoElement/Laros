@@ -6,7 +6,7 @@ import { TripListItem } from './TripListItem'
 export const TripList: FC = () => {
   return (
     <div className={s.wrapper}>
-      {tripListMock.map(el => (
+      {tripListMock.map((el, idx) => (
         <TripListItem
           key={el.name}
           image={el.image}
@@ -16,6 +16,7 @@ export const TripList: FC = () => {
           duration={el.duration}
           startPoint={el.startPoint}
           tags={el.tags}
+          id={idx}
         />
       ))}
     </div>

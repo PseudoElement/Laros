@@ -68,8 +68,10 @@ export const TripCard: FC<TripCardProps> = ({
         <div className={s.lastRow}>
           <div className={s.tags}>
             {tags.length
-              ? tags.map(tag => (
-                  <div className={s[tag]}>{generateTagText(tag)}</div>
+              ? tags.map((tag, idx) => (
+                  <div key={idx} className={s[tag]}>
+                    {generateTagText(tag)}
+                  </div>
                 ))
               : null}
           </div>

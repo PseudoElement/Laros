@@ -5,7 +5,6 @@ import { Button } from 'components'
 import { BlogHeaderImage } from '../../components/Images/BlogHeaderImage'
 import { Review } from 'features'
 import { reviewsMock } from 'shared/mocks/reviews'
-import { Blogs } from 'shared/types/blogs'
 import { blogs } from 'shared/mocks/blogs'
 
 import s from './BlogsPage.module.scss'
@@ -46,7 +45,7 @@ export const BlogItem: FC<BlogItemProps> = ({
 }
 
 export const BlogsPage: FC = () => {
-  const [blogsData, setBlogsData] = useState<Blogs[] | null>([])
+  const [blogsData, setBlogsData] = useState<any[] | null>([])
 
   useEffect(() => {
     if (!blogsData?.length) {
@@ -77,6 +76,7 @@ export const BlogsPage: FC = () => {
           </div>
           <div className={s.review}>
             {reviewsMock.map(review => (
+              // @ts-ignore
               <Review {...review} key={review.id} />
             ))}
           </div>

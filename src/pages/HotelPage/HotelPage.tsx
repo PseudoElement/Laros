@@ -8,12 +8,12 @@ import { HotelImages } from './HotelImages/HotelImages'
 import { OtherHotels } from './OtherHotels'
 import { Gallery } from './Gallery/Gallery'
 
-import {getHotel, getNearHotels} from 'shared/api/routes/hotels'
+import { getHotel, getNearHotels } from 'shared/api/routes/hotels'
 import { getRooms } from 'shared/api/routes/rooms'
 
 import { Hotel, Room } from 'shared/types/hotel'
 
-import {hotelRoomsMock} from 'shared/mocks/hotel'
+import { hotelRoomsMock } from 'shared/mocks/hotel'
 import { gallery } from 'shared/mocks/hotel'
 import { HotelMock } from 'shared/mocks/hotel'
 import { nearHotelsMock } from 'shared/mocks/hotel'

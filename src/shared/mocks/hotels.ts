@@ -26,7 +26,7 @@ export const roomMock: Room[] = [
   },
 ]
 
-export const mockHotels: Hotel[] = [
+export const mockHotels: Partial<Hotel>[] = [
   {
     name: 'Hotel Name',
     fromPrice: 41,

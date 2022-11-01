@@ -19,6 +19,7 @@ export const Main: FC<MainBlockProps> = ({ activeMenu, setActiveMenu }) => {
   const [destinationsState, setDestinationsState] = useState<Destination[]>([])
   const dispatch = useDispatch<AppDispatch>()
   const destinations = useSelector(
+    // @ts-ignore
     (state: DestinationsState) => state.destinations.destinations
   )
   useEffect(() => {

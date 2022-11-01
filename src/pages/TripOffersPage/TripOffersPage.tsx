@@ -39,7 +39,7 @@ export const TripOffersPage: FC = () => {
         style={{
           backgroundImage: `url(${bg.src})`,
         }}
-      ></div>
+      />
       <div className={s.title}>{tripCatInfo?.title}</div>
       <div className={s.description}>{tripCatInfo?.description}</div>
       <div className={s.filters}>
@@ -70,8 +70,16 @@ export const TripOffersPage: FC = () => {
         {isLoading && <div className={s.loading}>Loading...</div>}
         {!isLoading &&
           trips?.length &&
-          trips.map(offer => {
-            return <TripCard {...offer} wide={view === View.LIST} />
+          trips.map((offer, idx) => {
+            return (
+              // @ts-ignore
+              <TripCard
+                period={'12'}
+                key={idx}
+                {...offer}
+                wide={view === View.LIST}
+              />
+            )
           })}
       </div>
     </div>

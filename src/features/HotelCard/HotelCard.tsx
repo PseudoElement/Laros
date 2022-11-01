@@ -10,13 +10,7 @@ import { Hotel } from 'shared/types/hotel'
 
 import s from './HotelCard.module.scss'
 
-export interface HotelCardProps {
-  rating: number
-  type: string
-  name: string
-  fromPrice: number
-  period: string
-  tags: Tag[]
+export interface HotelCardProps extends Hotel {
   onClick?: (id: number) => void
 }
 
@@ -37,15 +31,16 @@ export const HotelCard: FC<HotelCardProps> = ({
   destination,
   description,
   onClick,
-    min_price
+  min_price,
 }) => {
   return (
     <div className={s.HotelCard}>
       <div className={s.HotelCardImage}>
         <Image
-          layout='fill'
+          src={images[0]}
           objectFit='cover'
-          src={hotel_pic}
+          width='368'
+          height='180'
           alt='Hotel Picture'
         />
       </div>
@@ -77,10 +72,10 @@ export const HotelCard: FC<HotelCardProps> = ({
       </div>
 
       <div className={s.tags}>
-        {tags.map(tag => (
-          <p key={tag.id} className={s.tag}>
+        {tags.slice(0, 2).map((tag, index) => (
+          <span key={index} className={s.tag}>
             {tag.name}
-          </p>
+          </span>
         ))}
       </div>
 
