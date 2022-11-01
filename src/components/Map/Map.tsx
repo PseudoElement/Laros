@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import L, { Icon, LatLngExpression } from 'leaflet'
+
+import L, { Icon, LatLng, LatLngExpression, Layer } from 'leaflet'
 
 import s from './Map.module.scss'
 
@@ -15,29 +16,31 @@ import {
   FeatureGroup,
 } from 'react-leaflet'
 
-import { GeoJsonObject } from 'geojson'
+import { Feature, GeoJsonObject, Point } from 'geojson'
+import { IconProperty, Route } from './types'
 
 interface MapProps {
   route?: string
+  additionalRoutes?: string
 }
 
-type Route = {
-  type: 'FeatureCollection'
-  features: Array<{
-    type: 'Feature'
-    properties: any
-    geometry: { type: string; coordinates: Array<number> }
-  }>
-}
-
-const Map: React.FC<MapProps> = ({ route: routeString }) => {
+const Map: React.FC<MapProps> = ({
+  route: routeString,
+  additionalRoutes: additionalRoutesString,
+}) => {
   const [route, setRoute] = useState<Route>()
+  const [additionalRoutes, setAdditionalRoutes] = useState<Route>()
   const [center, setCenter] = useState<LatLngExpression>()
 
   useEffect(() => {
     if (routeString === undefined) return
     setRoute(JSON.parse(routeString))
   }, [routeString])
+
+  useEffect(() => {
+    if (additionalRoutesString === undefined) return
+    setAdditionalRoutes(JSON.parse(additionalRoutesString))
+  }, [additionalRoutesString])
 
   useEffect(() => {
     if (route === undefined) return
@@ -48,7 +51,10 @@ const Map: React.FC<MapProps> = ({ route: routeString }) => {
     )
   }, [route])
 
-  const pointToLayer = (center: any, latlng: any) => {
+  const pointToLayer = (
+    center: Feature<Point, IconProperty>,
+    latlng: LatLng
+  ): Layer => {
     const { iconAnchor, iconColor, iconSize, iconUrl, opacity, popupAnchor } =
       center.properties
 
@@ -80,10 +86,14 @@ const Map: React.FC<MapProps> = ({ route: routeString }) => {
             url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
           />
           <FeatureGroup>
-            {route &&
-              route.features.map((features: GeoJsonObject, i: number) => (
-                <GeoJSON pointToLayer={pointToLayer} key={i} data={features} />
-              ))}
+            {route?.features.map((feature: GeoJsonObject, i: number) => (
+              <GeoJSON pointToLayer={pointToLayer} key={i} data={feature} />
+            ))}
+            {additionalRoutes?.features.map(
+              (feature: GeoJsonObject, i: number) => (
+                <GeoJSON pointToLayer={pointToLayer} key={i} data={feature} />
+              )
+            )}
           </FeatureGroup>
           <ZoomControl position='topright' />
         </MapContainer>

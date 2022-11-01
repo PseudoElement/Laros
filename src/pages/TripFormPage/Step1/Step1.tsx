@@ -54,7 +54,7 @@ export const Step1: FC<Step1Props> = ({ setStep, trip }) => {
           />
         </div>
       </div>
-      {trip?.destinations.map(
+      {trip?.destinations?.map(
         (
           dest: {
             hotel_name: any

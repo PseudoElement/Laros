@@ -20,6 +20,24 @@ import { TransferType } from 'shared/types/car'
 import axios from 'axios'
 
 import s from './example.module.scss'
+import { GeoJsonObject } from 'geojson'
+
+const gjson = {
+  type: 'FeatureCollection',
+  features: [
+    {
+      type: 'Feature',
+      properties: {},
+      geometry: {
+        coordinates: [
+          [23.82335240986305, 37.97466393870391],
+          [23.792187593783012, 37.87928330038466],
+        ],
+        type: 'LineString',
+      },
+    },
+  ],
+}
 
 export const ExamplePage: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -32,6 +50,7 @@ export const ExamplePage: FC = () => {
   const tripCardData = tripCards[0]
 
   const [route, setRoute] = useState()
+  const [newRoute, _] = useState<any>()
 
   React.useEffect(() => {
     async function getRoute() {
@@ -58,6 +77,11 @@ export const ExamplePage: FC = () => {
         backgroundColor: '#FAFBFC',
       }}
     >
+      <button onClick={() => _(gjson)}>Click</button>
+      <button onClick={() => _(null)}>Click</button>
+      <div style={{ height: '800px', width: 'calc(100% - 50px)' }}>
+        <Map route={route} additionalRoutes={JSON.stringify(newRoute)} />
+      </div>
       <ReactPlayer url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
       <div style={{ width: '1200px', margin: 'auto' }}>
         <Slider
@@ -72,9 +96,6 @@ export const ExamplePage: FC = () => {
         </Slider>
       </div>
 
-      <div style={{ height: '800px', width: '1500px' }}>
-        <Map route={route} />
-      </div>
       <div
         style={{ marginTop: '15px', backgroundColor: '#FAFBFC', width: '100%' }}
       >
