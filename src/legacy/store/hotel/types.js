@@ -27,10 +27,6 @@ export const Status = {
 //   status: Status;
 // }
 
-
-
-
-
 // export type Hotel = {
 //   id: string;
 //   title: string;

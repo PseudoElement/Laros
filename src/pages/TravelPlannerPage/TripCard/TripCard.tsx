@@ -18,7 +18,16 @@ interface TripCardProps {
   wide?: boolean
 }
 
-export const TripCard: FC<TripCardProps> = ({ name, wide, images = [], sale, tags = [], price, period, duration }) => {
+export const TripCard: FC<TripCardProps> = ({
+  name,
+  wide,
+  images = [],
+  sale,
+  tags = [],
+  price,
+  period,
+  duration,
+}) => {
   return (
     <div className={cn(s.wrapper, { [s.wide]: wide })}>
       <div
@@ -58,9 +67,13 @@ export const TripCard: FC<TripCardProps> = ({ name, wide, images = [], sale, tag
         </div>
         <div className={s.lastRow}>
           <div className={s.tags}>
-            {tags.length ? tags.map(tag => (
-              <div className={s[tag]}>{generateTagText(tag)}</div>
-            )) : null}
+            {tags.length
+              ? tags.map((tag, idx) => (
+                  <div key={idx} className={s[tag]}>
+                    {generateTagText(tag)}
+                  </div>
+                ))
+              : null}
           </div>
         </div>
         <Button classname={s.myButton}>View Offer</Button>

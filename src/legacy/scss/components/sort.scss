@@ -16,13 +16,12 @@
 
   &__popup {
     background: #ffffff;
-    color: #1B242D;
+    color: #1b242d;
     overflow: hidden;
-
 
     width: 52px;
     height: 36px;
-    border: 1px solid #C3C6C9;
+    border: 1px solid #c3c6c9;
     border-radius: 8px;
 
     ul {
@@ -33,11 +32,11 @@
 
         &.active,
         &:hover {
-          background: #F2F5F8;
+          background: #f2f5f8;
         }
 
         &.active {
-          color: #1B242D;
+          color: #1b242d;
         }
       }
     }

@@ -3,6 +3,10 @@
   background-color: $color-laros-light-grey;
   overflow-y: scroll;
   margin-top: 40px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 .item {
   font-size: 12px;
@@ -11,7 +15,7 @@
   display: flex;
   position: relative;
   align-items: center;
-  padding-left: 92px;
+  justify-content: center;
 }
 .title {
 }
@@ -28,4 +32,12 @@
     top: 0;
     right: 0;
   }
+}
+
+.icon {
+  fill: $color-card-placeholder;
+}
+
+.iconActive {
+  fill: $color-lazur;
 }

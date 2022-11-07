@@ -1,6 +1,4 @@
-export const selectHotelData = (state) => state.hotel;
-
-
+export const selectHotelData = state => state.hotel
 
 // import { RootState } from '../store';
 

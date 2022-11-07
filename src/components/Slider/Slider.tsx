@@ -6,7 +6,7 @@ import { FC, ReactNode } from 'react'
 import cn from 'classnames'
 
 interface SliderProps {
-  children: ReactNode[]
+  children: ReactNode[] | []
   slidesPerView?: number
   withNavigation?: boolean
   withPagination?: boolean
@@ -20,9 +20,10 @@ export const Slider: FC<SliderProps> = ({
   slidesPerView = 3,
   withNavigation = false,
   withPagination = false,
+
   nextEl,
   prevEl,
-  classname
+  classname,
 }) => {
 
   const paginationOptions = withPagination && { clickable: true };
@@ -42,13 +43,16 @@ export const Slider: FC<SliderProps> = ({
             ))
           : null}
       </Swiper>
-      {
-        withNavigation &&
+      {withNavigation && (
         <>
-          <div className={cn(s.swiperButtonPrev, prevEl, 'swiper-button-prev')}></div>
-          <div className={cn(s.swiperButtonNext, nextEl, 'swiper-button-next')}></div>
+          <div
+            className={cn(s.swiperButtonPrev, prevEl, 'swiper-button-prev')}
+          ></div>
+          <div
+            className={cn(s.swiperButtonNext, nextEl, 'swiper-button-next')}
+          ></div>
         </>
-      }
+      )}
     </div>
   )
 }

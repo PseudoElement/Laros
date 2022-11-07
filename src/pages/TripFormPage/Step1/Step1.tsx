@@ -11,83 +11,83 @@ import { TripDayForm } from './TripDayForm';
 import airportIcon from '/public/assets/images/airport.svg'
 
 interface Step1Props {
-    setStep: (step: Steps) => void
-    trip: any
+  setStep: (step: Steps) => void
+  trip: any
 }
 
 export const Step1: FC<Step1Props> = ({ setStep, trip }) => {
-    const { handleSubmit, control } = useForm()
-    const dispatch = useAppDispatch()
-    const destsMock = [{ value: '1', label: 'Zurich' }]
-    const onSubmit = (formData: any) => {
-        // TODO add type
+  const { handleSubmit, control } = useForm()
+  const dispatch = useAppDispatch()
+  const destsMock = [{ value: '1', label: 'Zurich' }]
+  const onSubmit = (formData: any) => {
+    // TODO add type
 
-        setStep(Steps.SECOND)
-    }
-    if (!trip) return;
-    return (
-        <div className={s.container}>
-            <div className={s.flights}>
-                <div className={s.select}>
-                    <div className={s.selectLabel}>Starting point:</div>
-                    <Controller
-                        name='dest_from'
-                        control={control}
-                        render={({ field: { onChange, value } }) => (
-                            <Select
-                                onChange={onChange}
-                                value={value}
-                                options={provideOptionsWithIcon(destsMock, airportIcon)}
-                            />
-                        )}
-                    />
-                </div>
-                <div className={s.select}>
-                    <div className={s.selectLabel}>flight to</div>
-                    <Controller
-                        name='dest_to'
-                        control={control}
-                        render={({ field: { onChange, value } }) => (
-                            <Select
-                                onChange={onChange}
-                                value={value}
-                                options={[]}
-                            />
-                        )}
-                    />
-                </div>
-            </div>
-            {trip?.destinations.map((dest, index) => {
-                return <TripDayForm hotel={{ name: dest.hotel_name }} description={dest.description ?? 'No description'} duration={dest.duration} rooms={[{ room_name: 'Standard', capacity: 2 }, { room_name: 'Standard', capacity: 2 }]} location={dest.destination_name} day={getTripDays(index === 0 ? 1 : trip.destinations[index - 1]?.duration + 1, dest.duration)} total={trip.duration} type={TransferType.PICKUP} to='Athens airport (ATH)' from=' The Corinth Canal to Nafplion' />
-            })}
-
-            <div className={s.endpoint}>
-                <div className={s.select}>
-                    <div className={s.selectLabel}>End point:</div>
-                    <Controller
-                        name='dest_to'
-                        control={control}
-                        render={({ field: { onChange, value } }) => (
-                            <Select
-                                onChange={onChange}
-                                value={value}
-                                options={provideOptionsWithIcon(destsMock, airportIcon)}
-                            />
-                        )}
-                    />
-                </div>
-            </div>
-            <div className={s.addLocationSection}>
-                <AddIcon />
-                <div className={s.addLocationTitle}>Add location</div>
-                <div className={s.addLocationInfo}>
-                    <InfoIcon />
-                </div>
-            </div>
-            <div className={s.actions}>
-                <Button onClick={() => setStep(Steps.SECOND)}>Next step</Button>
-                <Button variant='outline'>Cancel</Button>
-            </div>
+    setStep(Steps.SECOND)
+  }
+  if (!trip) return;
+  return (
+    <div className={s.container}>
+      <div className={s.flights}>
+        <div className={s.select}>
+          <div className={s.selectLabel}>Starting point:</div>
+          <Controller
+            name='dest_from'
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <Select
+                onChange={onChange}
+                value={value}
+                options={provideOptionsWithIcon(destsMock, airportIcon)}
+              />
+            )}
+          />
         </div>
-    )
+        <div className={s.select}>
+          <div className={s.selectLabel}>flight to</div>
+          <Controller
+            name='dest_to'
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <Select
+                onChange={onChange}
+                value={value}
+                options={[]}
+              />
+            )}
+          />
+        </div>
+      </div>
+      {trip?.destinations.map((dest, index) => {
+        return <TripDayForm hotel={{ name: dest.hotel_name }} description={dest.description ?? 'No description'} duration={dest.duration} rooms={[{ room_name: 'Standard', capacity: 2 }, { room_name: 'Standard', capacity: 2 }]} location={dest.destination_name} day={getTripDays(index === 0 ? 1 : trip.destinations[index - 1]?.duration + 1, dest.duration)} total={trip.duration} type={TransferType.PICKUP} to='Athens airport (ATH)' from=' The Corinth Canal to Nafplion' />
+      })}
+
+      <div className={s.endpoint}>
+        <div className={s.select}>
+          <div className={s.selectLabel}>End point:</div>
+          <Controller
+            name='dest_to'
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <Select
+                onChange={onChange}
+                value={value}
+                options={provideOptionsWithIcon(destsMock, airportIcon)}
+              />
+            )}
+          />
+        </div>
+      </div>
+      <div className={s.addLocationSection}>
+        <AddIcon />
+        <div className={s.addLocationTitle}>Add location</div>
+        <div className={s.addLocationInfo}>
+          <InfoIcon />
+        </div>
+      </div>
+      <div className={s.actions}>
+        <Button onClick={() => setStep(Steps.SECOND)}>Next step</Button>
+        <Button variant='outline'>Cancel</Button>
+      </div>
+    </div>
+  )
 } 

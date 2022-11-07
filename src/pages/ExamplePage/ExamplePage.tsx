@@ -6,7 +6,7 @@ import { CategoryCard } from 'pages/TravelPlannerPage/CategoryCard'
 import { moreCategoriesMock } from 'shared/mocks/tripPlanner'
 import { ContactForm } from 'features/ContactForm'
 import { Radio } from 'components/Radio'
-import { Modal, ReactPlayer } from 'components'
+import { Map, Modal, ReactPlayer } from 'components'
 import { Checkbox } from 'components/Checkbox'
 import { Tags } from 'components/Tags'
 import { mockTags } from 'shared/mocks/tags'
@@ -17,9 +17,27 @@ import { tripCards } from 'shared/mocks/tripCards'
 import { ChangeTransferModal } from 'features/ChangeTransferModal'
 import { carsMock } from 'shared/mocks/cars'
 import { TransferType } from 'shared/types/car'
-import { InputCalendar } from 'components/InputCalendar'
+import axios from 'axios'
 
 import s from './example.module.scss'
+import { GeoJsonObject } from 'geojson'
+
+const gjson = {
+  type: 'FeatureCollection',
+  features: [
+    {
+      type: 'Feature',
+      properties: {},
+      geometry: {
+        coordinates: [
+          [23.82335240986305, 37.97466393870391],
+          [23.792187593783012, 37.87928330038466],
+        ],
+        type: 'LineString',
+      },
+    },
+  ],
+}
 
 export const ExamplePage: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -31,12 +49,25 @@ export const ExamplePage: FC = () => {
   const [tags, setTags] = useState(mockTags)
   const tripCardData = tripCards[0]
 
+  const [route, setRoute] = useState()
+  const [newRoute, _] = useState<any>()
+
+  React.useEffect(() => {
+    async function getRoute() {
+      await axios({
+        method: 'GET',
+        url: 'http://165.227.155.246/api/trip/1',
+      }).then(data => setRoute(data.data.data.route))
+    }
+    getRoute()
+  }, [])
 
   const [e, setE] = useState('ssssssssss')
 
   const ee = (ee: string) => {
     setE(ee)
   }
+  // @ts-ignore
   return (
     <div
       style={{
@@ -46,6 +77,11 @@ export const ExamplePage: FC = () => {
         backgroundColor: '#FAFBFC',
       }}
     >
+      <button onClick={() => _(gjson)}>Click</button>
+      <button onClick={() => _(null)}>Click</button>
+      <div style={{ height: '800px', width: 'calc(100% - 50px)' }}>
+        <Map route={route} additionalRoutes={JSON.stringify(newRoute)} />
+      </div>
       <ReactPlayer url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
       <div style={{ width: '1200px', margin: 'auto' }}>
         <Slider
@@ -60,12 +96,11 @@ export const ExamplePage: FC = () => {
         </Slider>
       </div>
 
-
       <div
         style={{ marginTop: '15px', backgroundColor: '#FAFBFC', width: '100%' }}
       >
         <div style={{ width: '400px', marginLeft: 50 }}>
-          <InputCalendar label='Earliest depature' />
+          {/* <InputCalendar label='Earliest depature' /> */}
         </div>
         <div style={{ width: '400px', marginLeft: 50 }}>
           <Input
@@ -109,7 +144,7 @@ export const ExamplePage: FC = () => {
           />
         </div>
         <div style={{ width: '400px', marginTop: 100, marginLeft: 50 }}>
-          <InputCalendar label='Earliest depature' shorten />
+          {/* <InputCalendar label='Earliest depature' shorten /> */}
         </div>
         <div style={{ width: '400px', marginLeft: 50 }}>
           <Input
@@ -158,13 +193,12 @@ export const ExamplePage: FC = () => {
         <div
           style={{ marginTop: '15px' }}
           onClick={() => setIsModalOpen(true)}
-        ></div>
+        />
         <Slider>
           {moreCategoriesMock.map((card, id) => {
             return <CategoryCard {...card} key={id} />
           })}
         </Slider>
-        //TODO move to example page
         <ContactForm />
         <Radio
           onChange={v => setCheckboxValue(v)}
@@ -200,15 +234,37 @@ export const ExamplePage: FC = () => {
         <Checkbox label={'Текст Чекбокса'} />
         <Tags tags={tags} onChange={setTags} />
         <ChangeLocationModal
+          // @ts-ignore
           destinations={destinationsMock}
           onClick={() => 1}
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
         />
-      </div >
-
-      <HotelCard tags={tags} />
-      <ChangeTransferModal cars={carsMock} type={TransferType.PICKUP} onClick={() => 1} isOpen={isChangeCarOpen} onClose={() => setIsChangeCarOpen(false)} />
+      </div>
+      <HotelCard
+        tags={tags}
+        address={''}
+        description={''}
+        destination={1}
+        id={1}
+        images={[]}
+        is_active
+        link={''}
+        location={''}
+        min_price={''}
+        name={'te'}
+        opinion={''}
+        period={'1'}
+        rating={1}
+        tripadvisor_id={2}
+      />
+      <ChangeTransferModal
+        cars={carsMock}
+        type={TransferType.PICKUP}
+        onClick={() => 1}
+        isOpen={isChangeCarOpen}
+        onClose={() => setIsChangeCarOpen(false)}
+      />
       <div
         style={{
           width: '1152px',
@@ -217,8 +273,8 @@ export const ExamplePage: FC = () => {
           justifyContent: 'space-between',
         }}
       >
-        <TripCard {...tripCardData} wide />
+        <TripCard images={[]} name={''} price={0} {...tripCardData} wide />
       </div>
-    </div >
+    </div>
   )
 }

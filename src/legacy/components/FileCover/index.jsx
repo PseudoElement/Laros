@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
 
-import './FileCover.scss';
-import '../items-in-cart/items-in-cart.scss';
+import './FileCover.scss'
+import '../items-in-cart/items-in-cart.scss'
 
 export const FileCover = ({ file = '' }) => {
+  const [isVisible, setIsVisible] = useState(false)
 
-	const [isVisible, setIsVisible] = useState(false);
-
-	return (
-		<>
-			{/* <button
+  return (
+    <>
+      {/* <button
 				className="file__cover"
 				style={{ backgroundImage: `url(${file})` }}
 				onClick={() => setIsVisible(true)}
@@ -99,6 +98,6 @@ export const FileCover = ({ file = '' }) => {
 					</div>
 				</div>
 			</div> */}
-		</>
-	)
+    </>
+  )
 }

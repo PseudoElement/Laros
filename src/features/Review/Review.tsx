@@ -14,6 +14,8 @@ interface ReviewProps {
   images?: StaticImageData[] | string[]
   avatar: StaticImageData | string
   text: string
+  withAvatar: boolean
+  withImages?: boolean
 }
 
 export const Review: FC<ReviewProps> = ({
@@ -24,11 +26,13 @@ export const Review: FC<ReviewProps> = ({
   className,
   text,
   images,
+  withImages,
+  withAvatar,
 }) => {
   return (
     <div className={cn(s.review, className)}>
-      <div className={s.profile}>
-        <Image src={avatar ? avatar : userPic} alt='avatar' />
+      <div className={cn(s.profile, !withAvatar && s.profileWithoutAvatar)}>
+        {withAvatar && <Image src={avatar ? avatar : userPic} alt='avatar' />}
         <ul className={s.info}>
           <li className={s.name}>{name}</li>
           <li className={s.tripname}>{tripname}</li>

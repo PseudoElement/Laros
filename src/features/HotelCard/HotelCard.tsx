@@ -1,43 +1,50 @@
-import React, { FC, useState } from 'react'
-import ReactStars from 'react-rating-stars-component'
-import { Tag } from 'shared/types/tag'
+import React, { FC } from 'react'
 import Image from 'next/image'
-import cn from 'classnames'
+
+// @ts-ignore
+import ReactStars from 'react-rating-stars-component'
+
+import { Button } from 'components'
+
+import { Hotel } from 'shared/types/hotel'
 
 import s from './HotelCard.module.scss'
 
-import hotel_pic from '../../../public/assets/images/area-images/cart__hotel-four.jpg'
-import { mockTags } from 'shared/mocks/tags'
-
-interface HotelCardProps {
-  rating: number
-  type: string
-  name: string
-  fromPrice: number
-  period: string
-  tags: Tag[]
+export interface HotelCardProps extends Hotel {
   onClick?: (id: number) => void
 }
 
 export const HotelCard: FC<HotelCardProps> = ({
   rating,
-  type,
+  address,
   name,
-  fromPrice,
-  period,
   tags,
+  images,
+  id,
+  link,
+  location,
+  max_capacity,
+  period,
+  tripadvisor_id,
+  is_active,
+  opinion,
+  destination,
+  description,
   onClick,
+  min_price,
 }) => {
   return (
-    <div className={s.container}>
-      <div className={s.slider}>
+    <div className={s.HotelCard}>
+      <div className={s.HotelCardImage}>
         <Image
-          src={hotel_pic}
+          src={images[0]}
           objectFit='cover'
-          height='850'
+          width='368'
+          height='180'
           alt='Hotel Picture'
         />
       </div>
+
       <div className={s.header}>
         <div className={s.rating}>
           <ReactStars
@@ -48,13 +55,14 @@ export const HotelCard: FC<HotelCardProps> = ({
             edit={false}
           />
         </div>
-        <div className={s.type}>{type}</div>
+        <div className={s.type}>{address}</div>
         <div className={s.name}>{name}</div>
       </div>
+
       <div className={s.info}>
         <div className={s.block}>
           <p className={s.text}>From</p>
-          <p className={s.price}>{fromPrice} CHF/Night</p>
+          <p className={s.price}>{min_price} CHF / Night</p>
           <p className={s.text}>Pro person</p>
         </div>
         <div className={s.block}>
@@ -62,12 +70,16 @@ export const HotelCard: FC<HotelCardProps> = ({
           <p className={s.period}>{period}</p>
         </div>
       </div>
+
       <div className={s.tags}>
-        {tags.map(tag => (
-          <p className={s.tag}>{tag.name}</p>
+        {tags.slice(0, 2).map((tag, index) => (
+          <span key={index} className={s.tag}>
+            {tag.name}
+          </span>
         ))}
       </div>
-      <button className={s.button}>Learn more</button>
+
+      <Button classname={s.button}>Learn more</Button>
     </div>
   )
 }

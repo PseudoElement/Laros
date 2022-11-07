@@ -9,11 +9,11 @@
   border-radius: 16px;
   position: relative;
   overflow: scroll;
-
   &::-webkit-scrollbar {
     display: none;
   }
 }
+
 .profile {
   position: relative;
   top: 34px;
@@ -64,4 +64,11 @@
   position: absolute;
   top: 40px;
   right: 40px;
+}
+
+.profileWithoutAvatar {
+  position: relative;
+  top: 34px;
+  left: 80px;
+  display: flex;
 }

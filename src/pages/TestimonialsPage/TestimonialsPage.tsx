@@ -26,6 +26,8 @@ export const TestimonialsPage = () => {
             avatar={review.avatar}
             images={review.images}
             text={review.text}
+            withImages={false}
+            withAvatar={false}
           />
         ))}
       </Slider>

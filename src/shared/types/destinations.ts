@@ -1,3 +1,5 @@
+import { StaticImageData } from 'next/image'
+
 export interface Destination {
   readonly id: number
   name: string
@@ -15,5 +17,5 @@ export interface Destination {
   activities: any[] // wait API schema TODO
   travel_types: any[]
   festivals: any[]
-  images: string[]
+  images: string[] | StaticImageData[]
 }

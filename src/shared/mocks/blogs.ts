@@ -1,8 +1,8 @@
-import { Blogs } from 'shared/types/blogs'
+import { BlogType } from 'shared/types/blogs'
 import mountain from '/public/assets/images/blogs/firstblog.jpg'
 import airplane from '/public/assets/images/blogs/airplane.jpg'
 
-export const blogs: Blogs[] = [
+export const blogs: BlogType[] = [
   {
     id: 1,
     title: 'Diam ac odio id lectus mi..',
@@ -15,6 +15,7 @@ export const blogs: Blogs[] = [
     fermentum tincidunt. Amet imperdiet pharetra, est et quis eu
     mollis ultricies. Quis mi id scelerisque viverra neque.`,
     image: mountain,
+    read: 5,
   },
   {
     id: 2,
@@ -34,5 +35,6 @@ export const blogs: Blogs[] = [
     nunc. Mollis enim auctor volutpat aliquam faucibus enim quis sed
     nunc.`,
     image: airplane,
+    read: 5,
   },
 ]

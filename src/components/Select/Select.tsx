@@ -9,14 +9,14 @@ import Image from 'next/image'
 
 import cn from 'classnames'
 import s from './Select.module.scss'
-import arrow from '../../../public/assets/images/arrow.svg'
+import arrow from '../../../public/assets/images/arrow.svg?url'
 import { Option } from 'shared/types'
 
 interface OptionsProps {
   options: Option[]
   classname?: string
   isMulti?: boolean
-  value?: string,
+  value?: string
   onChange: (value: string) => void
 }
 
@@ -25,7 +25,7 @@ export const SelectComponent: FC<OptionsProps> = ({
   classname,
   isMulti = false,
   value,
-  onChange
+  onChange,
 }) => {
   const DropdownIndicator: FC<DropdownIndicatorProps> = props => (
     <components.DropdownIndicator {...props}>
@@ -47,7 +47,8 @@ export const SelectComponent: FC<OptionsProps> = ({
   const Control: FC<ControlProps> = props => (
     <components.Control {...props}>
       {options.map((item, i) =>
-        item.label === props.getValue().map((el: any) => el.label)[0] && item.icon ? (
+        item.label === props.getValue().map((el: any) => el.label)[0] &&
+          item.icon ? (
           <div className={s.control}>
             <Image key={i} src={item.icon} width={0} height={0} alt='icon' />
           </div>
@@ -108,7 +109,8 @@ export const SelectComponent: FC<OptionsProps> = ({
         defaultValue={value ?? options[0]}
         components={{ Option, DropdownIndicator, Control }}
         isMulti={isMulti}
-        onChange={(val) => onChange(val)}
+        // @ts-ignore
+        onChange={val => onChange(val)}
         className={classname}
       />
     </div>
