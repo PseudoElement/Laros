@@ -32,4 +32,5 @@ export interface OrderForm {
   email: string
   date_start: ServerDate // '2022-10-28'
   comment: string
+  is_travel_agent: boolean
 }

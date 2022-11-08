@@ -7,12 +7,14 @@ import { FC } from 'react'
 import { Controller, useForm } from 'react-hook-form';
 import { booleanOptions, titleOptions } from 'shared/constants/form';
 import { useAppDispatch } from 'shared/hooks/redux';
+import { Country } from 'shared/types/country';
 import { Steps } from '../TripFormPage'
 import s from './Step2.module.scss';
 import { TravelerForm } from './TravelerForm';
 
 interface Step2Props {
   setStep: (step: Steps) => void
+  countries: Country[]
 }
 
 export const Step2: FC<Step2Props> = ({ setStep }) => {

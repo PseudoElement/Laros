@@ -34,9 +34,11 @@ export const endpoints = {
       one: (id: number) => `/hotel_tag/${id}`,
     },
   },
-
   hotels_tag: {
     get: '/hotel_tag/',
     id: (id: number) => `/hotel_tag/${id}`,
+  },
+  country: {
+    all: '/country/',
   },
 }

@@ -1,4 +1,4 @@
-import { ChevronRightIcon, ResetIcon } from 'components';
+import { ChevronRightIcon, Map, ResetIcon } from 'components';
 import { ChevronLeftIcon } from 'components/icons/ChevronLeft';
 import { FC, useEffect, useState } from 'react'
 import { Step1 } from './Step1/Step1';
@@ -8,6 +8,8 @@ import bg from '/public/assets/images/tripFormBg.png'
 import cn from 'classnames';
 import { useRouter } from 'next/router';
 import { getTrip } from 'shared/api/routes/trips';
+import { Country } from 'shared/types/country';
+import { getCountries } from 'shared/api/routes/countries';
 
 export enum Steps {
   FIRST,
@@ -17,6 +19,7 @@ export enum Steps {
 export const TripFormPage: FC = () => {
   const [step, setStep] = useState(Steps.FIRST)
   const [trip, setTrip] = useState<any>(null) // TODO
+  const [countries, setCountries] = useState<Country[]>([])
   const { query } = useRouter();
   useEffect(() => {
     const tripID = Number(query.trip);
@@ -32,11 +35,23 @@ export const TripFormPage: FC = () => {
     loadTrip(tripID)
   }, [query.trip]);
   useEffect(() => {
-    console.log(query.trip)
-  }, [query.trip])
+    const loadCountries = async () => {
+      try {
+        const countries = await getCountries()
+        setCountries(countries.data.data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    loadCountries()
+  }, []);
+
   useEffect(() => {
     console.log(trip)
   }, [trip]);
+  if (!trip) {
+    return <div>Loading...</div>
+  }
   return (
     <div className={s.container}>
       <div className={s.bg} style={{
@@ -65,16 +80,18 @@ export const TripFormPage: FC = () => {
           <div className={s.info}>
             <div className={s.infoTitle}>{trip?.name}</div>
             <div className={s.infoLocation}>Peloponnese, Greece</div>
-            <div className={s.infoDescription}>{trip?.description}</div>
+            {trip.description ? <div className={s.infoDescription}>{trip?.description}</div> : null}
           </div>
           {
             step === Steps.FIRST ?
               <Step1 setStep={setStep} trip={trip} />
-              : <Step2 setStep={setStep} />
+              : <Step2 setStep={setStep} countries={countries} />
           }
         </div>
         <div className={s.sidebar}>
-          <div className={s.map}></div>
+          <div className={s.map}>
+            <Map route={trip?.route} />
+          </div>
 
         </div>
       </div>
