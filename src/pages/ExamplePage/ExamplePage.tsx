@@ -48,7 +48,6 @@ export const ExamplePage: FC = () => {
   const [counter1, setCounter1] = useState<any | Date>('')
   const [tags, setTags] = useState(mockTags)
   const tripCardData = tripCards[0]
-
   const [route, setRoute] = useState()
   const [newRoute, _] = useState<any>()
 
@@ -274,6 +273,7 @@ export const ExamplePage: FC = () => {
         }}
       >
         <TripCard images={[]} name={''} price={0} {...tripCardData} wide />
+
       </div>
     </div>
   )
