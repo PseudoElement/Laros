@@ -115,6 +115,10 @@
     border-radius: 8px;
     background-color: $color-white;
   }
+  [class$='-ValueContainer'] {
+    height: 32px;
+    overflow-y: scroll;
+  }
   [class$='-multiValue'] {
     border-radius: 8px;
     background-color: $color-laros-light-grey;
