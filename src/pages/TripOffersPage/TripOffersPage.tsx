@@ -49,7 +49,7 @@ export const TripOffersPage: FC = () => {
   const updateRequest = (form) => {
     form.region && setRegion(form.region)
     const subregions = form.subregions ? form.subregions.map((region: Option) => region.value) : [];
-    const destination = [subregions, region?.value ?? ''].join(', ')
+    const destination = subregions.length ? subregions.join(',') : region?.value ?? undefined
     setParams({ destination, ordering: form.ordering?.value, })
   }
 
@@ -67,7 +67,7 @@ export const TripOffersPage: FC = () => {
     dispatch(getDestinationsThunk())
   }, []);
 
-  useEffect(() => handleReady(true), [query])
+  useEffect(() => handleReady(true), [params])
 
   useEffect(() => {
     const subscription = watch((value) => updateRequest(value));
