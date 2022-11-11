@@ -171,7 +171,7 @@ export const TripOffersPage: FC = () => {
       <div className={cn(s.offers, view === View.GRID ? s.grid : s.list)}>
         {isLoading && <div className={s.loading}>Loading...</div>}
         {!isLoading &&
-          trips?.length &&
+          trips?.length ?
           trips.map((offer, idx) => {
             return (
               // @ts-ignore
@@ -181,7 +181,7 @@ export const TripOffersPage: FC = () => {
                 wide={view === View.LIST}
               />
             )
-          })}
+          }) : <div className={s.empty}>No options</div>}
       </div>
     </div>
   )
