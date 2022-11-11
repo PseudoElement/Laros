@@ -81,15 +81,49 @@
 .list {
 }
 .filterSelects {
+  width: 1020px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  & > div {
+    width: calc(1004px / 3);
+  }
+}
+.filterContent {
   display: flex;
   align-items: center;
   margin-bottom: 24px;
+}
+.sort {
+  display: flex;
+  align-items: center;
 }
 .sortFrom {
   font-size: 14px;
   font-weight: $fw-regular;
   line-height: 17px;
   margin: 0 9px 0 24px;
+}
+
+.select {
+  font-size: 12px;
+  font-weight: $fw-regular;
+  line-height: 20px;
+  [class$='-control'] {
+    border: 1px solid $color-laros-dark-grey;
+    border-radius: 8px;
+    background-color: $color-white;
+  }
+  [class$='-multiValue'] {
+    border-radius: 8px;
+    background-color: $color-laros-light-grey;
+    font-size: 12px;
+    font-weight: $fw-regular;
+    line-height: 20px;
+  }
+  [class$='-placeholder'] {
+    color: $color-primary-black;
+  }
 }
 
 .tags {

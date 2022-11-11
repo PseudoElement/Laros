@@ -14,15 +14,17 @@ import { Option } from 'shared/types'
 
 interface OptionsProps {
   options: Option[]
+  onChange: (value: string) => void
+  value?: string
+  placeholder?: string
   classname?: string
   isMulti?: boolean
   hasArrow?: boolean
-  value?: string
-  onChange: (value: string) => void
 }
 
 export const SelectComponent: FC<OptionsProps> = ({
   options,
+  placeholder = 'Select...',
   classname,
   isMulti = false,
   hasArrow = true,
@@ -115,6 +117,7 @@ export const SelectComponent: FC<OptionsProps> = ({
         // @ts-ignore
         onChange={val => onChange(val)}
         className={classname}
+        placeholder={placeholder}
       />
     </div>
   )

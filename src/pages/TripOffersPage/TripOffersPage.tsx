@@ -90,38 +90,54 @@ export const TripOffersPage: FC = () => {
       <div className={s.description}>{tripCategoryInfo?.description}</div>
       <div className={s.filters}>
         <div className={s.filterTitle}>Sort by</div>
-        <div className={s.filterSelects}>
-          <Controller
-            name='region'
-            control={control}
-            render={({ field: { onChange, value } }) => (
-              <Select options={regions.map((region) => ({ label: region.name, value: region.id.toString() })) ?? []} onChange={onChange} value={value} />
-            )}
-          />
-          <Controller
-            name='subregions'
-            control={control}
-            render={({ field: { onChange, value } }) => (
-              <Select options={subregions.map((region) => ({ label: region.name, value: region.id.toString() })) ?? []} onChange={onChange} value={value} isMulti />
-            )}
-          />
-          <Controller
-            name='duration'
-            control={control}
-            render={({ field: { onChange, value } }) => (
-              <Select options={[]} onChange={onChange} value={value} />
-            )}
-          />
-          <div className={s.sortFrom}>From </div>
-          <Controller
-            name='ordering'
-            control={control}
-            render={({ field: { onChange, value } }) => (
-              <Select options={TripSortOptions} onChange={onChange} value={value} hasArrow={false} />
-            )}
-          />
-
+        <div className={s.filterContent}>
+          <div className={s.filterSelects}>
+            <Controller
+              name='region'
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <Select placeholder='Destination' options={regions.map((region) => ({ label: region.name, value: region.id.toString() })) ?? []} onChange={onChange} value={value} classname={s.select} />
+              )}
+            />
+            <Controller
+              name='subregions'
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <Select placeholder='+ add sub-region'
+                  options={subregions.map((region) => ({ label: region.name, value: region.id.toString() })) ?? []}
+                  onChange={onChange}
+                  value={value}
+                  isMulti
+                  classname={s.select} />
+              )}
+            />
+            <Controller
+              name='duration'
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <Select
+                  placeholder='Duration'
+                  options={[]}
+                  onChange={onChange}
+                  value={value}
+                  classname={s.select} />
+              )}
+            />
+          </div>
+          <div className={s.sort}>
+            <div className={s.sortFrom}>From </div>
+            <Controller
+              name='ordering'
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <Select options={TripSortOptions} onChange={onChange} value={value} hasArrow={false} classname={s.select} />
+              )}
+            />
+          </div>
         </div>
+
+
+
         <div className={s.tagSwitchFilters}>
           <div className={s.tags}>
             <Controller
