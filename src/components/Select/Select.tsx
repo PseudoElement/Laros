@@ -1,4 +1,4 @@
-import { FC, ReactNode, useId } from 'react'
+import { FC, useId } from 'react'
 import Select, {
   components,
   ControlProps,
@@ -16,6 +16,7 @@ interface OptionsProps {
   options: Option[]
   classname?: string
   isMulti?: boolean
+  hasArrow?: boolean
   value?: string
   onChange: (value: string) => void
 }
@@ -24,13 +25,15 @@ export const SelectComponent: FC<OptionsProps> = ({
   options,
   classname,
   isMulti = false,
+  hasArrow = true,
   value,
   onChange,
 }) => {
   const DropdownIndicator: FC<DropdownIndicatorProps> = props => (
-    <components.DropdownIndicator {...props}>
-      <Image src={arrow} width={13} height={7} alt='arrow' />
-    </components.DropdownIndicator>
+    hasArrow ?
+      <components.DropdownIndicator {...props}>
+        <Image src={arrow} width={13} height={7} alt='arrow' />
+      </components.DropdownIndicator > : null
   )
 
   const Option: FC<OptionProps> = props => (
