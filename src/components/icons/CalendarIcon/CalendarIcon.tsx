@@ -5,7 +5,7 @@ import calendar from '/public/assets/images/calendar_icon.svg?url'
 export const CalendarIcon: FC = () => {
   return (
     <>
-      <Image src={calendar} alt='icon' width={24} height={24} />
+      <Image src={calendar} alt='icon' width={18} height={18} />
     </>
   )
 }
