@@ -8,8 +8,6 @@ import { Button, Modal } from 'components'
 import s from './AddLocationModal.module.scss'
 import { Destination } from 'shared/types/destinations'
 
-
-
 interface AddLocationModalProps extends Destination {
   onClick: (id: number) => void
   isOpen: boolean
@@ -23,7 +21,7 @@ export const AddLocationModal: FC<AddLocationModalProps> = ({
   images,
   id,
   name,
-  description
+  description,
 }) => {
   const pagination = {
     clickable: true,
@@ -49,7 +47,12 @@ export const AddLocationModal: FC<AddLocationModalProps> = ({
                 <SwiperSlide
                   key={id}
                   className={s.bannerSliderSlide}
-                  style={{ backgroundImage: `url(${image.src})` }}
+                  style={{
+                    backgroundImage: `url(${
+                      // @ts-ignore
+                      image.src
+                    })`,
+                  }}
                 ></SwiperSlide>
               )
             })}
@@ -79,11 +82,15 @@ export const AddLocationModal: FC<AddLocationModalProps> = ({
               >
                 {images.map((image, id) => {
                   return (
-                    <SwiperSlide>
+                    <SwiperSlide key={id}>
                       <div
-                        key={id}
                         className={s.photosSliderItem}
-                        style={{ backgroundImage: `url(${image.src})` }}
+                        style={{
+                          backgroundImage: `url(${
+                            // @ts-ignore
+                            image.src
+                          })`,
+                        }}
                       ></div>
                     </SwiperSlide>
                   )
@@ -107,7 +114,6 @@ export const AddLocationModal: FC<AddLocationModalProps> = ({
         <Button variant='outline' onClick={onClose} classname={s.cancelButton}>
           Cancel
         </Button>
-
       </div>
     </Modal>
   )
