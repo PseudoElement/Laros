@@ -37,4 +37,9 @@ export const endpoints = {
     },
   },
   contact: '/contact/request',
+  vacancy: {
+    all: '/vacancy/',
+    one: (id: number) => `/vacancy/${id}`,
+    apply: (id: number) => `/vacancy/${id}/apply`,
+  }
 }

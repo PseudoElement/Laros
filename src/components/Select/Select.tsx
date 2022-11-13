@@ -15,7 +15,7 @@ import { Option } from 'shared/types'
 interface OptionsProps {
   options: Option[]
   onChange: (value: string) => void
-  value?: string
+  value?: Option
   placeholder?: string
   classname?: string
   isMulti?: boolean
@@ -31,6 +31,7 @@ export const SelectComponent: FC<OptionsProps> = ({
   value,
   onChange,
 }) => {
+
   const DropdownIndicator: FC<DropdownIndicatorProps> = props => (
     hasArrow ?
       <components.DropdownIndicator {...props}>
