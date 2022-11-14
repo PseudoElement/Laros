@@ -3,12 +3,14 @@ import s from './TermsPage.module.scss'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import 'react-tabs/style/react-tabs.css'
 import { termsMock } from 'shared/mocks/terms'
+import { useTranslate } from 'shared/hooks/useTranslate'
 
 export const TermsPage: FC = () => {
+  const t = useTranslate();
   return (
     <div className={s.page}>
       <div className={s.title}>
-        <h2>Terms and policies</h2>
+        <h2>{t('terms.title')}</h2>
         <p>
           Quis vulputate facilisis a ullamcorper hausdhausdhuashduasd sit netus
           neque. Nulla erat mattis donec blandit.
