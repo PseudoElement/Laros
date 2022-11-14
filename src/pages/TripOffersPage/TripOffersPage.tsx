@@ -16,7 +16,10 @@ import { Select } from 'components/Select'
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { getTripCategoriesThunk } from 'store/slices/trips/thunk'
 import { getDestinationsThunk } from 'store/slices/destinations/thunk'
-import { getRootDestinations, getSubRegions } from 'store/slices/destinations/selectors'
+import {
+  getRootDestinations,
+  getSubRegions,
+} from 'store/slices/destinations/selectors'
 import { getHotelTags } from 'shared/api/routes/hotels'
 import { Tag } from 'shared/types/tag'
 import { TripSortOptions } from 'shared/constants/filters'
@@ -32,7 +35,7 @@ export const TripOffersPage: FC = () => {
   const { query, push } = useRouter()
   const { category } = query
   const { control, watch } = useForm()
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
 
   const [params, setParams] = useState<Partial<TripFilterParams>>({})
   const [trips, isLoading, handleReady] = useGetTrips(params)
@@ -42,9 +45,11 @@ export const TripOffersPage: FC = () => {
   const [region, setRegion] = useState<Option | null>(null)
 
   // const tripCategoryInfo = useAppSelector((state) => state.trips.categories.find((cat) => cat.id === Number(category)));
-  const destinations = useAppSelector((state) => state.destinations.destinations);
+  const destinations = useAppSelector(state => state.destinations.destinations)
   const regions = getRootDestinations(destinations)
-  const subregions = useAppSelector((state) => getSubRegions(state, region?.value ?? null));
+  const subregions = useAppSelector(state =>
+    getSubRegions(state, region?.value ?? null)
+  )
 
   const updateRequest = (form: any) => { // TODO
     form.region && setRegion(form.region)
@@ -65,14 +70,14 @@ export const TripOffersPage: FC = () => {
     loadHotelTags()
     dispatch(getTripCategoriesThunk())
     dispatch(getDestinationsThunk())
-  }, []);
+  }, [])
 
   useEffect(() => handleReady(true), [params])
 
   useEffect(() => {
-    const subscription = watch((value) => updateRequest(value));
-    return () => subscription.unsubscribe();
-  }, [category, watch]);
+    const subscription = watch(value => updateRequest(value))
+    return () => subscription.unsubscribe()
+  }, [category, watch])
 
   useEffect(() => {
     setTripCatInfo(tripPageInfo)
@@ -96,19 +101,37 @@ export const TripOffersPage: FC = () => {
               name='region'
               control={control}
               render={({ field: { onChange, value } }) => (
-                <Select placeholder='Destination' options={regions.map((region) => ({ label: region.name, value: region.id.toString() })) ?? []} onChange={onChange} value={value} classname={s.select} />
+                <Select
+                  placeholder='Destination'
+                  options={
+                    regions.map(region => ({
+                      label: region.name,
+                      value: region.id.toString(),
+                    })) ?? []
+                  }
+                  onChange={onChange}
+                  value={value}
+                  classname={s.select}
+                />
               )}
             />
             <Controller
               name='subregions'
               control={control}
               render={({ field: { onChange, value } }) => (
-                <Select placeholder='+ add sub-region'
-                  options={subregions.map((region) => ({ label: region.name, value: region.id.toString() })) ?? []}
+                <Select
+                  placeholder='+ add sub-region'
+                  options={
+                    subregions.map(region => ({
+                      label: region.name,
+                      value: region.id.toString(),
+                    })) ?? []
+                  }
                   onChange={onChange}
                   value={value}
                   isMulti
-                  classname={s.select} />
+                  classname={s.select}
+                />
               )}
             />
             <Controller
@@ -120,7 +143,8 @@ export const TripOffersPage: FC = () => {
                   options={[]}
                   onChange={onChange}
                   value={value}
-                  classname={s.select} />
+                  classname={s.select}
+                />
               )}
             />
           </div>
@@ -130,13 +154,17 @@ export const TripOffersPage: FC = () => {
               name='ordering'
               control={control}
               render={({ field: { onChange, value } }) => (
-                <Select options={TripSortOptions} onChange={onChange} value={value} hasArrow={false} classname={s.select} />
+                <Select
+                  options={TripSortOptions}
+                  onChange={onChange}
+                  value={value}
+                  hasArrow={false}
+                  classname={s.select}
+                />
               )}
             />
           </div>
         </div>
-
-
 
         <div className={s.tagSwitchFilters}>
           <div className={s.tags}>
@@ -170,20 +198,17 @@ export const TripOffersPage: FC = () => {
       </div>
       <div className={cn(s.offers, view === View.GRID ? s.grid : s.list)}>
         {isLoading && <div className={s.loading}>Loading...</div>}
-        {!isLoading &&
-          trips?.length ?
+        {!isLoading && trips?.length ? (
           trips.map((offer, idx) => {
             return (
               // @ts-ignore
-              <TripCard
-                key={idx}
-                {...offer}
-                wide={view === View.LIST}
-              />
+              <TripCard key={idx} {...offer} wide={view === View.LIST} />
             )
-          }) : <div className={s.empty}>No options</div>}
+          })
+        ) : (
+          <div className={s.empty}>No options</div>
+        )}
       </div>
     </div>
   )
 }
-

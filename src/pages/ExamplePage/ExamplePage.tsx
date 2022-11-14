@@ -3,20 +3,23 @@ import { HotelCard } from 'features/HotelCard'
 import { Input } from 'components/Input'
 import { Slider } from 'features'
 import { CategoryCard } from 'pages/TravelPlannerPage/CategoryCard'
-import { moreCategoriesMock } from 'shared/mocks/tripPlanner'
 import { ContactForm } from 'features/ContactForm'
 import { Radio } from 'components/Radio'
 import { Map, Modal, ReactPlayer } from 'components'
 import { Checkbox } from 'components/Checkbox'
 import { Tags } from 'components/Tags'
-import { mockTags } from 'shared/mocks/tags'
 import { ChangeLocationModal } from 'features/ChangeLocationModal'
-import { destinationsMock } from 'shared/mocks/destinations'
 import { TripCard } from 'features/TripCard'
+import { InputCalendar } from 'components/InputCalendar'
+
+import { moreCategoriesMock } from 'shared/mocks/tripPlanner'
+import { mockTags } from 'shared/mocks/tags'
+import { destinationsMock } from 'shared/mocks/destinations'
 import { tripCards } from 'shared/mocks/tripCards'
+import { HotelMock } from 'shared/mocks/hotel'
+import { tripsMock } from 'shared/mocks/destinationInfo'
 
 import s from './example.module.scss'
-import { InputCalendar } from 'components/InputCalendar'
 
 const gjson = {
   type: 'FeatureCollection',
@@ -68,7 +71,9 @@ export const ExamplePage: FC = () => {
       <div style={{ height: '750px', width: 'calc(100% - 50px)' }}>
         <Map route={route} />
       </div>
+
       <ReactPlayer url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
+
       <div style={{ width: '1200px', margin: 'auto' }}>
         <Slider
           withNavigation
@@ -218,31 +223,21 @@ export const ExamplePage: FC = () => {
           Hello!
         </Modal>
         <Checkbox label={'Текст Чекбокса'} />
-        {/*<Tags tags={tags} value={'test'} onChange={setTags} />*/}
-        {/*<ChangeLocationModal*/}
-        {/*  destinations={destinationsMock}*/}
-        {/*  onClick={() => 1}*/}
-        {/*  isOpen={isModalOpen}*/}
-        {/*  onClose={() => setIsModalOpen(false)}*/}
-        {/*/>*/}
+
+        <Tags tags={tags} value={[1, 2]} onChange={() => {}} />
+
+        <ChangeLocationModal
+          // @ts-ignore
+          destinations={destinationsMock}
+          onClick={() => 1}
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
       </div>
-      {/*<HotelCard*/}
-      {/*  tags={tags}*/}
-      {/*  address={''}*/}
-      {/*  description={''}*/}
-      {/*  destination={1}*/}
-      {/*  id={1}*/}
-      {/*  images={[]}*/}
-      {/*  is_active*/}
-      {/*  link={''}*/}
-      {/*  location={''}*/}
-      {/*  min_price={''}*/}
-      {/*  name={'te'}*/}
-      {/*  opinion={''}*/}
-      {/*  period={'1'}*/}
-      {/*  rating={1}*/}
-      {/*  tripadvisor_id={2}*/}
-      {/*/>*/}
+
+      <HotelCard {...HotelMock} />
+
+
 
       <div
         style={{
@@ -252,7 +247,7 @@ export const ExamplePage: FC = () => {
           justifyContent: 'space-between',
         }}
       >
-        <TripCard images={[]} name={''} price={0} {...tripCardData} wide />
+        <TripCard {...tripsMock[0]} wide />
       </div>
     </div>
   )

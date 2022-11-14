@@ -3,7 +3,7 @@
 .hotelCard {
   display: flex;
   flex-direction: column;
-  width: 368px;
+  min-width: 368px;
   background-color: $color-white;
   border-radius: 16px;
   box-shadow: $color-light-grey;

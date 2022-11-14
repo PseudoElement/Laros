@@ -21,6 +21,9 @@ export interface TripFilterParams {
 export interface TripDestination {
   readonly id: number
   images: string[] // '/media/destination/img/xxx.png'
+  destination_name: string
+  hotel_name: string
+  description: string | null
   duration: number
   trip: number // id
   destination: number // id
@@ -36,16 +39,18 @@ export interface Trip {
   images: string[]
   price: number
   destinations: TripDestination[]
+  duration: number
+  offer_name: string | null
+  tags: Meta[]
+  travel_types: any[] // TODO check
+  transports: any[] // TODO check
   name: string
-  is_bookable: boolean
   is_active: boolean
   island_hopping_fee: boolean
   description: string
-  route: string // TODO check
-  transports: unknown[]
-  travel_types: unknown[]
-  tags: Meta[]
-  duration: number
+  route: string
+  period: string | null
+  offer: number | null
 }
 export interface TripItem {
   readonly id: number

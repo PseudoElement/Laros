@@ -1,32 +1,28 @@
-import { Button } from 'components/Button'
-import { FlightIcon, SaleIcon } from 'components/icons'
 import { FC } from 'react'
-import { generateTagText } from 'shared/helpers/tripCard'
-import s from './TripCard.module.scss'
 import cn from 'classnames'
-import { Currency } from 'shared/types'
 
-interface TripCardProps {
-  id: number
-  images: string[]
-  name: string
-  price: number
-  period: string
-  duration: number
-  tags: string[]
-  sale?: number
+import { Button, SaleIcon, TagCard } from 'components'
+
+import { Currency } from 'shared/types'
+import { Trip } from 'shared/types/trip'
+
+import s from './TripCard.module.scss'
+
+interface TripCardProps extends Trip {
   wide?: boolean
+  onClick?: (id: number) => void
+  sale?: string
 }
 
 export const TripCard: FC<TripCardProps> = ({
   name,
   wide,
   images = [],
-  sale,
   tags = [],
   price,
   period,
   duration,
+  sale,
 }) => {
   return (
     <div className={cn(s.wrapper, { [s.wide]: wide })}>
@@ -68,9 +64,9 @@ export const TripCard: FC<TripCardProps> = ({
         <div className={s.lastRow}>
           <div className={s.tags}>
             {tags.length
-              ? tags.map((tag, idx) => (
-                  <div key={idx} className={s[tag]}>
-                    {generateTagText(tag)}
+              ? tags.map(tag => (
+                  <div key={tag.id} className={s.tag}>
+                    <TagCard id={tag.id} name={tag.name} />
                   </div>
                 ))
               : null}
