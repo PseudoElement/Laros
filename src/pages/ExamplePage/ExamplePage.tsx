@@ -237,8 +237,6 @@ export const ExamplePage: FC = () => {
 
       <HotelCard {...HotelMock} />
 
-
-
       <div
         style={{
           width: '1152px',
