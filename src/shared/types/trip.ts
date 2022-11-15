@@ -41,9 +41,13 @@ export interface Trip {
   destinations: TripDestination[]
   duration: number
   offer_name: string | null
+  offer_discount: string
+  offer_percent: string
+  offer_date_start: string
+  offer_date_end: string
   tags: Meta[]
-  travel_types: any[] // TODO check
-  transports: any[] // TODO check
+  travel_types: unknown[] // TODO check
+  transports: unknown[] // TODO check
   name: string
   is_active: boolean
   island_hopping_fee: boolean

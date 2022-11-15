@@ -1,6 +1,7 @@
 .slider {
   padding: 0 80px;
   box-sizing: border-box;
+  overflow: hidden;
   & > div {
     overflow: visible;
   }

@@ -1,15 +1,15 @@
-import React, { FC, ReactNode } from 'react'
+import { FC, ReactNode } from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper'
 
-import s from './AboutSlider.module.scss'
+import s from './SliderGalery.module.scss'
 
 interface AboutSliderProps {
   children: ReactNode[] | string[]
 }
 
-export const AboutSlider: FC<AboutSliderProps> = ({ children }) => {
+export const SliderGalery: FC<AboutSliderProps> = ({ children }) => {
   return (
     <div className={s.slider}>
       <Swiper

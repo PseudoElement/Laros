@@ -11,7 +11,6 @@ import s from './TripCard.module.scss'
 interface TripCardProps extends Trip {
   wide?: boolean
   onClick?: (id: number) => void
-  sale?: string
 }
 
 export const TripCard: FC<TripCardProps> = ({
@@ -22,7 +21,21 @@ export const TripCard: FC<TripCardProps> = ({
   price,
   period,
   duration,
-  sale,
+  offer_percent,
+  offer_discount,
+  offer_date_start,
+  id,
+  offer,
+  onClick,
+  destinations,
+  transports,
+  travel_types,
+  offer_name,
+  offer_date_end,
+  island_hopping_fee,
+  description,
+  is_active,
+  route,
 }) => {
   return (
     <div className={cn(s.wrapper, { [s.wide]: wide })}>
@@ -32,9 +45,16 @@ export const TripCard: FC<TripCardProps> = ({
           backgroundImage: `url(${images[0]})`,
         }}
       >
-        {sale && (
+        {offer_discount && (
           <div className={s.sale}>
-            {`- ${sale}% OFF `}
+            {`- ${offer_discount} CHF`}
+            <SaleIcon />
+          </div>
+        )}
+
+        {!offer_discount && offer_percent && (
+          <div className={s.sale}>
+            {`- ${offer_percent}% OFF`}
             <SaleIcon />
           </div>
         )}

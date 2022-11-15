@@ -1,9 +1,10 @@
+import { StaticImageData } from 'next/image'
 
 export interface Destination {
   readonly id: number
-  images: string[]
   name: string
   fee: number
+  overview: string
   description: string
   highlights: string[] | null
   location: string //'SRID=4326;POINT (21.986157 38.873375)'
@@ -17,7 +18,6 @@ export interface Destination {
   parent: number | null
   travel_types: number[]
   activities: any[] // wait API schema TODO
-  travel_types: any[]
   festivals: any[]
   images: string[] | StaticImageData[] | HTMLImageElement[]
 }

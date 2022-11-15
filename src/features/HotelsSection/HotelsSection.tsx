@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
-import { HotelCard } from 'features/HotelCard'
-import { Slider } from 'components/Slider'
+import { HotelCard } from 'features'
+import { Slider } from 'components'
 
 import { Hotel } from 'shared/types/hotel'
 
@@ -23,8 +23,8 @@ export const HotelSection: FC<HotelSection> = ({ hotels, title, subTitle }) => {
       <div className={s.wrap}>
         {hotels.length ? (
           <Slider
-            withNavigation={true}
-            withPagination={true}
+            withNavigation
+            withPagination
             nextEl={s.nextButton}
             prevEl={s.prevButton}
           >

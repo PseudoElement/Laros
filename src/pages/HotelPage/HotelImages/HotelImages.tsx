@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
 
-import { AboutSlider } from '../../AboutPage/AboutSlider/AboutSlider'
+import { SliderGalery } from 'components'
 
 import s from './HotelImages.module.scss'
 
@@ -13,13 +13,13 @@ export const HotelImages: FC<HotelImagesProps> = ({ images }) => {
   return (
     <div className={s.hotelImages}>
       {images?.length ? (
-        <AboutSlider>
+        <SliderGalery>
           {images.map((image, index) => (
             <div key={index} className={s.hotelImage}>
               <Image width={'1000'} height={'500'} src={image} alt='' />
             </div>
           ))}
-        </AboutSlider>
+        </SliderGalery>
       ) : null}
     </div>
   )

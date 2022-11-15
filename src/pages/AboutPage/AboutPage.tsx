@@ -7,7 +7,7 @@ import slideImg2 from '/public/assets/images/about/house_yellow.jpg'
 import { AdvantageCard } from './AdvantageCard'
 
 import s from './AboutPage.module.scss'
-import { AboutSlider } from './AboutSlider/AboutSlider'
+import { SliderGalery } from 'components'
 import { aboutCards } from 'shared/mocks/aboutCards'
 
 export const AboutPage: FC = () => {
@@ -45,12 +45,12 @@ export const AboutPage: FC = () => {
         </div>
       </div>
       <div className={s.sliderWrapper}>
-        <AboutSlider>
+        <SliderGalery>
           <Image src={slideImg1} width='850px' height='500px' alt='Image' />
           <Image src={slideImg2} width='850px' height='500px' alt='Image' />
           <Image src={slideImg1} width='850px' height='500px' alt='Image' />
           <Image src={slideImg2} width='850px' height='500px' alt='Image' />
-        </AboutSlider>
+        </SliderGalery>
       </div>
       <div className={s.wrapper}>
         <div className={s.textJustify}>

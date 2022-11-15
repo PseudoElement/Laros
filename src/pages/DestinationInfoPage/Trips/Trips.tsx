@@ -9,23 +9,20 @@ import s from './Trips.module.scss'
 
 interface TripsProps {
   trips: Trip[]
+  title: string
+  subTitle: string
 }
 
-export const Trips: FC<TripsProps> = ({ trips }) => {
+export const Trips: FC<TripsProps> = ({ trips, title, subTitle }) => {
   return (
     <div className={s.trips}>
-      <div className={s.title}>Pre-defined trips in Tessaloniki</div>
+      <div className={s.title}>Pre-defined trips in {title}</div>
 
-      <div className={s.subTitle}>
-        At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida
-        in orci, pretium nulla volutpat leo.
-      </div>
+      <div className={s.subTitle}>{subTitle}</div>
 
-      <div className={s.slider}>
-        <Slider
-          slidesPerView={3}
-          withPagination={true}
-        >
+      <div>
+        <Slider slidesPerView={3} withPagination classname={s.slider}>
+
           {trips?.map((item, index) => (
             <div className={s.tripCard} key={index}>
               <TripCard {...item} onClick={() => {}} />

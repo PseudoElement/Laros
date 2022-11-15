@@ -2,12 +2,15 @@ import { Destination } from 'shared/types/destinations'
 import { Trip } from 'shared/types/trip'
 
 import imageBg from '/public/assets/images/destinationsInfoBg.png'
-import imageMap from '/public/assets/images/destinationsInfoMap.png'
 
 export const destinationInfo: Destination = {
   id: 2,
   name: 'Chalkida',
+  activities: [],
+  festivals: [],
   images: [imageBg.src, imageBg.src, imageBg.src, imageBg.src],
+  overview:
+    'Malesuada nunc consequat porttitor vitae. Risus vitae ipsum varius eleifend ullamcorper tellus, dolor ipsum suspendisse. Maecenas et urna a, nibh dolor id elit a cras. Etiam lobortis habitant tempor est eleifend vulputate egestas. Lacus mollis vel, eu, congue tellus rhoncus quis adipiscing. Aenean fringilla vulputate maecenas amet, mattis id odio ultrices imperdiet. Et, viverra mauris, cursus molestie. Hendrerit quisque pulvinar montes, duis tincidunt. Sagittis euismod sed dui ac ut eget massa nibh. Massa, vitae dolor nulla ante orci. Sodales neque lacus, magna nisl blandit pellentesque.',
   fee: 10.0,
   description:
     'Thessaloniki is a Greek port city on the Thermaic Gulf of the Aegean Sea. Evidence of Roman, Byzantine and Ottoman history remains, especially around Ano Poli, the upper town. The ruins of Roman Emperor Galerius’ 4th-century palace include the Rotunda that has been both a church and a mosque Much of the city center was destroyed in the Great Fire of 1917. The rebuilt 20th-century city has a modern European layout.',
@@ -27,8 +30,8 @@ export const destinationInfo: Destination = {
   is_airport: false,
   is_island: false,
   parent: 14,
-  location:
-      'SRID=4326;POINT (23.800629 37.813474)',  tips: '',
+  location: 'SRID=4326;POINT (23.800629 37.813474)',
+  tips: '',
   travel_types: [1],
 }
 
@@ -37,6 +40,10 @@ export const tripsMock: Trip[] = [
     id: 1,
     images: [],
     price: 510.0,
+    offer_discount: '',
+    offer_date_end: '',
+    offer_date_start: '',
+    offer_percent: '20',
     destinations: [
       {
         id: 1,
@@ -90,6 +97,10 @@ export const tripsMock: Trip[] = [
     id: 1,
     images: [],
     price: 510.0,
+    offer_discount: '',
+    offer_date_end: '',
+    offer_date_start: '',
+    offer_percent: '',
     destinations: [
       {
         id: 1,
@@ -143,6 +154,10 @@ export const tripsMock: Trip[] = [
     id: 1,
     images: [],
     price: 510.0,
+    offer_discount: '10',
+    offer_date_end: '',
+    offer_date_start: '',
+    offer_percent: '20',
     destinations: [
       {
         id: 1,
@@ -196,6 +211,10 @@ export const tripsMock: Trip[] = [
     id: 1,
     images: [],
     price: 510.0,
+    offer_discount: '10',
+    offer_date_end: '',
+    offer_date_start: '',
+    offer_percent: '20',
     destinations: [
       {
         id: 1,
@@ -249,6 +268,10 @@ export const tripsMock: Trip[] = [
     id: 1,
     images: [],
     price: 510.0,
+    offer_discount: '10',
+    offer_date_end: '',
+    offer_date_start: '',
+    offer_percent: '20',
     destinations: [
       {
         id: 1,
@@ -302,6 +325,10 @@ export const tripsMock: Trip[] = [
     id: 1,
     images: [],
     price: 510.0,
+    offer_discount: '10',
+    offer_date_end: '',
+    offer_date_start: '',
+    offer_percent: '20',
     destinations: [
       {
         id: 1,
@@ -355,6 +382,10 @@ export const tripsMock: Trip[] = [
     id: 1,
     images: [],
     price: 510.0,
+    offer_discount: '10',
+    offer_date_end: '',
+    offer_date_start: '',
+    offer_percent: '20',
     destinations: [
       {
         id: 1,
@@ -408,6 +439,10 @@ export const tripsMock: Trip[] = [
     id: 1,
     images: [],
     price: 510.0,
+    offer_discount: '10',
+    offer_date_end: '',
+    offer_date_start: '',
+    offer_percent: '20',
     destinations: [
       {
         id: 1,
@@ -461,6 +496,10 @@ export const tripsMock: Trip[] = [
     id: 1,
     images: [],
     price: 510.0,
+    offer_discount: '10',
+    offer_date_end: '',
+    offer_date_start: '',
+    offer_percent: '20',
     destinations: [
       {
         id: 1,

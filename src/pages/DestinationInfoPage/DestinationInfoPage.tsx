@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
-import { HotelSection } from 'features'
-import { DestinationIntro } from 'features/DestinationIntro/DestinationIntro'
+import { HotelSection, DestinationIntro } from 'features'
 import { Trips } from './Trips/Trips'
 import { Overview } from './Overview/Overview'
 
@@ -65,8 +64,21 @@ export const DestinationInfoPage = () => {
       }}
     >
       {destination ? <DestinationIntro {...destination} /> : null}
-      {destination?.images ? <Overview images={destination.images} /> : null}
-      {trips ? <Trips trips={trips} /> : null}
+
+      {destination?.images ? (
+        <Overview
+          images={destination.images}
+          overview={destination.overview}
+        />
+      ) : null}
+
+      {trips && destination ? (
+        <Trips
+          trips={trips}
+          title={destination.name}
+          subTitle={destination.description}
+        />
+      ) : null}
 
       {data ? (
         <div
