@@ -8,6 +8,7 @@
   border-radius: 8px;
   padding-top: 8px;
   margin-bottom: 8px;
+  background-color: $color-white;
 }
 .addressInputs {
   display: flex;
@@ -19,6 +20,7 @@
   font-weight: $fw-medium;
   color: $color-placeholder;
   padding: 8px;
+  text-align: left;
 }
 
 .adressZip,

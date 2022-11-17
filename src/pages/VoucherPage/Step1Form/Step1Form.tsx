@@ -1,9 +1,12 @@
 import { Button } from 'components/Button'
 import { Input } from 'components/Input'
 import { Radio } from 'components/Radio'
+import { Select } from 'components/Select'
+import { AddressInput } from 'features/AddressInput'
 import { FC, useEffect } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { titleOptions } from 'shared/constants/form'
+import { options } from 'shared/constants/payment'
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { updateForm } from 'store/slices/voucher/voucher'
 import { Steps } from '../VoucherPage'
@@ -37,20 +40,37 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
         <div className={s.voucherSection}>
           <div className={s.title}>Voucher</div>
           <div className={s.voucherInputs}>
-            <div className={s.selectDiv} />
+            <div className={s.selectDiv}>
+              <div className={s.selectLabel}>
+                Select a voucher or a gift card
+              </div>
+              <Controller
+                name='name'
+                control={control}
+                render={({ field: { onChange, value } }) => (
+                  <Select
+                    options={options}
+                    onChange={onChange}
+                    value={value}
+                    classname={s.select}
+                  />
+                )}
+              />
+            </div>
             <Controller
-              name='name'
+              name='value'
               control={control}
               render={({ field: { onChange, value } }) => (
                 <Input
                   required
+                  shorten
                   placeholder='50'
                   type='number'
                   onChange={onChange}
                   id='name'
                   value={value}
                   label='Enter the value of the voucher. Must be more than 50 CHF'
-                  classname={s.input}
+                  classname={s.price}
                 />
               )}
             />
@@ -70,6 +90,7 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
               <Input
                 classname={s.input}
                 required
+                shorten
                 placeholder='Name'
                 onChange={onChange}
                 id='name'
@@ -100,12 +121,13 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
               <Input
                 classname={s.input}
                 required
+                shorten
                 placeholder='Email'
                 type='email'
                 onChange={onChange}
                 id='name'
                 value={value}
-                label='Fullname and surname'
+                label='Email'
               />
             )}
           />
@@ -115,6 +137,7 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
             render={({ field: { onChange, value } }) => (
               <Input
                 classname={s.input}
+                shorten
                 placeholder='e. g. Tesla'
                 onChange={onChange}
                 id='name'
@@ -131,6 +154,7 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
                 classname={s.input}
                 placeholder='+ 42 123 - 45- 67'
                 required
+                shorten
                 type='phone'
                 onChange={onChange}
                 id='name'
@@ -139,6 +163,7 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
               />
             )}
           />
+          <AddressInput control={control} />
         </div>
         <div className={s.recepientSection}>
           <div className={s.title}>Recipient Name</div>
@@ -149,6 +174,7 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
               <Input
                 classname={s.input}
                 required
+                shorten
                 placeholder='Name'
                 onChange={onChange}
                 id='name'
@@ -167,6 +193,7 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
               <Input
                 classname={s.input}
                 required
+                shorten
                 placeholder='Name'
                 onChange={onChange}
                 id='name'

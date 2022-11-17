@@ -32,12 +32,13 @@ export const SelectComponent: FC<OptionsProps> = ({
   onChange,
 }) => {
 
-  const DropdownIndicator: FC<DropdownIndicatorProps> = props => (
-    hasArrow ?
+const DropdownIndicator: FC<DropdownIndicatorProps> = props =>
+    hasArrow ? (
+
       <components.DropdownIndicator {...props}>
         <Image src={arrow} width={13} height={7} alt='arrow' />
-      </components.DropdownIndicator > : null
-  )
+      </components.DropdownIndicator>
+    ) : null
 
   const Option: FC<OptionProps> = props => (
     <components.Option {...props}>
@@ -56,7 +57,7 @@ export const SelectComponent: FC<OptionsProps> = ({
         item.label === props.getValue().map((el: any) => el.label)[0] &&
         item.icon ? (
           <div className={s.control}>
-            <Image key={i} src={item.icon} width={0} height={0} alt='icon' />
+            <Image key={i} src={item.icon} width={30} height={30} alt='icon' />
           </div>
         ) : null
       )}
