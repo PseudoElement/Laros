@@ -1,3 +1,5 @@
+import { getAccommodations } from './routes/accommodation'
+
 export const endpoints = {
   brochures: {
     get: '/brochure/',
@@ -43,4 +45,12 @@ export const endpoints = {
     one: (id: number) => `/vacancy/${id}`,
     apply: (id: number) => `/vacancy/${id}/apply`,
   },
+  category: {
+    all: '/category/',
+    one: (id: number) => `/category/${id}`,
+  },
+  accommodations: {
+    all: '/accommodation/',
+    one: (id: number) => `/accommodation/${id}`,
+  }
 }

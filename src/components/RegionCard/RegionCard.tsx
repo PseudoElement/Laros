@@ -13,7 +13,7 @@ interface RegionCardProps {
   id: number
   image?: string | StaticImageData
   title: string
-  cartText: string
+  cardText: string
   link: string
   className?: string
   onClose?: () => void
@@ -25,7 +25,7 @@ const RegionCard: FC<RegionCardProps> = ({
   id,
   image,
   title,
-  cartText,
+  cardText,
   onClose,
   onOpen,
   isOpen,
@@ -53,7 +53,7 @@ const RegionCard: FC<RegionCardProps> = ({
             )}
           </div>
           <h3 className={s.cart_title}>{title}</h3>
-          <p className={s.description}>{cartText}</p>
+          <p className={s.description}>{cardText}</p>
           <div className={s.link__blockDestinationMap}>
             <Link href={link}>
               <span className={s.link__detailCartMap}>Learn more</span>

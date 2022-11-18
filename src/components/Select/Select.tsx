@@ -31,10 +31,8 @@ export const SelectComponent: FC<OptionsProps> = ({
   value,
   onChange,
 }) => {
-
-const DropdownIndicator: FC<DropdownIndicatorProps> = props =>
+  const DropdownIndicator: FC<DropdownIndicatorProps> = props =>
     hasArrow ? (
-
       <components.DropdownIndicator {...props}>
         <Image src={arrow} width={13} height={7} alt='arrow' />
       </components.DropdownIndicator>
@@ -108,19 +106,18 @@ const DropdownIndicator: FC<DropdownIndicatorProps> = props =>
   const randomId = useId()
 
   return (
-    <div className={cn(s.select)}>
       <Select
         instanceId={randomId}
         styles={customStyles}
         options={options}
+        value={value}
         defaultValue={value ?? options[0]}
         components={{ Option, DropdownIndicator, Control }}
         isMulti={isMulti}
         // @ts-ignore
         onChange={val => onChange(val)}
-        className={classname}
+        className={cn(s.select, classname)}
         placeholder={placeholder}
       />
-    </div>
   )
 }
