@@ -26,6 +26,8 @@ import { TripSortOptions } from 'shared/constants/filters'
 import { TripCategory, TripFilterParams } from 'shared/types/trip'
 import { Option } from 'shared/types'
 import { TripCard } from 'features'
+import { getTripsDuration } from 'shared/api/routes/trips'
+import { getTripDurationOptions } from 'shared/helpers/transformers'
 
 enum View {
   LIST,
@@ -43,6 +45,8 @@ export const TripOffersPage: FC = () => {
   const [view, setView] = useState(View.GRID)
   const [tags, setTags] = useState<Tag[]>([])
   const [region, setRegion] = useState<Option | null>(null)
+  const [durations, setDurations] = useState<Option[]>([])
+
 
   // const tripCategoryInfo = useAppSelector((state) => state.trips.categories.find((cat) => cat.id === Number(category)));
   const destinations = useAppSelector(state => state.destinations.destinations)
@@ -67,9 +71,19 @@ export const TripOffersPage: FC = () => {
         console.error(error)
       }
     }
+    const loadDurations = async () => {
+      try {
+        const { data } = await getTripsDuration()
+        console.log(data)
+        setDurations(getTripDurationOptions(data))
+      } catch (error) {
+        console.error(error)
+      }
+    }
     loadHotelTags()
+    loadDurations()
     dispatch(getTripCategoriesThunk())
-    dispatch(getDestinationsThunk())
+    dispatch(getDestinationsThunk()) // TODO we can create a hook to combine it with SpecialOffersPage logic
   }, [])
 
   useEffect(() => handleReady(true), [params])
@@ -140,7 +154,7 @@ export const TripOffersPage: FC = () => {
               render={({ field: { onChange, value } }) => (
                 <Select
                   placeholder='Duration'
-                  options={[]}
+                  options={durations}
                   onChange={onChange}
                   value={value}
                   classname={s.select}

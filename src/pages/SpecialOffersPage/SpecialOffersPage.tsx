@@ -16,6 +16,8 @@ import { Select } from 'components/Select';
 import { TripSortOptions } from 'shared/constants/filters';
 import { Tags } from 'components/Tags';
 import { TripCard } from 'features';
+import { getTripDurationOptions } from 'shared/helpers/transformers';
+import { getTripsDuration } from 'shared/api/routes/trips';
 
 export const SpecialOffersPage: FC = () => {
     const { control, watch } = useForm()
@@ -25,7 +27,7 @@ export const SpecialOffersPage: FC = () => {
     const [trips, isLoading, handleReady] = useGetTrips(params)
     const [tags, setTags] = useState<Tag[]>([])
     const [region, setRegion] = useState<Option | null>(null)
-
+    const [durations, setDurations] = useState<Option[]>([])
     const destinations = useAppSelector((state) => state.destinations.destinations)
     const regions = getRootDestinations(destinations)
     const subregions = useAppSelector((state) => getSubRegions(state, region?.value ?? null))
@@ -46,7 +48,16 @@ export const SpecialOffersPage: FC = () => {
                 console.error(error)
             }
         }
+        const loadDurations = async () => {
+            try {
+                const { data } = await getTripsDuration()
+                setDurations(getTripDurationOptions(data))
+            } catch (error) {
+                console.error(error)
+            }
+        }
         loadHotelTags()
+        loadDurations()
         dispatch(getTripCategoriesThunk())
         dispatch(getDestinationsThunk())
     }, []);
@@ -98,7 +109,7 @@ export const SpecialOffersPage: FC = () => {
                             render={({ field: { onChange, value } }) => (
                                 <Select
                                     placeholder='Duration'
-                                    options={[]}
+                                    options={durations}
                                     onChange={onChange}
                                     value={value}
                                     classname={s.select} />

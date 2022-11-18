@@ -66,3 +66,8 @@ export interface TripItem {
   startPoint: string
   tags: string[]
 }
+
+export interface TripDuration {
+  min_duration: number
+  max_duration: number
+}

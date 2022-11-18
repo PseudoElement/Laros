@@ -12,6 +12,7 @@ export const endpoints = {
   trips: {
     get: '/trip/',
     categories: '/travel_type/',
+    duration: '/trip/min-max-duration/',
     id: (id: number) => `/trip/${id}`,
     similar: (id: number) => `/trip/similar/${id}`,
   },
@@ -41,5 +42,5 @@ export const endpoints = {
     all: '/vacancy/',
     one: (id: number) => `/vacancy/${id}`,
     apply: (id: number) => `/vacancy/${id}/apply`,
-  }
+  },
 }
