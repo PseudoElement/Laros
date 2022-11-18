@@ -12,18 +12,17 @@ export const TermsPage: FC = () => {
       <div className={s.title}>
         <h2>{t('terms.title')}</h2>
         <p>
-          Quis vulputate facilisis a ullamcorper hausdhausdhuashduasd sit netus
-          neque. Nulla erat mattis donec blandit.
+          {t('terms.subtitle')}
         </p>
       </div>
       <div className={s.container}>
         <Tabs selectedTabClassName={s.selectedTab} className={s.tabs}>
           <TabList className={s.tabList}>
-            <Tab className={s.tab}>Travel policy</Tab>
-            <Tab className={s.tab}>Car rental policy</Tab>
-            <Tab className={s.tab}>Cookies policy</Tab>
-            <Tab className={s.tab}>Terms of use</Tab>
-            <Tab className={s.tab}>Privacy policy</Tab>
+            <Tab className={s.tab}>{t('terms.travelDescription')}</Tab>
+            <Tab className={s.tab}>{t('terms.rentalDescription')}</Tab>
+            <Tab className={s.tab}>{t('terms.cookiesDescription')}</Tab>
+            <Tab className={s.tab}>{t('terms.termsOfUseDescription')}</Tab>
+            <Tab className={s.tab}>{t('terms.privacyDescription')}</Tab>
           </TabList>
           <TabPanel className={s.tabPanel}>{termsMock}</TabPanel>
           <TabPanel className={s.tabPanel}>{termsMock}</TabPanel>
