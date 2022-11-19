@@ -1,19 +1,21 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useState } from 'react'
 import s from './SliderItem.module.scss'
 import cls from 'classnames'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import { Button } from 'components'
 import { useRouter } from 'next/router'
-import { SelectedType } from 'shared/types/selectedtype'
+import icon from '/public/assets/images/homepage/sliderIcon.png'
 
-type SliderItemProps = SelectedType
+interface SliderItemProps {
+  image: string | StaticImageData
+  name: string
+  description: string
+}
 
 export const SliderItem: FC<SliderItemProps> = ({
   image,
-  icon,
-  title,
-  text,
-  subtitle,
+  name,
+  description,
 }) => {
   const [hovered, setHovered] = useState(false)
   const router = useRouter()
@@ -35,8 +37,8 @@ export const SliderItem: FC<SliderItemProps> = ({
         })}
       >
         <Image src={icon} width={64} height={64} layout={'fixed'} />
-        <h3 className={s.title}>{title}</h3>
-        <p className={s.text}>{text}</p>
+        <h3 className={s.title}>{name}</h3>
+        <p className={s.text}>{description}</p>
         <div className={s.button}>
           <Button onClick={onClickButton} variant={'secondary'}>
             See more
@@ -46,7 +48,7 @@ export const SliderItem: FC<SliderItemProps> = ({
 
       {!hovered && (
         <div className={s.unhover}>
-          <span className={s.subtitle}>{subtitle}</span>
+          <span className={s.subtitle}>{name}</span>
         </div>
       )}
     </div>

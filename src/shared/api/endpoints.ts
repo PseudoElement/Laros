@@ -45,6 +45,7 @@ export const endpoints = {
     one: (id: number) => `/vacancy/${id}`,
     apply: (id: number) => `/vacancy/${id}/apply`,
   },
+  subscription: '/subscription/create',
   category: {
     all: '/category/',
     one: (id: number) => `/category/${id}`,

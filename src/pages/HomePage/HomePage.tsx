@@ -14,6 +14,7 @@ import { WhoWeAre } from './WhoWeAre'
 import { Comments } from './Comments'
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { getDestinationsThunk } from 'store/slices/destinations/thunk'
+import { getTripCategoriesThunk } from 'store/slices/trips/thunk'
 
 export const HomePage: FC = () => {
   const [activeMenu, setActiveMenu] = useState<boolean>(false)
@@ -21,8 +22,10 @@ export const HomePage: FC = () => {
 
   const dispatch = useAppDispatch()
   const destinations = useAppSelector(state => state.destinations.destinations)
+  const travelTypes = useAppSelector(state => state.trips.categories)
   useEffect(() => {
     dispatch(getDestinationsThunk())
+    dispatch(getTripCategoriesThunk())
   }, [])
 
   return (
@@ -37,6 +40,7 @@ export const HomePage: FC = () => {
         setActiveMenu={setActiveMenu}
         activeMenu={activeMenu}
         destinations={destinations}
+        travelTypes={travelTypes}
       />
       <WhoWeAre items={AboutItemsMock} />
       <Explore destinations={destinations} />

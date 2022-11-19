@@ -3,12 +3,11 @@ import { SelectBlock } from './Select'
 import { SelectComponent } from '../SelectedType'
 import Image from 'next/image'
 import play from '/public/assets/images/homepage/play.png'
-import { FC, useEffect, useRef, useState } from 'react'
+import { FC, useRef } from 'react'
 import { Destination } from 'shared/types/destinations'
-import { getDestinationsThunk } from 'store/slices/destinations/thunk'
 import screenfull from 'screenfull'
 import { ReactPlayer } from 'components'
-import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
+import { TripCategory } from 'shared/types/trip'
 
 export interface MainBlockProps {
   setActiveMenu: (active: boolean) => void
@@ -16,6 +15,7 @@ export interface MainBlockProps {
   activeMenu: boolean
   videoIsFullscreen: boolean
   destinations: Destination[]
+  travelTypes: TripCategory[]
 }
 
 export const Main: FC<MainBlockProps> = ({
@@ -24,6 +24,7 @@ export const Main: FC<MainBlockProps> = ({
   videoIsFullscreen,
   setVideoIsFullscreen,
   destinations,
+  travelTypes,
 }) => {
   const videoRef = useRef<Element | undefined>(undefined)
   const onFullScreen = () => {
@@ -55,7 +56,7 @@ export const Main: FC<MainBlockProps> = ({
           </div>
           <div className={s.slider}>
             <h3 className={s.selectType_title}>Or browse the selected type</h3>
-            <SelectComponent />
+            <SelectComponent travelTypes={travelTypes} />
           </div>
         </div>
       </div>
