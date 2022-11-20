@@ -6,4 +6,5 @@ export * from '../components/Slider'
 export * from './HotelsSection'
 export * from './DestinationIntro'
 export * from './HotelCard'
+export * from './StartTripForm'
 // TODO add missed features

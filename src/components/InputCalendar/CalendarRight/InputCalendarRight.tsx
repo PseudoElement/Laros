@@ -27,7 +27,7 @@ export const InputCalendarRight: FC<InputCalendarProps> = ({
       className={s.calendarIcon}
       onClick={() => setShowCalendar(!showCalendar)}
     >
-      <CalendarIcon width={13} />
+      <CalendarIcon width={12} />
     </div>
   </>
 )

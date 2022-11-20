@@ -84,9 +84,9 @@ export const TripCard: FC<TripCardProps> = ({
         <div className={s.lastRow}>
           <div className={s.tags}>
             {tags.length
-              ? tags.map(tag => (
+              ? tags.map((tag, index) => (
                   <div key={tag.id} className={s.tag}>
-                    <TagCard id={tag.id} name={tag.name} />
+                    <TagCard index={index} {...tag} />
                   </div>
                 ))
               : null}

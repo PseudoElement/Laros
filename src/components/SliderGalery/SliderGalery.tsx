@@ -19,7 +19,7 @@ export const SliderGalery: FC<AboutSliderProps> = ({ children }) => {
         centeredSlides={true}
         initialSlide={1}
         navigation={true}
-        pagination={true}
+        pagination={{ clickable: true }}
       >
         {children.map((child, index) => (
           <SwiperSlide key={index}>
