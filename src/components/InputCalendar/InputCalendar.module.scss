@@ -55,9 +55,9 @@
   }
   :global(.react-calendar__navigation__prev-button) {
     font-size: 24px !important;
-    transform: scale(-1, 1);
+    display: flex;
+    align-items: center;
     color: $color-modal-bg !important ;
-    text-align: right;
     border-radius: 12px;
   }
 
@@ -117,7 +117,7 @@
   position: relative;
   z-index: 10;
   min-height: 33px;
-  padding-top: 1px;
+  padding-left: 8px;
 }
 .shorten {
   height: 33px;
