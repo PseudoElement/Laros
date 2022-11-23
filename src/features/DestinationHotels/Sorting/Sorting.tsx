@@ -1,7 +1,7 @@
 import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
 
 import { Select } from 'components/Select'
-import { Range } from 'components/Range'
+import { RangeMarks } from 'components/RangeMarks'
 
 import { Hotel, HotelFilterParams } from 'shared/types/hotel'
 import { Map } from 'shared/helpers/getMap'
@@ -36,8 +36,8 @@ const Sorting: FC<SortingProps> = ({ map, setParams, params }) => {
     }))
   }
 
-  const onChangePrice = (value: number | undefined) =>
-    setParams(prev => ({ ...prev, price_lt: value }))
+  const onChangePrice = (value: number[]) =>
+    setParams(prev => ({ ...prev, price_gt: value[0], price_lt: value[1] }))
 
   const changeCategory = (value: Option) => {
     setParams(prev => ({ ...prev, category: value.value }))
@@ -100,12 +100,13 @@ const Sorting: FC<SortingProps> = ({ map, setParams, params }) => {
         />
         <div className={s.price}>
           <p>Price Range</p>
-          <Range
+          <RangeMarks
+            value={[params?.price_gt ?? 0, params?.price_lt ?? 50]}
             onChange={onChangePrice}
-            value={132}
+            max={300}
             min={0}
-            max={264}
-            currency='CHF'
+            colorsTrack={['#ccc', '#333', '#ccc']}
+            step={50}
           />
         </div>
       </div>
