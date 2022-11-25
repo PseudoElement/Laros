@@ -14,7 +14,7 @@ interface ReviewProps {
   images?: StaticImageData[] | string[]
   avatar: StaticImageData | string
   text: string
-  withAvatar: boolean
+  withAvatar?: boolean
   withImages?: boolean
 }
 
@@ -42,7 +42,7 @@ export const Review: FC<ReviewProps> = ({
         <div className={s.images}>
           {images &&
             images.map((image, index) => (
-              <Image key={index} width={120} height={120} src={image} />
+              <Image alt='' key={index} width={120} height={120} src={image} />
             ))}
         </div>
       </div>

@@ -15,7 +15,6 @@ interface Step1Props {
   trip: any
 }
 
-// @ts-ignore
 export const Step1: FC<Step1Props> = ({ setStep, trip }) => {
   const { handleSubmit, control } = useForm()
   const dispatch = useAppDispatch()
@@ -25,7 +24,9 @@ export const Step1: FC<Step1Props> = ({ setStep, trip }) => {
 
     setStep(Steps.SECOND)
   }
-  if (!trip) return
+
+  if (!trip) return null
+
   return (
     <div className={s.container}>
       <div className={s.flights}>
@@ -71,10 +72,24 @@ export const Step1: FC<Step1Props> = ({ setStep, trip }) => {
               description={dest.description ?? 'No description'}
               duration={dest.duration}
               rooms={[
-                // @ts-ignore
-                { room_name: 'Standard', capacity: 2 },
-                // @ts-ignore
-                { room_name: 'Standard', capacity: 2 },
+                {
+                  room_name: 'Standard',
+                  adult: 1,
+                  children: 1,
+                  id: 1,
+                  price: 1,
+                  image: '',
+                  capacity: 2,
+                },
+                {
+                  room_name: 'Standard',
+                  adult: 2,
+                  children: 2,
+                  id: 2,
+                  price: 2,
+                  image: '',
+                  capacity: 2,
+                },
               ]}
               location={dest.destination_name}
               day={1}

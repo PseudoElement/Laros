@@ -49,17 +49,14 @@ export const AddLocationModal: FC<AddLocationModalProps> = ({
                   className={s.bannerSliderSlide}
                   style={{
                     backgroundImage: `url(${
-                      // @ts-ignore
-                      image.src
+                      typeof image === 'string' ? image : image.src
                     })`,
                   }}
-                ></SwiperSlide>
+                />
               )
             })}
           </Swiper>
-          <div
-            className={cn(s.bannerSwiperPagination, 'swiperPagination')}
-          ></div>
+          <div className={cn(s.bannerSwiperPagination, 'swiperPagination')} />
         </div>
         <div className={s.bottom}>
           <div className={s.left}>
@@ -87,11 +84,10 @@ export const AddLocationModal: FC<AddLocationModalProps> = ({
                         className={s.photosSliderItem}
                         style={{
                           backgroundImage: `url(${
-                            // @ts-ignore
-                            image.src
+                            typeof image === 'string' ? image : image.src
                           })`,
                         }}
-                      ></div>
+                      />
                     </SwiperSlide>
                   )
                 })}
@@ -101,7 +97,7 @@ export const AddLocationModal: FC<AddLocationModalProps> = ({
                   s.photosSliderCustomPagination,
                   'photosSliderCustomPagination'
                 )}
-              ></div>
+              />
             </div>
           </div>
         </div>

@@ -47,7 +47,6 @@ export const TripOffersPage: FC = () => {
   const [region, setRegion] = useState<Option | null>(null)
   const [durations, setDurations] = useState<Option[]>([])
 
-
   // const tripCategoryInfo = useAppSelector((state) => state.trips.categories.find((cat) => cat.id === Number(category)));
   const destinations = useAppSelector(state => state.destinations.destinations)
   const regions = getRootDestinations(destinations)
@@ -55,11 +54,16 @@ export const TripOffersPage: FC = () => {
     getSubRegions(state, region?.value ?? null)
   )
 
-  const updateRequest = (form: any) => { // TODO
+  const updateRequest = (form: any) => {
+    // TODO
     form.region && setRegion(form.region)
-    const subregions = form.subregions ? form.subregions.map((region: Option) => region.value) : [];
-    const destination = subregions.length ? subregions.join(',') : form.region?.value ?? undefined
-    setParams({ destination, ordering: form.ordering?.value, })
+    const subregions = form.subregions
+      ? form.subregions.map((region: Option) => region.value)
+      : []
+    const destination = subregions.length
+      ? subregions.join(',')
+      : form.region?.value ?? undefined
+    setParams({ destination, ordering: form.ordering?.value })
   }
 
   useEffect(() => {
@@ -213,12 +217,9 @@ export const TripOffersPage: FC = () => {
       <div className={cn(s.offers, view === View.GRID ? s.grid : s.list)}>
         {isLoading && <div className={s.loading}>Loading...</div>}
         {!isLoading && trips?.length ? (
-          trips.map((offer, idx) => {
-            return (
-              // @ts-ignore
-              <TripCard key={idx} {...offer} wide={view === View.LIST} />
-            )
-          })
+          trips.map((offer, idx) => (
+            <TripCard key={idx} {...offer} wide={view === View.LIST} />
+          ))
         ) : (
           <div className={s.empty}>No options</div>
         )}

@@ -26,10 +26,10 @@ export const Main: FC<MainBlockProps> = ({
   destinations,
   travelTypes,
 }) => {
-  const videoRef = useRef<Element | undefined>(undefined)
+  const videoRef = useRef<HTMLDivElement>(null)
   const onFullScreen = () => {
     setVideoIsFullscreen(false)
-    if (screenfull.isEnabled) {
+    if (screenfull.isEnabled && videoRef.current) {
       screenfull.request(videoRef.current)
     }
   }
@@ -63,7 +63,6 @@ export const Main: FC<MainBlockProps> = ({
       <div className={s.video}>
         <div
           onMouseLeave={() => setVideoIsFullscreen(true)}
-          // @ts-ignore
           ref={videoRef}
           className={s.reactPlayerWrapper}
         >

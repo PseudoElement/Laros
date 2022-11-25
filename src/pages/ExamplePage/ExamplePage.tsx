@@ -236,7 +236,6 @@ export const ExamplePage: FC = () => {
         <Tags tags={tags} value={[1, 2]} onChange={() => {}} />
 
         <ChangeLocationModal
-          // @ts-ignore
           destinations={destinationsMock}
           onClick={() => 1}
           isOpen={isModalOpen}
