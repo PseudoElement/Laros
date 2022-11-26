@@ -5,12 +5,14 @@ import s from './ChangeLocationModal.module.scss'
 import { LocationCard } from './LocationCard'
 interface ChangeLocationModalProps {
   destinations: Destination[]
+  location: string
   isOpen: boolean
   onClick: (hotel: number) => void
   onClose: () => void
 }
 export const ChangeLocationModal: FC<ChangeLocationModalProps> = ({
   destinations,
+  location,
   isOpen,
   onClick,
   onClose,
@@ -22,7 +24,7 @@ export const ChangeLocationModal: FC<ChangeLocationModalProps> = ({
   return (
     <Modal isOpen={isOpen} onClose={onClose} title='Changing location'>
       <div className={s.content}>
-        <div className={s.title}>Areas of Macedonia</div>
+        <div className={s.title}>Areas of {location}</div>
         <div className={s.description}>
           To change your staying location, please choose one of the following:
         </div>

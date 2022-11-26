@@ -10,6 +10,8 @@ import { useRouter } from 'next/router';
 import { getTrip } from 'shared/api/routes/trips';
 import { Country } from 'shared/types/country';
 import { getCountries } from 'shared/api/routes/countries';
+import { tripFullMock } from 'shared/mocks/tripList';
+import { useGetTripInfo } from 'shared/hooks/useGetTripInfo';
 
 export enum Steps {
   FIRST,
@@ -18,40 +20,13 @@ export enum Steps {
 // TODO Mock location in s.info
 export const TripFormPage: FC = () => {
   const [step, setStep] = useState(Steps.FIRST)
-  const [trip, setTrip] = useState<any>(null) // TODO
-  const [countries, setCountries] = useState<Country[]>([])
   const { query } = useRouter();
-  useEffect(() => {
-    const tripID = Number(query.trip);
-    if (!tripID) { return }
-    const loadTrip = async (trip: number) => {
-      try {
-        const tripDetails = await getTrip(trip)
-        setTrip(tripDetails.data.data)
-      } catch (error) {
-        console.error(error)
-      }
-    }
-    loadTrip(tripID)
-  }, [query.trip]);
-  useEffect(() => {
-    const loadCountries = async () => {
-      try {
-        const countries = await getCountries()
-        setCountries(countries.data.data)
-      } catch (error) {
-        console.error(error)
-      }
-    }
-    loadCountries()
-  }, []);
+  const [trip, airports, countries, isLoading] = useGetTripInfo(Number(query.trip))
 
-  useEffect(() => {
-    console.log(trip)
-  }, [trip]);
-  if (!trip) {
+  if (isLoading || !trip) {
     return <div>Loading...</div>
   }
+
   return (
     <div className={s.container}>
       <div className={s.bg} style={{
@@ -84,7 +59,7 @@ export const TripFormPage: FC = () => {
           </div>
           {
             step === Steps.FIRST ?
-              <Step1 setStep={setStep} trip={trip} />
+              <Step1 setStep={setStep} trip={trip} airports={airports} />
               : <Step2 setStep={setStep} countries={countries} />
           }
         </div>

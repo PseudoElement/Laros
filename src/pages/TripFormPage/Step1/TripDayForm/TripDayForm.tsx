@@ -11,10 +11,14 @@ import s from './TripDayForm.module.scss';
 import exchange from '/public/assets/images/exchange.svg'
 import cn from 'classnames';
 import { Room } from 'shared/types/hotel';
+import { ChangeLocationModal } from 'features/ChangeLocationModal';
+import { useModal } from 'shared/hooks/useModal';
+import { ChangeAccomodationModal } from 'features/ChangeAccomodationModal';
+import { getRooms } from 'shared/api/routes/rooms';
 
 interface TripDayFormProps {
   total: number
-  hotel: { name: string }
+  hotel: { name: string, id: number }
   description: string
   duration: number
   location: string
@@ -26,6 +30,24 @@ interface TripDayFormProps {
 };
 export const TripDayForm: FC<TripDayFormProps> = ({ day, total, rooms, hotel, from, to, duration, location, type, description }) => {
   const [isTruncated, setIsTruncated] = useState(true)
+  const [hotelRooms, setHotelRooms] = useState<Room[]>([])
+  const locationModal = useModal()
+  const accomodationModal = useModal()
+
+  const changeAccomodation = async () => {
+    try {
+      const rooms = await getRooms({ hotel: hotel.id })
+      setHotelRooms(rooms.data.data)
+      accomodationModal.open()
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+  const changeLocation = () => {
+
+    locationModal.open()
+  }
   return (
     <div className={s.container}>
       <div className={s.transfer}>
@@ -49,7 +71,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({ day, total, rooms, hotel, fr
         <div className={s.section}>
           <div className={s.sectionTitle}>Location:</div>
           <div className={s.sectionValue}><span className={s.valueIcon}><PinIcon /></span> <div className={s.valueName}>{location}</div> </div>
-          <Button classname={s.editBtn}>Edit</Button>
+          <Button onClick={() => changeLocation()} classname={s.editBtn}>Edit</Button>
         </div>
         <div className={s.section}>
           <div className={s.sectionTitle}>Duration of the location:</div>
@@ -70,11 +92,13 @@ export const TripDayForm: FC<TripDayFormProps> = ({ day, total, rooms, hotel, fr
         {rooms.map((room, index) => {
           return <div key={index} className={s.section}>
             <div className={s.roomTitle}>Room {index + 1}</div>
-            <div className={s.sectionValue}><PinIcon /> <div className={s.valueName}>{room.room_name} <span className={s.pencil}><PencilIcon /></span>  </div></div>
+            <div onClick={() => changeAccomodation()} className={s.sectionValue}><PinIcon /> <div className={s.valueName}>{room.room_name} <span className={s.pencil}><PencilIcon /></span>  </div></div>
             <div className={s.roomCapacityTitle}>People in a room:</div> <div className={cn(s.sectionValue, s.roomCapacity)}>{room.capacity}</div>
           </div>
         })}
       </div>
+      <ChangeAccomodationModal onSubmit={() => 1} region={location} {...accomodationModal} rooms={hotelRooms} />
+      <ChangeLocationModal location={location} destinations={[]} {...locationModal} onClick={() => 1} />
     </div>
   )
 }

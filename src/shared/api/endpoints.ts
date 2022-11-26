@@ -54,4 +54,9 @@ export const endpoints = {
     all: '/accommodation/',
     one: (id: number) => `/accommodation/${id}`,
   },
+  transport: {
+    all: '/transport/',
+    one: (id: number) => `/transport/${id}`,
+    route: '/transport/route/',
+  },
 }
