@@ -199,7 +199,14 @@ export const Step2: FC<Step2Props> = ({ setStep }) => {
           <Button variant='outline'>Cancel</Button>
         </div>
         <div className={s.terms}>
-          By clicking the “Send” button you automatically agree to our <span className={s.link}><Link href='/terms'>Terms & conditions</Link></span> and <span className={s.link}><Link href='/terms'>Privacy Policy</Link></span>
+          By clicking the “Send” button you automatically agree to our{' '}
+          <span className={s.link}>
+            <Link href='/terms/3'>Terms & conditions</Link>
+          </span>{' '}
+          and{' '}
+          <span className={s.link}>
+            <Link href='/terms/4'>Privacy Policy</Link>
+          </span>
         </div>
         <div className={s.warning}>
           <WarningIcon />  <div className={s.warningText}>Prices are dynamic, Final price will be calculated by our team</div>

@@ -1,12 +1,13 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
 
-// @ts-ignore
+// @ts-ignore // TODO
 import ReactStars from 'react-rating-stars-component'
 
-import { Button } from 'components'
+import { Button, TagCard } from 'components'
 
 import { Hotel } from 'shared/types/hotel'
+import { LIMIT_HOTEL_CARD_TAGS } from 'shared/constants'
 
 import s from './HotelCard.module.scss'
 
@@ -20,25 +21,28 @@ export const HotelCard: FC<HotelCardProps> = ({
   name,
   tags,
   images,
+  period,
+  min_price,
   id,
+  onClick,
   link,
   location,
   max_capacity,
-  period,
   tripadvisor_id,
   is_active,
   opinion,
   destination,
   description,
-  onClick,
-  min_price,
 }) => {
+  const handleClick = (id: number) => {
+    onClick?.(id)
+  }
+
   return (
-    <div className={s.HotelCard}>
-      <div className={s.HotelCardImage}>
-        <Image
+    <div className={s.hotelCard}>
+      <div className={s.hotelCardImage}>
+        <Image // TODO layout={'fill'}
           src={images[0]}
-          objectFit='cover'
           width='368'
           height='180'
           alt='Hotel Picture'
@@ -46,15 +50,14 @@ export const HotelCard: FC<HotelCardProps> = ({
       </div>
 
       <div className={s.header}>
-        <div className={s.rating}>
-          <ReactStars
-            count={5}
-            value={rating}
-            size={24}
-            activeColor='#ffd700'
-            edit={false}
-          />
-        </div>
+        <ReactStars
+          count={5}
+          value={rating}
+          size={24}
+          activeColor='#ffd700'
+          edit={false}
+          classNames={s.rating}
+        />
         <div className={s.type}>{address}</div>
         <div className={s.name}>{name}</div>
       </div>
@@ -72,14 +75,14 @@ export const HotelCard: FC<HotelCardProps> = ({
       </div>
 
       <div className={s.tags}>
-        {tags.slice(0, 2).map((tag, index) => (
-          <span key={index} className={s.tag}>
-            {tag.name}
-          </span>
+        {tags.slice(0, LIMIT_HOTEL_CARD_TAGS).map((tag, index) => (
+          <TagCard key={index} {...tag} index={index} />
         ))}
       </div>
 
-      <Button classname={s.button}>Learn more</Button>
+      <Button classname={s.button} onClick={() => handleClick(id)}>
+        Learn more
+      </Button>
     </div>
   )
 }

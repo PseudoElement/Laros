@@ -1,0 +1,28 @@
+@use 'styles/style' as *;
+
+.tagCard {
+  font-weight: $fw-regular;
+  font-size: 10px;
+  line-height: 12px;
+  text-transform: capitalize;
+  color: $color-white;
+  padding: 4px 8px;
+  background: $color-secondary;
+  border-radius: 16px;
+}
+
+.color_1 {
+  background: $color-secondary;
+}
+.color_2 {
+  background: $color-layout-blue;
+}
+.color_3 {
+  background: $orange;
+}
+.color_4 {
+  background: $color-bright-green;
+}
+.color_5 {
+  background: $color-dark-red;
+}

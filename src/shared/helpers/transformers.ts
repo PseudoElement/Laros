@@ -1,4 +1,5 @@
 import { Option } from 'shared/types'
+import { TripDuration } from 'shared/types/trip'
 
 export const provideOptionsWithIcon = (
   options: Option[],
@@ -16,4 +17,13 @@ export const getTripDays = (
   if (duration === 1) {
     return start.toString()
   } else return `${start}-${start + duration - 1}`
+}
+
+export const getTripDurationOptions = (durations: TripDuration): Option[] => {
+  let options = []
+  const { min_duration: min, max_duration: max } = durations
+  for (let i = min; i < max; i++) {
+    options.push({ label: i.toString(), value: i.toString() })
+  }
+  return options
 }

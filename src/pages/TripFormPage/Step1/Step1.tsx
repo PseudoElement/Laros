@@ -24,7 +24,7 @@ export const Step1: FC<Step1Props> = ({ setStep, trip }) => {
 
     setStep(Steps.SECOND)
   }
-  if (!trip) return;
+  if (!trip) return null;
   return (
     <div className={s.container}>
       <div className={s.flights}>
@@ -57,9 +57,11 @@ export const Step1: FC<Step1Props> = ({ setStep, trip }) => {
           />
         </div>
       </div>
-      {trip?.destinations.map((dest, index) => {
-        return <TripDayForm hotel={{ name: dest.hotel_name }} description={dest.description ?? 'No description'} duration={dest.duration} rooms={[{ room_name: 'Standard', capacity: 2 }, { room_name: 'Standard', capacity: 2 }]} location={dest.destination_name} day={getTripDays(index === 0 ? 1 : trip.destinations[index - 1]?.duration + 1, dest.duration)} total={trip.duration} type={TransferType.PICKUP} to='Athens airport (ATH)' from=' The Corinth Canal to Nafplion' />
-      })}
+      {
+        trip?.destinations.map((dest, index) => {
+          return <TripDayForm hotel={{ name: dest.hotel_name }} description={dest.description ?? 'No description'} duration={dest.duration} rooms={[{ room_name: 'Standard', capacity: 2 }, { room_name: 'Standard', capacity: 2 }]} location={dest.destination_name} day={getTripDays(index === 0 ? 1 : trip.destinations[index - 1]?.duration + 1, dest.duration)} total={trip.duration} type={TransferType.PICKUP} to='Athens airport (ATH)' from=' The Corinth Canal to Nafplion' />
+        })
+      }
 
       <div className={s.endpoint}>
         <div className={s.select}>
@@ -88,6 +90,6 @@ export const Step1: FC<Step1Props> = ({ setStep, trip }) => {
         <Button onClick={() => setStep(Steps.SECOND)}>Next step</Button>
         <Button variant='outline'>Cancel</Button>
       </div>
-    </div>
+    </div >
   )
 } 

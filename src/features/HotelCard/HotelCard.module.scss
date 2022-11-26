@@ -1,16 +1,16 @@
-@use '../../styles/style.scss' as *;
+@use 'styles/style.scss' as *;
 
-.HotelCard {
+.hotelCard {
   display: flex;
   flex-direction: column;
-  width: 368px;
+  min-width: 368px;
   background-color: $color-white;
   border-radius: 16px;
   box-shadow: $color-light-grey;
   transition: 0.3s;
 }
 
-.HotelCardImage {
+.hotelCardImage {
   width: 100%;
   height: 180px;
   background-color: $color-laros-light-grey;
@@ -37,7 +37,12 @@
   text-transform: capitalize;
   color: $color-laros-dark-grey;
 }
-
+.rating {
+  span {
+    margin-right: 10px;
+    color: $color-yellow !important;
+  }
+}
 .name {
   font-weight: $fw-bold;
   font-size: 20px;
@@ -101,17 +106,6 @@
   height: 68px;
   background: $color-white;
   box-sizing: border-box;
-}
-
-.tag {
-  font-weight: $fw-regular;
-  font-size: 10px;
-  line-height: 12px;
-  text-transform: capitalize;
-  color: $color-white;
-  padding: 4px;
-  background: $color-secondary;
-  border-radius: 16px;
 }
 
 .button {

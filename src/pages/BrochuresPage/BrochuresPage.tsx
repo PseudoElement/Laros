@@ -3,7 +3,7 @@ import { Container } from 'components/Container'
 import { DownloadBrochuresModal } from 'features/DownloadBrochuresModal'
 import { SendBrochuresModal } from 'features/SendBrochuresModal'
 import { FC, useEffect, useState } from 'react'
-import { getSelectedBrochures } from 'shared/helpers/brochures'
+import { getSelectedBrochures, loadBrochure } from 'shared/helpers/brochures'
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { toggleBrochure } from 'store/slices/brochures/brochures'
 import { getBrochuresThunk } from 'store/slices/brochures/thunk'
@@ -13,7 +13,8 @@ import s from './BrochuresPage.module.scss'
 export const BrochuresPage: FC = () => {
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState<boolean>(false)
   const [isSendModalOpen, setIsSendModalOpen] = useState<boolean>(false)
-  const brochures = useAppSelector(state => state.brochures.brochures)
+  const { brochures, isDownloadFormSent } = useAppSelector(state => state.brochures)
+
   const totalSelected = getSelectedBrochures(brochures)
   const totalCounter = totalSelected.length
   const dispatch = useAppDispatch()
@@ -21,20 +22,18 @@ export const BrochuresPage: FC = () => {
   useEffect(() => {
     dispatch(getBrochuresThunk())
   }, [dispatch])
-  const onBrochureDownload = (id: number) => {
-    dispatch(toggleBrochure({ id, selected: true }))
-    setIsDownloadModalOpen(true)
+
+  const onBrochureDownload = (id: number, file: string) => {
+    if (isDownloadFormSent) {
+      loadBrochure(file)
+    } else {
+      dispatch(toggleBrochure({ id, selected: true }))
+      setIsDownloadModalOpen(true)
+    }
   }
-  // @ts-ignore
-  // @ts-ignore
   return (
     <>
-
-
-
-
-
-      <Container key={1}>
+      <Container>
         <div className={s.wrapper} key={s.title}>
           <div className={s.title}>Brochures</div>
           <div className={s.nav} key={s.title}>
@@ -60,11 +59,10 @@ export const BrochuresPage: FC = () => {
           <div className={s.brochuresList}>
             {brochures.map(brochure => (
               <BrochureCard
-                // @ts-ignore
-                key={brochure}
-                onDownload={id => onBrochureDownload(id)}
+                onDownload={(id, file) => onBrochureDownload(id, file)}
                 {...brochure}
                 onSelect={id => dispatch(toggleBrochure({ id }))}
+                key={brochure.id}
               />
             ))}
           </div>

@@ -75,12 +75,60 @@
   width: 331px;
 }
 .selectDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: $color-white;
   width: 544px;
+  height: 70px;
+  padding: 8px;
 }
+
+.selectLabel {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: $color-laros-dark-grey;
+  text-align: left;
+}
+
+.select {
+  font-size: 14px;
+  font-weight: $fw-regular;
+  line-height: 14px;
+  text-align: left;
+  [class$='-option'] {
+    border-radius: 0;
+  }
+  [class$='-control'] {
+    background-color: $color-white;
+    border: none;
+  }
+  [class$='-multiValue'] {
+    border-radius: 8px;
+    background-color: $color-laros-light-grey;
+    font-size: 20px;
+    font-weight: $fw-regular;
+    line-height: 20px;
+  }
+  [class$='-placeholder'] {
+    color: $color-primary-black;
+  }
+}
+
 .voucherInputs {
   display: flex;
 }
 .input {
   font-weight: $fw-medium;
   border-radius: 0;
+  height: 55px;
+  padding: 8px;
+}
+
+.price {
+  font-weight: $fw-medium;
+  border-radius: 0;
+  height: 70px;
+  padding: 8px;
 }

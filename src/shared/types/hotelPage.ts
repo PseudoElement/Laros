@@ -1,5 +1,4 @@
 import { TagProps } from 'components/Tag/Tag'
-import gallery1 from '../../../public/assets/images/hotelPageGallery/Frame1.png'
 
 export interface HotelPageProps {
   id: number
