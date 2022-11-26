@@ -14,6 +14,7 @@ import getPath from 'shared/helpers/getPath'
 import Arrow from '/public/assets/images/blackArrow.svg'
 
 import s from './DestinationPage.module.scss'
+import _ from 'lodash'
 
 export const DestinationPage: FC = () => {
   const dispatch = useAppDispatch()
@@ -23,6 +24,13 @@ export const DestinationPage: FC = () => {
   )
   const [map, setMap] = useState<Map | null>(null)
 
+  const route = getPath(pathname)
+  const title = !map?.currentMap?.parentId
+    ? route.split('/')[2] !== 'areas'
+      ? 'Hotels'
+      : 'Destination'
+    : map.currentMap.name
+
   useEffect(() => {
     dispatch(getDestinationsThunk())
   }, [])
@@ -30,15 +38,18 @@ export const DestinationPage: FC = () => {
   useEffect(() => {
     const map = getCurrentMap(Number(query.id))
 
-    setMap(map)
-  }, [query.id])
+    const currentLocation = _(destinations)
+      .filter(d => d.parent === Number(query.id))
+      .map(location => ({
+        id: location.id,
+        link: `/areas/${location.id}`,
+        cardTitle: location.name,
+        cardText: location.description,
+      }))
+      .value()
 
-  const route = getPath(pathname)
-  const title = !map?.currentMap?.parentId
-    ? route.split('/')[2] !== 'areas'
-      ? 'Hotels'
-      : 'Destination'
-    : map.currentMap.name
+    setMap({ ...map, location: currentLocation })
+  }, [query.id])
 
   return (
     <>
@@ -57,7 +68,7 @@ export const DestinationPage: FC = () => {
                 <Arrow className={s.arrow} /> Go back to {map.parent.name} Map
               </div>
             )}
-            {map.currentMap.map}
+            {map.currentMap.map && map.currentMap.map(map.location)}
           </>
         )}
       </DestinationLayout>

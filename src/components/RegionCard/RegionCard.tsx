@@ -14,9 +14,9 @@ interface RegionCardProps {
   image?: string | StaticImageData
   title: string
   cardText: string
-  link: string
   className?: string
   onClose?: () => void
+  link: string
   onOpen?: () => void
   isOpen?: boolean
 }
@@ -55,7 +55,7 @@ const RegionCard: FC<RegionCardProps> = ({
           <h3 className={s.cart_title}>{title}</h3>
           <p className={s.description}>{cardText}</p>
           <div className={s.link__blockDestinationMap}>
-            <Link href={link}>
+            <Link href={`/areas/${id}`}>
               <span className={s.link__detailCartMap}>Learn more</span>
             </Link>
           </div>

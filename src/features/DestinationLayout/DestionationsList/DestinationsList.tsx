@@ -2,12 +2,9 @@ import { FC } from 'react'
 import { useRouter } from 'next/router'
 
 import { Destination } from 'shared/types/destinations'
-import {
-  getParentDestinations,
-  getRootDestinations,
-  isRootDestination,
-} from 'store/slices/destinations/selectors'
+import { isRootDestination } from 'store/slices/destinations/selectors'
 import { mockRegions } from 'shared/mocks/regions'
+import getPath from 'shared/helpers/getPath'
 
 import World from '/public/assets/images/destinations/World.svg'
 import DestinationItem from './DestinationItem'
@@ -15,7 +12,6 @@ import DestinationItem from './DestinationItem'
 import _ from 'lodash'
 import cn from 'classnames'
 import s from './DestinationsList.module.scss'
-import getPath from '../../../shared/helpers/getPath'
 
 interface DestionationsListProps {
   destinations: Destination[]
@@ -30,29 +26,31 @@ export const DestionationsList: FC<DestionationsListProps> = ({
 
   const isRootDestinations = (destinations: Destination[]): boolean => {
     if (destinations.length) {
-      return isRootDestination(destinations[0])
+      return isRootDestination(destinations)
     }
 
     return true
   }
 
-  const parents = _(mockRegions)
-    .filter(item => !item.parentId)
-    .value()
-
   const currentRegion = mockRegions.find(region => region.id === destination)
 
   const destinationsMocks = currentRegion?.parentId
     ? mockRegions.find(region => region.id === currentRegion.parentId)
-        ?.subRegions!
-    : parents
+        ?.subRegions
+    : _(destinations)
+        .map(destination =>
+          mockRegions.find(region => region.id === destination.id)
+        )
+        .value()
 
   return (
     <div className={s.list}>
-      {destinationsMocks.map(region => (
-        <DestinationItem key={region.id} region={region} />
-      ))}
-      {!currentRegion?.parentId && (
+      {destinationsMocks &&
+        destinationsMocks.map(
+          region =>
+            region && <DestinationItem key={region.id} region={region} />
+        )}
+      {isRootDestinations(destinations) && (
         <div
           onClick={() => push(route)}
           className={cn(s.item, { [s.active]: destination === 0 })}
