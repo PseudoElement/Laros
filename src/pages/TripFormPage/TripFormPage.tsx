@@ -7,11 +7,9 @@ import s from './TripFormPage.module.scss';
 import bg from '/public/assets/images/tripFormBg.png'
 import cn from 'classnames';
 import { useRouter } from 'next/router';
-import { getTrip } from 'shared/api/routes/trips';
-import { Country } from 'shared/types/country';
-import { getCountries } from 'shared/api/routes/countries';
-import { tripFullMock } from 'shared/mocks/tripList';
 import { useGetTripInfo } from 'shared/hooks/useGetTripInfo';
+import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
+import { updateForm } from 'store/slices/order/order';
 
 export enum Steps {
   FIRST,
@@ -21,8 +19,15 @@ export enum Steps {
 export const TripFormPage: FC = () => {
   const [step, setStep] = useState(Steps.FIRST)
   const { query } = useRouter();
+  const dispatch = useAppDispatch();
   const [trip, airports, countries, isLoading] = useGetTripInfo(Number(query.trip))
-
+  const form = useAppSelector((state) => state.order.form);
+  useEffect(() => {
+    if (trip) {
+      dispatch(updateForm({ destinations: trip.destinations }))
+      // TODO possible issue when user go to the step 2 and back
+    }
+  }, [trip]);
   if (isLoading || !trip) {
     return <div>Loading...</div>
   }

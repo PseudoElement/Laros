@@ -6,7 +6,7 @@ import { FC, useState } from 'react'
 import { TRUNCATED_TEXT_SIZE } from 'shared/constants';
 import { getDayName } from 'shared/helpers/localize';
 import { TransferType } from 'shared/types/car'
-import { PeopleCapacity } from 'shared/types/order';
+import { OrderForm, PeopleCapacity } from 'shared/types/order';
 import s from './TripDayForm.module.scss';
 import exchange from '/public/assets/images/exchange.svg'
 import cn from 'classnames';
@@ -15,9 +15,15 @@ import { ChangeLocationModal } from 'features/ChangeLocationModal';
 import { useModal } from 'shared/hooks/useModal';
 import { ChangeAccomodationModal } from 'features/ChangeAccomodationModal';
 import { getRooms } from 'shared/api/routes/rooms';
+import { ChangeTransferModal } from 'features/ChangeTransferModal';
+import { getNearDestinations } from 'shared/api/routes/destinations';
+import { Destination } from 'shared/types/destinations';
+import { FieldValues, UseFormSetValue } from 'react-hook-form';
 
 interface TripDayFormProps {
+  locationId: number
   total: number
+  index: number
   hotel: { name: string, id: number }
   description: string
   duration: number
@@ -27,12 +33,15 @@ interface TripDayFormProps {
   to: string
   from: string
   rooms: Array<PeopleCapacity & Room>
+  onChange: UseFormSetValue<FieldValues>
 };
-export const TripDayForm: FC<TripDayFormProps> = ({ day, total, rooms, hotel, from, to, duration, location, type, description }) => {
+export const TripDayForm: FC<TripDayFormProps> = ({ day, locationId, total, rooms, hotel, from, to, duration, location, type, description, index, onChange }) => {
   const [isTruncated, setIsTruncated] = useState(true)
   const [hotelRooms, setHotelRooms] = useState<Room[]>([])
+  const [nearLocations, setNearLocations] = useState<Destination[]>([])
   const locationModal = useModal()
   const accomodationModal = useModal()
+  const transferModal = useModal()
 
   const changeAccomodation = async () => {
     try {
@@ -42,12 +51,18 @@ export const TripDayForm: FC<TripDayFormProps> = ({ day, total, rooms, hotel, fr
     } catch (error) {
       console.log(error)
     }
-
   }
-  const changeLocation = () => {
 
-    locationModal.open()
+  const changeLocation = async () => {
+    try {
+      const locations = await getNearDestinations(locationId)
+      setNearLocations(locations.data.data)
+      locationModal.open()
+    } catch (error) {
+      console.log(error)
+    }
   }
+
   return (
     <div className={s.container}>
       <div className={s.transfer}>
@@ -75,7 +90,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({ day, total, rooms, hotel, fr
         </div>
         <div className={s.section}>
           <div className={s.sectionTitle}>Duration of the location:</div>
-          <div className={s.durationCounter}>{duration} {getDayName(duration)} <div className={s.counter}><Counter value={duration} /></div>  </div>
+          <div className={s.durationCounter}>{duration} {getDayName(duration)} <div className={s.counter}><Counter min={1} value={duration} onChange={(num) => onChange(`destinations.${index}.duration`, num)} /></div>  </div>
         </div>
         <div className={cn(s.section, s.descriptionSection)}>
           <div className={cn(s.sectionTitle, s.descriptionTitle)}>Description:</div>
@@ -92,13 +107,14 @@ export const TripDayForm: FC<TripDayFormProps> = ({ day, total, rooms, hotel, fr
         {rooms.map((room, index) => {
           return <div key={index} className={s.section}>
             <div className={s.roomTitle}>Room {index + 1}</div>
-            <div onClick={() => changeAccomodation()} className={s.sectionValue}><PinIcon /> <div className={s.valueName}>{room.room_name} <span className={s.pencil}><PencilIcon /></span>  </div></div>
+            <div onClick={() => changeAccomodation()} className={cn(s.sectionValue, s.changeRoom)}><PinIcon /> <div className={s.valueName}>{room.room_name} <span className={s.pencil}><PencilIcon /></span>  </div></div>
             <div className={s.roomCapacityTitle}>People in a room:</div> <div className={cn(s.sectionValue, s.roomCapacity)}>{room.capacity}</div>
           </div>
         })}
       </div>
-      <ChangeAccomodationModal onSubmit={() => 1} region={location} {...accomodationModal} rooms={hotelRooms} />
-      <ChangeLocationModal location={location} destinations={[]} {...locationModal} onClick={() => 1} />
+      {/* <ChangeTransferModal {...transferModal} cars={[]} /> */}
+      <ChangeAccomodationModal onSubmit={(id) => onChange(``, id)} hotel={hotel.name} {...accomodationModal} rooms={hotelRooms} />
+      <ChangeLocationModal onSubmit={(id) => onChange(`destinations.${index}.destination`, id)} current={locationId} location={location} destinations={nearLocations} {...locationModal} />
     </div>
   )
 }

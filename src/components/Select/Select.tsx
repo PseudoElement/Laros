@@ -15,7 +15,7 @@ import { Option } from 'shared/types'
 interface OptionsProps {
   options: Option[]
   onChange: (value: string) => void
-  value?: Option
+  value?: string
   placeholder?: string
   classname?: string
   isMulti?: boolean
@@ -53,7 +53,7 @@ export const SelectComponent: FC<OptionsProps> = ({
     <components.Control {...props}>
       {options.map((item, i) =>
         item.label === props.getValue().map((el: any) => el.label)[0] &&
-        item.icon ? (
+          item.icon ? (
           <div className={s.control}>
             <Image key={i} src={item.icon} width={30} height={30} alt='icon' />
           </div>
@@ -106,18 +106,18 @@ export const SelectComponent: FC<OptionsProps> = ({
   const randomId = useId()
 
   return (
-      <Select
-        instanceId={randomId}
-        styles={customStyles}
-        options={options}
-        value={value}
-        defaultValue={value ?? options[0]}
-        components={{ Option, DropdownIndicator, Control }}
-        isMulti={isMulti}
-        // @ts-ignore
-        onChange={val => onChange(val)}
-        className={cn(s.select, classname)}
-        placeholder={placeholder}
-      />
+    <Select
+      instanceId={randomId}
+      styles={customStyles}
+      options={options}
+      value={value}
+      defaultValue={value ?? options[0]}
+      components={{ Option, DropdownIndicator, Control }}
+      isMulti={isMulti}
+      // @ts-ignore
+      onChange={val => onChange(val)}
+      className={cn(s.select, classname)}
+      placeholder={placeholder}
+    />
   )
 }

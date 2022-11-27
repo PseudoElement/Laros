@@ -29,6 +29,7 @@ export const AddLocationModal: FC<AddLocationModalProps> = ({
       return '<span class="' + className + '">' + ' ' + '</span>'
     },
   }
+  if (!id) return null
   return (
     <Modal isOpen={isOpen} title='Adding location' onClose={onClose}>
       <div className={s.content}>
@@ -48,9 +49,8 @@ export const AddLocationModal: FC<AddLocationModalProps> = ({
                   key={id}
                   className={s.bannerSliderSlide}
                   style={{
-                    backgroundImage: `url(${
-                      typeof image === 'string' ? image : image.src
-                    })`,
+                    backgroundImage: `url(${typeof image === 'string' ? image : image.src
+                      })`,
                   }}
                 />
               )
@@ -83,9 +83,8 @@ export const AddLocationModal: FC<AddLocationModalProps> = ({
                       <div
                         className={s.photosSliderItem}
                         style={{
-                          backgroundImage: `url(${
-                            typeof image === 'string' ? image : image.src
-                          })`,
+                          backgroundImage: `url(${typeof image === 'string' ? image : image.src
+                            })`,
                         }}
                       />
                     </SwiperSlide>

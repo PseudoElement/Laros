@@ -4,10 +4,13 @@ import { FC } from 'react'
 import { Controller, useForm } from 'react-hook-form';
 import { destinationToOption } from 'shared/helpers/destinations';
 import { getTripDays, provideOptionsWithIcon } from 'shared/helpers/transformers';
+import { getTripDuration } from 'shared/helpers/trip';
 import { useAppDispatch } from 'shared/hooks/redux';
 import { TransferType } from 'shared/types/car';
 import { Destination } from 'shared/types/destinations';
+import { OrderForm } from 'shared/types/order';
 import { Trip } from 'shared/types/trip';
+import { updateForm } from 'store/slices/order/order';
 import { Steps } from '../TripFormPage'
 import s from './Step1.module.scss';
 import { TripDayForm } from './TripDayForm';
@@ -20,11 +23,17 @@ interface Step1Props {
 }
 
 export const Step1: FC<Step1Props> = ({ setStep, trip, airports }) => {
-  const { handleSubmit, control } = useForm()
+  const { handleSubmit, control, setValue, watch } = useForm<Partial<OrderForm>>({
+    defaultValues: {
+      destinations: trip.destinations,
+    }
+  })
+  const watchDestinations = watch('destinations')
+  const airportOptions = provideOptionsWithIcon(destinationToOption(airports), airportIcon)
   const dispatch = useAppDispatch()
-  const destsMock = [{ value: '1', label: 'Zurich' }]
   const onSubmit = (formData: any) => {
     // TODO add type
+    dispatch(updateForm(formData))
     setStep(Steps.SECOND)
   }
 
@@ -40,8 +49,8 @@ export const Step1: FC<Step1Props> = ({ setStep, trip, airports }) => {
             render={({ field: { onChange, value } }) => (
               <Select
                 onChange={onChange}
-                value={value}
-                options={provideOptionsWithIcon(destinationToOption(airports), airportIcon)}
+                value={value?.toString()}
+                options={airportOptions}
               />
             )}
           />
@@ -54,16 +63,16 @@ export const Step1: FC<Step1Props> = ({ setStep, trip, airports }) => {
             render={({ field: { onChange, value } }) => (
               <Select
                 onChange={onChange}
-                value={value}
-                options={provideOptionsWithIcon(destinationToOption(airports), airportIcon)}
+                value={value?.toString()}
+                options={airportOptions}
               />
             )}
           />
         </div>
       </div>
       {
-        trip?.destinations.map((dest, index) => {
-          return <TripDayForm hotel={{ name: dest.hotel_name, id: dest.hotel }} description={dest.description ?? 'No description'} duration={dest.duration} rooms={[{ room_name: 'Standard', capacity: 2 }, { room_name: 'Standard', capacity: 2 }]} location={dest.destination_name} day={getTripDays(index === 0 ? 1 : trip.destinations[index - 1]?.duration + 1, dest.duration)} total={trip.duration} type={TransferType.PICKUP} to='Athens airport (ATH)' from=' The Corinth Canal to Nafplion' />
+        watchDestinations?.map((dest, index) => {
+          return <TripDayForm index={index} onChange={setValue} hotel={{ name: dest.hotel_name, id: dest.hotel }} description={dest.description ?? 'No description'} duration={dest.duration} rooms={[]} location={dest.destination_name} locationId={dest.id} day={getTripDays(index === 0 ? 1 : trip.destinations[index - 1]?.duration + 1, dest.duration)} total={getTripDuration(watchDestinations)} type={TransferType.PICKUP} to='Athens airport (ATH)' from=' The Corinth Canal to Nafplion' /> // TODO refactor day
         })
       }
 
@@ -76,8 +85,8 @@ export const Step1: FC<Step1Props> = ({ setStep, trip, airports }) => {
             render={({ field: { onChange, value } }) => (
               <Select
                 onChange={onChange}
-                value={value}
-                options={provideOptionsWithIcon(destsMock, airportIcon)}
+                value={value?.toString()}
+                options={airportOptions}
               />
             )}
           />
@@ -91,7 +100,7 @@ export const Step1: FC<Step1Props> = ({ setStep, trip, airports }) => {
         </div>
       </div>
       <div className={s.actions}>
-        <Button onClick={() => setStep(Steps.SECOND)}>Next step</Button>
+        <Button onClick={handleSubmit(onSubmit)}>Next step</Button>
         <Button variant='outline'>Cancel</Button>
       </div>
     </div >
