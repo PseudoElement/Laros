@@ -23,10 +23,10 @@ export const TripCard: FC<TripCardProps> = ({
   duration,
   offer_percent,
   offer_discount,
-  offer_date_start,
-  id,
-  offer,
   onClick,
+  id,
+  offer_date_start,
+  offer,
   destinations,
   transports,
   travel_types,
@@ -37,6 +37,9 @@ export const TripCard: FC<TripCardProps> = ({
   is_active,
   route,
 }) => {
+  const handleClick = (id: number) => {
+    onClick?.(id)
+  }
   return (
     <div className={cn(s.wrapper, { [s.wide]: wide })}>
       <div
@@ -59,18 +62,21 @@ export const TripCard: FC<TripCardProps> = ({
           </div>
         )}
       </div>
+
       <div className={s.main}>
         <div className={s.row}>
           <div className={s.regionName}>
             <div className={s.meta}>Region Name</div>
             <div>{name}</div>
           </div>
+
           <div className={s.fromWrapper}>
             <div className={s.meta}>From</div>
             <div className={s.from}>{`${price} ${Currency.CHF}`}</div>
             <div className={s.meta}>Pro Person</div>
           </div>
         </div>
+
         <div className={s.row}>
           <div className={s.periodWrapper}>
             <div className={s.meta}>Travel Period</div>
@@ -81,18 +87,19 @@ export const TripCard: FC<TripCardProps> = ({
             <div className={s.duration}>{`${duration} Days`}</div>
           </div>
         </div>
+
         <div className={s.lastRow}>
-          <div className={s.tags}>
-            {tags.length
-              ? tags.map((tag, index) => (
-                  <div key={tag.id} className={s.tag}>
-                    <TagCard index={index} {...tag} />
-                  </div>
-                ))
-              : null}
-          </div>
+          {tags.length
+            ? tags.map((tag, index) => (
+                <div key={tag.id} className={s.tag}>
+                  <TagCard index={index} {...tag} />
+                </div>
+              ))
+            : null}
         </div>
-        <Button classname={s.myButton}>View Offer</Button>
+        <Button classname={s.button} onClick={() => handleClick(id)}>
+          View Offer
+        </Button>
       </div>
     </div>
   )

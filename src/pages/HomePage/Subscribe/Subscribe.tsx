@@ -1,6 +1,8 @@
 import { FC, useState } from 'react'
-import s from './Subscribe.module.scss'
+
 import { subscribeToNewsletter } from 'shared/api/routes/subscription'
+
+import s from './Subscribe.module.scss'
 
 export const Subscribe: FC = () => {
   const [value, setValue] = useState<string>('')

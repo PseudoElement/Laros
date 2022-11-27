@@ -1,11 +1,12 @@
 @use 'styles/style.scss' as *;
 
-.accordeonTab {
+.accordion {
   background-color: $color-light-grey;
   margin-bottom: 8px;
+  color: $color-dark-blue;
 }
 
-.accordeonItem {
+.accordionTab {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -15,12 +16,22 @@
   height: 41px;
   cursor: pointer;
 }
-
-.accordeonItemContent {
+.title {
+  font-size: 14px;
+  font-weight: $fw-bold;
+  line-height: 17px;
+  letter-spacing: 0.02em;
+}
+.content {
+  font-size: 14px;
+  font-weight: $fw-regular;
+  line-height: 20px;
+  letter-spacing: 0.02em;
+  text-align: left;
   padding: 10px 15px;
 }
 
-.accordeonItemButton {
+.button {
   font-size: 20px;
   font-weight: $fw-semibold;
 }

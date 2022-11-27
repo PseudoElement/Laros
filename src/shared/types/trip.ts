@@ -34,6 +34,7 @@ export interface TripCategory extends Meta {
   description: string
   image: string | StaticImageData
 }
+
 export interface Trip {
   readonly id: number
   images: string[]

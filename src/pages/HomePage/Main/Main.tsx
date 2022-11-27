@@ -1,13 +1,16 @@
-import s from './Main.module.scss'
-import { SelectBlock } from './Select'
-import { SelectComponent } from '../SelectedType'
-import Image from 'next/image'
-import play from '/public/assets/images/homepage/play.png'
 import { FC, useRef } from 'react'
-import { Destination } from 'shared/types/destinations'
+import Image from 'next/image'
 import screenfull from 'screenfull'
+
 import { ReactPlayer } from 'components'
+import { SelectBlock } from './Select'
+
+import { Destination } from 'shared/types/destinations'
 import { TripCategory } from 'shared/types/trip'
+
+import play from '/public/assets/images/homepage/play.png'
+
+import s from './Main.module.scss'
 
 export interface MainBlockProps {
   setActiveMenu: (active: boolean) => void
@@ -53,10 +56,6 @@ export const Main: FC<MainBlockProps> = ({
                 activeMenu={activeMenu}
               />
             </div>
-          </div>
-          <div className={s.slider}>
-            <h3 className={s.selectType_title}>Or browse the selected type</h3>
-            <SelectComponent travelTypes={travelTypes} />
           </div>
         </div>
       </div>

@@ -1,7 +1,8 @@
+import { FC } from 'react'
 import cn from 'classnames'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { FC } from 'react'
+
 import s from './SubNav.module.scss'
 
 const subNavItems = [

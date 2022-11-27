@@ -1,12 +1,14 @@
-import { Footer } from 'features/Footer'
-import { Header } from 'features/Header'
 import { FC, ReactNode } from 'react'
-import { useCollapsedHeader } from 'shared/hooks/useCollapsedHeader'
-import s from './Layout.module.scss'
-import cn from 'classnames'
 import { useRouter } from 'next/router'
-import { AboutLayout } from 'features/AboutLayout'
+import cn from 'classnames'
+
+import { Footer, Header, AboutLayout } from 'features'
+
+import { useCollapsedHeader } from 'shared/hooks/useCollapsedHeader'
 import { getAboutTabIndex } from 'shared/helpers/layout'
+
+import s from './Layout.module.scss'
+
 interface LayoutProps {
   children: ReactNode
 }

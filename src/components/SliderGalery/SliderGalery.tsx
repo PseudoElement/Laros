@@ -7,15 +7,21 @@ import s from './SliderGalery.module.scss'
 
 interface AboutSliderProps {
   children: ReactNode[] | string[]
+  spaceBetween?: number
+  slidesPerView?: number
 }
 
-export const SliderGalery: FC<AboutSliderProps> = ({ children }) => {
+export const SliderGalery: FC<AboutSliderProps> = ({
+  children,
+  spaceBetween = 8,
+  slidesPerView = 1.5,
+}) => {
   return (
     <div className={s.slider}>
       <Swiper
         modules={[Navigation, Pagination]}
-        spaceBetween={8}
-        slidesPerView={1.5}
+        spaceBetween={spaceBetween}
+        slidesPerView={slidesPerView}
         centeredSlides={true}
         initialSlide={1}
         navigation={true}

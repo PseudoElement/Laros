@@ -20,16 +20,19 @@ export const Trips: FC<TripsProps> = ({ trips, title, subTitle }) => {
 
       <div className={s.subTitle}>{subTitle}</div>
 
-      <div>
-        <Slider slidesPerView={3} withPagination classname={s.slider}>
-
-          {trips?.map((item, index) => (
-            <div className={s.tripCard} key={index}>
-              <TripCard {...item} onClick={() => {}} />
-            </div>
-          ))}
-        </Slider>
-      </div>
+      <Slider
+        slidesPerView={3}
+        withPagination
+        classname={s.slider}
+        spaceBetween={30}
+        withNavigation
+        nextEl='moreNext'
+        prevEl='morePrev'
+      >
+        {trips?.map((item, index) => (
+          <TripCard key={item.id} {...item} onClick={() => {}} />
+        ))}
+      </Slider>
     </div>
   )
 }

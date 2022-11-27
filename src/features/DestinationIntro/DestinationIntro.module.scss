@@ -2,7 +2,8 @@
 
 .intro {
   background-color: $color-light-grey;
-  margin: 80px;
+  margin: 200px auto 0;
+  width: 90%;
   border-radius: 16px;
   display: flex;
   box-shadow: $color-box-shadow;
@@ -43,7 +44,7 @@
   margin-bottom: 16px;
 }
 .introRightContainer {
-  border-radius: 0 16px 16px 0 ;
+  border-radius: 0 16px 16px 0;
   width: 40%;
   overflow: hidden;
 }

@@ -7,4 +7,8 @@ export * from './HotelsSection'
 export * from './DestinationIntro'
 export * from './HotelCard'
 export * from './StartTripForm'
+export * from './Header'
+export * from './AboutLayout'
+export * from './DownloadBrochuresModal'
+export * from './SendBrochuresModal'
 // TODO add missed features

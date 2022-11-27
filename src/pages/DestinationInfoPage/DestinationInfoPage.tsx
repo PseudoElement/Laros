@@ -66,17 +66,16 @@ export const DestinationInfoPage = () => {
       {destination ? <DestinationIntro {...destination} /> : null}
 
       {destination?.images ? (
-        <Overview
-          images={destination.images}
-          overview={destination.overview}
-        />
+        <Overview images={destination.images} overview={destination.overview} />
       ) : null}
 
       {trips && destination ? (
         <Trips
           trips={trips}
           title={destination.name}
-          subTitle={destination.description}
+          subTitle={
+            'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.'
+          }
         />
       ) : null}
 

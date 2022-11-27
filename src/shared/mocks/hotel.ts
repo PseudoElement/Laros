@@ -178,7 +178,7 @@ export const nearHotelsMock: Hotel[] = [
     address: 'Egnatia Park, Alexandroupoli 681 00, Greece',
     description:
       'Malesuada nunc consequat porttitor vitae. Risus vitae ipsum varius eleifend ullamcorper tellus, dolor ipsum suspendisse. Maecenas et urna a, nibh dolor id elit a cras. Etiam lobortis habitant tempor est eleifend vulputate egestas. Lacus mollis vel, eu, congue tellus rhoncus quis adipiscing. Aenean fringilla vulputate maecenas amet, mattis id odio ultrices imperdiet. Et, viverra mauris, cursus molestie. Hendrerit quisque pulvinar montes, duis tincidunt. Sagittis euismod sed dui ac ut eget massa nibh. Massa, vitae dolor nulla ante orci. Sodales neque lacus, magna nisl blandit pellentesque.',
-    images: [img.src, img.src, img.src, img.src, img.src, img.src],
+    images: [],
     location: '',
     max_capacity: 0,
     is_active: true,

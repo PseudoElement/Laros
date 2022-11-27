@@ -1,4 +1,4 @@
-@use '../../../../styles/style' as *;
+@use 'styles/style' as *;
 .wrapper {
   background-repeat: no-repeat;
   background-size: cover;
@@ -26,7 +26,7 @@
   height: 90%;
 }
 
-.unvisible {
+.unVisible {
   padding: 0;
   height: 0px;
 }
@@ -53,7 +53,7 @@
   bottom: 25px;
 }
 
-.unhover {
+.unHover {
   height: 100%;
   display: flex;
   text-align: center;

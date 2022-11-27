@@ -1,8 +1,11 @@
-import React, { FC } from 'react'
-import s from './SelectedType.module.scss'
-import { Slider } from 'components/Slider'
+import { FC } from 'react'
+
+import { Slider } from 'components'
 import { SliderItem } from './SliderItem'
+
 import { TripCategory } from 'shared/types/trip'
+
+import s from './SelectedType.module.scss'
 
 interface SelectedType {
   travelTypes: TripCategory[]
@@ -11,21 +14,16 @@ interface SelectedType {
 export const SelectComponent: FC<SelectedType> = ({ travelTypes }) => {
   return (
     <div className={s.wrapper}>
+      <h3 className={s.selectType_title}>Or browse the selected type</h3>
+
       <Slider
-        nextEl='moreNext'
-        prevEl='morePrev'
         slidesPerView={5}
         withNavigation={true}
         withPagination={true}
-        classname={s.sliderCuston}
+        spaceBetween={25}
       >
         {travelTypes.map((item, index) => (
-          <SliderItem
-            image={item.image}
-            name={item.name}
-            description={item.description}
-            key={item.id}
-          />
+          <SliderItem {...item} />
         ))}
       </Slider>
     </div>

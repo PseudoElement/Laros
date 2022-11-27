@@ -1,7 +1,7 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import Image, { StaticImageData } from 'next/image'
 
-import { SliderGalery } from 'components'
+import { Gallery, SliderGalery } from 'components'
 
 import s from './Overview.module.scss'
 
@@ -11,6 +11,12 @@ interface Overview {
 }
 
 export const Overview: FC<Overview> = ({ images, overview }) => {
+  const [openGallery, setOpenGallery] = useState<number | null>(null)
+
+  const handleOpen = (index: number) => {
+    setOpenGallery(index)
+  }
+
   return (
     <div className={s.overview}>
       <div className={s.title}>Overview</div>
@@ -19,15 +25,21 @@ export const Overview: FC<Overview> = ({ images, overview }) => {
 
       <div className={s.overviewSlider}>
         {images?.length ? (
-          <SliderGalery>
+          <SliderGalery spaceBetween={8}>
             {images.map((image, index) => (
-              <div key={index} className={s.image}>
-                <Image width={1000} height={500} src={image} alt='' />
+              <div
+                key={index}
+                className={s.image}
+                onClick={() => handleOpen(index)}
+              >
+                <Image layout={'fill'} src={image} alt='' />
               </div>
             ))}
           </SliderGalery>
         ) : null}
       </div>
+
+      <Gallery images={images} isOpen={openGallery} onClose={setOpenGallery} />
     </div>
   )
 }

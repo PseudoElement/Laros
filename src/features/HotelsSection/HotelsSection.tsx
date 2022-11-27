@@ -29,16 +29,9 @@ export const HotelSection: FC<HotelSection> = ({ hotels, title, subTitle }) => {
 
       <div className={s.wrap}>
         {hotels.length ? (
-          <Slider
-            withNavigation
-            withPagination
-            nextEl={s.nextButton}
-            prevEl={s.prevButton}
-          >
+          <Slider withNavigation withPagination spaceBetween={30}>
             {hotels.map((hotel, index) => (
-              <div className={s.hotelCard} key={index}>
-                <HotelCard key={index} {...hotel} onClick={handlePush} />
-              </div>
+              <HotelCard key={hotel.id} {...hotel} onClick={handlePush} />
             ))}
           </Slider>
         ) : null}
