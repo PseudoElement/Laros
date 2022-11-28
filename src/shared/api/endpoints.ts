@@ -7,6 +7,7 @@ export const endpoints = {
     send: '/brochure/delivery/',
   },
   contactForm: '/contact/request/',
+  voucherForm: '/voucher/create/',
   destinations: {
     get: '/destination/', // rename as in hotels TODO
     id: (id: number) => `/destination/${id}`,

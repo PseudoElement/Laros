@@ -1,62 +1,67 @@
-import { Button } from 'components/Button'
-import { Input } from 'components/Input'
-import { Radio } from 'components/Radio'
-import { Select } from 'components/Select'
-import { AddressInput } from 'features/AddressInput'
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
-import { titleOptions } from 'shared/constants/form'
-import { options } from 'shared/constants/payment'
-import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
-import { updateForm } from 'store/slices/voucher/voucher'
+
+import { Button, Input, Radio } from 'components'
+import { AddressInput } from 'features'
 import { Steps } from '../VoucherPage'
+
+import { sendContactFormThunk } from 'store/slices/voucher/thunk'
+import { useAppDispatch } from 'shared/hooks/redux'
+
+import { titleOptions } from 'shared/constants/form'
+
 import s from './Step1Form.module.scss'
+
 interface Step1FormProps {
   setStep: (step: Steps) => void
 }
-export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
-  const { control, handleSubmit } = useForm()
-  const dispatch = useAppDispatch()
-  const form = useAppSelector(state => state.vouchers.form)
 
-  useEffect(() => {
-    console.log(form)
-  }, [form])
-  const onSubmit: SubmitHandler<any> = async formData => {
-    setStep(Steps.SECOND) // TODO add anchor to top of the page
-    dispatch(updateForm(formData))
+export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
+  const dispatch = useAppDispatch()
+  const { control, handleSubmit } = useForm()
+
+  const onSubmit: SubmitHandler<any> = formData => {
+    window.scrollTo(0, 0)
+    setStep(Steps.SECOND)
+    dispatch(sendContactFormThunk(formData))
   }
+
   return (
     <div className={s.container}>
       <div className={s.intro}>
         <div className={s.introTitle}>Gift vouchers</div>
+
         <div className={s.introDescription}>
           Faucibus enim sit leo, purus, odio erat. Neque scelerisque volutpat
           morbi proin. Massa quis montes, scelerisque commodo elit erat in urna
           id. Purus sit odio egestas venenatis viverra blandit amet vitae.
         </div>
       </div>
+
       <div className={s.wrapper}>
         <div className={s.voucherSection}>
           <div className={s.title}>Voucher</div>
+
           <div className={s.voucherInputs}>
             <div className={s.selectDiv}>
-              <div className={s.selectLabel}>
-                Select a voucher or a gift card
-              </div>
               <Controller
                 name='name'
                 control={control}
                 render={({ field: { onChange, value } }) => (
-                  <Select
-                    options={options}
+                  <Input
+                    classname={s.inputVoucherName}
+                    required
+                    shorten
+                    placeholder='Name'
                     onChange={onChange}
+                    id='name'
                     value={value}
-                    classname={s.select}
+                    label='Select a voucher or a gift card'
                   />
                 )}
               />
             </div>
+
             <Controller
               name='value'
               control={control}
@@ -76,15 +81,18 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
             />
           </div>
         </div>
+
         <div className={s.billingSection}>
           <div className={s.title}>Billing person details</div>
+
           <div className={s.billingDescription}>
             Please, share with us the information about the person who sends the
             gift card. No personal information won&apos;t be provided to any
             third parties.
           </div>
+
           <Controller
-            name='name'
+            name='sender'
             control={control}
             render={({ field: { onChange, value } }) => (
               <Input
@@ -99,6 +107,7 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
               />
             )}
           />
+
           <Controller
             name='title'
             control={control}
@@ -114,6 +123,7 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
               </div>
             )}
           />
+
           <Controller
             name='email'
             control={control}
@@ -131,6 +141,7 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
               />
             )}
           />
+
           <Controller
             name='company'
             control={control}
@@ -146,6 +157,7 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
               />
             )}
           />
+
           <Controller
             name='phone'
             control={control}
@@ -163,12 +175,15 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
               />
             )}
           />
+
           <AddressInput control={control} />
         </div>
-        <div className={s.recepientSection}>
+
+        <div className={s.recipientSection}>
           <div className={s.title}>Recipient Name</div>
+
           <Controller
-            name='to'
+            name='recipient'
             control={control}
             render={({ field: { onChange, value } }) => (
               <Input
@@ -184,8 +199,10 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
             )}
           />
         </div>
+
         <div className={s.fromSection}>
           <div className={s.title}>Voucher from</div>
+
           <Controller
             name='from'
             control={control}

@@ -10,6 +10,8 @@ export interface Destination {
   location: string //'SRID=4326;POINT (21.986157 38.873375)'
   tips: string | null
   address: string
+  sightseeing: string
+  culture: string
   is_island: boolean
   is_active: boolean
   is_airport: boolean
