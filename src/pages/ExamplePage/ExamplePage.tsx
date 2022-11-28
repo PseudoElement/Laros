@@ -23,6 +23,7 @@ import { tripsMock } from 'shared/mocks/destinationInfo'
 import s from './example.module.scss'
 import { galleryMock } from 'shared/mocks/gallery'
 import Image from 'next/image'
+import { ChangeHotelModal } from '../../features/ChangeHotelModal'
 
 const gjson = {
   type: 'FeatureCollection',
@@ -78,6 +79,8 @@ export const ExamplePage: FC = () => {
       <div style={{ height: '750px', width: 'calc(100% - 50px)' }}>
         <Map route={route} />
       </div>
+
+      <ChangeHotelModal destination={1} onClick={id => {}} />
 
       <ReactPlayer url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
 

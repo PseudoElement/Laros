@@ -24,7 +24,6 @@ export const HotelCard: FC<HotelCardProps> = ({
   period,
   min_price,
   id,
-  onClick,
   link,
   location,
   max_capacity,
@@ -33,11 +32,8 @@ export const HotelCard: FC<HotelCardProps> = ({
   opinion,
   destination,
   description,
+  onClick,
 }) => {
-  const handleClick = (id: number) => {
-    onClick?.(id)
-  }
-
   return (
     <div className={s.hotelCard}>
       <div className={s.hotelCardImage}>
@@ -53,14 +49,15 @@ export const HotelCard: FC<HotelCardProps> = ({
       </div>
 
       <div className={s.header}>
-        <ReactStars
-          count={5}
-          value={rating}
-          size={24}
-          activeColor='#ffd700'
-          edit={false}
-          classNames={s.rating}
-        />
+        <div className={s.rating}>
+          <ReactStars
+            count={5}
+            value={rating}
+            size={24}
+            activeColor='#ffd700'
+            edit={false}
+          />
+        </div>
         <div className={s.type}>{address}</div>
         <div className={s.name}>{name}</div>
       </div>
@@ -79,13 +76,11 @@ export const HotelCard: FC<HotelCardProps> = ({
 
       <div className={s.tags}>
         {tags.slice(0, LIMIT_HOTEL_CARD_TAGS).map((tag, index) => (
-          <TagCard key={index} {...tag} index={index} />
+          <TagCard key={index} {...tag} />
         ))}
       </div>
 
-      <Button classname={s.button} onClick={() => handleClick(id)}>
-        Learn more
-      </Button>
+      <Button classname={s.button}>Learn more</Button>
     </div>
   )
 }

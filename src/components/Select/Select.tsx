@@ -14,7 +14,7 @@ import { Option } from 'shared/types'
 
 interface OptionsProps {
   options: Option[]
-  onChange: (value: string) => void
+  onChange: (value: Option) => void
   value?: Option
   placeholder?: string
   classname?: string
@@ -106,18 +106,17 @@ export const SelectComponent: FC<OptionsProps> = ({
   const randomId = useId()
 
   return (
-      <Select
-        instanceId={randomId}
-        styles={customStyles}
-        options={options}
-        value={value}
-        defaultValue={value ?? options[0]}
-        components={{ Option, DropdownIndicator, Control }}
-        isMulti={isMulti}
-        // @ts-ignore
-        onChange={val => onChange(val)}
-        className={cn(s.select, classname)}
-        placeholder={placeholder}
-      />
+    <Select
+      instanceId={randomId}
+      styles={customStyles}
+      options={options}
+      defaultValue={value ?? options[0]}
+      components={{ Option, DropdownIndicator, Control }}
+      isMulti={isMulti}
+      // @ts-ignore
+      onChange={val => onChange(val)}
+      className={cn(s.select, classname)}
+      placeholder={placeholder}
+    />
   )
 }
