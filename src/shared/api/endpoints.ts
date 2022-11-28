@@ -18,7 +18,10 @@ export const endpoints = {
     id: (id: number) => `/trip/${id}`,
     similar: (id: number) => `/trip/similar/${id}`,
   },
-  order: '/order/create/',
+  order: {
+    create: '/order/create/',
+    calculate: '/order/calculate/',
+  },
   rooms: {
     all: '/room/',
     one: (id: number) => `/room/${id}`,
@@ -53,5 +56,10 @@ export const endpoints = {
   accommodations: {
     all: '/accommodation/',
     one: (id: number) => `/accommodation/${id}`,
-  }
+  },
+  transport: {
+    all: '/transport/',
+    one: (id: number) => `/transport/${id}`,
+    route: '/transport/route/',
+  },
 }
