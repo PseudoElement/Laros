@@ -110,7 +110,6 @@ export const SelectComponent: FC<OptionsProps> = ({
       instanceId={randomId}
       styles={customStyles}
       options={options}
-      value={value}
       defaultValue={value ?? options[0]}
       components={{ Option, DropdownIndicator, Control }}
       isMulti={isMulti}
