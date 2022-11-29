@@ -23,6 +23,7 @@ export interface Traveller {
 export interface Transport {
   transport: number
   date: ServerDate //'2022-11-26'
+  rental: boolean
 }
 export interface OrderRoom extends PeopleCapacity {
   room_id: number
@@ -36,7 +37,8 @@ export interface OrderForm {
   dest_from: number
   dest_to: number
   destinations: TripDestination[]
-  transport: Transport[]
+  transports: Transport[]
+  room_ids: number[]
   // Step 2:
   name: string
   surname: string
@@ -51,6 +53,8 @@ export interface OrderForm {
   travellers: Traveller[]
   comment: string
   is_travel_agent: boolean
+  // ?
+  offer?: number
 }
 
 export interface OrderPlaceAccomodation {
@@ -59,7 +63,7 @@ export interface OrderPlaceAccomodation {
   duration: number
   rooms: OrderRoom[]
   taxi: number[]
-  rental: number[]
+  rental: boolean
 }
 export interface OrderPayload {
   destinations: OrderPlaceAccomodation[]
@@ -72,7 +76,7 @@ export interface OrderPayload {
   zip_code: string
   dest_start: number //id
   dest_end: number //id
-  offer: number //id of discount
+  offer?: number //id of discount
   email: string
   date_start: ServerDate // '2022-10-28'
   comment: string

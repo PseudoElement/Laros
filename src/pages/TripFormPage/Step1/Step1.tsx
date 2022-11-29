@@ -1,11 +1,15 @@
 import { AddIcon, Button, InfoIcon } from 'components';
 import { Select } from 'components/Select';
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form';
+import { calculateOrder } from 'shared/api/routes/order';
+import { ORDER_CALCULATION_DEBOUNCE } from 'shared/constants';
 import { destinationToOption } from 'shared/helpers/destinations';
+import { prepareOrder } from 'shared/helpers/order';
 import { getTripDays, provideOptionsWithIcon } from 'shared/helpers/transformers';
 import { getTripDuration } from 'shared/helpers/trip';
-import { useAppDispatch } from 'shared/hooks/redux';
+import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
+import { useDebounce } from 'shared/hooks/useDebounce';
 import { TransferType } from 'shared/types/car';
 import { Destination } from 'shared/types/destinations';
 import { OrderForm } from 'shared/types/order';
@@ -23,19 +27,30 @@ interface Step1Props {
 }
 
 export const Step1: FC<Step1Props> = ({ setStep, trip, airports }) => {
+  const dispatch = useAppDispatch()
   const { handleSubmit, control, setValue, watch } = useForm<Partial<OrderForm>>({
     defaultValues: {
       destinations: trip.destinations,
     }
   })
   const watchDestinations = watch('destinations')
+  const calculationDebounce = useDebounce(watch, ORDER_CALCULATION_DEBOUNCE)
+  const form = useAppSelector((state) => state.order.form);
   const airportOptions = provideOptionsWithIcon(destinationToOption(airports), airportIcon)
-  const dispatch = useAppDispatch()
+
   const onSubmit = (formData: any) => {
     // TODO add type
     dispatch(updateForm(formData))
     setStep(Steps.SECOND)
   }
+  const loadPrice = async () => {
+    const data = await calculateOrder(prepareOrder(form));
+    // TODO connect
+  }
+
+  useEffect(() => {
+    loadPrice()
+  }, [calculationDebounce])
 
   if (!trip) return null;
   return (

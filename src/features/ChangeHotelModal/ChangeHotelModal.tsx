@@ -16,12 +16,12 @@ import cn from 'classnames'
 
 interface ChangeHotelProps {
   destination: number
-  onClick: (id: number) => void
+  onSubmit: (id: number) => void
 }
 
 export const ChangeHotelModal: FC<ChangeHotelProps> = ({
   destination,
-  onClick,
+  onSubmit,
 }) => {
   const [params, setParams] = useState<Partial<HotelFilterParams>>({
     destination: destination.toString(),
@@ -135,7 +135,7 @@ export const ChangeHotelModal: FC<ChangeHotelProps> = ({
       </div>
       <div className={s.buttons}>
         <Button
-          onClick={selectedHotel ? () => onClick(selectedHotel) : undefined}
+          onClick={selectedHotel ? () => onSubmit(selectedHotel) : undefined}
         >
           Next: Select room type
         </Button>
