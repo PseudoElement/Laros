@@ -145,7 +145,7 @@ export const ExamplePage: FC = () => {
           />
         </div>
         <div style={{ width: '400px', marginTop: 100, marginLeft: 50 }}>
-          <InputCalendar label='Earliest depature' />
+          <InputCalendar  label='Earliest depature' />
           <InputCalendar label='Earliest depature' variant='top' />
           <InputCalendar label='Earliest depature' variant='right' />
         </div>
