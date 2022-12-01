@@ -22,6 +22,8 @@
 }
 
 .select {
+  font-family: Lato;
+  font-size: 14px;
   display: flex;
   gap: 32px;
   margin-bottom: 22px;
@@ -45,7 +47,7 @@
     align-items: center;
     box-sizing: content-box;
     gap: 8px;
-    max-width: 1412px;
+    max-width: 560px;
     overflow-x: auto;
     font-weight: $fw-medium;
     padding-bottom: 4px;

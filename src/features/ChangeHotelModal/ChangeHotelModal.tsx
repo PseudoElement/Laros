@@ -38,9 +38,17 @@ export const ChangeHotelModal: FC<ChangeHotelProps> = ({
   ]
 
   const changeTabs = (value: number) => {
+    let newTags = params.tags?.split(',') ?? []
+
+    if (newTags.includes(value.toString())) {
+      newTags = newTags.filter(tag => tag !== value.toString())
+    } else {
+      newTags.push(value.toString())
+    }
+
     setParams(prev => ({
       ...prev,
-      tags: prev.tags === value.toString() ? undefined : value.toString(),
+      tags: Boolean(newTags.length) ? newTags.join(',') : undefined,
     }))
   }
 
@@ -97,7 +105,7 @@ export const ChangeHotelModal: FC<ChangeHotelProps> = ({
                     onClick={() => changeTabs(tab.id)}
                     key={tab.id}
                     className={cn(s.tab, {
-                      [s.selectedTab]: params.tags === tab.id.toString(),
+                      [s.selectedTab]: params.tags?.includes(tab.id.toString()),
                     })}
                   >
                     {tab.name}
