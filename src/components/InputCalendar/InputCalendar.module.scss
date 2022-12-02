@@ -8,7 +8,7 @@
   border: none !important;
   color: $color-secondary;
   box-shadow: -8px 4px 22px 10px rgba($color-modal-bg, 0.2);
-  z-index: 10000;
+  z-index: 100;
 
   :global(.react-calendar) {
     position: absolute;
@@ -115,7 +115,6 @@
   background: $color-white;
   border-radius: 8px;
   position: relative;
-  z-index: 10;
   min-height: 33px;
   padding-left: 8px;
 }
