@@ -20,9 +20,6 @@ export const CareerPage: FC = () => {
   const loadVacancies = async () => {
     try {
       const { data } = await getVacancies()
-
-      console.log(data)
-
       setVacancies(data.data)
     } catch (error) {
       console.log(error)

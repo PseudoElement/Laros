@@ -12,5 +12,6 @@ export * from '../components/Slider'
 export * from './StartTripForm'
 export * from './SendBrochuresModal'
 export * from './TripCard'
+export * from './TravellerForm'
 
 // TODO add missed features

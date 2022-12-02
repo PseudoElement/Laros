@@ -1,5 +1,3 @@
-import { getAccommodations } from './routes/accommodation'
-
 export const endpoints = {
   brochures: {
     get: '/brochure/',
@@ -47,7 +45,7 @@ export const endpoints = {
   vacancy: {
     all: '/vacancy/',
     one: (id: number) => `/vacancy/${id}`,
-    apply: (id: number) => `/vacancy/${id}/apply`,
+    apply: (id: number) => `/vacancy/${id}/apply/`,
   },
   subscription: '/subscription/create',
   category: {
@@ -58,6 +56,11 @@ export const endpoints = {
     all: '/accommodation/',
     one: (id: number) => `/accommodation/${id}`,
   },
+  requests: {
+    flight: '/order/flight/request/',
+    package: '/order/package/request/',
+  },
+  airport: '/airport/',
   transport: {
     all: '/transport/',
     one: (id: number) => `/transport/${id}`,
