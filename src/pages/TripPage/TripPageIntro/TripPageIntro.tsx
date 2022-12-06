@@ -1,45 +1,44 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { useRouter } from 'next/router'
 // @ts-ignore
 import ReactStars from 'react-rating-stars-component'
 
-import { FieldsType, StartTripForm, InfoTags } from 'features'
+import { StartTripForm, InfoTags, FieldsType } from 'features'
 import { Map, TruncatedText } from 'components'
 
+import { TRUNCATED_ROOM_CARD_TEXT_SIZE } from 'shared/constants'
 import { useAppDispatch } from 'shared/hooks/redux'
 import { updateForm } from 'store/slices/order/order'
 
-import { TRUNCATED_ROOM_CARD_TEXT_SIZE } from 'shared/constants'
-import { Hotel } from 'shared/types/hotel'
+import { Trip } from 'shared/types/trip'
 
-import s from './HotelIntro.module.scss'
+import s from './tripPageIntro.module.scss'
 
-export const HotelIntro: FC<Hotel> = ({
-  description,
-  rating,
+export const TripPageIntro: FC<Trip> = ({
+  id,
   name,
   tags,
-  location,
-  address,
-  opinion,
-  destination,
+  price,
+  route,
+  description,
+  offer_name,
+  offer,
+  offer_percent,
+  offer_discount,
   is_active,
-  link,
-  max_capacity,
+  offer_date_end,
+  offer_date_start,
   period,
-  tripadvisor_id,
-  id,
-  category_name,
-  category,
+  island_hopping_fee,
+  travel_types,
   images,
-  destination_name,
-  accommodations,
-  min_price,
-  facilities,
-  rooms,
+  destinations,
+  transports,
+  duration,
+  near_destinations,
 }) => {
   const dispatch = useAppDispatch()
-  const { push } = useRouter()
+  const { push, query } = useRouter()
 
   const handleClick = (fields: FieldsType) => {
     dispatch(
@@ -48,24 +47,14 @@ export const HotelIntro: FC<Hotel> = ({
         date_start: Number(fields.date),
       })
     )
-    push(`/trip_form`)
+    push(`/trip_form/${query.id}`)
   }
 
   return (
-    <div className={s.hotelIntro}>
+    <div className={s.pageIntro}>
       <div className={s.left}>
-        <ReactStars
-          count={5}
-          value={rating}
-          size={24}
-          activeColor='#ffd700'
-          edit={false}
-          classNames={s.rating}
-        />
-
-        <div className={s.address}>{address}</div>
-
         <div className={s.name}>{name}</div>
+        <div className={s.price}>{price} CHF / pro person</div>
 
         <TruncatedText
           limit={TRUNCATED_ROOM_CARD_TEXT_SIZE}
@@ -79,7 +68,7 @@ export const HotelIntro: FC<Hotel> = ({
 
       <div className={s.right}>
         <div className={s.map}>
-          <Map location={location} />
+          <Map route={route} />
         </div>
 
         <div className={s.tagsPanel}>

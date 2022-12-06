@@ -6,7 +6,7 @@
 }
 
 .title {
-  font-weight: 700;
+  font-weight: $fw-bold;
   font-size: 16px;
   line-height: 20px;
   text-align: center;
@@ -14,7 +14,7 @@
 }
 
 .description {
-  font-weight: 400;
+  font-weight: $fw-regular;
   font-size: 12px;
   line-height: 20px;
   margin-bottom: 80px;
