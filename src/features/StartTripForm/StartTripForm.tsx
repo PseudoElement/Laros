@@ -13,11 +13,8 @@ import s from './StartTripForm.module.scss'
 
 export const StartTripForm = () => {
   const {
-    register,
-    handleSubmit,
-    formState: { errors },
+    formState: {},
     control,
-    watch,
   } = useForm({
     defaultValues: {
       fields: [{ adults: 0, children: 0 }],
