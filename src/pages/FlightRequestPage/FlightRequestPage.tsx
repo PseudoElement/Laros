@@ -16,34 +16,12 @@ import { Airport } from 'shared/types/airport'
 import { Meta, Option } from 'shared/types'
 
 import s from './FlightRequestPage.module.scss'
+import { FlightRequestFormType } from '../../shared/types/requestForm'
 
 export enum FlightClass {
   First,
   Econom,
   Business,
-}
-
-interface Traveller {
-  name: string
-  address: string
-  address1: string
-  address2: string
-  birth: string
-  gender: string
-  nationality: string
-}
-
-export interface FlightRequestFormType {
-  departFrom: Option
-  arrivalTo: Option
-  earliestDeparture: string
-  latestReturn: string
-  class: string
-  adults: number
-  children: number
-  email: string
-  comment: string
-  travellers: Traveller[]
 }
 
 export const FlightRequestForm: FC = () => {

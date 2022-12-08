@@ -1,6 +1,5 @@
 import { FC, useState } from 'react'
 import cn from 'classnames'
-
 import {
   Control,
   Controller,
@@ -22,19 +21,26 @@ import { TravellerAddressForm } from './TravellerAddressForm/TravellerAddressFor
 
 import { genderOptions } from 'shared/constants/form'
 
-import { metaToOption } from 'shared/helpers/select'
+import { Country } from '../../shared/types/country'
+import { getCountries } from '../../shared/api/routes/countries'
 
-import { Meta } from 'shared/types'
-import { FlightRequestFormType } from 'pages/FlightRequestPage'
+import {
+  FlightRequestFormType,
+  PackageRequestFormType,
+} from 'shared/types/requestForm'
 
 import s from './TravellerForm.module.scss'
 
 interface TravellerFormProps {
   field: FieldArrayWithId
   index: number
-  control: Control<TravellerAddressForm & FlightRequestFormType>
-  watch: UseFormWatch<TravellerAddressForm & FlightRequestFormType>
-  countries: Meta[]
+  control: Control<
+    TravellerAddressForm & (FlightRequestFormType | PackageRequestFormType)
+  >
+  watch: UseFormWatch<
+    TravellerAddressForm & (FlightRequestFormType | PackageRequestFormType)
+  >
+  reset: (formValues: any, keepStateOptions: any) => void //TODO
 }
 
 export const TravellerForm: FC<TravellerFormProps> = ({
@@ -42,11 +48,11 @@ export const TravellerForm: FC<TravellerFormProps> = ({
   index,
   control,
   watch,
-  countries,
 }) => {
   const [addresses, setAddresses] = useState<string[]>([])
   const [showAddressInput, setShowAddressInput] = useState<boolean>(false)
   const MAX_ADDRESSES_LIMIT = 2
+
   const setAddress = (i: number, address: string) => {
     if (i === index && address) {
       setAddresses([...addresses, address])
@@ -55,6 +61,14 @@ export const TravellerForm: FC<TravellerFormProps> = ({
 
   const hideRightAddressForm = () => {
     setShowAddressInput(false)
+  }
+
+  const countriesOptions = async (inputValue: string) => {
+    const { data } = await getCountries(inputValue)
+    return data.data.map((item: Country) => ({
+      label: item.name,
+      value: item.id,
+    }))
   }
 
   return (
@@ -91,12 +105,15 @@ export const TravellerForm: FC<TravellerFormProps> = ({
                 {...field}
                 classname={s.select}
                 onChange={onChange}
-                options={metaToOption(countries)}
+                loadOptions={countriesOptions}
+                options={[]}
+                async
               />
             )}
           />
         </div>
       </div>
+
       <div className={s.row}>
         <Controller
           name={`travellers.${index}.gender`}
@@ -108,13 +125,14 @@ export const TravellerForm: FC<TravellerFormProps> = ({
                 {...field}
                 name={`travellers.${index}.gender`}
                 onChange={onChange}
-                value={value}
+                value={value ? value : genderOptions[1].value}
                 options={genderOptions}
               />
             </div>
           )}
         />
       </div>
+
       <div className={cn(s.row, s.rowBirth)}>
         <Controller
           name={`travellers.${index}.birth`}

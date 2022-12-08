@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { FlightRequestFormType } from 'pages/FlightRequestPage'
 import uniq from 'lodash/uniq'
 import { sendFlightRequestForm } from 'shared/api/routes/requests'
+import { FlightRequestFormType } from 'shared/types/requestForm'
 
 export const sendFlightRequestThunk = createAsyncThunk<
   unknown,
