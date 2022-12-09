@@ -14,11 +14,6 @@
 .inputCalendarCustom {
   min-width: 49%;
   height: 70px;
-  width: 411px;
-
-  [class$='pencilIcon'] {
-    margin-right: 32px;
-  }
 }
 
 .radio {
@@ -158,6 +153,10 @@
 
   [class$='-menu'] {
     z-index: 1000;
+  }
+
+  [class$='-DropdownIndicator'] {
+    padding-bottom: 10px;
   }
 }
 

@@ -1,5 +1,6 @@
-import { CheckBox } from 'components/CheckboxGroup'
 import { Option } from 'shared/types'
+import { CheckBox } from '../../components'
+import { Traveller } from '../types/requestForm'
 
 export const titleOptions: Option[] = [
   { label: 'Mr', value: 'mr' },
@@ -16,9 +17,9 @@ export const booleanOptions: Option[] = [
 ]
 
 export const classOptions: Option[] = [
-  { label: 'Econom', value: 'Econom' },
-  { label: 'Business', value: 'Business' },
-  { label: 'First', value: 'First' },
+  { label: 'Econom', value: 'econom' },
+  { label: 'Business', value: 'business' },
+  { label: 'First', value: 'first' },
 ]
 
 export const transferOptions: Option[] = [
@@ -47,14 +48,17 @@ export const boardTypes: CheckBox[] = [
   { label: 'Half board', value: 'half', status: false },
   { label: 'Bed & Breakfast', value: 'bnb', status: false },
 ]
-export const REQUEST_FORMS = {
+export const REQUEST_FORMS: Traveller = {
   name: '',
-  nationality: 'not chosen',
+  nationality: { label: 'not chosen', value: 0 },
   gender: 'Male',
   birth: '',
   address: '',
   address1: '',
   address2: '',
+  country: { label: '', value: '' },
+  city: '',
+  zip: '',
 }
 
 export const MIN_DATE = new Date(1900, 0, 1)

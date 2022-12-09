@@ -45,8 +45,7 @@ export const PackageRequestForm: FC = () => {
     handleSubmit,
     watch,
     control,
-    reset,
-    formState: { errors },
+    formState: {},
   } = useForm<PackageRequestFormType & TravellerAddressForm>({
     defaultValues: {
       travellers: [DEFAULT_TRAVELLER],
@@ -271,7 +270,7 @@ export const PackageRequestForm: FC = () => {
               name='boardType'
               control={control}
               defaultValue={DEFAULT_BOARD_TYPE}
-              render={({ field: { onChange, value } }) => (
+              render={({ field: { onChange } }) => (
                 <CheckboxGroup options={boardTypes} onChange={onChange} />
               )}
             />
@@ -307,7 +306,6 @@ export const PackageRequestForm: FC = () => {
               index={index}
               control={control}
               watch={watch}
-              reset={reset}
             />
           ))}
         </ul>

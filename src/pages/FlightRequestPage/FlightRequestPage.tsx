@@ -1,5 +1,10 @@
 import { FC, useEffect, useState } from 'react'
-import { Controller, useFieldArray, useForm } from 'react-hook-form'
+import {
+  Controller,
+  SubmitHandler,
+  useFieldArray,
+  useForm,
+} from 'react-hook-form'
 import { useRouter } from 'next/router'
 import cn from 'classnames'
 
@@ -13,10 +18,12 @@ import { classOptions, REQUEST_FORMS } from 'shared/constants/form'
 
 import { getAirports } from 'shared/api/routes/requests'
 import { Airport } from 'shared/types/airport'
-import { Meta, Option } from 'shared/types'
 
 import s from './FlightRequestPage.module.scss'
-import { FlightRequestFormType } from '../../shared/types/requestForm'
+import {
+  FlightRequestFormType,
+  PackageRequestFormType,
+} from '../../shared/types/requestForm'
 
 export enum FlightClass {
   First,
@@ -31,7 +38,6 @@ export const FlightRequestForm: FC = () => {
   const DEFAULT_ADULTS_COUNT = 2 // more to shared/ folder
   const [adultsCount, setAdultsCount] = useState(DEFAULT_ADULTS_COUNT)
   const [childrenCount, setChildrenCount] = useState(0)
-  const [countries, setCountries] = useState<Meta[]>([{ id: 1, name: 'sdf' }]) // TODO add country loading
   let travellersCount = adultsCount + childrenCount
 
   const {
@@ -39,7 +45,9 @@ export const FlightRequestForm: FC = () => {
     watch,
     control,
     formState: {},
-  } = useForm<FlightRequestFormType & TravellerAddressForm>({
+  } = useForm<
+    TravellerAddressForm & (FlightRequestFormType | PackageRequestFormType)
+  >({
     defaultValues: {
       travellers: [REQUEST_FORMS, REQUEST_FORMS],
     },
@@ -53,8 +61,16 @@ export const FlightRequestForm: FC = () => {
   const watchAdultsCount = watch('adults', DEFAULT_ADULTS_COUNT)
   const watchChildrenCount = watch('children', 0)
 
-  const onSubmit = (data: FlightRequestFormType) =>
-    dispatch(sendFlightRequestThunk(data))
+  const onSubmit: SubmitHandler<
+    TravellerAddressForm & (FlightRequestFormType | PackageRequestFormType)
+  > = data => {
+    console.log(data)
+    dispatch(
+      sendFlightRequestThunk(
+        data as FlightRequestFormType & TravellerAddressForm
+      )
+    )
+  }
 
   useEffect(() => {
     if (watchAdultsCount != adultsCount) {
@@ -90,6 +106,7 @@ export const FlightRequestForm: FC = () => {
           <Controller
             name='departFrom'
             control={control}
+            rules={{ required: true }}
             render={({ field: { onChange } }) => (
               <Select
                 classname={s.select}
@@ -107,6 +124,7 @@ export const FlightRequestForm: FC = () => {
           <Controller
             name='arrivalTo'
             control={control}
+            rules={{ required: true }}
             render={({ field: { onChange } }) => (
               <Select
                 classname={s.select}
@@ -126,6 +144,7 @@ export const FlightRequestForm: FC = () => {
           control={control}
           render={({ field: { onChange } }) => (
             <InputCalendar
+              required
               classname={s.inputCalendarCustom}
               variant={'top'}
               onChange={onChange}
@@ -139,6 +158,7 @@ export const FlightRequestForm: FC = () => {
           control={control}
           render={({ field: { onChange } }) => (
             <InputCalendar
+              required
               classname={s.inputCalendarCustom}
               variant={'top'}
               onChange={onChange}
@@ -214,7 +234,6 @@ export const FlightRequestForm: FC = () => {
               index={index}
               control={control}
               watch={watch}
-              countries={countries}
             />
           ))}
         </ul>
@@ -226,6 +245,7 @@ export const FlightRequestForm: FC = () => {
           control={control}
           render={({ field: { onChange, value } }) => (
             <Input
+              required
               type='email'
               classname={s.input}
               onChange={onChange}

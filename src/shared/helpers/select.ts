@@ -1,4 +1,4 @@
-import { Meta, Option, SelectType } from 'shared/types'
+import { Option, SelectType } from 'shared/types'
 import { Country } from '../types/country'
 
 export const stringToOption = (value: SelectType<string>): SelectType => {

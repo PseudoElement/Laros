@@ -1,8 +1,6 @@
-import { Option } from './index'
-
 export interface Traveller {
   name: string
-  nationality: { label: string; value: string }
+  nationality: { label: string; value: number }
   gender: string
   birth: string
   country: { label: string; value: string }
@@ -13,8 +11,8 @@ export interface Traveller {
   zip: string | number | undefined
 }
 export interface FlightRequestFormType {
-  departFrom: Option
-  arrivalTo: Option
+  departFrom: { label: string; value: number }
+  arrivalTo: { label: string; value: number }
   earliestDeparture: string
   latestReturn: string
   class: string
@@ -26,8 +24,8 @@ export interface FlightRequestFormType {
 }
 
 export interface PackageRequestFormType {
-  departFrom: { label: string; value: string }
-  arrivalTo: { label: string; value: string }
+  departFrom: { label: string; value: number }
+  arrivalTo: { label: string; value: number }
   earliestDeparture: string
   latestReturn: string
   hotelCategory?: { label: string; value: string }
@@ -68,8 +66,8 @@ export interface TravelerRequestPayload {
 }
 
 export interface FlightRequestPayload {
-  dest_from: string
-  dest_to: string
+  dest_from: number
+  dest_to: number
   departure_date: string
   return_date: string
   flight_class: string
@@ -77,7 +75,7 @@ export interface FlightRequestPayload {
   children: number
   email: string
   comment: string
-  travellers: Traveller[]
+  travellers: TravelerRequestPayload[]
 }
 
 export enum BoardTypes {

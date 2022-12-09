@@ -18,7 +18,7 @@ import {
 } from 'shared/types/requestForm'
 
 import s from '../TravellerForm.module.scss'
-import s1 from '../../../pages/FlightRequestPage/FlightRequestPage.module.scss'
+import s1 from 'pages/FlightRequestPage/FlightRequestPage.module.scss'
 
 export interface TravellerAddressForm {
   country: { label: string; value: string }

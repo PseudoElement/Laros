@@ -40,7 +40,6 @@ interface TravellerFormProps {
   watch: UseFormWatch<
     TravellerAddressForm & (FlightRequestFormType | PackageRequestFormType)
   >
-  reset: (formValues: any, keepStateOptions: any) => void //TODO
 }
 
 export const TravellerForm: FC<TravellerFormProps> = ({
@@ -85,6 +84,7 @@ export const TravellerForm: FC<TravellerFormProps> = ({
           control={control}
           render={({ field: { onChange, value } }) => (
             <Input
+              required
               {...field}
               classname={s.input}
               placeholder={'Tap to add'}
@@ -139,6 +139,7 @@ export const TravellerForm: FC<TravellerFormProps> = ({
           control={control}
           render={({ field: { onChange } }) => (
             <InputCalendar
+              required
               error={false}
               handleIconClick={() => {}}
               {...field}
@@ -159,7 +160,10 @@ export const TravellerForm: FC<TravellerFormProps> = ({
           )}
         >
           {addresses.map(address => (
-            <div key={addresses.indexOf(address)}>
+            <div
+              key={addresses.indexOf(address)}
+              className={s.addressRadioWrapper}
+            >
               <Controller
                 name={`travellers.${index}.address`}
                 control={control}
