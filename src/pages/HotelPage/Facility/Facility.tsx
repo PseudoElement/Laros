@@ -21,12 +21,15 @@ export const Facility: FC<FacilityProps> = ({ facilitiesAndAmenities }) => {
       <div className={s.facilityWrap}>
         {facilitiesAndAmenities?.map((item, index) => (
           <div key={index} className={s.facilityCard}>
-            <Image
-              src={item.image}
-              alt={item.name + 'image'}
-              width={33}
-              height={33}
-            />
+            {item.image ? (
+              <Image
+                src={item.image}
+                alt={item.name + 'image'}
+                width={33}
+                height={33}
+              />
+            ) : null}
+
             <div className={s.facilityCardTitle}>{item.name}</div>
           </div>
         ))}
