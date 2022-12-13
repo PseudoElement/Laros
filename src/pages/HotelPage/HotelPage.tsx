@@ -73,7 +73,7 @@ export const HotelPage: FC = () => {
   }
 
   useEffect(() => {
-    // setHotel(HotelMock)//TODO delete when done
+    // setHotel(HotelMock) //TODO delete when done
     // setNearHotels(nearHotelsMock)//TODO delete when done
     // setDestination(NearbyDestinationsMock)//TODO delete when done
 

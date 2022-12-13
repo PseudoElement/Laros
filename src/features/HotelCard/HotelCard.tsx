@@ -23,6 +23,8 @@ export const HotelCard: FC<HotelCardProps> = ({
   images,
   period,
   min_price,
+  min_price_chf,
+  lrweb,
   id,
   link,
   location,
@@ -50,19 +52,19 @@ export const HotelCard: FC<HotelCardProps> = ({
           count={5}
           value={rating}
           size={24}
-          activeColor='#ffd700'
+          activeColor={'#f2c94c'}
           edit={false}
           classNames={s.rating}
         />
 
         <div className={s.type}>{address}</div>
-        <div className={s.name}>{name}</div>
+        <div className={s.name}>{lrweb}</div>
       </div>
 
       <div className={s.info}>
         <div className={s.block}>
           <p className={s.text}>From</p>
-          <p className={s.price}>{min_price} CHF / Night</p>
+          <p className={s.price}>{min_price_chf} CHF / Night</p>
           <p className={s.text}>Pro person</p>
         </div>
         <div className={s.block}>
