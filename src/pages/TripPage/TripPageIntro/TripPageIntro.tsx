@@ -39,16 +39,16 @@ export const TripPageIntro: FC<Trip> = ({
   near_destinations,
 }) => {
   const dispatch = useAppDispatch()
-  const { push, query } = useRouter()
+  const { push } = useRouter()
 
   const handleClick = (fields: FieldsType) => {
     dispatch(
       updateForm({
         rooms: fields.rooms,
-        date_start: Number(fields.date),
+        date_start: [Number(fields.date[0]), Number(fields.date[1])],
       })
     )
-    push(`/trip_form/${query.id}`)
+    push(`/trip_form`)
   }
 
   return (

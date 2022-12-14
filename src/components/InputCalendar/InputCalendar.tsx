@@ -1,30 +1,33 @@
 import { useRef, useState, FC } from 'react'
 import CalendarWrapper from 'react-calendar'
 import cn from 'classnames'
+import 'react-calendar/dist/Calendar.css'
 
 import { InputCalendarLeft } from './CalendarLeft'
 import { InputCalendarRight } from './CalendarRight'
 import { InputCalendarTop } from './CalendarTop'
+import { InputCalendarDouble } from './CalendarDouble'
 
 import { useClickOutside } from 'shared/hooks/useClickOutside'
 import { MIN_DATE } from 'shared/constants/form'
 
 import s from './InputCalendar.module.scss'
-import 'react-calendar/dist/Calendar.css'
 
 export interface InputCalendarProps {
   label?: string
   required?: boolean
-  onChange?: (value: Date) => void
+  onChange?: (value: Date | Date[]) => void
   value?: Date | null
+  doubleValue?: Date[] | null
   classname?: string
-  variant?: 'left' | 'right' | 'top'
+  variant?: 'left' | 'right' | 'top' | 'double'
   showCalendar?: boolean
   setShowCalendar?: (showCalendar: boolean) => void
   handleIconClick?: () => void
   error?: boolean
   setError?: any
   setDate?: any
+  isMulti?: boolean
   // TODO temp changed to any as build errors
   // setError?: (value: boolean) => void
   // setDate?: (date: Date) => void
@@ -42,11 +45,16 @@ export const InputCalendar: FC<InputCalendarPropsMain> = ({
   classname,
   variant,
   value,
+  isMulti,
 }) => {
   const [date, setDate] = useState<Date | null>(value ?? new Date())
   const [error, setError] = useState<boolean>(false)
   const [showCalendar, setShowCalendar] = useState<boolean>(false)
   const [clickCounter, setClickCounter] = useState<number>(0)
+  const [doubleDate, setDoubleDate] = useState<Date[] | null>([
+    new Date(),
+    new Date(),
+  ])
   const ref = useRef<HTMLDivElement>(null)
 
   const handleIconClick = (): void => {
@@ -66,6 +74,10 @@ export const InputCalendar: FC<InputCalendarPropsMain> = ({
     onChange?.(e)
     setDate(e)
 
+    if (isMulti && Array.isArray(e)) {
+      setDoubleDate([...e])
+    }
+
     setClickCounter(clickCounter + 1) // TODO improve code
 
     if (clickCounter == 1) {
@@ -75,6 +87,19 @@ export const InputCalendar: FC<InputCalendarPropsMain> = ({
       setClickCounter(clickCounter + 1)
     }
   }
+
+  const CalendarDouble = (
+    <InputCalendarDouble
+      label={label}
+      required={required}
+      handleIconClick={handleIconClick}
+      error={error}
+      setError={setError}
+      setDate={setDate}
+      doubleValue={doubleDate}
+    />
+  )
+
   const CalendarLeft = (
     <div className={s.gridWrapper}>
       <InputCalendarLeft
@@ -119,6 +144,8 @@ export const InputCalendar: FC<InputCalendarPropsMain> = ({
         return CalendarRight
       case 'top':
         return CalendarTop
+      case 'double':
+        return CalendarDouble
       default:
         return CalendarLeft
     }
@@ -133,6 +160,7 @@ export const InputCalendar: FC<InputCalendarPropsMain> = ({
             onChange={handleChange}
             value={date}
             minDate={MIN_DATE}
+            selectRange={isMulti}
           />
         </div>
       )}

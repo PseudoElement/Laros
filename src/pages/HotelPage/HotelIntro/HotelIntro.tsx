@@ -28,6 +28,8 @@ export const HotelIntro: FC<Hotel> = ({
   max_capacity,
   period,
   tripadvisor_id,
+  min_price_chf,
+  lrweb,
   id,
   category_name,
   category,
@@ -45,7 +47,7 @@ export const HotelIntro: FC<Hotel> = ({
     dispatch(
       updateForm({
         rooms: fields.rooms,
-        date_start: Number(fields.date),
+        date_start: [Number(fields.date[0]), Number(fields.date[1])],
       })
     )
     push(`/trip_form`)
@@ -58,14 +60,14 @@ export const HotelIntro: FC<Hotel> = ({
           count={5}
           value={rating}
           size={24}
-          activeColor='#ffd700'
+          activeColor='#f2c94c'
           edit={false}
           classNames={s.rating}
         />
 
         <div className={s.address}>{address}</div>
 
-        <div className={s.name}>{name}</div>
+        <div className={s.name}>{lrweb}</div>
 
         <TruncatedText
           limit={TRUNCATED_ROOM_CARD_TEXT_SIZE}
