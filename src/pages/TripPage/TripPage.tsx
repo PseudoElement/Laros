@@ -22,10 +22,6 @@ import { useAppSelector } from 'shared/hooks/redux'
 import { Destination } from 'shared/types/destinations'
 import { Trip } from 'shared/types/trip'
 
-import { TripsMock } from 'shared/mocks/trip' //TODO delete when done
-import { tripsMock } from 'shared/mocks/destinationInfo' //TODO delete when done
-import { NearbyDestinationsMock } from 'shared/mocks/hotel' //TODO delete when done
-
 import s from './TripPage.module.scss'
 
 export const TripPage: FC = () => {
@@ -46,8 +42,7 @@ export const TripPage: FC = () => {
   const loadTrip = async (id: number) => {
     try {
       const { data } = await getTrip(id)
-      // console.log(data) //TODO delete when done
-      setTrip(data) //TODO uncomment when data appears on the server
+      setTrip(data)
       setIsLoad(true)
       setInsiderTips(data.tips)
     } catch (error) {
@@ -58,8 +53,7 @@ export const TripPage: FC = () => {
   const loadTripSimilar = async (id: number) => {
     try {
       const { data } = await getTripsSimilar(id)
-      // console.log(data) //TODO delete when done
-      setRelatedTours(data.data) //TODO uncomment when data appears on the server
+      setRelatedTours(data.data)
     } catch (error) {
       console.error('error', error)
     }
@@ -68,18 +62,13 @@ export const TripPage: FC = () => {
   const loadTripNearby = async (id: number) => {
     try {
       const { data } = await getTripsNearby(id)
-      // console.log(data) //TODO delete when done
-      setTripNearby(data.data) //TODO uncomment when data appears on the server
+      setTripNearby(data.data)
     } catch (error) {
       console.error('error', error)
     }
   }
 
   useEffect(() => {
-    // setTrip(TripsMock) //TODO delete when there is data on the server
-    // setRelatedTours(tripsMock) //TODO delete when there is data on the server
-    // setTripNearby(NearbyDestinationsMock) //TODO delete when there is data on the server
-
     if (id) {
       loadTrip(+id)
       loadTripSimilar(+id)

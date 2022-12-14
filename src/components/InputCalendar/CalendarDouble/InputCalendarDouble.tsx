@@ -12,7 +12,7 @@ import { monthsCut } from '../consts'
 import s from './calendarDouble.module.scss'
 
 export const InputCalendarDouble: FC<InputCalendarProps> = ({
-  label = 'Your travel period',
+  label,
   required,
   value,
   handleIconClick,

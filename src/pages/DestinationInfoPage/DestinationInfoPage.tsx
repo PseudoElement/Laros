@@ -13,9 +13,6 @@ import { Destination } from 'shared/types/destinations'
 import { Trip } from 'shared/types/trip'
 import { Hotel } from 'shared/types/hotel'
 
-import { destinationInfo, tripsMock } from 'shared/mocks/destinationInfo' //TODO delete when done
-import { nearHotelsMock } from 'shared/mocks/hotel' //TODO delete when done
-
 import s from './DestinationInfoPage.module.scss'
 
 export const DestinationInfoPage = () => {
@@ -29,8 +26,7 @@ export const DestinationInfoPage = () => {
   const loadDestination = async (id: number) => {
     try {
       const { data } = await getDestination(id)
-      // console.log(data) //TODO delete when done
-      setDestination(data) //TODO uncomment when data appears on the server
+      setDestination(data)
     } catch (error) {
       console.error(error)
     }
@@ -39,8 +35,7 @@ export const DestinationInfoPage = () => {
   const loadTripNearby = async (id: number) => {
     try {
       const { data } = await getTripsNearby(id)
-      // console.log(data) //TODO delete when done
-      setTrips(data.data) //TODO uncomment when data appears on the server
+      setTrips(data.data)
     } catch (error) {
       console.error('error', error)
     }
@@ -49,7 +44,6 @@ export const DestinationInfoPage = () => {
   const loadHotels = async (id: number) => {
     try {
       const { data } = await getHotels({ destination: id.toString() })
-      // console.log(data)
       setHotels(data.data)
     } catch (error) {
       console.error(error)
@@ -57,10 +51,6 @@ export const DestinationInfoPage = () => {
   }
 
   useEffect(() => {
-    // setTrips(tripsMock)//TODO delete when done
-    // setTrips(tripsMock) //TODO delete when done
-    // setDestination(destinationInfo) //TODO delete when done
-    // setHotels(nearHotelsMock) //TODO delete when done
     if (destinationID) {
       loadDestination(destinationID)
       loadHotels(destinationID)
