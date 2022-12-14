@@ -35,7 +35,6 @@ export const HotelPage: FC = () => {
       console.error(error)
     }
   }
-  console.log(hotel)
 
   const loadNearHotels = async (hotelId: number) => {
     try {

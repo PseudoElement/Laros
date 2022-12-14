@@ -60,7 +60,7 @@ export const HotelIntro: FC<Hotel> = ({
           count={5}
           value={rating}
           size={24}
-          activeColor={'#f2c94c'}
+          activeColor='#f2c94c'
           edit={false}
           classNames={s.rating}
         />
