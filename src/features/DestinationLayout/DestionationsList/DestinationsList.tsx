@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { Destination } from 'shared/types/destinations'
 import { isRootDestination } from 'store/slices/destinations/selectors'
 import { mockRegions } from 'shared/mocks/regions'
-import getPath from 'shared/helpers/getPath'
+import { getPath } from 'shared/helpers/getPath'
 
 import World from '/public/assets/images/destinations/World.svg'
 import DestinationItem from './DestinationItem'
@@ -52,7 +52,7 @@ export const DestionationsList: FC<DestionationsListProps> = ({
         )}
       {isRootDestinations(destinations) && (
         <div
-          onClick={() => push(route)}
+          onClick={() => push(`/destinations/${route}`)}
           className={cn(s.item, { [s.active]: destination === 0 })}
         >
           <World

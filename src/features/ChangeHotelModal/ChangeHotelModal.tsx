@@ -68,6 +68,10 @@ export const ChangeHotelModal: FC<ChangeHotelProps> = ({
     handleReady()
   }, [params])
 
+  useEffect(() => {
+    handleFilters()
+  }, [])
+
   return (
     <div>
       <div className={s.modal}>

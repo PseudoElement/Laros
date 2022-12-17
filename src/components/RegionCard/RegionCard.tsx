@@ -8,6 +8,7 @@ import Polis from '/public/assets/images/destinations/Polis.svg'
 
 import cn from 'classnames'
 import s from './RegionCard.module.scss'
+import clsx from 'clsx'
 
 interface RegionCardProps {
   id: number
@@ -19,6 +20,7 @@ interface RegionCardProps {
   link: string
   onOpen?: () => void
   isOpen?: boolean
+  isTooltip?: boolean
 }
 
 const RegionCard: FC<RegionCardProps> = ({
@@ -30,6 +32,7 @@ const RegionCard: FC<RegionCardProps> = ({
   onOpen,
   isOpen,
   link,
+  isTooltip = false,
   className,
 }) => {
   const ref = useRef<HTMLDivElement>(null)
@@ -53,12 +56,16 @@ const RegionCard: FC<RegionCardProps> = ({
             )}
           </div>
           <h3 className={s.cart_title}>{title}</h3>
-          <div className={s.description}>{cardText}</div>
-          <div className={s.link__blockDestinationMap}>
-            <Link href={`/areas/${id}`}>
-              <span className={s.link__detailCartMap}>Learn more</span>
-            </Link>
+          <div className={clsx(s.description, s.descriptionTooltip)}>
+            {cardText}
           </div>
+          {!isTooltip && (
+            <div className={s.link__blockDestinationMap}>
+              <Link href={`/areas/${id}`}>
+                <span className={s.link__detailCartMap}>Learn more</span>
+              </Link>
+            </div>
+          )}
         </div>
       )}
     </>
