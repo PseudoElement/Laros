@@ -19,6 +19,7 @@ import {
 
 import s from '../TravellerForm.module.scss'
 import s1 from 'pages/FlightRequestPage/FlightRequestPage.module.scss'
+import { useTranslate } from '../../../shared/hooks/useTranslate'
 
 export interface TravellerAddressForm {
   country: { label: string; value: string }
@@ -53,6 +54,7 @@ export const TravellerAddressForm: FC<TravellerAddressFormProps> = ({
   watch,
   right,
 }) => {
+  const t = useTranslate()
   const saveAddress = () => {
     const country = watch(`travellers.${index}.country`)
     const city = watch(`travellers.${index}.city`) ?? ''
@@ -73,7 +75,11 @@ export const TravellerAddressForm: FC<TravellerAddressFormProps> = ({
   return (
     <div className={s.travellerAddressWrapper}>
       <div className={cn(s.radioLabel, s.addressRadioLabel)}>
-        <div>{right ? 'Address #2' : 'Address #1'}</div>
+        <div>
+          {right
+            ? `${t('worldwideTours.address')} #2`
+            : `${t('worldwideTours.address')} #1`}
+        </div>
         <Button onClick={hideRightAddressForm} classname={s.deleteButton}>
           <TrashIcon />
         </Button>
@@ -104,10 +110,10 @@ export const TravellerAddressForm: FC<TravellerAddressFormProps> = ({
           <Input
             {...field}
             classname={s.input}
-            placeholder={'Tap to add'}
+            placeholder={t('worldwideTours.label12')}
             onChange={onChange}
             value={value}
-            label='City'
+            label={t('worldwideTours.inputLabel26')}
           />
         )}
       />
@@ -119,10 +125,10 @@ export const TravellerAddressForm: FC<TravellerAddressFormProps> = ({
           <Input
             {...field}
             classname={s.input}
-            placeholder={'Tap to add'}
+            placeholder={t('worldwideTours.label12')}
             onChange={onChange}
             value={value}
-            label='Address line 1'
+            label={`${t('worldwideTours.inputLabel27')} 1`}
           />
         )}
       />
@@ -134,10 +140,10 @@ export const TravellerAddressForm: FC<TravellerAddressFormProps> = ({
           <Input
             {...field}
             classname={s.input}
-            placeholder={'Tap to add'}
+            placeholder={t('worldwideTours.label12')}
             onChange={onChange}
             value={value}
-            label='Address line 2'
+            label={`${t('worldwideTours.inputLabel27')} 2`}
           />
         )}
       />
@@ -150,21 +156,21 @@ export const TravellerAddressForm: FC<TravellerAddressFormProps> = ({
             {...field}
             type='number'
             classname={s.input}
-            placeholder={'Tap to add'}
+            placeholder={t('worldwideTours.label12')}
             onChange={onChange}
             value={value}
-            label='Zip code'
+            label={t('forms.placeholder6')}
           />
         )}
       />
 
       <div className={s.buttons}>
         <Button classname={s.saveButton} onClick={saveAddress}>
-          Save
+          {t('worldwideTours.buttonSave')}
         </Button>
         {cancelButton && (
           <Button onClick={hideRightAddressForm} classname={s.cancelButton}>
-            Cancel
+            {t('contactForm.buttonCancel')}
           </Button>
         )}
       </div>

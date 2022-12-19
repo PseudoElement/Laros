@@ -34,8 +34,10 @@ import {
 } from 'shared/constants/form'
 
 import s from '../FlightRequestPage/FlightRequestPage.module.scss'
+import { useTranslate } from '../../shared/hooks/useTranslate'
 
 export const PackageRequestForm: FC = () => {
+  const t = useTranslate()
   const dispatch: AppDispatch = useAppDispatch()
   const [adultsCount, setAdultsCount] = useState<number>(1)
   const [childrenCount, setChildrenCount] = useState<number>(0)
@@ -98,7 +100,7 @@ export const PackageRequestForm: FC = () => {
       {/* 1-st row  */}
       <div className={s.row}>
         <div className={s.selectWrapper}>
-          <div className={s.selectLabel}>Depart from:</div>
+          <div className={s.selectLabel}>{t('worldwideTours.label1')}:</div>
           <Controller
             name='departFrom'
             control={control}
@@ -115,7 +117,7 @@ export const PackageRequestForm: FC = () => {
         </div>
 
         <div className={s.selectWrapper}>
-          <div className={s.selectLabel}>Arrival to:</div>
+          <div className={s.selectLabel}>{t('worldwideTours.label2')}</div>
           <Controller
             name='arrivalTo'
             control={control}
@@ -142,7 +144,7 @@ export const PackageRequestForm: FC = () => {
               classname={s.inputCalendarCustom}
               variant={'top'}
               onChange={onChange}
-              label={'Earliest departure'}
+              label={t('worldwideTours.label3')}
             />
           )}
         />
@@ -155,7 +157,7 @@ export const PackageRequestForm: FC = () => {
               classname={s.inputCalendarCustom}
               variant={'top'}
               onChange={onChange}
-              label={'Latest return'}
+              label={t('worldwideTours.label4')}
             />
           )}
         />
@@ -174,7 +176,7 @@ export const PackageRequestForm: FC = () => {
                 withCounter={true}
                 onChange={onChange}
                 value={value}
-                label='Adults'
+                label={t('forms.inputNumber1')}
                 type={'number'}
               />
             )}
@@ -189,7 +191,7 @@ export const PackageRequestForm: FC = () => {
                 withCounter={true}
                 onChange={onChange}
                 value={value}
-                label='Children'
+                label={t('forms.inputNumber2')}
                 type={'number'}
               />
             )}
@@ -210,7 +212,7 @@ export const PackageRequestForm: FC = () => {
                   withCounter={true}
                   onChange={onChange}
                   value={value ? value : ''}
-                  label='Travel duration'
+                  label={t('forms.inputLabel17')}
                   type={'number'}
                 />
               </>
@@ -227,7 +229,7 @@ export const PackageRequestForm: FC = () => {
           defaultValue={DEFAULT_TRANSFER_TYPE}
           render={({ field: { onChange, value } }) => (
             <div className={s.radio}>
-              <div className={s.radioLabel}>Transfer</div>
+              <div className={s.radioLabel}>{t('worldwideTours.label13')}</div>
               <Radio
                 name='transferType'
                 onChange={onChange}
@@ -242,7 +244,7 @@ export const PackageRequestForm: FC = () => {
       {/* 5th row */}
       <div className={s.row}>
         <div className={s.selectWrapper}>
-          <div className={s.selectLabel}>Hotel category:</div>
+          <div className={s.selectLabel}>{t('worldwideTours.label14')}:</div>
           <Controller
             name='hotelCategory'
             control={control}
@@ -262,9 +264,7 @@ export const PackageRequestForm: FC = () => {
       {/* 6th row */}
       <div className={cn(s.row, s.optionsRow)}>
         <div className={s.checkboxGroup}>
-          <div className={s.checkboxLabel}>
-            Board type (you can choose multiple)
-          </div>
+          <div className={s.checkboxLabel}>{t('worldwideTours.boardType')}</div>
           <div className={s.checkbox}>
             <Controller
               name='boardType'
@@ -286,7 +286,9 @@ export const PackageRequestForm: FC = () => {
             control={control}
             render={({ field: { onChange, value } }) => (
               <div className={s.selectCHF}>
-                <div className={s.inputLabel}>Total trip budget</div>
+                <div className={s.inputLabel}>
+                  {t('worldwideTours.label15')}
+                </div>
                 <Input label={'CHF'} onChange={onChange} value={value} />
               </div>
             )}
@@ -295,9 +297,9 @@ export const PackageRequestForm: FC = () => {
       </div>
 
       <div className={s.travellersSection}>
-        <h2
-          className={s.travellersSubtitle}
-        >{`${travellersCount} Travellers in total`}</h2>
+        <h2 className={s.travellersSubtitle}>{`${travellersCount} ${t(
+          'worldwideTours.travellerTotal'
+        )}`}</h2>
         <ul className={s.travellersList}>
           {fields.map((field, index) => (
             <TravellerForm
@@ -322,8 +324,8 @@ export const PackageRequestForm: FC = () => {
               classname={s.input}
               onChange={onChange}
               value={value}
-              label='Email address'
-              placeholder='jon.doe@example.com'
+              label={t('forms.inputLabel2')}
+              placeholder={t('forms.email3')}
             />
           )}
         />
@@ -337,8 +339,8 @@ export const PackageRequestForm: FC = () => {
             classname={s.commentInput}
             onChange={onChange}
             value={value ? value : ''}
-            label='Additional comments'
-            placeholder='Tap to add'
+            label={t('worldwideTours.label11')}
+            placeholder={t('worldwideTours.label12')}
           />
         )}
       />
@@ -349,11 +351,13 @@ export const PackageRequestForm: FC = () => {
           type='submit'
           classname={s.submitButton}
         >
-          Submit request
+          {t('worldwideTours.submitButton')}
         </Button>
         <p className={s.footerDescr}>
-          By clicking the “Send” button you automatically agree to our{' '}
-          <span>Terms & conditions</span> and <span>Privacy Policy</span>
+          {t('worldwideTours.Privacy1 ')}{' '}
+          <span>{t('worldwideTours.Privacy2 ')}</span>{' '}
+          {t('worldwideTours.Privacy3 ')}{' '}
+          <span>{t('worldwideTours.Privacy4 ')}</span>
         </p>
       </div>
     </div>

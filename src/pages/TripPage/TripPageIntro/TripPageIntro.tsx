@@ -14,6 +14,7 @@ import { updateForm } from 'store/slices/order/order'
 import { Trip } from 'shared/types/trip'
 
 import s from './tripPageIntro.module.scss'
+import { useTranslate } from '../../../shared/hooks/useTranslate'
 
 export const TripPageIntro: FC<Trip> = ({
   id,
@@ -40,6 +41,7 @@ export const TripPageIntro: FC<Trip> = ({
 }) => {
   const dispatch = useAppDispatch()
   const { push } = useRouter()
+  const t = useTranslate()
 
   const handleClick = (fields: FieldsType) => {
     dispatch(
@@ -55,7 +57,9 @@ export const TripPageIntro: FC<Trip> = ({
     <div className={s.pageIntro}>
       <div className={s.left}>
         <div className={s.name}>{name}</div>
-        <div className={s.price}>{price} CHF / pro person</div>
+        <div className={s.price}>
+          {price} CHF / {t('travelPlannerTripPlan.proPerson')}
+        </div>
 
         <TruncatedText
           limit={TRUNCATED_ROOM_CARD_TEXT_SIZE}
@@ -75,7 +79,7 @@ export const TripPageIntro: FC<Trip> = ({
         <div className={s.tagsPanel}>
           {tags?.length ? (
             <>
-              <div className={s.tagsTitle}>Highlights:</div>
+              <div className={s.tagsTitle}>{t('hotel.tagsTitle')}:</div>
               <InfoTags tags={tags} limit={4} />
             </>
           ) : null}

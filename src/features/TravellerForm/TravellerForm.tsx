@@ -30,6 +30,7 @@ import {
 } from 'shared/types/requestForm'
 
 import s from './TravellerForm.module.scss'
+import { useTranslate } from '../../shared/hooks/useTranslate'
 
 interface TravellerFormProps {
   field: FieldArrayWithId
@@ -51,6 +52,7 @@ export const TravellerForm: FC<TravellerFormProps> = ({
   const [addresses, setAddresses] = useState<string[]>([])
   const [showAddressInput, setShowAddressInput] = useState<boolean>(false)
   const MAX_ADDRESSES_LIMIT = 2
+  const t = useTranslate()
 
   const setAddress = (i: number, address: string) => {
     if (i === index && address) {
@@ -76,7 +78,9 @@ export const TravellerForm: FC<TravellerFormProps> = ({
         <div className={s.travellerIcon}>
           <TravellerIcon />
         </div>
-        <div className={s.travellerNumber}>{`Traveller ${index + 1}`}:</div>
+        <div className={s.travellerNumber}>
+          {`${t('worldwideTours.label6')} ${index + 1}`}:
+        </div>
       </div>
       <div className={s.row}>
         <Controller
@@ -87,16 +91,16 @@ export const TravellerForm: FC<TravellerFormProps> = ({
               required
               {...field}
               classname={s.input}
-              placeholder={'Tap to add'}
+              placeholder={t('worldwideTours.label12')}
               onChange={onChange}
               value={value}
-              label='Name and Surname'
+              label={t('worldwideTours.label7')}
             />
           )}
         />
 
         <div className={s.selectWrapper}>
-          <div className={s.selectLabel}>Nationality</div>
+          <div className={s.selectLabel}>{t('worldwideTours.label8')}</div>
           <Controller
             name={`travellers.${index}.nationality`}
             control={control}
@@ -120,7 +124,7 @@ export const TravellerForm: FC<TravellerFormProps> = ({
           control={control}
           render={({ field: { onChange, value } }) => (
             <div className={s.radio}>
-              <div className={s.radioLabel}>Gender</div>
+              <div className={s.radioLabel}>{t('worldwideTours.label9')}</div>
               <Radio
                 {...field}
                 name={`travellers.${index}.gender`}
@@ -146,7 +150,7 @@ export const TravellerForm: FC<TravellerFormProps> = ({
               classname={s.inputCalendarCustom}
               variant={'top'}
               onChange={onChange}
-              label={'Date of birth'}
+              label={t('worldwideTours.label10')}
             />
           )}
         />
@@ -170,7 +174,9 @@ export const TravellerForm: FC<TravellerFormProps> = ({
                 render={({ field: { onChange, value } }) => (
                   <div className={cn(s.radio, s.addressRadio)}>
                     <div className={cn(s.radioLabel, s.addressRadioLabel)}>
-                      <div>{`Address #${addresses.indexOf(address) + 1}`}</div>
+                      <div>{`${t('worldwideTours.address')} #${
+                        addresses.indexOf(address) + 1
+                      }`}</div>
                       <Button
                         onClick={() => {
                           setShowAddressInput(false)
@@ -201,7 +207,9 @@ export const TravellerForm: FC<TravellerFormProps> = ({
               onClick={() => setShowAddressInput(true)}
             >
               <AddIconGrey />
-              <span className={s.buttonText}>Add another address</span>
+              <span className={s.buttonText}>
+                {t('worldwideTours.addAddress')}
+              </span>
             </Button>
           )}
           {showAddressInput && addresses.length === 1 && (

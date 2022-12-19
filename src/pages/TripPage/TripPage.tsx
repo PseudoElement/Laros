@@ -23,10 +23,12 @@ import { Destination } from 'shared/types/destinations'
 import { Trip } from 'shared/types/trip'
 
 import s from './TripPage.module.scss'
+import { useTranslate } from '../../shared/hooks/useTranslate'
 
 export const TripPage: FC = () => {
   const { query } = useRouter()
   const { id } = query
+  const t = useTranslate()
 
   const [trip, setTrip] = useState<Trip | null>(null)
   const [insiderTips, setInsiderTips] = useState<string | null>('')
@@ -91,19 +93,19 @@ export const TripPage: FC = () => {
             <TripPageIntro {...trip} />
           ) : (
             <div className={s.loader}>
-              <p>Loading...</p>
+              <p>{t('common.loadingText')}</p>
             </div>
           )}
         </div>
 
         <Tabs className={s.tabs}>
           <TabList className={s.tabList}>
-            <Tab className={s.tab}>Trip plan</Tab>
-            <Tab className={s.tab}>Insider tips</Tab>
-            <Tab className={s.tab}>Related tours</Tab>
-            <Tab className={s.tab}>Nearby destinations</Tab>
+            <Tab className={s.tab}>{t('travelPlannerTabs.tab1')}</Tab>
+            <Tab className={s.tab}>{t('travelPlannerTabs.tab2')}</Tab>
+            <Tab className={s.tab}>{t('travelPlannerTabs.tab3')}</Tab>
+            <Tab className={s.tab}>{t('travelPlannerTabs.tab4')}</Tab>
             <Tab className={s.tab} onClick={open}>
-              Contact us
+              {t('travelPlannerTabs.tab5')}
             </Tab>
           </TabList>
 
@@ -132,7 +134,11 @@ export const TripPage: FC = () => {
             ) : null}
           </TabPanel>
 
-          <Modal isOpen={isOpen} onClose={onClose} title={'Contact form'}>
+          <Modal
+            isOpen={isOpen}
+            onClose={onClose}
+            title={t('contactForm.formTitle')}
+          >
             <div className={s.modal}>
               <ContactForm />
             </div>

@@ -8,6 +8,7 @@ import { Overview } from './Overview/Overview'
 import { getDestination } from 'shared/api/routes/destinations'
 import { getHotels } from 'shared/api/routes/hotels'
 import { getTripsNearby } from 'shared/api/routes/trips'
+import { useTranslate } from 'shared/hooks/useTranslate'
 
 import { Destination } from 'shared/types/destinations'
 import { Trip } from 'shared/types/trip'
@@ -16,6 +17,7 @@ import { Hotel } from 'shared/types/hotel'
 import s from './DestinationInfoPage.module.scss'
 
 export const DestinationInfoPage = () => {
+  const t = useTranslate()
   const { query } = useRouter()
   const destinationID = Number(query.id)
 
@@ -79,9 +81,7 @@ export const DestinationInfoPage = () => {
         <Trips
           trips={trips}
           title={destination.name}
-          subTitle={
-            'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.'
-          }
+          subTitle={t('areaPage.HotelsInSubTitle')}
         />
       ) : null}
 
@@ -94,10 +94,8 @@ export const DestinationInfoPage = () => {
 
       {hotels ? (
         <HotelSection
-          title={'Hotels in Tessaloniki'}
-          subTitle={
-            'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.'
-          }
+          title={`${t('areaPage.HotelsInTitle')} ${destination?.name}`}
+          subTitle={t('areaPage.HotelsInSubTitle')}
           hotels={hotels}
         />
       ) : null}

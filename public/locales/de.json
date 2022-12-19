@@ -38,6 +38,7 @@
     "subscribePlaceholder": "Enter your email here",
     "subscribeInputButton": "Subscribe"
   },
+
   "about": {
     "tab1": "Who we are",
     "tab2": "Our team",
@@ -54,12 +55,8 @@
     "descText3": "Nisl facilisis penatibus facilisis habitant duis suscipit nisl. Eget ultricies ipsum magna auctor odio non.",
     "lastDescription": "Sed pharetra sed egestas morbi sagittis senectus. Arcu imperdiet dolor velit diam, aliquam eu vitae nec sed. Pellentesque placerat convallis egestas in arcu a, est velit cras. Sit sed amet, amet enim. Condimentum amet, id vitae, neque gravida. Sed rhoncus vel dolor gravida vitae sed pharetra enim. Facilisis tincidunt aenean nulla ipsum faucibus placerat. Nunc ipsum orci venenatis, suscipit mauris pharetra. Sagittis pharetra gravida metus, ipsum morbi nec elit tristique. Egestas senectus neque gravida est. Venenatis, egestas et mus lectus fringilla tortor odio faucibus. Enim proin at luctus sed arcu neque. Felis viverra convallis fames pulvinar massa mi, nulla tincidunt nisl. Non eu diam blandit nec enim. Aliquet quis at vel proin at tempor volutpat gravida. Quis auctor dignissim a ultrices nec duis aliquam. Sagittis ut eleifend vitae tellus. Ultricies nec suspendisse suspendisse dictum aliquam."
   },
+
   "team": {
-    "tab1": "Who we are",
-    "tab2": "Our team",
-    "tab3": "Testimonials",
-    "tab4": "FAQ",
-    "tab5": "Careers",
     "title": "Team of proffesionals",
     "description": "Mollis etiam in pretium nibh leo laoreet est, augue. Blandit tellus quam a donec habitasse vitae. Id enim, augue ipsum integer fames ipsum quis. Suspendisse lacus vel, sit parturient id magnis aenean at elit. Consectetur netus nisi, dolor, ut feugiat eget mi elit. Vulputate eleifend sed molestie cras at etiam ultricies lacus.",
     "Team_1_profession": "Nursing Assistant",
@@ -79,12 +76,8 @@
     "Team_8_profession": "Dog Trainer",
     "Team_8_description": "Mi enim blandit etiam egestas. Aliquam dui, placerat ullamcorper id."
   },
+
   "testimonials": {
-    "tab1": "Who we are",
-    "tab2": "Our team",
-    "tab3": "Testimonials",
-    "tab4": "FAQ",
-    "tab5": "Careers",
     "title": "What users think about us",
     "description": "Mollis etiam in pretium nibh leo laoreet est, augue. Blandit tellus quam a donec habitasse vitae. Id enim, augue ipsum integer fames ipsum quis. Suspendisse lacus vel, sit parturient id magnis aenean at elit. Consectetur netus nisi, dolor, ut feugiat eget mi elit. Vulputate eleifend sed molestie cras at etiam ultricies lacus.",
     "card_1_name": "Trip name",
@@ -97,12 +90,8 @@
     "card_3_tripName": "Trip name",
     "card_3_text": "Lacus, purus pharetra, turpis at. Fermentum, erat diam velit fringilla. Integer quam sit lectus scelerisque porttitor. Facilisis dolor justo, ut non non in facilisis consectetur. Nec commodo eget in pharetra. Lacus, purus pharetra, turpis at. Fermentum, erat diam velit fringilla."
   },
+
   "faq": {
-    "tab1": "Who we are",
-    "tab2": "Our team",
-    "tab3": "Testimonials",
-    "tab4": "FAQ",
-    "tab5": "Careers",
     "title": "Frequently Asked Questions",
     "description": "Sapien ornare urna urna in facilisis viverra integer. Mi ornare mauris in duis in sit diam porttitor a. Congue pulvinar et vitae urna mi tristique laoreet integer molestie. Viverra sit sit sapien id blandit.",
     "subtitle1": "Egestas elementum ultrices tempor, duis vehicula ornare morbi et consectetur.",
@@ -113,50 +102,95 @@
     "subtitle6": "Faucibus nulla viverra quisque nec porttitor sapien euismod.",
     "subtitleDescription": "Curabitur arcu dui nibh accumsan. Enim leo urna sagittis leo mauris eget vehicula. Senectus elementum hendrerit elementum amet in imperdiet in. Eget at aliquet nunc, vestibulum egestas diam risus sit arcu. Lacus vitae rutrum aliquet vulputate ultrices. Pretium dignissim tristique tortor ullamcorper sollicitudin turpis. Ornare malesuada nibh est varius adipiscing condimentum arcu ut morbi. Vitae elit diam bibendum commodo sem id pulvinar. Porttitor egestas facilisi gravida elit eget vestibulum tincidunt elit. Dictum varius platea amet sed tristique at a. Ut nibh mauris neque maecenas ullamcorper. Proin diam tincidunt molestie odio adipiscing felis proin morbi purus."
   },
+
   "career": {
-    "tab1": "Who we are",
-    "tab2": "Our team",
-    "tab3": "Testimonials",
-    "tab4": "FAQ",
-    "tab5": "Careers",
     "title": "Careers",
-    "description": "Sapien ornare urna urna in facilisis viverra integer. Mi ornare mauris in duis in sit diam porttitor a. Congue pulvinar et vitae urna mi tristique laoreet integer molestie. Viverra sit sit sapien id blandit."
+    "description": "Sapien ornare urna urna in facilisis viverra integer. Mi ornare mauris in duis in sit diam porttitor a. Congue pulvinar et vitae urna mi tristique laoreet integer molestie. Viverra sit sit sapien id blandit.",
+    "modalTitle": "Apply to LAROS Reisen",
+    "close": "Close",
+    "label1": "The position you are applying for",
+    "option1": "Middle Php Developer (Laravel, Yii) ",
+    "info": "Contact info",
+    "cv": "CV",
+    "cancel": "Cancel",
+    "submit": "Submit application",
+    "upload": "Upload file",
+    "changeFile": "Change file",
+    "privacyPolicy": "By clicking the “Send” button you automatically agree to our Terms & conditions and Privacy Policy",
+    "thanks": "Thank you!",
+    "text": "Enim fermentum faucibus arcu adipiscing mollis aliquet. In velit id amet quam et enim viverra. Malesuada facilisis amet leo at nisi.",
+    "return": "Return to home page",
+    "noVacancies": "No Vacancies for now."
+  },
+  "aboutModal": {
+    "modalTitle": "Apply to LAROS Reisen",
+    "close": "Close",
+    "label1": "The position you are applying for",
+    "option1": "Middle Php Developer (Laravel, Yii) ",
+    "info": "Contact info",
+    "cv": "CV",
+    "cancel": "Cancel",
+    "submit": "Submit application",
+    "upload": "Upload file",
+    "changeFile": "Change file",
+    "privacyPolicy": "By clicking the “Send” button you automatically agree to our Terms & conditions and Privacy Policy",
+    "thanks": "Thank you!",
+    "text": "Enim fermentum faucibus arcu adipiscing mollis aliquet. In velit id amet quam et enim viverra. Malesuada facilisis amet leo at nisi.",
+    "return": "Return to home page",
+    "noVacancies": "No Vacancies for now."
   },
   "brochures": {
     "title": "Brochures",
     "subtitle": "Faucibus enim sit leo, purus, odio erat. Neque scelerisque volutpat morbi proin. Massa quis montes, scelerisque commodo elit erat in urna id. Purus sit odio egestas venenatis viverra blandit amet vitae.",
     "sort": "Sort by",
-    "sendMeText": "Send me selected"
+    "sendMeText": "Send me selected",
+    "brochuresLabel": "Brochure topic",
+    "buttonSelect": "Select",
+    "send": "Send me selected (2)",
+    "buttonSelected": "Selected",
+    "brochureName": "Name of the brochure",
+    "modalTitle": "Sending you our brochure",
+    "close": "Close",
+    "selected": "You selected",
+    "info": "Contact info",
+    "cancel": "Cancel",
+    "buttonSend": "Send",
+    "downloadModalTitle": "Downloading brochure",
+    "buttonDownload": "Download"
   },
+
   "destinations": {
     "selectRegion": "Please select the region on the map",
     "title": "Destintaions",
-    "text": "Ullamcorper risus interdum lorem vulputate amet id quis massa elementum. Massa nisl urna accumsan proin imperdiet eget. In sagittis, facilisi tristique non.\nCurabitur id amet cras iaculis netus cras at et massa. Laoreet nulla quis vitae sollicitudin commodo at cursus dui. Felis, sed sit maecenas vitae eget nulla vel. Egestas turpis vivamus lorem pulvinar nunc. Mauris at nulla lorem mauris consequat pretium maecenas gravida viverra. Interdum enim mauris quis porttitor tristique vestibulum. Vitae mi eget vel bibendum a tortor a, turpis fusce. Pulvinar purus, mauris aenean aenean.",
-    "buttonMore": "More"
+    "buttonMore": "More",
+    "greeceDescription": "Ullamcorper risus interdum lorem vulputate amet id quis massa elementum. Massa nisl urna accumsan proin imperdiet eget. In sagittis, facilisi tristique non. Curabitur id amet cras iaculis netus cras at et massa. Laoreet nulla quis vitae sollicitudin commodo at cursus dui. Felis, sed sit maecenas vitae eget nulla vel. Egestas turpis vivamus lorem pulvinar nunc. Mauris at nulla lorem mauris consequat pretium maecenas gravida viverra. Interdum enim mauris quis porttitor tristique vestibulum. Vitae mi eget vel bibendum a tortor a, turpis fusce. Pulvinar purus, mauris aenean aenean.",
+    "cyprusDescription": "Ullamcorper risus interdum lorem vulputate amet id quis massa elementum. Massa nisl urna accumsan proin imperdiet eget. In sagittis, facilisi tristique non. Curabitur id amet cras iaculis netus cras at et massa. Laoreet nulla quis vitae sollicitudin commodo at cursus dui. Felis, sed sit maecenas vitae eget nulla vel. Egestas turpis vivamus lorem pulvinar nunc. Mauris at nulla lorem mauris consequat pretium maecenas gravida viverra. Interdum enim mauris quis porttitor tristique vestibulum. Vitae mi eget vel bibendum a tortor a, turpis fusce. Pulvinar purus, mauris aenean aenean.",
+    "worldWideDestination": "Ullamcorper risus interdum lorem vulputate amet id quis massa elementum. Massa nisl urna accumsan proin imperdiet eget. In sagittis, facilisi tristique non. Curabitur id amet cras iaculis netus cras at et massa. Laoreet nulla quis vitae sollicitudin commodo at cursus dui. Felis, sed sit maecenas vitae eget nulla vel. Egestas turpis vivamus lorem pulvinar nunc. Mauris at nulla lorem mauris consequat pretium maecenas gravida viverra. Interdum enim mauris quis porttitor tristique vestibulum. Vitae mi eget vel bibendum a tortor a, turpis fusce. Pulvinar purus, mauris aenean aenean."
   },
+
   "destinationsSubRegion": {
-    "buttonGoBack": "Go back to Map",
+    "buttonGoBack": "Go back to",
+    "buttonGoBackMap": "Map",
     "selectRegion": "Please select the region on the map",
     "buttonMore": "More",
-    "areasOfTitle": "Areas of Macedonia",
+    "areasOfTitle": "Areas of",
     "areasOfSubTitle": "At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo."
   },
+
   "areaPage": {
     "OverviewTitle": "Overview",
     "pre-definedTrips": "Pre-defined trips in",
-    "pre-definedSubTrips": "Pre-defined trips in Tessaloniki",
     "HotelsInTitle": "Hotels in",
     "HotelsInSubTitle": "At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo."
-
   },
+
   "destinationWorldWide": {
     "title": "Worldwide tours",
     "subTitle": "Turpis morbi nec enim id nulla vehicula condimentum. Curabitur fermentum vitae condimentum eu non imperdiet.",
     "flightRequestText": "Flight request",
-    "requestPackageText": "Request package",
-    "selectRegion": "Please select the region on the map",
-    "buttonMore": "More"
+    "requestPackageText": "Request package"
   },
+
   "worldwideTours": {
     "WorldwideToursTitle": "Worldwide tours",
     "WorldwideToursSubTitle": "Ullamcorper risus interdum lorem vulputate amet id quis massa elementum. Massa nisl urna accumsan proin imperdiet eget. In sagittis, facilisi tristique non. Curabitur id amet cras iaculis netus cras at et massa. Laoreet nulla quis vitae sollicitudin commodo at cursus dui. Felis, sed sit maecenas vitae eget nulla vel.",
@@ -164,12 +198,12 @@
     "ContactUs": "Haven’t found what you’ve been looking for? Contact us",
     "Tab_1": "Flight request",
     "Tab_2": "Request package",
-    "label1": "Depart from:",
-    "label2": "Arrival to:",
+    "label1": "Depart from",
+    "label2": "Arrival to",
     "label3": "Earliest departure",
     "label4": "Latest return",
     "label5": "Class",
-    "label6": "Traveller 1:",
+    "label6": "Traveller",
     "label7": "Name and Surname",
     "label8": "Nationality",
     "label9": "Gender",
@@ -179,8 +213,9 @@
     "label13": "Transfer",
     "label14": "Hotel category",
     "label15": "Total trip budget ",
-    "travellersTotal": "2 travellers in total",
-    "address": "Address #1",
+    "buttonSave": "Save",
+    "travellersTotal": "travellers in total",
+    "address": "Address",
     "addAddress": "Add another address",
     "submitButton": "Submit request",
     "star": "5 star",
@@ -189,50 +224,61 @@
     "board2": "full board",
     "board3": "Half board",
     "board4": "Bed & breakfast",
-    "Privacy": "By clicking the “Send” button you automatically agree to our Terms & conditions and Privacy Policy",
-    "travellerTotal": "1 traveller in total"
+    "Privacy1": "By clicking the “Send” button you automatically agree to our",
+    "Privacy2": "Terms & conditions and Privacy Policy",
+    "Privacy3": "and",
+    "Privacy4": "Privacy Policy",
+    "travellerTotal": "traveller in total"
   },
+
   "travelPlanner": {
     "title": "Travel planner",
     "subtitle": "Our top trip categories",
     "moreCategoriesText": "More categories"
   },
+
   "travelPlannerCategory": {
-    "title": "Island hopping",
-    "subtitle": "Faucibus enim sit leo, purus, odio erat. Neque scelerisque volutpat morbi proin. Massa quis montes, scelerisque commodo elit erat in urna id. Purus sit odio egestas venenatis viverra blandit amet vitae.",
     "sortBy": "Sort by",
     "from": "From",
-    "tags": "Tags:"
+    "tags": "Tags"
   },
-  "travelPlannerTripPlan": {
-    "proPerson": "pro person",
-    "addRoom": "Add room",
-    "startTripButton": "Start trip planning",
-    "highlights": "Highlights:",
+
+  "travelPlannerTabs": {
     "tab1": "Trip plan",
     "tab2": "Insider tips",
     "tab3": "Related tours",
     "tab4": "Nearby destinations",
-    "tab5": "Contact us",
+    "tab5": "Contact us"
+  },
+
+  "travelPlannerTripPlan": {
+    "day": "Day",
+    "proPerson": "pro person",
+    "addRoom": "Add room",
+    "startTripButton": "Start trip planning",
+    "highlights": "Highlights:",
     "seeMore": "See more",
     "areasOfTitle": "Areas of",
     "areasOfSubTitle": "At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo."
   },
+
   "tripCard": {
     "name": "Region name",
     "from": "From",
     "period": "Travel period",
     "duration": "Duration",
     "person": "Pro person",
+    "off": "OFF",
     "viewOfferButton": "View offer"
   },
+
   "hotelCard": {
-    "hotelName": "Hotel",
     "from": "From",
     "period": "Travel period",
     "person": "Pro person",
     "moreButton": "Learn more"
   },
+
   "contactForm": {
     "formTitle": "Contact form",
     "buttonClose": "Close",
@@ -240,9 +286,16 @@
     "subTitle": "In elit volutpat, quam egestas vel ut non. Maecenas sodales amet, aliquam, nisl semper justo, vitae enim tortor.",
     "label1": "Salutation",
     "label2": "Tap to add",
-    "buttonSave": "Salutation*",
-    "buttonCancel": "Cancel"
+    "buttonSave": "Salutation",
+    "buttonCancel": "Cancel",
+    "sendUs": "Send us a message",
+    "exact": "Exact trip days",
+    "return": "Earliest return",
+    "chooseTheDate": "Choose the date & time and let’s talk!",
+    "socialMedia": "Social media ",
+    "follow": "Follow us on"
   },
+
   "tripSteps": {
     "buttonBack": "Back to previous step",
     "buttonReset": "Reset all changes",
@@ -252,15 +305,16 @@
     "ferry": "Ferry",
     "oldCorinth": "Old Corinth",
     "location": "Location:",
-    "duration>": "Duration of the location:",
+    "duration": "Duration of the location:",
     "edit": "Edit",
     "add": "Add location",
     "more": "See more",
     "room": "Room",
     "breakfast": "Accommodation breakfast in:",
-    "description:": "Description:",
-    "label1": "Step 1: Trip details",
-    "label2": "Step 2: Travellers’ details",
+    "description:": "Description",
+    "step": "Step",
+    "details": "Trip details",
+    "travellers": "Travellers’ details",
     "label3": "Starting point",
     "label4": "Flight to",
     "label5": "Transfer:",
@@ -268,7 +322,7 @@
     "save": "Save changes",
     "cancel": "Cancel",
     "contactInfo": "Contact info",
-    "day": "day",
+    "day": "Day",
     "total": "in total",
     "person": "Pro person",
     "download": "Download the program",
@@ -276,7 +330,11 @@
     "dates": "Travel dates",
     "tapToAdd": "Tap to add",
     "policy": "By clicking the “Send” button you automatically agree to our Terms & conditions and Privacy Policy",
-    "warning": "Prices are dynamic, Final price will be calculated by our team"
+    "warning": "Prices are dynamic, Final price will be calculated by our team",
+
+    "noDescription": "No description",
+    "endPoint": "End point",
+    "out": "out of"
   },
   "changingRoomType": {
     "windowTitle": "Changing accomodation",
@@ -286,7 +344,8 @@
     "save": "Save chosen type",
     "cancel": "Cancel",
     "selected": "Selected",
-    "current": "Current"
+    "current": "Current",
+    "roomsOf": "Rooms of"
   },
   "changingLocation": {
     "windowTitle": "Changing location",
@@ -300,8 +359,9 @@
     "add": "Add this location to the trip",
     "save": "Save changes",
     "cancel": "Cancel",
-    "highlights" : "Highlights:"
+    "highlights": "Highlights:"
   },
+
   "changingHotel": {
     "windowTitle": "Changing accomodation",
     "close": "Close",
@@ -330,17 +390,15 @@
     "save": "Save chosen type",
     "carName": "Or similar car",
     "people": "people",
-    "carRental": "Car Rental Terms and Conditions",
     "selectCar": "Select car",
     "rentPrice": "Rent price for 3 days:",
-    "selected": "Selected"
+    "selected": "Selected",
+
+    "carRental": "Car Rental",
+    "terms": "Terms and Conditions",
+    "text1": "Sed mauris tincidunt justo malesuada pharetra, viverra in arcu ultrices. Donec aliquam nulla massa viverra aliquam diam ac leo.",
+    "text2": "Etiam aliquam pretium praesent egestas placerat semper vestibulum fermentum, sit. Duis arcu ultrices et arcu."
   },
-
-
-
-
-
-
 
   "terms": {
     "title": "Terms",
@@ -357,9 +415,34 @@
   },
   "blogs": {
     "learnMoreText": "Learn more",
+    "buttonBack": "Back",
     "title": "What people say about us",
     "subtitle": "At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.",
-    "planJourneyText": "Plan your journey now"
+    "planJourneyText": "Plan your journey now",
+    "blog1PreviewTitle": "Diam ac odio id lectus mi..",
+    "blog1PreviewSubTitle": "Quis mi id scelerisque viverra neque",
+    "blog1PreviewText": "Quam sed pellentesque odio sit gravida. Nulla eget sed non hendrerit velit quis cum diam. Ante non et hac elit. Mollis sit a sit cursus donec turpis orci. Pharetra, donec neque eget adipiscing. Auctor nulla orci est vestibulum in non vitae, viverra turpis. Dignissim egestas vel, morbi senectus amet fermentum tincidunt. Amet imperdiet pharetra, est et quis eu mollis ultricies. Quis mi id scelerisque viverra neque.",
+    "blog2PreviewTitle": "Morbi dignissim lacinia sit proin gravida enim ac",
+    "blog2PreviewSubTitle": "Urna, vestibulum egestas sit diam, mattis pretium",
+    "blog2PreviewText": "Vitae bibendum ornare nascetur massa. Cras tortor quis risus tristique nec amet morbi. Urna, vestibulum egestas sit diam, mattis pretium. Morbi dignissim lacinia sit proin gravida enim ac. Aliquam massa pretium maecenas nisi, imperdiet. Tellus aenean tincidunt pharetra proin donec amet, id. Eu felis id egestas lobortis rhoncus. Neque id id pellentesque quam ut facilisis. Fames elementum eget et nisi aliquam risus. Risus arcu a, nisi est, consequat convallis massa maecenas sit. Sagittis lectus felis, purus, gravida nec. Faucibus odio hendrerit pretium nunc pharetra varius pellentesque euismod posuere. Elementum in facilisis elementum sed pellentesque donec nunc. Mollis enim auctor volutpat aliquam faucibus enim quis sed nunc.",
+    "whatAboutTitle": "What people say about us",
+    "whatAboutSubTitle": "At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.",
+    "blogBeautyTitle": "Diam ac odio id lectus mi..",
+    "blogTitle": "Quis mi id scelerisque viverra neque",
+    "time": "min read",
+    "blogText": "Quam sed pellentesque odio sit gravida. Nulla eget sed non hendrerit velit quis cum diam. Ante non et hac elit. Mollis sit a sit cursus donec turpis orci. Pharetra, donec neque eget adipiscing. Auctor nulla orci est vestibulum in non vitae, viverra turpis. Dignissim egestas vel, morbi senectus amet fermentum tincidunt. Amet imperdiet pharetra, est et quis eu mollis ultricies. Quis mi id scelerisque viverra neque.",
+    "blogTitle2": "Varius vestibulum lorem iaculis ut quam eu at",
+    "blogText2": "Diam odio sed mattis mi. Dui, posuere volutpat tellus posuere scelerisque amet vitae tellus volutpat. Euismod donec tortor, eget magna erat feugiat. A, pellentesque facilisi duis viverra laoreet vitae diam, tortor. Aliquam sed scelerisque venenatis volutpat ut. In non morbi ultrices justo. Eget viverra massa, at enim. Augue libero dolor tellus cras sed viverra montes. Adipiscing pellentesque vitae, platea facilisis netus dignissim id pellentesque lacus. Diam commodo id fringilla non egestas. Posuere sed hendrerit amet sed. Nisl gravida quam in scelerisque. Varius arcu pulvinar luctus elit lacus, congue fermentum. Pellentesque pharetra eget tempor nec hendrerit. Id pellentesque vitae, lobortis egestas est vel ullamcorper. Enim arcu lacus fringilla nec quis curabitur nisi, id. Dignissim velit mi malesuada bibendum morbi aliquet sem morbi fames. Mattis nibh purus et nascetur metus hac vitae eleifend vitae. Eu ultrices massa pellentesque proin mus dictumst bibendum pharetra. Purus velit massa massa cras ultricies bibendum. Duis in sed suspendisse nullam. At dolor non faucibus placerat sed dolor eget tempor. Ultrices consectetur urna, magnis lacus, ut gravida facilisi. Vestibulum ultrices dictumst metus convallis lorem gravida. Nunc ultricies lorem elementum eu, quam tristique neque. Cum ornare dui a tellus. Tellus vel vitae gravida aenean lacus pellentesque velit tellus. Semper maecenas sed ipsum vel et interdum. Varius vestibulum lorem iaculis ut quam eu at. Elit amet arcu morbi aliquam quam fames quis sed egestas. At proin vitae euismod eu blandit mus vulputate. Sit cursus varius blandit et sit sit at. Nibh a convallis quam quam pellentesque habitasse feugiat ac. Varius lacus lectus purus magna diam faucibus erat condimentum tincidunt. Ipsum, nulla at enim, nunc, quam in aliquet. Vel aenean aliquam ut at eget. Arcu facilisis mauris ac sit neque, vitae ac. Consequat, nec luctus dictum purus ornare sed sed lacus. Dolor, nibh sed in vitae. Eros, consequat in nulla nisl adipiscing rhoncus laoreet integer gravida. Enim ullamcorper cum sagittis nunc, feugiat pharetra et. Hac donec posuere egestas egestas ultricies in non morbi nulla. Imperdiet tortor elementum dolor sem semper dui, sit. Tortor cum augue nec scelerisque turpis consectetur nullam in pretium. Enim magna enim elit sociis orci.",
+    "blogText3": "Dignissim velit mi malesuada bibendum morbi aliquet sem morbi fames. Mattis nibh purus et nascetur metus hac vitae eleifend vitae. Eu ultrices massa pellentesque proin mus dictumst bibendum pharetra. Purus velit massa massa cras ultricies bibendum. Duis in sed suspendisse nullam. At dolor non faucibus placerat sed dolor eget tempor. Ultrices consectetur urna, magnis lacus, ut gravida facilisi. Vestibulum ultrices dictumst metus convallis lorem gravida. Nunc ultricies lorem elementum eu, quam tristique neque. Cum ornare dui a tellus. Tellus vel vitae gravida aenean lacus pellentesque velit tellus. Semper maecenas sed ipsum vel et interdum.",
+    "sliderTitle": "Other articles you may like",
+
+    "blogSubText": "Eget viverra massa, at enim. Augue libero dolor tellus cras sed viverra montes. Adipiscing pellentesque vitae, platea facilisis netus dignissim id pellentesque lacus. Diam commodo id fringilla non egestas. Posuere sed hendrerit amet sed. Nisl gravida quam in scelerisque. Varius arcu pulvinar luctus elit lacus, congue fermentum. Pellentesque pharetra eget tempor nec hendrerit. Id pellentesque vitae, lobortis egestas est vel ullamcorper. Enim arcu lacus fringilla nec quis curabitur nisi, id.",
+    "blogSubText2": "Varius vestibulum lorem iaculis ut quam eu at. Elit amet arcu morbi aliquam quam fames quis sed egestas. At proin vitae euismod eu blandit mus vulputate. Sit cursus varius blandit et sit sit at. Nibh a convallis quam quam pellentesque habitasse feugiat ac",
+    "blogSubText3": "Varius lacus lectus purus magna diam faucibus erat condimentum tincidunt. Ipsum, nulla at enim, nunc, quam in aliquet. Vel aenean aliquam ut at eget. Arcu facilisis mauris ac sit neque, vitae ac. Consequat, nec luctus dictum purus ornare sed sed lacus. Dolor, nibh sed in vitae. Eros, consequat in nulla nisl adipiscing rhoncus laoreet integer gravida. Enim ullamcorper cum sagittis nunc, feugiat pharetra et. Hac donec posuere egestas egestas ultricies in non morbi nulla. Imperdiet tortor elementum dolor sem semper dui, sit. Tortor cum augue nec scelerisque turpis consectetur nullam in pretium. Enim magna enim elit sociis orci",
+    "blogSubText4": "Dignissim velit mi malesuada bibendum morbi aliquet sem morbi fames. Mattis nibh purus et nascetur metus hac vitae eleifend vitae. Eu ultrices massa pellentesque proin mus dictumst bibendum pharetra. Purus velit massa massa cras ultricies bibendum. Duis in sed suspendisse nullam. At dolor non faucibus placerat sed dolor eget tempor. Ultrices consectetur urna, magnis lacus, ut gravida facilisi. Vestibulum ultrices dictumst metus convallis lorem gravida. Nunc ultricies lorem elementum eu, quam tristique neque. Cum ornare dui a tellus. Tellus vel vitae gravida aenean lacus pellentesque velit tellus. Semper maecenas sed ipsum vel et interdum.",
+    "noPost": "There is no posts yet",
+    "blogArticleText": "A lorem nibh maecenas porttitor risus purus enim pretium morbi. Ut nec tincidunt risus bibendum facilisis velit. Integer eleifend malesuada elit nulla tristique mattis a fusce. Vivamus curabitur lectus sit neque sed et facilisi libero mi",
+    "date": "July"
   },
 
   "specialOffers": {
@@ -398,6 +481,105 @@
       "textInfo": "© Laros Reisen. All rights reserved"
     }
   },
+
+  "vouchers": {
+    "pageTitle": "Gift vouchers",
+    "pageSubTitle": "Faucibus enim sit leo, purus, odio erat. Neque scelerisque volutpat morbi proin. Massa quis montes, scelerisque commodo elit erat in urna id. Purus sit odio egestas venenatis viverra blandit amet vitae.",
+    "section1": "Voucher",
+    "section2": "Billing person details",
+    "section3": "Recipient Name",
+    "section4": "Voucher from",
+    "subSection": "Please, share with us the information about the person who sends the gift card. No personal information won't be provided to any third parties.",
+    "buttonNext": "Next",
+    "label1": "Select a voucher or a gift card",
+    "label2": "Enter the value of the voucher. Must be more than 50 CHF",
+    "label3": "Name & Surname",
+    "label4": "Email",
+    "label5": "Company (optional)",
+    "label6": "Phone number",
+    "label7": "Address",
+    "label8": "Name & Surname of the recipient",
+    "placeholder1": "Name",
+    "placeholder2": "Email",
+    "placeholder3": "e. g. Tesla",
+    "placeholder4": "Street",
+    "placeholder5": "City, Country",
+    "placeholder6": "ZIP Code",
+    "buttonGoBack": "Back to previous step",
+    "step2Title": "Delivery",
+    "step2SubTitle": "Choose your delivery option.",
+    "store1": "LAROS Reisen Store",
+    "store2": "Send to me via post",
+    "store3": "Send me via email",
+    "text1": "Enter recipient’s address and phone number",
+
+    "text2": "Or select",
+    "text3": "previous saved billing option",
+    "text4": "Enter recipient’s email address and name",
+
+    "payment": "Payment",
+    "option": "Choose your option",
+    "useBlock": "Terms of use",
+    "useText1": "Minimum voucher value CHF 50",
+    "useText2": "Validity 1 tear from date of issue",
+    "useText3": "Cash payment, exchange and subsequent redemption for trips already booked are excluded.",
+    "invoiceBlock": "Shipping voucher’s & invoice",
+    "invoiceBlock1": "Dispatch of voucher(s): after receipt of the invoice amount",
+    "invoiceBlock2": "Dispatch of the invoice: the invoice will be sent to you separately by email from the selected branch after you have sent off the order form.",
+    "invoiceBlock3": "Validity: The voucher can be redeemed after receipt of the invoice amount.",
+    "buttonDone": "Done"
+  },
+  "hotels": {
+    "title": "Hotels",
+    "subTitle": "Please select the region on the map",
+    "hotelsText": "Ullamcorper risus interdum lorem vulputate amet id quis massa elementum. Massa nisl urna accumsan proin imperdiet eget. In sagittis, facilisi tristique non.\nCurabitur id amet cras iaculis netus cras at et massa. Laoreet nulla quis vitae sollicitudin commodo at cursus dui. Felis, sed sit maecenas vitae eget nulla vel. Egestas turpis vivamus lorem pulvinar nunc. Mauris at nulla lorem mauris consequat pretium maecenas gravida viverra. Interdum enim mauris quis porttitor tristique vestibulum. Vitae mi eget vel bibendum a tortor a, turpis fusce. Pulvinar purus, mauris aenean aenean.",
+    "goBack": "Go back to Greece Map",
+    "more": "More",
+    "sortTitle": "Sort accomodations by",
+    "select1Title": "Sub-region:",
+    "select1Change": "Sub-region name",
+    "select2Title": "Category",
+    "select3": "Accomodation type",
+    "price": "Price range",
+    "tags": "Tags:",
+    "from": "From"
+  },
+  "hotel": {
+    "more": "See more",
+    "calendar": "Your travel period",
+    "counter1": "Adults",
+    "counter2": "Children (2-12 years old):",
+    "add": "Add room",
+    "buttonStart": "Start trip planning",
+    "tagsTitle": "Highlights",
+    "facilitiesTitle": "Facilities & Amenities",
+    "facilitiesSubTitle": "At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.",
+    "roomTitle": "Room types",
+    "roomSubTitle": "At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.",
+    "otherTitle": "Other hotels",
+    "otherSubTitle": "At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.",
+    "nearbyTitle": "Nearby destinations",
+    "nearbySubTitle": "At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo."
+  },
+  "pdfs": {
+    "name": "Trip name:",
+    "page": "Page 1 of 3",
+    "title": "Unexplored Peloponnese",
+    "location": "Location: Peloponnese, Greece",
+    "travelPlan": "TRAVEL PLAN FOR:",
+    "travelPrice": "Travel price:",
+    "total": "in total",
+    "person": "Pro person",
+    "day": "Day",
+    "text": "Quis vitae vitae donec odio ligula accumsan fringilla. Dignissim vestibulum nibh neque, risus faucibus metus malesuada sed. Pulvinar quis arcu eget tortor et. Est odio id quis pellentesque a, ultrices ultrices sed. Amet, id sit tristique pulvinar nam sollicitudin amet. At eleifend bibendum laoreet mattis blandit. Pretium mauris volutpat, viverra congue. Odio ac ac rutrum ullamcorper bibendum nec ipsum.",
+    "overnight": "Overnight:",
+    "room": "Room type:",
+    "transfer": "Transfer:",
+    "agency": "LAROS REISEN Travel Agency",
+    "Phone and email": "Address and working hours",
+    "phone": "Phone and email"
+  },
+
   "forms": {
     "inputLabel1": "Email",
     "inputLabel2": "Email Address",
@@ -427,6 +609,8 @@
     "inputLabel26": "City",
     "inputLabel27": "Address line",
     "inputLabel28": "ZIP Code *",
+    "inputLabel29": "At store",
+    "inputLabel30": "Full name and surname",
 
     "radioLabel1": "Econom",
     "radioLabel2": "Business",
@@ -434,8 +618,6 @@
     "radioLabel4": "Male",
     "radioLabel5": "Private transfer",
     "radioLabel6": "Bus transfer",
-
-
     "inputNumber1": "Adults",
     "inputNumber2": "Children",
     "inputNumber3": "People in a room:",
@@ -455,6 +637,13 @@
     "loadingText": "Loading...",
     "selectRegionText": "Please select the region on the map",
     "areasOf": "Areas of",
-    "notFoundText": "Haven’t found what you’ve been looking for?"
+    "notFoundText": "Haven’t found what you’ve been looking for?",
+
+    "addSubRegion": "add sub-region",
+    "nightPro": "Night Pro 1 Person",
+    "forChanging": "for changing room type",
+    "addLocation": "Adding location",
+    "traveler": "Traveler",
+    "travelAgent" : "Are you travel agent"
   }
 }

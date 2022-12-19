@@ -13,6 +13,8 @@ import { getHotel, getNearHotels } from 'shared/api/routes/hotels'
 import { getRooms } from 'shared/api/routes/rooms'
 import { getDestination } from 'shared/api/routes/destinations'
 
+import { useTranslate } from 'shared/hooks/useTranslate'
+
 import { Hotel, Room } from 'shared/types/hotel'
 import { Destination } from 'shared/types/destinations'
 
@@ -21,6 +23,7 @@ import s from './HotelPage.module.scss'
 export const HotelPage: FC = () => {
   const { query } = useRouter()
   const hotelID = Number(query.id)
+  const t = useTranslate()
 
   const [hotel, setHotel] = useState<Hotel | null>(null)
   const [rooms, setRooms] = useState<Room[]>([])
@@ -80,7 +83,6 @@ export const HotelPage: FC = () => {
           backgroundImage: `url(${hotel?.images ? hotel.images[0] : ''})`,
         }}
       />
-
       {hotel ? <HotelIntro {...hotel} /> : null}
 
       {hotel ? <HotelImages images={hotel.images} /> : null}
@@ -94,10 +96,8 @@ export const HotelPage: FC = () => {
       {nearHotels.length ? (
         <HotelSection
           hotels={nearHotels}
-          title={'Other hotels'}
-          subTitle={
-            'At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo.'
-          }
+          title={t('hotel.otherTitle')}
+          subTitle={t('hotel.otherSubTitle')}
         />
       ) : null}
 

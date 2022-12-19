@@ -6,6 +6,8 @@ import ReactStars from 'react-rating-stars-component'
 
 import { Button, TagCard } from 'components'
 
+import { useTranslate } from 'shared/hooks/useTranslate'
+
 import { Hotel } from 'shared/types/hotel'
 import { LIMIT_HOTEL_CARD_TAGS } from 'shared/constants'
 
@@ -39,6 +41,8 @@ export const HotelCard: FC<HotelCardProps> = ({
   const handleClick = (id: number) => {
     onClick?.(id)
   }
+  const t = useTranslate()
+
   return (
     <div className={s.hotelCard}>
       <div className={s.hotelCardImage}>
@@ -63,12 +67,12 @@ export const HotelCard: FC<HotelCardProps> = ({
 
       <div className={s.info}>
         <div className={s.block}>
-          <p className={s.text}>From</p>
+          <p className={s.text}>{t('hotelCard.from')}</p>
           <p className={s.price}>{min_price_chf} CHF / Night</p>
-          <p className={s.text}>Pro person</p>
+          <p className={s.text}>{t('hotelCard.person')}</p>
         </div>
         <div className={s.block}>
-          <p className={s.text}>Travel Period</p>
+          <p className={s.text}>{t('hotelCard.period')}</p>
           <p className={s.period}>{period}</p>
         </div>
       </div>
@@ -80,7 +84,7 @@ export const HotelCard: FC<HotelCardProps> = ({
       </div>
 
       <Button classname={s.button} onClick={() => handleClick(id)}>
-        Learn more
+        {t('hotelCard.moreButton')}
       </Button>
     </div>
   )

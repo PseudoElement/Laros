@@ -12,6 +12,7 @@ import { useGetHotelFilters } from 'shared/hooks/useGetHotelFilters'
 import cn from 'classnames'
 import s from './Sorting.module.scss'
 import { useDebounce } from '../../../shared/hooks/useDebounce'
+import { useTranslate } from '../../../shared/hooks/useTranslate'
 
 const direction = [
   { icon: '', label: 'A-Z', value: Sort.AZ },
@@ -29,6 +30,7 @@ const Sorting: FC<SortingProps> = ({ map, setParams, params }) => {
   const [tags, categories, accommodations] = useGetHotelFilters()
   const [price, setPrice] = useState([0, 50])
   const debouncePrice = useDebounce(price, 300)
+  const t = useTranslate()
 
   const changeSubRegion = (value: Option[]) => {
     const destination = value.map(v => v.value).join(',')
@@ -97,12 +99,12 @@ const Sorting: FC<SortingProps> = ({ map, setParams, params }) => {
                 ?.split(',')
                 .some(item => item === region.value) && region
           )}
-          placeholder='Sub-region'
+          placeholder={t('hotels.select1Title')}
           isMulti
           options={subRegions}
         />
         <Select
-          placeholder='Category'
+          placeholder={t('hotels.select2Title')}
           onChange={changeCategory}
           classname={s.select}
           options={categories}
@@ -113,12 +115,12 @@ const Sorting: FC<SortingProps> = ({ map, setParams, params }) => {
           onChange={value =>
             setParams(prev => ({ ...prev, accommodations: value.value }))
           }
-          placeholder='Accommodations'
+          placeholder={t('hotels.select3')}
           classname={s.accommodationSelect}
           options={accommodations}
         />
         <div className={s.price}>
-          <p>Price Range</p>
+          <p>{t('hotels.price')}</p>
           <RangeMarks
             value={price}
             onChange={onChangePrice}
@@ -131,7 +133,7 @@ const Sorting: FC<SortingProps> = ({ map, setParams, params }) => {
       </div>
       <div className={s.sorting}>
         <div className={s.tags}>
-          Tags:
+          {t('hotels.tags')}:
           <div className={s.tabs}>
             {tags.map(tab => (
               <div
@@ -147,7 +149,7 @@ const Sorting: FC<SortingProps> = ({ map, setParams, params }) => {
           </div>
         </div>
         <div className={s.direction}>
-          From
+          {t('hotels.from')}
           <Select
             onChange={value =>
               setParams(prev => ({
