@@ -109,6 +109,7 @@ export const TravellerForm: FC<TravellerFormProps> = ({
                 {...field}
                 classname={s.select}
                 onChange={onChange}
+                placeholder={t('common.select')}
                 loadOptions={countriesOptions}
                 options={[]}
                 async

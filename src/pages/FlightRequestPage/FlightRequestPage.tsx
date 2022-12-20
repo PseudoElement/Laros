@@ -112,6 +112,7 @@ export const FlightRequestForm: FC = () => {
             render={({ field: { onChange } }) => (
               <Select
                 classname={s.select}
+                placeholder={t('common.select')}
                 onChange={onChange}
                 loadOptions={airportOptions}
                 options={[]}
@@ -131,6 +132,7 @@ export const FlightRequestForm: FC = () => {
               <Select
                 classname={s.select}
                 onChange={onChange}
+                placeholder={t('common.select')}
                 loadOptions={airportOptions}
                 options={[]}
                 async

@@ -131,7 +131,7 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
               )}
             />
             <div className={s.previousBtn}>
-              Or select{' '}
+              {t('vouchers.text2')}{' '}
               <span onClick={selectPreviousAddress} className={s.highlight}>
                 {t('vouchers.text2')}
               </span>

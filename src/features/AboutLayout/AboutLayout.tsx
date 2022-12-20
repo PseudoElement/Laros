@@ -29,7 +29,7 @@ export const AboutLayout: FC<AboutLayoutProps> = ({ tab, children }) => {
             backgroundImage: `url(${bg.src})`,
           }}
         />
-        <div className={s.about}>About</div>
+        <div className={s.about}>{t('about.about')}</div>
         <div className={s.title}>
           <Image src={logo} width={202} height={81} />
         </div>

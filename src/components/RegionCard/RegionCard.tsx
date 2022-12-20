@@ -9,6 +9,7 @@ import Polis from '/public/assets/images/destinations/Polis.svg'
 import cn from 'classnames'
 import s from './RegionCard.module.scss'
 import clsx from 'clsx'
+import { useTranslate } from '../../shared/hooks/useTranslate'
 
 interface RegionCardProps {
   id: number
@@ -36,6 +37,7 @@ const RegionCard: FC<RegionCardProps> = ({
   className,
 }) => {
   const ref = useRef<HTMLDivElement>(null)
+  const t = useTranslate()
 
   useClickOutside(ref, () => onClose && ref.current && onClose())
 
@@ -62,7 +64,9 @@ const RegionCard: FC<RegionCardProps> = ({
           {!isTooltip && (
             <div className={s.link__blockDestinationMap}>
               <Link href={`/areas/${id}`}>
-                <span className={s.link__detailCartMap}>Learn more</span>
+                <span className={s.link__detailCartMap}>
+                  {t('hotelCard.moreButton')}
+                </span>
               </Link>
             </div>
           )}

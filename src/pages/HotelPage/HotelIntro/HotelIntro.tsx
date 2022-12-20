@@ -74,6 +74,7 @@ export const HotelIntro: FC<Hotel> = ({
         <TruncatedText
           limit={TRUNCATED_ROOM_CARD_TEXT_SIZE}
           className={s.description}
+          more={t('hotel.more')}
         >
           {description}
         </TruncatedText>

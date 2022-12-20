@@ -30,7 +30,7 @@ export const DestinationLayout: FC<DestinationLayoutProps> = ({
   children,
   destinations,
   currentDestination,
-  title = 'Destinations',
+  title,
   description = defaultDescription,
 }) => {
   const t = useTranslate()

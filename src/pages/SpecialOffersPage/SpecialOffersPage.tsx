@@ -117,7 +117,7 @@ export const SpecialOffersPage: FC = () => {
               control={control}
               render={({ field: { onChange, value } }) => (
                 <Select
-                  placeholder={t('forms.addSubRegion')}
+                  placeholder={t('common.addSubRegion')}
                   options={
                     subregions.map(region => ({
                       label: region.name,

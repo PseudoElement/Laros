@@ -109,6 +109,7 @@ export const PackageRequestForm: FC = () => {
                 classname={s.select}
                 onChange={onChange}
                 loadOptions={airportOptions}
+                placeholder={t('common.select')}
                 options={[]}
                 async
               />
@@ -125,6 +126,7 @@ export const PackageRequestForm: FC = () => {
               <Select
                 classname={s.select}
                 onChange={onChange}
+                placeholder={t('common.select')}
                 loadOptions={airportOptions}
                 options={[]}
                 async

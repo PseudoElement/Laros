@@ -64,6 +64,7 @@ export const TripPageIntro: FC<Trip> = ({
         <TruncatedText
           limit={TRUNCATED_ROOM_CARD_TEXT_SIZE}
           className={s.description}
+          more={t('hotel.more')}
         >
           {description}
         </TruncatedText>

@@ -29,6 +29,7 @@ export const DestinationWorldwidePage: FC = () => {
       currentDestination={Number(null)}
       destinations={destinations}
       description={t('destinations.worldWideDestination')}
+      title={t('destinations.title')}
     >
       <div
         className={s.container}
@@ -45,13 +46,13 @@ export const DestinationWorldwidePage: FC = () => {
           </div>
           <div className={s.actions}>
             <Button
-              onClick={() => router.push('requests/?form=flights')}
+              onClick={() => router.push('/requests/?form=flights')}
               classname={s.flightBtn}
             >
               {t('destinationWorldWide.flightRequestText')}
             </Button>
             <Button
-              onClick={() => router.push('requests/?form=packages')}
+              onClick={() => router.push('/requests/?form=packages')}
               classname={s.packageBtn}
             >
               {t('destinationWorldWide.requestPackageText')}

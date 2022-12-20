@@ -40,7 +40,7 @@ export const Review: FC<ReviewProps> = ({
         <div className={cn(s.profile, !withAvatar && s.profileWithoutAvatar)}>
           {withAvatar && <Image src={avatar ? avatar : userPic} alt='avatar' />}
           <div className={s.name}>{t(name)}</div>
-          <div className={s.tripName}>{t(tripname)}</div>
+          <div className={s.tripName}>{t('homepage.aboutUsCardSubName_1')}</div>
         </div>
 
         <div>
