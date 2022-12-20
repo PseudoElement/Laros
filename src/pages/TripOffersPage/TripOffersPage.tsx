@@ -44,7 +44,7 @@ export const TripOffersPage: FC = () => {
   const { control, watch } = useForm()
   const dispatch = useAppDispatch()
 
-  const [params, setParams] = useState<Partial<TripFilterParams>>({})
+  const [params, setParams] = useState<Partial<TripFilterParams>>({ travel_types: Number(category) })
   const [trips, isLoading, handleReady] = useGetTrips(params)
   const [tripCategoryInfo, setTripCatInfo] = useState<TripCategory | null>()
   const [view, setView] = useState(View.GRID)
@@ -176,6 +176,7 @@ export const TripOffersPage: FC = () => {
                   onChange={onChange}
                   value={value}
                   classname={s.select}
+                  isMulti
                 />
               )}
             />

@@ -16,8 +16,8 @@ export const TravelPlannerPage: FC = () => {
   const t = useTranslate()
   const dispatch = useAppDispatch()
 
-  // const categories = useAppSelector(state => state.trips.categories)
-  const categories = moreCategoriesMock
+  const categories = useAppSelector(state => state.trips.categories)
+  // const categories = moreCategoriesMock
   const moreCategories = moreCategoriesMock
 
   useEffect(() => {

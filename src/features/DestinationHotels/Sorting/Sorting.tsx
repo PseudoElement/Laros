@@ -118,6 +118,7 @@ const Sorting: FC<SortingProps> = ({ map, setParams, params }) => {
           placeholder={t('hotels.select3')}
           classname={s.accommodationSelect}
           options={accommodations}
+          isMulti
         />
         <div className={s.price}>
           <p>{t('hotels.price')}</p>
