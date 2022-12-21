@@ -47,6 +47,7 @@ export const TripOffersPage: FC = () => {
   const [params, setParams] = useState<Partial<TripFilterParams>>({
     travel_types: Number(category),
   })
+
   const [trips, isLoading, handleReady] = useGetTrips(params)
   const [tripCategoryInfo, setTripCatInfo] = useState<TripCategory | null>()
   const [view, setView] = useState(View.GRID)
@@ -154,7 +155,7 @@ export const TripOffersPage: FC = () => {
               control={control}
               render={({ field: { onChange, value } }) => (
                 <Select
-                  placeholder='+ add sub-region'
+                  placeholder={`+ ${t('common.addSubRegion')}`}
                   options={
                     subregions.map(region => ({
                       label: region.name,
