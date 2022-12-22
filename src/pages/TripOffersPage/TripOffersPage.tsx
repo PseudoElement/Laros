@@ -61,7 +61,7 @@ export const TripOffersPage: FC = () => {
   const subregions = useAppSelector(state =>
     getSubRegions(state, region?.value ?? null)
   )
-
+  console.log(tripCategoryInfo)
   const updateRequest = (form: any) => {
     // TODO
     form.region && setRegion(form.region)
@@ -118,7 +118,9 @@ export const TripOffersPage: FC = () => {
       <div
         className={s.bg}
         style={{
-          backgroundImage: `url(${tripCategoryInfo?.image})`,
+          backgroundImage: `url(${
+            tripCategoryInfo?.images.length ? tripCategoryInfo?.images[0] : null
+          })`,
         }}
       >
         {' '}

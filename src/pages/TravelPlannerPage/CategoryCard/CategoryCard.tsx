@@ -27,7 +27,7 @@ export const CategoryCard: FC<CategoryCardProps> = ({
     <Link href={`travel_planner/${id}`}>
       <div className={cn(s.card, { [s.vertical]: vertical })}>
         <div className={s.image}>
-          {images ? (
+          {images.length ? (
             <Image
               src={vertical ? withDomain(images[0]) : mockImg}
               layout={'fill'}
