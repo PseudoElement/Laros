@@ -7,6 +7,7 @@ import ReactStars from 'react-rating-stars-component'
 import { Button, TagCard } from 'components'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
+import { withDomain } from 'shared/helpers/withDomain'
 
 import { Hotel } from 'shared/types/hotel'
 import { LIMIT_HOTEL_CARD_TAGS } from 'shared/constants'
@@ -47,7 +48,11 @@ export const HotelCard: FC<HotelCardProps> = ({
     <div className={s.hotelCard}>
       <div className={s.header}>
         {images.length ? (
-          <Image src={images[0]} layout={'fill'} alt='Hotel image' />
+          <Image
+            src={withDomain(images[0])}
+            layout={'fill'}
+            alt='Hotel image'
+          />
         ) : null}
       </div>
 
@@ -71,7 +76,9 @@ export const HotelCard: FC<HotelCardProps> = ({
         <div className={s.bodyCenter}>
           <div className={s.bodySection}>
             <div className={s.label}>{t('hotelCard.from')}</div>
-            <div className={s.price}>{min_price_chf} CHF / Night</div>
+            <div className={s.price}>
+              {min_price_chf ? min_price_chf : '-'} CHF / {t('hotelCard.night')}
+            </div>
             <div className={s.label}>{t('hotelCard.person')}</div>
           </div>
 

@@ -1,6 +1,9 @@
 import { FC } from 'react'
 import Image, { StaticImageData } from 'next/image'
 
+import { withDomain } from 'shared/helpers/withDomain'
+import { useTranslate } from 'shared/hooks/useTranslate'
+
 import s from './DestinationAreas.module.scss'
 
 export interface DestinationAreasProps {
@@ -9,20 +12,28 @@ export interface DestinationAreasProps {
 }
 
 const DestinationAreas: FC<DestinationAreasProps> = ({ name, areas }) => {
+  const t = useTranslate()
+
   return (
     <div className={s.container}>
-      <h3 className={s.title}>Areas of {name}</h3>
+      <h3 className={s.title}>
+        {t('common.areasOf')} {name}
+      </h3>
 
-      <p className={s.description}>
-        At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida
-        in orci, pretium nulla volutpat leo.
-      </p>
+      <p className={s.description}>{t('homepage.newPlacesSubTitle')}</p>
 
       <div className={s.wrapperImages}>
         {areas.map((area, index) => (
           <div className={s.areasImage} key={index}>
             {/*TODO add a block with text and place it by positioning*/}
-            <Image key={`${area}-${index}`} src={area} layout={'fill'} alt='' />
+            {area ? (
+              <Image
+                key={`${area}-${index}`}
+                src={withDomain(area)}
+                layout={'fill'}
+                alt=''
+              />
+            ) : null}
           </div>
         ))}
       </div>

@@ -24,6 +24,7 @@
   font-weight: $fw-regular;
   font-size: 12px;
   line-height: 14px;
+  text-align: left;
   text-transform: capitalize;
   color: $color-laros-dark-grey;
 }
@@ -59,6 +60,7 @@
 }
 .bodySection {
   width: 49%;
+  text-align: left;
 }
 .price {
   font-weight: $fw-bold;
