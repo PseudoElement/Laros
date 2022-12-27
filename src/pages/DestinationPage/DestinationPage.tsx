@@ -7,7 +7,7 @@ import { getDestinationsThunk } from 'store/slices/destinations/thunk'
 
 import { DestinationLayout } from 'features/DestinationLayout'
 import DestinationHotels from 'features/DestinationHotels/DestinationHotels'
-import { Destinations } from '../TripPage/Tab/Destinations'
+import { AreasOf } from '../../features/AreasOf'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
 import { Map, getCurrentMap } from 'shared/helpers/getMap'
@@ -97,8 +97,7 @@ export const DestinationPage: FC = () => {
         map.currentMap &&
         (route === 'areas' ? (
           map.currentMap.destination && (
-            <Destinations
-              background='gray'
+            <AreasOf
               isAreas
               className={s.areas}
               destination={map.currentMap.destination}
