@@ -2,18 +2,19 @@
 
 .container {
   display: flex;
-  padding: 0 80px;
+  // padding: 0 80px;
 }
 .sidebar {
   background-color: $color-light-grey;
   min-width: 240px;
   max-width: 240px;
+  border-radius: 0 0 0 16px;
 }
 .list {
   max-height: 264px;
   overflow-y: scroll;
   direction: ltr;
-
+  margin-top: 40px;
   &::-webkit-scrollbar {
     display: none;
   }

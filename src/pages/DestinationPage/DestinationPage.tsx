@@ -71,28 +71,30 @@ export const DestinationPage: FC = () => {
 
   return (
     <>
-      <DestinationLayout
-        currentDestination={Number(query.id)}
-        destinations={destinations}
-        description={t('destinations.greeceDescription')}
-        title={title}
-      >
-        {map?.currentMap && (
-          <>
-            {map.currentMap.parentId && map.parent && (
-              <div
-                onClick={() => push(`/destinations/${route}/${map.parent!.id}`)}
-                className={s.back}
-              >
-                <Arrow className={s.arrow} />{' '}
-                {t('destinationsSubRegion.buttonGoBack')} {map.parent.name}
-                {t('destinationsSubRegion.buttonGoBackMap')}
-              </div>
-            )}
-            {map.currentMap.map && map.currentMap.map(map.location)}
-          </>
-        )}
-      </DestinationLayout>
+      <div className={s.layoutWrapper}>
+        <DestinationLayout
+          currentDestination={Number(query.id)}
+          destinations={destinations}
+          description={t('destinations.greeceDescription')}
+          title={title}
+        >
+          {map?.currentMap && (
+            <>
+              {map.currentMap.parentId && map.parent && (
+                <div
+                  onClick={() => push(`/destinations/${route}/${map.parent!.id}`)}
+                  className={s.back}
+                >
+                  <Arrow className={s.arrow} />{' '}
+                  {t('destinationsSubRegion.buttonGoBack')} {map.parent.name}
+                  {t('destinationsSubRegion.buttonGoBackMap')}
+                </div>
+              )}
+              {map.currentMap.map && map.currentMap.map(map.location)}
+            </>
+          )}
+        </DestinationLayout>
+      </div>
       {map &&
         map.currentMap &&
         (route === 'areas' ? (
