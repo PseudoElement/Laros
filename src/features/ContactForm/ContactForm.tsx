@@ -4,13 +4,12 @@ import { Controller, useForm } from 'react-hook-form'
 import cn from 'classnames'
 import { sendContactFormThunk } from 'store/slices/contactForm/thunk'
 
-import { Button } from 'components/Button'
-import { Input } from 'components/Input'
-import { Radio } from 'components/Radio'
+import { Button, Input, Radio, InputCalendar } from 'components'
 
 import { titleOptions } from 'shared/constants/form'
 import { useAppDispatch } from 'shared/hooks/redux'
 import { ContactForm as ContactFormData } from 'shared/types/contact'
+import { useTranslate } from 'shared/hooks/useTranslate'
 
 import fb from '/public/assets/images/socials/facebook.svg?url'
 import inst from '/public/assets/images/socials/instagram.svg?url'
@@ -21,14 +20,16 @@ import send from '/public/assets/images/info/send.svg?url'
 import video from '/public/assets/images/info/video.svg?url'
 
 import s from './ContactForm.module.scss'
-import { InputCalendar } from 'components/InputCalendar'
-import { useTranslate } from '../../shared/hooks/useTranslate'
 
 type ContactFormProps = {
   contactPage?: boolean
+  onFormSubmit?: () => void
 }
 
-export const ContactForm: FC<ContactFormProps> = ({ contactPage }) => {
+export const ContactForm: FC<ContactFormProps> = ({
+  contactPage,
+  onFormSubmit,
+}) => {
   const { handleSubmit, control } = useForm()
   const dispatch = useAppDispatch()
   const t = useTranslate()
@@ -40,6 +41,7 @@ export const ContactForm: FC<ContactFormProps> = ({ contactPage }) => {
     }
 
     dispatch(sendContactFormThunk(form as ContactFormData))
+    onFormSubmit && onFormSubmit()
   }
   return (
     <div className={cn(s.container, { [s.contactContainer]: contactPage })}>
