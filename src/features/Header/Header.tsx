@@ -47,11 +47,13 @@ export const Header: FC = () => {
                 })}
               </div>
               <div className={s.logo}>
-                {isCollapsed ? (
-                  <Image src={logo} width={100} height={20} alt='' />
-                ) : (
-                  <Image src={logoFull} width={100} height={40} alt='' />
-                )}
+                <Link href={'/'}>
+                  {isCollapsed ? (
+                    <Image src={logo} width={100} height={20} alt='' />
+                  ) : (
+                    <Image src={logoFull} width={100} height={40} alt='' />
+                  )}
+                </Link>
               </div>
               <div className={s.rightNav}>
                 <Link href='/contact'>
