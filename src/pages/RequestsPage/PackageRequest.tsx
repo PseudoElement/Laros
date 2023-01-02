@@ -35,6 +35,7 @@ import {
 } from 'shared/constants/form'
 
 import s from '../FlightRequestPage/FlightRequestPage.module.scss'
+import { StarSelectComponent } from '../../components/StarSelect'
 
 export const PackageRequestForm: FC = () => {
   const t = useTranslate()
@@ -252,7 +253,7 @@ export const PackageRequestForm: FC = () => {
             control={control}
             defaultValue={DEFAULT_HOTEL_CATEGORY}
             render={({ field: { onChange, value } }) => (
-              <Select
+              <StarSelectComponent
                 classname={s.select}
                 onChange={onChange}
                 options={hotelCategory}

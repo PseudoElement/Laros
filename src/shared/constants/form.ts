@@ -1,4 +1,4 @@
-import { Option } from 'shared/types'
+import { Option, StarSelectOption } from 'shared/types'
 import { CheckBox } from '../../components'
 import { Traveller } from '../types/requestForm'
 
@@ -36,7 +36,7 @@ export const citiesOptions: Option[] = [
   { label: 'Istanbul', value: 'Istanbul' },
 ]
 
-export const hotelCategory: Option[] = [
+export const hotelCategory: StarSelectOption[] = [
   { label: '', value: '1', icon: [star1] },
   { label: '', value: '2', icon: [star1, star1] },
   { label: '', value: '3', icon: [star1, star1, star1] },

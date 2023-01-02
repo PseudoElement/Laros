@@ -15,8 +15,15 @@ export enum Currency {
 export interface Option {
   label: string
   value: string
+  icon?: string
+}
+
+export interface StarSelectOption {
+  label: string
+  value: string
   icon?: string[]
 }
+
 export type SelectType<T = Option> = T | T[] | null
 
 export type ServerDate = `${number}-${number}-${number}`

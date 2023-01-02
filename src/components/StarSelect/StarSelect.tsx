@@ -5,40 +5,47 @@ import Select, {
   DropdownIndicatorProps,
   OptionProps,
 } from 'react-select'
-import AsyncSelect from 'react-select/async'
 import Image from 'next/image'
 import cn from 'classnames'
 
-import { Option } from 'shared/types'
+import { Option, StarSelectOption } from 'shared/types'
 
 import arrow from '/public/assets/images/arrow.svg?url'
 
-import s from './Select.module.scss'
+import s from './StarSelect.module.scss'
 
 interface OptionsProps {
-  options: Option[]
+  options: StarSelectOption[]
   onChange: (value: Option) => void
-  value?: Option
+  value?: StarSelectOption
   placeholder?: string
   classname?: string
   isMulti?: boolean
   hasArrow?: boolean
   onInputChange?: (value: string) => void
-  async?: boolean
-  loadOptions?: any // TODO in future
+  withStar?: boolean
+  controlIconSize?: number
 }
 
-export const SelectComponent: FC<OptionsProps> = ({
+interface SelectControlProps extends ControlProps {
+  getValue: () => StarSelectOption[]
+}
+
+interface SelectOptionProps extends OptionProps {
+  data: StarSelectOption
+}
+
+export const StarSelectComponent: FC<OptionsProps> = ({
   options,
   placeholder = 'Select...',
   classname,
   isMulti = false,
   hasArrow = true,
   value,
-  async = false,
-  loadOptions,
   onChange,
   onInputChange,
+  withStar,
+  controlIconSize = 25,
 }) => {
   const DropdownIndicator: FC<DropdownIndicatorProps> = props =>
     hasArrow ? (
@@ -47,30 +54,57 @@ export const SelectComponent: FC<OptionsProps> = ({
       </components.DropdownIndicator>
     ) : null
 
-  const Option: FC<OptionProps> = props => (
-    <components.Option {...props}>
-      {options.map((item, i) =>
-        item.label === props.label && item.icon ? (
-          <Image key={i} src={item.icon} width={10} height={10} alt='icon' />
-        ) : null
-      )}
-      {props.label}
-    </components.Option>
-  )
+  const Option: FC<SelectOptionProps> = props => {
+    return (
+      <components.Option {...props}>
+        {props.data.icon?.length ? (
+          <>
+            {props.data.icon.map((item, index) => {
+              return (
+                <Image
+                  key={index}
+                  src={item}
+                  width={15}
+                  height={15}
+                  alt='icon'
+                />
+              )
+            })}
+          </>
+        ) : null}
+        <span>{props.label}</span>
+      </components.Option>
+    )
+  }
 
-  const Control: FC<ControlProps> = props => (
-    <components.Control {...props}>
-      {options.map((item, i) =>
-        item.label === props.getValue().map((el: any) => el.label)[0] &&
-        item.icon ? (
-          <div className={s.control}>
-            <Image key={i} src={item.icon} width={30} height={30} alt='icon' />
-          </div>
-        ) : null
-      )}
-      {props.children}
-    </components.Control>
-  )
+  const Control: FC<SelectControlProps> = props => {
+    return (
+      <components.Control {...props}>
+        {props.getValue().map(item => {
+          return (
+            <div className={s.iconWrap}>
+              {item.icon
+                ? item.icon.map((item, index) => (
+                    <span key={index} className={s.icon}>
+                      <Image
+                        src={item}
+                        width={controlIconSize}
+                        height={controlIconSize}
+                        alt='icon'
+                      />
+                    </span>
+                  ))
+                : null}
+              {withStar && item.icon && (
+                <span className={s.starText}>{item.icon.length} star</span>
+              )}
+            </div>
+          )
+        })}
+        {props.children}
+      </components.Control>
+    )
+  }
 
   const customStyles = {
     option: (provided: any, state: { isFocused: boolean }) => ({
@@ -114,29 +148,14 @@ export const SelectComponent: FC<OptionsProps> = ({
 
   const randomId = useId()
 
-  return async ? (
-    <AsyncSelect
-      instanceId={randomId}
-      styles={customStyles}
-      options={options}
-      value={value}
-      defaultValue={value ?? options[0]}
-      components={{ Option, DropdownIndicator, Control }}
-      isMulti={isMulti}
-      // @ts-ignore
-      onChange={val => onChange(val)}
-      className={cn(s.select, classname)}
-      placeholder={placeholder}
-      onInputChange={onInputChange}
-      loadOptions={loadOptions}
-    />
-  ) : (
+  return (
     <Select
       instanceId={randomId}
       styles={customStyles}
       options={options}
       value={value}
       defaultValue={value ?? options[0]}
+      // @ts-ignore
       components={{ Option, DropdownIndicator, Control }}
       isMulti={isMulti}
       // @ts-ignore
