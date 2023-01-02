@@ -15,7 +15,7 @@ export enum Currency {
 export interface Option {
   label: string
   value: string
-  icon?: string
+  icon?: string[]
 }
 export type SelectType<T = Option> = T | T[] | null
 

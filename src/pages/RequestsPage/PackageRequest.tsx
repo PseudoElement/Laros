@@ -16,6 +16,7 @@ import { AppDispatch } from 'store'
 import { getDayName } from 'shared/helpers/localize'
 import { useAppDispatch } from 'shared/hooks/redux'
 import { getAirports } from 'shared/api/routes/requests'
+import { useTranslate } from 'shared/hooks/useTranslate'
 import { sendPackageRequestThunk } from 'store/slices/packageRequest/thunk'
 
 import { Airport } from 'shared/types/airport'
@@ -34,7 +35,6 @@ import {
 } from 'shared/constants/form'
 
 import s from '../FlightRequestPage/FlightRequestPage.module.scss'
-import { useTranslate } from '../../shared/hooks/useTranslate'
 
 export const PackageRequestForm: FC = () => {
   const t = useTranslate()
@@ -207,7 +207,7 @@ export const PackageRequestForm: FC = () => {
             render={({ field: { onChange, value } }) => (
               <>
                 <span className={s.dayString}>
-                  {value && getDayName(value)}
+                  {value && `${t(getDayName(value))}`}
                 </span>
                 <Input
                   classname={s.counterInput}
@@ -231,7 +231,7 @@ export const PackageRequestForm: FC = () => {
           defaultValue={DEFAULT_TRANSFER_TYPE}
           render={({ field: { onChange, value } }) => (
             <div className={s.radio}>
-              <div className={s.radioLabel}>{t('worldwideTours.label13')}</div>
+              <div className={s.radioLabel}>{t('tripSteps.label5')}</div>
               <Radio
                 name='transferType'
                 onChange={onChange}
@@ -257,6 +257,8 @@ export const PackageRequestForm: FC = () => {
                 onChange={onChange}
                 options={hotelCategory}
                 value={value}
+                withStar
+                controlIconSize={17}
               />
             )}
           />
@@ -286,12 +288,17 @@ export const PackageRequestForm: FC = () => {
           <Controller
             name='totalTripBudget'
             control={control}
-            render={({ field: { onChange, value } }) => (
+            render={({ field: { onChange, value = 0 } }) => (
               <div className={s.selectCHF}>
                 <div className={s.inputLabel}>
                   {t('worldwideTours.label15')}
                 </div>
-                <Input label={'CHF'} onChange={onChange} value={value} />
+                <Input
+                  label={'CHF'}
+                  onChange={onChange}
+                  value={value}
+                  type={'number'}
+                />
               </div>
             )}
           />

@@ -68,12 +68,8 @@ export const RequestsLayout: FC<RequestsLayoutProps> = ({ children }) => {
             onSelect={index => console.log(index)}
           >
             <TabList className={s.tabList}>
-              <Tab className={s.tab}>
-                Flight Requests{t('worldwideTours.Tab_1')}
-              </Tab>
-              <Tab className={s.tab}>
-                Request package{t('worldwideTours.Tab_2')}
-              </Tab>
+              <Tab className={s.tab}>{t('worldwideTours.Tab_1')}</Tab>
+              <Tab className={s.tab}>{t('worldwideTours.Tab_2')}</Tab>
             </TabList>
 
             <TabPanel className={s.tabPanel}>

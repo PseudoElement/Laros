@@ -24,7 +24,7 @@ interface Step2FormProps {
 }
 export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
   const { control, handleSubmit } = useForm()
-  const { form, history } = useAppSelector(state => state.vouchers)
+  const { form, history } = useAppSelector(state => state.vouchers) //TODO form is not using
   const [deliveryOption, setDeliveryOption] = useState<VoucherDelivery>(
     history.delivery
   )
@@ -32,9 +32,9 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
   const t = useTranslate()
 
   const paymentOptions = [
-    { value: 'visa', label: 'Visa', icon: visa },
-    { value: 'mastercard', label: 'MasterCard', icon: mastercard },
-    { value: 'paypal', label: 'Paypal', icon: paypal },
+    { value: 'visa', label: 'Visa', icon: [visa] },
+    { value: 'mastercard', label: 'MasterCard', icon: [mastercard] },
+    { value: 'paypal', label: 'Paypal', icon: [paypal] },
   ]
 
   const onSubmit: SubmitHandler<any> = async formData => {

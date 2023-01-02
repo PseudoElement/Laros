@@ -23,3 +23,21 @@
   color: $color-laros-dark-grey;
   z-index: 100;
 }
+.starText {
+  font-size: 14px;
+  font-weight: $fw-bold;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  height: 25px;
+}
+.iconWrap {
+  display: flex;
+  align-items: center;
+}
+.icon {
+  margin-right: 10px;
+  &:nth-last-child(1) {
+    margin: 0;
+  }
+}

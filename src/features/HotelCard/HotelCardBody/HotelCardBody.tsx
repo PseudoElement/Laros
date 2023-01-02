@@ -9,7 +9,7 @@ import { withDomain } from 'shared/helpers/withDomain'
 import { useTranslate } from 'shared/hooks/useTranslate'
 
 import { LIMIT_HOTEL_CARD_TAGS } from 'shared/constants'
-import { Hotel } from '../../../shared/types/hotel'
+import { Hotel } from 'shared/types/hotel'
 
 import s from './HotelCardBody.module.scss'
 
@@ -44,7 +44,7 @@ export const HotelCardBody: FC<Hotel> = ({
   return (
     <div>
       <div className={s.header}>
-        {images.length ? (
+        {images?.length ? (
           <Image
             src={withDomain(images[0])}
             layout={'fill'}

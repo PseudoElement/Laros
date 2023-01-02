@@ -48,7 +48,7 @@ export const Main: FC<MainBlockProps> = ({
       <div className={s.main_wrapper}>
         <div className={s.main_text}>
           <h1 className={s.title}>{t('homepage.title')}</h1>
-          <p className={s.subtitle}>{t('homepage.subTitle')}</p>
+          <p className={s.subtitle}>{t('homepage.subTitle')}!</p>
           <div className={s.select} onClick={e => e.stopPropagation()}>
             <SelectBlock
               destinations={destinations}
