@@ -44,7 +44,7 @@ export const HotelCardBody: FC<Hotel> = ({
   return (
     <div>
       <div className={s.header}>
-        {images.length ? (
+        {images?.length ? (
           <Image
             src={withDomain(images[0])}
             layout={'fill'}

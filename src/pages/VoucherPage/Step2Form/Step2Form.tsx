@@ -16,9 +16,6 @@ import { VoucherDelivery } from 'shared/types/vouchers'
 import store from '/public/assets/images/voucherDelivery/store.svg?url'
 import mail from '/public/assets/images/voucherDelivery/mail.svg?url'
 import post from '/public/assets/images/voucherDelivery/post.svg?url'
-import visa from '/public/assets/images/visa.svg?url'
-import mastercard from '/public/assets/images/mastercard.svg?url'
-import paypal from '/public/assets/images/paypal.svg?url'
 
 import s from './Step2Form.module.scss'
 
@@ -38,9 +35,9 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
   const t = useTranslate()
 
   const paymentOptions = [
-    { value: 'visa', label: 'Visa', icon: visa },
-    { value: 'mastercard', label: 'MasterCard', icon: mastercard },
-    { value: 'paypal', label: 'Paypal', icon: paypal },
+    { value: 'rechnung', label: 'Rechnung' },
+    { value: 'barzahlung', label: 'Barzahlung' },
+    { value: 'kreditkarte', label: 'Kreditkarte' },
   ]
 
   const onSubmit: SubmitHandler<any> = async formData => {
