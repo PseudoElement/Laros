@@ -55,6 +55,7 @@ export interface TripFilterParams {
   price_gt: number
   ordering: TripSort
   offer: boolean
+  page: number
 }
 
 export interface TripCategory extends Meta {
