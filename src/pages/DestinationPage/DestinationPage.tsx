@@ -26,7 +26,6 @@ export const DestinationPage: FC = () => {
   const t = useTranslate()
 
   const currentDestinationId = Number(query.id)
-
   const currentDestinationDescription = destinations.filter(
     item => item.id === currentDestinationId
   )[0]?.description
@@ -43,7 +42,7 @@ export const DestinationPage: FC = () => {
   }, [])
 
   useEffect(() => {
-    let map = getCurrentMap(Number(query.id))
+    let map = getCurrentMap(currentDestinationId)
 
     const currentLocation = _(destinations)
       .filter(d => d.parent === currentDestinationId)
@@ -61,23 +60,23 @@ export const DestinationPage: FC = () => {
         currentMap: {
           ...map.currentMap,
           destination: destinations.find(
-            destination => destination.id === Number(query.id)
+            destination => destination.id === currentDestinationId
           ),
           destinations: destinations.filter(
-            destination => destination.parent === Number(query.id)
+            destination => destination.parent === currentDestinationId
           ),
         },
       }
 
       setMap({ ...newMap, location: currentLocation })
     }
-  }, [query.id, destinations])
+  }, [currentDestinationId, destinations])
 
   return (
     <>
       <div className={s.layoutWrapper}>
         <DestinationLayout
-          currentDestination={Number(query.id)}
+          currentDestination={currentDestinationId}
           destinations={destinations}
           description={currentDestinationDescription}
           title={title}
