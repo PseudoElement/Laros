@@ -10,6 +10,7 @@ import {
   CheckboxGroup,
   Radio,
   Select,
+  StarSelectComponent,
 } from 'components'
 import { TravellerForm, TravellerAddressForm } from 'features'
 
@@ -215,7 +216,7 @@ export const PackageRequestForm: FC<PackageRequestFormProps> = ({
             render={({ field: { onChange, value } }) => (
               <>
                 <span className={s.dayString}>
-                  {value && getDayName(value)}
+                  {value && `${t(getDayName(value))}`}
                 </span>
                 <Input
                   classname={s.counterInput}
@@ -239,7 +240,7 @@ export const PackageRequestForm: FC<PackageRequestFormProps> = ({
           defaultValue={DEFAULT_TRANSFER_TYPE}
           render={({ field: { onChange, value } }) => (
             <div className={s.radio}>
-              <div className={s.radioLabel}>{t('worldwideTours.label13')}</div>
+              <div className={s.radioLabel}>{t('tripSteps.label5')}</div>
               <Radio
                 name='transferType'
                 onChange={onChange}
@@ -260,11 +261,13 @@ export const PackageRequestForm: FC<PackageRequestFormProps> = ({
             control={control}
             defaultValue={DEFAULT_HOTEL_CATEGORY}
             render={({ field: { onChange, value } }) => (
-              <Select
+              <StarSelectComponent
                 classname={s.select}
                 onChange={onChange}
                 options={hotelCategory}
                 value={value}
+                withStar
+                controlIconSize={17}
               />
             )}
           />
@@ -294,12 +297,17 @@ export const PackageRequestForm: FC<PackageRequestFormProps> = ({
           <Controller
             name='totalTripBudget'
             control={control}
-            render={({ field: { onChange, value } }) => (
+            render={({ field: { onChange, value = 0 } }) => (
               <div className={s.selectCHF}>
                 <div className={s.inputLabel}>
                   {t('worldwideTours.label15')}
                 </div>
-                <Input label={'CHF'} onChange={onChange} value={value} />
+                <Input
+                  label={'CHF'}
+                  onChange={onChange}
+                  value={value}
+                  type={'number'}
+                />
               </div>
             )}
           />

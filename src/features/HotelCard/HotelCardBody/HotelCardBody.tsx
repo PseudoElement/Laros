@@ -9,7 +9,7 @@ import { withDomain } from 'shared/helpers/withDomain'
 import { useTranslate } from 'shared/hooks/useTranslate'
 
 import { LIMIT_HOTEL_CARD_TAGS } from 'shared/constants'
-import { Hotel } from '../../../shared/types/hotel'
+import { Hotel } from 'shared/types/hotel'
 
 import s from './HotelCardBody.module.scss'
 
