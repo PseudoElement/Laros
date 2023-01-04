@@ -20,10 +20,6 @@ const DestinationHotels: FC<DestinationHotelsProps> = ({ map }) => {
   const t = useTranslate()
 
   useEffect(() => {
-    setParams({ destination: String(map.id) })
-  }, [map])
-
-  useEffect(() => {
     const timeout = setTimeout(() => handleReady(), 200)
 
     return () => {
@@ -35,17 +31,21 @@ const DestinationHotels: FC<DestinationHotelsProps> = ({ map }) => {
     <div className={s.container}>
       <h3 className={s.title}>{t('hotels.sortTitle')}</h3>
       <Sorting map={map} setParams={setParams} params={params} />
-      <div className={s.hotels}>
-        {!isLoading &&
-          hotels.map(hotel => (
-            <HotelCard
-              // @ts-ignore
-              fromPrice={hotel?.max_capacity!}
-              key={hotel.id}
-              {...hotel}
-            />
-          ))}
-      </div>
+      {!isLoading ? (
+        <>
+          {hotels.length ? (
+            <div className={s.hotels}>
+              {hotels.map(hotel => (
+                <HotelCard key={hotel.id} hotel={hotel} />
+              ))}
+            </div>
+          ) : (
+            <div className={s.loading}>{t('common.emptyText')}</div>
+          )}
+        </>
+      ) : (
+        <div className={s.loading}>{t('common.loadingText')}</div>
+      )}
     </div>
   )
 }

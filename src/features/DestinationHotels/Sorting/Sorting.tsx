@@ -44,7 +44,7 @@ const Sorting: FC<SortingProps> = ({ map, setParams, params }) => {
   const onChangePrice = (value: number[]) => setPrice(value)
 
   const changeCategory = (value: Option) =>
-    setParams(prev => ({ ...prev, category: value.value }))
+    setParams(prev => ({ ...prev, category_name: value.value }))
 
   const changeTabs = (value: number) => {
     let newTags = params.tags?.split(',') ?? []
@@ -109,6 +109,7 @@ const Sorting: FC<SortingProps> = ({ map, setParams, params }) => {
           options={categories}
         />
       </div>
+
       <div className={s.services}>
         <Select
           onChange={value =>
@@ -117,8 +118,8 @@ const Sorting: FC<SortingProps> = ({ map, setParams, params }) => {
           placeholder={t('hotels.select3')}
           classname={s.accommodationSelect}
           options={accommodations}
-          isMulti
         />
+
         <div className={s.price}>
           <p>{t('hotels.price')}</p>
           <RangeMarks
@@ -133,7 +134,7 @@ const Sorting: FC<SortingProps> = ({ map, setParams, params }) => {
       </div>
       <div className={s.sorting}>
         <div className={s.tags}>
-          {t('hotels.tags')}:
+          <div className={s.tag}>{t('hotels.tags')}:</div>
           <div className={s.tabs}>
             {tags.map(tab => (
               <div

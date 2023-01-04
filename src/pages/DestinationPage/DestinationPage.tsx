@@ -82,11 +82,13 @@ export const DestinationPage: FC = () => {
             <>
               {map.currentMap.parentId && map.parent && (
                 <div
-                  onClick={() => push(`/destinations/${route}/${map.parent!.id}`)}
+                  onClick={() =>
+                    push(`/destinations/${route}/${map.parent!.id}`)
+                  }
                   className={s.back}
                 >
                   <Arrow className={s.arrow} />{' '}
-                  {t('destinationsSubRegion.buttonGoBack')} {map.parent.name}
+                  {t('destinationsSubRegion.buttonGoBack')} {map.parent.name}{' '}
                   {t('destinationsSubRegion.buttonGoBackMap')}
                 </div>
               )}
