@@ -23,7 +23,6 @@ export const HotelCard: FC<HotelCardProps> = ({ hotel, onClick }) => {
   return (
     <div className={s.hotelCard}>
       <HotelCardBody {...hotel} />
-
       <div className={s.footer}>
         <Button
           classname={s.footerButton}
@@ -32,6 +31,6 @@ export const HotelCard: FC<HotelCardProps> = ({ hotel, onClick }) => {
           {t('hotelCard.moreButton')}
         </Button>
       </div>
-    )
-  }
-)
+    </div>
+  )
+}
