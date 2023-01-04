@@ -21,11 +21,15 @@ import _ from 'lodash'
 export const DestinationPage: FC = () => {
   const dispatch = useAppDispatch()
   const { query, pathname, push } = useRouter()
-  const { destinations, currentDestination } = useAppSelector(
-    state => state.destinations
-  )
+  const { destinations } = useAppSelector(state => state.destinations)
   const [map, setMap] = useState<Map | null>(null)
   const t = useTranslate()
+
+  const currentDestinationId = Number(query.id)
+
+  const currentDestinationDescription = destinations.filter(
+    item => item.id === currentDestinationId
+  )[0]?.description
 
   const route = getPath(pathname)
   const title = !map?.currentMap?.parentId
@@ -42,7 +46,7 @@ export const DestinationPage: FC = () => {
     let map = getCurrentMap(Number(query.id))
 
     const currentLocation = _(destinations)
-      .filter(d => d.parent === Number(query.id))
+      .filter(d => d.parent === currentDestinationId)
       .map(location => ({
         id: location.id,
         link: `/destinations/${route}/${location.id}`,
@@ -75,14 +79,16 @@ export const DestinationPage: FC = () => {
         <DestinationLayout
           currentDestination={Number(query.id)}
           destinations={destinations}
-          description={t('destinations.greeceDescription')}
+          description={currentDestinationDescription}
           title={title}
         >
           {map?.currentMap && (
             <>
               {map.currentMap.parentId && map.parent && (
                 <div
-                  onClick={() => push(`/destinations/${route}/${map.parent!.id}`)}
+                  onClick={() =>
+                    push(`/destinations/${route}/${map.parent!.id}`)
+                  }
                   className={s.back}
                 >
                   <Arrow className={s.arrow} />{' '}
