@@ -12,7 +12,6 @@ interface RadioProps {
   onClick?: (value: string) => void
   orientation?: 'column' | 'row'
   classname?: string
-  isAddress?: boolean
 }
 
 export const Radio: FC<RadioProps> = ({
@@ -22,7 +21,6 @@ export const Radio: FC<RadioProps> = ({
   onChange,
   onClick,
   classname,
-  isAddress,
 }) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange?.(e.target.value)
@@ -43,9 +41,7 @@ export const Radio: FC<RadioProps> = ({
               onChange={handleChange}
               onClick={() => onClick}
             />
-            <span className={s.label}>
-              {isAddress ? option.label : t(option.label)}
-            </span>
+            <span className={s.label}>{t(option.label)}</span>
           </label>
         )
       })}

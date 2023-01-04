@@ -13,5 +13,5 @@ export const useTranslate = () => {
   const { locale } = useRouter()
   const localisation = TRANSLATIONS[locale ?? DEFAULT_LANG]
 
-  return (key: string) => get(localisation, key)
+  return (key: string) => get(localisation, key) ?? key
 }
