@@ -38,13 +38,14 @@
 }
 
 .counterRow div:first-child {
-  margin-right: 24px;
+  margin-right: 14px;
 }
 
 .counterInput {
   padding-top: 0;
   height: 48px;
   width: 100%;
+  min-width: 206px;
 }
 
 .counterInput > div:first-child {
@@ -223,6 +224,7 @@
   margin-top: 20px;
   width: calc(100% / 2 - 18px);
 }
+
 .checkboxLabel {
   font-size: 12px;
   font-weight: $fw-medium;
@@ -230,6 +232,7 @@
   padding-left: 16px;
   margin-bottom: 15px;
 }
+
 .checkbox {
   display: flex;
   width: 100%;
@@ -250,10 +253,12 @@
     span:nth-child(2) {
       order: 2;
       border-radius: 50%;
+
       &:before {
         border-radius: 50%;
       }
     }
+
     span:nth-child(3) {
       font-size: 14px;
       font-weight: $fw-medium;
@@ -262,6 +267,7 @@
     }
   }
 }
+
 .counterRow {
   display: flex;
   flex-direction: row;
@@ -269,10 +275,6 @@
   justify-content: start;
   margin-bottom: 68px;
   padding: 0;
-}
-
-.counterRow div:first-child {
-  margin-right: 24px;
 }
 
 .travelDurationCounter {
@@ -283,6 +285,7 @@
     text-align: right;
     padding-right: 100px;
   }
+
   .dayString {
     position: absolute;
     font-size: 14px;
@@ -292,11 +295,14 @@
     z-index: 1;
   }
 }
+
 .selectCHF {
   width: 411px;
+
   input {
     margin-bottom: 4px;
   }
+
   .inputLabel {
     margin-bottom: 10px;
     font-size: 12px;

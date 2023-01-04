@@ -115,7 +115,7 @@ export const TravellerAddressForm: FC<TravellerAddressFormProps> = ({
             placeholder={t('worldwideTours.label12')}
             onChange={onChange}
             value={value}
-            label={t('worldwideTours.inputLabel26')}
+            label={t('forms.inputLabel26')}
           />
         )}
       />
@@ -130,7 +130,7 @@ export const TravellerAddressForm: FC<TravellerAddressFormProps> = ({
             placeholder={t('worldwideTours.label12')}
             onChange={onChange}
             value={value}
-            label={`${t('worldwideTours.inputLabel27')} 1`}
+            label={`${t('forms.inputLabel27')} 1`}
           />
         )}
       />
@@ -145,7 +145,7 @@ export const TravellerAddressForm: FC<TravellerAddressFormProps> = ({
             placeholder={t('worldwideTours.label12')}
             onChange={onChange}
             value={value}
-            label={`${t('worldwideTours.inputLabel27')} 2`}
+            label={`${t('forms.inputLabel27')} 2`}
           />
         )}
       />
@@ -161,7 +161,7 @@ export const TravellerAddressForm: FC<TravellerAddressFormProps> = ({
             placeholder={t('worldwideTours.label12')}
             onChange={onChange}
             value={value}
-            label={t('forms.placeholder6')}
+            label={t('vouchers.placeholder6')}
           />
         )}
       />
