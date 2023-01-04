@@ -1,7 +1,7 @@
 @use 'styles/style.scss' as *;
 
 .container {
-  padding: 80px 140px 120px 140px;
+  padding: 80px 140px 60px 140px;
   background-color: $color-modal-header;
 }
 
@@ -14,7 +14,7 @@
 }
 
 .hotels {
-  margin-top: 36px;
+  margin: 36px 0 50px;
   display: grid;
   grid-template-columns: 32% 32% 32%;
   gap: 25px;
@@ -22,4 +22,9 @@
 .loading {
   padding: 50px 0 0;
   text-align: center;
+}
+
+.button {
+  display: block;
+  margin: 0 auto;
 }

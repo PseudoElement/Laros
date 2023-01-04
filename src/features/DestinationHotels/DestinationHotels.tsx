@@ -3,21 +3,33 @@ import { FC, useEffect, useState } from 'react'
 import Sorting from './Sorting/Sorting'
 import { HotelCard } from '../HotelCard'
 
-import { HotelFilterParams } from 'shared/types/hotel'
+import { Hotel, HotelFilterParams } from 'shared/types/hotel'
 import { useGetHotels } from 'shared/hooks/useGetHotels'
 import { Region } from 'shared/types/region'
 import { useTranslate } from 'shared/hooks/useTranslate'
 
 import s from './DestinationHotels.module.scss'
+import { Button } from '../../components'
 
 interface DestinationHotelsProps {
   map: Region
 }
 
 const DestinationHotels: FC<DestinationHotelsProps> = ({ map }) => {
+  const HOTEL_PAGINATION_PER_PAGE = 50
+
   const [params, setParams] = useState<Partial<HotelFilterParams>>({})
-  const [hotels, isLoading, handleReady] = useGetHotels(params)
+  const [newHotels, isLoading, handleReady] = useGetHotels(params)
+  const [hotels, setHotels] = useState<Hotel[]>([...newHotels])
+  const [page, setPage] = useState(1)
+  const [showMoreButton, setShowMoreButton] = useState<boolean>(
+    newHotels.length === HOTEL_PAGINATION_PER_PAGE
+  )
   const t = useTranslate()
+
+  useEffect(() => {
+    setParams({ destination: String(map.id) })
+  }, [map])
 
   useEffect(() => {
     const timeout = setTimeout(() => handleReady(), 200)
@@ -46,6 +58,15 @@ const DestinationHotels: FC<DestinationHotelsProps> = ({ map }) => {
       ) : (
         <div className={s.loading}>{t('common.loadingText')}</div>
       )}
+        {Boolean(hotels.length) && showMoreButton && (
+            <Button
+                variant='secondary'
+                classname={s.button}
+                onClick={() => setPage(prevState => ++prevState)}
+            >
+                Show More
+            </Button>
+        )}
     </div>
   )
 }

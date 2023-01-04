@@ -70,6 +70,7 @@ export const RequestsLayout: FC<RequestsLayoutProps> = ({ children }) => {
         </div>
 
         {thankYou ? (
+
             <ThankYouPage />
         ) : (
         <nav className={s.tabs__navigation}>

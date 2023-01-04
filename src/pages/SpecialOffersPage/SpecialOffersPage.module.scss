@@ -45,6 +45,7 @@
   background-color: $color-white;
   box-shadow: 0px 4px 4px 0px $color-shadow;
 }
+
 .filterTitle {
   font-size: 20px;
   font-weight: $fw-bold;
@@ -57,6 +58,7 @@
   width: 28px;
   padding: 6px 6px 2px;
 }
+
 .viewSelected {
   background-color: $color-laros-light-grey;
 }
@@ -67,30 +69,36 @@
   // width: calc(368px * 3 + 48px);
   margin-bottom: 30px;
 }
+
 .grid {
   justify-content: space-between;
 }
+
 .filterSelects {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  & > div {
+
+  &>div {
     // width: calc(1004px / 3);
     width: 100%;
     margin-right: 10px;
   }
 }
+
 .filterContent {
   display: flex;
   align-items: center;
   margin-bottom: 24px;
   max-width: 1110px;
 }
+
 .sort {
   display: flex;
   align-items: center;
 }
+
 .sortFrom {
   font-size: 14px;
   font-weight: $fw-regular;
@@ -102,15 +110,18 @@
   font-size: 12px;
   font-weight: $fw-regular;
   line-height: 20px;
+
   [class$='-control'] {
     border: 1px solid $color-laros-dark-grey;
     border-radius: 8px;
     background-color: $color-white;
   }
+
   [class$='-ValueContainer'] {
     height: 32px;
     // overflow-y: scroll;
   }
+
   [class$='-multiValue'] {
     border-radius: 8px;
     background-color: $color-laros-light-grey;
@@ -118,6 +129,7 @@
     font-weight: $fw-regular;
     line-height: 20px;
   }
+
   [class$='-placeholder'] {
     color: $color-primary-black;
   }
@@ -128,6 +140,7 @@
   overflow-x: scroll;
   height: 50px;
 }
+
 .tag {
   display: flex;
   justify-content: space-between;

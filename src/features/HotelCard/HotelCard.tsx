@@ -32,6 +32,6 @@ export const HotelCard: FC<HotelCardProps> = ({ hotel, onClick }) => {
           {t('hotelCard.moreButton')}
         </Button>
       </div>
-    </div>
-  )
-}
+    )
+  }
+)

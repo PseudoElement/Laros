@@ -22,6 +22,7 @@ import { TripCard } from 'features'
 import { getTripDurationOptions } from 'shared/helpers/transformers'
 import { getTripsDuration } from 'shared/api/routes/trips'
 import { useTranslate } from '../../shared/hooks/useTranslate'
+import { sortByAlphabet } from 'shared/helpers/sortByAlphabet'
 
 export const SpecialOffersPage: FC = () => {
   const { control, watch } = useForm()
@@ -52,6 +53,7 @@ export const SpecialOffersPage: FC = () => {
       : form.region?.value ?? undefined
     setParams({ destination, ordering: form.ordering?.value, offer: true })
   }
+
 
   useEffect(() => {
     const loadHotelTags = async () => {
@@ -119,10 +121,10 @@ export const SpecialOffersPage: FC = () => {
               <Select
                 placeholder={t('common.addSubRegion')}
                 options={
-                  subregions.map(region => ({
+                  sortByAlphabet(subregions.map(region => ({
                     label: region.name,
                     value: region.id.toString(),
-                  })) ?? []
+                  }))) ?? []
                 }
                 onChange={onChange}
                 value={value}
