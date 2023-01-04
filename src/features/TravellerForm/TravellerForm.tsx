@@ -49,7 +49,7 @@ export const TravellerForm: FC<TravellerFormProps> = ({
   control,
   watch,
 }) => {
-  const [addresses, setAddresses] = useState<string[]>(['адрес'])
+  const [addresses, setAddresses] = useState<string[]>([])
   const [showAddressInput, setShowAddressInput] = useState<boolean>(false)
   const MAX_ADDRESSES_LIMIT = 2
   const t = useTranslate()
@@ -195,6 +195,7 @@ export const TravellerForm: FC<TravellerFormProps> = ({
                       name={`travellers.${index}.address`}
                       onChange={onChange}
                       value={address}
+                      isAddress
                       options={[{ label: address, value: address }]}
                     />
                   </div>
