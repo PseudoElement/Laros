@@ -26,6 +26,7 @@
 
 .form {
   margin-top: 32px;
+
   & > div {
     margin-bottom: 8px;
   }
@@ -63,7 +64,7 @@
   background-color: $color-laros-light-grey;
   border-radius: 8px;
 
-  &:not(:last-child) {
+  & {
     margin-bottom: 8px;
   }
 }
