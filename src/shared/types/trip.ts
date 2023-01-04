@@ -74,7 +74,17 @@ export interface TripItem {
   tags: string[]
 }
 
+
+// export interface TripDuration {
+//   min_duration: number
+//   max_duration: number
+// }
+
+// TODO (fix after clarification)
+
 export interface TripDuration {
-  min_duration: number
-  max_duration: number
+  code: number
+  data: { min_duration: number, max_duration: number }
+  message: string
+  status: string
 }
