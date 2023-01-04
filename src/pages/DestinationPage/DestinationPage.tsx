@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { getDestinationsThunk } from 'store/slices/destinations/thunk'
 
 import { DestinationLayout } from 'features/DestinationLayout'
-import DestinationHotels from 'features/DestinationHotels/DestinationHotels'
+import { DestinationHotels } from 'features/DestinationHotels/DestinationHotels'
 import { AreasOf } from '../../features/AreasOf'
 
 import { useTranslate } from 'shared/hooks/useTranslate'

@@ -1,7 +1,7 @@
 import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
+import cn from 'classnames'
 
-import { Select } from 'components/Select'
-import { RangeMarks } from 'components/RangeMarks'
+import { Select, RangeMarks } from 'components'
 
 import { Hotel, HotelFilterParams } from 'shared/types/hotel'
 import { Region } from 'shared/types/region'
@@ -11,7 +11,6 @@ import { useGetHotelFilters } from 'shared/hooks/useGetHotelFilters'
 import { useDebounce } from 'shared/hooks/useDebounce'
 import { useTranslate } from 'shared/hooks/useTranslate'
 
-import cn from 'classnames'
 import s from './Sorting.module.scss'
 
 const direction = [
