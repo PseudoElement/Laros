@@ -119,7 +119,6 @@
     "return": "Zurück zur Startseite",
     "noVacancies": "Zurzeit keine freien Stellen."
   },
-
   "aboutModal": {
     "modalTitle": "Bewerbung bei LAROS Reisen",
     "close": "Schliessen",
@@ -137,13 +136,11 @@
     "return": "Zurück zur Startseite",
     "noVacancies": "Zurzeit keine freien Stellen."
   },
-
   "brochures": {
     "title": "Kataloge",
     "subtitle": "Lassen Sie sich von unseren exklusiven Katalogen für Griechenland und Zypern inspirieren. Sie können diese herunterladen, indem Sie Ihre E-Mail-Adresse ausfüllen, oder die Lieferoption wählen, damit wir Ihnen die ausgewählte Broschüre nach Hause schicken!",
     "sort": "Sortieren nach",
     "sendMeText": "Senden Sie mir die ausgewählten Kataloge zu",
-
     "brochuresLabel": "Thema der Broschüre",
     "buttonSelect": "Wählen Sie",
     "send": "Senden Sie mir ausgewählt (2)",
@@ -158,7 +155,6 @@
     "downloadModalTitle": "Herunterladen der Broschüre",
     "buttonDownload": "Herunterladen"
   },
-
   "destinations": {
     "selectRegion": "Wählen Sie das Gebiet, das Sie entdecken möchten",
     "title": "Reiseziele",
@@ -166,9 +162,7 @@
     "greeceDescription": "Griechenland ist unser Expertentum und auf der ganzen Welt unser Lieblingsort! Unbegrenzte Reisemöglichkeiten innerhalb Griechenlands. Egal, ob Sie lieber Sommerferien auf den griechischen Inseln, oder Bergreisen im griechischen Festland  erleben möchten, Griechenland hat unbegrenzte Möglichkeiten Sie sprachlos zu machen. Das Team von Laros Reisen hat die berühmtesten Gegenden Griechenlands mit vielen versteckten Schätzen zusammengestellt, die darauf warten, von Ihnen erkundet zu werden.",
     "cyprusDescription": "Zypern, das Juwel des Mittelmeers. Wenn Sie warmes Wetter und Sommer mögen, sollten Sie Zypern in Ihre Reise-Bucket-Liste aufnehmen!.",
     "worldWideDestination": "Suchen Sie eine Fernreise? Möchten Sie Ihren nächsten Flug oder Ihr nächste Pauschalreise weltweit buchen? Bereisen Sie die Welt mit Laros Reisen."
-
   },
-
   "destinationsSubRegion": {
     "buttonGoBack": "Zurück zur",
     "buttonGoBackMap": "Karte",
@@ -177,16 +171,13 @@
     "areasOfTitle": "Gebiete von Macedonia - Entdecken Sie die Gebiete von",
     "areasOfSubTitle": "Unten finden Sie ein paar unbekannte Orte, die darauf warten, von Ihnen entdeckt zu werden!"
   },
-
   "areaPage": {
     "OverviewTitle": "Überblick",
     "pre-definedTrips": "Fertige Reiseprogramme nach",
     "pre-definedSubTrips": "Wählen Sie die Reise, die am Besten zu Ihnen passt, und lassen Sie sich von uns zu den schönsten Orten bringen!",
     "HotelsInTitle": "Hotels in",
     "HotelsInSubTitle": "Hotels für jeden Geschmack! Ob Meerblick, direkt am Strand oder besondere Unterkunftsarten, unser Team hat die untenstehenden Hotels für Sie sorgfältig ausgwählt. Erfahren Sie mehr in der folgenden Liste."
-
   },
-
   "destinationWorldWide": {
     "title": "Weltweite Reisen",
     "subTitle": "Sind Sie auf der Suche nach einer Reise rund um den Globus? Wir stellen Ihnen gerne Ihre Ferien zusammen wo auch immer Sie diese Verbringen möchten.",
@@ -195,12 +186,11 @@
     "selectRegion": "Wählen Sie das Gebiet, das Sie entdecken möchten",
     "buttonMore": "Mehr"
   },
-
   "worldwideTours": {
     "WorldwideToursTitle": "Weltweite Reisen",
     "WorldwideToursSubTitle": "Füllen Sie das Online-Formular aus und lassen Sie die Experten des Laros Reisen Teams Ihre Traumreise planen! Unser Team kann Ihnen jeden gewünschten Reiseservice bieten, wie wir es in den letzten 30 Jahren getan haben. Von einer einfachen Flugbuchung bis hin zu personalisierten Empfehlungen und Aktivitäten in der Gegend, die Sie besuchen möchten, wir sind rund um die Uhr für Sie da, um Ihnen zu helfen, Ihren Urlaub auf eine höhere Stufe zu heben.",
     "GoBack": "Zurück",
-    "ContactUs": "Sie haben nicht gefunden, wonach Sie gesucht haben? Κοntakt",
+    "ContactUs": "Sie haben nicht gefunden, wonach Sie gesucht haben?",
     "Tab_1": "Fluganfrage",
     "Tab_2": "Pauschalreise anfragen",
     "label1": "Abreise von",
@@ -235,13 +225,11 @@
     "Privacy4": "Datenschutzbestimmungen",
     "travellerTotal": "Reisender insgesamt"
   },
-
   "travelPlanner": {
     "title": "Reiseplaner",
     "subtitle": "Unsere Top-Reisekategorien",
     "moreCategoriesText": "Mehr Kategorien"
   },
-
   "travelPlannerCategory": {
     "title": "Inselfieber",
     "subtitle": "Sorgfältig ausgewählte Reisen zu den griechischen Inseln, empfohlen von unserem erfahrenen Laros-Team. Welche wählen Sie aus? Das blaugrüne Wasser des Ionischen Meers oder das tiefe Blau der Ägäis? Die grünen Inseln der Sporaden, der saronischen und der Ionischen Inseln oder der Kontrast der weißen Häuser und der einzigartigen Architektur, die die Kykladen und den Dodekanes bezeichnen? Viele zur Auswahl, sogar an versteckten Reisezielen in Griechenland.",
@@ -249,15 +237,13 @@
     "from": "Von",
     "tags": "Stichwörter"
   },
-
   "travelPlannerTabs": {
     "tab1": "Über uns",
     "tab2": "Unser Team",
     "tab3": "Kundenrückmeldungen",
     "tab4": "HÄUFIG FRAGEN",
-    "tab5": "Karriere"
+    "tab5": "Kontakt"
   },
-
   "travelPlannerTripPlan": {
     "day": "Tag",
     "proPerson": "pro person",
@@ -273,7 +259,6 @@
     "areasOfTitle": "Gebiete von",
     "areasOfSubTitle": "Unten finden Sie ein paar unbekannte Orte, die darauf warten, von Ihnen entdeckt zu werden!."
   },
-
   "tripCard": {
     "name": "Region",
     "from": "Von",
@@ -283,7 +268,6 @@
     "off": "OFF",
     "viewOfferButton": "Zum Angebot"
   },
-
   "hotelCard": {
     "hotelName": "Hotel",
     "from": "Von",
@@ -292,7 +276,6 @@
     "moreButton": "Erfahren Sie mehr",
     "night": "Nacht"
   },
-
   "contactForm": {
     "formTitle": "Kontaktformular",
     "buttonClose": "Schliessen",
@@ -309,7 +292,6 @@
     "socialMedia": "Soziale Medien",
     "follow": "Folgen Sie uns auf"
   },
-
   "tripSteps": {
     "buttonBack": "Zurück zum vorherigen Schritt",
     "buttonReset": "Alle Änderungen zurücksetzen",
@@ -351,7 +333,6 @@
     "endPoint": "Endpunkt",
     "out": "aus"
   },
-
   "changingRoomType": {
     "windowTitle": "Zimmerkategorie ändern",
     "close": "Schliessen",
@@ -363,7 +344,6 @@
     "current": "Aktuell",
     "roomsOf": "Räume der"
   },
-
   "changingLocation": {
     "windowTitle": "Ort ändern",
     "close": "Schliessen",
@@ -376,9 +356,8 @@
     "add": "Fügen Sie diesen Ort der Reise hinzu",
     "save": "Änderungen speichern",
     "cancel": "Abbrechen",
-    "highlights" : "Highlights:"
+    "highlights": "Highlights:"
   },
-
   "changingHotel": {
     "windowTitle": "Unterkunft ändern",
     "close": "Schliessen",
@@ -392,7 +371,6 @@
     "save": "Ausgewählte Unterkunft speichern",
     "select": "Auswählen"
   },
-
   "changingTransfer": {
     "windowTitle": "Transfervariante ändern",
     "close": "Schliessen",
@@ -413,11 +391,9 @@
     "rentPrice": "Mietpreis für X Tage:",
     "selected": "Ausgewählt",
     "terms": "Bedingungen und Konditionen",
-
     "text1": "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
     "text2": "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
   },
-
   "terms": {
     "title": "Allgemeine Geschäftsbedingungen",
     "subtitle": "Bitte lesen Sie die folgenden Bedingungen sorgfältig durch, bevor Sie die Website und unsere Dienstleistungen nutzen. Unser Team steht Ihnen jederzeit zur Verfügung und ist bereit, Ihnen bei allem, was Sie benötigen, behilflich zu sein.",
@@ -427,20 +403,17 @@
     "termsOfUseDescription": "Nutzungsbedingungen",
     "privacy": "Datenschutzerklärung"
   },
-
   "area": {
     "goBackTo": "Zurück zur",
     "map": "Karte",
     "areas": "Bereiche"
   },
-
   "blogs": {
     "learnMoreText": "Erfahren Sie mehr",
     "buttonBack": "Zurück",
     "title": "Was über uns gesagt wird ",
     "subtitle": "Wir haben viele hervorragende Kundenrückmeldungen. Hier ist eine kleine Auswahl der neuesten Feedbacks, die wir erhalten haben.",
     "planJourneyText": "Planen Sie Ihre Reise jetzt",
-
     "blog1PreviewTitle": "Diam ac odio id lectus mi..",
     "blog1PreviewSubTitle": "Quis mi id scelerisque viverra neque",
     "blog1PreviewText": "Quam sed pellentesque odio sit gravida. Nulla eget sed non hendrerit velit quis cum diam. Ante non et hac elit. Mollis sit a sit cursus donec turpis orci. Pharetra, donec neque eget adipiscing. Auctor nulla orci est vestibulum in non vitae, viverra turpis. Dignissim egestas vel, morbi senectus amet fermentum tincidunt. Amet imperdiet pharetra, est et quis eu mollis ultricies. Quis mi id scelerisque viverra neque.",
@@ -465,12 +438,10 @@
     "blogArticleText": "A lorem nibh maecenas porttitor risus purus enim pretium morbi. Ut nec tincidunt risus bibendum facilisis velit. Integer eleifend malesuada elit nulla tristique mattis a fusce. Vivamus curabitur lectus sit neque sed et facilisi libero mi",
     "date": "Juli"
   },
-
   "specialOffers": {
     "title": "Sonderangebote",
     "subtitle": " Unsere über 30 jährige Erfahrung in Reisebegleitung in Griechenland und Zypern hat uns dazugebracht, Ihnen die besten Angebote für Ihr Budget herauszusuchen. Finden Sie untenstehend viele Reisemöglichkeiten mit Rabatten. Wir freuen uns auf Ihre Anfrage!"
   },
-
   "tripForm": {
     "title": "Zurück zum vorherigen Schritt",
     "resetText": "Alle Änderungen zurücksetzen",
@@ -479,7 +450,6 @@
     "crumbStep2": "Schritt 2:",
     "stepName2": "Angaben zu den Reisenden"
   },
-
   "navigation": {
     "navigate": {
       "home": "Startseite",
@@ -524,7 +494,6 @@
       "link9": "Broschüre"
     }
   },
-
   "vouchers": {
     "pageTitle": "Geschenkgutscheine",
     "pageSubTitle": "Was gibt es Schöneres, als das Lächeln Ihres Gegenübers zu sehen nach Erhalt eines tollen Geschenks? Wie wär's mit einem Geschenkgutschein für die nächste Reise? Wir stellen wir Ihnen gerne einen aus!",
@@ -570,7 +539,6 @@
     "invoiceBlock3": "Gültigkeit:Der Gutschein wird nach Zahlung des Rechnungsbetrages gültig.",
     "buttonDone": "Bestellung bestätigen"
   },
-
   "hotels": {
     "title": "Hotels",
     "subTitle": "Wählen Sie das Gebiet, das Sie entdecken möchten",
@@ -586,7 +554,6 @@
     "tags": "Stichwörter",
     "from": "Von"
   },
-
   "hotel": {
     "more": "Mehr ansehen",
     "calendar": "Ihr Reisezeitraum",
@@ -604,7 +571,6 @@
     "nearbyTitle": "Reiseziele in der Nähe",
     "nearbySubTitle": "Suchen Sie etwas anderes? Schauen Sie sich auch verschiedene Orte in der näheren Umgebung an."
   },
-
   "pdfs": {
     "name": "Reisebezeichnung:",
     "page": "Seite 1 von 3",
@@ -623,7 +589,6 @@
     "address": "Adresse und Arbeitszeiten",
     "phone": "Telefonnummer und E-Mail"
   },
-
   "forms": {
     "inputLabel1": "E-Mail",
     "inputLabel2": "E-Mail-Adresse",
@@ -656,7 +621,6 @@
     "inputLabel29": "Im Geschäft",
     "inputLabel30": "Vollständiger Name und Nachname",
     "inputLabel31": "Vollzeit",
-
     "radioLabel1": "Economy Class",
     "radioLabel2": "Business Class",
     "radioLabel3": "Frau",
@@ -672,18 +636,15 @@
     "radioLabel13": "Vollpension",
     "radioLabel14": "Halbpension",
     "radioLabel15": "Übernachtung und Frühstück",
-
     "inputNumber1": "Erwachsene",
     "inputNumber2": "Kinder",
     "inputNumber3": "Personenanzahl in einem Zimmer:",
-
     "email1": "knownothing@example.com",
     "email2": "jon@knownothing.net",
     "email3": "jon.doe@example.com",
     "larosEmail": "info@laros.ch",
     "phoneNumber": "+ 41 061 / 756 80 80"
   },
-
   "common": {
     "contactText": "Kontakt",
     "filterTitle": "Sortieren nach",
@@ -700,6 +661,6 @@
     "forChanging": "für Umkleideraumtyp",
     "addLocation": "Hinzufügen von Standorten",
     "traveler": "Reisende",
-    "travelAgent" : "Sind Sie Reiseveranstalter?"
+    "travelAgent": "Sind Sie Reiseveranstalter?"
   }
 }

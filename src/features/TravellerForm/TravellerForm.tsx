@@ -194,7 +194,7 @@ export const TravellerForm: FC<TravellerFormProps> = ({
                       {...field}
                       name={`travellers.${index}.address`}
                       onChange={onChange}
-                      value={value}
+                      value={address}
                       options={[{ label: address, value: address }]}
                     />
                   </div>
