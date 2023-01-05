@@ -1,10 +1,8 @@
 import { FC, useEffect, useState } from 'react'
 import cn from 'classnames'
 
-import { Button } from 'components'
-import { RangeMarks } from 'components/RangeMarks'
-import { Select } from 'components/Select'
-import { HotelCard } from '../HotelCard'
+import { Button, Select, RangeMarks } from 'components'
+import { HotelChangingCard } from './HotelChangingCard/HotelChangingCard'
 
 import { useGetHotels } from 'shared/hooks/useGetHotels'
 import { Hotel, HotelFilterParams } from 'shared/types/hotel'
@@ -139,8 +137,7 @@ export const ChangeHotelModal: FC<ChangeHotelProps> = ({
             {!isLoading &&
               hotels.map((item, idx) => {
                 return (
-                  // @ts-ignore
-                  <HotelCard
+                  <HotelChangingCard
                     onClick={id => setSelectedHotel(id)}
                     key={idx}
                     hotel={item}

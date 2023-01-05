@@ -2,18 +2,18 @@ import { FC } from 'react'
 import { useRouter } from 'next/router'
 // @ts-ignore
 import ReactStars from 'react-rating-stars-component'
+import cn from 'classnames'
 
 import { FieldsType, StartTripForm, InfoTags } from 'features'
-import { Map, TruncatedText } from 'components'
+import { Map } from 'components'
 
 import { useAppDispatch } from 'shared/hooks/redux'
 import { updateForm } from 'store/slices/order/order'
+import { useTranslate } from 'shared/hooks/useTranslate'
 
-import { TRUNCATED_ROOM_CARD_TEXT_SIZE } from 'shared/constants'
 import { Hotel } from 'shared/types/hotel'
 
 import s from './HotelIntro.module.scss'
-import { useTranslate } from '../../../shared/hooks/useTranslate'
 
 export const HotelIntro: FC<Hotel> = ({
   description,
@@ -73,7 +73,7 @@ export const HotelIntro: FC<Hotel> = ({
 
         {description ? (
           <div
-            className={s.description}
+            className={cn(s.description, ['scrollStyle'])}
             dangerouslySetInnerHTML={{ __html: description }}
           />
         ) : null}
