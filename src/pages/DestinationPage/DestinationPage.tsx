@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { FC, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import _ from 'lodash'
 
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { getDestinationsThunk } from 'store/slices/destinations/thunk'
@@ -16,7 +17,6 @@ import { getPath } from 'shared/helpers/getPath'
 import Arrow from '/public/assets/images/blackArrow.svg'
 
 import s from './DestinationPage.module.scss'
-import _ from 'lodash'
 
 export const DestinationPage: FC = () => {
   const dispatch = useAppDispatch()

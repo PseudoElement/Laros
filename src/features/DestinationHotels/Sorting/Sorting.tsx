@@ -89,7 +89,7 @@ const Sorting: FC<SortingProps> = ({ map, setParams, params }) => {
         <Select
           // @ts-ignore
           onChange={changeSubRegion}
-          classname={s.select}
+          classname={cn(s.select, ['scrollStyle'])}
           // @ts-ignore
           value={subRegions.filter(
             region =>
@@ -101,6 +101,7 @@ const Sorting: FC<SortingProps> = ({ map, setParams, params }) => {
           isMulti
           options={subRegions}
         />
+
         <Select
           placeholder={t('hotels.select2Title')}
           onChange={changeCategory}
@@ -131,10 +132,11 @@ const Sorting: FC<SortingProps> = ({ map, setParams, params }) => {
           />
         </div>
       </div>
+
       <div className={s.sorting}>
         <div className={s.tags}>
           <div className={s.tag}>{t('hotels.tags')}:</div>
-          <div className={s.tabs}>
+          <div className={cn(s.tabs, ['scrollStyle'])}>
             {tags.map(tab => (
               <div
                 onClick={() => changeTabs(tab.id)}
@@ -148,6 +150,7 @@ const Sorting: FC<SortingProps> = ({ map, setParams, params }) => {
             ))}
           </div>
         </div>
+
         <div className={s.direction}>
           {t('hotels.from')}
           <Select

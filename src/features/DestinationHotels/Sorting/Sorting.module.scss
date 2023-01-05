@@ -22,16 +22,17 @@
     flex-wrap: nowrap;
     overflow: hidden;
     overflow-x: auto;
+
     &::-webkit-scrollbar {
       height: 5px;
     }
     &::-webkit-scrollbar-track {
-      background: $color-white;
+      background: $color-layout-light-blue;
+      border-radius: 2px;
     }
     &::-webkit-scrollbar-thumb {
-      background-color: $color-laros-dark-grey;
+      background-color: $color-layout-light-blue-2;
       border-radius: 24px;
-      border: 1px solid $color-light-grey;
     }
   }
 
@@ -87,18 +88,6 @@
   list-style-type: none;
   overflow-x: auto;
   align-items: center;
-
-  &::-webkit-scrollbar {
-    height: 8px;
-  }
-  &::-webkit-scrollbar-track {
-    background: $color-modal-header;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: $color-laros-dark-grey;
-    border-radius: 24px;
-    border: 1px solid $color-light-grey;
-  }
 }
 
 .tab {
