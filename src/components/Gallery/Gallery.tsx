@@ -66,6 +66,7 @@ export const Gallery: FC<GalleryProps> = ({ images, isOpen = 0, onClose }) => {
             ))}
           </Swiper>
         </div>
+
         <div className={s.sliderThumbs}>
           {images.map((item, id) => (
             <div
