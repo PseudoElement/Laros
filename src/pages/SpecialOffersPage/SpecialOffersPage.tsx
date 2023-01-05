@@ -109,7 +109,7 @@ export const SpecialOffersPage: FC = () => {
                   })) ?? []
                 }
                 onChange={onChange}
-                value={value}
+                value={value ?? []}
                 classname={s.select}
               />
             )}
@@ -129,7 +129,7 @@ export const SpecialOffersPage: FC = () => {
                   ) ?? []
                 }
                 onChange={onChange}
-                value={value}
+                value={value ?? []}
                 isMulti
                 classname={s.select}
               />
@@ -163,6 +163,7 @@ export const SpecialOffersPage: FC = () => {
                 value={value}
                 hasArrow={false}
                 classname={s.select}
+                isClearable={false}
               />
             )}
           />

@@ -172,7 +172,7 @@ export const TripOffersPage: FC = () => {
                     })) ?? []
                   }
                   onChange={onChange}
-                  value={value}
+                  value={value ?? null}
                   classname={s.select}
                 />
               )}
@@ -193,7 +193,7 @@ export const TripOffersPage: FC = () => {
                     ) ?? []
                   }
                   onChange={onChange}
-                  value={value}
+                  value={value ?? []}
                   isMulti
                   classname={s.select}
                 />
@@ -227,6 +227,7 @@ export const TripOffersPage: FC = () => {
                   value={value}
                   hasArrow={false}
                   classname={s.select}
+                  isClearable={false}
                 />
               )}
             />

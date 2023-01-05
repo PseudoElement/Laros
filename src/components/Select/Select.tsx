@@ -25,6 +25,7 @@ interface OptionsProps {
   hasArrow?: boolean
   onInputChange?: (value: string) => void
   async?: boolean
+  isClearable?: boolean
   loadOptions?: any // TODO in future
 }
 
@@ -39,6 +40,7 @@ export const SelectComponent: FC<OptionsProps> = ({
   loadOptions,
   onChange,
   onInputChange,
+  isClearable = true,
 }) => {
   const DropdownIndicator: FC<DropdownIndicatorProps> = props =>
     hasArrow ? (
@@ -144,6 +146,7 @@ export const SelectComponent: FC<OptionsProps> = ({
       className={cn(s.select, classname)}
       placeholder={placeholder}
       onInputChange={onInputChange}
+      isClearable={isClearable}
     />
   )
 }

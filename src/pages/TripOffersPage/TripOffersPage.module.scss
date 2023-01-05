@@ -112,8 +112,9 @@
   font-size: 12px;
   font-weight: $fw-regular;
   line-height: 20px;
+
   [class$='-control'] {
-    border: 1px solid $color-laros-dark-grey;
+    border: 1px solid $color-modal-bg;
     border-radius: 8px;
     background-color: $color-white;
   }
