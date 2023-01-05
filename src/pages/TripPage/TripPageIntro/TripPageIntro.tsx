@@ -62,7 +62,7 @@ export const TripPageIntro: FC<Trip> = ({
 
         {description ? (
           <div
-            className={s.description}
+            className={cn(s.description, ['scrollStyle'])}
             dangerouslySetInnerHTML={{ __html: description }}
           />
         ) : null}
