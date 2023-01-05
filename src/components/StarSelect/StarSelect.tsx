@@ -80,9 +80,9 @@ export const StarSelectComponent: FC<OptionsProps> = ({
   const Control: FC<SelectControlProps> = props => {
     return (
       <components.Control {...props}>
-        {props.getValue().map(item => {
+        {props.getValue().map((item, idx) => {
           return (
-            <div className={s.iconWrap}>
+            <div key={idx} className={s.iconWrap}>
               {item.icon
                 ? item.icon.map((item, index) => (
                     <span key={index} className={s.icon}>
