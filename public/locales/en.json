@@ -261,7 +261,7 @@
     "proPerson": "pro person",
     "addRoom": "Add room",
     "startTripButton": "Start trip planning",
-    "highlights": "Highlights:",
+    "highlights": "Highlights",
     "seeMore": "See more",
     "areasOfTitle": "Areas of",
     "areasOfSubTitle": "At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo."
@@ -366,7 +366,7 @@
     "add": "Add this location to the trip",
     "save": "Save changes",
     "cancel": "Cancel",
-    "highlights": "Highlights:"
+    "highlights": "Highlights"
   },
 
   "changingHotel": {
