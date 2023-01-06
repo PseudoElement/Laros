@@ -25,15 +25,14 @@ const mainNavItems = [
 ]
 
 export const Header: FC = () => {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState<boolean>(false)
   const burgerMenu = cn(s.hamburger, open && s.hamburgerMenuClose)
   const togleMenu = () => {
     setOpen(!open)
   }
-  const isCollapsed = useCollapsedHeader()
-  const t = useTranslate()
   const widthWindow = useWindowDimensions().width
-  console.log(widthWindow)
+  const isCollapsed = widthWindow >= 768 ? useCollapsedHeader() : false
+  const t = useTranslate()
 
   return (
     <>
@@ -43,7 +42,11 @@ export const Header: FC = () => {
       <div className={s.fixed}>
         <div className={s.container}>
           <header>
-            <div className={cn(s.header, { [s.collapsed]: isCollapsed })}>
+            <div
+              className={cn(s.header, {
+                [s.collapsed]: isCollapsed,
+              })}
+            >
               {widthWindow >= 768 ? (
                 <div className={s.mainNav}>
                   {mainNavItems.map(item => (

@@ -1,6 +1,5 @@
 @use 'styles/style.scss' as *;
 
-
 .navMenu {
   position: fixed;
   display: flex;
@@ -19,7 +18,7 @@
   left: 0;
   transition: 0.3s;
   transform: translateX(0);
-  z-index: 9999;
+  z-index: 8888;
 }
 
 .logo {
@@ -28,16 +27,16 @@
   top: 15px;
   left: 43%;
 }
-.row{
-    width: 100%;
-    border: 1px solid #fff;
-    margin-top: 15px;
+.row {
+  width: 100%;
+  border: 1px solid $color-white;
+  margin-top: 15px;
 }
 
 .navItem {
   font-size: 20px;
   width: 200px;
-  color: #fff;
+  color: $color-white;
 }
 .bottomNav {
   position: absolute;
@@ -50,49 +49,49 @@
   .headGift {
     min-width: 140px;
     height: 100%;
-    background-color: #0abaee;
-    color: #fafbfc;
+    background-color: $color-white-blue;
+    color: $color-light-grey;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    padding:20px;
+    padding: 20px;
 
     div {
       font-weight: 800;
-      color: #fafbfc;
+      color: $color-light-grey;
     }
   }
 }
-.headContactUse{
-    display: flex;
-    gap: 10px;
-    span{
-        color: $color-white;
-    }
+.headContactUse {
+  display: flex;
+  gap: 10px;
+  span {
+    color: $color-white;
+  }
 }
-.subNav{
-    width: 200px;
-    position: absolute;
-    top: 250px;
-    left: auto;
-    display: flex;
-    flex-direction: column;
-    height: 500px;
-    div{
-        background-color: transparent;
-    }
+.subNav {
+  width: 200px;
+  position: absolute;
+  top: 250px;
+  left: auto;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  div {
+    background-color: transparent;
+  }
 }
 
-.subNavMobile{
-    background-color: none !important;
+.subNavMobile {
+  background-color: none !important;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  div {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    div{
-        display: flex;
-        border:  none !important;
-        font-size: 20px;
-        justify-content: start;
-    }
+    border: none !important;
+    font-size: 20px;
+    justify-content: start;
+  }
 }

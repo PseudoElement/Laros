@@ -16,6 +16,13 @@
 .partners {
   padding: 71.2px 80px 80px;
   background: rgba(242, 245, 248, 0.3);
+
+  @include mobile-tablet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 51.2px 20px 20px;
+  }
 }
 .blockImg {
   display: flex;
@@ -153,12 +160,11 @@
     line-height: 12px;
     text-align: right;
   }
-}
 
-@include mobile {
-  .textInfo {
+  @include mobile {
     margin: 0;
   }
+
   .content {
     flex-direction: column;
   }
@@ -186,14 +192,5 @@
     span {
       font-size: 10px;
     }
-  }
-}
-
-@include mobile-tablet {
-  .partners {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 51.2px 20px 20px;
   }
 }

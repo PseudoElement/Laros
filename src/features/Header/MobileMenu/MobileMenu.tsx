@@ -7,13 +7,9 @@ import Image from 'next/image'
 import { SubNav } from '../SubNav'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
-import { useCollapsedHeader } from 'shared/hooks/useCollapsedHeader'
 
 import callImg from '/public/assets/images/call.svg?url'
 import giftImg from '/public/assets/images/gift.svg?url'
-import logoFull from '/public/assets/images/laros_logo_rgb_web.svg?url'
-import logo from '/public/assets/images/logo.svg?url'
-
 import s from './MobileMenu.module.scss'
 
 interface MenuItem {
@@ -36,21 +32,11 @@ export const MobileMenu: FC<MobileMenuProps> = ({
 }) => {
   const t = useTranslate()
   const isOpenMenu = cn(s.navMenu, isOpen && s.navMenuOpen)
-  const isCollapsed = useCollapsedHeader()
 
   return (
     <>
       <div onClick={onClick} className={className}></div>
       <div className={isOpenMenu}>
-        <div className={s.logo}>
-          <Link href={'/'}>
-            {isCollapsed ? (
-              <Image src={logo} width={100} height={20} alt='' />
-            ) : (
-              <Image src={logoFull} width={100} height={40} alt='' />
-            )}
-          </Link>
-        </div>
         {children.length
           ? children.map(item => (
               <div key={item.to} className={s.navItem}>
