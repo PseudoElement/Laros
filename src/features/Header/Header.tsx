@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import cn from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -15,6 +15,8 @@ import logoFull from '/public/assets/images/laros_logo_rgb_web.svg?url'
 import logo from '/public/assets/images/logo.svg?url'
 
 import s from './Header.module.scss'
+import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
+import { MobileMenu } from './MobileMenu/MobileMenu'
 
 const mainNavItems = [
   { name: 'navigation.navigate.home', to: '/' },
@@ -23,8 +25,15 @@ const mainNavItems = [
 ]
 
 export const Header: FC = () => {
+  const [open, setOpen] = useState(false)
+  const burgerMenu = cn(s.hamburger, open && s.hamburgerMenuClose)
+  const togleMenu = () => {
+    setOpen(!open)
+  }
   const isCollapsed = useCollapsedHeader()
   const t = useTranslate()
+  const widthWindow = useWindowDimensions().width
+  console.log(widthWindow)
 
   return (
     <>
@@ -35,17 +44,24 @@ export const Header: FC = () => {
         <div className={s.container}>
           <header>
             <div className={cn(s.header, { [s.collapsed]: isCollapsed })}>
-              <div className={s.mainNav}>
-                {mainNavItems.map(item => {
-                  return (
+              {widthWindow >= 768 ? (
+                <div className={s.mainNav}>
+                  {mainNavItems.map(item => (
                     <div key={item.to} className={s.navItem}>
                       <Link href={item.to}>
                         <a>{t(item.name)}</a>
                       </Link>
                     </div>
-                  )
-                })}
-              </div>
+                  ))}
+                </div>
+              ) : (
+                <MobileMenu
+                  className={burgerMenu}
+                  onClick={togleMenu}
+                  children={mainNavItems}
+                  isOpen={open}
+                />
+              )}
               <div className={s.logo}>
                 <Link href={'/'}>
                   {isCollapsed ? (
@@ -55,36 +71,39 @@ export const Header: FC = () => {
                   )}
                 </Link>
               </div>
-              <div className={s.rightNav}>
-                <Link href='/contact'>
-                  <div className={s.headContactUse}>
-                    <Image
-                      className={s.headSmIcon}
-                      src={callImg}
-                      width={12}
-                      height={12}
-                      alt='call'
-                    />
-                    <span>{t('navigation.header.contactText')}</span>
-                  </div>
-                </Link>
 
-                <Link href='/voucher'>
-                  <div className={s.headGift}>
-                    <Image
-                      className={s.headSmIcon}
-                      src={giftImg}
-                      width={16}
-                      height={16}
-                      alt='call'
-                    />
-                    <div>&nbsp;{t('navigation.header.voucherText')}</div>
-                  </div>
-                </Link>
-              </div>
+              {widthWindow >= 768 ? (
+                <div className={s.rightNav}>
+                  <Link href='/contact'>
+                    <div className={s.headContactUse}>
+                      <Image
+                        className={s.headSmIcon}
+                        src={callImg}
+                        width={12}
+                        height={12}
+                        alt='call'
+                      />
+                      <span>{t('navigation.header.contactText')}</span>
+                    </div>
+                  </Link>
+
+                  <Link href='/voucher'>
+                    <div className={s.headGift}>
+                      <Image
+                        className={s.headSmIcon}
+                        src={giftImg}
+                        width={16}
+                        height={16}
+                        alt='call'
+                      />
+                      <div>&nbsp;{t('navigation.header.voucherText')}</div>
+                    </div>
+                  </Link>
+                </div>
+              ) : null}
             </div>
 
-            <SubNav />
+            {widthWindow >= 768 ? <SubNav /> : null}
           </header>
         </div>
       </div>
