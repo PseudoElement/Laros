@@ -20,6 +20,9 @@
 
 .collapsed {
   height: 40px;
+  @include mobile {
+    height: 72px;
+  }
 }
 
 .rightNav {

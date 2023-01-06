@@ -30,8 +30,8 @@ export const Header: FC = () => {
   const togleMenu = () => {
     setOpen(!open)
   }
-  const widthWindow = useWindowDimensions().width
-  const isCollapsed = widthWindow >= 768 ? useCollapsedHeader() : false
+  const widthWindow = useWindowDimensions().width >= 768
+  const isCollapsed = useCollapsedHeader()
   const t = useTranslate()
 
   return (
@@ -47,7 +47,7 @@ export const Header: FC = () => {
                 [s.collapsed]: isCollapsed,
               })}
             >
-              {widthWindow >= 768 ? (
+              {widthWindow ? (
                 <div className={s.mainNav}>
                   {mainNavItems.map(item => (
                     <div key={item.to} className={s.navItem}>
@@ -68,14 +68,19 @@ export const Header: FC = () => {
               <div className={s.logo}>
                 <Link href={'/'}>
                   {isCollapsed ? (
-                    <Image src={logo} width={100} height={20} alt='' />
+                    <Image
+                      src={widthWindow ? logo : logoFull}
+                      width={100}
+                      height={widthWindow ? 20 : 40}
+                      alt=''
+                    />
                   ) : (
                     <Image src={logoFull} width={100} height={40} alt='' />
                   )}
                 </Link>
               </div>
 
-              {widthWindow >= 768 ? (
+              {widthWindow ? (
                 <div className={s.rightNav}>
                   <Link href='/contact'>
                     <div className={s.headContactUse}>
@@ -106,7 +111,7 @@ export const Header: FC = () => {
               ) : null}
             </div>
 
-            {widthWindow >= 768 ? <SubNav /> : null}
+            {widthWindow ? <SubNav /> : null}
           </header>
         </div>
       </div>

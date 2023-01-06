@@ -11,6 +11,10 @@
   display: flex;
   justify-content: center;
   background: #fafbfc;
+
+  @include mobile {
+    flex-direction: column;
+  }
 }
 
 .partners {
@@ -50,6 +54,10 @@
   margin-left: 80px;
   margin-top: 40px;
   margin-bottom: 55px;
+
+  @include mobile {
+    margin-left: 30px;
+  }
 }
 
 .subtitleFooter {
@@ -58,6 +66,12 @@
   span {
     color: #1b242d;
     font-size: 12px;
+  }
+
+  @include mobile {
+    span {
+      font-size: 10px;
+    }
   }
 }
 
@@ -98,11 +112,19 @@
   ul {
     padding-left: 0;
   }
+
+  @include mobile {
+    padding-right: 20px;
+  }
 }
 
 .socialList {
   display: flex;
   margin: 0;
+
+  @include mobile {
+    flex-direction: column;
+  }
 }
 
 .socialItem:not(:last-child) {
@@ -120,12 +142,25 @@
   justify-content: space-between;
   background-color: #1b242d;
   height: 40px;
+
+  @include mobile {
+    height: 100%;
+    padding: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }
 
 .navList {
   display: flex;
   margin: 0;
   // margin-left: 80px;
+
+  @include mobile {
+    padding: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 .navItem {
@@ -160,37 +195,7 @@
     line-height: 12px;
     text-align: right;
   }
-
   @include mobile {
     margin: 0;
-  }
-
-  .content {
-    flex-direction: column;
-  }
-  .navigation {
-    height: 100%;
-    padding: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .navList {
-    padding: 0;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .socialList {
-    flex-direction: column;
-  }
-  .listInfo {
-    padding-right: 20px;
-  }
-  .about {
-    margin-left: 30px;
-  }
-  .subtitleFooter {
-    span {
-      font-size: 10px;
-    }
   }
 }

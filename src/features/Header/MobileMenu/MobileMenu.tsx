@@ -46,7 +46,7 @@ export const MobileMenu: FC<MobileMenuProps> = ({
               </div>
             ))
           : null}
-          <div className={s.row}/>
+        <div className={s.row} />
         <div className={s.bottomNav}>
           <Link href='/contact'>
             <div className={s.headContactUse}>
@@ -74,9 +74,9 @@ export const MobileMenu: FC<MobileMenuProps> = ({
             </div>
           </Link>
         </div>
-          <div className={s.subNav}>
-            <SubNav className={s.subNavMobile}/>
-          </div>
+        <div className={s.subNav}>
+          <SubNav className={s.subNavMobile} />
+        </div>
       </div>
     </>
   )
