@@ -24,10 +24,10 @@ export const InputCalendarDouble: FC<InputCalendarProps> = ({
 
   const showCalendarString = () =>
     doubleValue ? (
-      <>
+      <div className={s.text}>
         {dateFormatter(doubleValue[0], monthsCut)} -{' '}
         {dateFormatter(doubleValue[1], monthsCut)}
-      </>
+      </div>
     ) : (
       ''
     )

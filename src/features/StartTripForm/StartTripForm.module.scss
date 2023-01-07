@@ -69,6 +69,10 @@
   display: flex;
   gap: 24px;
   margin-bottom: 18px;
+
+  @include mobile-tablet{
+    flex-direction: column;
+  }
 }
 .numberInput {
   input {
