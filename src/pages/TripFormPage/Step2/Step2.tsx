@@ -120,6 +120,7 @@ export const Step2: FC<Step2Props> = ({ setStep, capacity, countries }) => {
               render={({ field: { onChange, value } }) => (
                 <Select
                   onChange={onChange}
+                  // @ts-ignore
                   value={value}
                   options={countries}
                   placeholder={t('common.select')}
