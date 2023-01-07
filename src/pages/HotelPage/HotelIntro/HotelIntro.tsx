@@ -49,7 +49,8 @@ export const HotelIntro: FC<Hotel> = ({
     dispatch(
       updateForm({
         rooms: fields.rooms,
-        date_start: [Number(fields.date[0]), Number(fields.date[1])],
+        date_start: Number(fields.date[0]),
+        // date_start: [Number(fields.date[0]), Number(fields.date[1])], //TODO fix when fix api
       })
     )
     push(`/trip_form`)

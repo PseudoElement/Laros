@@ -17,6 +17,7 @@ import { getPath } from 'shared/helpers/getPath'
 import Arrow from '/public/assets/images/blackArrow.svg'
 
 import s from './DestinationPage.module.scss'
+import _ from 'lodash' // TODO use certain method
 
 export const DestinationPage: FC = () => {
   const dispatch = useAppDispatch()
