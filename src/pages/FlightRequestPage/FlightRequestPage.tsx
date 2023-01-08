@@ -5,7 +5,6 @@ import {
   useFieldArray,
   useForm,
 } from 'react-hook-form'
-import { useRouter } from 'next/router'
 import cn from 'classnames'
 import Link from 'next/link'
 
@@ -41,7 +40,6 @@ export const FlightRequestForm: FC<FlightRequestFormProps> = ({
   onFormSubmit,
 }) => {
   const dispatch = useAppDispatch()
-  const router = useRouter()
   const t = useTranslate()
 
   const DEFAULT_ADULTS_COUNT = 2 // more to shared/ folder
@@ -189,6 +187,7 @@ export const FlightRequestForm: FC<FlightRequestFormProps> = ({
             <div className={s.radio}>
               <div className={s.radioLabel}>{t('worldwideTours.label5')}</div>
               <Radio
+                classname={s.radioInput}
                 name='class'
                 onChange={onChange}
                 value={value}
