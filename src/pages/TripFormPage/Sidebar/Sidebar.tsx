@@ -10,6 +10,7 @@ import {
   Map,
   Modal,
 } from 'components'
+import { ContactForm } from 'features'
 
 import { dateFormatter } from 'shared/helpers/dateFormatter'
 import { useTranslate } from 'shared/hooks/useTranslate'
@@ -29,7 +30,6 @@ import add from '/public/assets/images/plus.svg?url'
 import trash from '/public/assets/images/Trash.svg?url'
 
 import s from './Sidebar.module.scss'
-import { ContactForm } from '../../../features'
 
 export interface SideBarProps {
   route: string | null
@@ -53,8 +53,8 @@ export const Sidebar: FC<SideBarProps> = ({
   const [editDate, setEditDate] = useState(false)
   const [editRooms, setEditRooms] = useState(false)
   const [currentDate, setCurrentDate] = useState<Date[]>([
-    new Date(),
-    new Date(),
+    new Date(travel_date),
+    new Date(travel_date),
   ])
 
   // get total adults or total children in rooms
@@ -275,7 +275,9 @@ export const Sidebar: FC<SideBarProps> = ({
               </div>
             ) : null}
 
-            <div className={s.content}>{total} CHF / {t('tripSteps.person')}</div>
+            <div className={s.content}>
+              {total} CHF / {t('tripSteps.person')}
+            </div>
           </div>
         </div>
 

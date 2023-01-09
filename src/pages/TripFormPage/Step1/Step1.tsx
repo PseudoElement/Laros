@@ -217,11 +217,13 @@ export const Step1: FC<Step1Props> = ({
           />
         </div>
       </div>
-      <div onClick={() => addLocation()} className={s.addLocationSection}>
-        <AddIcon />
-        <div className={s.addLocationTitle}>{t('tripSteps.add')}</div>
-        <div className={s.addLocationInfo}>
-          <InfoIcon />
+      <div className={s.addLocationSectionWrap}>
+        <div className={s.addLocationSection}  onClick={() => addLocation()}>
+          <AddIcon />
+          <div className={s.addLocationTitle}>{t('tripSteps.add')}</div>
+          <div className={s.addLocationInfo}>
+            <InfoIcon />
+          </div>
         </div>
       </div>
       <div className={s.actions}>

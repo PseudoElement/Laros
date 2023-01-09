@@ -34,7 +34,7 @@
 }
 
 .title {
-  padding-top: 37px;
+  padding-top: 10px;
   padding-bottom: 8px;
   font-style: normal;
   font-weight: 700;
@@ -49,6 +49,9 @@
   width: 90%;
   margin: 0 auto;
   color: $color-white;
+  height: 80px;
+  overflow: hidden;
+  overflow-y: auto;
 }
 
 .button {

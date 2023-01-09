@@ -2,8 +2,10 @@ import Axios from 'axios'
 
 export * from './endpoints'
 
+export const URL = `https://developer.laros.ch/api/`
+
 export const api = Axios.create({
-  baseURL: `https://developer.laros.ch/api/`,
+  baseURL: URL,
   headers: {
     'Content-Type': 'application/json',
   },

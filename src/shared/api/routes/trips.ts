@@ -41,9 +41,3 @@ export const getTripsNearby = (
 ): AxiosPromise<AxiosPaginatedResponse> => {
   return api.get(endpoints.trips.near(id))
 }
-
-export const getTripPdf = (
-  id: number
-): AxiosPromise<AxiosPaginatedResponse> => {
-  return api.get(endpoints.trips.pdf(id))
-}

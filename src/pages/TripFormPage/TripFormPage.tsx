@@ -11,19 +11,22 @@ import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { updateForm } from 'store/slices/order/order'
 import { useTranslate } from 'shared/hooks/useTranslate'
 import { Sidebar } from './Sidebar/Sidebar'
-import { getTripPdf } from 'shared/api/routes/trips'
+
+import { countriesToOptions } from 'shared/helpers/transformers'
+import { downloadFile } from 'shared/helpers/downloadFile'
+import { URL } from 'shared/api'
 
 import { PeopleCapacity } from 'shared/types/order'
 
 import bg from '/public/assets/images/tripFormBg.png'
 
 import s from './TripFormPage.module.scss'
-import { countriesToOptions } from 'shared/helpers/transformers'
 
 export enum Steps {
   FIRST,
   SECOND,
 }
+
 export const TripFormPage: FC = () => {
   const [step, setStep] = useState(Steps.FIRST)
   const { query, push } = useRouter()
@@ -37,13 +40,8 @@ export const TripFormPage: FC = () => {
   const form = useAppSelector(state => state.order.form)
 
   // download trip pdf
-  const handleDownload = async () => {
-    try {
-      const { data } = await getTripPdf(2)
-      // console.log(data)
-    } catch ({ error }) {
-      console.log(error)
-    }
+  const handleDownload = () => {
+    downloadFile(`${URL}trip/${Number(query.trip)}/pdf`)
   }
 
   // next step
