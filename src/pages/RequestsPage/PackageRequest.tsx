@@ -88,7 +88,6 @@ export const PackageRequestForm: FC = () => {
 
   // get select options from Depart from, Arrival to
   const airportOptions = async (inputValue: string) => {
-    console.log(inputValue)
     const { data } = await getAirports(inputValue)
     return data.data.map((item: Airport) => ({
       label: item.name,
