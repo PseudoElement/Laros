@@ -62,7 +62,6 @@ export const TravellerAddressForm: FC<TravellerAddressFormProps> = ({
     const address2 = watch(`travellers.${index}.address2`) ?? ''
     const zip = watch(`travellers.${index}.zip`) ?? ''
     const address = `${address1} ${address2} ${zip} ${city} ${country.value}`
-    console.log(address)
     if (address.length > 4) setAddress(index, address)
   }
 
