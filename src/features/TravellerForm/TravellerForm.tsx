@@ -172,7 +172,7 @@ export const TravellerForm: FC<TravellerFormProps> = ({
               <Controller
                 name={`travellers.${index}.address`}
                 control={control}
-                render={({ field: { onChange } }) => (
+                render={({ field: { onChange, value } }) => (
                   <div className={cn(s.radio, s.addressRadio)}>
                     <div className={cn(s.radioLabel, s.addressRadioLabel)}>
                       <div>{`${t('worldwideTours.address')} #${
@@ -194,7 +194,7 @@ export const TravellerForm: FC<TravellerFormProps> = ({
                       {...field}
                       name={`travellers.${index}.address`}
                       onChange={onChange}
-                      value={address}
+                      value={value}
                       options={[{ label: address, value: address }]}
                     />
                   </div>
