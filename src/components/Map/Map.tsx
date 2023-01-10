@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
 import L, { Icon, LatLng, LatLngExpression, Layer } from 'leaflet'
-
-import s from './Map.module.scss'
-
-import 'leaflet/dist/leaflet.css'
-import 'leaflet-fullscreen/dist/Leaflet.fullscreen.js'
-import 'leaflet-fullscreen/dist/leaflet.fullscreen.css'
 
 import {
   MapContainer,
@@ -17,11 +10,18 @@ import {
   Marker,
 } from 'react-leaflet'
 
+import { withDomain } from 'shared/helpers/withDomain'
+import { convertLocation } from 'shared/helpers/convertLocation'
+
 import { Feature, GeoJsonObject, Point } from 'geojson'
 import { IconProperty, Route } from './types'
 
 import mapPin from '/public/assets/images/map-pin-marker.svg?url'
-import { convertLocation } from 'shared/helpers/convertLocation'
+
+import s from './Map.module.scss'
+import 'leaflet/dist/leaflet.css'
+import 'leaflet-fullscreen/dist/Leaflet.fullscreen.js'
+import 'leaflet-fullscreen/dist/leaflet.fullscreen.css'
 
 const icon = new Icon({
   iconUrl: mapPin,
@@ -84,7 +84,8 @@ const Map: React.FC<MapProps> = ({
         iconAnchor: iconAnchor,
         iconColor: iconColor,
         iconSize: iconSize,
-        iconUrl: iconUrl,
+        // @ts-ignore
+        iconUrl: withDomain(iconUrl),
         opacity: opacity,
         popupAnchor: popupAnchor,
       }),
@@ -98,7 +99,7 @@ const Map: React.FC<MapProps> = ({
           className={s.map}
           fullscreenControl={true}
           center={center}
-          zoom={12}
+          zoom={10}
           scrollWheelZoom={false}
           zoomControl={false}
         >

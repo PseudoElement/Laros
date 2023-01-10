@@ -17,12 +17,15 @@
 .endpoint {
   padding: 24px 0 24px 80px;
 }
-.addLocationSection {
-  cursor: pointer;
+.addLocationSectionWrap {
   border-top: 1px solid $color-laros-light-grey;
   padding: 26px 80px;
+  display: inline-block;
+}
+.addLocationSection {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 .addLocationTitle {
   margin-left: 8px;

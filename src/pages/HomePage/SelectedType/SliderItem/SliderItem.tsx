@@ -49,9 +49,9 @@ export const SliderItem: FC<SliderItemProps> = ({
         <Image src={icon} width={64} height={64} layout={'fixed'} />
         <h3 className={s.title}>{name}</h3>
 
-        <p className={s.text}>
+        <div className={cn(s.text, ['scrollStyle'])}>
           <div dangerouslySetInnerHTML={{ __html: description }} />
-        </p>
+        </div>
 
         <div className={s.button}>
           <Button onClick={() => onClickButton(id)} variant={'secondary'}>
