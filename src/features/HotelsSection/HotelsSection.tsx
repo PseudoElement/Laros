@@ -1,21 +1,21 @@
-import { FC } from 'react'
+import {FC} from 'react';
 
-import { HotelCard } from 'features'
-import { Slider } from 'components'
+import {HotelCard} from 'features';
+import {Slider} from 'components';
 
-import { Hotel } from 'shared/types/hotel'
+import {Hotel} from 'shared/types/hotel';
 
-import s from './HotelSection.module.scss'
-import { useWindowDimensions } from '../../shared/hooks/useWindowDimensions'
+import s from './HotelSection.module.scss';
+import {useWindowDimensions} from '../../shared/hooks/useWindowDimensions';
 
 interface HotelSection {
-  hotels: Hotel[]
-  title?: string
-  subTitle?: string
+  hotels: Hotel[];
+  title?: string;
+  subTitle?: string;
 }
 
-export const HotelSection: FC<HotelSection> = ({ hotels, title, subTitle }) => {
-  const { width } = useWindowDimensions()
+export const HotelSection: FC<HotelSection> = ({hotels, title, subTitle}) => {
+  const {width} = useWindowDimensions();
   return (
     <div className={s.hotelSection}>
       <div className={s.title}>{title}</div>
@@ -32,11 +32,11 @@ export const HotelSection: FC<HotelSection> = ({ hotels, title, subTitle }) => {
             slidesPerView={width > 1200 ? undefined : width > 800 ? 2 : 1}
           >
             {hotels.map(hotel => (
-              <HotelCard key={hotel.id} hotel={hotel} />
+              <HotelCard key={hotel.id} hotel={hotel}/>
             ))}
           </Slider>
         ) : null}
       </div>
     </div>
-  )
-}
+  );
+};

@@ -2,13 +2,23 @@
 
 .destination {
   padding: 80px;
+
+  @include mobile-tablet {
+    padding: 7px;
+  }
 }
+
 .destinationTitle {
   font-size: 16px;
   font-weight: $fw-bold;
   line-height: 20px;
   text-align: center;
+
+  @include mobile-tablet {
+    margin-top: 20px;
+  }
 }
+
 .destinationSubTitle {
   font-size: 12px;
   font-weight: $fw-regular;
@@ -16,12 +26,14 @@
   text-align: center;
   margin: 8px 0 48px;
 }
+
 .destinationWrap {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 8px;
 }
+
 .destinationItem {
   height: 200px;
   width: 30%;
@@ -33,7 +45,12 @@
   align-items: end;
   cursor: pointer;
   overflow: hidden;
+
+  @include mobile {
+    width: 100%;
+  }
 }
+
 .destinationItemDescription {
   margin: 0 0 16px 24px;
   color: $color-white;
