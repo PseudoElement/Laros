@@ -8,6 +8,10 @@
   font-weight: $fw-bold;
   font-size: 12px;
   line-height: 14px;
+
+  @include mobile-tablet {
+    padding-top: 10px
+  }
 }
 
 .areas {
@@ -25,4 +29,9 @@
   border-radius: 0px 0px 16px 16px;
   margin: auto;
   margin-bottom: 120px;
+
+  @include mobile-tablet {
+    margin-bottom: 0;
+    border-radius: 0;
+  }
 }

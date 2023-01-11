@@ -51,12 +51,13 @@ export const DestinationLayout: FC<DestinationLayoutProps> = ({
           <div className={s.select}>{t('destinations.selectRegion')}</div>
           <div className={s.title}>{title}</div>
 
-          <TruncatedText
+          {/* <TruncatedText
             limit={TRUNCATED_TEXT_SIZE}
             more={t('destinations.buttonMore')}
-          >
-            {description}
-          </TruncatedText>
+          > */}
+          <div dangerouslySetInnerHTML={{ __html: description }}>
+          </div>
+          {/* </TruncatedText> */}
         </div>
       </div>
       <div className={s.content}>{children}</div>
