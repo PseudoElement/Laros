@@ -12,6 +12,8 @@ import slideImg1 from '/public/assets/images/about/house_orange.jpg'
 import slideImg2 from '/public/assets/images/about/house_yellow.jpg'
 
 import s from './AboutPage.module.scss'
+import { useWindowDimensions } from '../../shared/hooks/useWindowDimensions'
+import { slidesPerViewAbout } from '../../shared/helpers/slidesPerView'
 
 export const AboutPage: FC = () => {
   const images = [slideImg1, slideImg2, slideImg1, slideImg2]
@@ -20,11 +22,12 @@ export const AboutPage: FC = () => {
   const handleOpen = (index: number) => {
     setOpenGallery(index)
   }
+  const { width } = useWindowDimensions()
 
   const t = useTranslate()
 
   return (
-    <>
+    <div className={s.container}>
       <div className={s.wrapper}>
         <div className={s.text}>
           <h1 className={s.title}>{t('about.title')}</h1>
@@ -42,7 +45,7 @@ export const AboutPage: FC = () => {
         </div>
       </div>
 
-      <SliderGalery>
+      <SliderGalery slidesPerView={slidesPerViewAbout(width)}>
         {images.map((item, index) => (
           <div
             className={s.galleryImage}
@@ -61,6 +64,6 @@ export const AboutPage: FC = () => {
           <p className={s.desc}>{t('about.lastDescription')}</p>
         </div>
       </div>
-    </>
+    </div>
   )
 }

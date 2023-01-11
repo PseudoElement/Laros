@@ -1,9 +1,19 @@
 @use '/src/styles/style.scss' as *;
+@import '/src/styles/theme/breakpoints.scss';
 
 .wrapper {
-  width: 302px;
+  max-width: 302px;
   margin: 0 0 20px 0;
+
+  @include mobile-tablet {
+    width: 46.5%;
+  }
+
+  @media (max-width: 560px) {
+    width: 100%;
+  }
 }
+
 .photo {
   width: 302px;
   height: 320px;

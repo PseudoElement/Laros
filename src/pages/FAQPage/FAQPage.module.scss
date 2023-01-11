@@ -1,17 +1,27 @@
 @use '/src/styles/style.scss' as *;
+@import '/src/styles/theme/breakpoints.scss';
 
 .faqContent {
   background-color: $color-white;
   max-width: 1062px;
-  margin: 0 auto;
-  margin-top: 80px;
-  margin-bottom: 160px;
+  margin: 80px auto 160px;
 
   & > h1 {
     align-items: center;
     text-align: center;
     font-size: 40px;
     font-weight: $fw-semibold;
+    @include mobile {
+      font-size: 20px;
+    }
+
+    @include tablet {
+      font-size: 25px;
+    }
+  }
+
+  @include mobile-tablet {
+    margin-top: 30px;
   }
 }
 
@@ -22,4 +32,20 @@
   line-height: 20px;
   font-size: 12px;
   font-weight: $fw-regular;
+
+  @include mobile-tablet {
+    margin: 20px auto 30px;
+  }
+}
+
+@include mobile-tablet {
+  .accordeonWrapper {
+    [class*='accordionTab'] {
+      height: 60px;
+    }
+
+    [class*='button'] {
+      margin-left: 15px;
+    }
+  }
 }
