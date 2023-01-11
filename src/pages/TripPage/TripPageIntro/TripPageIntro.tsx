@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { FC, useState } from 'react'
 import { useRouter } from 'next/router'
 // @ts-ignore
@@ -6,7 +5,7 @@ import ReactStars from 'react-rating-stars-component'
 
 import { StartTripForm, InfoTags, FieldsType } from 'features'
 import { Map, TruncatedText } from 'components'
-
+import cn from 'classnames';
 import { useAppDispatch } from 'shared/hooks/redux'
 import { updateForm } from 'store/slices/order/order'
 import { useTranslate } from 'shared/hooks/useTranslate'
@@ -58,7 +57,7 @@ export const TripPageIntro: FC<Trip> = ({
 
       <div className={s.right}>
         <div className={s.map}>
-          <Map route={route} />
+          <Map route={route ?? ''} />
         </div>
 
         <div className={s.tagsPanel}>

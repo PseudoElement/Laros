@@ -13,6 +13,10 @@ export const getTrip = (id: number): AxiosPromise<Trip> => {
   return api.get(endpoints.trips.id(id))
 }
 
+export const getTripByName = (name: string): AxiosPromise<Trip> => {
+  return api.get(endpoints.trips.oneByName(name))
+}
+
 export const getTrips = (
   params: Partial<TripFilterParams>
 ): AxiosPromise<AxiosPaginatedResponse<Trip>> => {

@@ -14,6 +14,11 @@ export const getDestinations = (): AxiosPromise<
 export const getDestination = (id: number): AxiosPromise<Destination> => {
   return api.get(endpoints.destinations.id(id))
 }
+export const getDestinationByName = (
+  name: string
+): AxiosPromise<Destination> => {
+  return api.get(endpoints.destinations.oneByName(name))
+}
 
 export const getAirportDestinations = (): AxiosPromise<
   AxiosPaginatedResponse<Destination>

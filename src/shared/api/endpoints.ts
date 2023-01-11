@@ -9,13 +9,15 @@ export const endpoints = {
   destinations: {
     get: '/destination/', // rename as in hotels TODO
     id: (id: number) => `/destination/${id}`,
+    oneByName: (name: string) => `/destination/retrieve/${name}`,
     near: (id: number) => `/destination/near/${id}`,
   },
   trips: {
     get: '/trip/',
     categories: '/travel_type/',
     duration: '/trip/min-max-duration/',
-    id: (id: number) => `/trip/${id}`,
+    id: (id: number) => `/trip/${id}/`,
+    oneByName: (name: string) => `/trip/retrieve/${name}/`,
     similar: (id: number) => `/trip/similar/${id}`,
     near: (id: number) => `/trip/${id}/near/destinations`,
   },
@@ -34,7 +36,7 @@ export const endpoints = {
   hotels: {
     all: '/hotel/',
     one: (id: number) => `/hotel/${id}`,
-    oneByName: (name: string) => `hotel/retrieve/${name}`,
+    oneByName: (name: string) => `/hotel/retrieve/${name}`,
     similar: (id: number) => `/hotel/similar/${id}`,
     near: (id: number) => `/hotel/near/${id}`,
     accomodations: '/accomodations/',
