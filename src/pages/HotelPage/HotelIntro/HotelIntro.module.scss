@@ -9,8 +9,9 @@
   position: relative;
   z-index: 1;
 
-  @include mobile{
+  @include mobile-tablet{
     flex-direction: column;
+    margin: 0;
   }
 }
 .left {

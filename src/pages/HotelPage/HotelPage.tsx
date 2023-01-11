@@ -18,6 +18,9 @@ import { Hotel, Room } from 'shared/types/hotel'
 import { Destination } from 'shared/types/destinations'
 
 import s from './HotelPage.module.scss'
+import {HotelMock} from '../../shared/mocks/hotel';
+
+
 
 interface HotelProps {
   hotelProp: Hotel
@@ -59,8 +62,10 @@ export const HotelPage: FC<HotelProps> = ({ hotelProp }) => {
   }
 
   useEffect(() => {
+    console.log('MOCK', HotelMock.images);
     if (hotelProp) {
-      setHotel(hotelProp)
+      // setHotel(hotelProp)
+      setHotel(HotelMock)
     }
   }, [hotelProp])
 
