@@ -6,9 +6,14 @@ import { useTranslate } from 'shared/hooks/useTranslate'
 import { reviewsMock } from 'shared/mocks/reviews'
 
 import s from './TestimonialsPage.module.scss'
+import { useWindowDimensions } from '../../shared/hooks/useWindowDimensions'
+import { slidesPerViewTestimonials } from '../../shared/helpers/slidesPerView'
+import { LAPTOP_SCREEN } from '../../shared/constants/screenResolutions'
 
 export const TestimonialsPage = () => {
   const t = useTranslate()
+
+  const { width } = useWindowDimensions()
 
   return (
     <div className={s.page}>
@@ -16,9 +21,9 @@ export const TestimonialsPage = () => {
       <p className={s.description}>{t('testimonials.description')}</p>
 
       <Slider
-        slidesPerView={3}
+        slidesPerView={slidesPerViewTestimonials(width)}
         spaceBetween={25}
-        withNavigation={true}
+        withNavigation={width > LAPTOP_SCREEN}
         withPagination={true}
         classname={s.slider}
       >

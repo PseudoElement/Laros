@@ -1,16 +1,36 @@
 @use 'styles/style.scss' as *;
+@import '/src/styles/theme/breakpoints.scss';
 
 .wrapper {
   max-width: 1320px;
-  margin: 80px auto;
+  margin: 0 auto;
+  padding-top: 80px;
+
+  @include tablet {
+    padding: 40px 0;
+  }
+
+  @include mobile {
+    padding: 20px 0;
+  }
 }
+
 .text {
   text-align: center;
   color: $color-bg-black;
+
+  @include mobile-tablet {
+    padding: 0 25px;
+  }
 }
 
 .title {
   margin: 0 0 40px 0;
+
+  @include mobile-tablet {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
 }
 
 .desc,
@@ -21,7 +41,12 @@
   margin: 0 auto;
   line-height: 20px;
   text-align: center;
+
+  @include mobile-tablet {
+    width: unset;
+  }
 }
+
 .subDesc {
   text-align: left;
 }
@@ -34,6 +59,15 @@
   justify-content: center;
   align-items: flex-start;
   gap: 8px;
+
+  @include mobile-tablet {
+    flex-direction: column;
+    margin: 40px auto;
+  }
+
+  @include mobile {
+    margin: 20px auto;
+  }
 }
 
 .card {
@@ -44,13 +78,25 @@
   margin: 12px;
   border-radius: 20px;
   flex-basis: 33%;
+  @include mobile-tablet {
+    min-width: unset;
+  }
+
+  @include mobile {
+    margin: 0;
+  }
 }
+
 .cardHeader {
   width: 100%;
   font-weight: $fw-bold;
   font-size: 20px;
   text-align: left;
   margin-bottom: 8px;
+
+  @include mobile {
+    font-size: 18px;
+  }
 }
 
 .cardText {
@@ -66,12 +112,34 @@
   text-align: justify;
   margin: 80px 0 88px 0;
   color: $color-bg-black;
+
+  @include mobile-tablet {
+    padding: 0 25px;
+    margin: 0;
+  }
 }
 
 .galleryImage {
   height: 500px;
   width: 100%;
+
   img {
     border-radius: 8px;
+  }
+
+  @include mobile {
+    height: 400px;
+  }
+
+  @media screen and (max-width: 450px) {
+    height: 300px;
+  }
+}
+
+@include mobile {
+  .container {
+    [class*='slider'] {
+      padding: 0;
+    }
   }
 }

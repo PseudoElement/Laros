@@ -8,6 +8,8 @@ import { useTranslate } from 'shared/hooks/useTranslate'
 import { TripCategory } from 'shared/types/trip'
 
 import s from './SelectedType.module.scss'
+import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
+import { slidesPerViewHome } from 'shared/helpers/slidesPerView'
 
 interface SelectedType {
   travelTypes: TripCategory[]
@@ -15,18 +17,17 @@ interface SelectedType {
 
 export const SelectComponent: FC<SelectedType> = ({ travelTypes }) => {
   const t = useTranslate()
-  const [windowWidth, setWindowWidth] = useState<number>()
-  useEffect(() => {
-    setWindowWidth(+window.innerWidth)
-    window.addEventListener('resize', () => setWindowWidth(+window.innerWidth))
-  }, [])
+
+  const {width} = useWindowDimensions()
+
+
   return (
     <div className={s.wrapper}>
       <h3 className={s.selectType_title}>{t('homepage.selectTypeTitle')}</h3>
 
       <Slider
-        slidesPerView={windowWidth && +windowWidth <= 1400 ? 4 : 5}
-        withNavigation={true}
+        slidesPerView={slidesPerViewHome(width)}
+        withNavigation={width <= 768 ? false : true}
         withPagination={true}
         spaceBetween={25}
       >

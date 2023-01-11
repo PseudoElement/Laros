@@ -7,6 +7,8 @@ import { useTranslate } from 'shared/hooks/useTranslate'
 
 import s from './Overview.module.scss'
 import { withDomain } from '../../../shared/helpers/withDomain'
+import { useWindowDimensions } from '../../../shared/hooks/useWindowDimensions'
+import {DESKTOP_MAX_SCREEN, DESKTOP_MIN_SCREEN} from "../../../shared/constants/screenResolutions";
 
 interface Overview {
   images: string[] | StaticImageData[] | HTMLImageElement[]
@@ -21,15 +23,18 @@ export const Overview: FC<Overview> = ({ images, overview }) => {
     setOpenGallery(index)
   }
 
+  const { width } = useWindowDimensions()
+
   return (
     <div className={s.overview}>
       <div className={s.title}>{t('areaPage.OverviewTitle')}</div>
-
-      <div className={s.subTitle}>{overview}</div>
-
+      {overview && <div className={s.subTitle}>{overview}</div>}
       <div className={s.overviewSlider}>
         {images?.length ? (
-          <SliderGalery spaceBetween={8}>
+          <SliderGalery
+            spaceBetween={8}
+            slidesPerView={width > DESKTOP_MAX_SCREEN ? undefined : width > DESKTOP_MIN_SCREEN ? 1.5 : 1}
+          >
             {images.map((image, index) => (
               <div
                 key={index}

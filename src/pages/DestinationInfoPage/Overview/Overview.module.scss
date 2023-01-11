@@ -1,7 +1,20 @@
 @use 'styles/style' as *;
+@import '/src/styles/theme/breakpoints.scss';
 
 .overview {
   padding: 80px 0 110px;
+
+  @include laptop {
+    padding: 50px 0 50px;
+  }
+
+  @include tablet {
+    padding: 40px 30px 30px;
+  }
+
+  @include mobile {
+    padding: 30px 10px 20px;
+  }
 }
 
 .title {
@@ -20,14 +33,41 @@
   width: 1110px;
   margin: 0 auto 80px;
 }
+
 .overviewSlider {
   margin-bottom: 80px;
+
+  @include mobile-tablet {
+    margin-bottom: 0;
+  }
 }
+
 .image {
   width: 100%;
   height: 500px;
+  max-width: 800px;
 
   img {
     border-radius: 8px;
+  }
+
+  @include mobile {
+    height: 200px;
+  }
+
+  @media (min-width: 440px) and (max-width: 768px) {
+    height: 300px;
+  }
+
+  @include tablet {
+    height: 400px;
+  }
+}
+
+@include mobile-tablet {
+  .overviewSlider {
+    [class*='slider'] {
+      padding: 0;
+    }
   }
 }
