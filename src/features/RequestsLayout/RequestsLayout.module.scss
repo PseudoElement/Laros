@@ -25,6 +25,10 @@
   text-align: center;
   color: $color-white;
   padding-top: 245px;
+
+  @media screen and (max-width: 850px) {
+    padding-top: 140px;
+  }
 }
 
 .top__contentText {
@@ -35,6 +39,10 @@
   max-width: 895px;
   margin: auto;
   padding-top: 50px;
+
+  @media screen and (max-width: 850px) {
+    padding: 40px 10px 0;
+  }
 }
 
 .request__form {
@@ -45,6 +53,10 @@
   background-color: $color-white;
   box-shadow: $color-box-shadow;
   border-radius: 16px;
+
+  @media screen and (min-width: 500px) and (max-width: 850px) {
+    margin-top: -230px;
+  }
 }
 
 .top__contentForm {
@@ -54,17 +66,40 @@
   justify-content: space-between;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.02)),
     linear-gradient(0deg, $color-light-grey, $color-light-grey);
+
+  @media screen and (max-width: 850px) {
+    padding: 0 10px 10px;
+    height: unset;
+  }
 }
 
 .go__backRequest {
   margin-left: 72px;
   padding-top: 17px;
+
+  @media screen and (max-width: 1130px) {
+    margin-left: 30px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    margin-left: 15px;
+  }
+
+  @media screen and (max-width: 850px) {
+    margin: 0;
+  }
 }
+
 .goback__button {
   cursor: pointer;
   background: none;
   border: none;
   outline: none;
+  min-width: 72px;
+
+  @media screen and (max-width: 850px) {
+    margin-right: 10px;
+  }
 }
 
 .request__span {
@@ -82,6 +117,18 @@
   font-size: 12px;
   line-height: 20px;
   color: $color-lazur;
+
+  @media screen and (max-width: 1130px) {
+    margin-right: 30px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    margin-right: 15px;
+  }
+
+  @media screen and (max-width: 850px) {
+    margin: 0;
+  }
 }
 
 .contact__requestText {
@@ -191,10 +238,20 @@
 
 .tabs__navigation {
   font-weight: $fw-bold;
-  margin-top: 65px;
-  margin-left: 200px;
-  margin-right: 193px;
+  margin: 65px 193px 0 200px;
   padding-bottom: 15px;
+
+  @media screen and (max-width: 1400px) {
+    margin: 30px 100px 0;
+  }
+
+  @media screen and (max-width: 1130px) {
+    margin: 30px 30px 0;
+  }
+
+  @media screen and (max-width: 540px) {
+    margin: 25px 0 0;
+  }
 }
 
 .tab {
@@ -209,7 +266,12 @@
   line-height: 17px;
   cursor: pointer;
   margin: 0 15px;
+
+  @media screen and (max-width: 850px) {
+    font-size: 14px;
+  }
 }
+
 .selectedTab {
   font-weight: $fw-bold;
   position: relative;

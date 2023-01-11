@@ -4,6 +4,11 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 16px;
+
+  @media screen and (max-width: 850px) {
+    flex-direction: column;
+    margin-bottom: 0;
+  }
 }
 
 .radio {
@@ -11,6 +16,10 @@
   flex-direction: column;
   align-items: start;
   padding: 4px 0 0 19px;
+
+  @media screen and (max-width: 850px) {
+    margin-bottom: 15px;
+  }
 }
 
 .radioLabel {
@@ -40,11 +49,21 @@
   > * {
     padding-left: 0;
   }
+
+  @media screen and (max-width: 850px) {
+    width: 100%;
+    margin-bottom: 15px;
+  }
 }
 
 .selectWrapper {
   position: relative;
   width: 49%;
+
+  @media screen and (max-width: 850px) {
+    width: 100%;
+    margin-bottom: 15px;
+  }
 }
 
 .selectLabel {
@@ -62,6 +81,10 @@
   padding: 31px 24px;
   background-color: $color-light-grey;
   border-radius: 8px;
+
+  @media screen and (max-width: 850px) {
+    padding: 31px 10px;
+  }
 }
 
 .travellerForm:not(:last-child) {
@@ -70,6 +93,10 @@
 
 .travellerForm .inputCalendarCustom {
   width: 49%;
+
+  @media screen and (max-width: 850px) {
+    width: 100%;
+  }
 }
 
 .travellerFormHeader {
@@ -103,6 +130,11 @@
   width: 49%;
   padding-left: 0;
   margin-bottom: 16px;
+
+  @media screen and (max-width: 850px) {
+    width: 100%;
+    margin-bottom: 25px;
+  }
 }
 
 .addressRadioLabel {
@@ -115,6 +147,10 @@
   font-size: 14px;
   line-height: 17px;
   color: $color-primary-black;
+
+  @media screen and (max-width: 850px) {
+    width: 100%;
+  }
 }
 
 .addressRadio {
@@ -196,12 +232,20 @@
   .addressRadio {
     width: 100%;
   }
+
+  @media screen and (max-width: 850px) {
+    width: 100%;
+  }
 }
 
 .rightAddress {
   width: 49%;
 
   .travellerAddressWrapper > * {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 850px) {
     width: 100%;
   }
 }
@@ -217,6 +261,7 @@
     background-color: $color-white;
     padding-left: 0;
   }
+
   [class$='-IndicatorsContainer'] {
     padding-bottom: 0;
   }
@@ -240,10 +285,18 @@
   padding: 0 0 0 8px;
   background-color: transparent;
   color: $color-primary-black;
+
+  @media screen and (max-width: 850px) {
+    padding-left: 0;
+  }
 }
 
 .addAnotherAddressButton .buttonText {
   margin-left: 16px;
+
+  @media screen and (max-width: 850px) {
+    margin-left: 10px;
+  }
 }
 
 .input {
