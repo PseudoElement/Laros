@@ -4,6 +4,7 @@ import { Slider } from 'components'
 import { Review } from 'features'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
+import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
 import { Review as ReviewType } from 'shared/types/review'
 
 import s from './Comments.module.scss'
@@ -14,6 +15,7 @@ interface CommentsBlockProps {
 
 export const Comments: FC<CommentsBlockProps> = comments => {
   const t = useTranslate()
+  const widthWindow = useWindowDimensions().width
 
   return (
     <div className={s.wrapper}>
@@ -23,8 +25,8 @@ export const Comments: FC<CommentsBlockProps> = comments => {
 
       <Slider
         withPagination={true}
-        withNavigation={true}
-        slidesPerView={2}
+        withNavigation={widthWindow <= 768 ? false: true}
+        slidesPerView={widthWindow <= 768 ? 1 : 2}
         nextEl={s.buttonNext}
         prevEl={s.buttonPrev}
       >

@@ -59,3 +59,10 @@
 .swiperButtonPrev::after {
   display: none;
 }
+
+.swiperSlide {
+  @include mobile {
+    display: flex;
+    justify-content: center;
+  }
+}

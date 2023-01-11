@@ -3,12 +3,14 @@ import { FC, useState } from 'react'
 import { subscribeToNewsletter } from 'shared/api/routes/subscription'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
+import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
 
 import s from './Subscribe.module.scss'
 
 export const Subscribe: FC = () => {
   const t = useTranslate()
   const [value, setValue] = useState<string>('')
+  const widthWindow = useWindowDimensions().width
 
   const onHandleClick = () => {
     if (value) {
@@ -28,7 +30,13 @@ export const Subscribe: FC = () => {
           <input
             value={value}
             onChange={e => setValue(e.target.value)}
-            placeholder={t('homepage.subscribePlaceholder')}
+            placeholder={t(
+              `${
+                widthWindow >= 490
+                  ? 'homepage.subscribePlaceholder'
+                  : 'E-Mail-Adresse'
+              }`
+            )}
             className={s.input}
           />
           <button onClick={onHandleClick} className={s.button}>
