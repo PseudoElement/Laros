@@ -18,6 +18,8 @@ import { Hotel, Room } from 'shared/types/hotel'
 import { Destination } from 'shared/types/destinations'
 
 import s from './HotelPage.module.scss'
+import { NearbyDestinationsMock } from '../../shared/mocks/hotel'
+import { nearHotelsMock } from '../../shared/mocks/destinations'
 
 interface HotelProps {
   hotelProp: Hotel
@@ -100,7 +102,7 @@ export const HotelPage: FC<HotelProps> = ({ hotelProp }) => {
         />
       ) : null}
 
-      {destination.length ? (
+      {NearbyDestinationsMock.length ? (
         <NearbyDestinations destination={destination} />
       ) : null}
     </div>

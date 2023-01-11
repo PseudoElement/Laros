@@ -31,6 +31,7 @@
   align-items: center;
   height: 100%;
 }
+
 .mainNav {
   height: 100%;
   display: flex;
@@ -42,6 +43,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .navItem:not(:last-child) {
   margin-right: 55px;
 }
@@ -58,6 +60,7 @@
 
 .headContactUse {
   cursor: pointer;
+
   span {
     color: #4f4f4f;
     font-weight: 700;
@@ -146,6 +149,7 @@
     margin-top: -7px;
   }
 }
+
 .logo {
   cursor: pointer;
 }
@@ -157,7 +161,6 @@
   width: 15px;
   height: 3px;
   background: $color-primary;
-  box-shadow: 0 2px 5px $color-layout-dark-blue;
   transition: 0.5s;
   border-radius: 30px;
   z-index: 9999;
@@ -173,9 +176,9 @@
   width: 10px;
   height: 3px;
   background: $color-primary;
-  box-shadow: 0 2px 5px $color-layout-dark-blue;
   transition: 0.5s;
 }
+
 .hamburger:before {
   width: 20px;
   top: -12px;
@@ -186,19 +189,21 @@
   top: 12px;
   border-radius: 30px;
 }
+
 .hamburgerMenuClose {
   width: 15px;
-  box-shadow: 0 2px 5px $color-light-grey;
   background: $color-white;
 }
+
 .hamburgerMenuClose::after,
 .hamburgerMenuClose::before {
-  box-shadow: 0 2px 5px $color-light-grey;
   background: $color-white;
 }
+
 .hamburgerMenuClose::after {
   width: 20px;
 }
+
 .hamburgerMenuClose::before {
   width: 10px;
 }

@@ -117,6 +117,10 @@
   position: relative;
   min-height: 33px;
   padding-left: 8px;
+
+  @include mobile {
+    padding: 0;
+  }
 }
 .shorten {
   height: 33px;
