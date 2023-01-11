@@ -31,3 +31,10 @@ export const slidesPerViewTestimonials = (width: number): number => {
   if (width < TABLET_MIN_SCREEN) return 1
   return 0
 }
+
+export const slidesPerViewTravelPlanner = (width: number):number => {
+  if (width > DESKTOP_MIN_SCREEN) return 3.2
+  if (width > LAPTOP_SCREEN) return 3
+  if (width > TABLET_MAX_SCREEN) return 2
+  return 1
+ }
