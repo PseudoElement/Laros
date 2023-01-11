@@ -1,20 +1,19 @@
-import React, {FC} from 'react';
-import Link from 'next/link';
+import React, { FC } from 'react'
+import Link from 'next/link'
 
-import {Destination} from 'shared/types/destinations';
-import {LIMIT_NEARBY_DESTINATIONS} from 'shared/constants';
+import { Destination } from 'shared/types/destinations'
+import { LIMIT_NEARBY_DESTINATIONS } from 'shared/constants'
 
-import s from './NearbyDestinations.module.scss';
-import {useTranslate} from '../../../shared/hooks/useTranslate';
-import {withDomain} from '../../../shared/helpers/withDomain';
+import s from './NearbyDestinations.module.scss'
+import { useTranslate } from '../../../shared/hooks/useTranslate'
+import { withDomain } from '../../../shared/helpers/withDomain'
 
 interface DestinationProps {
-  destination: Destination[];
+  destination: Destination[]
 }
 
-
-export const NearbyDestinations: FC<DestinationProps> = ({destination}) => {
-  const t = useTranslate();
+export const NearbyDestinations: FC<DestinationProps> = ({ destination }) => {
+  const t = useTranslate()
 
   return (
     <div className={s.destination}>
@@ -37,9 +36,9 @@ export const NearbyDestinations: FC<DestinationProps> = ({destination}) => {
                 <div className={s.destinationItemDescription}>{item.name}</div>
               </div>
             </Link>
-          );
+          )
         })}
       </div>
     </div>
-  );
-};
+  )
+}

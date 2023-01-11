@@ -9,24 +9,26 @@
   position: relative;
   z-index: 1;
 
-  @include mobile-tablet{
+  @include mobile-tablet {
     flex-direction: column;
     margin: 0;
   }
 }
+
 .left {
   width: 65%;
   padding: 56px;
 
-  @include mobile-tablet{
+  @include mobile-tablet {
     width: 100%;
     padding: 10px;
   }
 }
+
 .right {
   width: 40%;
 
-  @include mobile{
+  @include mobile {
     width: 100%;
   }
 
@@ -34,15 +36,17 @@
     border-radius: 0 16px 0 0;
   }
 }
+
 .rating {
   span {
     margin-right: 10px;
 
-    @include mobile{
+    @include mobile {
       margin-right: 0;
     }
   }
 }
+
 .address {
   font-size: 16px;
   font-weight: $fw-regular;
@@ -50,23 +54,25 @@
   color: $color-laros-dark-grey;
   margin: 17px 0 8px;
 }
+
 .name {
   font-size: 48px;
   font-weight: $fw-bold;
   line-height: 58px;
   color: $color-bg-black;
 
-  @include laptop{
+  @include laptop {
     font-size: 35px;
   }
-  @include mobile-tablet{
+  @include mobile-tablet {
     font-size: 25px;
   }
-  @include mobile{
+  @include mobile {
     font-size: 16px;
     line-height: 25px;
   }
 }
+
 .description {
   margin-top: 16px;
   height: 65px;
@@ -75,7 +81,7 @@
   overflow-y: scroll;
   margin-bottom: 20px;
 
-  @include mobile-tablet{
+  @include mobile-tablet {
     padding-right: 0;
   }
 }
@@ -87,9 +93,11 @@
   overflow: hidden;
   background-color: $color-laros-light-grey;
 }
+
 .tagsTitle {
   margin: 28px 0 12px 15px;
 }
+
 .tagsPanel {
   padding: 0 16px 30px;
 }

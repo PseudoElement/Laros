@@ -1,26 +1,26 @@
-import {FC, useState} from 'react';
-import Image, {StaticImageData} from 'next/image';
+import { FC, useState } from 'react'
+import Image, { StaticImageData } from 'next/image'
 
-import {Gallery, SliderGalery} from 'components';
+import { Gallery, SliderGalery } from 'components'
 
-import {withDomain} from 'shared/helpers/withDomain';
-import {slidesPerViewHotelImages} from '../../../shared/helpers/slidesPerView';
+import { withDomain } from 'shared/helpers/withDomain'
+import { slidesPerViewHotelImages } from '../../../shared/helpers/slidesPerView'
 
-import s from './HotelImages.module.scss';
-import {useWindowDimensions} from '../../../shared/hooks/useWindowDimensions';
+import s from './HotelImages.module.scss'
+import { useWindowDimensions } from '../../../shared/hooks/useWindowDimensions'
 
 interface HotelImagesProps {
-  images: string[] | StaticImageData[] | HTMLImageElement[];
+  images: string[] | StaticImageData[] | HTMLImageElement[]
 }
 
-export const HotelImages: FC<HotelImagesProps> = ({images}) => {
-  const [openGallery, setOpenGallery] = useState<number | null>(null);
+export const HotelImages: FC<HotelImagesProps> = ({ images }) => {
+  const [openGallery, setOpenGallery] = useState<number | null>(null)
 
-  const {width} = useWindowDimensions();
+  const { width } = useWindowDimensions()
 
   const handleOpen = (index: number) => {
-    setOpenGallery(index);
-  };
+    setOpenGallery(index)
+  }
   return (
     <div className={s.hotelImages}>
       {images?.length ? (
@@ -31,12 +31,12 @@ export const HotelImages: FC<HotelImagesProps> = ({images}) => {
               className={s.hotelImage}
               onClick={() => handleOpen(index)}
             >
-              <Image layout={'fill'} src={withDomain(image)} alt=""/>
+              <Image layout={'fill'} src={withDomain(image)} alt='' />
             </div>
           ))}
         </SliderGalery>
       ) : null}
-      <Gallery images={images} isOpen={openGallery} onClose={setOpenGallery}/>
+      <Gallery images={images} isOpen={openGallery} onClose={setOpenGallery} />
     </div>
-  );
-};
+  )
+}
