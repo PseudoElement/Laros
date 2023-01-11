@@ -14,6 +14,12 @@
   gap: 10px;
 }
 
+@media screen and (max-width:425px) {
+  .range {
+    width: 100% !important;
+  }
+}
+
 .mark {
   height: 10px;
   width: 2px;
