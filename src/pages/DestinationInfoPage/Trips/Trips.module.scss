@@ -1,8 +1,18 @@
 @use 'styles/style' as *;
+@import '/src/styles/theme/breakpoints.scss';
 
 .trips {
   padding: 80px 0;
+
+  @include tablet-desktop {
+    padding: 0 30px;
+  }
+
+  @include mobile {
+    padding: 0 10px;
+  }
 }
+
 .title {
   font-size: 16px;
   font-weight: $fw-bold;
@@ -11,6 +21,7 @@
   margin-bottom: 10px;
   color: $color-bg-black;
 }
+
 .subTitle {
   font-size: 12px;
   font-weight: $fw-regular;
@@ -18,7 +29,47 @@
   text-align: center;
   width: 1110px;
   margin: 0 auto 40px;
+
+  @include mobile-laptop {
+    width: 100%;
+  }
+
+  @include mobile-tablet {
+    margin-bottom: 20px;
+  }
 }
+
 .slider {
   margin: 0 150px;
+}
+
+@include mobile-laptop {
+  .slider {
+    margin: 0;
+
+    [class*='swiper-slide'] {
+      display: flex;
+      justify-content: center;
+    }
+
+    [class*='swiperButtonNext'] {
+      right: 0;
+    }
+
+    [class*='swiperButtonPrev'] {
+      left: 0;
+    }
+  }
+}
+
+@include laptop {
+  .slider {
+    [class*='swiperButtonNext'] {
+      right: -15px;
+    }
+
+    [class*='swiperButtonPrev'] {
+      left: -15px;
+    }
+  }
 }
