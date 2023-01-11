@@ -19,6 +19,10 @@
   &:nth-child(3n) {
     width: 40%;
   }
+
+  @include mobile {
+    width: 100% !important;
+  }
 }
 
 .shadow {
