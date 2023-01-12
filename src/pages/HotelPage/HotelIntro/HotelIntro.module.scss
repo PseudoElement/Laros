@@ -27,11 +27,14 @@
 
 .right {
   width: 40%;
-
   @include mobile {
     width: 100%;
   }
 
+  @include tablet {
+    width: 100%;
+    margin-top: 40px;
+  }
   img {
     border-radius: 0 16px 0 0;
   }

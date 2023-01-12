@@ -32,9 +32,6 @@ export const Main: FC<MainBlockProps> = ({
 }) => {
   const videoRef = useRef<HTMLDivElement>(null)
   const t = useTranslate()
-  {
-    t('.')
-  }
 
   const onFullScreen = () => {
     setVideoIsFullscreen(false)
@@ -51,7 +48,7 @@ export const Main: FC<MainBlockProps> = ({
           <p className={s.subtitle}>{t('homepage.subTitle')}!</p>
           <div className={s.select} onClick={e => e.stopPropagation()}>
             <SelectBlock
-              destinations={destinations}
+              destinations={[...destinations]}
               setActiveMenu={setActiveMenu}
               activeMenu={activeMenu}
             />

@@ -102,7 +102,7 @@ export const HotelPage: FC<HotelProps> = ({ hotelProp }) => {
         />
       ) : null}
 
-      {NearbyDestinationsMock.length ? (
+      {destination.length ? (
         <NearbyDestinations destination={destination} />
       ) : null}
     </div>
