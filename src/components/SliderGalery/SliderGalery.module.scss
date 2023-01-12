@@ -15,6 +15,10 @@
     align-items: center;
   }
 
+  @include laptop {
+    overflow: hidden;
+  }
+
   @include mobile-tablet {
     padding: 0;
   }

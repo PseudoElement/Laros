@@ -36,87 +36,89 @@ export const Header: FC = () => {
   const t = useTranslate()
 
   return (
-      <>
-        <Head>
-          <title>{t('navigation.header.title')}</title>
-        </Head>
-        <div className={s.fixed}>
-          <div className={s.container}>
-            <header>
-              <div
-                  className={cn(s.header, {
-                    [s.collapsed]: isCollapsed,
-                  })}
-              >
-                {widthWindow ? (
-                    <div className={s.mainNav}>
-                      {mainNavItems.map(item => (
-                          <div key={item.to} className={s.navItem}>
-                            <Link href={item.to}>
-                              <a>{t(item.name)}</a>
-                            </Link>
-                          </div>
-                      ))}
+    <>
+      <Head>
+        <title>{t('navigation.header.title')}</title>
+      </Head>
+      <div className={s.fixed}>
+        <div className={s.container}>
+          <header>
+            <div
+              className={cn(s.header, {
+                [s.collapsed]: isCollapsed,
+              })}
+            >
+              {widthWindow ? (
+                <div className={s.mainNav}>
+                  {mainNavItems.map(item => (
+                    <div key={item.to} className={s.navItem}>
+                      <Link href={item.to}>
+                        <a>{t(item.name)}</a>
+                      </Link>
                     </div>
-                ) : (
-                    <MobileMenu
-                        className={burgerMenu}
-                        onClick={togleMenu}
-                        isOpen={open}
-                    >
-                      {mainNavItems}
-                    </MobileMenu>
-                )}
-                <div className={s.logo}>
-                  <Link href={'/'}>
-                    {isCollapsed ? (
-                        <Image
-                            src={widthWindow ? logo : logoFull}
-                            width={100}
-                            height={widthWindow ? 20 : 40}
-                            alt=''
-                        />
-                    ) : (
-                        <Image src={logoFull} width={100} height={40} alt='' />
-                    )}
-                  </Link>
+                  ))}
                 </div>
-
-                {widthWindow ? (
-                    <div className={s.rightNav}>
-                      <Link href='/contact'>
-                        <div className={s.headContactUse}>
-                          <Image
-                              className={s.headSmIcon}
-                              src={callImg}
-                              width={12}
-                              height={12}
-                              alt='call'
-                          />
-                          <span>{t('navigation.header.contactText')}</span>
-                        </div>
-                      </Link>
-
-                      <Link href='/voucher'>
-                        <div className={s.headGift}>
-                          <Image
-                              className={s.headSmIcon}
-                              src={giftImg}
-                              width={16}
-                              height={16}
-                              alt='call'
-                          />
-                          <div>&nbsp;{t('navigation.header.voucherText')}</div>
-                        </div>
-                      </Link>
-                    </div>
-                ) : null}
+              ) : (
+                <MobileMenu
+                  className={burgerMenu}
+                  onClick={togleMenu}
+                  isOpen={open}
+                >
+                  {mainNavItems}
+                </MobileMenu>
+              )}
+              <div className={s.logo}>
+                <Link href={'/'}>
+                  <a>
+                    {isCollapsed ? (
+                      <Image
+                        src={widthWindow ? logo : logoFull}
+                        width={100}
+                        height={widthWindow ? 20 : 40}
+                        alt=''
+                      />
+                    ) : (
+                      <Image src={logoFull} width={100} height={40} alt='' />
+                    )}
+                  </a>
+                </Link>
               </div>
 
-              {widthWindow ? <SubNav /> : null}
-            </header>
-          </div>
+              {widthWindow ? (
+                <div className={s.rightNav}>
+                  <Link href='/contact'>
+                    <div className={s.headContactUse}>
+                      <Image
+                        className={s.headSmIcon}
+                        src={callImg}
+                        width={12}
+                        height={12}
+                        alt='call'
+                      />
+                      <span>{t('navigation.header.contactText')}</span>
+                    </div>
+                  </Link>
+
+                  <Link href='/voucher'>
+                    <div className={s.headGift}>
+                      <Image
+                        className={s.headSmIcon}
+                        src={giftImg}
+                        width={16}
+                        height={16}
+                        alt='call'
+                      />
+                      <div>&nbsp;{t('navigation.header.voucherText')}</div>
+                    </div>
+                  </Link>
+                </div>
+              ) : null}
+            </div>
+
+            {widthWindow ? <SubNav /> : null}
+          </header>
         </div>
-      </>
+      </div>
+    </>
   )
 }

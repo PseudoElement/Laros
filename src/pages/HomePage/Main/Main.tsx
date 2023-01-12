@@ -32,9 +32,6 @@ export const Main: FC<MainBlockProps> = ({
 }) => {
   const videoRef = useRef<HTMLDivElement>(null)
   const t = useTranslate()
-  {
-    t('.')
-  }
 
   const onFullScreen = () => {
     setVideoIsFullscreen(false)
@@ -57,7 +54,6 @@ export const Main: FC<MainBlockProps> = ({
             />
           </div>
         </div>
-        <div className={s.main_blur}></div>
       </div>
       <div className={s.video}>
         <div
