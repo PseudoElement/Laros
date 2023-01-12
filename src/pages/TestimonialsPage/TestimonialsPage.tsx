@@ -2,13 +2,14 @@ import { Review } from 'features'
 import { Slider } from 'components'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
+import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
+import { slidesPerViewTestimonials } from 'shared/helpers/slidesPerView'
 
 import { reviewsMock } from 'shared/mocks/reviews'
+import { LAPTOP_SCREEN } from 'shared/constants/screenResolutions'
 
 import s from './TestimonialsPage.module.scss'
-import { useWindowDimensions } from '../../shared/hooks/useWindowDimensions'
-import { slidesPerViewTestimonials } from '../../shared/helpers/slidesPerView'
-import { LAPTOP_SCREEN } from '../../shared/constants/screenResolutions'
+
 
 export const TestimonialsPage = () => {
   const t = useTranslate()

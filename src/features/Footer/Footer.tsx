@@ -85,7 +85,11 @@ export const Footer: FC = () => {
               </div>
               <ul className={s.aboutInfoList}>
                 <li className={s.aboutItem}>
-                  <p className={s.link}>{t('navigation.footer.address')}</p>
+                  <p className={s.link}>{t('navigation.footer.addressText')}
+                    <span className={s.linkNum}>
+                      {t('navigation.footer.address')}
+                    </span>
+                  </p>
                 </li>
                 <li className={s.aboutItem}>
                   <p className={s.link}>

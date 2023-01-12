@@ -1,11 +1,16 @@
 @use '/src/styles/style.scss' as *;
 @import '/src/styles/theme/breakpoints.scss';
 
+.faqPage {
+  background-image: url('/assets/images/aboutPage/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 .faqContent {
   background-color: $color-white;
   max-width: 1062px;
-  margin: 80px auto 160px;
-
+  margin: auto;
+  padding: 80px 0 160px;
   & > h1 {
     align-items: center;
     text-align: center;
@@ -21,20 +26,27 @@
   }
 
   @include mobile-tablet {
-    margin-top: 30px;
+    padding-top: 30px;
   }
+}
+
+.accordionTitle {
+  margin: 80px 0 20px;
+  padding: 0 20px;
+  text-align: center;
+  font-weight: $fw-semibold;
 }
 
 .text {
   width: 80%;
-  margin: 40px auto 80px;
+  margin: 40px auto 0;
   text-align: center;
   line-height: 20px;
   font-size: 12px;
   font-weight: $fw-regular;
 
   @include mobile-tablet {
-    margin: 20px auto 30px;
+    margin: 20px auto 0;
   }
 }
 

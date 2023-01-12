@@ -40,16 +40,33 @@
   font-size: 12px;
   font-weight: $fw-regular;
   line-height: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 .images {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   margin-top: 30px;
+}
+.image{
+  border-radius: 6px;
+  border: 3px solid $color-light-grey;
+  margin-right: -20px;
+  margin-bottom: 5px;
+  width: 97px;
+  height: 97px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: $color-box-shadow;
 }
 
 .icon {
   position: absolute;
   top: 40px;
   right: 40px;
+}
+.profile {
+  position: relative;
+  z-index: 1;
 }

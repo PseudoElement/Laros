@@ -1,11 +1,14 @@
 @use 'styles/style' as *;
+
 .wrapper {
   width: 70%;
   margin: 0 auto;
   background-color: rgba(242, 245, 248, 1);
+  font-family: $font-Lato;
 }
 
 .title {
+  font-family: $font-Lato;
   font-weight: $fw-bold;
   font-size: 16px;
   padding-top: 80px;
@@ -15,6 +18,7 @@
 
 .subtitle {
   font-weight: $fw-regular;
+  font-family: $font-Lato;
   font-size: 12px;
   padding-bottom: 64px;
   text-align: center;
