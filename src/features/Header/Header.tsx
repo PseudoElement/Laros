@@ -18,6 +18,7 @@ import logo from '/public/assets/images/logo.svg?url'
 import s from './Header.module.scss'
 import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
 import { MobileMenu } from './MobileMenu/MobileMenu'
+import {TABLET_MAX_SCREEN} from "../../shared/constants/screenResolutions";
 
 const mainNavItems = [
   { name: 'navigation.navigate.home', to: '/' },
@@ -31,7 +32,7 @@ export const Header: FC = () => {
   const togleMenu = () => {
     setOpen(!open)
   }
-  const widthWindow = useWindowDimensions().width >= 768
+  const widthWindow = useWindowDimensions().width > TABLET_MAX_SCREEN
   const isCollapsed = useCollapsedHeader()
   const t = useTranslate()
 

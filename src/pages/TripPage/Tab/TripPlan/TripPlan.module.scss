@@ -1,8 +1,17 @@
 @use 'styles/style.scss' as *;
+@import '/src/styles/theme/breakpoints.scss';
 
 .wrapper {
   padding: 24px 85px 80px;
   color: $color-light-black;
+
+  @include mobile {
+    padding: 10px;
+  }
+
+  @include tablet {
+    padding: 20px 30px 40px;
+  }
 }
 
 .card {
@@ -10,10 +19,20 @@
   justify-content: space-between;
   padding: 20px 0;
   border-bottom: 2px solid $color-about-tabs;
+
+  @include mobile {
+    flex-direction: column;
+  }
 }
+
 .cardWrap {
   width: 49%;
+
+  @include mobile {
+    width: 100%;
+  }
 }
+
 .destinationName {
   font-size: 20px;
   font-weight: $fw-bold;
@@ -21,6 +40,7 @@
   text-align: left;
   margin-bottom: 16px;
 }
+
 .description {
   font-size: 12px;
   font-weight: $fw-regular;
@@ -28,6 +48,7 @@
   text-align: left;
   color: $color-range;
 }
+
 .image {
   width: 49%;
   height: 230px;
@@ -35,7 +56,12 @@
   border-radius: 8px;
   overflow: hidden;
   background-color: $color-modal-header;
+
+  @include mobile {
+    width: 100%;
+  }
 }
+
 .button {
   margin-top: 25px;
 }

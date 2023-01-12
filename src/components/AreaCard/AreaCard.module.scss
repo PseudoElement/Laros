@@ -1,4 +1,5 @@
 @use 'styles/style.scss' as *;
+@import '/src/styles/theme/breakpoints.scss';
 
 .image {
   width: 29%;
@@ -18,6 +19,18 @@
 
   &:nth-child(3n) {
     width: 40%;
+
+    @include mobile {
+      width: 100%;
+    }
+
+    @include tablet {
+      width: 29%;
+    }
+  }
+
+  @include mobile {
+    width: 100%;
   }
 
   @include mobile {

@@ -1,4 +1,5 @@
 @use 'styles/style.scss' as *;
+@import '/src/styles/theme/breakpoints.scss';
 
 .tripCard {
   min-height: 590px;
@@ -10,8 +11,14 @@
   overflow: hidden;
   height: 100%;
 
-  @include mobile-laptop {
-    width: 400px;
+  @include mobile-tablet {
+    width: 300px;
+    max-width: 100%;
+    min-height: unset;
+  }
+
+  @include laptop {
+    width: 368px;
   }
 }
 
@@ -20,6 +27,10 @@
   height: 300px;
   background-color: $color-about-tabs;
   position: relative;
+
+  @include mobile {
+    height: 250px;
+  }
 }
 
 .sale {
@@ -46,6 +57,10 @@
 
 .mainContainer {
   width: 60%;
+
+  @include mobile {
+    padding-right: 10px;
+  }
 }
 
 .mainContainer2 {
@@ -67,6 +82,10 @@
   border-bottom: 1px solid $color-laros-light-grey;
   display: flex;
   justify-content: space-between;
+
+  @include mobile {
+    padding: 10px;
+  }
 }
 
 .name {
@@ -76,6 +95,11 @@
   text-align: left;
   color: $color-dark-blue;
   margin: 4px 0;
+
+  @include mobile-tablet {
+    font-size: 16px;
+    line-height: 20px;
+  }
 }
 
 .price {
@@ -86,6 +110,11 @@
   text-align: left;
   color: $color-dark-blue;
   margin: 4px 0;
+
+  @include mobile-tablet {
+    font-size: 16px;
+    line-height: 20px;
+  }
 }
 
 .mainFooter {
