@@ -54,6 +54,7 @@ export const Main: FC<MainBlockProps> = ({
             />
           </div>
         </div>
+        <div className={s.main_blur}></div>
       </div>
       <div className={s.video}>
         <div
