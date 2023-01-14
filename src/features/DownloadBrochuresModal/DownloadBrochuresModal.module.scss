@@ -13,7 +13,6 @@
   height: 288px;
   width: 240px;
   border-radius: 16px;
-  background-color: red;
 }
 .form {
   width: 404px;
@@ -26,16 +25,41 @@
   font-weight: $fw-semibold;
   margin-bottom: 16px;
 }
-.formName {
-  margin-bottom: 16px;
+.input {
+  height: 63px;
+  width: 100%;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  padding-left: 16px;
+  padding-top: 12px;
+  margin-bottom: 10px;
+
+  [class*='icon'] {
+    right: 18px;
+  }
+
+  input::placeholder {
+    color: $color-primary-black;
+  }
+
+  > * {
+    padding-left: 0;
+  }
+
+  @media screen and (max-width: 850px) {
+    width: 100%;
+    margin-bottom: 15px;
+  }
 }
+
 .radio {
   display: flex;
   align-items: center;
   padding: 5px 8px 20px;
 }
 .radioLabel {
-  font-family: Lato;
+  font-family: $font-Lato;
   font-size: 12px;
   font-weight: $fw-medium;
   color: $color-placeholder;
@@ -45,7 +69,6 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 247px;
   display: flex;
   margin-bottom: 20px;
 }
@@ -55,7 +78,7 @@
   font-weight: 800;
 }
 .downloadBtn {
-  width: 163px;
+  width: 190px;
 }
 .downloadText {
   margin-left: 11px;
