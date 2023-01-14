@@ -4,11 +4,12 @@ import Image, { StaticImageData } from 'next/image'
 import { Gallery, SliderGalery } from 'components'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
+import { withDomain } from 'shared/helpers/withDomain'
+import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
+import { slidesPerViewHotelImages } from 'shared/helpers/slidesPerView'
 
 import s from './Overview.module.scss'
-import { withDomain } from '../../../shared/helpers/withDomain'
-import { useWindowDimensions } from '../../../shared/hooks/useWindowDimensions'
-import {DESKTOP_MAX_SCREEN, DESKTOP_MIN_SCREEN} from "../../../shared/constants/screenResolutions";
+import { TABLET_SCREEN } from '../../../shared/constants/screenResolutions'
 
 interface Overview {
   images: string[] | StaticImageData[] | HTMLImageElement[]
@@ -33,7 +34,9 @@ export const Overview: FC<Overview> = ({ images, overview }) => {
         {images?.length ? (
           <SliderGalery
             spaceBetween={8}
-            slidesPerView={width > DESKTOP_MAX_SCREEN ? undefined : width > DESKTOP_MIN_SCREEN ? 1.5 : 1}
+            onSlice={2}
+            slidesPerView={slidesPerViewHotelImages(width)}
+            withNavigation={width > TABLET_SCREEN}
           >
             {images.map((image, index) => (
               <div
@@ -48,7 +51,12 @@ export const Overview: FC<Overview> = ({ images, overview }) => {
         ) : null}
       </div>
 
-      <Gallery images={images} isOpen={openGallery} onClose={setOpenGallery} />
+      <Gallery
+        images={images}
+        isOpen={openGallery}
+        onClose={setOpenGallery}
+        onSlice={2}
+      />
     </div>
   )
 }

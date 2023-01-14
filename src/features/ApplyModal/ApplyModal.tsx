@@ -8,7 +8,7 @@ import { ThankYouPage } from 'features'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
 
-import upload from '/public/assets/images/upload.svg'
+import upload from '/public/assets/images/upload.svg?url'
 import { Vacancy } from 'shared/types/vacancy'
 import { Option } from 'shared/types'
 import { applyForVacancy } from 'shared/api/routes/vacancy'
@@ -171,7 +171,7 @@ const ApplyModal: FC<ApplyModalProps> = ({
                 />
 
                 <span className={s.title}>
-                  <Image alt='uploadIcon' src={upload} />
+                  <Image alt='uploadIcon' src={upload} width={16} height={16} />
                   <span className={s.text}>
                     {getValues().phone
                       ? getValues().phone

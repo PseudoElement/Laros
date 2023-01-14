@@ -5,9 +5,13 @@ import { Map, Tag, TruncatedText } from 'components'
 import { useTranslate } from 'shared/hooks/useTranslate'
 
 import { Destination } from 'shared/types/destinations'
-import { TRUNCATED_ROOM_CARD_TEXT_SIZE } from 'shared/constants'
+import {
+  TRIP_PLAN_DESCRIPTION_SIZE,
+  TRUNCATED_ROOM_CARD_TEXT_SIZE,
+} from 'shared/constants'
 
 import s from './DestinationIntro.module.scss'
+import cn from 'classnames'
 
 export const DestinationIntro: FC<Destination> = ({
   id,
@@ -34,10 +38,9 @@ export const DestinationIntro: FC<Destination> = ({
         <div className={s.name}>{name}</div>
 
         {description ? (
-          <div
-            className={s.description}
-            dangerouslySetInnerHTML={{ __html: description }}
-          />
+          <TruncatedText limit={TRIP_PLAN_DESCRIPTION_SIZE}>
+            {description}
+          </TruncatedText>
         ) : null}
 
         <div className={s.tagsTitle}>

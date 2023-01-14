@@ -3,10 +3,10 @@ import React, { FC } from 'react'
 import { Destination } from 'shared/types/destinations'
 import { useTranslate } from 'shared/hooks/useTranslate'
 
-import { DESTINATIONS_HOME_LIMIT } from 'shared/constants/destinations'
-import { withDomain } from '../../../shared/helpers/withDomain'
+import { withDomain } from 'shared/helpers/withDomain'
 
 import s from './Explore.module.scss'
+import { HOME_DESTS_IDS } from '../../../shared/constants/destinations'
 
 interface ExploreProps {
   destinations: Destination[]
@@ -24,7 +24,9 @@ export const Explore: FC<ExploreProps> = ({ destinations }) => {
 
       <div className={s.images}>
         {destinations
-          .slice(0, DESTINATIONS_HOME_LIMIT)
+          .filter(item => {
+            return !!item.id === HOME_DESTS_IDS.includes(item.id)
+          })
           .map((destination: Destination) => (
             <div
               className={s.exploreItem}
@@ -39,6 +41,7 @@ export const Explore: FC<ExploreProps> = ({ destinations }) => {
               }
               key={destination.id}
             >
+              <div className={s.shadow}>{''}</div>
               <span className={s.itemName}>{destination.name}</span>
             </div>
           ))}

@@ -2,16 +2,16 @@ import { FC } from 'react'
 import { useRouter } from 'next/router'
 // @ts-ignore
 import ReactStars from 'react-rating-stars-component'
-import cn from 'classnames'
 
 import { FieldsType, StartTripForm, InfoTags } from 'features'
-import { Map } from 'components'
+import { Map, TruncatedText } from 'components'
 
 import { useAppDispatch } from 'shared/hooks/redux'
 import { updateForm } from 'store/slices/order/order'
 import { useTranslate } from 'shared/hooks/useTranslate'
 
 import { Hotel } from 'shared/types/hotel'
+import { TRIP_PLAN_DESCRIPTION_SIZE } from 'shared/constants'
 
 import s from './HotelIntro.module.scss'
 
@@ -73,13 +73,14 @@ export const HotelIntro: FC<Hotel> = ({
         <div className={s.name}>{lrweb}</div>
 
         {description ? (
-          <div
-            className={cn(s.description, ['scrollStyle'])}
-            dangerouslySetInnerHTML={{ __html: description }}
-          />
+          <TruncatedText limit={TRIP_PLAN_DESCRIPTION_SIZE}>
+            {description}
+          </TruncatedText>
         ) : null}
 
-        <StartTripForm onChange={handleClick} />
+        <div className={s.forms}>
+          <StartTripForm onChange={handleClick} />
+        </div>
       </div>
 
       <div className={s.right}>

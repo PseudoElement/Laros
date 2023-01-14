@@ -18,7 +18,7 @@ export const TruncatedText: FC<TruncatedTextProps> = ({
   children,
   limit = TRUNCATION_LIMIT_DEFAULT,
   className,
-  more = 'See more',
+  more = 'Mehr ansehen',
 }) => {
   const [isTruncated, setIsTruncated] = useState<boolean>(true)
   const t = useTranslate()

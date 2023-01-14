@@ -29,11 +29,10 @@
 }
 
 .tripName {
-  font-size: 12px;
-  font-weight: $fw-bold;
+  font-size: 16px;
+  font-weight: $fw-semibold;
   line-height: 20px;
   margin-bottom: 15px;
-  color: $color-laros-dark-grey;
 }
 
 .comment {
@@ -46,15 +45,14 @@
 
 .images {
   display: flex;
-  flex-wrap: wrap;
-  margin-top: 30px;
+  padding: 10px;
+  overflow-y: auto;
 }
-.image{
+.image {
   border-radius: 6px;
   border: 3px solid $color-light-grey;
-  margin-right: -20px;
-  margin-bottom: 5px;
-  width: 97px;
+  margin-right: -5px;
+  min-width: 97px;
   height: 97px;
   background-size: cover;
   background-repeat: no-repeat;

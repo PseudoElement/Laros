@@ -34,6 +34,7 @@ export const CategoryCard: FC<CategoryCardProps> = ({
               alt={''}
             />
           ) : null}
+          <div className={s.shadow} />
         </div>
         <div className={s.content}>
           <div className={s.title}>{name}</div>

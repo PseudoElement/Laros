@@ -81,15 +81,17 @@ export const SelectBlock: FC<SelectBlockProps> = ({
               [s.closed]: !activeMenu,
             })}
           >
-            {filtredItems.map((item, idx) => (
-              <div
-                key={idx}
-                onClick={() => onClickItem(item.id)}
-                className={s.listItem}
-              >
-                <label className={s.name}>{item.name}</label>
-              </div>
-            ))}
+            {filtredItems
+              .sort((a, b) => (a.name > b.name ? 1 : -1))
+              .map((item, idx) => (
+                <div
+                  key={idx}
+                  onClick={() => onClickItem(item.id)}
+                  className={s.listItem}
+                >
+                  <label className={s.name}>{item.name}</label>
+                </div>
+              ))}
           </div>
         </div>
         <div className={s.link}>
