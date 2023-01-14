@@ -33,7 +33,7 @@ export const Overview: FC<Overview> = ({ images, overview }) => {
         {images?.length ? (
           <SliderGalery
             spaceBetween={8}
-            onSlice={1}
+            onSlice={2}
             slidesPerView={slidesPerViewHotelImages(width)}
           >
             {images.map((image, index) => (
@@ -53,7 +53,7 @@ export const Overview: FC<Overview> = ({ images, overview }) => {
         images={images}
         isOpen={openGallery}
         onClose={setOpenGallery}
-        onSlice={1}
+        onSlice={2}
       />
     </div>
   )
