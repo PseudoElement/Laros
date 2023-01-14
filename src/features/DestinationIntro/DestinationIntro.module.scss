@@ -19,6 +19,10 @@
     margin-top: 0;
     flex-direction: column;
   }
+
+  @include mobile {
+    width: 100%;
+  }
 }
 
 .introLeftContainer {
@@ -41,6 +45,10 @@
   line-height: 19px;
   color: $color-laros-dark-grey;
   margin-top: 17px;
+
+  @include mobile {
+    margin-top: 0;
+  }
 }
 
 .name {
