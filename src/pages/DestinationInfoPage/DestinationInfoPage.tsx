@@ -17,17 +17,25 @@ import s from './DestinationInfoPage.module.scss'
 
 export interface DestinationInfoPageProps {
   destination: Destination
-};
-export const DestinationInfoPage: FC<DestinationInfoPageProps> = ({ destination }) => {
+}
+export const DestinationInfoPage: FC<DestinationInfoPageProps> = ({
+  destination,
+}) => {
   const t = useTranslate()
 
   const [hotels, setHotels] = useState<Hotel[]>([])
   const [trips, setTrips] = useState<Trip[]>([])
 
+  const tripsFilter = (trips: Trip[]) => {
+    return trips.filter(
+      item => !!(item.name && item.price && item.duration && item.period)
+    )
+  }
+
   const loadTripNearby = async (id: number) => {
     try {
       const { data } = await getTripsNearby(id)
-      setTrips(data.data)
+      setTrips(tripsFilter(data.data))
     } catch (error) {
       console.error('error', error)
     }
@@ -54,8 +62,9 @@ export const DestinationInfoPage: FC<DestinationInfoPageProps> = ({ destination 
       <div
         className={s.bg}
         style={{
-          backgroundImage: `url(${destination?.images ? withDomain(destination.images[0]) : ''
-            })`,
+          backgroundImage: `url(${
+            destination?.images ? withDomain(destination.images[0]) : ''
+          })`,
         }}
       />
       {destination ? <DestinationIntro {...destination} /> : null}
@@ -65,7 +74,7 @@ export const DestinationInfoPage: FC<DestinationInfoPageProps> = ({ destination 
         <Overview images={destination.images} overview={destination.overview} />
       ) : null}
 
-      {trips ? (
+      {trips.length ? (
         <Trips
           trips={trips}
           title={destination?.name}

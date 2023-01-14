@@ -2,7 +2,7 @@
 @import '/src/styles/theme/breakpoints.scss';
 
 .hotelSection {
-  padding: 80px 0;
+  padding: 0 0 30px 0;
 
   @include tablet-laptop {
     padding: 30px 30px;

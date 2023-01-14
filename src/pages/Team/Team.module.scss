@@ -2,9 +2,9 @@
 @import '/src/styles/theme/breakpoints.scss';
 
 .teamPage {
-  background-image: url("/assets/images/aboutPage/background.png");
+  background-image: url('/assets/images/aboutPage/background.png');
   background-repeat: no-repeat;
-  background-size: cover;
+  padding-bottom: 100px;
 }
 .wrapper {
   max-width: 1320px;

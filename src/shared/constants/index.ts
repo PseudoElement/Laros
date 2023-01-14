@@ -11,3 +11,4 @@ export const LIMIT_HOTEL_CARD_TAGS = 3
 export const LIMIT_NEARBY_DESTINATIONS = 3
 export const DEFAULT_LANG = 'en'
 export const ORDER_CALCULATION_DEBOUNCE = 200
+export const JOB_CARD_TEXT_LIMIT = 370

@@ -18,8 +18,6 @@ import { Hotel, Room } from 'shared/types/hotel'
 import { Destination } from 'shared/types/destinations'
 
 import s from './HotelPage.module.scss'
-import { NearbyDestinationsMock } from '../../shared/mocks/hotel'
-import { nearHotelsMock } from '../../shared/mocks/destinations'
 
 interface HotelProps {
   hotelProp: Hotel
@@ -80,13 +78,13 @@ export const HotelPage: FC<HotelProps> = ({ hotelProp }) => {
         className={s.bg}
         style={{
           backgroundImage: `url(${
-            hotel?.images ? withDomain(hotel.images[0]) : ''
+            hotel?.images ? withDomain(hotel.images[1]) : ''
           })`,
         }}
       />
       {hotel ? <HotelIntro {...hotel} /> : null}
 
-      {hotel ? <HotelImages images={hotel.images} /> : null}
+      {hotel?.images.length - 2 ? <HotelImages images={hotel.images} /> : null}
 
       {hotel?.facilities?.length ? (
         <Facility facilitiesAndAmenities={hotel.facilities} />

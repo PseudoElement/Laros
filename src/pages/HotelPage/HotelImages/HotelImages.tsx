@@ -24,7 +24,10 @@ export const HotelImages: FC<HotelImagesProps> = ({ images }) => {
   return (
     <div className={s.hotelImages}>
       {images?.length ? (
-        <SliderGalery slidesPerView={slidesPerViewHotelImages(width)}>
+        <SliderGalery
+          slidesPerView={slidesPerViewHotelImages(width)}
+          onSlice={2}
+        >
           {images.map((image, index) => (
             <div
               key={index}
@@ -36,7 +39,12 @@ export const HotelImages: FC<HotelImagesProps> = ({ images }) => {
           ))}
         </SliderGalery>
       ) : null}
-      <Gallery images={images} isOpen={openGallery} onClose={setOpenGallery} />
+      <Gallery
+        images={images}
+        isOpen={openGallery}
+        onClose={setOpenGallery}
+        onSlice={2}
+      />
     </div>
   )
 }

@@ -5,10 +5,8 @@
   padding: 80px 0 200px;
   text-align: center;
   color: $color-bg-black;
-  background-image: url("/assets/images/aboutPage/background.png");
-  background-size: cover;
+  background-image: url('/assets/images/aboutPage/background.png');
   background-repeat: no-repeat;
-
   @include mobile {
     padding: 20px 0;
   }

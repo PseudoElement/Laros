@@ -6,6 +6,8 @@
   margin-bottom: 32px;
   font-family: $font-Lato;
   padding: 32px 40px;
+  background-color: $color-white;
+  border-radius: 16px;
 
   @include mobile-tablet {
     width: 100%;

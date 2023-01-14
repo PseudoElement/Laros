@@ -33,7 +33,7 @@ export const AboutPage: FC = () => {
         <div className={s.wrapper}>
           <div className={s.text}>
             <h1 className={s.title}>{t('about.title')}</h1>
-            <p className={s.desc}>{t('about.description')}</p>
+            <p className={s.subDesc}>{t('about.description')}</p>
           </div>
 
           <div className={s.cards}>

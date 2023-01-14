@@ -14,9 +14,15 @@ interface GalleryProps {
   images: string[] | StaticImageData[] | HTMLImageElement[]
   isOpen: number | null
   onClose: (value: number | null) => void
+  onSlice?: number
 }
 
-export const Gallery: FC<GalleryProps> = ({ images, isOpen = 0, onClose }) => {
+export const Gallery: FC<GalleryProps> = ({
+  images,
+  isOpen = 0,
+  onClose,
+  onSlice = 0,
+}) => {
   const swiperRef = useRef<HTMLDivElement>(null)
   const changeSlide = (slideId: number) => {
     // @ts-ignore
@@ -31,7 +37,7 @@ export const Gallery: FC<GalleryProps> = ({ images, isOpen = 0, onClose }) => {
       >
         <div onClick={e => e.stopPropagation()} className={s.galleryWrap}>
           <Swiper
-            initialSlide={isOpen ?? undefined}
+            initialSlide={isOpen ? isOpen - onSlice : undefined}
             //@ts-ignore
             ref={swiperRef}
             spaceBetween={10}
@@ -39,7 +45,7 @@ export const Gallery: FC<GalleryProps> = ({ images, isOpen = 0, onClose }) => {
             modules={[FreeMode, Navigation, Thumbs]}
             className={s.galleryModalSwiper}
           >
-            {images.map((item, index) => (
+            {images.slice(onSlice, images.length).map((item, index) => (
               <SwiperSlide key={index}>
                 <div className={s.galleryModalSlide}>
                   <Image
@@ -68,7 +74,7 @@ export const Gallery: FC<GalleryProps> = ({ images, isOpen = 0, onClose }) => {
         </div>
 
         <div className={s.sliderThumbs}>
-          {images.map((item, id) => (
+          {images.slice(onSlice, images.length).map((item, id) => (
             <div
               key={id}
               className={s.sliderThumbItem}
