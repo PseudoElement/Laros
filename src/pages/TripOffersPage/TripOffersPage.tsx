@@ -23,7 +23,7 @@ import {
 } from 'store/slices/destinations/selectors'
 
 import { Tag } from 'shared/types/tag'
-import { TripCategory, TripFilterParams } from 'shared/types/trip'
+import { TripCategory, TripFilterParams, TripSort } from 'shared/types/trip'
 import { Option } from 'shared/types'
 
 import { tripPageInfo } from 'shared/mocks/tripInfo'
@@ -43,7 +43,11 @@ export const TripOffersPage: FC = () => {
   const t = useTranslate()
   const { query, push } = useRouter()
   const { category } = query
-  const { control, watch } = useForm()
+  const { control, watch } = useForm<any>({
+    defaultValues: {
+      ordering: TripSortOptions[0],
+    },
+  })
   const dispatch = useAppDispatch()
   const [tripCategoryInfo, setTripCatInfo] = useState<TripCategory | null>()
   const [view, setView] = useState(View.GRID)
@@ -55,9 +59,11 @@ export const TripOffersPage: FC = () => {
     category
       ? {
           travel_types: Number(category),
+          ordering: TripSort.AZ,
           page,
         }
       : {
+          ordering: TripSort.AZ,
           page,
         }
   )

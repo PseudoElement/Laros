@@ -60,6 +60,7 @@ export interface TripFilterParams {
   offer: boolean
   page: number
 }
+
 export interface TripCategory extends Meta {
   description: string
   images: string[]
