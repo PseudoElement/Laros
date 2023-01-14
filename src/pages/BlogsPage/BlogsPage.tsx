@@ -10,6 +10,8 @@ import { reviewsMock } from 'shared/mocks/reviews'
 import { blogs } from 'shared/mocks/blogs'
 
 import s from './BlogsPage.module.scss'
+import { useWindowDimensions } from '../../shared/hooks/useWindowDimensions'
+import { TABLET_SCREEN } from '../../shared/constants/screenResolutions'
 
 interface BlogItemProps {
   id: number
@@ -46,6 +48,7 @@ export const BlogItem: FC<BlogItemProps> = ({
 export const BlogsPage: FC = () => {
   const [blogsData, setBlogsData] = useState<any[] | null>([])
   const t = useTranslate()
+  const { width } = useWindowDimensions()
 
   useEffect(() => {
     if (!blogsData?.length) {
@@ -77,9 +80,9 @@ export const BlogsPage: FC = () => {
           </div>
           <div className={s.sliderContainer}>
             <Slider
-              slidesPerView={2}
+              slidesPerView={width > TABLET_SCREEN ? 2 : 1}
               withPagination
-              withNavigation
+              withNavigation={width > TABLET_SCREEN}
               classname={s.sliderCustom}
             >
               {reviewsMock.map(review => (
