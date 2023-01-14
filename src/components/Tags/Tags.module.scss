@@ -16,7 +16,15 @@
   width: 100%;
   overflow: hidden;
   overflow-x: auto;
-  display: flex;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-auto-flow: column;
+
+  @include mobile {
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+
+
 }
 
 .label {
