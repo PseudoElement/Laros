@@ -10,6 +10,7 @@ interface AboutSliderProps {
   spaceBetween?: number
   slidesPerView?: number
   onSlice?: number
+  withNavigation?: boolean
 }
 
 export const SliderGalery: FC<AboutSliderProps> = ({
@@ -17,6 +18,7 @@ export const SliderGalery: FC<AboutSliderProps> = ({
   spaceBetween = 8,
   slidesPerView = 1.5,
   onSlice = 0,
+  withNavigation = true,
 }) => {
   return (
     <div className={s.slider}>
@@ -26,7 +28,7 @@ export const SliderGalery: FC<AboutSliderProps> = ({
         slidesPerView={slidesPerView}
         centeredSlides={true}
         initialSlide={1}
-        navigation={true}
+        navigation={withNavigation}
         pagination={{ clickable: true }}
       >
         {children.slice(onSlice, children.length).map((child, index) => (

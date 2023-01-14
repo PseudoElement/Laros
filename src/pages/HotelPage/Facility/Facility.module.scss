@@ -1,4 +1,5 @@
 @use 'styles/style' as *;
+@import '/src/styles/theme/breakpoints.scss';
 
 .facility {
   background-color: $color-modal-header;
@@ -56,6 +57,12 @@
   &:nth-child(5n + 4),
   &:nth-child(5n + 5) {
     width: 45.7%;
+
+    @include mobile {
+      width: 80%;
+      flex-direction: column;
+      align-items: center;
+    }
   }
   @include mobile {
     width: 80%;
