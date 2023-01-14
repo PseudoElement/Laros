@@ -85,7 +85,17 @@ export const TripOffersPage: FC = () => {
     const destination = subregions.length
       ? subregions.join(',')
       : form.region?.value ?? undefined
-    setParams({ destination, ordering: form.ordering?.value })
+
+    const duration =
+      form.duration?.length > 0
+        ? form.duration.map((item: Option) => Number(item.value)).join(',')
+        : undefined
+    setParams({
+      destination,
+      duration,
+      ordering: form.ordering?.value,
+      page: 1,
+    })
   }
 
   const loadHotelTags = async () => {
@@ -120,7 +130,10 @@ export const TripOffersPage: FC = () => {
 
   useEffect(() => {
     setIsButtonShowed(newTrips.length === TRIP_PAGINATION_PER_PAGE)
-    setTrips(prevState => prevState.concat(...newTrips))
+    setTrips(prevState => {
+      if (params.page === 1) return newTrips
+      return prevState.concat(...newTrips)
+    })
   }, [newTrips])
 
   useEffect(() => {

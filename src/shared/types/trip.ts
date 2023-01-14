@@ -52,6 +52,7 @@ export enum TripSort {
 
 export interface TripFilterParams {
   destination: string
+  duration: string
   travel_types: number
   price_lt: number
   price_gt: number
