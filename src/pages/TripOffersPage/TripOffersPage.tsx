@@ -292,7 +292,7 @@ export const TripOffersPage: FC = () => {
           variant='secondary'
           onClick={() => setPage(prevState => ++prevState)}
         >
-          Load More
+          {t('common.loadMore')}
         </Button>
       )}
     </div>

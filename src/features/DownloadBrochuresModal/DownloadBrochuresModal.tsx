@@ -54,6 +54,7 @@ export const DownloadBrochuresModal: FC<DownloadBrochuresModalProps> = ({
     }
     dispatch(sendDownloadBrochureThunk(form))
   }
+
   return (
     <Modal
       title={t('brochures.downloadModalTitle')}
@@ -65,23 +66,27 @@ export const DownloadBrochuresModal: FC<DownloadBrochuresModalProps> = ({
           <Card brochure={brochures[0]} />
           <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
             <div className={s.title}>{t('brochures.info')}</div>
+
             <Controller
-              name='email'
+              name='name'
               control={control}
+              rules={{ required: true }}
               render={({ field: { onChange, value } }) => (
                 <Input
-                  id='email'
                   onChange={onChange}
+                  id='name'
                   value={value}
-                  type='email'
-                  label={t('forms.inputLabel1')}
-                  classname={s.formName}
+                  classname={s.input}
+                  placeholder={t('forms.inputLabel5')}
+                  label={t('forms.inputLabel30')}
                 />
               )}
             />
+
             <Controller
               name='title'
               control={control}
+              rules={{ required: true }}
               render={({ field: { onChange, value } }) => (
                 <div className={s.radio}>
                   <div className={s.radioLabel}>{t('contactForm.label1')}*</div>
@@ -94,15 +99,20 @@ export const DownloadBrochuresModal: FC<DownloadBrochuresModalProps> = ({
                 </div>
               )}
             />
+
             <Controller
-              name='name'
+              name='email'
               control={control}
+              rules={{ required: true }}
               render={({ field: { onChange, value } }) => (
                 <Input
+                  id='email'
                   onChange={onChange}
-                  id='name'
                   value={value}
-                  label={t('forms.inputLabel30')}
+                  type='email'
+                  label={t('forms.inputLabel1')}
+                  placeholder={t('forms.inputLabel1')}
+                  classname={s.input}
                 />
               )}
             />

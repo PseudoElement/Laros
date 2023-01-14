@@ -1,8 +1,10 @@
 @use 'styles/style.scss' as *;
 .card {
-  height: 288px;
   width: 240px;
+  max-height: 320px;
   border-radius: 16px;
+  border: 2px solid $color-laros-light-grey;
+  overflow: hidden;
 }
 
 .image {
@@ -11,7 +13,7 @@
 .topic {
   width: 100%;
   padding-bottom: 6px;
-  font-family: Lato;
+  font-family: $font-Lato;
   font-size: 12px;
   font-weight: $fw-light;
 }

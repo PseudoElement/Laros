@@ -343,7 +343,7 @@
     "chooseTheDate": "Wählen Sie das Datum und die Uhrzeit und lassen Sie uns reden!",
     "socialMedia": "Soziale Medien",
     "follow": "Folgen Sie uns auf",
-    "mr": "Mann",
+    "mr": "Herr",
     "mrs": "Frau",
     "ms": "Fräulein"
   },
@@ -687,10 +687,11 @@
     "inputLabel31": "Vollzeit",
     "inputLabel32": "Anzahl der Gäste",
     "inputLabel33": "Anzahl der Zimmer",
+    "inputLabel34": "Addresse",
     "radioLabel1": "Economy Class",
     "radioLabel2": "Business Class",
     "radioLabel3": "Frau",
-    "radioLabel4": "Mann",
+    "radioLabel4": "Herr",
     "radioLabel5": "Privattransfer",
     "radioLabel6": "Bustransfer",
     "radioLabel7": "Erste Class",
@@ -709,7 +710,7 @@
     "email2": "jon@knownothing.net",
     "email3": "jon.doe@example.com",
     "larosEmail": "info@laros.ch",
-    "phoneNumber": "+ 41 061 / 756 80 80"
+    "phoneNumber": "+ 41 061 756 80 80"
   },
   "common": {
     "contactText": "Kontakt",
@@ -729,6 +730,7 @@
     "addLocation": "Hinzufügen von Standorten",
     "traveler": "Reisende",
     "travelAgent": "Sind Sie Reiseveranstalter?",
-    "rooms": "Zimmer"
+    "rooms": "Zimmer",
+    "loadMore": "MEHR ANZEIGEN"
   }
 }
