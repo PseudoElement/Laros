@@ -1,13 +1,15 @@
 import React, { FC, useState } from 'react'
-import s from './Select.module.scss'
 import cls from 'classnames'
 import Link from 'next/link'
+import Image from 'next/image'
+
+import { useTranslate } from 'shared/hooks/useTranslate'
+
 import { Destination } from 'shared/types/destinations'
 
 import arrow from '/public/assets/images/homepage/arrow.png'
 
-import Image from 'next/image'
-import { useTranslate } from '../../../../shared/hooks/useTranslate'
+import s from './Select.module.scss'
 
 export interface SelectBlockProps {
   setActiveMenu: (active: boolean) => void

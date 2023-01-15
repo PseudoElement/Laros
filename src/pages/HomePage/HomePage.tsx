@@ -32,31 +32,31 @@ export const HomePage: FC = () => {
   }, [])
 
   return (
-    <div
-      onMouseEnter={() => setVideoIsFullscreen(true)}
-      onClick={() => setActiveMenu(false)}
-    >
-      <div className={s.bgWrap}>
-        <Main
-          setVideoIsFullscreen={setVideoIsFullscreen}
-          videoIsFullscreen={videoIsFullscreen}
-          setActiveMenu={setActiveMenu}
-          activeMenu={activeMenu}
-          destinations={destinations}
-          travelTypes={travelTypes}
-        />
-        <SelectComponent travelTypes={travelTypes} />
-        <WhoWeAre items={AboutItemsMock} />
+      <div
+          onMouseEnter={() => setVideoIsFullscreen(true)}
+          onClick={() => setActiveMenu(false)}
+      >
+        <div className={s.bgWrap}>
+          <Main
+              setVideoIsFullscreen={setVideoIsFullscreen}
+              videoIsFullscreen={videoIsFullscreen}
+              setActiveMenu={setActiveMenu}
+              activeMenu={activeMenu}
+              destinations={destinations}
+              travelTypes={travelTypes}
+          />
+          <SelectComponent travelTypes={travelTypes} />
+          <WhoWeAre items={AboutItemsMock} />
+        </div>
+
+        <Explore destinations={destinations} />
+        <PostBlock posts={PostsMock} />
+
+        <div className={s.commentsWrapper}>
+          <Comments comments={reviewsMock} />
+        </div>
+
+        <Subscribe />
       </div>
-
-      <Explore destinations={destinations} />
-      <PostBlock posts={PostsMock} />
-
-      <div className={s.commentsWrapper}>
-        <Comments comments={reviewsMock} />
-      </div>
-
-      <Subscribe />
-    </div>
   )
 }

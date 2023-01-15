@@ -24,22 +24,25 @@ export const CategoryCard: FC<CategoryCardProps> = ({
   vertical = false,
 }) => {
   return (
-    <Link href={`travel_planner/${id}`}>
-      <div className={cn(s.card, { [s.vertical]: vertical })}>
-        <div className={s.image}>
-          {images.length ? (
-            <Image
-              src={vertical ? withDomain(images[0]) : mockImg}
-              layout={'fill'}
-              alt={''}
-            />
-          ) : null}
-          <div className={s.shadow} />
-        </div>
+    <Link href={vertical ? `travel_planner/${id}` : '/static_travel_planner'}>
+      <div
+        className={cn(s.card, { [s.vertical]: vertical })}
+        style={{
+          backgroundImage: `url(${
+            images.length ? withDomain(images[0]) : null
+          })`,
+        }}
+      >
         <div className={s.content}>
           <div className={s.title}>{name}</div>
-          <div className={s.description}>
-            <div dangerouslySetInnerHTML={{ __html: description }} />
+
+          <div className={s.container}>
+            <div className={s.name}>{name}</div>
+
+            <div
+              className={s.description}
+              dangerouslySetInnerHTML={{ __html: description }}
+            />
           </div>
         </div>
       </div>
