@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { brochuresMock } from 'shared/mocks/brochures'
 import { Brochure } from 'shared/types/brochures'
 import { getBrochuresThunk, sendDownloadBrochureThunk } from './thunk'
 
@@ -23,6 +22,11 @@ export const brochures = createSlice({
     ) => {
       state.brochures = action.payload
     },
+
+    brochuresIsDownload: (state: BrochuresState) => {
+      state.isDownloadFormSent = true
+    },
+
     toggleBrochure: (
       state: BrochuresState,
       action: PayloadAction<{ id: number; selected?: boolean }>
@@ -42,7 +46,6 @@ export const brochures = createSlice({
   extraReducers: builder => {
     builder.addCase(getBrochuresThunk.fulfilled, (state, action) => {
       state.brochures = [...action.payload]
-      // state.brochures = brochuresMock
     })
     builder.addCase(getBrochuresThunk.rejected, () => {
       console.error('An error occured')
@@ -57,6 +60,7 @@ export const brochures = createSlice({
   },
 })
 
-export const { setBrochures, toggleBrochure } = brochures.actions
+export const { setBrochures, toggleBrochure, brochuresIsDownload } =
+  brochures.actions
 
 export default brochures.reducer

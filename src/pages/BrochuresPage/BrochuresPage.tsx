@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 
 import { BrochureCard } from './BrochureCard'
-import { Button, Container } from 'components'
+import { Button } from 'components'
 import { DownloadBrochuresModal, SendBrochuresModal } from 'features'
 
 import { getSelectedBrochures } from 'shared/helpers/brochures'
@@ -32,12 +32,15 @@ export const BrochuresPage: FC = () => {
 
   const onBrochureDownload = (id: number, file: string) => {
     if (isDownloadFormSent) {
-      downloadFile(file)
+      totalSelected.forEach(brochure => {
+        downloadFile(brochure.file)
+      })
     } else {
       dispatch(toggleBrochure({ id, selected: true }))
       setIsDownloadModalOpen(true)
     }
   }
+
   return (
     <div className={s.brochuresPage}>
       <div className={s.wrapper} key={s.title}>

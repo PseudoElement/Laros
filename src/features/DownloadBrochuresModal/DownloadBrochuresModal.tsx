@@ -4,7 +4,6 @@ import { Controller, useForm } from 'react-hook-form'
 import { Button, DownloadIcon, Input, Modal, Radio } from 'components'
 import { Card } from './Сard'
 
-import { sendDownloadBrochuresForm } from 'shared/api/routes/brochures'
 import { useTranslate } from 'shared/hooks/useTranslate'
 import { titleOptions } from 'shared/constants/form'
 import { downloadFile } from 'shared/helpers/downloadFile'
@@ -12,6 +11,7 @@ import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { Brochure, DownloadBrochureForm } from 'shared/types/brochures'
 import { getSelectedBrochuresIds } from 'store/slices/brochures/selector'
 import { sendDownloadBrochureThunk } from 'store/slices/brochures/thunk'
+import { brochuresIsDownload } from 'store/slices/brochures/brochures'
 
 import s from './DownloadBrochuresModal.module.scss'
 
@@ -34,7 +34,6 @@ export const DownloadBrochuresModal: FC<DownloadBrochuresModalProps> = ({
 
   useEffect(() => {
     if (isFormSent) {
-      console.log(brochures)
       brochures.forEach(brochure => {
         downloadFile(brochure.file)
       })
@@ -53,6 +52,7 @@ export const DownloadBrochuresModal: FC<DownloadBrochuresModalProps> = ({
       brochures: brochureIds,
     }
     dispatch(sendDownloadBrochureThunk(form))
+    dispatch(brochuresIsDownload())
   }
 
   return (
