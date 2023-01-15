@@ -10,30 +10,30 @@
   margin-top: 45px;
 }
 
-@media screen and (max-width:1350px) {
+@media screen and (max-width: 1350px) {
   .container {
-    transform: scale(.7);
+    transform: scale(0.7);
   }
 }
 
-@media screen and (max-width:1024px) {
+@media screen and (max-width: 1024px) {
   .container {
     margin-right: 0;
   }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
   .container {
-    transform: scale(.6);
+    transform: scale(0.6);
     margin-right: 120px;
     height: 720px;
     margin-top: 0;
   }
 }
 
-@media screen and (max-width:425px) {
+@media screen and (max-width: 425px) {
   .container {
-    transform: scale(.3) translateY(-300px);
+    transform: scale(0.3) translateY(-300px);
     margin-right: 120px;
     height: 400px;
   }
@@ -41,20 +41,28 @@
 
 /*Sub */
 
-.sub__gr20 {
+.sub__gr22 {
   position: absolute;
   transition: all 0.2s ease-in;
   margin-right: 206px;
   margin-top: 248px;
   cursor: url('../../../../public/assets/images/destinations/cursor.png'), auto;
+  pointer-events: none;
+  path {
+    pointer-events: all;
+  }
 }
 
-.sub__gr28 {
+.sub__gr24 {
   position: absolute;
   margin-right: 102px;
   margin-top: 188px;
   transition: 0.2s all ease-in;
   cursor: url('../../../../public/assets/images/destinations/cursor.png'), auto;
+  pointer-events: none;
+  path {
+    pointer-events: all;
+  }
 }
 
 .sub__gr25 {
@@ -63,16 +71,24 @@
   margin-left: 200px;
   transition: 0.2s all ease-in;
   cursor: url('../../../../public/assets/images/destinations/cursor.png'), auto;
+  pointer-events: none;
+  path {
+    pointer-events: all;
+  }
 }
 
 .sub__gr22 {
   position: absolute;
-  margin-top: 300px;
-  margin-left: 256px;
+  margin-right: 206px;
+  margin-top: 248px;
   transition: 0.2s all ease-in;
+  z-index: 1;
   transform: rotate(0.5deg);
   cursor: url('../../../../public/assets/images/destinations/cursor.png'), auto;
-  z-index: 1;
+  pointer-events: none;
+  path {
+    pointer-events: all;
+  }
 }
 
 .sub__gr27 {
@@ -82,14 +98,34 @@
   transition: 0.2s all ease-in;
   z-index: 1;
   cursor: url('../../../../public/assets/images/destinations/cursor.png'), auto;
+  pointer-events: none;
+  path {
+    pointer-events: all;
+  }
 }
 
-.sub__gr24 {
+.sub__gr20 {
   position: absolute;
   margin-top: 336px;
   margin-left: 236px;
   transition: 0.2s all ease-in;
   cursor: url('../../../../public/assets/images/destinations/cursor.png'), auto;
+  pointer-events: none;
+  path {
+    pointer-events: all;
+  }
+}
+
+.sub__gr28 {
+  position: absolute;
+  margin-top: 300px;
+  margin-left: 256px;
+  transition: 0.2s all ease-in;
+  cursor: url('../../../../public/assets/images/destinations/cursor.png'), auto;
+  pointer-events: none;
+  path {
+    pointer-events: all;
+  }
 }
 
 .sub__gr26 {
@@ -98,6 +134,10 @@
   margin-left: 614px;
   margin-top: 134px;
   cursor: url('../../../../public/assets/images/destinations/cursor.png'), auto;
+  pointer-events: none;
+  path {
+    pointer-events: all;
+  }
 }
 
 .sub__gr23 {
@@ -106,6 +146,10 @@
   margin-left: 470px;
   transition: 0.2s all ease-in;
   cursor: url('../../../../public/assets/images/destinations/cursor.png'), auto;
+  pointer-events: none;
+  path {
+    pointer-events: all;
+  }
 }
 
 .sub__gr21 {
@@ -114,6 +158,10 @@
   margin-left: 400px;
   transition: 0.2s all ease-in;
   cursor: url('../../../../public/assets/images/destinations/cursor.png'), auto;
+  pointer-events: none;
+  path {
+    pointer-events: all;
+  }
 }
 
 .sub__gr19 {
@@ -122,10 +170,10 @@
   margin-left: 980px;
   transition: 0.2s all ease-in;
   cursor: url('../../../../public/assets/images/destinations/cursor.png'), auto;
-}
-
-.wrapper {
-  position: relative;
+  pointer-events: none;
+  path {
+    pointer-events: all;
+  }
 }
 
 .cartShown_20 {
@@ -133,9 +181,24 @@
   bottom: 70%;
 }
 
+.cartShown_22 {
+  left: 80%;
+  bottom: 85%;
+}
+
 .cartShown_28 {
   left: 60%;
   top: 20%;
+}
+
+.cartShown_24 {
+  bottom: 50%;
+  left: 80%;
+}
+
+.cartShown_21 {
+  left: 80%;
+  bottom: 85%;
 }
 
 .cartShown_25 {
@@ -148,12 +211,8 @@
   bottom: 90%;
 }
 
-.cartShown_24 {
-  bottom: 50%;
-}
-
 .cartShown_26 {
-  left: 100%;
+  left: 90%;
   bottom: 40%;
 }
 
@@ -163,16 +222,16 @@
 }
 
 .cartShown_19 {
-  left: 50%;
+  left: 40%;
   bottom: 70%;
 }
 
 .map20:hover {
-  fill: $color-sub-r1;
+  fill: $color-sub-r6;
 }
 
 .map28:hover {
-  fill: $color-sub-r2;
+  fill: $color-sub-r4;
 }
 
 .map25:hover {
@@ -181,7 +240,7 @@
 }
 
 .map22:hover {
-  fill: $color-sub-r4;
+  fill: $color-sub-r1;
 }
 
 .map27:hover {
@@ -189,7 +248,7 @@
 }
 
 .map24:hover {
-  fill: $color-sub-r6;
+  fill: $color-sub-r2;
 }
 
 .map26:hover {
@@ -197,7 +256,7 @@
 }
 
 .map23:hover {
-  fill: $color-sub-r7;
+  fill: $color-blue;
 }
 
 .map21:hover {

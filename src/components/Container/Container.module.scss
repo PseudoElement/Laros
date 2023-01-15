@@ -1,3 +1,9 @@
+@use 'styles/style.scss' as *;
+
 .container {
   padding: 0 80px;
+
+  @include mobile {
+    padding: 0 5px;
+  }
 }

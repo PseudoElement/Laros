@@ -1,7 +1,12 @@
 @use 'styles/style' as *;
+@import '/src/styles/theme/breakpoints.scss';
 
 .hotelImages {
   margin-bottom: 80px;
+
+  @include mobile {
+    margin-bottom: 30px;
+  }
 }
 
 .hotelImage {
@@ -13,5 +18,9 @@
 
   img {
     border-radius: 8px;
+  }
+
+  @include mobile {
+    height: 250px;
   }
 }

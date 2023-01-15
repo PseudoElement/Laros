@@ -18,7 +18,7 @@ export const SliderGalery: FC<AboutSliderProps> = ({
   spaceBetween = 8,
   slidesPerView = 1.5,
   onSlice = 0,
-  withNavigation,
+  withNavigation = true,
 }) => {
   return (
     <div className={s.slider}>

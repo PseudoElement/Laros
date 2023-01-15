@@ -15,6 +15,7 @@ import slideImg2 from '/public/assets/images/aboutPage/about/about_us_photo_2.pn
 import slideImg3 from '/public/assets/images/aboutPage/about/about_us_photo_3.png'
 
 import s from './AboutPage.module.scss'
+import { TABLET_SCREEN } from '../../shared/constants/screenResolutions'
 
 export const AboutPage: FC = () => {
   const images = [slideImg1, slideImg2, slideImg3]
@@ -48,7 +49,10 @@ export const AboutPage: FC = () => {
         </div>
       </div>
 
-      <SliderGalery slidesPerView={slidesPerViewAbout(width)}>
+      <SliderGalery
+        slidesPerView={slidesPerViewAbout(width)}
+        withNavigation={width > TABLET_SCREEN}
+      >
         {images.map((item, index) => (
           <div
             className={s.galleryImage}

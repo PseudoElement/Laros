@@ -1,26 +1,42 @@
 import { FC, useState } from 'react'
 
 import { mockMaps } from 'shared/mocks/maps'
+import { Location } from 'shared/types/maps'
 import GreeceMap from './GreeceMap'
 
 import s from './Greece.module.scss'
 import cn from 'classnames'
 
-const Greece: FC = () => {
+interface GreeceProps {
+  location: Location[]
+}
+
+const Greece: FC<GreeceProps> = ({ location }) => {
   const [isShownCard, setIsShownCard] = useState<number | null>(null)
+
+  console.log(location)
 
   return (
     <div className={s.container}>
-      {mockMaps.Greece.map(item => (
-        <div key={item.id} className={cn(s[`sub__gr${item.id}`])}>
-          <GreeceMap
-            key={item.id}
-            isShownCard={isShownCard == item.id ? isShownCard : null}
-            setIsShownCard={setIsShownCard}
-            item={item}
-          />
-        </div>
-      ))}
+      {location
+        .filter(locate => locate.cardTitle !== 'Saronische inseln')
+        .map(locate => {
+          const currentMap = mockMaps.Greece.find(
+            map => locate.cardTitle === map.cardTitle
+          )
+
+          return (
+            <div key={locate.id} className={cn(s[`sub__gr${locate.id}`])}>
+              <GreeceMap
+                key={locate.id}
+                isShownCard={isShownCard == locate.id ? isShownCard : null}
+                setIsShownCard={setIsShownCard}
+                regionCardItem={locate}
+                item={{ ...locate, map: currentMap?.map }}
+              />
+            </div>
+          )
+        })}
     </div>
   )
 }

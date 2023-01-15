@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { FC, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
@@ -16,7 +15,6 @@ import { getPath } from 'shared/helpers/getPath'
 import Arrow from '/public/assets/images/blackArrow.svg'
 
 import s from './DestinationPage.module.scss'
-import _ from 'lodash' // TODO use certain method
 
 export const DestinationPage: FC = () => {
   const dispatch = useAppDispatch()
@@ -26,51 +24,28 @@ export const DestinationPage: FC = () => {
   const t = useTranslate()
 
   const currentDestinationId = Number(query.id)
-  const currentDestinationDescription = destinations.filter(
-    item => item.id === currentDestinationId
-  )[0]?.description
+  const currentDestinationDescription =
+    destinations.filter(item => item.id === currentDestinationId)[0]
+      ?.description || ''
 
   const route = getPath(pathname)
-  const title = !map?.currentMap?.parentId
-    ? route !== t('area.areas')
-      ? t('hotels.title')
-      : t('destinations.title')
-    : map.currentMap.name
+  const title = (map && map.currentMap?.name) || ''
 
   useEffect(() => {
     dispatch(getDestinationsThunk())
   }, [])
 
   useEffect(() => {
-    let map = getCurrentMap(currentDestinationId)
+    let map = getCurrentMap({
+      destinations,
+      destination: destinations.find(
+        destination => destination.id === currentDestinationId
+      ),
+      route,
+    })
 
-    const currentLocation = _(destinations)
-      .filter(d => d.parent === currentDestinationId)
-      .map(location => ({
-        id: location.id,
-        link: `/destinations/${route}/${location.id}`,
-        cardTitle: location.name,
-        cardText: location.description,
-      }))
-      .value()
-
-    if (map.currentMap) {
-      let newMap = {
-        ...map,
-        currentMap: {
-          ...map.currentMap,
-          destination: destinations.find(
-            destination => destination.id === currentDestinationId
-          ),
-          destinations: destinations.filter(
-            destination => destination.parent === currentDestinationId
-          ),
-        },
-      }
-
-      setMap({ ...newMap, location: currentLocation })
-    }
-  }, [currentDestinationId, destinations])
+    map.currentMap && setMap(map)
+  }, [currentDestinationId, destinations, route])
 
   return (
     <>
@@ -81,12 +56,12 @@ export const DestinationPage: FC = () => {
           description={currentDestinationDescription}
           title={title}
         >
-          {map?.currentMap && (
+          {map && map.currentMap && (
             <>
-              {map.currentMap.parentId && map.parent && (
+              {map.parent && (
                 <div
                   onClick={() =>
-                    push(`/destinations/${route}/${map.parent!.id}`)
+                    push(`/destinations/${route}/${map.parent?.id}`)
                   }
                   className={s.back}
                 >
@@ -103,14 +78,12 @@ export const DestinationPage: FC = () => {
       {map &&
         map.currentMap &&
         (route === 'areas' ? (
-          map.currentMap.destination && (
-            <AreasOf
-              isAreas
-              className={s.areas}
-              destination={map.currentMap.destination}
-              destinations={map.currentMap.destinations}
-            />
-          )
+          <AreasOf
+            isAreas
+            className={s.areas}
+            destination={map.currentMap}
+            destinations={map.currentMap.destinations}
+          />
         ) : (
           <DestinationHotels map={map.currentMap} />
         ))}
