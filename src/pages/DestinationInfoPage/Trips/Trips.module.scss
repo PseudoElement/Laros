@@ -5,7 +5,7 @@
   padding: 80px 0;
   margin-bottom: 80px;
 
-  @include tablet-desktop {
+  @include tablet {
     padding: 0 30px;
   }
 
@@ -44,7 +44,7 @@
   margin: 0 150px;
 }
 
-@include mobile-laptop {
+@include mobile-tablet {
   .slider {
     margin: 0;
 
@@ -63,14 +63,30 @@
   }
 }
 
-@include laptop {
+@include tablet {
   .slider {
+    margin: 0 7%;
+
     [class*='swiperButtonNext'] {
       right: -15px;
     }
 
     [class*='swiperButtonPrev'] {
       left: -15px;
+    }
+  }
+}
+
+@include laptop {
+  .slider {
+    margin: 0 8%;
+
+    [class*='swiperButtonNext'] {
+      right: -40px;
+    }
+
+    [class*='swiperButtonPrev'] {
+      left: -40px;
     }
   }
 }
