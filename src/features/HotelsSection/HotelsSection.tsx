@@ -7,6 +7,7 @@ import { Hotel } from 'shared/types/hotel'
 
 import s from './HotelSection.module.scss'
 import { useWindowDimensions } from '../../shared/hooks/useWindowDimensions'
+import { TABLET_SCREEN } from '../../shared/constants/screenResolutions'
 
 interface HotelSection {
   hotels: Hotel[]
@@ -26,7 +27,7 @@ export const HotelSection: FC<HotelSection> = ({ hotels, title, subTitle }) => {
         {hotels.length ? (
           <Slider
             classname={s.hotelSlider}
-            withNavigation={width > 570}
+            withNavigation={width > TABLET_SCREEN}
             withPagination
             spaceBetween={30}
             slidesPerView={width > 1200 ? undefined : width > 800 ? 2 : 1}
