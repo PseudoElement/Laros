@@ -1,4 +1,5 @@
 @use '/src/styles/style' as *;
+@import '/src/styles/theme/breakpoints.scss';
 
 .wrapper {
   padding-top: 160px;
@@ -8,6 +9,15 @@
   background-size: 100%;
   background-color: $color-white;
   color: $color-bg-black;
+
+  @include mobile {
+    padding-top: 0;
+    background-image: unset;
+  }
+
+  @include tablet {
+    padding-top: 100px;
+  }
 }
 
 .main {
@@ -16,6 +26,15 @@
   background-color: $color-white;
   border-radius: 16px;
   box-shadow: 0 4px 4px rgba(0, 60, 118, 0.15);
+
+  @include mobile {
+    width: 100%;
+    padding: 0 10px 10px;
+  }
+
+  @include tablet {
+    width: 95%;
+  }
 }
 
 .header {
@@ -23,6 +42,11 @@
   width: 100%;
   background-color: $color-laros-light-grey;
   border-radius: 16px 16px 0 0;
+
+  @include mobile {
+    background-color: unset;
+    padding-left: 0;
+  }
 }
 
 .button {
@@ -36,10 +60,36 @@
 
 .contentWrapper {
   padding: 0 67px 106px 109px;
+
+  @include mobile {
+    padding: 0;
+  }
+
+  [class*='blog'] {
+    width: 100%;
+  }
+
+  [class*='content'] {
+    @include mobile {
+      width: 100%;
+    }
+  }
+
+  @include tablet {
+    padding: 0 30px;
+  }
 }
 
 .mainContent {
   padding: 97px 47px 0 0;
+
+  @include mobile {
+    padding: 0 0 30px;
+  }
+
+  @include tablet {
+    padding: 20px 0 30px;
+  }
 }
 
 .subSubTitle {
@@ -80,7 +130,21 @@
 
     div:not(:last-child) {
       margin-right: 16px;
+
+      @include mobile {
+        margin-right: 0;
+        margin-bottom: 13px;
+      }
     }
+
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+
+  @include mobile-tablet {
+    padding-top: 30px;
+    margin-bottom: 30px;
   }
 }
 
@@ -92,6 +156,14 @@
   width: 60%;
   padding-top: 49px;
   margin: 0 auto 34px;
+
+  @include mobile {
+    width: 90%;
+  }
+
+  @media (min-width: 640px) {
+    width: 85%;
+  }
 }
 
 .sliderTitle {
@@ -99,6 +171,10 @@
   margin-bottom: 92px;
   font-size: 16px;
   line-height: 20px;
+
+  @include mobile {
+    margin-bottom: 30px;
+  }
 }
 
 .article {
@@ -133,12 +209,12 @@
 }
 
 .sliderCustom {
-  > div:nth-child(2) {
+  [class*='swiper-button-prev'] {
     top: 42%;
     left: -125px;
   }
 
-  > div:nth-child(3) {
+  [class*='swiper-button-next'] {
     top: 42%;
     right: -125px;
   }
@@ -151,4 +227,16 @@
 
 .contact {
   margin-bottom: 29px;
+}
+
+@include mobile-tablet {
+  .sliderCustom {
+    [class*='swiper-button-prev'] {
+      left: -40px;
+    }
+
+    [class*='swiper-button-next'] {
+      right: -40px;
+    }
+  }
 }
