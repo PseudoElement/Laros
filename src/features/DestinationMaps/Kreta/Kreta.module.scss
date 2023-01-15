@@ -15,6 +15,10 @@
   width: max-content;
 }
 
+.title {
+  display: none;
+}
+
 @media screen and (max-width: 1350px) {
   .container {
     transform: scale(0.7);
@@ -33,6 +37,7 @@
   }
 }
 .agiamarina {
+  display: block;
   &::after {
     content: '';
     display: inline-block;
@@ -55,6 +60,7 @@
 }
 
 .kalamaki {
+  display: block;
   &::after {
     content: '';
     display: inline-block;
@@ -77,6 +83,7 @@
 }
 
 .katozakros {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -99,6 +106,7 @@
 }
 
 .falasarna {
+  display: block;
   &::after {
     content: '';
     display: inline-block;
@@ -121,6 +129,7 @@
 }
 
 .paleochora {
+  display: block;
   &::after {
     content: '';
     display: inline-block;
@@ -143,6 +152,7 @@
 }
 
 .georgioupolis {
+  display: block;
   &::after {
     content: '';
     display: inline-block;
@@ -165,6 +175,7 @@
 }
 
 .katostalos {
+  display: block;
   &::after {
     content: '';
     display: block;
@@ -185,6 +196,7 @@
 }
 
 .apokotronas {
+  display: block;
   &::after {
     content: '';
     display: block;
@@ -205,6 +217,7 @@
 }
 
 .sfakakai {
+  display: block;
   &::after {
     content: '';
     display: block;
@@ -225,6 +238,7 @@
 }
 
 .herakliton {
+  display: block;
   &::after {
     content: '';
     display: block;
@@ -245,6 +259,7 @@
 }
 
 .archanes {
+  display: block;
   &::after {
     content: '';
     display: block;
@@ -265,6 +280,7 @@
 }
 
 .agiagalini {
+  display: block;
   &::after {
     content: '';
     display: block;
@@ -285,6 +301,7 @@
 }
 
 .rounda {
+  display: block;
   &::after {
     content: '';
     display: block;
@@ -305,6 +322,7 @@
 }
 
 .makrigialosanalipsi {
+  display: block;
   &::after {
     content: '';
     display: block;
@@ -325,6 +343,7 @@
 }
 
 .kodremenos {
+  display: block;
   &::after {
     content: '';
     display: block;
@@ -345,6 +364,7 @@
 }
 
 .frangokastello {
+  display: block;
   &::before {
     content: '';
     display: block;
@@ -366,6 +386,7 @@
 }
 
 .rodakino {
+  display: block;
   &::before {
     content: '';
     display: block;
@@ -387,6 +408,7 @@
 }
 
 .zaros {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -409,6 +431,7 @@
 }
 
 .chania {
+  display: block;
   &::before {
     content: '';
     display: block;
@@ -429,6 +452,7 @@
 }
 
 .almyrida {
+  display: block;
   &::before {
     content: '';
     display: block;
@@ -449,6 +473,7 @@
 }
 
 .kapetantana {
+  display: block;
   &::before {
     content: '';
     display: block;
@@ -469,6 +494,7 @@
 }
 
 .anatoli {
+  display: block;
   &::before {
     content: '';
     display: block;
@@ -489,6 +515,7 @@
 }
 
 .ferma {
+  display: block;
   &::before {
     content: '';
     display: block;
@@ -509,6 +536,7 @@
 }
 
 .rethymnon {
+  display: block;
   &::after {
     content: '';
     margin-left: auto;
@@ -530,6 +558,7 @@
 }
 
 .ierapetra {
+  display: block;
   &::after {
     content: '';
     margin-left: auto;
@@ -551,6 +580,7 @@
 }
 
 .sitia {
+  display: block;
   &::after {
     content: '';
     margin-left: auto;
@@ -572,6 +602,7 @@
 }
 
 .panormos {
+  display: block;
   &::before {
     content: '';
     margin: 0 auto;
@@ -593,6 +624,7 @@
 }
 
 .plakias {
+  display: block;
   &::before {
     content: '';
     margin: 0 auto;

@@ -31,7 +31,7 @@ const PeloponnesItem: FC<MapProps> = ({
       className={cn(s[`${title}Location`], s.wrapper)}
       onClick={() => push(`/areas/${item.id}`)}
     >
-      <div className={s[`${title}`]}>{item.cardTitle}</div>
+      <div className={cn(s[`${title}`], s.title)}>{item.cardTitle}</div>
       <RegionCard
         className={s[`regionCard${title}`]}
         id={item.id}

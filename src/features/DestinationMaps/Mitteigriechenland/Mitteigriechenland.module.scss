@@ -15,6 +15,10 @@
   width: max-content;
 }
 
+.title {
+  display: none;
+}
+
 @media screen and (max-width: 1350px) {
   .container {
     transform: scale(0.7);
@@ -33,6 +37,7 @@
   }
 }
 .revies {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -55,6 +60,7 @@
 }
 
 .kymi {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -77,6 +83,7 @@
 }
 
 .karistos {
+  display: block;
   &::before {
     content: '';
     display: inline-block;

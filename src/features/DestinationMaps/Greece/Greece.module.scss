@@ -82,6 +82,7 @@
   margin-right: 206px;
   margin-top: 248px;
   transition: 0.2s all ease-in;
+  z-index: 1;
   transform: rotate(0.5deg);
   cursor: url('../../../../public/assets/images/destinations/cursor.png'), auto;
   pointer-events: none;
@@ -255,7 +256,7 @@
 }
 
 .map23:hover {
-  fill: $color-sub-r7;
+  fill: $color-blue;
 }
 
 .map21:hover {

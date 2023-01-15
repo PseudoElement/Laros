@@ -15,6 +15,10 @@
   width: max-content;
 }
 
+.title {
+  display: none;
+}
+
 @media screen and (max-width: 1350px) {
   .container {
     transform: scale(0.7);
@@ -33,6 +37,7 @@
   }
 }
 .kea {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -55,6 +60,7 @@
 }
 
 .andros {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -78,6 +84,7 @@
 }
 
 .tinos {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -100,6 +107,7 @@
 }
 
 .mykonos {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -122,6 +130,7 @@
 }
 
 .serifos {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -144,6 +153,7 @@
 }
 
 .antiparos {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -166,6 +176,7 @@
 }
 
 .naxos {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -188,6 +199,7 @@
 }
 
 .amorgos {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -211,6 +223,7 @@
 }
 
 .santorini {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -233,6 +246,7 @@
 }
 
 .antiparos {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -255,6 +269,7 @@
 }
 
 .anafi {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -277,6 +292,7 @@
 }
 
 .kithnos {
+  display: block;
   &::after {
     content: '';
     display: inline-block;
@@ -299,6 +315,7 @@
 }
 
 .sifnos {
+  display: block;
   &::after {
     content: '';
     display: inline-block;
@@ -321,6 +338,7 @@
 }
 
 .kimolos {
+  display: block;
   &::after {
     content: '';
     display: inline-block;
@@ -343,6 +361,7 @@
 }
 
 .milos {
+  display: block;
   &::after {
     content: '';
     display: inline-block;
@@ -365,6 +384,7 @@
 }
 
 .syros {
+  display: block;
   &::before {
     content: '';
     display: block;
@@ -385,6 +405,7 @@
 }
 
 .paros {
+  display: block;
   &::after {
     content: '';
     display: block;
@@ -405,6 +426,7 @@
 }
 
 .koufonissi {
+  display: block;
   &::after {
     content: '';
     display: block;
@@ -425,6 +447,7 @@
 }
 
 .ios {
+  display: block;
   &::before {
     content: '';
     display: block;
@@ -446,6 +469,7 @@
 }
 
 .folegandros {
+  display: block;
   &::before {
     content: '';
     margin-left: auto;
@@ -467,6 +491,7 @@
 }
 
 .ikarita {
+  display: block;
   &::after {
     content: '';
     display: inline-block;
@@ -489,6 +514,7 @@
 }
 
 .sikinos {
+  display: block;
   &::after {
     content: '';
     display: inline-block;

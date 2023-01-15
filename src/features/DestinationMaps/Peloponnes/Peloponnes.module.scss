@@ -15,6 +15,10 @@
   width: max-content;
 }
 
+.title {
+  display: none;
+}
+
 @media screen and (max-width: 1350px) {
   .container {
     transform: scale(0.8);
@@ -33,6 +37,7 @@
   }
 }
 .patras {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -55,6 +60,7 @@
 }
 
 .kalogria {
+  display: block;
   &::before {
     content: '';
     display: block;
@@ -75,6 +81,7 @@
 }
 
 .olympia {
+  display: block;
   &::before {
     content: '';
     display: block;
@@ -96,6 +103,7 @@
 }
 
 .vitina {
+  display: block;
   &::before {
     content: '';
     display: block;
@@ -116,6 +124,7 @@
 }
 
 .lechaio {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -138,6 +147,7 @@
 }
 
 .korinth {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -160,6 +170,7 @@
 }
 
 .altepidaurus {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -182,6 +193,7 @@
 }
 
 .napflio {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -204,6 +216,7 @@
 }
 
 .kalamata {
+  display: block;
   &::after {
     content: '';
     display: block;
@@ -224,6 +237,7 @@
 }
 
 .sparta {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -246,6 +260,7 @@
 }
 
 .mystras {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -268,6 +283,7 @@
 }
 
 .chranoi {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -290,6 +306,7 @@
 }
 
 .itilo {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -312,6 +329,7 @@
 }
 
 .leonidio {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -334,6 +352,7 @@
 }
 
 .gythionmavrovouni {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -356,6 +375,7 @@
 }
 
 .monemvassia {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -378,6 +398,7 @@
 }
 
 .aeropolis {
+  display: block;
   &::after {
     content: '';
     display: inline-block;
@@ -400,6 +421,7 @@
 }
 
 .gerolimenas {
+  display: block;
   &::after {
     content: '';
     display: inline-block;
@@ -422,6 +444,7 @@
 }
 
 .methoni {
+  display: block;
   &::after {
     content: '';
     display: inline-block;
@@ -444,6 +467,7 @@
 }
 
 .marathopolis {
+  display: block;
   &::after {
     content: '';
     display: inline-block;
@@ -466,6 +490,7 @@
 }
 
 .gialova {
+  display: block;
   &::after {
     content: '';
     display: inline-block;
@@ -488,6 +513,7 @@
 }
 
 .elafonisos {
+  display: block;
   &::before {
     content: '';
     display: block;
