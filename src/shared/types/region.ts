@@ -1,13 +1,8 @@
-import { Meta } from './index'
 import { ReactNode } from 'react'
 import { Location } from 'shared/types/maps'
-import { Destination } from './destinations'
 
-export interface Region extends Meta {
-  parentId: number | null
-  subRegions: Region[]
+export interface Region {
   icon: any //FIXME
-  destination?: Destination
-  destinations?: Destination
+  name: string
   map?: (location?: Location[]) => ReactNode //FIXME
 }

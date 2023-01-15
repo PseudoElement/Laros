@@ -4,28 +4,40 @@
   position: relative;
   width: 1040px;
   height: 720px;
-  background: url('../../../../public/assets/images/destinations/Individual maps/Peloponnes.png') no-repeat center;
+  background: url('../../../../public/assets/images/destinations/Individual maps/Peloponnes.png')
+    no-repeat center;
   font-weight: $fw-semibold;
 }
 
-@media screen and (max-width:1350px) {
+.wrapper {
+  cursor: pointer;
+  position: absolute;
+  width: max-content;
+}
+
+.title {
+  display: none;
+}
+
+@media screen and (max-width: 1350px) {
   .container {
-    transform: scale(.8);
+    transform: scale(0.8);
   }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
   .container {
-    transform: scale(.7);
+    transform: scale(0.7);
   }
 }
-@media screen and (max-width:425px) {
-  .container{
-    transform: scale(.3);
-height:400px;
+@media screen and (max-width: 425px) {
+  .container {
+    transform: scale(0.3);
+    height: 400px;
   }
 }
 .patras {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -48,6 +60,7 @@ height:400px;
 }
 
 .kalogria {
+  display: block;
   &::before {
     content: '';
     display: block;
@@ -68,6 +81,7 @@ height:400px;
 }
 
 .olympia {
+  display: block;
   &::before {
     content: '';
     display: block;
@@ -89,6 +103,7 @@ height:400px;
 }
 
 .vitina {
+  display: block;
   &::before {
     content: '';
     display: block;
@@ -109,6 +124,7 @@ height:400px;
 }
 
 .lechaio {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -131,6 +147,7 @@ height:400px;
 }
 
 .korinth {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -153,6 +170,7 @@ height:400px;
 }
 
 .altepidaurus {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -175,6 +193,7 @@ height:400px;
 }
 
 .napflio {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -197,6 +216,7 @@ height:400px;
 }
 
 .kalamata {
+  display: block;
   &::after {
     content: '';
     display: block;
@@ -217,6 +237,7 @@ height:400px;
 }
 
 .sparta {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -239,6 +260,7 @@ height:400px;
 }
 
 .mystras {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -260,7 +282,8 @@ height:400px;
   padding: 0 4px;
 }
 
-.charnoi {
+.chranoi {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -273,7 +296,7 @@ height:400px;
   }
 }
 
-.charnoiLocation {
+.chranoiLocation {
   position: absolute;
   top: 64%;
   right: 50%;
@@ -283,6 +306,7 @@ height:400px;
 }
 
 .itilo {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -305,6 +329,7 @@ height:400px;
 }
 
 .leonidio {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -327,6 +352,7 @@ height:400px;
 }
 
 .gythionmavrovouni {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -349,6 +375,7 @@ height:400px;
 }
 
 .monemvassia {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -371,6 +398,7 @@ height:400px;
 }
 
 .aeropolis {
+  display: block;
   &::after {
     content: '';
     display: inline-block;
@@ -393,6 +421,7 @@ height:400px;
 }
 
 .gerolimenas {
+  display: block;
   &::after {
     content: '';
     display: inline-block;
@@ -415,6 +444,7 @@ height:400px;
 }
 
 .methoni {
+  display: block;
   &::after {
     content: '';
     display: inline-block;
@@ -437,6 +467,7 @@ height:400px;
 }
 
 .marathopolis {
+  display: block;
   &::after {
     content: '';
     display: inline-block;
@@ -459,6 +490,7 @@ height:400px;
 }
 
 .gialova {
+  display: block;
   &::after {
     content: '';
     display: inline-block;
@@ -481,6 +513,7 @@ height:400px;
 }
 
 .elafonisos {
+  display: block;
   &::before {
     content: '';
     display: block;
@@ -517,7 +550,8 @@ height:400px;
 }
 
 .regionCardaltepidaurus {
-  top: 20%;
+  top: 100%;
+  left: -250px;
 }
 
 .regionCardnapflio {
@@ -530,4 +564,9 @@ height:400px;
 
 .regionCardolympia {
   top: 20%;
+}
+
+.regionCardmonemvassia {
+  bottom: 100%;
+  left: -250px;
 }

@@ -12,33 +12,44 @@ export interface MapProps {
   isShownCard: number | null
   setIsShownCard: Dispatch<SetStateAction<number | null>>
   item: Location
+  regionCardItem?: Location
 }
 
-const GreeceMap = ({ item, setIsShownCard, isShownCard }: MapProps) => {
+const GreeceMap = ({
+  item,
+  setIsShownCard,
+  isShownCard,
+  regionCardItem,
+}: MapProps) => {
   const { asPath } = useRouter()
 
   const onClose = () => setIsShownCard(null)
   const route = getPath(asPath)
 
   return (
-    <div className={s.wrapper}>
+    <>
       <Link href={`/destinations/${route}/${item.id}`}>
-        <item.image
-          className={s[`map${item.id}`]}
-          onMouseEnter={() => setIsShownCard(item.id)}
-        />
+        {
+          <item.map
+            onMouseEnter={() => setIsShownCard(item.id)}
+            className={s[`map${item.id}`]}
+          />
+        }
       </Link>
 
-      <RegionCard
-        id={item.id}
-        cardText={item.cardText}
-        title={item.cardTitle}
-        link={item.link}
-        className={s[`cartShown_${item.id}`]}
-        onClose={onClose}
-        isOpen={isShownCard == item.id}
-      />
-    </div>
+      {regionCardItem && (
+        <RegionCard
+          id={regionCardItem.id}
+          cardText={regionCardItem.cardText}
+          image={regionCardItem.image}
+          title={regionCardItem.cardTitle}
+          link={regionCardItem.link}
+          className={s[`cartShown_${regionCardItem.id}`]}
+          onClose={onClose}
+          isOpen={isShownCard === regionCardItem.id}
+        />
+      )}
+    </>
   )
 }
 

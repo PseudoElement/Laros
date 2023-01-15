@@ -10,6 +10,7 @@ import { useTranslate } from 'shared/hooks/useTranslate'
 import Polis from '/public/assets/images/destinations/Polis.svg'
 
 import s from './RegionCard.module.scss'
+import { withDomain } from '../../shared/helpers/withDomain'
 
 interface RegionCardProps {
   id: number
@@ -48,8 +49,9 @@ const RegionCard: FC<RegionCardProps> = ({
           <div className={s.cart_picture}>
             {image ? (
               <Image
-                src={image}
+                src={withDomain(image)}
                 width={240}
+                className={s.image}
                 height={135}
                 alt='cart picture image'
               />

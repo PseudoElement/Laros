@@ -4,7 +4,7 @@ import cn from 'classnames'
 import { Select, RangeMarks } from 'components'
 
 import { Hotel, HotelFilterParams } from 'shared/types/hotel'
-import { Region } from 'shared/types/region'
+import { Destination } from 'shared/types/destinations'
 import { Option, Sort } from 'shared/types'
 
 import { useGetHotelFilters } from 'shared/hooks/useGetHotelFilters'
@@ -21,10 +21,12 @@ const direction = [
 interface SortingProps {
   params: Partial<HotelFilterParams>
   setParams: Dispatch<SetStateAction<Partial<HotelFilterParams>>>
-  map: Region
+  map: Destination & {
+    destinations: Destination[]
+  }
 }
 
-const Sorting: FC<SortingProps> = ({ map, setParams, params }) => {
+const Sorting: FC<SortingProps> = ({ setParams, params, map }) => {
   const [subRegions, setSubRegions] = useState<Option[]>([])
   const [tags, categories, accommodations] = useGetHotelFilters(false)
   const [price, setPrice] = useState([0, 50])
@@ -67,9 +69,9 @@ const Sorting: FC<SortingProps> = ({ map, setParams, params }) => {
         value: String(map.id),
         icon: '',
       },
-      ...map.subRegions.map(region => ({
-        label: region.name,
-        value: String(region.id),
+      ...map.destinations.map(destination => ({
+        label: destination.name,
+        value: String(destination.id),
         icon: '',
       })),
     ])

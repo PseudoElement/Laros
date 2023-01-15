@@ -66,3 +66,12 @@
   background-color: $color-laros-light-grey;
   border-radius: 8px;
 }
+
+.image {
+  width: 100%;
+  object-fit: cover;
+  max-width: 240px;
+  height: auto;
+  max-height: 135px;
+  border-radius: 8px;
+}
