@@ -88,11 +88,12 @@
 
 .description {
   margin-top: 16px;
-  height: 65px;
   padding-right: 20px;
-  overflow: hidden;
-  overflow-y: scroll;
   margin-bottom: 20px;
+  font-size: 12px;
+  font-weight: $fw-regular;
+  line-height: 20px;
+  text-align: left;
 
   @include mobile-tablet {
     height: 100px;

@@ -1,4 +1,5 @@
 export * from './Accordion'
+export * from './AreaCard'
 export * from './Button'
 export * from './Images/BlogHeaderImage'
 export * from './Checkbox'

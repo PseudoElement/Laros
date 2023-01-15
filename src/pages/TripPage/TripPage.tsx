@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
 
 import { TripPlan } from './Tab/TripPlan'
@@ -10,11 +9,7 @@ import { TripPageIntro } from './TripPageIntro/TripPageIntro'
 import { ContactForm } from 'features'
 import { Modal } from 'components'
 
-import {
-  getTrip,
-  getTripsNearby,
-  getTripsSimilar,
-} from 'shared/api/routes/trips'
+import { getTripsNearby, getTripsSimilar } from 'shared/api/routes/trips'
 import { withDomain } from 'shared/helpers/withDomain'
 import { useTranslate } from 'shared/hooks/useTranslate'
 import { useModal } from 'shared/hooks/useModal'
@@ -28,22 +23,18 @@ import s from './TripPage.module.scss'
 
 export interface TripPageProps {
   trip: Trip
-};
+}
+
 export const TripPage: FC<TripPageProps> = ({ trip }) => {
-  const { query } = useRouter()
-  const { id } = query
   const t = useTranslate()
 
-  const [insiderTips, setInsiderTips] = useState<string | null>('')
   const [relatedTours, setRelatedTours] = useState<Trip[]>([])
   const [tripNearby, setTripNearby] = useState<Destination[]>([])
-  const [isLoad, setIsLoad] = useState(true)
   const { isOpen, onClose, open } = useModal()
 
   const destination = useAppSelector(state =>
     getParentDestination(state, tripNearby[0]?.parent)
   )
-
 
   const loadTripSimilar = async (id: number) => {
     try {
@@ -75,15 +66,16 @@ export const TripPage: FC<TripPageProps> = ({ trip }) => {
       <div
         className={s.bg}
         style={{
-          backgroundImage: `url(${trip?.images ? withDomain(trip.images[0]) : ''
-            })`,
+          backgroundImage: `url(${
+            trip?.images ? withDomain(trip.images[0]) : ''
+          })`,
         }}
       />
 
       <div className={s.container}>
         <div className={s.card}>
-          {trip && isLoad ? (
-            <TripPageIntro {...trip} id={Number(id)} /> // check why trip has no id TODO
+          {trip.name ? (
+            <TripPageIntro {...trip} />
           ) : (
             <div className={s.loader}>
               <p>{t('common.loadingText')}</p>
@@ -109,7 +101,7 @@ export const TripPage: FC<TripPageProps> = ({ trip }) => {
           </TabPanel>
 
           <TabPanel>
-            {insiderTips ? <InsiderTips data={insiderTips} /> : null}
+            {trip.tips ? <InsiderTips data={trip.tips} /> : null}
           </TabPanel>
 
           <TabPanel>

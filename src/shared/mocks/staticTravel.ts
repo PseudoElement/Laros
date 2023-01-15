@@ -6,7 +6,7 @@ export const StaticTravelMock: StaticTravelItem[] = [
     overview: [
       {
         id: 0,
-        preview: '/assets/images/trip-planner/see.jpg',
+        preview: '/assets/images/travelTypes.png',
       },
       {
         id: 1,

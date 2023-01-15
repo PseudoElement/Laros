@@ -10,57 +10,35 @@
   justify-content: center;
   overflow: hidden;
   background-color: $color-modal-bg;
-  .shadow {
-    background-color: $color-bg-gallery-2;
-    position: absolute;
-    z-index: 2;
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  &:hover .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
-  }
-
-  &:hover .image {
-    display: none;
-  }
-
-  &:hover .title {
-    padding-top: 32px;
-  }
-
-  &:hover .description {
-    display: block;
-    text-align: center;
-  }
-
-  &:hover {
     background-color: $color-primary;
+  }
+  &:hover .title {
+    display: none;
   }
 }
 
 .vertical {
   height: 640px;
   width: 100%;
-
-  & .title {
-    font-size: 22px;
+  .description {
+    width: 70%;
+    height: 50%;
   }
-
-  &:hover .content {
-    justify-content: start;
+  .name {
+    margin-bottom: 55px;
   }
-
-  &:hover .title {
-    padding: 111px 0 57px;
-  }
-
-  &:hover .description {
-    span {
-      font-size: 12px;
-      font-weight: $fw-regular;
-      line-height: 17px;
-      text-align: left;
-    }
-  }
-
   @include mobile-tablet {
     height: 300px;
   }
@@ -69,35 +47,36 @@
     height: 400px;
   }
 }
-
 .content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.title {
-  font-size: 16px;
+  width: 100%;
+  height: 100%;
+  background-color: $color-bg-gallery-2;
+  font-family: $font-Lato;
+  font-size: 22px;
   font-weight: $fw-semibold;
+  line-height: 26px;
+  text-align: center;
   color: $color-white;
-  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
+.container {
+  display: none;
+}
 .description {
+  width: 80%;
+  height: 40%;
+  overflow: hidden;
   font-size: 12px;
   font-weight: $fw-regular;
-  color: $color-white;
-  display: none;
-  height: 90%;
-  padding-right: 10px;
-  margin: 16px 60px 24px 40px;
-  overflow-y: auto;
   line-height: 17px;
   text-align: left;
+  overflow-y: auto;
+  padding-right: 10px;
 
   &::-webkit-scrollbar {
-    width: 3px;
+    width: 5px;
   }
 
   &::-webkit-scrollbar-track {
@@ -107,13 +86,14 @@
   &::-webkit-scrollbar-thumb {
     height: 2px;
     background-color: $color-white;
-    border-radius: 20px; /* закругления плашки */
+    border-radius: 20px;
   }
 }
-
-.image {
-  border-radius: 16px;
-  position: absolute;
-  width: 100%;
-  height: 100%;
+.name {
+  margin-bottom: 16px;
+  padding: 0 20px;
+  font-size: 22px;
+  font-weight: $fw-medium;
+  line-height: 26px;
+  text-align: center;
 }

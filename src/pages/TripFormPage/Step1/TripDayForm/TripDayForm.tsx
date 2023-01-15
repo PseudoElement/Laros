@@ -106,9 +106,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
         onChange(`destinations.${index}.hotel`, newHotel.data)
         setHotelRooms(newRooms.data)
       } else {
-        alert(
-          'Sorry, these is no room left'
-        )
+        alert('Sorry, these is no room left')
       }
     } catch (error) {
       console.log(error)
@@ -174,7 +172,10 @@ export const TripDayForm: FC<TripDayFormProps> = ({
 
   useEffect(() => {
     setClientRooms(getClientsRoom(hotelRooms, capacity))
-    onChange(`destinations.[${index}].rooms`, getClientsRoom(hotelRooms, capacity))
+    onChange(
+      `destinations.[${index}].rooms`,
+      getClientsRoom(hotelRooms, capacity)
+    )
   }, [hotelRooms, capacity, onChange])
 
   return (
@@ -259,7 +260,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
             <span className={s.valueIcon}>
               <PinIcon />
             </span>
-            <div className={s.valueName}>{hotel.name}</div>
+            <div className={s.valueName}>{hotel?.name}</div>
             <span
               onMouseEnter={() => setIsShownCard(true)}
               onMouseLeave={() => setIsShownCard(false)}
@@ -267,11 +268,11 @@ export const TripDayForm: FC<TripDayFormProps> = ({
             >
               <InfoIcon />
               <RegionCard
-                id={hotel.id}
-                cardText={hotel.description}
-                title={hotel.lrweb}
-                link={`/hotels/${hotel.id}`}
-                image={hotel.images?.[0] || ''}
+                id={hotel?.id}
+                cardText={hotel?.description}
+                title={hotel?.lrweb}
+                link={`/hotels/${hotel?.id}`}
+                image={hotel?.images?.[0] || ''}
                 onClose={onClose}
                 isOpen={isShownCard}
               />

@@ -9,6 +9,7 @@ interface HighlightedProps {
 }
 
 export const Highlighted: FC<HighlightedProps> = ({ highlighted }) => {
+  const route = 1
   return (
     <div className={cls(s.wrapper)}>
       <h3 className={s.title}>Highlighted trip proposals</h3>
