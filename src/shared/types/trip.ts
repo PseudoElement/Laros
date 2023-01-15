@@ -52,6 +52,7 @@ export enum TripSort {
 
 export interface TripFilterParams {
   destination: string
+  duration: string
   travel_types: number
   price_lt: number
   price_gt: number
@@ -59,6 +60,7 @@ export interface TripFilterParams {
   offer: boolean
   page: number
 }
+
 export interface TripCategory extends Meta {
   description: string
   images: string[]
