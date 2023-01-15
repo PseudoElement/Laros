@@ -60,13 +60,14 @@
 }
 
 .counterRow div:first-child {
-  margin-right: 24px;
+  margin-right: 14px;
 }
 
 .counterInput {
   padding-top: 0;
   height: 48px;
   width: 100%;
+  min-width: 206px;
 }
 
 .counterInput > div:first-child {

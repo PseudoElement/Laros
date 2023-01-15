@@ -62,7 +62,7 @@ export const TravellerAddressForm: FC<TravellerAddressFormProps> = ({
     const address2 = watch(`travellers.${index}.address2`) ?? ''
     const zip = watch(`travellers.${index}.zip`) ?? ''
     const address = `${address1} ${address2} ${zip} ${city} ${country.value}`
-    setAddress(index, address)
+    if (address.length > 4) setAddress(index, address)
   }
 
   const countriesOptions = async (inputValue: string) => {
@@ -160,7 +160,7 @@ export const TravellerAddressForm: FC<TravellerAddressFormProps> = ({
             placeholder={t('worldwideTours.label12')}
             onChange={onChange}
             value={value}
-            label={t('forms.inputLabel28')}
+            label={t('vouchers.placeholder6')}
           />
         )}
       />
