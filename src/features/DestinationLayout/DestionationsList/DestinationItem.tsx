@@ -1,13 +1,13 @@
 import { FC } from 'react'
 import { useRouter } from 'next/router'
-import { Region } from 'shared/types/region'
 import { getPath } from 'shared/helpers/getPath'
+import { Destination } from 'shared/types/destinations'
 
 import cn from 'classnames'
 import s from './DestinationsList.module.scss'
 
 interface DestinationItemProps {
-  region: Region
+  region: Destination & { icon: any }
 }
 
 const DestinationItem: FC<DestinationItemProps> = ({ region }) => {

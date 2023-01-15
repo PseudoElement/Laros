@@ -4,25 +4,32 @@
   position: relative;
   width: 1040px;
   height: 720px;
-  background: url('../../../../public/assets/images/destinations/Individual maps/Insel Kreta.png') no-repeat center;
+  background: url('../../../../public/assets/images/destinations/Individual maps/Insel Kreta.png')
+    no-repeat center;
   font-weight: $fw-semibold;
 }
 
-@media screen and (max-width:1350px) {
+.wrapper {
+  cursor: pointer;
+  position: absolute;
+  width: max-content;
+}
+
+@media screen and (max-width: 1350px) {
   .container {
-    transform: scale(.7);
+    transform: scale(0.7);
   }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
   .container {
-    transform: scale(.7);
+    transform: scale(0.7);
   }
 }
-@media screen and (max-width:425px) {
-  .container{
-    transform: scale(.3);
-height:400px;
+@media screen and (max-width: 425px) {
+  .container {
+    transform: scale(0.3);
+    height: 400px;
   }
 }
 .agiamarina {
@@ -604,4 +611,39 @@ height:400px;
   background: $color-white;
   border-radius: 24px;
   padding: 0 4px;
+}
+
+.regionCardanatoli {
+  bottom: 100%;
+  left: -250px;
+}
+
+.regionCardierapetra {
+  bottom: 100%;
+  left: -250px;
+}
+
+.regionCardarchanes {
+  bottom: 100%;
+  left: -250px;
+}
+
+.regionCardagiagalini {
+  bottom: 100%;
+  left: -250px;
+}
+
+.regionCardsitia {
+  bottom: 100%;
+  left: -250px;
+}
+
+.regionCardkatozakros {
+  bottom: 100%;
+  left: -250px;
+}
+
+.regionCardferma {
+  bottom: 100%;
+  left: -250px;
 }

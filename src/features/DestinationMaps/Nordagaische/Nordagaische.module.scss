@@ -4,25 +4,32 @@
   position: relative;
   width: 1040px;
   height: 720px;
-  background: url('../../../../public/assets/images/destinations/Individual maps/Nordagaische Inseln.png') no-repeat center;
+  background: url('../../../../public/assets/images/destinations/Individual maps/Nordagaische Inseln.png')
+    no-repeat center;
   font-weight: $fw-semibold;
 }
 
-@media screen and (max-width:1350px) {
+.wrapper {
+  cursor: pointer;
+  position: absolute;
+  width: max-content;
+}
+
+@media screen and (max-width: 1350px) {
   .container {
-    transform: scale(.7);
+    transform: scale(0.7);
   }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
   .container {
-    transform: scale(.7);
+    transform: scale(0.7);
   }
 }
-@media screen and (max-width:425px) {
-  .container{
-    transform: scale(.3);
-height:400px;
+@media screen and (max-width: 425px) {
+  .container {
+    transform: scale(0.3);
+    height: 400px;
   }
 }
 .thassos {
@@ -204,4 +211,19 @@ height:400px;
 
 .regionCardthassos {
   top: 20%;
+}
+
+.regionCardsamos {
+  bottom: 100%;
+  left: -250px;
+}
+
+.regionCardikaria {
+  bottom: 100%;
+  left: -250px;
+}
+
+.regionCardfourni {
+  bottom: 100%;
+  left: -250px;
 }

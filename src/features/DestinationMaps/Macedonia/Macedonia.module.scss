@@ -4,25 +4,32 @@
   position: relative;
   width: 1040px;
   height: 720px;
-  background: url('../../../../public/assets/images/destinations/Macedonia/Macedonia.png') no-repeat center;
+  background: url('../../../../public/assets/images/destinations/Macedonia/Macedonia.png')
+    no-repeat center;
   font-weight: $fw-semibold;
 }
 
-@media screen and (max-width:1350px) {
+.wrapper {
+  cursor: pointer;
+  position: absolute;
+  width: max-content;
+}
+
+@media screen and (max-width: 1350px) {
   .container {
-    transform: scale(.7);
+    transform: scale(0.7);
   }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
   .container {
-    transform: scale(.7);
+    transform: scale(0.7);
   }
 }
-@media screen and (max-width:425px) {
-  .container{
-    transform: scale(.3);
-height:400px;
+@media screen and (max-width: 425px) {
+  .container {
+    transform: scale(0.3);
+    height: 400px;
   }
 }
 
@@ -46,13 +53,13 @@ height:400px;
   width: 32px;
 }
 
-
 .prespes {
   &::after {
     content: '';
     display: block;
     margin: 2px auto;
-    background: url('../../../../public/assets/images/destinations/lake.svg') no-repeat center;
+    background: url('../../../../public/assets/images/destinations/lake.svg')
+      no-repeat center;
     height: 16px;
   }
 }
@@ -71,7 +78,8 @@ height:400px;
     content: '';
     display: block;
     margin: 2px auto;
-    background: url('../../../../public/assets/images/destinations/mountain.svg') no-repeat center;
+    background: url('../../../../public/assets/images/destinations/mountain.svg')
+      no-repeat center;
     height: 16px;
   }
 }
@@ -259,7 +267,7 @@ height:400px;
   padding: 0 4px;
 }
 
-.lemosflorina {
+.florina {
   &::before {
     content: '';
     display: inline-block;
@@ -272,7 +280,7 @@ height:400px;
   }
 }
 
-.lemosflorinaLocation {
+.florinaLocation {
   position: absolute;
   top: 39%;
   right: 72%;
@@ -460,7 +468,8 @@ height:400px;
     content: '';
     display: block;
     margin: 0 auto;
-    background: url('../../../../public/assets/images/destinations/mountain.svg') no-repeat center;
+    background: url('../../../../public/assets/images/destinations/mountain.svg')
+      no-repeat center;
     height: 24px;
   }
 }
@@ -479,7 +488,8 @@ height:400px;
     content: '';
     display: block;
     margin: 0 auto;
-    background: url('../../../../public/assets/images/destinations/mountain.svg') no-repeat center;
+    background: url('../../../../public/assets/images/destinations/mountain.svg')
+      no-repeat center;
     height: 24px;
   }
 }
@@ -705,17 +715,40 @@ height:400px;
 }
 
 .regionCarddadia {
-  top: 20%;
+  top: 100%;
+  left: -250px;
 }
 
-.regionCardmaronia {
-  top: 20%;
+.regionCardxanthi {
+  top: 100%;
+  left: -250px;
 }
 
-.regionCardalexandropolis {
-  top: 20%;
+.regionCardkavala {
+  top: 100%;
+  left: -250px;
+}
+
+.regionCardstavroupolis {
+  top: 100%;
+  left: -250px;
+}
+
+.regionCardalexandroupolis {
+  top: 100%;
+  left: -250px;
 }
 
 .regionCardkavala {
   top: 20%;
+}
+
+.regionCardkomotini {
+  top: 100%;
+  left: -250px;
+}
+
+.regionCardmaronia {
+  top: 100%;
+  left: -250px;
 }

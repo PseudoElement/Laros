@@ -4,25 +4,32 @@
   position: relative;
   width: 1040px;
   height: 720px;
-  background: url('../../../../public/assets/images/destinations/Individual maps/Dodekannes Inseln.png') no-repeat center;
+  background: url('../../../../public/assets/images/destinations/Individual maps/Dodekannes Inseln.png')
+    no-repeat center;
   font-weight: $fw-semibold;
 }
 
-@media screen and (max-width:1350px) {
+.wrapper {
+  cursor: pointer;
+  position: absolute;
+  width: max-content;
+}
+
+@media screen and (max-width: 1350px) {
   .container {
-    transform: scale(.7);
+    transform: scale(0.7);
   }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
   .container {
-    transform: scale(.7);
+    transform: scale(0.7);
   }
 }
 
-@media screen and (max-width:425px) {
+@media screen and (max-width: 425px) {
   .container {
-    transform: scale(.3);
+    transform: scale(0.3);
     height: 400px;
   }
 }
@@ -371,10 +378,6 @@
   padding: 4px;
 }
 
-.regionCardagathonissi {
-  top: 20%;
-}
-
 .regionCardarki {
   top: 20%;
 }
@@ -387,14 +390,70 @@
   top: 20%;
 }
 
-.regionCardkalymnos {
-  top: 20%;
-}
-
 .regionCardpatmos {
   top: 20%;
 }
 
 .regionCardkos {
   top: 20%;
+}
+
+.regionCardagathonissi {
+  top: 100%;
+  left: -250px;
+}
+
+.regionCardarki {
+  top: 100%;
+  left: -250px;
+}
+
+.regionCardlipsi {
+  top: 100%;
+  left: -250px;
+}
+
+.regionCardleros {
+  top: 100%;
+  left: -250px;
+}
+
+.regionCardkalymnos {
+  top: 100%;
+  left: -250px;
+}
+
+.regionCardkos {
+  top: 100%;
+  left: -250px;
+}
+
+.regionCardnissiros {
+  top: 100%;
+  left: -250px;
+}
+
+.regionCardkarpathos {
+  bottom: 100%;
+  left: -250px;
+}
+
+.regionCardchalki {
+  bottom: 100%;
+  left: -250px;
+}
+
+.regionCardsymi {
+  bottom: 100%;
+  left: -250px;
+}
+
+.regionCardrhodos {
+  bottom: 100%;
+  left: -250px;
+}
+
+.regionCardkastelorizo {
+  bottom: 100%;
+  left: -250px;
 }

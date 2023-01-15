@@ -10,21 +10,27 @@
   font-weight: $fw-semibold;
 }
 
-@media screen and (max-width:1350px) {
+.wrapper {
+  cursor: pointer;
+  position: absolute;
+  width: max-content;
+}
+
+@media screen and (max-width: 1350px) {
   .container {
-    transform: scale(.7);
+    transform: scale(0.7);
   }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
   .container {
-    transform: scale(.7);
+    transform: scale(0.7);
   }
 }
-@media screen and (max-width:425px) {
-  .container{
-    transform: scale(.3);
-height:400px;
+@media screen and (max-width: 425px) {
+  .container {
+    transform: scale(0.3);
+    height: 400px;
   }
 }
 .skiathos {
@@ -119,6 +125,17 @@ height:400px;
   top: 20%;
 }
 
+.regionCardskyros {
+  bottom: 100%;
+  left: -250px;
+}
+
+.regionCardalonissos {
+  bottom: 100%;
+  left: -250px;
+}
+
 @media (max-width: 1500px) {
-  .container {}
+  .container {
+  }
 }

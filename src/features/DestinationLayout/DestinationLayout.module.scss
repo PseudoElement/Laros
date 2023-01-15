@@ -2,6 +2,8 @@
 
 .container {
   display: flex;
+  margin-top: 40px;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 1024px) {
@@ -39,7 +41,8 @@
   max-height: 264px;
   overflow-y: scroll;
   direction: ltr;
-  margin-top: 40px;
+  background-color: $color-laros-light-grey;
+  padding-top: 40px;
 
   &::-webkit-scrollbar {
     display: none;
@@ -56,6 +59,11 @@
 
 .select {
   margin-bottom: 32px;
+}
+
+.select,
+.more {
+  cursor: pointer;
   line-height: 14px;
   font-weight: $fw-semibold;
   color: $color-placeholder;
@@ -86,6 +94,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 55px 0 0 63px;
   width: calc(100% - 240px);
+  padding-left: 38px;
+  padding-top: 40px;
 }

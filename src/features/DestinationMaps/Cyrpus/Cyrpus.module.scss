@@ -3,25 +3,32 @@
 .container {
   position: relative;
   margin-top: 50px;
-  background: url('../../../../public/assets/images/destinations/Cyrpus/Cyrpus.png') center;
+  background: url('../../../../public/assets/images/destinations/Cyrpus/Cyrpus.png')
+    center;
   width: 832px;
   height: 488px;
 }
 
-@media screen and (max-width:1350px) {
+.wrapper {
+  cursor: pointer;
+  position: absolute;
+  width: max-content;
+}
+
+@media screen and (max-width: 1350px) {
   .container {
-    transform: scale(.7);
+    transform: scale(0.7);
   }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
   .container {
-    transform: scale(.7);
+    transform: scale(0.7);
   }
 }
-@media screen and (max-width:425px) {
+@media screen and (max-width: 425px) {
   .container {
-    transform: scale(.3);
+    transform: scale(0.3);
   }
 }
 
@@ -203,7 +210,7 @@
   }
 }
 
-.lemessoLocation {
+.lemesosLocation {
   position: absolute;
   top: 84%;
   right: 54%;
@@ -212,7 +219,7 @@
   padding: 0 4px;
 }
 
-.lemesso {
+.lemesos {
   &::before {
     content: '';
     display: inline-block;
