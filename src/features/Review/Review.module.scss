@@ -18,6 +18,8 @@
 
   @include mobile-tablet {
     min-height: unset;
+    padding: 25px;
+    max-width: 100%;
   }
 }
 
@@ -47,7 +49,13 @@
   display: flex;
   padding: 10px;
   overflow-y: auto;
+
+  @include mobile {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }
+
 .image {
   border-radius: 6px;
   border: 3px solid $color-light-grey;
@@ -57,6 +65,10 @@
   background-size: cover;
   background-repeat: no-repeat;
   box-shadow: $color-box-shadow;
+
+  @include mobile {
+    width: 49%;
+  }
 }
 
 .icon {
@@ -64,6 +76,7 @@
   top: 40px;
   right: 40px;
 }
+
 .profile {
   position: relative;
   z-index: 1;
