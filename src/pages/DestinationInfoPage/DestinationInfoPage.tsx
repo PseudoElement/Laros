@@ -63,7 +63,7 @@ export const DestinationInfoPage: FC<DestinationInfoPageProps> = ({
         className={s.bg}
         style={{
           backgroundImage: `url(${
-            destination?.images ? withDomain(destination.images[0]) : ''
+            destination?.images ? withDomain(destination.images[1]) : ''
           })`,
         }}
       />

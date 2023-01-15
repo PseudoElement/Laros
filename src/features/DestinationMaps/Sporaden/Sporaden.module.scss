@@ -4,28 +4,40 @@
   position: relative;
   width: 1040px;
   height: 720px;
-  background: url('../../../../public/assets/images/destinations/Individual maps/Sporaden Inseln.png') no-repeat center;
+  background: url('../../../../public/assets/images/destinations/Individual maps/Sporaden Inseln.png')
+    no-repeat center;
   font-weight: $fw-semibold;
 }
 
-@media screen and (max-width:1350px) {
+.wrapper {
+  cursor: pointer;
+  position: absolute;
+  width: max-content;
+}
+
+.title {
+  display: none;
+}
+
+@media screen and (max-width: 1350px) {
   .container {
-    transform: scale(.7);
+    transform: scale(0.7);
   }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
   .container {
-    transform: scale(.7);
+    transform: scale(0.7);
   }
 }
-@media screen and (max-width:425px) {
-  .container{
-    transform: scale(.3);
-height:400px;
+@media screen and (max-width: 425px) {
+  .container {
+    transform: scale(0.3);
+    height: 400px;
   }
 }
 .igoumenitsa {
+  display: block;
   &::after {
     content: '';
     display: block;
@@ -47,6 +59,7 @@ height:400px;
 }
 
 .artisti {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -69,6 +82,7 @@ height:400px;
 }
 
 .ioannina {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -91,6 +105,7 @@ height:400px;
 }
 
 .parga {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -113,6 +128,7 @@ height:400px;
 }
 
 .ammoudia {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -135,6 +151,7 @@ height:400px;
 }
 
 .elati {
+  display: block;
   &::before {
     content: '';
     display: block;
@@ -155,6 +172,7 @@ height:400px;
 }
 
 .kastraki {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -177,6 +195,7 @@ height:400px;
 }
 
 .makrinitsa {
+  display: block;
   &::after {
     content: '';
     display: inline-block;
@@ -199,6 +218,7 @@ height:400px;
 }
 
 .volos {
+  display: block;
   &::after {
     content: '';
     display: inline-block;
@@ -221,6 +241,7 @@ height:400px;
 }
 
 .portaria {
+  display: block;
   &::after {
     content: '';
     display: block;
@@ -241,6 +262,7 @@ height:400px;
 }
 
 .zagora {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -263,6 +285,7 @@ height:400px;
 }
 
 .vizitsa {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -285,6 +308,7 @@ height:400px;
 }
 
 .nafpaktos {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -307,6 +331,7 @@ height:400px;
 }
 
 .delphi {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -329,6 +354,7 @@ height:400px;
 }
 
 .athen {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -348,4 +374,14 @@ height:400px;
   background: $color-white;
   border-radius: 24px;
   padding: 0 4px;
+}
+
+.regionCardportaria {
+  top: 100%;
+  left: 100%;
+}
+
+.regionCardzagora {
+  top: 100%;
+  left: 100%;
 }

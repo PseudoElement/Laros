@@ -1,12 +1,15 @@
+import { useRouter } from 'next/router'
 import { FC, memo, useEffect, useState } from 'react'
 import { MapProps } from '../Greece/GreeceMap'
 
 import { formattedTitle } from 'shared/helpers/formatedTitle'
 import RegionCard from 'components/RegionCard/RegionCard'
 
+import cn from 'classnames'
 import s from './Macedonia.module.scss'
 
 const MacedoniaItem: FC<MapProps> = ({ item, isShownCard, setIsShownCard }) => {
+  const { push } = useRouter()
   const [title, setTitle] = useState('')
 
   const onClose = () => setIsShownCard(null)
@@ -20,9 +23,10 @@ const MacedoniaItem: FC<MapProps> = ({ item, isShownCard, setIsShownCard }) => {
   return (
     <div
       onMouseEnter={() => setIsShownCard(item.id)}
-      className={s[`${title}Location`]}
+      className={cn(s[`${title}Location`], s.wrapper)}
+      onClick={() => push(`/areas/${item.id}`)}
     >
-      <div className={s[`${title}`]}>{item.cardTitle}</div>
+      <div className={cn(s[`${title}`], s.title)}>{item.cardTitle}</div>
       <RegionCard
         className={s[`regionCard${title}`]}
         id={item.id}

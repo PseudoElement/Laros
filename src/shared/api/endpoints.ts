@@ -7,7 +7,7 @@ export const endpoints = {
   contactForm: '/contact/request/',
   voucherForm: '/voucher/create/',
   destinations: {
-    get: '/destination/', // rename as in hotels TODO
+    get: '/destination/?size=300', // rename as in hotels TODO
     id: (id: number) => `/destination/${id}`,
     oneByName: (name: string) => `/destination/retrieve/${name}`,
     near: (id: number) => `/destination/near/${id}`,

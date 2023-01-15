@@ -10,6 +10,9 @@
   @include mobile-laptop {
     margin-bottom: 20px;
   }
+  @media (max-width: 390px) {
+    max-width: 310px;
+  }
 }
 
 .cardImage {
@@ -55,6 +58,7 @@
   color: $color-white;
   font-size: 12px;
   font-weight: $fw-bold;
+  cursor: pointer;
 }
 
 .selected {
@@ -71,4 +75,5 @@
   bottom: 30px;
   font-size: 18px;
   color: $color-primary;
+  cursor: pointer;
 }

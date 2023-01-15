@@ -2,26 +2,36 @@
 
 .container {
   position: relative;
-  margin-top: 50px;
-  background: url('../../../../public/assets/images/destinations/Cyrpus/Cyrpus.png') center;
+  background: url('../../../../public/assets/images/destinations/Cyrpus/Cyrpus.png')
+    center;
   width: 832px;
   height: 488px;
 }
 
-@media screen and (max-width:1350px) {
+.wrapper {
+  cursor: pointer;
+  position: absolute;
+  width: max-content;
+}
+
+.title {
+  display: none;
+}
+
+@media screen and (max-width: 1350px) {
   .container {
-    transform: scale(.7);
+    transform: scale(0.7);
   }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
   .container {
-    transform: scale(.7);
+    transform: scale(0.7);
   }
 }
-@media screen and (max-width:425px) {
+@media screen and (max-width: 425px) {
   .container {
-    transform: scale(.3);
+    transform: scale(0.3);
   }
 }
 
@@ -37,6 +47,7 @@
 }
 
 .polis {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -59,6 +70,7 @@
 }
 
 .goudi {
+  display: block;
   &::after {
     content: '';
     display: inline-block;
@@ -81,6 +93,7 @@
 }
 
 .lysos {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -103,6 +116,7 @@
 }
 
 .miliou {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -125,6 +139,7 @@
 }
 
 .paphos {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -147,6 +162,7 @@
 }
 
 .omodos {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -169,6 +185,7 @@
 }
 
 .kakopetria {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -191,6 +208,7 @@
 }
 
 .kalavassos {
+  display: block;
   &::after {
     content: '';
     display: inline-block;
@@ -203,7 +221,7 @@
   }
 }
 
-.lemessoLocation {
+.lemesosLocation {
   position: absolute;
   top: 84%;
   right: 54%;
@@ -212,7 +230,8 @@
   padding: 0 4px;
 }
 
-.lemesso {
+.lemesos {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -235,6 +254,7 @@
 }
 
 .tochni {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -257,6 +277,7 @@
 }
 
 .chirokita {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -279,6 +300,7 @@
 }
 
 .lefkosia {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -301,6 +323,7 @@
 }
 
 .larnaca {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -323,6 +346,7 @@
 }
 
 .agianapa {
+  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -333,4 +357,19 @@
     background: $color-white-blue;
     border-radius: 50%;
   }
+}
+
+.regionCardagianapa {
+  bottom: 100%;
+  left: -250px;
+}
+
+.regionCardlarnaca {
+  bottom: 100%;
+  left: -250px;
+}
+
+.regionCardchirokita {
+  bottom: 100%;
+  left: -250px;
 }

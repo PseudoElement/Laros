@@ -9,6 +9,7 @@ import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
 import { slidesPerViewHotelImages } from 'shared/helpers/slidesPerView'
 
 import s from './Overview.module.scss'
+import { TABLET_SCREEN } from '../../../shared/constants/screenResolutions'
 
 interface Overview {
   images: string[] | StaticImageData[] | HTMLImageElement[]
@@ -33,8 +34,9 @@ export const Overview: FC<Overview> = ({ images, overview }) => {
         {images?.length ? (
           <SliderGalery
             spaceBetween={8}
-            onSlice={1}
+            onSlice={2}
             slidesPerView={slidesPerViewHotelImages(width)}
+            withNavigation={width > TABLET_SCREEN}
           >
             {images.map((image, index) => (
               <div
@@ -53,7 +55,7 @@ export const Overview: FC<Overview> = ({ images, overview }) => {
         images={images}
         isOpen={openGallery}
         onClose={setOpenGallery}
-        onSlice={1}
+        onSlice={2}
       />
     </div>
   )

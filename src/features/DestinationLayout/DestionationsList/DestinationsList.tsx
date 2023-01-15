@@ -10,7 +10,6 @@ import { useTranslate } from 'shared/hooks/useTranslate'
 import World from '/public/assets/images/destinations/World.svg'
 import DestinationItem from './DestinationItem'
 
-import _ from 'lodash'
 import cn from 'classnames'
 import s from './DestinationsList.module.scss'
 
@@ -34,24 +33,30 @@ export const DestionationsList: FC<DestionationsListProps> = ({
     return true
   }
 
-  const currentRegion = mockRegions.find(region => region.id === destination)
+  const currentRegion = destinations.find(region => region.id === destination)
 
-  const destinationsMocks = currentRegion?.parentId
-    ? mockRegions.find(region => region.id === currentRegion.parentId)
-        ?.subRegions
-    : _(destinations)
-        .map(destination =>
-          mockRegions.find(region => region.id === destination.id)
+  const destinationsList = currentRegion?.parent
+    ? destinations
+        .map(destination => {
+          const mockDestination = mockRegions.find(
+            region => region.name === destination.name
+          )
+
+          return { ...destination, icon: mockDestination?.icon }
+        })
+        .filter(destination => destination.name !== 'Saronische inseln')
+    : destinations.map(destination => {
+        const mockDestination = mockRegions.find(
+          region => region.name === destination.name
         )
-        .value()
+        return { ...destination, icon: mockDestination?.icon }
+      })
 
   return (
     <div className={s.list}>
-      {destinationsMocks &&
-        destinationsMocks.map(
-          region =>
-            region && <DestinationItem key={region.id} region={region} />
-        )}
+      {destinationsList.map(region => (
+        <DestinationItem key={region.id} region={region} />
+      ))}
       {isRootDestinations(destinations) && (
         <div
           onClick={() => push(`/destinations/${route}`)}

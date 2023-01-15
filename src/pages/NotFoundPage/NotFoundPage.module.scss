@@ -4,7 +4,6 @@
   display: flex;
   max-width: 1280px;
   width: 100%;
-  height: 700px;
   margin: 100px auto;
   justify-content: center;
   align-items: center;
@@ -13,11 +12,21 @@
   box-shadow: 0px 4px 12px rgba($color-dark-blue, 0.15);
   border-radius: 16px;
 
+  @include mobile {
+    margin: 50px auto;
+    height: auto;
+    padding: 20px 10px 50px 10px;
+  }
+
   .backText {
     font-size: 244px;
     line-height: 292px;
     color: $color-about-tabs;
     font-weight: $fw-bold;
+
+    @include mobile {
+      font-size: 150px;
+    }
   }
 
   .title {
@@ -26,6 +35,10 @@
     line-height: 38px;
     color: $color-dark-blue;
     margin-bottom: 24px;
+
+    @include mobile {
+      font-size: 30px;
+    }
   }
 
   .description {

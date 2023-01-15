@@ -34,7 +34,7 @@ export const AreasOf: FC<DestinationsProps> = ({
     <div className={cn(s.wrapper, className)}>
       {destination.name && (
         <div className={s.title}>
-          {t('travelPlannerTripPlan.areasOfTitle')} {destination.location_name}
+          {t('travelPlannerTripPlan.areasOfTitle')} {destination.name}
         </div>
       )}
 

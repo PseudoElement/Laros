@@ -5,14 +5,16 @@ import { HotelCard } from 'features'
 import { Button } from 'components'
 
 import { Hotel, HotelFilterParams } from 'shared/types/hotel'
+import { Destination } from 'shared/types/destinations'
 import { useGetHotels } from 'shared/hooks/useGetHotels'
-import { Region } from 'shared/types/region'
 import { useTranslate } from 'shared/hooks/useTranslate'
 
 import s from './DestinationHotels.module.scss'
 
 interface DestinationHotelsProps {
-  map: Region
+  map: Destination & {
+    destinations: Destination[]
+  }
 }
 
 export const DestinationHotels: FC<DestinationHotelsProps> = ({ map }) => {
@@ -32,7 +34,7 @@ export const DestinationHotels: FC<DestinationHotelsProps> = ({ map }) => {
       ...prevState,
       page,
     }))
-  }, [map])
+  }, [page])
 
   useEffect(() => {
     setParams(prevState => ({
