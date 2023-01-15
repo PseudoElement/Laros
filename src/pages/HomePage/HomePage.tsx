@@ -24,6 +24,7 @@ export const HomePage: FC = () => {
 
   const dispatch = useAppDispatch()
   const destinations = useAppSelector(state => state.destinations.destinations)
+
   const travelTypes = useAppSelector(state => state.trips.categories)
   useEffect(() => {
     dispatch(getDestinationsThunk())

@@ -1,28 +1,28 @@
 import { FC, useEffect, useState } from 'react'
+import cn from 'classnames'
 
-import { Button } from 'components'
-import { RangeMarks } from 'components/RangeMarks'
-import { Select } from 'components/Select'
-import { HotelCard } from '../HotelCard'
+import { Button, Select, RangeMarks } from 'components'
+import { HotelChangingCard } from 'features'
 
 import { useGetHotels } from 'shared/hooks/useGetHotels'
 import { Hotel, HotelFilterParams } from 'shared/types/hotel'
 import { Sort } from 'shared/types'
 import { useGetHotelFilters } from 'shared/hooks/useGetHotelFilters'
 import { useDebounce } from 'shared/hooks/useDebounce'
+import { useTranslate } from 'shared/hooks/useTranslate'
 
 import s from './ChangeHotelModal.module.scss'
-import cn from 'classnames'
-import { useTranslate } from '../../shared/hooks/useTranslate'
 
 interface ChangeHotelProps {
   destination: number
   onSubmit: (id: number) => void
+  isOpen: boolean
 }
 
 export const ChangeHotelModal: FC<ChangeHotelProps> = ({
   destination,
   onSubmit,
+  isOpen,
 }) => {
   const t = useTranslate()
 
@@ -32,7 +32,7 @@ export const ChangeHotelModal: FC<ChangeHotelProps> = ({
   const [price, setPrice] = useState([0, 50])
   const debouncePrice = useDebounce(price, 100)
   const [hotels, isLoading, handleReady] = useGetHotels(params)
-  const [tags, _, accommodations, handleFilters] = useGetHotelFilters()
+  const [tags, _, accommodations, handleFilters] = useGetHotelFilters(!isOpen) // block requests until modal is open
   const [selectedHotel, setSelectedHotel] = useState<number | undefined>()
 
   const direction = [
@@ -101,6 +101,7 @@ export const ChangeHotelModal: FC<ChangeHotelProps> = ({
               />
             </div>
           </div>
+
           <div className={s.sorting}>
             <div className={s.tags}>
               <span>{t('travelPlannerCategory.tags')}:</span>
@@ -118,6 +119,7 @@ export const ChangeHotelModal: FC<ChangeHotelProps> = ({
                 ))}
               </div>
             </div>
+
             <div className={s.direction}>
               <span>{t('travelPlannerCategory.from')}</span>
               <Select
@@ -132,14 +134,15 @@ export const ChangeHotelModal: FC<ChangeHotelProps> = ({
               />
             </div>
           </div>
+
           <div className={s.cards}>
             {!isLoading &&
               hotels.map((item, idx) => {
                 return (
-                  <HotelCard
+                  <HotelChangingCard
                     onClick={id => setSelectedHotel(id)}
                     key={idx}
-                    {...item}
+                    hotel={item}
                   />
                 )
               })}

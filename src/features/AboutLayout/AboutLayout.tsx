@@ -6,7 +6,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { useTranslate } from 'shared/hooks/useTranslate'
 
 import logo from '/public/assets/images/laros_logo_rgb_web 1.png'
-import bg from '/public/assets/images/aboutLayoutBG.jpg'
+import bg from '/public/assets/images/aboutPage/ABOUT_US_COVER.png'
 
 import 'react-tabs/style/react-tabs.css'
 import s from './AboutLayout.module.scss'

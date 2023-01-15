@@ -1,9 +1,19 @@
 @use '/src/styles/style.scss' as *;
+@import '/src/styles/theme/breakpoints.scss';
 
 .page {
-  margin-top: 80px;
+  padding: 80px 0 200px;
   text-align: center;
   color: $color-bg-black;
+  background-image: url('/assets/images/aboutPage/background.png');
+  background-repeat: no-repeat;
+  @include mobile {
+    padding: 20px 0;
+  }
+
+  @include tablet {
+    padding: 40px 0;
+  }
 }
 
 .title {
@@ -11,6 +21,16 @@
   font-weight: $fw-semibold;
   font-size: 40px;
   line-height: 48px;
+
+  @include tablet {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  @include mobile {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
 }
 
 .description {
@@ -19,9 +39,34 @@
   width: 50%;
   line-height: 20px;
   margin: 0 auto 80px;
+
+  @include mobile {
+    width: 100%;
+    margin: 0 0 20px 0;
+    padding: 0 15px;
+  }
+
+  @include tablet {
+    width: 60%;
+    margin: 0 auto 20px;
+    padding: 0 15px;
+  }
 }
+
 .slider {
   width: 85%;
-  margin: 0 auto 200px;
+  margin: 0 auto;
   padding: 0 30px;
+}
+
+@include mobile-tablet {
+  .slider {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    [class*='swiperButtonNext'] {
+      right: 0;
+    }
+  }
 }

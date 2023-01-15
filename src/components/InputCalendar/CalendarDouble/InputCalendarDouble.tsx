@@ -1,8 +1,7 @@
-import React, { FC, useRef, useState } from 'react'
+import { FC, useRef } from 'react'
 import cn from 'classnames'
 
 import { CalendarIcon } from 'components'
-import ManualInputUI from '../ManualEnter'
 
 import { dateFormatter } from 'shared/helpers/dateFormatter'
 
@@ -25,10 +24,10 @@ export const InputCalendarDouble: FC<InputCalendarProps> = ({
 
   const showCalendarString = () =>
     doubleValue ? (
-      <>
+      <div className={s.text}>
         {dateFormatter(doubleValue[0], monthsCut)} -{' '}
         {dateFormatter(doubleValue[1], monthsCut)}
-      </>
+      </div>
     ) : (
       ''
     )

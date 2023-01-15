@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { FC, useState } from 'react'
 import { useRouter } from 'next/router'
 // @ts-ignore
@@ -6,15 +5,14 @@ import ReactStars from 'react-rating-stars-component'
 
 import { StartTripForm, InfoTags, FieldsType } from 'features'
 import { Map, TruncatedText } from 'components'
-
-import { TRUNCATED_ROOM_CARD_TEXT_SIZE } from 'shared/constants'
+import cn from 'classnames';
 import { useAppDispatch } from 'shared/hooks/redux'
 import { updateForm } from 'store/slices/order/order'
+import { useTranslate } from 'shared/hooks/useTranslate'
 
 import { Trip } from 'shared/types/trip'
 
 import s from './tripPageIntro.module.scss'
-import { useTranslate } from '../../../shared/hooks/useTranslate'
 
 export const TripPageIntro: FC<Trip> = ({
   id,
@@ -23,34 +21,20 @@ export const TripPageIntro: FC<Trip> = ({
   price,
   route,
   description,
-  offer_name,
-  offer,
-  offer_percent,
-  offer_discount,
-  is_active,
-  offer_date_end,
-  offer_date_start,
-  period,
-  island_hopping_fee,
-  travel_types,
-  images,
-  destinations,
-  transports,
-  duration,
-  near_destinations,
 }) => {
   const dispatch = useAppDispatch()
   const { push } = useRouter()
   const t = useTranslate()
+  console.log(id)
 
   const handleClick = (fields: FieldsType) => {
     dispatch(
       updateForm({
         rooms: fields.rooms,
-        date_start: [Number(fields.date[0]), Number(fields.date[1])],
+        date_start: Number(fields.date[0]),
       })
     )
-    push(`/trip_form`)
+    push(`/trip_form/${id}`)
   }
 
   return (
@@ -61,20 +45,19 @@ export const TripPageIntro: FC<Trip> = ({
           {price} CHF / {t('travelPlannerTripPlan.proPerson')}
         </div>
 
-        <TruncatedText
-          limit={TRUNCATED_ROOM_CARD_TEXT_SIZE}
-          className={s.description}
-          more={t('hotel.more')}
-        >
-          {description}
-        </TruncatedText>
+        {description ? (
+          <div
+            className={cn(s.description, ['scrollStyle'])}
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
+        ) : null}
 
         <StartTripForm onChange={handleClick} />
       </div>
 
       <div className={s.right}>
         <div className={s.map}>
-          <Map route={route} />
+          <Map route={route ?? ''} />
         </div>
 
         <div className={s.tagsPanel}>

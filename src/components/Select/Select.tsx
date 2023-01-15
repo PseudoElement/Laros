@@ -7,11 +7,13 @@ import Select, {
 } from 'react-select'
 import AsyncSelect from 'react-select/async'
 import Image from 'next/image'
-
 import cn from 'classnames'
-import s from './Select.module.scss'
-import arrow from '../../../public/assets/images/arrow.svg?url'
+
 import { Option } from 'shared/types'
+
+import arrow from '/public/assets/images/arrow.svg?url'
+
+import s from './Select.module.scss'
 
 interface OptionsProps {
   options: Option[]
@@ -23,6 +25,7 @@ interface OptionsProps {
   hasArrow?: boolean
   onInputChange?: (value: string) => void
   async?: boolean
+  isClearable?: boolean
   loadOptions?: any // TODO in future
 }
 
@@ -37,6 +40,7 @@ export const SelectComponent: FC<OptionsProps> = ({
   loadOptions,
   onChange,
   onInputChange,
+  isClearable = true,
 }) => {
   const DropdownIndicator: FC<DropdownIndicatorProps> = props =>
     hasArrow ? (
@@ -60,9 +64,9 @@ export const SelectComponent: FC<OptionsProps> = ({
     <components.Control {...props}>
       {options.map((item, i) =>
         item.label === props.getValue().map((el: any) => el.label)[0] &&
-        item.icon ? (
-          <div className={s.control}>
-            <Image key={i} src={item.icon} width={30} height={30} alt='icon' />
+          item.icon ? (
+          <div className={s.control} key={i}>
+            <Image src={item.icon} width={30} height={30} alt='icon' />
           </div>
         ) : null
       )}
@@ -118,7 +122,7 @@ export const SelectComponent: FC<OptionsProps> = ({
       styles={customStyles}
       options={options}
       value={value}
-      defaultValue={value ?? options[0]}
+      defaultValue={value}
       components={{ Option, DropdownIndicator, Control }}
       isMulti={isMulti}
       // @ts-ignore
@@ -134,7 +138,7 @@ export const SelectComponent: FC<OptionsProps> = ({
       styles={customStyles}
       options={options}
       value={value}
-      defaultValue={value ?? options[0]}
+      defaultValue={value}
       components={{ Option, DropdownIndicator, Control }}
       isMulti={isMulti}
       // @ts-ignore
@@ -142,6 +146,7 @@ export const SelectComponent: FC<OptionsProps> = ({
       className={cn(s.select, classname)}
       placeholder={placeholder}
       onInputChange={onInputChange}
+      isClearable={isClearable}
     />
   )
 }

@@ -3,17 +3,31 @@
 .wrapper {
   font-family: $font-Lato;
   padding-top: 16px;
+
+  @media screen and (max-width: 850px) {
+    padding-top: 0;
+  }
 }
 
 .row {
   display: flex;
   justify-content: space-between;
   margin-bottom: 16px;
+
+  @media screen and (max-width: 850px) {
+    flex-direction: column;
+    margin-bottom: 0;
+  }
 }
 
 .inputCalendarCustom {
   min-width: 49%;
   height: 70px;
+
+  @media screen and (max-width: 850px) {
+    width: 100%;
+    margin-bottom: 15px;
+  }
 }
 
 .radio {
@@ -28,13 +42,21 @@
   font-weight: $fw-medium;
   color: $color-checkbox-gray;
   margin-bottom: 15px;
+
+  @media screen and (max-width: 850px) {
+    margin-bottom: 10px;
+  }
 }
 
-.counterRow {
-  padding-top: 24px;
-  justify-content: start;
-  margin-bottom: 68px;
-  width: 49%;
+@media screen and (max-width: 850px) {
+  .radioInput {
+    display: flex;
+    flex-direction: column;
+
+    [class*='radio'] {
+      margin-bottom: 15px;
+    }
+  }
 }
 
 .counterRow div:first-child {
@@ -100,6 +122,10 @@
   [type$='email'] {
     font-weight: $fw-regular;
   }
+
+  @media screen and (max-width: 850px) {
+    width: 100%;
+  }
 }
 
 .input input::placeholder {
@@ -115,6 +141,11 @@
 .selectWrapper {
   position: relative;
   width: 49%;
+
+  @media screen and (max-width: 850px) {
+    width: 100%;
+    margin-bottom: 15px;
+  }
 }
 
 .selectLabel {
@@ -184,23 +215,41 @@
     padding-bottom: 12px;
     background-color: $color-light-grey;
   }
+
+  @media screen and (max-width: 850px) {
+    margin-bottom: 30px;
+  }
 }
 
 .footer {
   display: flex;
   margin-bottom: 106px;
+
+  @media screen and (max-width: 850px) {
+    flex-direction: column-reverse;
+    margin-bottom: 20px;
+  }
 }
 
 .submitButton {
   margin-right: 16px;
 }
 
-.footerDescr {
-  width: 254px;
+.privacyPolicy {
+  width: 350px;
   font-size: 12px;
   line-height: 14px;
   color: $color-range-bg;
   font-weight: $fw-light;
+
+  a {
+    color: $color-primary-black;
+  }
+
+  @media screen and (max-width: 850px) {
+    width: 100%;
+    margin-bottom: 15px;
+  }
 }
 
 .termsButton {
@@ -245,7 +294,7 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 20px 10px;
-    background-color: $color-light-grey;
+    background-color: $color-laros-light-grey;
     gap: 10px;
     border-radius: 20px;
     width: 25%;
@@ -275,6 +324,25 @@
   justify-content: start;
   margin-bottom: 68px;
   padding: 0;
+
+  @media screen and (max-width: 1024px) {
+    width: 70%;
+  }
+
+  @media screen and (max-width: 850px) {
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
+
+.counterRow div:first-child {
+  margin-right: 24px;
+
+  @media screen and (max-width: 850px) {
+    margin-right: 15px;
+    margin-bottom: 15px;
+  }
 }
 
 .travelDurationCounter {

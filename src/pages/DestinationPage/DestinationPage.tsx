@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { getDestinationsThunk } from 'store/slices/destinations/thunk'
 
 import { DestinationLayout } from 'features/DestinationLayout'
-import DestinationHotels from 'features/DestinationHotels/DestinationHotels'
+import { DestinationHotels } from 'features/DestinationHotels/DestinationHotels'
 import { AreasOf } from '../../features/AreasOf'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
@@ -16,16 +16,19 @@ import { getPath } from 'shared/helpers/getPath'
 import Arrow from '/public/assets/images/blackArrow.svg'
 
 import s from './DestinationPage.module.scss'
-import _ from 'lodash'
+import _ from 'lodash' // TODO use certain method
 
 export const DestinationPage: FC = () => {
   const dispatch = useAppDispatch()
   const { query, pathname, push } = useRouter()
-  const { destinations, currentDestination } = useAppSelector(
-    state => state.destinations
-  )
+  const { destinations } = useAppSelector(state => state.destinations)
   const [map, setMap] = useState<Map | null>(null)
   const t = useTranslate()
+
+  const currentDestinationId = Number(query.id)
+  const currentDestinationDescription = destinations.filter(
+    item => item.id === currentDestinationId
+  )[0]?.description
 
   const route = getPath(pathname)
   const title = !map?.currentMap?.parentId
@@ -39,10 +42,10 @@ export const DestinationPage: FC = () => {
   }, [])
 
   useEffect(() => {
-    let map = getCurrentMap(Number(query.id))
+    let map = getCurrentMap(currentDestinationId)
 
     const currentLocation = _(destinations)
-      .filter(d => d.parent === Number(query.id))
+      .filter(d => d.parent === currentDestinationId)
       .map(location => ({
         id: location.id,
         link: `/destinations/${route}/${location.id}`,
@@ -57,42 +60,46 @@ export const DestinationPage: FC = () => {
         currentMap: {
           ...map.currentMap,
           destination: destinations.find(
-            destination => destination.id === Number(query.id)
+            destination => destination.id === currentDestinationId
           ),
           destinations: destinations.filter(
-            destination => destination.parent === Number(query.id)
+            destination => destination.parent === currentDestinationId
           ),
         },
       }
 
       setMap({ ...newMap, location: currentLocation })
     }
-  }, [query.id, destinations])
+  }, [currentDestinationId, destinations])
 
   return (
     <>
-      <DestinationLayout
-        currentDestination={Number(query.id)}
-        destinations={destinations}
-        description={t('destinations.greeceDescription')}
-        title={title}
-      >
-        {map?.currentMap && (
-          <>
-            {map.currentMap.parentId && map.parent && (
-              <div
-                onClick={() => push(`/destinations/${route}/${map.parent!.id}`)}
-                className={s.back}
-              >
-                <Arrow className={s.arrow} />{' '}
-                {t('destinationsSubRegion.buttonGoBack')} {map.parent.name}
-                {t('destinationsSubRegion.buttonGoBackMap')}
-              </div>
-            )}
-            {map.currentMap.map && map.currentMap.map(map.location)}
-          </>
-        )}
-      </DestinationLayout>
+      <div className={s.layoutWrapper}>
+        <DestinationLayout
+          currentDestination={currentDestinationId}
+          destinations={destinations}
+          description={currentDestinationDescription}
+          title={title}
+        >
+          {map?.currentMap && (
+            <>
+              {map.currentMap.parentId && map.parent && (
+                <div
+                  onClick={() =>
+                    push(`/destinations/${route}/${map.parent!.id}`)
+                  }
+                  className={s.back}
+                >
+                  <Arrow className={s.arrow} />{' '}
+                  {t('destinationsSubRegion.buttonGoBack')} {map.parent.name}{' '}
+                  {t('destinationsSubRegion.buttonGoBackMap')}
+                </div>
+              )}
+              {map.currentMap.map && map.currentMap.map(map.location)}
+            </>
+          )}
+        </DestinationLayout>
+      </div>
       {map &&
         map.currentMap &&
         (route === 'areas' ? (

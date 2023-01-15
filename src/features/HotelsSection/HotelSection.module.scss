@@ -1,21 +1,74 @@
 @use 'styles/style.scss' as *;
+@import '/src/styles/theme/breakpoints.scss';
 
 .hotelSection {
-  padding: 80px 0;
+  padding: 0 0 30px 0;
+
+  @include tablet-laptop {
+    padding: 30px 30px;
+  }
+
+  @include mobile {
+    padding: 20px 10px;
+  }
 }
+
 .title {
   font-size: 16px;
   font-weight: $fw-bold;
   line-height: 20px;
   text-align: center;
+
+  @include mobile-tablet {
+    margin-bottom: 8px;
+  }
 }
+
 .subTitle {
   margin: 8px 0 40px;
   font-size: 12px;
   font-weight: $fw-regular;
   line-height: 20px;
   text-align: center;
+
+  @include mobile-tablet {
+    margin: 0 0 20px;
+  }
 }
+
 .wrap {
   margin: 0 150px;
+
+  @include mobile-tablet {
+    margin: 0;
+  }
+}
+
+@include mobile {
+  .hotelSlider {
+    [class*='swiper-slide'] {
+      display: flex;
+      justify-content: center;
+    }
+
+    [class*='swiperButtonNext'] {
+      right: 0;
+    }
+
+    [class*='swiperButtonPrev'] {
+      left: 0;
+    }
+  }
+}
+
+@include tablet-laptop {
+  .hotelSlider {
+    [class*='swiperButtonNext'] {
+      right: -15px;
+    }
+
+    [class*='swiperButtonPrev'] {
+      left: -15px;
+    }
+  }
 }

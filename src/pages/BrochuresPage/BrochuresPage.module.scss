@@ -1,5 +1,11 @@
 @use '/src/styles/style.scss' as *;
+.brochuresPage {
+  padding: 0 80px;
 
+  @include mobile-tablet {
+    padding: 0;
+  }
+}
 .wrapper {
   height: 100%;
   background-color: $color-white;
@@ -7,14 +13,34 @@
   border-radius: 16px;
   box-shadow: 0 4px 4px 0 $color-shadow;
   padding: 80px 65px 0;
-  margin-bottom: 80px;
-  margin-top: 100px;
+  max-width: 1394px;
+  margin: 100px auto 80px;
+
+  @include laptop {
+    padding: 80px 20px 0;
+  }
+  @include mobile-laptop {
+    padding: 0 20px 0;
+  }
+  @include mobile-tablet {
+    padding: 0 20px 0;
+    margin: 50px 0;
+  }
+
+  @include mobile {
+    padding: 0 10px 0;
+    margin: 20px 0;
+  }
 }
 
 .title {
   font-size: 56px;
   font-weight: $fw-bold;
   margin-bottom: 16px;
+
+  @include mobile {
+    font-size: 30px;
+  }
 }
 
 .subtitle {
@@ -22,12 +48,24 @@
   font-size: 12px;
   font-weight: $fw-regular;
   line-height: 20px;
+
+  @include mobile-laptop {
+    width: 70%;
+    margin-bottom: 20px;
+  }
+  @include mobile {
+    margin-bottom: 20px;
+  }
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
+
+  @include mobile-laptop {
+    display: block;
+  }
 }
 
 .noSelectBtn {
@@ -41,6 +79,19 @@
   font-weight: $fw-regular;
   color: $color-placeholder;
   border: 1px solid $color-laros-light-grey;
+
+  @include mobile {
+    max-width: 0;
+    min-width: 0;
+  }
+  @include laptop {
+    max-width: 350px;
+    min-width: 0;
+  }
+  @include mobile-tablet {
+    max-width: 350px;
+    min-width: 0;
+  }
 }
 
 .selectBtn {
@@ -54,12 +105,33 @@
 }
 
 .brochuresList {
-  display: flex;
-  justify-content: start;
-  margin: 12px 0;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  max-width: 1250px;
+  margin: 12px auto;
+
+  @include laptop {
+    width: 760px;
+    margin: 12px 0;
+    grid-template-columns: auto auto;
+  }
+
+  @include mobile {
+    width: 760px;
+    margin: 12px 0;
+    grid-template-columns: auto;
+  }
+
+  @include mobile-laptop {
+    grid-template-columns: auto;
+    justify-content: center;
+    width: auto;
+  }
 
   & div:not(:last-child) {
     margin-right: 24px;
+    @include mobile {
+      margin-right: 0;
+    }
   }
 }

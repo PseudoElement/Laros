@@ -1,11 +1,9 @@
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+import { FC, useEffect, useState } from 'react'
 
 import { HotelSection, DestinationIntro } from 'features'
 import { Trips } from './Trips/Trips'
 import { Overview } from './Overview/Overview'
 
-import { getDestination } from 'shared/api/routes/destinations'
 import { getHotels } from 'shared/api/routes/hotels'
 import { getTripsNearby } from 'shared/api/routes/trips'
 import { useTranslate } from 'shared/hooks/useTranslate'
@@ -17,29 +15,27 @@ import { Hotel } from 'shared/types/hotel'
 
 import s from './DestinationInfoPage.module.scss'
 
-export const DestinationInfoPage = () => {
+export interface DestinationInfoPageProps {
+  destination: Destination
+}
+export const DestinationInfoPage: FC<DestinationInfoPageProps> = ({
+  destination,
+}) => {
   const t = useTranslate()
-  const { query } = useRouter()
-  const destinationID = Number(query.id)
 
-  const [destination, setDestination] = useState<Destination | null>(null)
   const [hotels, setHotels] = useState<Hotel[]>([])
   const [trips, setTrips] = useState<Trip[]>([])
 
-  const loadDestination = async (id: number) => {
-    try {
-      const { data } = await getDestination(id)
-      // @ts-ignore TODO
-      setDestination(data.data)
-    } catch (error) {
-      console.error(error)
-    }
+  const tripsFilter = (trips: Trip[]) => {
+    return trips.filter(
+      item => !!(item.name && item.price && item.duration && item.period)
+    )
   }
 
   const loadTripNearby = async (id: number) => {
     try {
       const { data } = await getTripsNearby(id)
-      setTrips(data.data)
+      setTrips(tripsFilter(data.data))
     } catch (error) {
       console.error('error', error)
     }
@@ -55,12 +51,11 @@ export const DestinationInfoPage = () => {
   }
 
   useEffect(() => {
-    if (destinationID) {
-      loadDestination(destinationID)
-      loadHotels(destinationID)
-      loadTripNearby(destinationID)
+    if (destination) {
+      loadHotels(destination.id)
+      loadTripNearby(destination.id)
     }
-  }, [query.id])
+  }, [destination])
 
   return (
     <div className={s.destinationPage}>
@@ -68,7 +63,7 @@ export const DestinationInfoPage = () => {
         className={s.bg}
         style={{
           backgroundImage: `url(${
-            destination?.images ? withDomain(destination.images[0]) : ''
+            destination?.images ? withDomain(destination.images[1]) : ''
           })`,
         }}
       />
@@ -79,7 +74,7 @@ export const DestinationInfoPage = () => {
         <Overview images={destination.images} overview={destination.overview} />
       ) : null}
 
-      {trips ? (
+      {trips.length ? (
         <Trips
           trips={trips}
           title={destination?.name}

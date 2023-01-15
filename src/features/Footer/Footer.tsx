@@ -85,7 +85,11 @@ export const Footer: FC = () => {
               </div>
               <ul className={s.aboutInfoList}>
                 <li className={s.aboutItem}>
-                  <p className={s.link}>{t('navigation.footer.address')}</p>
+                  <p className={s.link}>{t('navigation.footer.addressText')}
+                    <span className={s.linkNum}>
+                      {t('navigation.footer.address')}
+                    </span>
+                  </p>
                 </li>
                 <li className={s.aboutItem}>
                   <p className={s.link}>
@@ -172,7 +176,7 @@ export const Footer: FC = () => {
               return (
                 <li key={idx} className={s.navItem}>
                   <Link className={s.navLink} href={link.to}>
-                    <a className={s.navLink}>{link.name}</a>
+                    <a className={s.navLink}>{t(link.name)}</a>
                   </Link>
                 </li>
               )
@@ -180,7 +184,7 @@ export const Footer: FC = () => {
           </ul>
         </div>
         <div className={s.textInfo}>
-          <p>© Laros Reisen. All rights reserved</p>
+          <p>{t('navigation.footer.textInfo')}</p>
         </div>
       </div>
     </footer>

@@ -8,12 +8,12 @@ import { Map, TruncatedText } from 'components'
 
 import { useAppDispatch } from 'shared/hooks/redux'
 import { updateForm } from 'store/slices/order/order'
+import { useTranslate } from 'shared/hooks/useTranslate'
 
-import { TRUNCATED_ROOM_CARD_TEXT_SIZE } from 'shared/constants'
 import { Hotel } from 'shared/types/hotel'
+import { TRIP_PLAN_DESCRIPTION_SIZE } from 'shared/constants'
 
 import s from './HotelIntro.module.scss'
-import { useTranslate } from '../../../shared/hooks/useTranslate'
 
 export const HotelIntro: FC<Hotel> = ({
   description,
@@ -49,7 +49,8 @@ export const HotelIntro: FC<Hotel> = ({
     dispatch(
       updateForm({
         rooms: fields.rooms,
-        date_start: [Number(fields.date[0]), Number(fields.date[1])],
+        date_start: Number(fields.date[0]),
+        // date_start: [Number(fields.date[0]), Number(fields.date[1])], //TODO fix when fix api
       })
     )
     push(`/trip_form`)
@@ -71,15 +72,15 @@ export const HotelIntro: FC<Hotel> = ({
 
         <div className={s.name}>{lrweb}</div>
 
-        <TruncatedText
-          limit={TRUNCATED_ROOM_CARD_TEXT_SIZE}
-          className={s.description}
-          more={t('hotel.more')}
-        >
-          {description}
-        </TruncatedText>
+        {description ? (
+          <TruncatedText limit={TRIP_PLAN_DESCRIPTION_SIZE}>
+            {description}
+          </TruncatedText>
+        ) : null}
 
-        <StartTripForm onChange={handleClick} />
+        <div className={s.forms}>
+          <StartTripForm onChange={handleClick} />
+        </div>
       </div>
 
       <div className={s.right}>

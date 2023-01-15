@@ -1,4 +1,5 @@
 @use '/src/styles/style.scss' as *;
+@import '/src/styles/theme/breakpoints.scss';
 
 .review {
   box-sizing: border-box;
@@ -14,6 +15,12 @@
   &::-webkit-scrollbar {
     display: none;
   }
+
+  @include mobile-tablet {
+    min-height: unset;
+    padding: 25px;
+    max-width: 100%;
+  }
 }
 
 .name {
@@ -24,27 +31,53 @@
 }
 
 .tripName {
-  font-size: 12px;
-  font-weight: $fw-bold;
+  font-size: 16px;
+  font-weight: $fw-semibold;
   line-height: 20px;
   margin-bottom: 15px;
-  color: $color-laros-dark-grey;
 }
 
 .comment {
   font-size: 12px;
   font-weight: $fw-regular;
   line-height: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 .images {
   display: flex;
-  flex-wrap: nowrap;
-  margin-top: 30px;
+  padding: 10px;
+  overflow-y: auto;
+
+  @include mobile {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+.image {
+  border-radius: 6px;
+  border: 3px solid $color-light-grey;
+  margin-right: -5px;
+  min-width: 97px;
+  height: 97px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: $color-box-shadow;
+
+  @include mobile {
+    width: 49%;
+  }
 }
 
 .icon {
   position: absolute;
   top: 40px;
   right: 40px;
+}
+
+.profile {
+  position: relative;
+  z-index: 1;
 }

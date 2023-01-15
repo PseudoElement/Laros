@@ -1,7 +1,11 @@
-import { Button } from 'components/Button'
 import { FC } from 'react'
+
+import { Button, TruncatedText } from 'components'
+
+import { useTranslate } from 'shared/hooks/useTranslate'
+
 import s from './JobCard.module.scss'
-import { useTranslate } from '../../../shared/hooks/useTranslate'
+import { JOB_CARD_TEXT_LIMIT } from '../../../shared/constants'
 
 export interface jobCardProps {
   vacancy: string
@@ -23,8 +27,11 @@ export const JobCard: FC<jobCardProps> = ({
   return (
     <div className={s.cardWrapper}>
       <h2 className={s.title}>{vacancy}</h2>
+
       <div className={s.time}>{time}</div>
-      <p className={s.description}>{description}</p>
+
+      <TruncatedText limit={JOB_CARD_TEXT_LIMIT}>{description}</TruncatedText>
+
       <div className={s.buttons}>
         <Button
           onClick={() => (onClick ? onClick(id) : null)}
@@ -32,6 +39,7 @@ export const JobCard: FC<jobCardProps> = ({
         >
           {t('career.modalTitle')}
         </Button>
+
         <Button classname={s.infoButton} variant={'outline'}>
           {t('career.moreInfo')}
         </Button>

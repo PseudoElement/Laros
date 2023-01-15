@@ -11,15 +11,76 @@
 .images {
   max-width: 1280px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   grid-gap: 10px;
   padding-bottom: 80px;
   padding-right: 15px;
   padding-left: 15px;
+  justify-content: center;
+  @include mobile {
+    padding-bottom: 40px;
+  }
 }
+.exploreItem {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  font-style: normal;
+  font-weight: $fw-bold;
+  font-size: 12px;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 17px;
+  background-size: 100% 100%;
+  position: relative;
 
+  &:nth-child(1) {
+    width: 395px;
+    @include laptop {
+      width: 35%;
+    }
+  }
+  &:nth-child(2) {
+    width: 775px;
+    @include laptop {
+      width: 64%;
+    }
+  }
+  &:nth-child(3),
+  &:nth-child(7),
+  &:nth-child(8),
+  &:nth-child(4) {
+    width: 318px;
+
+    @include laptop {
+      width: 25%;
+    }
+  }
+  &:nth-child(5),
+  &:nth-child(6) {
+    width: 527px;
+    @include laptop {
+      width: 48%;
+    }
+  }
+
+  @include mobile-tablet {
+    height: 150px;
+    max-width: 200px;
+  }
+}
+.shadow {
+  width: 100%;
+  height: 200px;
+  background: $areas-of-gradient;
+
+  @include mobile-tablet {
+    height: 150px;
+    max-width: 200px;
+  }
+}
 .title {
   padding-top: 70px;
   padding-bottom: 8px;
@@ -29,32 +90,22 @@
 
 .subtitle {
   padding-bottom: 40px;
-
   font-weight: $fw-regular;
   font-size: 12px;
   opacity: 0.6;
+  @include mobile {
+    padding: 0 20px 40px 20px;
+  }
 }
 
 .item {
   border-radius: 10px;
 }
 
-.exploreItem {
-  padding: 0;
-  margin: 0;
-  display: flex;
-  font-style: normal;
-  font-weight: $fw-bold;
-  font-size: 12px;
-  max-width: 318px;
-  height: 200px;
-  background-repeat: no-repeat;
-  background-position: center;
-  border-radius: 17px;
-}
-
 .itemName {
-  align-self: end;
-  padding-bottom: 18px;
-  padding-left: 27px;
+  position: absolute;
+  bottom: 16px;
+  left: 24px;
+  z-index: 2;
+  color: $color-white;
 }

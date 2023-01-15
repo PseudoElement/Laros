@@ -1,5 +1,11 @@
+@import '/src/styles/theme/breakpoints.scss';
+
 .destinationPage {
   padding-top: 80px;
+
+  @include mobile {
+    padding-top: 0;
+  }
 }
 
 .bg {
@@ -20,5 +26,13 @@
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
     left: 0;
     right: 0;
+  }
+
+  @include mobile {
+    display: none;
+  }
+
+  @include tablet {
+    height: 400px;
   }
 }

@@ -7,6 +7,36 @@
   margin-right: 500px;
   height: 1068px;
   width: 1040px;
+  margin-top: 45px;
+}
+
+@media screen and (max-width:1350px) {
+  .container {
+    transform: scale(.7);
+  }
+}
+
+@media screen and (max-width:1024px) {
+  .container {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .container {
+    transform: scale(.6);
+    margin-right: 120px;
+    height: 720px;
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width:425px) {
+  .container {
+    transform: scale(.3) translateY(-300px);
+    margin-right: 120px;
+    height: 400px;
+  }
 }
 
 /*Sub */

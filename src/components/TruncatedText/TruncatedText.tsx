@@ -2,6 +2,8 @@ import React, { FC, useState } from 'react'
 import cn from 'classnames'
 import { truncate } from 'lodash'
 
+import { useTranslate } from 'shared/hooks/useTranslate'
+
 import { TRUNCATION_LIMIT_DEFAULT } from 'shared/constants'
 
 import s from './truncatedText.module.scss'
@@ -16,9 +18,10 @@ export const TruncatedText: FC<TruncatedTextProps> = ({
   children,
   limit = TRUNCATION_LIMIT_DEFAULT,
   className,
-  more = 'See more',
+  more = 'Mehr ansehen',
 }) => {
   const [isTruncated, setIsTruncated] = useState<boolean>(true)
+  const t = useTranslate()
 
   return (
     <div className={cn(s.truncatedText, className)}>
@@ -28,12 +31,12 @@ export const TruncatedText: FC<TruncatedTextProps> = ({
           : children}
       </div>
 
-      {children && (
+      {children && children.length > limit && (
         <div
           className={s.seeMore}
           onClick={() => setIsTruncated(prev => !prev)}
         >
-          {more}
+          {isTruncated ? more : t('career.close')}
         </div>
       )}
     </div>

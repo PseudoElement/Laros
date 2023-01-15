@@ -1,4 +1,5 @@
 @use 'styles/style.scss' as *;
+@import '/src/styles/theme/breakpoints.scss';
 
 .wrapper {
   font-family: 'Lato', sans-serif;
@@ -14,6 +15,18 @@
   position: relative;
   z-index: 2;
   padding: 80px;
+
+  @include mobile {
+    padding: 60px 10px 10px 10px;
+  }
+
+  @include tablet {
+    padding: 80px 30px 30px 30px;
+  }
+
+  @include laptop {
+    padding: 80px 40px 40px;
+  }
 }
 
 .loader {
@@ -31,6 +44,10 @@
   border-radius: 16px;
   margin-bottom: 40px;
   overflow: hidden;
+
+  @include mobile {
+    margin-bottom: 20px;
+  }
 }
 
 .bg {
@@ -68,6 +85,16 @@
   display: flex;
   align-items: center;
   background-color: $color-modal-header;
+
+  @include mobile {
+    padding: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  @include tablet {
+    padding: 0 30px;
+  }
 }
 
 .tab {
@@ -75,12 +102,14 @@
   color: $color-bg-black;
   cursor: pointer;
   position: relative;
+
   &[aria-selected='true'] {
     background-color: transparent;
     font-weight: $fw-bold;
     border: none;
     box-shadow: none;
     outline: none;
+
     &:before {
       content: '';
       position: absolute;
@@ -92,9 +121,18 @@
       border: none;
     }
   }
+
+  @include mobile {
+    padding: 10px;
+  }
 }
+
 .destinations {
   padding: 80px 80px 160px;
+
+  @include mobile {
+    padding: 40px 20px 20px;
+  }
 }
 
 .tabWrapper {

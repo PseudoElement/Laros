@@ -34,10 +34,17 @@
   padding-bottom: 46px;
   margin: 0 auto;
   width: 840px;
+  @include mobile-tablet {
+    width: 100%;
+    padding: 0 28px 46px 28px;
+  }
+  @include mobile {
+    text-align: start;
+  }
 }
 
 .button {
-  width: 105px;
+  max-width: 150px;
   margin: 0 auto;
   margin-bottom: 53px;
   cursor: pointer;
@@ -47,8 +54,11 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 24px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 0 15px;
+  @include mobile {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0 20px;
+  }
 }
 
 .item {

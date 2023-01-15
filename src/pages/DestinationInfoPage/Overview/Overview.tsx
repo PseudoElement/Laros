@@ -4,9 +4,12 @@ import Image, { StaticImageData } from 'next/image'
 import { Gallery, SliderGalery } from 'components'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
+import { withDomain } from 'shared/helpers/withDomain'
+import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
+import { slidesPerViewHotelImages } from 'shared/helpers/slidesPerView'
 
 import s from './Overview.module.scss'
-import { withDomain } from '../../../shared/helpers/withDomain'
+import { TABLET_SCREEN } from '../../../shared/constants/screenResolutions'
 
 interface Overview {
   images: string[] | StaticImageData[] | HTMLImageElement[]
@@ -21,15 +24,20 @@ export const Overview: FC<Overview> = ({ images, overview }) => {
     setOpenGallery(index)
   }
 
+  const { width } = useWindowDimensions()
+
   return (
     <div className={s.overview}>
       <div className={s.title}>{t('areaPage.OverviewTitle')}</div>
-
-      <div className={s.subTitle}>{overview}</div>
-
+      {overview && <div className={s.subTitle}>{overview}</div>}
       <div className={s.overviewSlider}>
         {images?.length ? (
-          <SliderGalery spaceBetween={8}>
+          <SliderGalery
+            spaceBetween={8}
+            onSlice={2}
+            slidesPerView={slidesPerViewHotelImages(width)}
+            withNavigation={width > TABLET_SCREEN}
+          >
             {images.map((image, index) => (
               <div
                 key={index}
@@ -43,7 +51,12 @@ export const Overview: FC<Overview> = ({ images, overview }) => {
         ) : null}
       </div>
 
-      <Gallery images={images} isOpen={openGallery} onClose={setOpenGallery} />
+      <Gallery
+        images={images}
+        isOpen={openGallery}
+        onClose={setOpenGallery}
+        onSlice={2}
+      />
     </div>
   )
 }

@@ -1,8 +1,11 @@
 @use 'styles/style.scss' as *;
+@import '/src/styles/theme/breakpoints.scss';
+
 .tripOffersPage {
   position: relative;
   padding: 170px 0 0;
 }
+
 .bg {
   background-position: center;
   background-repeat: no-repeat;
@@ -13,26 +16,48 @@
   left: 0;
   right: 0;
   z-index: 0;
+
+  @include mobile {
+    background-size: auto;
+  }
 }
 
 .title {
   color: $color-white;
   font-size: 56px;
-  margin: 0 165px;
+  padding-left: 165px;
   font-weight: $fw-bold;
   line-height: 67px;
   z-index: 1;
   position: relative;
+
+  @include mobile-tablet {
+    padding-left: 44px;
+  }
+
+  @include mobile {
+    padding: 0 32px;
+  }
 }
+
 .subTitle {
-  width: 835px;
-  margin: 0 165px;
+  width: 100%;
+  max-width: 835px;
+  padding-left: 165px;
   color: $color-white;
   font-size: 12px;
   font-weight: $fw-regular;
   line-height: 20px;
   position: relative;
   z-index: 1;
+
+  @include mobile-tablet {
+    padding-left: 44px;
+  }
+
+  @include mobile {
+    padding: 0 32px;
+  }
 }
 
 .filters {
@@ -44,6 +69,10 @@
   position: relative;
   margin: 30px auto 0;
   z-index: 1;
+
+  @include mobile {
+    padding: 20px 22px 20px 20px;
+  }
 }
 
 .filterTitle {
@@ -61,20 +90,37 @@
   cursor: pointer;
   border-radius: 5px;
 }
+
 .viewSelected {
   background-color: $color-laros-light-grey;
 }
 
 .offers {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   width: 80%;
-  margin: 80px auto 180px;
+  margin: 80px auto 80px;
+
+  @include mobile-tablet {
+    margin: 0 auto;
+    padding: 80px 0;
+  }
 }
+
 .grid {
   display: grid;
   grid-template-columns: 32% 32% 32%;
   gap: 25px;
+
+  @include mobile-tablet {
+    grid-template-columns: 48% 48%;
+  }
+
+  @include mobile {
+    grid-template-columns: 96%;
+    justify-content: center;
+  }
 }
 
 .list {
@@ -82,44 +128,81 @@
   grid-template-columns: 100%;
   gap: 25px;
 }
+
 .filterSelects {
-  width: 1020px;
+  width: 100%;
+  max-width: 1020px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
+
   & > div {
-    width: calc(1004px / 3);
+    width: 100%;
+    max-width: calc(1004px / 3);
+  }
+
+  @include mobile-laptop {
+    gap: 5px;
+  }
+
+  @include mobile-tablet {
+    flex-direction: column;
+    gap: 10px;
   }
 }
+
 .filterContent {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   margin-bottom: 24px;
+
+  @include mobile-tablet {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
 }
+
 .sort {
   display: flex;
   align-items: center;
+
+  @include mobile-tablet {
+    width: 100%;
+    max-width: calc(1004px / 3);
+  }
 }
+
 .sortFrom {
   font-size: 14px;
   font-weight: $fw-regular;
   line-height: 17px;
   margin: 0 9px 0 24px;
+
+  @include mobile-tablet {
+    margin: 0 9px 0 0;
+  }
 }
 
 .select {
   font-size: 12px;
   font-weight: $fw-regular;
   line-height: 20px;
+  min-width: 55px;
+
   [class$='-control'] {
-    border: 1px solid $color-laros-dark-grey;
+    border: 1px solid $color-modal-bg;
     border-radius: 8px;
     background-color: $color-white;
   }
+
   [class$='-ValueContainer'] {
     height: 32px;
     overflow-y: scroll;
   }
+
   [class$='-multiValue'] {
     border-radius: 8px;
     background-color: $color-laros-light-grey;
@@ -127,6 +210,7 @@
     font-weight: $fw-regular;
     line-height: 20px;
   }
+
   [class$='-placeholder'] {
     color: $color-primary-black;
   }
@@ -134,39 +218,38 @@
 
 .tags {
   display: flex;
-  overflow-x: auto;
   width: 90%;
   padding: 10px 0 20px;
-  scrollbar-width: 3px;
-  scrollbar-color: $color-white;
+}
 
-  &::-webkit-scrollbar {
-    width: 3px;
-    height: 5px;
-    background-color: $color-modal-bg;
-    border-radius: 2px;
-  }
-  &::-webkit-scrollbar-track {
-    background: rgba(201, 46, 46, 0);
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: $color-bg-black;
-    border-radius: 20px; /* закругления плашки */
-  }
-  span {
-    white-space: nowrap;
-    background-color: $color-modal-header;
-    color: $color-dark-blue;
-    border: none;
+.viewSwitch {
+  padding: 15px 0 0;
+  display: flex;
 
-    &:hover {
-      background-color: $color-dark-blue;
-      color: $color-white;
-    }
+  @include mobile {
+    display: none;
   }
 }
+
 .tagSwitchFilters {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+
+  @include mobile-tablet {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.button {
+  margin: 0 auto 80px;
+}
+
+.loading,
+.empty {
+  position: absolute;
+}
+
+.empty {
+  left: 200px;
 }

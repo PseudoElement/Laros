@@ -46,7 +46,7 @@ export const SelectBlock: FC<SelectBlockProps> = ({
 
   return (
     <div className={s.wrapper}>
-      <label className={s.title}>{t('homepage.textFieldLabel')}</label>
+      <label className={s.title}>{t('homepage.textFieldLabel')}?</label>
       <div className={s.select_block}>
         <div className={s.select}>
           <div onClick={() => setActiveMenu(!activeMenu)} className={s.image}>
@@ -81,21 +81,23 @@ export const SelectBlock: FC<SelectBlockProps> = ({
               [s.closed]: !activeMenu,
             })}
           >
-            {filtredItems.map((item, idx) => (
-              <div
-                key={idx}
-                onClick={() => onClickItem(item.id)}
-                className={s.listItem}
-              >
-                <label className={s.name}>{item.name}</label>
-              </div>
-            ))}
+            {filtredItems
+              .sort((a, b) => (a.name > b.name ? 1 : -1))
+              .map((item, idx) => (
+                <div
+                  key={idx}
+                  onClick={() => onClickItem(item.id)}
+                  className={s.listItem}
+                >
+                  <label className={s.name}>{item.name}</label>
+                </div>
+              ))}
           </div>
         </div>
         <div className={s.link}>
           <Link href={`/destinations/areas/${selectedDestination}`}>
             <button className={s.button}>
-              {t('homepage.textFieldButton')}
+              {t('homepage.textFieldButton')} !
             </button>
           </Link>
         </div>

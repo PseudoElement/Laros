@@ -8,10 +8,13 @@ import {
 } from 'shared/types/trip'
 import { api } from '..'
 import { endpoints } from '../endpoints'
-import { Destination } from '../../types/destinations'
 
 export const getTrip = (id: number): AxiosPromise<Trip> => {
   return api.get(endpoints.trips.id(id))
+}
+
+export const getTripByName = (name: string): AxiosPromise<Trip> => {
+  return api.get(endpoints.trips.oneByName(name))
 }
 
 export const getTrips = (

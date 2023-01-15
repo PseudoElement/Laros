@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
 import L, { Icon, LatLng, LatLngExpression, Layer } from 'leaflet'
-
-import s from './Map.module.scss'
-
-import 'leaflet/dist/leaflet.css'
-import 'leaflet-fullscreen/dist/Leaflet.fullscreen.js'
-import 'leaflet-fullscreen/dist/leaflet.fullscreen.css'
 
 import {
   MapContainer,
@@ -17,11 +10,18 @@ import {
   Marker,
 } from 'react-leaflet'
 
+import { withDomain } from 'shared/helpers/withDomain'
+import { convertLocation } from 'shared/helpers/convertLocation'
+
 import { Feature, GeoJsonObject, Point } from 'geojson'
 import { IconProperty, Route } from './types'
 
 import mapPin from '/public/assets/images/map-pin-marker.svg?url'
-import { convertLocation } from 'shared/helpers/convertLocation'
+
+import s from './Map.module.scss'
+import 'leaflet/dist/leaflet.css'
+import 'leaflet-fullscreen/dist/Leaflet.fullscreen.js'
+import 'leaflet-fullscreen/dist/leaflet.fullscreen.css'
 
 const icon = new Icon({
   iconUrl: mapPin,
@@ -32,12 +32,14 @@ interface MapProps {
   route?: string
   additionalRoutes?: string
   location?: string
+  zoom?: number
 }
 
 const Map: React.FC<MapProps> = ({
   route: routeString,
   additionalRoutes: additionalRoutesString,
   location: locationString,
+  zoom = 10,
 }) => {
   const [route, setRoute] = useState<Route>()
   const [additionalRoutes, setAdditionalRoutes] = useState<Route>()
@@ -63,7 +65,7 @@ const Map: React.FC<MapProps> = ({
   }, [additionalRoutesString])
 
   useEffect(() => {
-    if (!route) return
+    if (!route?.features[0]?.geometry?.coordinates) return
     if (locationString) return
 
     const coordinates = route.features[0].geometry.coordinates
@@ -84,7 +86,8 @@ const Map: React.FC<MapProps> = ({
         iconAnchor: iconAnchor,
         iconColor: iconColor,
         iconSize: iconSize,
-        iconUrl: iconUrl,
+        // @ts-ignore
+        iconUrl: withDomain(iconUrl),
         opacity: opacity,
         popupAnchor: popupAnchor,
       }),
@@ -98,7 +101,7 @@ const Map: React.FC<MapProps> = ({
           className={s.map}
           fullscreenControl={true}
           center={center}
-          zoom={12}
+          zoom={zoom}
           scrollWheelZoom={false}
           zoomControl={false}
         >

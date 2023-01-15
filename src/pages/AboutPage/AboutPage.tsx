@@ -5,44 +5,50 @@ import { Gallery, SliderGalery } from 'components'
 import { AdvantageCard } from './AdvantageCard'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
+import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
+import { slidesPerViewAbout } from 'shared/helpers/slidesPerView'
 
 import { aboutCards } from 'shared/mocks/aboutCards'
 
-import slideImg1 from '/public/assets/images/about/house_orange.jpg'
-import slideImg2 from '/public/assets/images/about/house_yellow.jpg'
+import slideImg1 from '/public/assets/images/aboutPage/about/about_us_photo_1.png'
+import slideImg2 from '/public/assets/images/aboutPage/about/about_us_photo_2.png'
+import slideImg3 from '/public/assets/images/aboutPage/about/about_us_photo_3.png'
 
 import s from './AboutPage.module.scss'
 
 export const AboutPage: FC = () => {
-  const images = [slideImg1, slideImg2, slideImg1, slideImg2]
+  const images = [slideImg1, slideImg2, slideImg3]
   const [openGallery, setOpenGallery] = useState<number | null>(null)
 
   const handleOpen = (index: number) => {
     setOpenGallery(index)
   }
+  const { width } = useWindowDimensions()
 
   const t = useTranslate()
 
   return (
-    <>
-      <div className={s.wrapper}>
-        <div className={s.text}>
-          <h1 className={s.title}>{t('about.title')}</h1>
-          <p className={s.desc}>{t('about.description')}</p>
-        </div>
+    <div className={s.container}>
+      <div className={s.containerWrap}>
+        <div className={s.wrapper}>
+          <div className={s.text}>
+            <h1 className={s.title}>{t('about.title')}</h1>
+            <p className={s.subDesc}>{t('about.description')}</p>
+          </div>
 
-        <div className={s.cards}>
-          {aboutCards.map((card, i) => (
-            <AdvantageCard
-              key={i}
-              title={t(card.title)}
-              description={t(card.description)}
-            />
-          ))}
+          <div className={s.cards}>
+            {aboutCards.map((card, i) => (
+              <AdvantageCard
+                key={i}
+                title={t(card.title)}
+                description={t(card.description)}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
-      <SliderGalery>
+      <SliderGalery slidesPerView={slidesPerViewAbout(width)}>
         {images.map((item, index) => (
           <div
             className={s.galleryImage}
@@ -61,6 +67,6 @@ export const AboutPage: FC = () => {
           <p className={s.desc}>{t('about.lastDescription')}</p>
         </div>
       </div>
-    </>
+    </div>
   )
 }

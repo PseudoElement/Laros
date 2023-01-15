@@ -1,15 +1,29 @@
 @use 'styles/style.scss' as *;
+
 .container {
   position: relative;
   background-size: cover;
   background-position: 25% 100%;
+  width: 1040px;
+  height: 730px;
+  margin-top: -55px;
 }
+
+.layoutWrapper {
+  max-width: 1280px;
+  box-shadow: 0 4px 12px rgba(27, 36, 45, 0.15);
+  border-radius: 0 0 16px 16px;
+  margin: 0 auto 80px;
+  overflow: hidden;
+}
+
 .content {
   position: absolute;
   top: 286px;
   left: 171px;
-  width: 416px;
+  width: 500px;
 }
+
 .title {
   color: $color-white;
   font-size: 56px;
@@ -17,6 +31,7 @@
   line-height: 67px;
   margin-bottom: 16px;
 }
+
 .description {
   color: $color-white;
   font-size: 14px;
@@ -24,20 +39,49 @@
   line-height: 17px;
   margin-bottom: 75px;
 }
+
 .actions {
   display: flex;
 }
+
 .flightBtn,
 .packageBtn {
   font-weight: $fw-semibold;
   line-height: 20px;
 }
+
 .flightBtn {
   width: 150px;
   margin-right: 16px;
   background-color: $color-orange;
 }
+
 .packageBtn {
-  width: 170px;
+  width: 200px;
   background-color: $color-blue;
+}
+
+@media (max-width: 768px) {
+  .content {
+    position: static;
+    width: 100%;
+  }
+
+  .container {
+    width: 100%;
+    margin-top: 0;
+    height: auto;
+    padding: 30px 15px;
+  }
+
+  .title {
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 425px) {
+  .actions {
+    flex-direction: column;
+    gap: 10px;
+  }
 }

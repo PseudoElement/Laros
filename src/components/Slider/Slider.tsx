@@ -36,6 +36,7 @@ export const Slider: FC<SliderProps> = ({
   return (
     <div className={cn(s.slider, classname)}>
       <Swiper
+        autoHeight={true}
         modules={[Navigation, Pagination, A11y]}
         spaceBetween={spaceBetween}
         slidesPerView={slidesPerView}
@@ -44,7 +45,9 @@ export const Slider: FC<SliderProps> = ({
       >
         {children.length
           ? children.map((child, idx) => (
-              <SwiperSlide key={idx}>{child}</SwiperSlide>
+              <SwiperSlide className={s.swiperSlide} key={idx}>
+                {child}
+              </SwiperSlide>
             ))
           : null}
       </Swiper>

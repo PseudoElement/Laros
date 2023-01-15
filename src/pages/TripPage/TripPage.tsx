@@ -26,12 +26,14 @@ import { Trip } from 'shared/types/trip'
 
 import s from './TripPage.module.scss'
 
-export const TripPage: FC = () => {
+export interface TripPageProps {
+  trip: Trip
+};
+export const TripPage: FC<TripPageProps> = ({ trip }) => {
   const { query } = useRouter()
   const { id } = query
   const t = useTranslate()
 
-  const [trip, setTrip] = useState<Trip | null>(null)
   const [insiderTips, setInsiderTips] = useState<string | null>('')
   const [relatedTours, setRelatedTours] = useState<Trip[]>([])
   const [tripNearby, setTripNearby] = useState<Destination[]>([])
@@ -42,16 +44,6 @@ export const TripPage: FC = () => {
     getParentDestination(state, tripNearby[0]?.parent)
   )
 
-  const loadTrip = async (id: number) => {
-    try {
-      const { data } = await getTrip(id)
-      setTrip(data)
-      setIsLoad(true)
-      setInsiderTips(data.tips)
-    } catch (error) {
-      console.error('error', error)
-    }
-  }
 
   const loadTripSimilar = async (id: number) => {
     try {
@@ -72,28 +64,26 @@ export const TripPage: FC = () => {
   }
 
   useEffect(() => {
-    if (id) {
-      loadTrip(+id)
-      loadTripSimilar(+id)
-      loadTripNearby(+id)
+    if (trip) {
+      loadTripSimilar(trip.id)
+      loadTripNearby(trip.id)
     }
-  }, [query])
+  }, [trip])
 
   return (
     <div className={s.wrapper}>
       <div
         className={s.bg}
         style={{
-          backgroundImage: `url(${
-            trip?.images ? withDomain(trip.images[0]) : ''
-          })`,
+          backgroundImage: `url(${trip?.images ? withDomain(trip.images[0]) : ''
+            })`,
         }}
       />
 
       <div className={s.container}>
         <div className={s.card}>
           {trip && isLoad ? (
-            <TripPageIntro {...trip} />
+            <TripPageIntro {...trip} id={Number(id)} /> // check why trip has no id TODO
           ) : (
             <div className={s.loader}>
               <p>{t('common.loadingText')}</p>

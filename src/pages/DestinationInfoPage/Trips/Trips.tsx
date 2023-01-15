@@ -9,6 +9,12 @@ import { useTranslate } from 'shared/hooks/useTranslate'
 import { Trip } from 'shared/types/trip'
 
 import s from './Trips.module.scss'
+import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
+import {
+  LAPTOP_SCREEN,
+  TABLET_MAX_SCREEN,
+  TABLET_MIN_SCREEN,
+} from 'shared/constants/screenResolutions'
 
 interface TripsProps {
   trips: Trip[]
@@ -24,6 +30,7 @@ export const Trips: FC<TripsProps> = ({ trips, title, subTitle }) => {
   }
 
   const t = useTranslate()
+  const { width } = useWindowDimensions()
 
   return (
     <div className={s.trips}>
@@ -34,11 +41,13 @@ export const Trips: FC<TripsProps> = ({ trips, title, subTitle }) => {
       <div className={s.subTitle}>{subTitle}</div>
 
       <Slider
-        slidesPerView={3}
+        slidesPerView={
+          width > LAPTOP_SCREEN ? 3 : width > TABLET_MAX_SCREEN ? 2 : 1
+        }
         withPagination
         classname={s.slider}
         spaceBetween={30}
-        withNavigation
+        withNavigation={width > TABLET_MIN_SCREEN}
       >
         {trips?.map(item => (
           <TripCard key={item.id} {...item} onClick={handlePush} />

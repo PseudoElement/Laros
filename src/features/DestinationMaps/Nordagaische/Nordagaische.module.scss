@@ -4,11 +4,27 @@
   position: relative;
   width: 1040px;
   height: 720px;
-  background: url('../../../../public/assets/images/destinations/Individual maps/Nordagaische Inseln.png')
-    no-repeat center;
+  background: url('../../../../public/assets/images/destinations/Individual maps/Nordagaische Inseln.png') no-repeat center;
   font-weight: $fw-semibold;
 }
 
+@media screen and (max-width:1350px) {
+  .container {
+    transform: scale(.7);
+  }
+}
+
+@media screen and (max-width:768px) {
+  .container {
+    transform: scale(.7);
+  }
+}
+@media screen and (max-width:425px) {
+  .container{
+    transform: scale(.3);
+height:400px;
+  }
+}
 .thassos {
   &::before {
     content: '';

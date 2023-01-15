@@ -5,7 +5,7 @@ import { Controller, useForm } from 'react-hook-form'
 import cn from 'classnames'
 
 import { TripCard } from 'features'
-import { Tags, Select } from 'components'
+import { Tags, Select, Button } from 'components'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
 import { useGetTrips } from 'shared/hooks/useGetTrips'
@@ -23,7 +23,7 @@ import {
 } from 'store/slices/destinations/selectors'
 
 import { Tag } from 'shared/types/tag'
-import { TripCategory, TripFilterParams } from 'shared/types/trip'
+import { TripCategory, TripFilterParams, TripSort } from 'shared/types/trip'
 import { Option } from 'shared/types'
 
 import { tripPageInfo } from 'shared/mocks/tripInfo'
@@ -32,28 +32,48 @@ import listIcon from '/public/assets/images/list.svg?url'
 import gridIcon from '/public/assets/images/grid.svg?url'
 
 import s from './TripOffersPage.module.scss'
+import { sortByAlphabet } from '../../shared/helpers/sortByAlphabet'
 
 enum View {
   LIST,
   GRID,
 }
+
 export const TripOffersPage: FC = () => {
   const t = useTranslate()
   const { query, push } = useRouter()
   const { category } = query
-  const { control, watch } = useForm()
-  const dispatch = useAppDispatch()
-
-  const [params, setParams] = useState<Partial<TripFilterParams>>({
-    travel_types: Number(category),
+  const { control, watch } = useForm<any>({
+    defaultValues: {
+      ordering: TripSortOptions[0],
+    },
   })
-
-  const [trips, isLoading, handleReady] = useGetTrips(params)
+  const dispatch = useAppDispatch()
   const [tripCategoryInfo, setTripCatInfo] = useState<TripCategory | null>()
   const [view, setView] = useState(View.GRID)
   const [tags, setTags] = useState<Tag[]>([])
   const [region, setRegion] = useState<Option | null>(null)
   const [durations, setDurations] = useState<Option[]>([])
+  const [page, setPage] = useState(1)
+  const [params, setParams] = useState<Partial<TripFilterParams>>(
+    category
+      ? {
+          travel_types: Number(category),
+          ordering: TripSort.AZ,
+          page,
+        }
+      : {
+          ordering: TripSort.AZ,
+          page,
+        }
+  )
+
+  const TRIP_PAGINATION_PER_PAGE = 10
+  const [newTrips, isLoading, handleReady] = useGetTrips(params)
+  const [trips, setTrips] = useState([...newTrips])
+  const [isButtonShowed, setIsButtonShowed] = useState<boolean>(
+    newTrips.length === TRIP_PAGINATION_PER_PAGE
+  )
 
   // const tripCategoryInfo = useAppSelector((state) => state.trips.categories.find((cat) => cat.id === Number(category)));
   const destinations = useAppSelector(state => state.destinations.destinations)
@@ -61,7 +81,7 @@ export const TripOffersPage: FC = () => {
   const subregions = useAppSelector(state =>
     getSubRegions(state, region?.value ?? null)
   )
-  console.log(tripCategoryInfo)
+
   const updateRequest = (form: any) => {
     // TODO
     form.region && setRegion(form.region)
@@ -71,7 +91,17 @@ export const TripOffersPage: FC = () => {
     const destination = subregions.length
       ? subregions.join(',')
       : form.region?.value ?? undefined
-    setParams({ destination, ordering: form.ordering?.value })
+
+    const duration =
+      form.duration?.length > 0
+        ? form.duration.map((item: Option) => Number(item.value)).join(',')
+        : undefined
+    setParams({
+      destination,
+      duration,
+      ordering: form.ordering?.value,
+      page: 1,
+    })
   }
 
   const loadHotelTags = async () => {
@@ -103,6 +133,21 @@ export const TripOffersPage: FC = () => {
   }, [])
 
   useEffect(() => handleReady(true), [params])
+
+  useEffect(() => {
+    setIsButtonShowed(newTrips.length === TRIP_PAGINATION_PER_PAGE)
+    setTrips(prevState => {
+      if (params.page === 1) return newTrips
+      return prevState.concat(...newTrips)
+    })
+  }, [newTrips])
+
+  useEffect(() => {
+    setParams(prevState => ({
+      ...prevState,
+      page,
+    }))
+  }, [page])
 
   useEffect(() => {
     const subscription = watch(value => updateRequest(value))
@@ -146,7 +191,7 @@ export const TripOffersPage: FC = () => {
                     })) ?? []
                   }
                   onChange={onChange}
-                  value={value}
+                  value={value ?? null}
                   classname={s.select}
                 />
               )}
@@ -159,13 +204,15 @@ export const TripOffersPage: FC = () => {
                 <Select
                   placeholder={`+ ${t('common.addSubRegion')}`}
                   options={
-                    subregions.map(region => ({
-                      label: region.name,
-                      value: region.id.toString(),
-                    })) ?? []
+                    sortByAlphabet(
+                      subregions.map(region => ({
+                        label: region.name,
+                        value: region.id.toString(),
+                      }))
+                    ) ?? []
                   }
                   onChange={onChange}
-                  value={value}
+                  value={value ?? []}
                   isMulti
                   classname={s.select}
                 />
@@ -199,6 +246,7 @@ export const TripOffersPage: FC = () => {
                   value={value}
                   hasArrow={false}
                   classname={s.select}
+                  isClearable={false}
                 />
               )}
             />
@@ -241,7 +289,7 @@ export const TripOffersPage: FC = () => {
         {isLoading && (
           <div className={s.loading}>{t('common.loadingText')}</div>
         )}
-        {!isLoading && trips?.length ? (
+        {trips?.length ? (
           trips.map((offer, idx) => {
             return (
               <div key={idx} className={s.tripCardWrap}>
@@ -257,6 +305,15 @@ export const TripOffersPage: FC = () => {
           <div className={s.empty}>{t('common.emptyText')}</div>
         )}
       </div>
+      {!!trips.length && isButtonShowed && (
+        <Button
+          classname={s.button}
+          variant='secondary'
+          onClick={() => setPage(prevState => ++prevState)}
+        >
+          {t('common.loadMore')}
+        </Button>
+      )}
     </div>
   )
 }

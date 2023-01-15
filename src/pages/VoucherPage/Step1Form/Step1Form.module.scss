@@ -9,45 +9,91 @@
   width: 100%;
   border-radius: 0 0 16px 16px;
   box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.07);
+
+  @include mobile-laptop {
+    padding: 0 10px 0 10px;
+    margin-top: 20px;
+  }
 }
 
 .container {
-  border-radius: 16px 16px 0 0;
-  position: absolute;
-  top: 364px;
-  width: 1281px;
-  background-color: $color-white;
+  border-radius: 16px;
+  max-width: 1281px;
+  margin: -350px auto 80px;
+  box-shadow: 0 4px 12px rgba(27, 36, 45, 0.15);
+  background: $color-laros-light-grey;
   min-height: 1341px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @include tablet-laptop {
+    margin: 40px 30px 40px 30px;
+    min-height: 0;
+  }
+
+  @include mobile {
+    min-height: 0;
+    margin: 0 0 20px 0;
+  }
 }
+
 .intro {
   width: 766px;
+
+  @include mobile-laptop {
+    width: 100%;
+  }
 }
+
 .introTitle {
   margin-top: 80px;
   font-size: 56px;
   font-weight: $fw-bold;
   line-height: 67px;
+
+  @include mobile-laptop {
+    margin-top: 0;
+    font-size: 28px;
+  }
+
+  @include mobile {
+    font-size: 24px;
+    margin-top: -8px;
+  }
 }
+
 .introDescription {
   margin-top: 16px;
   font-size: 12px;
   font-weight: $fw-regular;
   line-height: 20px;
+
+  @include mobile {
+    text-align: left;
+    padding: 0 8px;
+    margin: 0;
+  }
 }
+
 .billingSection {
   display: flex;
   flex-direction: column;
   margin-top: 83px;
+
+  @include mobile-laptop {
+    margin-top: 20px;
+  }
 }
+
 .recipientSection {
   margin-top: 62px;
 }
+
 .fromSection {
   margin-top: 40px;
 }
+
 .title {
   text-align: left;
   margin-bottom: 16px;
@@ -55,6 +101,7 @@
   font-weight: $fw-bold;
   line-height: 19px;
 }
+
 .billingDescription {
   text-align: left;
   font-size: 12px;
@@ -62,27 +109,64 @@
   line-height: 14px;
   margin-bottom: 16px;
 }
+
 .radio {
   display: flex;
   align-items: center;
   padding: 13px 8px 29px;
+
+  @include mobile-tablet {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  @include mobile {
+    & > div * {
+      margin-right: 5px;
+      margin-left: 0;
+    }
+  }
 }
+
 .radioLabel {
   font-size: 12px;
   font-weight: $fw-medium;
   color: $color-placeholder;
   margin-right: 25px;
+
+  @include mobile {
+    margin-bottom: 5px;
+  }
 }
+
 .nextBtn {
   margin-top: 40px;
   width: 331px;
+
+  @include mobile {
+    margin-top: 15px;
+    margin-bottom: 30px;
+  }
+  @include tablet-laptop {
+    margin-top: 15px;
+    margin-bottom: 40px;
+  }
+
+  @include mobile {
+    width: 100%;
+  }
 }
+
 .selectDiv {
   display: flex;
   flex-direction: column;
   gap: 8px;
   background-color: $color-white;
   width: 544px;
+
+  @include mobile-laptop {
+    width: 100%;
+  }
 }
 
 .selectLabel {
@@ -98,13 +182,16 @@
   font-weight: $fw-regular;
   line-height: 14px;
   text-align: left;
+
   [class$='-option'] {
     border-radius: 0;
   }
+
   [class$='-control'] {
     background-color: $color-white;
     border: none;
   }
+
   [class$='-multiValue'] {
     border-radius: 8px;
     background-color: $color-laros-light-grey;
@@ -112,6 +199,7 @@
     font-weight: $fw-regular;
     line-height: 20px;
   }
+
   [class$='-placeholder'] {
     color: $color-primary-black;
   }
@@ -121,7 +209,21 @@
   display: flex;
   align-items: center;
   font-family: $font-Lato;
+
+  @include mobile-laptop {
+    flex-direction: column;
+  }
+
+  @include mobile {
+    flex-direction: column;
+
+    & > div * {
+      white-space: break-spaces;
+      text-align: left;
+    }
+  }
 }
+
 .inputVoucherName,
 .price {
   width: 100%;
@@ -131,6 +233,7 @@
   padding-bottom: 8px;
   border-radius: 0;
 }
+
 .input {
   font-weight: $fw-medium;
   border-radius: 0;

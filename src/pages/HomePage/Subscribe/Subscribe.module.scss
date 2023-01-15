@@ -14,12 +14,20 @@
   font-size: 32px;
   padding-top: 73px;
   padding-bottom: 8px;
+  @include mobile {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 
 .subtitle {
   font-weight: $fw-regular;
   font-size: 12px;
   padding-bottom: 48px;
+  @include mobile {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 
 .inputWrapper {
@@ -27,6 +35,9 @@
   align-items: center;
   justify-content: center;
   padding-bottom: 73px;
+  @include mobile {
+    margin: 0 20px;
+  }
 }
 .input {
   color: $color-black;

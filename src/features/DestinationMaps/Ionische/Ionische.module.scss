@@ -10,6 +10,23 @@
   font-weight: $fw-semibold;
 }
 
+@media screen and (max-width:1350px) {
+  .container {
+    transform: scale(.7);
+  }
+}
+
+@media screen and (max-width:768px) {
+  .container {
+    transform: scale(.7);
+  }
+}
+@media screen and (max-width:425px) {
+  .container{
+    transform: scale(.3);
+height:400px;
+  }
+}
 .skiathos {
   &::after {
     content: '';
@@ -103,6 +120,5 @@
 }
 
 @media (max-width: 1500px) {
-  .container {
-  }
+  .container {}
 }

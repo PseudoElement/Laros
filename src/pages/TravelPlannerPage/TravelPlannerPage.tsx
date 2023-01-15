@@ -11,6 +11,9 @@ import { moreCategoriesMock } from 'shared/mocks/tripPlanner'
 import bg from '/public/assets/images/trip_planner_bg.png'
 
 import s from './TravelPlannerPage.module.scss'
+import { useWindowDimensions } from '../../shared/hooks/useWindowDimensions'
+import { slidesPerViewTravelPlanner } from 'shared/helpers/slidesPerView'
+import {TABLET_MAX_SCREEN} from "../../shared/constants/screenResolutions";
 
 export const TravelPlannerPage: FC = () => {
   const t = useTranslate()
@@ -24,6 +27,8 @@ export const TravelPlannerPage: FC = () => {
     dispatch(getTripCategoriesThunk())
   }, [dispatch])
 
+  const { width } = useWindowDimensions()
+
   return (
     <div className={s.container}>
       <div
@@ -35,11 +40,15 @@ export const TravelPlannerPage: FC = () => {
         {' '}
       </div>
 
-      <div className={s.title}>{t('travelPlanner.title')}</div>
       <div className={s.content}>
+        <div className={s.title}>{t('travelPlanner.title')}</div>
         <div className={s.subtitle}>{t('travelPlanner.subtitle')}</div>
 
-        <Slider slidesPerView={3.2} withNavigation>
+        <Slider
+          slidesPerView={slidesPerViewTravelPlanner(width)}
+          withNavigation={width > TABLET_MAX_SCREEN}
+          withPagination={width < TABLET_MAX_SCREEN}
+        >
           {categories?.map(card => {
             return <CategoryCard {...card} key={card.id} vertical />
           })}

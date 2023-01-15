@@ -86,7 +86,7 @@ export const TravellerAddressForm: FC<TravellerAddressFormProps> = ({
       </div>
 
       <div className={s1.selectWrapper}>
-        <div className={s1.selectLabel}>Country</div>
+        <div className={s1.selectLabel}>{t('forms.inputLabel25')}</div>
         <Controller
           name={`travellers.${index}.country`}
           control={control}

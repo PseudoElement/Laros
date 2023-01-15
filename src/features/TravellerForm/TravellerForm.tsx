@@ -21,8 +21,9 @@ import { TravellerAddressForm } from './TravellerAddressForm/TravellerAddressFor
 
 import { genderOptions } from 'shared/constants/form'
 
-import { Country } from '../../shared/types/country'
-import { getCountries } from '../../shared/api/routes/countries'
+import { Country } from 'shared/types/country'
+import { getCountries } from 'shared/api/routes/countries'
+import { useTranslate } from 'shared/hooks/useTranslate'
 
 import {
   FlightRequestFormType,
@@ -30,7 +31,6 @@ import {
 } from 'shared/types/requestForm'
 
 import s from './TravellerForm.module.scss'
-import { useTranslate } from '../../shared/hooks/useTranslate'
 
 interface TravellerFormProps {
   field: FieldArrayWithId
@@ -59,7 +59,6 @@ export const TravellerForm: FC<TravellerFormProps> = ({
       setAddresses([...addresses, address])
     }
   }
-
   const hideRightAddressForm = () => {
     setShowAddressInput(false)
   }
@@ -146,7 +145,7 @@ export const TravellerForm: FC<TravellerFormProps> = ({
             <InputCalendar
               required
               error={false}
-              handleIconClick={() => {}}
+              handleIconClick={() => { }}
               {...field}
               classname={s.inputCalendarCustom}
               variant={'top'}
@@ -175,9 +174,8 @@ export const TravellerForm: FC<TravellerFormProps> = ({
                 render={({ field: { onChange, value } }) => (
                   <div className={cn(s.radio, s.addressRadio)}>
                     <div className={cn(s.radioLabel, s.addressRadioLabel)}>
-                      <div>{`${t('worldwideTours.address')} #${
-                        addresses.indexOf(address) + 1
-                      }`}</div>
+                      <div>{`${t('worldwideTours.address')} #${addresses.indexOf(address) + 1
+                        }`}</div>
                       <Button
                         onClick={() => {
                           setShowAddressInput(false)
