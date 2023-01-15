@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { Controller, useForm } from 'react-hook-form'
+import cn from 'classnames'
 
 import { Button, PencilIcon, Input, Modal, Radio } from 'components'
 import { Card } from './Card'
@@ -43,7 +44,7 @@ export const SendBrochuresModal: FC<SendBrochuresModalProps> = ({
 
   return (
     <Modal title={t('brochures.modalTitle')} isOpen={isOpen} onClose={onClose}>
-      <div className={s.container}>
+      <div className={cn(s.container, ['scrollStyle'])}>
         <div className={s.wrapper}>
           <div className={s.title}>{t('brochures.selected')}:</div>
           <div className={s.list}>
@@ -60,6 +61,7 @@ export const SendBrochuresModal: FC<SendBrochuresModalProps> = ({
               render={({ field: { onChange, value } }) => (
                 <Input
                   placeholder='Name'
+                  classname={s.input}
                   onChange={onChange}
                   id='name'
                   value={value}
@@ -84,7 +86,7 @@ export const SendBrochuresModal: FC<SendBrochuresModalProps> = ({
               )}
             />
             <div className={s.address}>
-              <div className={s.adressTitle}>{t('forms.label7')}*</div>
+              <div className={s.adressTitle}>{t('forms.inputLabel34')}*</div>
               <div className={s.adressInputs}>
                 <Controller
                   name='address'
@@ -139,21 +141,30 @@ export const SendBrochuresModal: FC<SendBrochuresModalProps> = ({
                 <PencilIcon />
               </span>
             </div>
+
             <Controller
               name='number'
               control={control}
               render={({ field: { onChange, value } }) => (
-                <Input
-                  id='number'
-                  required
-                  onChange={onChange}
-                  value={value}
-                  type='phone'
-                  label={t('forms.inputLabel6')}
-                  classname={s.formName}
-                />
+                <div className={s.phoneInputWrap}>
+                  <Input
+                    id='number'
+                    required
+                    onChange={onChange}
+                    value={value}
+                    type='phone'
+                    label={t('forms.inputLabel6')}
+                    classname={cn(s.input, s.phoneInput)}
+                  />
+                  {!value && (
+                    <span className={s.phonePlaceholder}>
+                      <span>+41</span> 123 - 45 - 67
+                    </span>
+                  )}
+                </div>
               )}
             />
+
             <div className={s.actions}>
               <Button onClick={onClose} variant='outline'>
                 {t('brochures.cancel')}

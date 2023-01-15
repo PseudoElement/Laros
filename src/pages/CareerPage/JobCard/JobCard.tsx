@@ -1,10 +1,11 @@
 import { FC } from 'react'
 
-import { Button } from 'components'
+import { Button, TruncatedText } from 'components'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
 
 import s from './JobCard.module.scss'
+import { JOB_CARD_TEXT_LIMIT } from '../../../shared/constants'
 
 export interface jobCardProps {
   vacancy: string
@@ -29,7 +30,7 @@ export const JobCard: FC<jobCardProps> = ({
 
       <div className={s.time}>{time}</div>
 
-      <div dangerouslySetInnerHTML={{ __html: description }} />
+      <TruncatedText limit={JOB_CARD_TEXT_LIMIT}>{description}</TruncatedText>
 
       <div className={s.buttons}>
         <Button

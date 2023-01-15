@@ -10,18 +10,39 @@
   min-height: 600px;
   max-width: 1280px;
   margin: 40px auto 80px;
+
+  @include mobile {
+    padding: 80px 20px;
+  }
 }
 
 .title {
   font-size: 56px;
   font-weight: $fw-bold;
   margin-bottom: 16px;
+
+  @include mobile-tablet {
+    padding-left: 44px;
+  }
+
+  @include mobile {
+    font-size: 40px;
+    padding: 0;
+  }
 }
 
 .subtitle {
   width: 766px;
   font-size: 12px;
   font-weight: $fw-regular;
+
+  @include mobile-tablet {
+    padding-left: 44px;
+  }
+
+  @include mobile {
+    padding: 0;
+  }
 }
 
 .nav {
@@ -44,6 +65,10 @@
   border-radius: 16px;
   background-color: $color-white;
   box-shadow: 0px 4px 4px 0px $color-shadow;
+
+  @include mobile {
+    padding: 20px 22px 20px 20px;
+  }
 }
 
 .filterTitle {
@@ -68,22 +93,48 @@
   flex-wrap: wrap;
   // width: calc(368px * 3 + 48px);
   margin-bottom: 30px;
+
+  @include mobile-tablet {
+    margin: 0 auto;
+    padding: 80px 0;
+  }
 }
 
 .grid {
+  display: grid;
+  gap: 25px;
   justify-content: space-between;
+
+  @include mobile-tablet {
+    grid-template-columns: 48% 48%;
+  }
+
+  @include mobile {
+    grid-template-columns: 96%;
+    justify-content: center;
+  }
 }
 
 .filterSelects {
   width: 100%;
+  max-width: 1020px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  & > div {
-    // width: calc(1004px / 3);
+  &>div {
     width: 100%;
+    max-width: calc(1004px / 3);
     margin-right: 10px;
+  }
+
+  @include mobile-laptop {
+    gap: 5px;
+  }
+
+  @include mobile-tablet {
+    flex-direction: column;
+    gap: 10px;
   }
 }
 
@@ -92,11 +143,22 @@
   align-items: center;
   margin-bottom: 24px;
   max-width: 1110px;
+
+  @include mobile-tablet {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
 }
 
 .sort {
   display: flex;
   align-items: center;
+
+  @include mobile-tablet {
+    width: 100%;
+    max-width: calc(1004px / 3);
+  }
 }
 
 .sortFrom {
@@ -104,6 +166,10 @@
   font-weight: $fw-regular;
   line-height: 17px;
   margin: 0 9px 0 24px;
+
+  @include mobile-tablet {
+    margin: 0 9px 0 0
+  }
 }
 
 .select {
@@ -140,4 +206,8 @@
   height: 35px;
   max-width: 1110px;
   margin-bottom: 50px;
+
+  @include mobile {
+    height: 100px;
+  }
 }

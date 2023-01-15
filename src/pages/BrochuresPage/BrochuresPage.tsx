@@ -39,51 +39,49 @@ export const BrochuresPage: FC = () => {
     }
   }
   return (
-    <>
-      <Container>
-        <div className={s.wrapper} key={s.title}>
-          <div className={s.title}>{t('brochures.title')}</div>
+    <div className={s.brochuresPage}>
+      <div className={s.wrapper} key={s.title}>
+        <div className={s.title}>{t('brochures.title')}</div>
 
-          <div className={s.nav} key={s.title}>
-            <div className={s.subtitle}>{t('brochures.subtitle')}</div>
-            {totalCounter ? (
-              <Button
-                onClick={() => setIsSendModalOpen(true)}
-                classname={s.selectBtn}
-                variant='secondary'
-              >
-                {t('brochures.sendMeText')} ({totalCounter})
-              </Button>
-            ) : (
-              <div className={s.noSelectBtn}>{t('brochures.sendMeText')}</div>
-            )}
-          </div>
-
-          <div className={s.sort}>{t('brochures.sort')}</div>
-
-          <div className={s.brochuresList}>
-            {brochures.map(brochure => (
-              <BrochureCard
-                onDownload={(id, file) => onBrochureDownload(id, file)}
-                {...brochure}
-                onSelect={id => dispatch(toggleBrochure({ id }))}
-                key={brochure.id}
-              />
-            ))}
-          </div>
+        <div className={s.nav} key={s.title}>
+          <div className={s.subtitle}>{t('brochures.subtitle')}</div>
+          {totalCounter ? (
+            <Button
+              onClick={() => setIsSendModalOpen(true)}
+              classname={s.selectBtn}
+              variant='secondary'
+            >
+              {t('brochures.sendMeText')} ({totalCounter})
+            </Button>
+          ) : (
+            <div className={s.noSelectBtn}>{t('brochures.sendMeText')}</div>
+          )}
         </div>
 
-        <SendBrochuresModal
-          brochures={totalSelected}
-          isOpen={isSendModalOpen}
-          onClose={() => setIsSendModalOpen(false)}
-        />
-        <DownloadBrochuresModal
-          brochures={totalSelected}
-          isOpen={isDownloadModalOpen}
-          onClose={() => setIsDownloadModalOpen(false)}
-        />
-      </Container>
-    </>
+        <div className={s.sort}>{t('brochures.sort')}</div>
+
+        <div className={s.brochuresList}>
+          {brochures.map(brochure => (
+            <BrochureCard
+              onDownload={(id, file) => onBrochureDownload(id, file)}
+              {...brochure}
+              onSelect={id => dispatch(toggleBrochure({ id }))}
+              key={brochure.id}
+            />
+          ))}
+        </div>
+      </div>
+
+      <SendBrochuresModal
+        brochures={totalSelected}
+        isOpen={isSendModalOpen}
+        onClose={() => setIsSendModalOpen(false)}
+      />
+      <DownloadBrochuresModal
+        brochures={totalSelected}
+        isOpen={isDownloadModalOpen}
+        onClose={() => setIsDownloadModalOpen(false)}
+      />
+    </div>
   )
 }

@@ -1,4 +1,5 @@
 @use 'styles/style.scss' as *;
+@import '/src/styles/theme/breakpoints.scss';
 
 .wrapper {
   padding: 80px 64px 160px;
@@ -6,7 +7,26 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 20px;
+
+  @include mobile-tablet {
+    justify-content: center;
+    padding: 10px;
+  }
+
+  @include tablet {
+    padding: 20px;
+  }
+
+  @include laptop {
+    justify-content: space-around;
+    padding: 50px 44px 80px;
+    gap: 40px;
+  }
 }
 .tripCard {
   width: 32%;
+
+  @include mobile-laptop {
+    width: unset;
+  }
 }

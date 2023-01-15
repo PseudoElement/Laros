@@ -25,7 +25,7 @@ export const ContactPage: FC = () => {
               <ContactForm contactPage onFormSubmit={showThankYou} />
             </div>
             <div className={s.mapWrapper}>
-              <Map location={location} />
+              <Map location={location} zoom={16} />
             </div>
           </div>
         ) : (

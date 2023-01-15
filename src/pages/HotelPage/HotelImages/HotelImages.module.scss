@@ -1,9 +1,15 @@
+@use 'styles/style' as *;
+
 .hotelImages {
   margin-bottom: 80px;
 }
+
 .hotelImage {
   width: 100%;
   height: 500px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: $color-modal-bg;
 
   img {
     border-radius: 8px;

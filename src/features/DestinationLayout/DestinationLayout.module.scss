@@ -4,6 +4,28 @@
   display: flex;
 }
 
+@media screen and (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    max-width: none !important;
+  }
+
+  .content {
+    width: 100% !important;
+    padding-left: 0 !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+}
+
 .sidebar {
   background-color: $color-light-grey;
   min-width: 240px;
@@ -18,6 +40,7 @@
   overflow-y: scroll;
   direction: ltr;
   margin-top: 40px;
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -28,15 +51,11 @@
   font-weight: $fw-medium;
   display: flex;
   flex-direction: column;
+  padding-bottom: 20px;
 }
 
 .select {
   margin-bottom: 32px;
-}
-
-.select,
-.more {
-  cursor: pointer;
   line-height: 14px;
   font-weight: $fw-semibold;
   color: $color-placeholder;

@@ -1,4 +1,5 @@
 @use 'styles/style' as *;
+@import '/src/styles/theme/breakpoints.scss';
 
 .pageIntro {
   background-color: $color-light-grey;
@@ -9,24 +10,46 @@
   box-shadow: 0 4px 12px 0 rgba(0, 60, 118, 0.05);
   position: relative;
   z-index: 2;
+
+  @include mobile-tablet {
+    flex-direction: column;
+  }
 }
+
 .left {
   width: 65%;
   padding: 56px;
+
+  @include mobile-tablet {
+    width: 100%;
+    padding: 5%;
+  }
 }
+
 .right {
   width: 40%;
 
   img {
     border-radius: 0 16px 0 0;
   }
+
+  @include mobile-tablet {
+    width: 100%;
+    padding: 5%;
+  }
+
+  @include tablet {
+    padding-top: 0;
+  }
 }
+
 .rating {
   span {
     margin-right: 10px;
     color: $color-yellow !important;
   }
 }
+
 .price {
   font-size: 20px;
   font-weight: $fw-regular;
@@ -34,12 +57,33 @@
   text-align: left;
   color: $color-laros-dark-grey;
   margin: 17px 0;
+
+  @include mobile {
+    margin: 10px 0;
+    font-size: 18px;
+  }
 }
+
 .name {
   font-size: 48px;
   font-weight: $fw-bold;
   line-height: 58px;
   color: $color-bg-black;
+
+  @include mobile {
+    font-size: 26px;
+    line-height: 35px;
+  }
+
+  @include tablet {
+    font-size: 35px;
+    line-height: 45px;
+  }
+
+  @include laptop {
+    font-size: 40px;
+    line-height: 50px;
+  }
 }
 
 .description {
@@ -49,6 +93,10 @@
   overflow: hidden;
   overflow-y: scroll;
   margin-bottom: 20px;
+
+  @include mobile-tablet {
+    height: 100px;
+  }
 }
 
 .seeMore {
@@ -61,16 +109,23 @@
   margin-top: 12px;
   margin-bottom: 16px;
 }
+
 .map {
   width: 100%;
   height: 425px;
   border-radius: 0 16px 0 0;
   overflow: hidden;
   background-color: $color-laros-light-grey;
+
+  @include mobile {
+    height: 300px;
+  }
 }
+
 .tagsTitle {
   margin: 28px 0 12px 15px;
 }
+
 .tagsPanel {
   padding: 0 16px 30px;
 }

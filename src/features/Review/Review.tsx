@@ -8,6 +8,9 @@ import quotes from '/public/assets/images/blogs/“.svg?url'
 import userPic from '/public/assets/images/blogs/abstract-user-flat-4-_1_.svg'
 
 import s from './Review.module.scss'
+import { TruncatedText } from '../../components'
+import { TRIP_PLAN_DESCRIPTION_SIZE } from '../../shared/constants'
+import { withDomain } from '../../shared/helpers/withDomain'
 
 interface ReviewProps {
   id: number
@@ -40,24 +43,34 @@ export const Review: FC<ReviewProps> = ({
         <div className={cn(s.profile, !withAvatar && s.profileWithoutAvatar)}>
           {withAvatar && <Image src={avatar ? avatar : userPic} alt='avatar' />}
           <div className={s.name}>{t(name)}</div>
-          <div className={s.tripName}>{t('homepage.aboutUsCardSubName_1')}</div>
-        </div>
-
-        <div>
-          <p className={s.comment}>{t(text)}</p>
-          <div className={s.images}>
-            {images &&
-              images.map((image, index) => (
-                <Image
-                  alt=''
-                  key={index}
-                  width={120}
-                  height={120}
-                  src={image}
-                />
-              ))}
+          <div className={s.tripName}>
+            {t('homepage.aboutUsCardSubName_1')}: <span>{t(tripname)}</span>
           </div>
         </div>
+
+        <>
+          <TruncatedText
+            className={s.comment}
+            limit={TRIP_PLAN_DESCRIPTION_SIZE}
+            more={t('homepage.whoWeAreButton')}
+          >
+            {t(text)}
+          </TruncatedText>
+
+          {images && (
+            <div className={cn(s.images, ['scrollStyle'])}>
+              {images.map((image, index) => (
+                <div
+                  key={index}
+                  className={s.image}
+                  style={{
+                    backgroundImage: `url(${image})`,
+                  }}
+                ></div>
+              ))}
+            </div>
+          )}
+        </>
 
         <span className={s.icon}>
           <Image src={quotes} alt='quotes' width={50} height={50} />

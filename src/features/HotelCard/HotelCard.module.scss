@@ -13,7 +13,8 @@
   border: 1px solid transparent;
 
   @include mobile-tablet {
-    width: 400px;
+    // width: 400px;
+    width: 100%;
   }
 }
 

@@ -15,7 +15,7 @@ export const slidesPerViewHome = (width: number): number => {
   if (width <= DESKTOP_MIN_SCREEN + 120) return 4
   if (width <= DESKTOP_MAX_SCREEN) return 5
   else return 5
- }
+}
 
 export const slidesPerViewAbout = (width: number): number => {
   if (width > DESKTOP_MIDDLE_SCREEN) return 2
@@ -32,9 +32,15 @@ export const slidesPerViewTestimonials = (width: number): number => {
   return 0
 }
 
-export const slidesPerViewTravelPlanner = (width: number):number => {
+export const slidesPerViewTravelPlanner = (width: number): number => {
   if (width > DESKTOP_MIN_SCREEN) return 3.2
   if (width > LAPTOP_SCREEN) return 3
   if (width > TABLET_MAX_SCREEN) return 2
   return 1
- }
+}
+export const slidesPerViewHotelImages = (width: number): number => {
+  if (width > DESKTOP_MIN_SCREEN) return 1.5
+  if (width > LAPTOP_SCREEN) return 1
+  if (width > TABLET_MAX_SCREEN) return 1
+  return 1
+}

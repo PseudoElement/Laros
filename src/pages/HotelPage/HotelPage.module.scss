@@ -10,6 +10,10 @@
   z-index: 0;
   top: -40px;
 
+  @include mobile-tablet {
+    display: none;
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -20,9 +24,16 @@
     right: 0;
   }
 }
-
+.hotelPage {
+  padding-top: 60px;
+  @include tablet {
+    padding-top: 40px;
+  }
+  @include mobile {
+    padding-top: 0;
+  }
+}
 .img {
-  background-color: red;
   width: 200px;
   height: 200px;
 }

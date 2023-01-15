@@ -1,6 +1,11 @@
 @use '/src/styles/style' as *;
+@import '/src/styles/theme/breakpoints.scss';
 
 .blog {
+  width: 90%;
+  padding: 90px 0;
+  margin: 0 auto;
+  max-width: 1164px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,6 +16,15 @@
     font-family: $font-Corinthia;
     line-height: 40px;
     color: $color-brochure-placeholder;
+
+    @include mobile {
+      font-size: 35px;
+      line-height: 30px;
+    }
+
+    @include tablet {
+      font-size: 40px;
+    }
   }
 
   .subTitle {
@@ -19,6 +33,16 @@
     font-family: $font-Lato;
     color: $color-black;
     font-weight: $fw-regular;
+
+    @include mobile {
+      font-size: 30px;
+      line-height: 30px;
+    }
+
+    @include tablet {
+      font-size: 35px;
+      line-height: 40px;
+    }
   }
 
   .description {
@@ -31,8 +55,24 @@
   .content {
     width: calc(100% - 600px);
     padding-top: 20px;
+
     & > *:not(:last-child) {
       margin-bottom: 32px;
+
+      @include mobile-tablet {
+        margin-bottom: 10px;
+      }
+    }
+
+    @include mobile {
+      padding-top: 10px;
+      width: 100%;
+    }
+
+    @include tablet {
+      padding-top: 0;
+      width: 70%;
+      margin-right: 20px;
     }
   }
 
@@ -62,14 +102,37 @@
       left: 0;
     }
   }
+
+  @include tablet {
+    align-items: start;
+    padding: 30px 0;
+  }
+
+  @include mobile {
+    flex-direction: column-reverse;
+    padding: 0;
+    margin-bottom: 20px;
+    align-items: center;
+  }
 }
 
 .blogReversed {
   flex-direction: row-reverse;
+
+  @include mobile {
+    flex-direction: column-reverse;
+  }
 }
 
 .read {
   font-size: 14px;
   line-height: 24px;
   color: $color-placeholder;
+}
+
+.blogReversed {
+  .content {
+    margin-right: 0;
+    margin-left: 10px;
+  }
 }

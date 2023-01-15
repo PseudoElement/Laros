@@ -32,12 +32,14 @@ interface MapProps {
   route?: string
   additionalRoutes?: string
   location?: string
+  zoom?: number
 }
 
 const Map: React.FC<MapProps> = ({
   route: routeString,
   additionalRoutes: additionalRoutesString,
   location: locationString,
+  zoom = 10,
 }) => {
   const [route, setRoute] = useState<Route>()
   const [additionalRoutes, setAdditionalRoutes] = useState<Route>()
@@ -99,7 +101,7 @@ const Map: React.FC<MapProps> = ({
           className={s.map}
           fullscreenControl={true}
           center={center}
-          zoom={10}
+          zoom={zoom}
           scrollWheelZoom={false}
           zoomControl={false}
         >

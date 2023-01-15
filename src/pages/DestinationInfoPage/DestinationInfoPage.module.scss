@@ -2,6 +2,10 @@
 
 .destinationPage {
   padding-top: 80px;
+
+  @include mobile {
+    padding-top: 0;
+  }
 }
 
 .bg {
@@ -24,7 +28,11 @@
     right: 0;
   }
 
-  @include mobile-tablet {
+  @include mobile {
+    display: none;
+  }
+
+  @include tablet {
     height: 400px;
   }
 }

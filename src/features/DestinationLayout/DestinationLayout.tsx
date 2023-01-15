@@ -6,13 +6,14 @@ import { TruncatedText } from 'components'
 import { useTranslate } from 'shared/hooks/useTranslate'
 
 import { Destination } from 'shared/types/destinations'
-import { TRUNCATED_TEXT_SIZE } from 'shared/constants'
 
 import { defaultDescription } from 'shared/constants/destinations'
 import {
   getParentDestinations,
   getRootDestinations,
 } from 'store/slices/destinations/selectors'
+
+import { TRUNCATED_TEXT_SIZE } from 'shared/constants'
 
 import s from './DestinationLayout.module.scss'
 
@@ -51,10 +52,7 @@ export const DestinationLayout: FC<DestinationLayoutProps> = ({
           <div className={s.select}>{t('destinations.selectRegion')}</div>
           <div className={s.title}>{title}</div>
 
-          <TruncatedText
-            limit={TRUNCATED_TEXT_SIZE}
-            more={t('destinations.buttonMore')}
-          >
+          <TruncatedText limit={TRUNCATED_TEXT_SIZE}>
             {description}
           </TruncatedText>
         </div>

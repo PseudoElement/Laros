@@ -54,7 +54,7 @@
 .deliveryOptions {
   display: flex;
   gap: 15px;
-  margin: 24px 0px 24px 0px;
+  margin: 24px 0 24px 0;
 }
 
 .deliveryOption {
@@ -173,7 +173,7 @@
 }
 
 .shippingSection {
-  margin: 56px 0px 64px 0px;
+  margin: 56px 0 64px 0;
   .list {
     display: flex;
     flex-direction: column;
