@@ -10,13 +10,13 @@
   background-color: $color-white;
   color: $color-bg-black;
 
+  @include tablet {
+    padding-top: 100px;
+  }
+
   @include mobile {
     padding-top: 0;
     background-image: unset;
-  }
-
-  @include tablet {
-    padding-top: 100px;
   }
 }
 
@@ -27,13 +27,13 @@
   border-radius: 16px;
   box-shadow: 0 4px 4px rgba(0, 60, 118, 0.15);
 
+  @include tablet {
+    width: 95%;
+  }
+
   @include mobile {
     width: 100%;
     padding: 0 10px 10px;
-  }
-
-  @include tablet {
-    width: 95%;
   }
 }
 
@@ -73,10 +73,19 @@
     @include mobile {
       width: 100%;
     }
+
+    @include laptop {
+      width: 60%;
+      margin-right: 15px;
+    }
   }
 
   @include tablet {
     padding: 0 30px;
+  }
+
+  @include laptop {
+    padding: 0 5% 106px 8%;
   }
 }
 
@@ -89,6 +98,10 @@
 
   @include tablet {
     padding: 20px 0 30px;
+  }
+
+  @include laptop {
+    padding: 0;
   }
 }
 
@@ -117,6 +130,7 @@
   flex-direction: column;
   margin: 0 auto 120px;
   padding-top: 97px;
+  max-width: 1070px;
 
   .mainPhoto {
     display: flex;
@@ -209,14 +223,17 @@
 }
 
 .sliderCustom {
+  max-width: 1028px;
+  margin: 0 auto;
+
   [class*='swiper-button-prev'] {
     top: 42%;
-    left: -125px;
+    left: -8%;
   }
 
   [class*='swiper-button-next'] {
     top: 42%;
-    right: -125px;
+    right: -8%;
   }
 }
 
