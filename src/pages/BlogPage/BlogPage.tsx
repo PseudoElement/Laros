@@ -10,12 +10,15 @@ import { useRouter } from 'next/router'
 import { BlogSection } from 'features/BlogSection'
 import { ContactFooterHero } from 'features/ContactFooterHero'
 import { useTranslate } from '../../shared/hooks/useTranslate'
+import { useWindowDimensions } from '../../shared/hooks/useWindowDimensions'
+import { TABLET_SCREEN } from '../../shared/constants/screenResolutions'
 
 export const Blog: FC = () => {
   const router = useRouter()
   const blogId = Number(router.query.id)
   const [post, setPost] = useState<BlogType>()
   const t = useTranslate()
+  const { width } = useWindowDimensions()
 
   useEffect(() => {
     if (blogId) {
@@ -70,24 +73,24 @@ export const Blog: FC = () => {
                       <Image
                         src={blog.src}
                         alt='Blog image'
-                        width={342}
-                        height={160}
+                        width={1070}
+                        height={404}
                       />
                     </div>
                     <div>
                       <Image
                         src={blog.src}
                         alt='Blog image'
-                        width={342}
-                        height={160}
+                        width={1070}
+                        height={404}
                       />
                     </div>
                     <div>
                       <Image
                         src={blog.src}
                         alt='Blog image'
-                        width={342}
-                        height={160}
+                        width={1070}
+                        height={404}
                       />
                     </div>
                   </div>
@@ -103,9 +106,9 @@ export const Blog: FC = () => {
       <div className={s.sliderContainer}>
         <h5 className={s.sliderTitle}>{t('blogs.sliderTitle')}</h5>
         <Slider
-          slidesPerView={2}
+          slidesPerView={width > TABLET_SCREEN ? 2 : 1}
           withPagination
-          withNavigation
+          withNavigation={width > TABLET_SCREEN}
           nextEl='moreNext'
           prevEl='morePrev'
           classname={s.sliderCustom}

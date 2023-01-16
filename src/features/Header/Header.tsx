@@ -18,7 +18,7 @@ import logo from '/public/assets/images/logo.svg?url'
 import s from './Header.module.scss'
 import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
 import { MobileMenu } from './MobileMenu/MobileMenu'
-import {TABLET_MAX_SCREEN} from "../../shared/constants/screenResolutions";
+import { TABLET_MAX_SCREEN } from '../../shared/constants/screenResolutions'
 
 const mainNavItems = [
   { name: 'navigation.navigate.home', to: '/' },
