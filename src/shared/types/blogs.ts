@@ -8,3 +8,15 @@ export type BlogType = {
   image: string | StaticImageData
   read: number
 }
+
+export type BlogPayload = {
+  id: number
+  name: string
+  image: string
+  description: string
+}
+
+export type BlogsQueryParams = {
+  page: number
+  size: number
+}

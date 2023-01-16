@@ -77,4 +77,7 @@ export const endpoints = {
   country: {
     all: '/country/',
   },
+  blogs: {
+    all: '/blog/',
+  },
 }
