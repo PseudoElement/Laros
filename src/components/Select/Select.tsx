@@ -19,6 +19,7 @@ interface OptionsProps {
   options: Option[]
   onChange: (value: Option) => void
   value?: Option
+  defaultValue?: Option
   placeholder?: string
   classname?: string
   isMulti?: boolean
@@ -41,6 +42,7 @@ export const SelectComponent: FC<OptionsProps> = ({
   onChange,
   onInputChange,
   isClearable = true,
+  defaultValue,
 }) => {
   const DropdownIndicator: FC<DropdownIndicatorProps> = props =>
     hasArrow ? (
@@ -64,7 +66,7 @@ export const SelectComponent: FC<OptionsProps> = ({
     <components.Control {...props}>
       {options.map((item, i) =>
         item.label === props.getValue().map((el: any) => el.label)[0] &&
-          item.icon ? (
+        item.icon ? (
           <div className={s.control} key={i}>
             <Image src={item.icon} width={30} height={30} alt='icon' />
           </div>
@@ -138,7 +140,7 @@ export const SelectComponent: FC<OptionsProps> = ({
       styles={customStyles}
       options={options}
       value={value}
-      defaultValue={value}
+      defaultValue={defaultValue}
       components={{ Option, DropdownIndicator, Control }}
       isMulti={isMulti}
       // @ts-ignore

@@ -52,11 +52,11 @@ export const DestinationHotels: FC<DestinationHotelsProps> = ({ map }) => {
 
   useEffect(() => {
     setShowMoreButton(newHotels.length === HOTEL_PAGINATION_PER_PAGE)
-    setHotels(prevState =>
-      prevState[0]?.id === newHotels[0]?.id
-        ? prevState
-        : prevState.concat(...newHotels)
-    )
+
+    setHotels(prevState => {
+      if (params.page === 1) return newHotels
+      return prevState.concat(...newHotels)
+    })
   }, [newHotels])
 
   return (
