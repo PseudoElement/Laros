@@ -1,16 +1,16 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { useRouter } from 'next/router'
-// @ts-ignore
-import ReactStars from 'react-rating-stars-component'
 
 import { StartTripForm, InfoTags, FieldsType } from 'features'
 import { Map, TruncatedText } from 'components'
-import cn from 'classnames';
+
 import { useAppDispatch } from 'shared/hooks/redux'
 import { updateForm } from 'store/slices/order/order'
 import { useTranslate } from 'shared/hooks/useTranslate'
 
 import { Trip } from 'shared/types/trip'
+
+import { TRIP_PLAN_DESCRIPTION_SIZE } from 'shared/constants'
 
 import s from './tripPageIntro.module.scss'
 
@@ -25,7 +25,6 @@ export const TripPageIntro: FC<Trip> = ({
   const dispatch = useAppDispatch()
   const { push } = useRouter()
   const t = useTranslate()
-  console.log(id)
 
   const handleClick = (fields: FieldsType) => {
     dispatch(
@@ -45,12 +44,12 @@ export const TripPageIntro: FC<Trip> = ({
           {price} CHF / {t('travelPlannerTripPlan.proPerson')}
         </div>
 
-        {description ? (
-          <div
-            className={cn(s.description, ['scrollStyle'])}
-            dangerouslySetInnerHTML={{ __html: description }}
-          />
-        ) : null}
+        <TruncatedText
+          className={s.description}
+          limit={TRIP_PLAN_DESCRIPTION_SIZE}
+        >
+          {description}
+        </TruncatedText>
 
         <StartTripForm onChange={handleClick} />
       </div>

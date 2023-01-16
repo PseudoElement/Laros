@@ -1,10 +1,13 @@
 import { FC } from 'react'
-import s from './StaticTravelPlannerPage.module.scss'
+import { useRouter } from 'next/router'
+
 import { Overview } from './Overview'
 import { ContactForm } from 'features/ContactForm'
 import { Highlighted } from './Highlighted'
+
 import { StaticTravelMock } from 'shared/mocks/staticTravel'
-import { useRouter } from 'next/router'
+
+import s from './StaticTravelPlannerPage.module.scss'
 
 export const StaticTravelPlannerPage: FC = () => {
   const { query } = useRouter()

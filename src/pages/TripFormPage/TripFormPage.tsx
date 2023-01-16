@@ -71,7 +71,7 @@ export const TripFormPage: FC = () => {
         style={{
           backgroundImage: `url(${bg.src})`,
         }}
-      ></div>
+      />
 
       <div className={s.content}>
         <div className={s.form}>

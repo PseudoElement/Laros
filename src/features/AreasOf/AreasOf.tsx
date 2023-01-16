@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { useRouter } from 'next/router'
 import cn from 'classnames'
 
-import { AreaCard } from '../../components/AreaCard'
+import { AreaCard, TruncatedText } from 'components'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
 
@@ -39,10 +39,7 @@ export const AreasOf: FC<DestinationsProps> = ({
       )}
 
       {destination.description && (
-        <div
-          dangerouslySetInnerHTML={{ __html: destination.description }}
-          className={s.description}
-        />
+        <div className={s.description}>{destination.description}</div>
       )}
 
       <div className={s.images}>

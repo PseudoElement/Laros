@@ -1,19 +1,20 @@
 import { FC, useEffect } from 'react'
+
 import { CategoryCard } from './CategoryCard'
 import { Slider } from 'components'
 
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { getTripCategoriesThunk } from 'store/slices/trips/thunk'
 import { useTranslate } from 'shared/hooks/useTranslate'
+import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
+import { slidesPerViewTravelPlanner } from 'shared/helpers/slidesPerView'
 
 import { moreCategoriesMock } from 'shared/mocks/tripPlanner'
+import { TABLET_MAX_SCREEN } from 'shared/constants/screenResolutions'
 
 import bg from '/public/assets/images/trip_planner_bg.png'
 
 import s from './TravelPlannerPage.module.scss'
-import { useWindowDimensions } from '../../shared/hooks/useWindowDimensions'
-import { slidesPerViewTravelPlanner } from 'shared/helpers/slidesPerView'
-import {TABLET_MAX_SCREEN} from "../../shared/constants/screenResolutions";
 
 export const TravelPlannerPage: FC = () => {
   const t = useTranslate()
@@ -36,9 +37,7 @@ export const TravelPlannerPage: FC = () => {
         style={{
           backgroundImage: `url(${bg.src})`,
         }}
-      >
-        {' '}
-      </div>
+      />
 
       <div className={s.content}>
         <div className={s.title}>{t('travelPlanner.title')}</div>
@@ -49,7 +48,7 @@ export const TravelPlannerPage: FC = () => {
           withNavigation={width > TABLET_MAX_SCREEN}
           withPagination={width < TABLET_MAX_SCREEN}
         >
-          {categories?.map(card => {
+          {categories?.slice(0, 4).map(card => {
             return <CategoryCard {...card} key={card.id} vertical />
           })}
         </Slider>
@@ -61,7 +60,7 @@ export const TravelPlannerPage: FC = () => {
         </div>
 
         <ul className={s.categoriesList}>
-          {moreCategories?.map(cat => {
+          {categories?.slice(4, 15).map(cat => {
             return <CategoryCard {...cat} key={cat.id} />
           })}
         </ul>

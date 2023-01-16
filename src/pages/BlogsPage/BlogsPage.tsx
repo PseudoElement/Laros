@@ -2,21 +2,21 @@ import React, { FC, useEffect, useState } from 'react'
 import { StaticImageData } from 'next/image'
 
 import { Review, BlogSection, ContactFooterHero } from 'features'
-import { Slider, BlogHeaderImage } from 'components'
+import { Slider, BlogHeaderImage, Button } from 'components'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
 
 import { reviewsMock } from 'shared/mocks/reviews'
-import { blogs } from 'shared/mocks/blogs'
 
 import s from './BlogsPage.module.scss'
 import { useWindowDimensions } from '../../shared/hooks/useWindowDimensions'
 import { TABLET_SCREEN } from '../../shared/constants/screenResolutions'
+import { BlogPayload } from '../../shared/types/blogs'
+import { useGetBlogs } from '../../shared/hooks/useGetBlogs'
 
 interface BlogItemProps {
   id: number
   title: string
-  subTitle: string
   description: string
   image: string | StaticImageData
   reversed: boolean
@@ -25,7 +25,6 @@ interface BlogItemProps {
 export const BlogItem: FC<BlogItemProps> = ({
   id,
   title,
-  subTitle,
   description,
   image,
   reversed,
@@ -34,7 +33,6 @@ export const BlogItem: FC<BlogItemProps> = ({
     <li className={s.blogItemWrapper}>
       <BlogSection
         title={title}
-        subTitle={subTitle}
         description={description}
         image={image}
         id={id}
@@ -46,15 +44,25 @@ export const BlogItem: FC<BlogItemProps> = ({
 }
 
 export const BlogsPage: FC = () => {
-  const [blogsData, setBlogsData] = useState<any[] | null>([])
+  const BLOGS_PAGINATION_PER_PAGE = 2
+  const [params, setParams] = useState({
+    page: 1,
+    size: BLOGS_PAGINATION_PER_PAGE,
+  })
+  const [newBlogs, isLoading, handleReady] = useGetBlogs(params)
+  const [blogs, setBlogs] = useState<BlogPayload[]>([...newBlogs])
+  const [isButtonShowed, setIsButtonShowed] = useState<boolean>(
+    newBlogs.length === BLOGS_PAGINATION_PER_PAGE
+  )
   const t = useTranslate()
   const { width } = useWindowDimensions()
 
   useEffect(() => {
-    if (!blogsData?.length) {
-      setBlogsData(blogs)
-    }
-  }, [blogsData])
+    setIsButtonShowed(newBlogs.length === BLOGS_PAGINATION_PER_PAGE)
+    setBlogs(prevState => prevState.concat(...newBlogs))
+  }, [newBlogs])
+
+  useEffect(() => handleReady(true), [params])
 
   return (
     <>
@@ -63,16 +71,29 @@ export const BlogsPage: FC = () => {
           <BlogHeaderImage />
         </div>
         <ul className={s.blogs}>
-          {blogsData?.length
-            ? blogsData.map(blogData => (
+          {blogs?.length
+            ? blogs.map(blogData => (
                 <BlogItem
+                  title={blogData.name}
+                  description={blogData.description}
                   key={blogData.id}
-                  {...blogData}
+                  image={blogData.image}
+                  id={blogData.id}
                   reversed={blogData.id % 2 === 0}
                 />
               ))
             : null}
         </ul>
+        {isButtonShowed && (
+          <Button
+            onClick={() =>
+              setParams(prevState => ({ ...prevState, page: prevState.page++ }))
+            }
+            variant='secondary'
+          >
+            {t('common.loadMore')}
+          </Button>
+        )}
         <div className={s.reviews}>
           <div className={s.title}>
             <h3>{t('homepage.aboutUsTitle')}</h3>

@@ -1,13 +1,16 @@
 import { FC, useEffect, useRef, useState } from 'react'
-import s from './Slider.module.scss'
+import { Navigation } from 'swiper'
 import cn from 'classnames'
-import { ReactPlayer } from 'components'
-import { SliderItem } from './SliderItem'
 import Link from 'next/link'
-import { Overview } from 'shared/types/staticTravel'
 import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation } from 'swiper'
+
+import { ReactPlayer } from 'components'
+import { SliderItem } from './SliderItem'
+
+import { Overview } from 'shared/types/staticTravel'
+
+import s from './Slider.module.scss'
 
 interface SliderProps {
   className?: string
@@ -49,18 +52,15 @@ export const Slider: FC<SliderProps> = ({ className, cards }) => {
               {cards.map((card, id) => (
                 <SwiperSlide onMouseEnter={() => setInitialSlide(id)} key={id}>
                   {!card.video ? (
-                    <Image
-                      width={1063}
-                      height={400}
-                      src={card.preview}
-                      layout={'fill'}
-                    />
+                    <div className={s.slideImage}>
+                      <Image layout={'fill'} src={card.preview} />
+                    </div>
                   ) : (
                     <div className={s.videoWrapper}>
                       <ReactPlayer
                         playing={initialSlide === id}
                         controls
-                        width={770}
+                        width={'100%'}
                         url={card.video}
                       />
                     </div>
@@ -79,6 +79,7 @@ export const Slider: FC<SliderProps> = ({ className, cards }) => {
               ></div>
             </div>
           </div>
+
           <div className={s.sliderItems}>
             {cards.map((card, id) => (
               <SliderItem
@@ -91,6 +92,7 @@ export const Slider: FC<SliderProps> = ({ className, cards }) => {
               />
             ))}
           </div>
+
           <p className={s.text}>
             Justo, nulla sit egestas justo, faucibus consequat condimentum in.
             Nullam nam mi non eget nisi cursus eget. Nam at arcu, lectus ornare

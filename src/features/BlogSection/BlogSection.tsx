@@ -9,7 +9,6 @@ import { useTranslate } from '../../shared/hooks/useTranslate'
 interface BlogSection {
   id?: number
   title: string
-  subTitle: string
   read?: number
   description: string
   image: string | StaticImageData
@@ -19,7 +18,6 @@ interface BlogSection {
 
 export const BlogSection: FC<BlogSection> = ({
   title,
-  subTitle,
   read,
   description,
   image,
@@ -34,7 +32,6 @@ export const BlogSection: FC<BlogSection> = ({
     <div className={cn(s.blog, reversed ? s.blogReversed : '')}>
       <div className={s.content}>
         <h2 className={s.mainTitle}>{t(title)}</h2>
-        <h3 className={s.subTitle}>{t(subTitle)}</h3>
         {read && <div className={s.read}>{`${read} ${t('blogs.time')}`}</div>}
         <p className={s.description}>{t(description)}</p>
         {haveButton && (

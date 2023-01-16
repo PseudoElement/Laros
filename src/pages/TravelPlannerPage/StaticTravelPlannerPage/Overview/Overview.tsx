@@ -10,9 +10,8 @@ interface OverviewProps {
 export const Overview: FC<OverviewProps> = ({ overview }) => {
   return (
     <div className={s.wrapper}>
+      <div className={s.grayBackground} />
       <Slider cards={overview} />
-      <div className={s.grayBackground}></div>
-      <div className={s.whiteBackground}></div>
     </div>
   )
 }

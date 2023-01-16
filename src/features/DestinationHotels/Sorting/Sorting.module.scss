@@ -73,9 +73,9 @@
     display: flex;
     box-sizing: content-box;
     gap: 8px;
-    max-width: 560px;
+    overflow: scroll;
     font-weight: $fw-medium;
-    padding-bottom: 4px;
+    padding-bottom: 8px;
   }
 
   .tag {
@@ -91,6 +91,7 @@
   list-style-type: none;
   overflow-x: auto;
   align-items: center;
+  padding-bottom: 8px;
 }
 
 .tab {
@@ -114,12 +115,12 @@
   margin-bottom: 12px;
 
   .selectDirection {
-    width: 86px;
+    width: 115px;
     background-color: $color-white;
   }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
   .services {
     flex-direction: column;
     align-items: flex-start;
@@ -135,12 +136,12 @@
   }
 }
 
-@media screen and (max-width:425px) {
-  .tags{
+@media screen and (max-width: 425px) {
+  .tags {
     width: 100%;
     flex-direction: column;
   }
-  .price{
+  .price {
     flex-direction: column;
     align-items: flex-start;
     width: 100%;

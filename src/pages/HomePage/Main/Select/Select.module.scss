@@ -26,7 +26,6 @@
   flex: 1 1 auto;
   position: relative;
   align-items: center;
-  position: relative;
 }
 
 .selected_item {
@@ -77,6 +76,7 @@
   align-items: center;
   justify-content: center;
   height: 40px;
+  width: 80px;
   border-radius: 8px;
   border: none;
   padding: 0 24px;
