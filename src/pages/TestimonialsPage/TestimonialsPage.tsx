@@ -10,7 +10,6 @@ import { LAPTOP_SCREEN } from 'shared/constants/screenResolutions'
 
 import s from './TestimonialsPage.module.scss'
 
-
 export const TestimonialsPage = () => {
   const t = useTranslate()
 
@@ -27,6 +26,8 @@ export const TestimonialsPage = () => {
         withNavigation={width > LAPTOP_SCREEN}
         withPagination={true}
         classname={s.slider}
+        nextEl={s.buttonNext}
+        prevEl={s.buttonPrev}
       >
         {reviewsMock.map(review => (
           <Review

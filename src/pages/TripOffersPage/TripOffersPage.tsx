@@ -33,6 +33,7 @@ import gridIcon from '/public/assets/images/grid.svg?url'
 
 import s from './TripOffersPage.module.scss'
 import { sortByAlphabet } from '../../shared/helpers/sortByAlphabet'
+import { withDomain } from '../../shared/helpers/withDomain'
 
 enum View {
   LIST,
@@ -49,7 +50,7 @@ export const TripOffersPage: FC = () => {
     },
   })
   const dispatch = useAppDispatch()
-  const [tripCategoryInfo, setTripCatInfo] = useState<TripCategory | null>()
+  // const [tripCategoryInfo, setTripCatInfo] = useState<TripCategory | null>()
   const [view, setView] = useState(View.GRID)
   const [tags, setTags] = useState<Tag[]>([])
   const [region, setRegion] = useState<Option | null>(null)
@@ -75,7 +76,9 @@ export const TripOffersPage: FC = () => {
     newTrips.length === TRIP_PAGINATION_PER_PAGE
   )
 
-  // const tripCategoryInfo = useAppSelector((state) => state.trips.categories.find((cat) => cat.id === Number(category)));
+  const tripCategoryInfo = useAppSelector(state =>
+    state.trips.categories.find(cat => cat.id === Number(category))
+  )
   const destinations = useAppSelector(state => state.destinations.destinations)
   const regions = getRootDestinations(destinations)
   const subregions = useAppSelector(state =>
@@ -155,11 +158,6 @@ export const TripOffersPage: FC = () => {
   }, [category, watch])
 
   useEffect(() => {
-    setTripCatInfo(tripPageInfo)
-  }, [category])
-
-  useEffect(() => {
-    console.log('set value')
     setValue(
       'region',
       regions
@@ -178,11 +176,13 @@ export const TripOffersPage: FC = () => {
         className={s.bg}
         style={{
           backgroundImage: `url(${
-            tripCategoryInfo?.images.length ? tripCategoryInfo?.images[0] : null
+            tripCategoryInfo?.images.length
+              ? withDomain(tripCategoryInfo?.images[1])
+              : null
           })`,
         }}
       >
-        {' '}
+        <div className={s.shadow} />
       </div>
       <div className={s.title}>{tripCategoryInfo?.name} </div>
       <div className={s.subTitle}>{tripCategoryInfo?.description}</div>

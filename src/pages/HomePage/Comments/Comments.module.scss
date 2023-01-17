@@ -5,6 +5,11 @@
   margin: 0 auto;
   background-color: rgba(242, 245, 248, 1);
   font-family: $font-Lato;
+
+  @include mobile {
+    width: 100%;
+    padding: 0 20px;
+  }
 }
 
 .title {
@@ -24,8 +29,10 @@
   text-align: center;
 }
 .buttonNext {
+  top: 170px !important;
   right: -100px;
 }
 .buttonPrev {
+  top: 170px !important;
   left: -100px;
 }

@@ -73,7 +73,7 @@
     display: flex;
     box-sizing: content-box;
     gap: 8px;
-    overflow: scroll;
+    overflow: auto;
     font-weight: $fw-medium;
     padding-bottom: 8px;
   }
@@ -115,7 +115,7 @@
   margin-bottom: 12px;
 
   .selectDirection {
-    width: 115px;
+    width: 52px;
     background-color: $color-white;
   }
 }

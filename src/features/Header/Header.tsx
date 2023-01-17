@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import cn from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -32,6 +32,11 @@ export const Header: FC = () => {
   const togleMenu = () => {
     setOpen(!open)
   }
+
+  useEffect(() => {
+    document.body.style.overflowY = `${open ? 'hidden' : 'auto'}`
+  }, [open])
+
   const widthWindow = useWindowDimensions().width > TABLET_MAX_SCREEN
   const isCollapsed = useCollapsedHeader()
   const t = useTranslate()

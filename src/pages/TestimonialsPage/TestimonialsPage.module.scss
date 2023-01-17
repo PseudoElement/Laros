@@ -58,6 +58,12 @@
   margin: 0 auto;
   padding: 0 30px;
 }
+.buttonNext {
+  top: 170px !important;
+}
+.buttonPrev {
+  top: 170px !important;
+}
 
 @include mobile-tablet {
   .slider {

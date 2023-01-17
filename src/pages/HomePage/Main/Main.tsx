@@ -18,6 +18,7 @@ export interface MainBlockProps {
   setVideoIsFullscreen: (isFullscreen: boolean) => void
   activeMenu: boolean
   videoIsFullscreen: boolean
+  onFullScreen?: () => void
   destinations: Destination[]
   travelTypes: TripCategory[]
 }
@@ -29,16 +30,9 @@ export const Main: FC<MainBlockProps> = ({
   setVideoIsFullscreen,
   destinations,
   travelTypes,
+  onFullScreen,
 }) => {
-  const videoRef = useRef<HTMLDivElement>(null)
   const t = useTranslate()
-
-  const onFullScreen = () => {
-    setVideoIsFullscreen(false)
-    if (screenfull.isEnabled && videoRef.current) {
-      screenfull.request(videoRef.current)
-    }
-  }
 
   return (
     <div className={s.main}>
@@ -56,20 +50,8 @@ export const Main: FC<MainBlockProps> = ({
         </div>
         <div className={s.main_blur} />
       </div>
+
       <div className={s.video}>
-        <div
-          onMouseLeave={() => setVideoIsFullscreen(true)}
-          ref={videoRef}
-          className={s.reactPlayerWrapper}
-        >
-          <ReactPlayer
-            stopOnUnmount
-            controls
-            playing={!videoIsFullscreen}
-            url={'https://www.youtube.com/watch?v=graxkD8NzEw'}
-          />
-          :
-        </div>
         <div onClick={onFullScreen} className={s.play_icon}>
           <Image src={play} layout={'fixed'} />
         </div>

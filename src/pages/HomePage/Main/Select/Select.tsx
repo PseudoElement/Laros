@@ -78,7 +78,7 @@ export const SelectBlock: FC<SelectBlockProps> = ({
           )}
 
           <div
-            className={cls(s.items, {
+            className={cls(s.items, ['scrollStyle'], {
               [s.opened]: activeMenu,
               [s.closed]: !activeMenu,
             })}

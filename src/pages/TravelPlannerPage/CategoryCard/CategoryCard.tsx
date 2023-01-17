@@ -1,11 +1,8 @@
 import { FC } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import cn from 'classnames'
 
 import { withDomain } from 'shared/helpers/withDomain'
-
-import mockImg from '/public/assets/images/trip-planner/planner__category-bg.png'
 
 import s from './CategoryCard.module.scss'
 
@@ -24,7 +21,9 @@ export const CategoryCard: FC<CategoryCardProps> = ({
   vertical = false,
 }) => {
   return (
-    <Link href={vertical ? `travel_planner/${id}` : '/static_travel_planner'}>
+    <Link
+      href={vertical ? `travel_planner/${id}` : `static_travel_planner/${id}`}
+    >
       <div
         className={cn(s.card, { [s.vertical]: vertical })}
         style={{

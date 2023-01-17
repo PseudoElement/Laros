@@ -1,5 +1,26 @@
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+@use 'styles/style.scss' as *;
+
+.grayBackground {
+  width: 100vw;
+  height: 810px;
+  background-color: $color-laros-dark-grey;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.title {
+  font-weight: $fw-semibold;
+  font-size: 56px;
+  line-height: 67px;
+  color: $color-light-grey;
+  padding: 0 0 35px 150px;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.OverviewSection {
+  max-width: 1360px;
+  margin: -500px auto 0;
+}
+
+.contactForm {
+  width: 1230px;
+  margin: 0 auto 100px;
 }
