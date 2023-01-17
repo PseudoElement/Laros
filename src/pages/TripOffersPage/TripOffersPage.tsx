@@ -184,6 +184,7 @@ export const TripOffersPage: FC = () => {
       >
         <div className={s.shadow} />
       </div>
+
       <div className={s.title}>{tripCategoryInfo?.name} </div>
       <div className={s.subTitle}>{tripCategoryInfo?.description}</div>
 

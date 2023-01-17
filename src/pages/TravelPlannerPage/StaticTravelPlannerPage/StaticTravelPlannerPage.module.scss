@@ -6,6 +6,9 @@
   background-color: $color-laros-dark-grey;
   background-repeat: no-repeat;
   background-size: cover;
+  @include mobile {
+    height: 0;
+  }
 }
 .title {
   font-weight: $fw-semibold;
@@ -14,13 +17,31 @@
   color: $color-light-grey;
   padding: 0 0 35px 150px;
   text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  @include mobile {
+    padding: 0 20px;
+    color: $color-bg-black;
+  }
 }
 .OverviewSection {
   max-width: 1360px;
   margin: -500px auto 0;
+  @include mobile {
+    margin: 0;
+  }
 }
 
 .contactForm {
-  width: 1230px;
+  width: 80%;
+  max-width: 1170px;
   margin: 0 auto 100px;
+
+  @include tablet {
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  @include mobile {
+    width: 100%;
+    padding: 0 20px;
+  }
 }

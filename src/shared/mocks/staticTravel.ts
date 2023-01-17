@@ -47,7 +47,7 @@ export const StaticTravelMock: StaticTravelItem[] = [
         ],
       },
       {
-        text: 'Justo, nulla sit egestas justo, faucibus consequat condimentum in. Nullam nam mi non eget nisi cursus eget. Nam at arcu, lectus ornare eu in. Faucibus duis in ac, interdum quam nisi ac bibendum cras. In quis ac eros, mauris etiam.',
+        text: ' Justo, nulla sit egestas justo, faucibus consequat condimentum in. Nullam nam mi non eget nisi cursus eget. Nam at arcu, lectus ornare eu in. Faucibus duis in ac, interdum quam nisi ac bibendum cras. In quis ac eros, mauris etiam. Justo, nulla sit egestas justo, faucibus consequat condimentum in. Nullam nam mi non eget nisi cursus eget. Nam at arcu, lectus ornare eu in. Faucibus duis in ac, interdum quam nisi ac bibendum cras. In quis ac eros, mauris etiam.',
         link: '/#',
         images: [
           '/assets/images/static_travel_plannerPage/12.png',

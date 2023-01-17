@@ -3,10 +3,18 @@
 .wrapper {
   background-color: $color-modal-header;
   border-radius: 24px;
-  padding-bottom: 16px;
+  padding: 0 150px 16px;
   position: relative;
   z-index: 2;
   box-shadow: 0 4px 12px rgba(0, 60, 118, 0.05);
+
+  @include mobile-tablet {
+    padding: 0 50px 16px;
+  }
+
+  @include mobile {
+    padding: 0 20px 16px;
+  }
 }
 
 .subtitle {
@@ -30,6 +38,9 @@
 
 .slider {
   position: relative;
+  @include mobile {
+    height: 330px;
+  }
 }
 .sliderItems {
   display: flex;
@@ -45,11 +56,19 @@
   border-radius: 8px;
   position: relative;
   background-color: $color-laros-dark-grey;
+
+  @include mobile {
+    height: 300px;
+  }
 }
 .contentWrapper {
   max-width: 1060px;
   margin: 0 auto;
   padding: 64px 0 40px;
+
+  @include mobile {
+    padding: 10px 0;
+  }
 }
 
 .title {
@@ -59,19 +78,19 @@
 
 .linkWrapper {
   text-align: center;
-  font-weight: 700;
+  font-weight: $fw-semibold;
   font-size: 12px;
   line-height: 14px;
   color: #c3c6c9;
 }
 
 .videoWrapper {
-  width: 1060px;
+  max-width: 1060px;
   height: 400px;
 }
 
 .sliderNavigation {
-  width: 900px;
+  width: 85%;
   margin: auto;
   position: absolute;
   top: 45%;
@@ -97,12 +116,18 @@
   background: url('/assets/images/area-images/next__arrow.svg');
   background-repeat: no-repeat;
   right: -150px;
+  @include mobile-tablet {
+    right: -100px;
+  }
 }
 
 .prevEl {
   background-image: url('/assets/images/area-images/prev__arrow.svg');
   background-repeat: no-repeat;
   left: -150px;
+  @include mobile-tablet {
+    left: -100px;
+  }
 }
 
 .nextEl::after,

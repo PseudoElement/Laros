@@ -1,14 +1,15 @@
 @use 'styles/style.scss' as *;
 
 .container {
-  height: 580px;
-  width: 1110px;
   border-radius: 16px;
   background-color: $color-white;
   display: flex;
 
-  @include mobile-laptop {
-    flex-direction: column;
+  @include tablet {
+    display: block;
+  }
+  @include mobile {
+    display: block;
   }
 }
 
@@ -76,6 +77,11 @@
   display: flex;
   flex-wrap: wrap;
   margin: 10px 10px 0 0;
+  width: 100%;
+
+  @include mobile {
+    display: block;
+  }
 
   @include mobile-laptop {
     margin: 0;
@@ -83,7 +89,7 @@
 }
 
 .infoItem {
-  padding: 0 16px;
+  padding: 20px 16px;
   background-color: $color-laros-light-grey;
   border-radius: 8px;
 
@@ -119,11 +125,19 @@
 
 .socials {
   width: 50%;
+
+  @include mobile {
+    width: 100%;
+  }
 }
 
 .contacts {
   width: calc(50% - 8px);
   margin-right: 8px;
+
+  @include mobile {
+    width: 100%;
+  }
 }
 
 .socialIcons {

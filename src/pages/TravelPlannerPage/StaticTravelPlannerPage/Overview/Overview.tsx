@@ -11,6 +11,9 @@ import { Overview } from 'shared/types/staticTravel'
 import { TRIP_PLAN_DESCRIPTION_SIZE } from 'shared/constants'
 
 import s from './Overview.module.scss'
+import { useWindowDimensions } from '../../../../shared/hooks/useWindowDimensions'
+import { useAppSelector } from '../../../../shared/hooks/redux'
+import { useRouter } from 'next/router'
 
 interface SliderProps {
   cards: Overview[]
@@ -19,10 +22,16 @@ interface SliderProps {
 export const OverviewSection: FC<SliderProps> = ({ cards }) => {
   const [initialSlide, setInitialSlide] = useState<number>(0)
   const swiperRef = useRef<any>(null)
+  const widthWindow = useWindowDimensions().width
+  const { query } = useRouter()
 
   useEffect(() => {
     swiperRef?.current?.swiper.slideTo(initialSlide)
   }, [initialSlide])
+
+  const travelPlannerCategory = useAppSelector(
+    state => state.trips.categories
+  ).find(page => page.id === (query.index && +query.index))
 
   return (
     <div className={s.wrapper}>
@@ -43,6 +52,7 @@ export const OverviewSection: FC<SliderProps> = ({ cards }) => {
             slidesPerView={1}
             modules={[Navigation]}
             spaceBetween={50}
+            autoHeight={true}
             navigation={{
               nextEl: '.nextEl',
               prevEl: '.prevEl',
@@ -68,16 +78,18 @@ export const OverviewSection: FC<SliderProps> = ({ cards }) => {
             ))}
           </Swiper>
 
-          <div className={s.sliderNavigation}>
-            <div
-              onClick={() => setInitialSlide(initialSlide - 1)}
-              className={cn(s.prevEl, 'prevEl', 'swiper-button-prev')}
-            />
-            <div
-              onClick={() => setInitialSlide(initialSlide + 1)}
-              className={cn(s.nextEl, 'nextEl', 'swiper-button-next')}
-            />
-          </div>
+          {widthWindow > 768 ? (
+            <div className={s.sliderNavigation}>
+              <div
+                onClick={() => setInitialSlide(initialSlide - 1)}
+                className={cn(s.prevEl, 'prevEl', 'swiper-button-prev')}
+              />
+              <div
+                onClick={() => setInitialSlide(initialSlide + 1)}
+                className={cn(s.nextEl, 'nextEl', 'swiper-button-next')}
+              />
+            </div>
+          ) : null}
         </div>
 
         <div className={s.sliderItems}>
@@ -93,28 +105,15 @@ export const OverviewSection: FC<SliderProps> = ({ cards }) => {
           ))}
         </div>
 
-        <p className={s.text}>
-          Justo, nulla sit egestas justo, faucibus consequat condimentum in.
-          Nullam nam mi non eget nisi cursus eget. Nam at arcu, lectus ornare eu
-          in. Faucibus duis in ac, interdum quam nisi ac bibendum cras. In quis
-          ac eros, mauris etiam.
-        </p>
-
-        <TruncatedText
-          className={s.text}
-          limit={TRIP_PLAN_DESCRIPTION_SIZE}
-          seeMoreClass={s.seeMore}
-        >
-          Tristique risus, magna curabitur facilisis commodo. Fames arcu non
-          dolor malesuada eget. Potenti metus ultricies bibendum aenean massa
-          nunc egestas. Nisi nunc sit nibh arcu bibendum. Suspendisse sodales eu
-          ac nam volutpat egestas. Tincidunt volutpat orci ultrices et venenatis
-          commodo lacus auctor integer. Vel vitae amet lobortis malesuada.
-          Dignissim ipsum sit ut a mattis tristique. Venenatis donec nibh quam
-          risus tellus integer pellentesque gravida quis. Ac adipiscing
-          consectetur maecenas placerat purus. Auctor lectus accumsan pharetra,
-          egestas tellus odio nec sapien aliquet.
-        </TruncatedText>
+        {travelPlannerCategory?.description ? (
+          <TruncatedText
+            className={s.text}
+            limit={TRIP_PLAN_DESCRIPTION_SIZE}
+            seeMoreClass={s.seeMore}
+          >
+            {travelPlannerCategory.description}
+          </TruncatedText>
+        ) : null}
       </div>
     </div>
   )
