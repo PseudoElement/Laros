@@ -31,7 +31,7 @@ export const MobileMenu: FC<MobileMenuProps> = ({
   isOpen,
 }) => {
   const t = useTranslate()
-  const isOpenMenu = cn(s.navMenu, isOpen && s.navMenuOpen)
+  const isOpenMenu = cn(s.navMenu, isOpen ? s.navMenuOpen : s.hidden)
 
   return (
     <>

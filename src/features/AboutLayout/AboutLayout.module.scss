@@ -16,6 +16,10 @@
   background-repeat: no-repeat;
   width: 100%;
   height: 100%;
+  @include mobile {
+    background-position: 70% 100%;
+    background-size: auto 90%;
+  }
 }
 
 .title {

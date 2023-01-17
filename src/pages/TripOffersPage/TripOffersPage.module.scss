@@ -254,11 +254,8 @@
   margin: 0 auto 80px;
 }
 
-.loading,
-.empty {
-  position: absolute;
-}
-
-.empty {
-  left: 200px;
+.loading {
+  text-align: center;
+  width: 100%;
+  padding: 100px 0 0;
 }
