@@ -221,6 +221,7 @@ export const ContactForm: FC<ContactFormProps> = ({
             </a>
           </div>
         </div>
+
         <div className={cn(s.infoItem, s.socials)}>
           <div className={s.infoIcon}>
             <Image src={userPlus} width={32} height={32} />

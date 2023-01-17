@@ -37,7 +37,7 @@ export const StaticTravelPlannerPage: FC = () => {
       />
 
       <div className={s.OverviewSection}>
-        <h1 className={s.title}>Luxury & Yachting Services</h1>
+        <h1 className={s.title}>{travelPlannerCategory?.name ?? null}</h1>
         <OverviewSection
           cards={
             travelPlannerInfo?.overview
