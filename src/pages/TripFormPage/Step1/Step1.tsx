@@ -64,15 +64,18 @@ export const Step1: FC<Step1Props> = ({
     control,
     name: 'destinations',
   })
+
   const watchForm = watch()
   const watchDestinations = watch('destinations')
   const watchStartPoint = watch('dest_from')
   const watchEndPoint = watch('dest_to')
   const calculationDebounce = useDebounce(watch, ORDER_CALCULATION_DEBOUNCE)
+
   const airportOptions = provideOptionsWithIcon(
     destinationToOption(airports),
     airportIcon
   )
+
   const [startPointTransfer, setStartPointTransfer] = useState(DEFAULT_TRANSFER)
   const [endPointTransfer, setEndPointTransfer] = useState(DEFAULT_TRANSFER)
 
@@ -96,34 +99,42 @@ export const Step1: FC<Step1Props> = ({
         })
       } else {
         alert(
-          `No appropriate route found from  ${watchDestinations[watchDestinations?.length - 1].destination_name
+          `No appropriate route found from  ${
+            watchDestinations[watchDestinations?.length - 1].destination_name
           }`
         )
       }
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
+
   const onSubmit = (formData: any) => {
     console.log('formData :', formData)
     // TODO add type
     dispatch(updateForm(formData))
     setStep(Steps.SECOND)
   }
+
   const loadTransfer = async (from: number, to: number) => {
     const response = await getTransfer(from, to)
     return response
   }
+
   const loadPrice = async () => {
     const data = await calculateOrder(prepareOrder(form))
     // TODO connect
   }
+
   const updateEndPointTransfer = (id: number) => {
     const prevTransfer = getValues('transports') ?? []
-    setValue(`transports`, [{
-      transport: id,
-      date: dateToServerFormat(new Date())  // TODO
-    }, ...prevTransfer])
+    setValue(`transports`, [
+      {
+        transport: id,
+        date: dateToServerFormat(new Date()), // TODO
+      },
+      ...prevTransfer,
+    ])
   }
 
   useEffect(() => {
@@ -131,8 +142,15 @@ export const Step1: FC<Step1Props> = ({
       const response = await getTransfer(from, to)
       setEndPointTransfer(response)
     }
-    if (watchDestinations && watchDestinations[watchDestinations.length - 1] && watchEndPoint) {
-      loadTransfer(watchDestinations[watchDestinations?.length - 1].destination, Number(watchEndPoint.value))
+    if (
+      watchDestinations &&
+      watchDestinations[watchDestinations.length - 1] &&
+      watchEndPoint
+    ) {
+      loadTransfer(
+        watchDestinations[watchDestinations?.length - 1].destination,
+        Number(watchEndPoint.value)
+      )
     }
   }, [watchEndPoint, watchDestinations])
 
@@ -142,7 +160,10 @@ export const Step1: FC<Step1Props> = ({
       setStartPointTransfer(response)
     }
     if (watchDestinations && watchDestinations[0] && watchStartPoint) {
-      loadTransfer(Number(watchStartPoint.value), watchDestinations[0].destination)
+      loadTransfer(
+        Number(watchStartPoint.value),
+        watchDestinations[0].destination
+      )
     }
   }, [watchStartPoint, watchDestinations])
 
@@ -160,11 +181,13 @@ export const Step1: FC<Step1Props> = ({
                 onChange={onChange}
                 value={value}
                 options={airportOptions}
+                placeholder={t('common.select')}
               />
             )}
           />
         </div>
       </div>
+
       {watchDestinations?.map((dest, index) => {
         return (
           <TripDayForm
@@ -186,21 +209,34 @@ export const Step1: FC<Step1Props> = ({
             total={getTripDuration(watchDestinations)}
             type={CarTransferType.PICKUP}
             from={
-              trip.destinations[index - 1] ? {
-                label: trip.destinations[index - 1].destination_name,
-                value: trip.destinations[index - 1].destination.toString()
-              } :
-                watchForm.dest_from ?? undefined
+              trip.destinations[index - 1]
+                ? {
+                    label: trip.destinations[index - 1].destination_name,
+                    value: trip.destinations[index - 1].destination.toString(),
+                  }
+                : watchForm.dest_from ?? undefined
             }
             previousDestination={watchDestinations[index - 1] ?? null}
             transfers={transfers}
           />
         )
       })}
-      <Transfer onChange={(id, type) => updateEndPointTransfer(id)} from={{
-        label: trip.destinations[trip.destinations.length - 1].destination_name,
-        value: trip.destinations[trip.destinations.length - 1].destination.toString(),
-      }} to={watchEndPoint?.label ?? ''} options={endPointTransfer} value={null} />
+
+      <Transfer
+        onChange={(id, type) => updateEndPointTransfer(id)}
+        from={{
+          label:
+            trip.destinations[trip.destinations.length - 1].destination_name,
+          value:
+            trip.destinations[
+              trip.destinations.length - 1
+            ].destination.toString(),
+        }}
+        to={watchEndPoint?.label ?? ''}
+        options={endPointTransfer}
+        value={null}
+      />
+
       <div className={s.endpoint}>
         <div className={s.select}>
           <div className={s.selectLabel}>{t('tripSteps.endPoint')}:</div>
@@ -212,13 +248,15 @@ export const Step1: FC<Step1Props> = ({
                 onChange={onChange}
                 value={value}
                 options={airportOptions}
+                placeholder={t('common.select')}
               />
             )}
           />
         </div>
       </div>
+
       <div className={s.addLocationSectionWrap}>
-        <div className={s.addLocationSection}  onClick={() => addLocation()}>
+        <div className={s.addLocationSection} onClick={() => addLocation()}>
           <AddIcon />
           <div className={s.addLocationTitle}>{t('tripSteps.add')}</div>
           <div className={s.addLocationInfo}>
@@ -226,6 +264,7 @@ export const Step1: FC<Step1Props> = ({
           </div>
         </div>
       </div>
+
       <div className={s.actions}>
         <Button onClick={handleSubmit(onSubmit)}>{t('tripSteps.next')}</Button>
         <Button variant='outline'>

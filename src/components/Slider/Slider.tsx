@@ -45,9 +45,7 @@ export const Slider: FC<SliderProps> = ({
       >
         {children.length
           ? children.map((child, idx) => (
-              <SwiperSlide className={s.swiperSlide} key={idx}>
-                {child}
-              </SwiperSlide>
+              <SwiperSlide key={idx}>{child}</SwiperSlide>
             ))
           : null}
       </Swiper>
@@ -55,10 +53,10 @@ export const Slider: FC<SliderProps> = ({
         <>
           <div
             className={cn(s.swiperButtonPrev, prevEl, 'swiper-button-prev')}
-          ></div>
+          />
           <div
             className={cn(s.swiperButtonNext, nextEl, 'swiper-button-next')}
-          ></div>
+          />
         </>
       )}
     </div>

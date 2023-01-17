@@ -25,8 +25,8 @@ export const Comments: FC<CommentsBlockProps> = comments => {
 
       <Slider
         withPagination={true}
-        withNavigation={widthWindow <= 768 ? false: true}
-        slidesPerView={widthWindow <= 768 ? 1 : 2}
+        withNavigation={widthWindow > 850}
+        slidesPerView={widthWindow <= 950 ? 1 : 2}
         nextEl={s.buttonNext}
         prevEl={s.buttonPrev}
       >

@@ -9,7 +9,6 @@ import { useTranslate } from 'shared/hooks/useTranslate'
 import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
 import { slidesPerViewTravelPlanner } from 'shared/helpers/slidesPerView'
 
-import { moreCategoriesMock } from 'shared/mocks/tripPlanner'
 import { TABLET_MAX_SCREEN } from 'shared/constants/screenResolutions'
 
 import bg from '/public/assets/images/trip_planner_bg.png'
@@ -21,8 +20,6 @@ export const TravelPlannerPage: FC = () => {
   const dispatch = useAppDispatch()
 
   const categories = useAppSelector(state => state.trips.categories)
-  // const categories = moreCategoriesMock
-  const moreCategories = moreCategoriesMock
 
   useEffect(() => {
     dispatch(getTripCategoriesThunk())

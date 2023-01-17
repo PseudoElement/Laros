@@ -35,13 +35,13 @@ export const MobileMenu: FC<MobileMenuProps> = ({
 
   return (
     <>
-      <div onClick={onClick} className={className}></div>
+      <div onClick={onClick} className={className} />
       <div className={isOpenMenu}>
         {children.length
           ? children.map(item => (
               <div key={item.to} className={s.navItem}>
                 <Link href={item.to}>
-                  <a>{t(item.name)}</a>
+                  <a onClick={onClick}>{t(item.name)}</a>
                 </Link>
               </div>
             ))
@@ -49,7 +49,7 @@ export const MobileMenu: FC<MobileMenuProps> = ({
         <div className={s.row} />
         <div className={s.bottomNav}>
           <Link href='/contact'>
-            <div className={s.headContactUse}>
+            <div className={s.headContactUse} onClick={onClick}>
               <Image
                 className={s.headSmIcon}
                 src={callImg}
@@ -62,7 +62,7 @@ export const MobileMenu: FC<MobileMenuProps> = ({
           </Link>
 
           <Link href='/voucher'>
-            <div className={s.headGift}>
+            <div className={s.headGift} onClick={onClick}>
               <Image
                 className={s.headSmIcon}
                 src={giftImg}
@@ -74,7 +74,7 @@ export const MobileMenu: FC<MobileMenuProps> = ({
             </div>
           </Link>
         </div>
-        <div className={s.subNav}>
+        <div className={s.subNav} onClick={onClick}>
           <SubNav className={s.subNavMobile} />
         </div>
       </div>

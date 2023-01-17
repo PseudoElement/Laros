@@ -1,14 +1,111 @@
 @use 'styles/style.scss' as *;
+
 .wrapper {
+  background-color: $color-modal-header;
+  border-radius: 24px;
+  padding-bottom: 16px;
   position: relative;
-  margin-bottom: 100px;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0, 60, 118, 0.05);
 }
 
-.grayBackground {
-  width: 100vw;
-  height: 810px;
+.subtitle {
+  font-weight: $fw-bold;
+  font-size: 16px;
+  padding-bottom: 8px;
+}
+
+.text {
+  font-weight: $fw-regular;
+  font-size: 12px;
+  padding-bottom: 32px;
+}
+
+.seeMore {
+  display: block;
+  width: 100px;
+  margin: 24px auto 0;
+  color: #c3c6c9;
+}
+
+.slider {
+  position: relative;
+}
+.sliderItems {
+  display: flex;
+  justify-content: center;
+  gap: 11px;
+  margin-top: 0;
+  padding-bottom: 32px;
+}
+.slideImage {
+  height: 400px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  position: relative;
   background-color: $color-laros-dark-grey;
-  background-image: url('/assets/images/static_travel_plannerPage/06.png');
+}
+.contentWrapper {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 64px 0 40px;
+}
+
+.title {
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+.linkWrapper {
+  text-align: center;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  color: #c3c6c9;
+}
+
+.videoWrapper {
+  width: 1060px;
+  height: 400px;
+}
+
+.sliderNavigation {
+  width: 900px;
+  margin: auto;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.prevEl,
+.nextEl {
+  width: 32px;
+  height: 32px;
+  z-index: 1;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.nextEl {
+  background: url('/assets/images/area-images/next__arrow.svg');
   background-repeat: no-repeat;
-  background-size: cover;
+  right: -150px;
+}
+
+.prevEl {
+  background-image: url('/assets/images/area-images/prev__arrow.svg');
+  background-repeat: no-repeat;
+  left: -150px;
+}
+
+.nextEl::after,
+.prevEl::after {
+  display: none;
 }

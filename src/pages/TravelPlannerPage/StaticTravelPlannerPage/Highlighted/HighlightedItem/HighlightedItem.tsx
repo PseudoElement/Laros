@@ -5,6 +5,11 @@ import Link from 'next/link'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Image, { StaticImageData } from 'next/image'
 import { Pagination } from 'swiper'
+import { TruncatedText } from '../../../../../components'
+import {
+  JOB_CARD_TEXT_LIMIT,
+  TRIP_PLAN_DESCRIPTION_SIZE,
+} from '../../../../../shared/constants'
 
 interface HighlightedItemProps {
   text: string
@@ -39,31 +44,34 @@ export const HighlightedItem: FC<HighlightedItemProps> = ({
             </SwiperSlide>
           ))}
         </Swiper>
+
         <div className={s.pagination}>
           <div
             onClick={() => setInitialSlide(0)}
             className={cls(s.paginationItem, {
               [s.activePagination]: initialSlide === 0,
             })}
-          ></div>
+          />
+
           <div
             onClick={() => setInitialSlide(1)}
             className={cls(s.paginationItem, {
               [s.activePagination]: initialSlide === 1,
             })}
-          ></div>
+          />
+
           <div
             onClick={() => setInitialSlide(2)}
             className={cls(s.paginationItem, {
               [s.activePagination]: initialSlide === 2,
             })}
-          ></div>
+          />
         </div>
       </div>
-      <p className={s.text}>{text}</p>
-      <div className={s.linkWrapper}>
-        <Link href={'/#'}>See more</Link>
-      </div>
+
+      <TruncatedText className={s.text} limit={JOB_CARD_TEXT_LIMIT}>
+        {text}
+      </TruncatedText>
     </div>
   )
 }

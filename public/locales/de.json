@@ -104,7 +104,7 @@
     "card_7_name": "",
     "card_7_tripName": "Rückmeldung vom Juni 2022 / Amorgos-Naxos ",
     "card_7_text": "Liebes Laros-Team Wir sind zurück von sonnigen, schönen Tagen auf Amorgos und Naxos. Gerne gebe ich Ihnen ein kurzes Feedback: Alles hat bestens geklappt, die Unterkünfte auf Amorgos und Naxos haben uns gut gefallen, das Personal war sehr aufmerksam und hilfsbereit und wir können sie weiterempfehlen. Die Lage war ideal, ruhig und doch zentral und zu Fuss sind Tavernen und Läden gut erreichbar. Auch für Wanderungen sind diese beiden Inseln super. Es hat viele gut markierte bzw. nummerierte Wanderwege. Nochmals vielen Dank für Ihre immer gute Beratung. Das wird nicht unsere letzte Reise auf eine griechische Insel sein!!! Herzliche Grüsse"
-   },
+  },
 
   "faq": {
     "pageTitle": "HÄUFIG GESTELLTE FRAGEN",
@@ -147,7 +147,6 @@
     "sectionTitle5": "ALLGEMEINES",
     "section_5_title_1": "Kann ich die Flüge selbst buchen?",
     "section_5_text_1": "Ja. Sie können die Flüge auch selbst buchen. Es ist dabei wichtig zu wissen, dass wir keinerlei Haftung übernehmen, falls es zu einer Flugplanänderung kommt und Anschlussleistungen nicht erfüllt werden können. Entstehende Mehrkosten sind von Ihnen zu leisten."
-
   },
 
   "career": {
@@ -257,7 +256,7 @@
     "label10": "Geburtsdatum",
     "label11": "Weitere Bemerkungen",
     "label12": "Tippen Sie zum Hinzufügen",
-    "label13": "Transfer",
+    "label13": "Übertragung",
     "label14": "Hotelkategorie",
     "label15": "Reisepreis insgesamt",
     "buttonSave": "Speichern",
@@ -347,13 +346,16 @@
     "mrs": "Frau",
     "ms": "Fräulein"
   },
+
   "tripSteps": {
+
     "transfer": {
       "ferry": "Fähre",
       "airport": "Airport",
       "carRental": "Rental",
       "carPickUp": "Pick-up"
     },
+
     "buttonBack": "Zurück zum vorherigen Schritt",
     "buttonReset": "Alle Änderungen zurücksetzen",
     "title": "Unexplored Peloponnese",
@@ -362,13 +364,13 @@
     "ferry": "Fähre",
     "oldCorinth": "Old Corinth",
     "location": "Ort",
-    "duration>": "Dauer",
+    "duration": "Dauer",
     "edit": "Bearbeiten",
     "add": "Ort hinzufügen ",
     "more": "Mehr ansehen",
     "room": "Zimmer",
-    "breakfast": "Übernachtung in",
-    "description:": "Beschreibung",
+    "breakfast": "Unterkunft Frühstück in",
+    "description": "Beschreibung",
     "step": "Schritt",
     "details": "Details zur Reise",
     "travellers": "Angaben zu den Reisenden",
@@ -396,11 +398,12 @@
     "endPoint": "Endpunkt",
     "out": "aus"
   },
+
   "changingRoomType": {
     "windowTitle": "Zimmerkategorie ändern",
     "close": "Schliessen",
     "title": "Hotels von",
-    "subTitle": "Um die Zimmerkategorie zu ändern, wählen Sie bitte eine der folgenden Varianten:",
+    "subTitle": "Um die Zimmerkategorie zu ändern, wählen Sie bitte eine der folgenden Varianten",
     "save": "Ausgewählte Kategorie speichern",
     "cancel": "Abbrechen",
     "selected": "Ausgewählt",
@@ -511,7 +514,9 @@
     "crumbStep1": "Schritt 1",
     "stepName1": "Reisedetails",
     "crumbStep2": "Schritt 2",
-    "stepName2": "Angaben zu den Reisenden"
+    "stepName2": "Angaben zu den Reisenden",
+    "ask": "Bitten Sie den Manager um Informationen über eine Versetzung",
+    "select": "Wählen Sie aus, wohin oder von wo aus Sie gehen möchten, um die Optionen zu sehen"
   },
   "navigation": {
     "navigate": {

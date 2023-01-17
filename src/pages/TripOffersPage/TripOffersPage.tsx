@@ -21,18 +21,17 @@ import {
   getRootDestinations,
   getSubRegions,
 } from 'store/slices/destinations/selectors'
+import { sortByAlphabet } from 'shared/helpers/sortByAlphabet'
+import { withDomain } from 'shared/helpers/withDomain'
 
 import { Tag } from 'shared/types/tag'
-import { TripCategory, TripFilterParams, TripSort } from 'shared/types/trip'
+import { TripFilterParams, TripSort } from 'shared/types/trip'
 import { Option } from 'shared/types'
-
-import { tripPageInfo } from 'shared/mocks/tripInfo'
 
 import listIcon from '/public/assets/images/list.svg?url'
 import gridIcon from '/public/assets/images/grid.svg?url'
 
 import s from './TripOffersPage.module.scss'
-import { sortByAlphabet } from '../../shared/helpers/sortByAlphabet'
 
 enum View {
   LIST,
@@ -49,7 +48,11 @@ export const TripOffersPage: FC = () => {
     },
   })
   const dispatch = useAppDispatch()
-  const [tripCategoryInfo, setTripCatInfo] = useState<TripCategory | null>()
+
+  const tripCategoryInfo = useAppSelector(state =>
+    state.trips.categories.find(cat => cat.id === Number(category))
+  )
+
   const [view, setView] = useState(View.GRID)
   const [tags, setTags] = useState<Tag[]>([])
   const [region, setRegion] = useState<Option | null>(null)
@@ -75,7 +78,6 @@ export const TripOffersPage: FC = () => {
     newTrips.length === TRIP_PAGINATION_PER_PAGE
   )
 
-  // const tripCategoryInfo = useAppSelector((state) => state.trips.categories.find((cat) => cat.id === Number(category)));
   const destinations = useAppSelector(state => state.destinations.destinations)
   const regions = getRootDestinations(destinations)
   const subregions = useAppSelector(state =>
@@ -154,24 +156,25 @@ export const TripOffersPage: FC = () => {
     return () => subscription.unsubscribe()
   }, [category, watch])
 
-  useEffect(() => {
-    setTripCatInfo(tripPageInfo)
-  }, [category])
-
   return (
     <div className={s.tripOffersPage}>
       <div
         className={s.bg}
         style={{
           backgroundImage: `url(${
-            tripCategoryInfo?.images.length ? tripCategoryInfo?.images[0] : null
+            tripCategoryInfo?.images.length
+              ? withDomain(tripCategoryInfo?.images[1])
+              : null
           })`,
         }}
       >
-        {' '}
+        <div className={s.shadow} />
       </div>
-      <div className={s.title}>{tripCategoryInfo?.name} </div>
-      <div className={s.subTitle}>{tripCategoryInfo?.description}</div>
+
+      <div className={s.titleWrap}>
+        <div className={s.title}>{tripCategoryInfo?.name} </div>
+        <div className={s.subTitle}>{tripCategoryInfo?.description}</div>
+      </div>
 
       <div className={s.filters}>
         <div className={s.filterTitle}>{t('travelPlannerCategory.sortBy')}</div>

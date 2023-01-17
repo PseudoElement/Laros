@@ -48,29 +48,21 @@ export const Review: FC<ReviewProps> = ({
           </div>
         </div>
 
-        <>
-          <TruncatedText
-            className={s.comment}
-            limit={TRIP_PLAN_DESCRIPTION_SIZE}
-            more={t('homepage.whoWeAreButton')}
-          >
-            {t(text)}
-          </TruncatedText>
+        <div className={s.comment}>{t(text)}</div>
 
-          {images && (
-            <div className={cn(s.images, ['scrollStyle'])}>
-              {images.map((image, index) => (
-                <div
-                  key={index}
-                  className={s.image}
-                  style={{
-                    backgroundImage: `url(${image})`,
-                  }}
-                ></div>
-              ))}
-            </div>
-          )}
-        </>
+        {images && (
+          <div className={cn(s.images, ['scrollStyle'])}>
+            {images.map((image, index) => (
+              <div
+                key={index}
+                className={s.image}
+                style={{
+                  backgroundImage: `url(${image})`,
+                }}
+              />
+            ))}
+          </div>
+        )}
 
         <span className={s.icon}>
           <Image src={quotes} alt='quotes' width={50} height={50} />

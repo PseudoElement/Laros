@@ -292,13 +292,13 @@
     "car": "Car pick-up",
     "ferry": "Ferry",
     "oldCorinth": "Old Corinth",
-    "location": "Location:",
-    "duration": "Duration of the location:",
+    "location": "Location",
+    "duration": "Duration of the location",
     "edit": "Edit",
     "add": "Add location",
     "more": "See more",
     "room": "Room",
-    "breakfast": "Accommodation breakfast in:",
+    "breakfast": "Accommodation breakfast in",
     "description": "Description",
     "step": "Step",
     "details": "Trip details",
@@ -440,7 +440,9 @@
     "crumbStep1": "Step 1:",
     "stepName1": "Trip details",
     "crumbStep2": "Step 2:",
-    "stepName2": "Travellers’ details"
+    "stepName2": "Travellers’ details",
+    "ask": "Ask manager to get information about transfer",
+    "select": "Select where or from to go to see the options"
   },
   "navigation": {
     "navigate": {

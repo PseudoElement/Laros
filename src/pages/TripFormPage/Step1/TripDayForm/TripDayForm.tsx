@@ -189,6 +189,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
         to={destination.destination_name}
         value={null}
       />
+
       <div className={s.content}>
         <div className={s.header}>
           <div className={s.day}>
@@ -218,8 +219,9 @@ export const TripDayForm: FC<TripDayFormProps> = ({
         </div>
         <div className={s.section}>
           <div className={s.sectionTitle}>{t('tripSteps.duration')}:</div>
+
           <div className={s.durationCounter}>
-            {duration} {getDayName(duration)}
+            {duration} {t(getDayName(duration))}
             <div className={s.counter}>
               <Counter
                 min={1}
@@ -231,6 +233,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
             </div>
           </div>
         </div>
+
         <div className={cn(s.section, s.descriptionSection)}>
           <div className={cn(s.sectionTitle, s.descriptionTitle)}>
             {t('tripSteps.description')}:
@@ -253,9 +256,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
           </div>
         </div>
         <div className={s.section}>
-          <div
-            className={s.sectionTitle}
-          >{`Accommodation/\nbreakfast in:`}</div>
+          <div className={s.sectionTitle}>{t('tripSteps.breakfast')}:</div>
           <div className={cn(s.sectionValue, s.hotel)}>
             <span className={s.valueIcon}>
               <PinIcon />
@@ -302,7 +303,9 @@ export const TripDayForm: FC<TripDayFormProps> = ({
                     </span>
                   </div>
                 </div>
-                <div className={s.roomCapacityTitle}>People in a room:</div>
+                <div className={s.roomCapacityTitle}>
+                  {t('forms.inputLabel19')}:
+                </div>
                 <div className={cn(s.sectionValue, s.roomCapacity)}>
                   {room.capacity}
                 </div>
