@@ -285,7 +285,7 @@
     "title": "Inselfieber",
     "subtitle": "Sorgfältig ausgewählte Reisen zu den griechischen Inseln, empfohlen von unserem erfahrenen Laros-Team. Welche wählen Sie aus? Das blaugrüne Wasser des Ionischen Meers oder das tiefe Blau der Ägäis? Die grünen Inseln der Sporaden, der saronischen und der Ionischen Inseln oder der Kontrast der weißen Häuser und der einzigartigen Architektur, die die Kykladen und den Dodekanes bezeichnen? Viele zur Auswahl, sogar an versteckten Reisezielen in Griechenland.",
     "sortBy": "Sortieren nach",
-    "from": "Von",
+    "from": "Ab",
     "tags": "Stichwörter"
   },
   "travelPlannerTabs": {
@@ -431,7 +431,7 @@
     "subTitle": "Um die Unterkunft zu ändern, wählen Sie bitte eine der folgenden Varianten:",
     "price": "Preisspanne",
     "tags": "Stichwörter",
-    "from": "From",
+    "from": "Ab",
     "next": "Weiter: Zimmerkategorie wählen",
     "cancel": "Abbrechen",
     "save": "Ausgewählte Unterkunft speichern",
@@ -621,7 +621,7 @@
     "select3": "Art der Unterkunft",
     "price": "Preisspanne",
     "tags": "Stichwörter",
-    "from": "Von"
+    "from": "Ab"
   },
   "hotel": {
     "more": "Mehr ansehen",
@@ -720,7 +720,7 @@
   "common": {
     "contactText": "Kontakt",
     "filterTitle": "Sortieren nach",
-    "sortFromText": "Von ",
+    "sortFromText": "Ab ",
     "emptyText": "Keine Variante",
     "sortText": "Sortieren",
     "loadingText": "Wird geladen…",

@@ -35,6 +35,7 @@ export const StaticTravelPlannerPage: FC = () => {
           })`,
         }}
       />
+
       <div className={s.OverviewSection}>
         <h1 className={s.title}>Luxury & Yachting Services</h1>
         <OverviewSection

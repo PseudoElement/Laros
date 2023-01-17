@@ -163,6 +163,7 @@ const Sorting: FC<SortingProps> = ({ setParams, params, map }) => {
                 ordering: value?.value as keyof Hotel,
               }))
             }
+            hasArrow={false}
             defaultValue={TripSortOptions[0]}
             isClearable={false}
             classname={s.selectDirection}

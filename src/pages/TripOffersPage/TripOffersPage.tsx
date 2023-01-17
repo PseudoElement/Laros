@@ -21,17 +21,19 @@ import {
   getRootDestinations,
   getSubRegions,
 } from 'store/slices/destinations/selectors'
-import { sortByAlphabet } from 'shared/helpers/sortByAlphabet'
-import { withDomain } from 'shared/helpers/withDomain'
 
 import { Tag } from 'shared/types/tag'
-import { TripFilterParams, TripSort } from 'shared/types/trip'
+import { TripCategory, TripFilterParams, TripSort } from 'shared/types/trip'
 import { Option } from 'shared/types'
+
+import { tripPageInfo } from 'shared/mocks/tripInfo'
 
 import listIcon from '/public/assets/images/list.svg?url'
 import gridIcon from '/public/assets/images/grid.svg?url'
 
 import s from './TripOffersPage.module.scss'
+import { sortByAlphabet } from '../../shared/helpers/sortByAlphabet'
+import { withDomain } from '../../shared/helpers/withDomain'
 
 enum View {
   LIST,
@@ -48,11 +50,7 @@ export const TripOffersPage: FC = () => {
     },
   })
   const dispatch = useAppDispatch()
-
-  const tripCategoryInfo = useAppSelector(state =>
-    state.trips.categories.find(cat => cat.id === Number(category))
-  )
-
+  // const [tripCategoryInfo, setTripCatInfo] = useState<TripCategory | null>()
   const [view, setView] = useState(View.GRID)
   const [tags, setTags] = useState<Tag[]>([])
   const [region, setRegion] = useState<Option | null>(null)
@@ -78,6 +76,9 @@ export const TripOffersPage: FC = () => {
     newTrips.length === TRIP_PAGINATION_PER_PAGE
   )
 
+  const tripCategoryInfo = useAppSelector(state =>
+    state.trips.categories.find(cat => cat.id === Number(category))
+  )
   const destinations = useAppSelector(state => state.destinations.destinations)
   const regions = getRootDestinations(destinations)
   const subregions = useAppSelector(state =>
