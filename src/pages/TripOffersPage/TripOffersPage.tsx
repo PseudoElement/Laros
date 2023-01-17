@@ -157,11 +157,6 @@ export const TripOffersPage: FC = () => {
   }, [category, watch])
 
   useEffect(() => {
-    setTripCatInfo(tripPageInfo)
-  }, [category])
-
-  useEffect(() => {
-    console.log('set value')
     setValue(
       'region',
       regions
@@ -188,11 +183,8 @@ export const TripOffersPage: FC = () => {
       >
         <div className={s.shadow} />
       </div>
-
-      <div className={s.titleWrap}>
-        <div className={s.title}>{tripCategoryInfo?.name} </div>
-        <div className={s.subTitle}>{tripCategoryInfo?.description}</div>
-      </div>
+      <div className={s.title}>{tripCategoryInfo?.name} </div>
+      <div className={s.subTitle}>{tripCategoryInfo?.description}</div>
 
       <div className={s.filters}>
         <div className={s.filterTitle}>{t('travelPlannerCategory.sortBy')}</div>
