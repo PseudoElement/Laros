@@ -43,7 +43,7 @@ export const TripOffersPage: FC = () => {
   const t = useTranslate()
   const { query, push } = useRouter()
   const { category } = query
-  const { control, watch } = useForm<any>({
+  const { control, watch, setValue } = useForm<any>({
     defaultValues: {
       ordering: TripSortOptions[0],
     },
@@ -157,6 +157,20 @@ export const TripOffersPage: FC = () => {
   useEffect(() => {
     setTripCatInfo(tripPageInfo)
   }, [category])
+
+  useEffect(() => {
+    console.log('set value')
+    setValue(
+      'region',
+      regions
+        .filter(item => item.id === 17)
+        .map(region => ({
+          label: region.name,
+          value: region.id.toString(),
+        }))
+    )
+    setParams(prevState => ({ ...prevState, destination: '17' }))
+  }, [destinations])
 
   return (
     <div className={s.tripOffersPage}>

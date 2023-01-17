@@ -155,7 +155,7 @@
 .filterContent {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   margin-bottom: 24px;
 
   @include mobile-tablet {

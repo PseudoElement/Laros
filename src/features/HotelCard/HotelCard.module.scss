@@ -4,6 +4,7 @@
 .hotelCard {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   background-color: $color-white;
   border-radius: 16px;
   box-shadow: $color-light-grey;

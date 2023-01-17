@@ -12,6 +12,7 @@ import { useDebounce } from 'shared/hooks/useDebounce'
 import { useTranslate } from 'shared/hooks/useTranslate'
 
 import s from './Sorting.module.scss'
+import { TripSortOptions } from '../../../shared/constants/filters'
 
 const direction = [
   { icon: '', label: 'A-Z', value: Sort.AZ },
@@ -45,7 +46,7 @@ const Sorting: FC<SortingProps> = ({ setParams, params, map }) => {
   const onChangePrice = (value: number[]) => setPrice(value)
 
   const changeCategory = (value: Option) =>
-    setParams(prev => ({ ...prev, category_name: value?.value }))
+    setParams(prev => ({ ...prev, category: value?.value }))
 
   const changeTabs = (value: number) => {
     let newTags = params.tags?.split(',') ?? []
@@ -162,6 +163,7 @@ const Sorting: FC<SortingProps> = ({ setParams, params, map }) => {
                 ordering: value?.value as keyof Hotel,
               }))
             }
+            defaultValue={TripSortOptions[0]}
             isClearable={false}
             classname={s.selectDirection}
             options={direction}

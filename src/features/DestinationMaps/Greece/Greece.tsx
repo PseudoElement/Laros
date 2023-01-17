@@ -13,9 +13,6 @@ interface GreeceProps {
 
 const Greece: FC<GreeceProps> = ({ location }) => {
   const [isShownCard, setIsShownCard] = useState<number | null>(null)
-
-  console.log(location)
-
   return (
     <div className={s.container}>
       {location
