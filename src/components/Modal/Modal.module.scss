@@ -12,6 +12,10 @@
   justify-content: center;
   transform: scale(0);
   z-index: 1500;
+
+  @include mobile-tablet {
+    padding: 50px;
+  }
 }
 
 .active {
@@ -25,6 +29,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  max-width: 850px;
+
+  @include mobile {
+    height: 80vh;
+  }
 }
 
 .header {
@@ -35,10 +45,22 @@
   display: flex;
   justify-content: space-between;
   padding: 15px 24px 13px;
+
+  @include mobile {
+    align-items: center;
+    height: 60px;
+    font-size: 14px;
+    gap: 10px;
+    padding: 15px 10px 13px;
+    justify-content: center;
+  }
 }
+
 .title {
   font-weight: 400;
+
 }
+
 .close {
   cursor: pointer;
   font-weight: 600;
