@@ -13,6 +13,16 @@
   transform: scale(0);
   z-index: 1500;
 
+  @include tablet {
+    padding: 20px;
+  }
+
+  @include mobile {
+    padding: 20px;
+  }
+  @media (max-width: 500px) {
+    padding: 0;
+  }
 }
 
 .active {
@@ -28,9 +38,13 @@
   align-items: center;
   width: 100%;
   max-width: 850px;
+  max-height: 90vh;
 
   @include mobile {
-    height: 100vh;
+    max-height: 90vh;
+  }
+  @media (max-width: 500px) {
+    max-height: 100vh;
   }
 }
 
@@ -54,7 +68,6 @@
 
 .title {
   font-weight: 400;
-
 }
 
 .close {
