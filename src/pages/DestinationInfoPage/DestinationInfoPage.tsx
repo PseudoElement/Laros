@@ -69,7 +69,7 @@ export const DestinationInfoPage: FC<DestinationInfoPageProps> = ({
       />
       {destination ? <DestinationIntro {...destination} /> : null}
 
-      {destination?.images ? (
+      {destination?.images.length > 2 ? (
         // @ts-ignore TODO
         <Overview images={destination.images} overview={destination.overview} />
       ) : null}

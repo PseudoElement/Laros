@@ -49,9 +49,13 @@ export const BrochureCard: FC<BrochureCardProps> = ({
         <div className={s.topic}>{t('brochures.brochuresLabel')}</div>
         <div className={s.name}>{name}</div>
 
-        <a onClick={() => onDownload(id, file)} className={s.icon}>
+        <button
+          onClick={() => onDownload(id, file)}
+          className={s.icon}
+          disabled={!isSelected}
+        >
           <DownloadIcon />
-        </a>
+        </button>
       </div>
 
       <div onClick={() => onSelect(id)} className={selectClass}>

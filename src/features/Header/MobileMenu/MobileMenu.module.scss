@@ -21,11 +21,14 @@
   transition: 0.3s;
   transform: translateX(0);
   z-index: 8888;
-  @media (max-height: 620px){
+
+  @media (max-height: 620px) {
     padding: 20px 70px;
   }
 }
-
+.hidden {
+  visibility: hidden;
+}
 .logo {
   cursor: pointer;
   position: absolute;

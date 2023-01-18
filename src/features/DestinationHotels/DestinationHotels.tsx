@@ -64,14 +64,18 @@ export const DestinationHotels: FC<DestinationHotelsProps> = ({ map }) => {
       <h3 className={s.title}>{t('hotels.sortTitle')}</h3>
       <Sorting map={map} setParams={setParams} params={params} />
 
-      {hotels.length ? (
+      {!isLoading && !hotels.length && (
+        <div className={s.loading}>{t('common.emptyText')}</div>
+      )}
+
+      {isLoading ? (
+        <div className={s.loading}>{t('common.loadingText')}</div>
+      ) : (
         <div className={s.hotels}>
           {hotels.map(hotel => (
             <HotelCard key={hotel.id} hotel={hotel} />
           ))}
         </div>
-      ) : (
-        <div className={s.loading}>{t('common.emptyText')}</div>
       )}
 
       {!isLoading && Boolean(hotels.length) && showMoreButton && (

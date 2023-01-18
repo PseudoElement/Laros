@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import cn from 'classnames'
 
@@ -164,6 +164,7 @@ export const SpecialOffersPage: FC = () => {
                 hasArrow={false}
                 classname={s.select}
                 isClearable={false}
+                placeholder={'A-Z'}
               />
             )}
           />
@@ -180,15 +181,15 @@ export const SpecialOffersPage: FC = () => {
         />
       </div>
 
+      {!isLoading && !trips.length && (
+        <div className={s.loading}>{t('common.emptyText')}</div>
+      )}
+
+      {isLoading && <div className={s.loading}>{t('common.loadingText')}</div>}
+
       <div className={cn(s.offers, s.grid)}>
-        {isLoading && (
-          <div className={s.loading}>{t('common.loadingText')}</div>
-        )}
-        {!isLoading && trips?.length ? (
-          trips.map((offer, idx) => <TripCard key={idx} {...offer} />)
-        ) : (
-          <div className={s.empty}>{t('common.emptyText')}</div>
-        )}
+        {!isLoading &&
+          trips.map((offer, idx) => <TripCard key={idx} {...offer} />)}
       </div>
     </div>
   )

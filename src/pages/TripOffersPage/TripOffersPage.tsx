@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { Controller, useForm } from 'react-hook-form'
@@ -21,19 +21,17 @@ import {
   getRootDestinations,
   getSubRegions,
 } from 'store/slices/destinations/selectors'
+import { sortByAlphabet } from 'shared/helpers/sortByAlphabet'
+import { withDomain } from 'shared/helpers/withDomain'
 
 import { Tag } from 'shared/types/tag'
-import { TripCategory, TripFilterParams, TripSort } from 'shared/types/trip'
+import { TripFilterParams, TripSort } from 'shared/types/trip'
 import { Option } from 'shared/types'
-
-import { tripPageInfo } from 'shared/mocks/tripInfo'
 
 import listIcon from '/public/assets/images/list.svg?url'
 import gridIcon from '/public/assets/images/grid.svg?url'
 
 import s from './TripOffersPage.module.scss'
-import { sortByAlphabet } from '../../shared/helpers/sortByAlphabet'
-import { withDomain } from '../../shared/helpers/withDomain'
 
 enum View {
   LIST,
@@ -50,7 +48,7 @@ export const TripOffersPage: FC = () => {
     },
   })
   const dispatch = useAppDispatch()
-  // const [tripCategoryInfo, setTripCatInfo] = useState<TripCategory | null>()
+
   const [view, setView] = useState(View.GRID)
   const [tags, setTags] = useState<Tag[]>([])
   const [region, setRegion] = useState<Option | null>(null)
@@ -300,11 +298,12 @@ export const TripOffersPage: FC = () => {
         </div>
       </div>
 
+      {!isLoading && !trips.length && (
+        <div className={s.loading}>{t('common.emptyText')}</div>
+      )}
+      {isLoading && <div className={s.loading}>{t('common.loadingText')}</div>}
       <div className={cn(s.offers, view === View.GRID ? s.grid : s.list)}>
-        {isLoading && (
-          <div className={s.loading}>{t('common.loadingText')}</div>
-        )}
-        {trips?.length ? (
+        {!isLoading &&
           trips.map((offer, idx) => {
             return (
               <div key={idx} className={s.tripCardWrap}>
@@ -315,11 +314,9 @@ export const TripOffersPage: FC = () => {
                 />
               </div>
             )
-          })
-        ) : (
-          <div className={s.empty}>{t('common.emptyText')}</div>
-        )}
+          })}
       </div>
+
       {!!trips.length && isButtonShowed && (
         <Button
           classname={s.button}
