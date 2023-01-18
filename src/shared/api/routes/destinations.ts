@@ -23,7 +23,7 @@ export const getDestinationByName = (
 export const getAirportDestinations = (): AxiosPromise<
   AxiosPaginatedResponse<Destination>
 > => {
-  return api.get(endpoints.destinations.get, { params: { airport: false } }) // TODO more to true
+  return api.get(endpoints.destinations.get, { params: { airport: true } }) // TODO more to true
 }
 
 export const getNearDestinations = (

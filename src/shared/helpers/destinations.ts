@@ -3,6 +3,6 @@ import { Destination } from 'shared/types/destinations'
 
 export const destinationToOption = (destinations: Destination[]): Option[] => {
   return destinations.map(dest => {
-    return { value: dest.id.toString(), label: dest.name }
+    return { value: dest.id.toString(), label: dest.airport ?? dest.name }
   })
 }
