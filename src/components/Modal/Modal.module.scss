@@ -12,6 +12,17 @@
   justify-content: center;
   transform: scale(0);
   z-index: 1500;
+
+  @include tablet {
+    padding: 20px;
+  }
+
+  @include mobile {
+    padding: 20px;
+  }
+  @media (max-width: 500px) {
+    padding: 0;
+  }
 }
 
 .active {
@@ -25,6 +36,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  max-width: 850px;
+  max-height: 90vh;
+
+  @include mobile {
+    max-height: 90vh;
+  }
+  @media (max-width: 500px) {
+    max-height: 100vh;
+  }
 }
 
 .header {
@@ -35,10 +56,20 @@
   display: flex;
   justify-content: space-between;
   padding: 15px 24px 13px;
+
+  @include mobile {
+    align-items: center;
+    height: 60px;
+    font-size: 14px;
+    gap: 10px;
+    padding: 15px 10px 13px;
+  }
 }
+
 .title {
   font-weight: 400;
 }
+
 .close {
   cursor: pointer;
   font-weight: 600;

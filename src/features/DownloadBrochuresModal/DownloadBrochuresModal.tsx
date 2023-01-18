@@ -95,6 +95,7 @@ export const DownloadBrochuresModal: FC<DownloadBrochuresModalProps> = ({
                     onChange={onChange}
                     value={value}
                     options={titleOptions}
+                    classname={s.radioButtons}
                   />
                 </div>
               )}

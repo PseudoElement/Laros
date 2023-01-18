@@ -81,6 +81,7 @@ export const SendBrochuresModal: FC<SendBrochuresModalProps> = ({
                     onChange={onChange}
                     value={value}
                     options={titleOptions}
+                    classname={s.radioButtons}
                   />
                 </div>
               )}

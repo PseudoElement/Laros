@@ -1,13 +1,32 @@
 @use 'styles/style.scss' as *;
+
 .container {
   display: flex;
   justify-content: center;
   padding-top: 50px;
   width: 846px;
   height: 456px;
+
+  @include tablet {
+    width: 100%;
+    padding: 20px;
+    height: auto;
+  }
+  @include mobile {
+    width: 100%;
+    padding: 20px;
+    justify-content: left;
+    height: auto;
+    overflow-x: auto;
+  }
 }
 .content {
   display: flex;
+
+  @include mobile {
+    display: block;
+    width: 100%;
+  }
 }
 .card {
   height: 288px;
@@ -18,6 +37,13 @@
   width: 404px;
   margin-left: 32px;
   position: relative;
+
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+  }
 }
 .title {
   padding: 8px;
@@ -57,6 +83,25 @@
   display: flex;
   align-items: center;
   padding: 5px 8px 20px;
+
+  @media (max-width: 400px) {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 0 0 10px 10px;
+  }
+}
+.radioButtons {
+  @media (max-width: 400px) {
+    display: block;
+    label {
+      display: block;
+      margin-top: 10px;
+      span {
+        margin-left: 0;
+      }
+    }
+  }
 }
 .radioLabel {
   font-family: $font-Lato;
@@ -71,6 +116,9 @@
   right: 0;
   display: flex;
   margin-bottom: 20px;
+  @include mobile {
+    position: static;
+  }
 }
 .icon {
   margin-top: 2px;
@@ -79,6 +127,13 @@
 }
 .downloadBtn {
   width: 190px;
+  margin-left: 20px;
+
+  @media (max-width: 366px) {
+    margin-left: 10px;
+    width: 180px;
+    padding: 10px;
+  }
 }
 .downloadText {
   margin-left: 11px;
