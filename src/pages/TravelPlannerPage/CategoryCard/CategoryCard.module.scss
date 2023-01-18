@@ -42,10 +42,6 @@
   @include mobile-tablet {
     height: 300px;
   }
-
-  @include laptop {
-    height: 400px;
-  }
 }
 .content {
   width: 100%;
