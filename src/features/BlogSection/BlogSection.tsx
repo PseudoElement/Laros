@@ -14,6 +14,7 @@ interface BlogSection {
   image: string | StaticImageData
   reversed?: boolean
   haveButton?: boolean
+  subTitle?: string
 }
 
 export const BlogSection: FC<BlogSection> = ({
