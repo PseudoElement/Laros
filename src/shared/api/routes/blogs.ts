@@ -9,3 +9,7 @@ export const getBlogs = (
 ): AxiosPromise<AxiosPaginatedResponse<BlogPayload>> => {
   return api.get(endpoints.blogs.all, { params })
 }
+
+export const getPostById = (id: number): AxiosPromise<BlogPayload> => {
+  return api.get(endpoints.blogs.one(id))
+}

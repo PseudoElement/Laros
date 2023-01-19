@@ -13,7 +13,6 @@ import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { getDestinationsThunk } from 'store/slices/destinations/thunk'
 import { getTripCategoriesThunk } from 'store/slices/trips/thunk'
 
-import { PostsMock } from 'shared/mocks/posts'
 import { AboutItemsMock } from 'shared/mocks/whoweare'
 import { reviewsMock } from 'shared/mocks/reviews'
 import screenfull from 'screenfull'

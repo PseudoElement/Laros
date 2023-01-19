@@ -1,7 +1,6 @@
 import React, { FC, useEffect, useState } from 'react'
 import s from './BlogPage.module.scss'
-import { blogs } from 'shared/mocks/blogs'
-import { BlogType } from 'shared/types/blogs'
+import { BlogPayload } from 'shared/types/blogs'
 import { ArrowIcon, Button } from 'components'
 import Image from 'next/image'
 import blog from '../../../public/assets/images/Blog/blog.png'
@@ -9,21 +8,24 @@ import { Slider } from 'components'
 import { useRouter } from 'next/router'
 import { BlogSection } from 'features/BlogSection'
 import { ContactFooterHero } from 'features/ContactFooterHero'
-import { useTranslate } from '../../shared/hooks/useTranslate'
-import { useWindowDimensions } from '../../shared/hooks/useWindowDimensions'
-import { TABLET_SCREEN } from '../../shared/constants/screenResolutions'
+import { useTranslate } from 'shared/hooks/useTranslate'
+import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
+import { TABLET_SCREEN } from 'shared/constants/screenResolutions'
+import { getPostById } from 'shared/api/routes/blogs'
 
 export const Blog: FC = () => {
   const router = useRouter()
   const blogId = Number(router.query.id)
-  const [post, setPost] = useState<BlogType>()
+  const [post, setPost] = useState<BlogPayload>()
   const t = useTranslate()
   const { width } = useWindowDimensions()
 
   useEffect(() => {
     if (blogId) {
-      const post = blogs.find(post => post.id === blogId)
-      setPost(post)
+      const fetchPost = async () => {
+        return await getPostById(blogId)
+      }
+      fetchPost().then(post => setPost(post.data))
     }
   }, [blogId])
 
@@ -44,9 +46,7 @@ export const Blog: FC = () => {
             </div>
             <div className={s.contentWrapper}>
               <BlogSection
-                title={post.title}
-                subTitle={post.subTitle}
-                read={post.read}
+                title={post.name}
                 description={post.description}
                 image={post.image}
               />
