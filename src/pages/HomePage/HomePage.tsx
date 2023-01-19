@@ -19,11 +19,14 @@ import { reviewsMock } from 'shared/mocks/reviews'
 import screenfull from 'screenfull'
 
 import s from './HomePage.module.scss'
+import { useGetBlogs } from '../../shared/hooks/useGetBlogs'
 
 export const HomePage: FC = () => {
   const [activeMenu, setActiveMenu] = useState<boolean>(false)
   const [videoIsFullscreen, setVideoIsFullscreen] = useState<boolean>(true)
   const videoRef = useRef<HTMLDivElement>(null)
+  const BLOGS_PER_PAGE = 3
+  const [blogs, isLoading, handleReady] = useGetBlogs({ size: BLOGS_PER_PAGE })
 
   const onFullScreen = () => {
     setVideoIsFullscreen(true)
@@ -77,7 +80,7 @@ export const HomePage: FC = () => {
       <WhoWeAre items={AboutItemsMock} />
 
       <Explore destinations={destinations} />
-      <PostBlock posts={PostsMock} />
+      {Boolean(blogs.length) && <PostBlock posts={blogs} />}
 
       <div className={s.commentsWrapper}>
         <Comments comments={reviewsMock} />
