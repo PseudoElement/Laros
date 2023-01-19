@@ -91,7 +91,7 @@ export const TripOffersPage: FC = () => {
       : []
     const destination = subregions.length
       ? subregions.join(',')
-      : form.region?.value ?? undefined
+      : form.region[0]?.value.toString() ?? undefined
 
     const duration =
       form.duration?.length > 0
