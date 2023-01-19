@@ -37,13 +37,6 @@ export const DestinationHotels: FC<DestinationHotelsProps> = ({ map }) => {
   }, [page])
 
   useEffect(() => {
-    setParams(prevState => ({
-      ...prevState,
-      page,
-    }))
-  }, [page])
-
-  useEffect(() => {
     const timeout = setTimeout(() => handleReady(), 200)
     return () => {
       clearTimeout(timeout)
@@ -84,7 +77,7 @@ export const DestinationHotels: FC<DestinationHotelsProps> = ({ map }) => {
           classname={s.button}
           onClick={() => setPage(prevState => ++prevState)}
         >
-          Show More
+          {t('common.loadMore')}
         </Button>
       )}
     </div>

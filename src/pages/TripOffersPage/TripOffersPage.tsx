@@ -97,9 +97,18 @@ export const TripOffersPage: FC = () => {
       form.duration?.length > 0
         ? form.duration.map((item: Option) => Number(item.value)).join(',')
         : undefined
+
+    const tags = form.tags
+      ? form.tags
+          ?.filter((tag: Tag) => tag.isSelected === true)
+          .map((tag: Tag) => tag.id)
+          .join(',')
+      : undefined
+
     setParams({
       destination,
       duration,
+      tags,
       ordering: form.ordering?.value,
       page: 1,
     })
@@ -317,7 +326,7 @@ export const TripOffersPage: FC = () => {
           })}
       </div>
 
-      {!!trips.length && isButtonShowed && (
+      {!!trips.length && isButtonShowed && !isLoading && (
         <Button
           classname={s.button}
           variant='secondary'

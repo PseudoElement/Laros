@@ -53,7 +53,23 @@ export const SpecialOffersPage: FC = () => {
     const destination = subregions.length
       ? subregions.join(',')
       : form.region?.value ?? undefined
-    setParams({ destination, ordering: form.ordering?.value, offer: true })
+
+    const duration = form.duration ? form.duration.value : undefined
+
+    const tags = form.tags
+      ? form.tags
+          ?.filter((tag: Tag) => tag.isSelected === true)
+          .map((tag: Tag) => tag.id)
+          .join(',')
+      : undefined
+
+    setParams({
+      destination,
+      duration,
+      tags,
+      ordering: form.ordering?.value,
+      offer: true,
+    })
   }
 
   useEffect(() => {
