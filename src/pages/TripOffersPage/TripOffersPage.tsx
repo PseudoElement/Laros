@@ -80,18 +80,20 @@ export const TripOffersPage: FC = () => {
   const destinations = useAppSelector(state => state.destinations.destinations)
   const regions = getRootDestinations(destinations)
   const subregions = useAppSelector(state =>
-    getSubRegions(state, region?.value ?? null)
+    getSubRegions(state, region ? region.value : null)
   )
 
   const updateRequest = (form: any) => {
     // TODO
-    form.region && setRegion(form.region)
+    form.region ? setRegion(form.region) : setRegion(null)
     const subregions = form.subregions
       ? form.subregions.map((region: Option) => region.value)
       : []
     const destination = subregions.length
       ? subregions.join(',')
-      : form.region[0]?.value.toString() ?? undefined
+      : form.region
+      ? form.region?.value.toString()
+      : undefined
 
     const duration =
       form.duration?.length > 0
@@ -172,7 +174,7 @@ export const TripOffersPage: FC = () => {
         .map(region => ({
           label: region.name,
           value: region.id.toString(),
-        }))
+        }))[0]
     )
     setParams(prevState => ({ ...prevState, destination: '17' }))
   }, [destinations])
@@ -312,7 +314,7 @@ export const TripOffersPage: FC = () => {
       )}
       {isLoading && <div className={s.loading}>{t('common.loadingText')}</div>}
       <div className={cn(s.offers, view === View.GRID ? s.grid : s.list)}>
-        {!isLoading &&
+        {(!isLoading || page > 1) &&
           trips.map((offer, idx) => {
             return (
               <div key={idx} className={s.tripCardWrap}>

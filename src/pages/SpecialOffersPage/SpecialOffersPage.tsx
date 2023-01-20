@@ -46,7 +46,7 @@ export const SpecialOffersPage: FC = () => {
 
   const updateRequest = (form: any) => {
     // TODO
-    form.region && setRegion(form.region)
+    form.region ? setRegion(form.region) : setRegion(null)
     const subregions = form.subregions
       ? form.subregions.map((region: Option) => region.value)
       : []
