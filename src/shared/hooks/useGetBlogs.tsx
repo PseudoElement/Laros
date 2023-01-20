@@ -14,7 +14,6 @@ export const useGetBlogs = (
 
   useEffect(() => {
     const loadBlogs = async () => {
-      console.log('load blogs')
       setIsReady(false)
       try {
         setIsLoading(true)

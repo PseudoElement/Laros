@@ -4,12 +4,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
-import { Post } from 'shared/types/posts'
 
 import s from './Post.module.scss'
+import { BlogPayload } from '../../../shared/types/blogs'
 
 interface PostBlockProps {
-  posts: Post[]
+  posts: BlogPayload[]
 }
 
 export const PostBlock: FC<PostBlockProps> = ({ posts }) => {
@@ -22,8 +22,8 @@ export const PostBlock: FC<PostBlockProps> = ({ posts }) => {
       <div className={s.contentWrapper}>
         {fullPost.map((post, idx) => (
           <div className={s.left} key={idx}>
-            <h3 className={s.title}>{t(post.title)}</h3>
-            <p className={s.subtitle}>{t(post.subtitle)}</p>
+            <h3 className={s.title}>{t(post.name)}</h3>
+            <p className={s.subtitle}>{t(post.description)}</p>
 
             <Image
               className={cls(s.image, s.fullPostImage)}
@@ -31,13 +31,6 @@ export const PostBlock: FC<PostBlockProps> = ({ posts }) => {
               height={384}
               src={post.image}
             />
-
-            <h3 className={cls(s.title, s.fullPostTitle)}>
-              {t(post.second_title)}
-            </h3>
-
-            <p className={s.text}>{t(post.text)}</p>
-            <p className={s.date}>{post.date}</p>
           </div>
         ))}
 
@@ -46,9 +39,8 @@ export const PostBlock: FC<PostBlockProps> = ({ posts }) => {
             {post.map((post, idx) => (
               <div className={s.post} key={idx}>
                 <div className={s.textBlock}>
-                  <h3 className={cls(s.title, s.postTitle)}>{t(post.title)}</h3>
-                  <p className={s.text}>{t(post.text)}</p>
-                  <p className={s.date}>{post.date}</p>
+                  <h3 className={cls(s.title, s.postTitle)}>{t(post.name)}</h3>
+                  <p className={s.text}>{t(post.description)}</p>
                 </div>
 
                 <Image

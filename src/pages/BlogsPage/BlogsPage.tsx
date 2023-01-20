@@ -9,10 +9,10 @@ import { useTranslate } from 'shared/hooks/useTranslate'
 import { reviewsMock } from 'shared/mocks/reviews'
 
 import s from './BlogsPage.module.scss'
-import { useWindowDimensions } from '../../shared/hooks/useWindowDimensions'
-import { TABLET_SCREEN } from '../../shared/constants/screenResolutions'
-import { BlogPayload } from '../../shared/types/blogs'
-import { useGetBlogs } from '../../shared/hooks/useGetBlogs'
+import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
+import { TABLET_SCREEN } from 'shared/constants/screenResolutions'
+import { BlogPayload } from 'shared/types/blogs'
+import { useGetBlogs } from 'shared/hooks/useGetBlogs'
 
 interface BlogItemProps {
   id: number
@@ -71,7 +71,7 @@ export const BlogsPage: FC = () => {
           <BlogHeaderImage />
         </div>
         <ul className={s.blogs}>
-          {blogs?.length
+          {Boolean(blogs.length)
             ? blogs.map(blogData => (
                 <BlogItem
                   title={blogData.name}
@@ -79,7 +79,7 @@ export const BlogsPage: FC = () => {
                   key={blogData.id}
                   image={blogData.image}
                   id={blogData.id}
-                  reversed={blogData.id % 2 === 0}
+                  reversed={blogs.indexOf(blogData) % 2 === 0}
                 />
               ))
             : null}
