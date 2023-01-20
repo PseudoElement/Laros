@@ -63,18 +63,20 @@ export const HomePage: FC = () => {
         </div>
       </div>
 
-      <Main
-        setVideoIsFullscreen={setVideoIsFullscreen}
-        videoIsFullscreen={videoIsFullscreen}
-        setActiveMenu={setActiveMenu}
-        activeMenu={activeMenu}
-        destinations={destinations}
-        onFullScreen={onFullScreen}
-        travelTypes={travelTypes}
-      />
+      <div className={s.bg}>
+        <Main
+          setVideoIsFullscreen={setVideoIsFullscreen}
+          videoIsFullscreen={videoIsFullscreen}
+          setActiveMenu={setActiveMenu}
+          activeMenu={activeMenu}
+          destinations={destinations}
+          onFullScreen={onFullScreen}
+          travelTypes={travelTypes}
+        />
 
-      <SelectComponent travelTypes={travelTypes} />
-      <WhoWeAre items={AboutItemsMock} />
+        <SelectComponent travelTypes={travelTypes} />
+        <WhoWeAre items={AboutItemsMock} />
+      </div>
 
       <Explore destinations={destinations} />
       <PostBlock posts={PostsMock} />

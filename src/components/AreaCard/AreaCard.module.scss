@@ -2,7 +2,7 @@
 @import '/src/styles/theme/breakpoints.scss';
 
 .image {
-  width: 29%;
+  width: 310px;
   height: 200px;
   border-radius: 8px;
   background-color: $color-placeholder;
@@ -17,25 +17,25 @@
   background-repeat: no-repeat;
   background-position: top left;
 
-  &:nth-child(3n) {
-    width: 40%;
-
-    @include mobile {
-      width: 100%;
-    }
-
-    @include tablet {
-      width: 29%;
-    }
-  }
-
-  @include mobile {
-    width: 100%;
-  }
-
-  @include mobile {
-    width: 100% !important;
-  }
+  //&:nth-child(3n) {
+  //  width: 40%;
+  //
+  //  @include mobile {
+  //    width: 100%;
+  //  }
+  //
+  //  @include tablet {
+  //    width: 29%;
+  //  }
+  //}
+  //
+  //@include mobile {
+  //  width: 100%;
+  //}
+  //
+  //@include mobile {
+  //  width: 100% !important;
+  //}
 }
 
 .shadow {

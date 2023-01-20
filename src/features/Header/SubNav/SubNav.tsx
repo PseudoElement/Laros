@@ -3,9 +3,9 @@ import cn from 'classnames'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
+import { useTranslate } from 'shared/hooks/useTranslate'
+
 import s from './SubNav.module.scss'
-import { useTranslate } from '../../../shared/hooks/useTranslate'
-import classNames from 'classnames'
 
 const subNavItems = [
   { name: 'navigation.subNav.btn1', to: '/destinations/areas/17' },
