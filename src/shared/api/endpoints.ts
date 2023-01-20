@@ -79,5 +79,6 @@ export const endpoints = {
   },
   blogs: {
     all: '/blog/',
+    one: (id: number) => `/blog/${id}`,
   },
 }
