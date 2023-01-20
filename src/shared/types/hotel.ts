@@ -64,3 +64,9 @@ export interface Facility extends Meta {
 }
 
 export type HotelTag = Meta
+
+export type Tag = {
+  id: number
+  name: string
+  isSelected: boolean
+}

@@ -55,6 +55,7 @@ export interface TripFilterParams {
   duration: string
   travel_types: number
   price_lt: number
+  tags: string
   price_gt: number
   ordering: TripSort
   offer: boolean
