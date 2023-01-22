@@ -4,29 +4,35 @@ import { Controller, useForm, useFieldArray } from 'react-hook-form'
 
 import { InputCalendar, Input, Button } from 'components'
 
+import { useTranslate } from 'shared/hooks/useTranslate'
+
 import { PeopleCapacity } from 'shared/types/order'
 
 import trash from '/public/assets/images/Trash.svg?url'
 import add from '/public/assets/images/plus.svg?url'
 
 import s from './StartTripForm.module.scss'
-import { useTranslate } from '../../shared/hooks/useTranslate'
 
 export type FieldsType = {
   rooms: PeopleCapacity[]
-  date: Date[]
+  date: Date | Date[]
 }
 
 interface StartTripFormProps {
   onChange: (fields: FieldsType) => void
+  variant?: 'trips' | 'hotels'
 }
 
-export const StartTripForm: FC<StartTripFormProps> = ({ onChange }) => {
+export const StartTripForm: FC<StartTripFormProps> = ({
+  onChange,
+  variant = 'hotels',
+}) => {
   const t = useTranslate()
   const [currentDate, setCurrentDate] = useState<Date[]>([
     new Date(),
     new Date(),
   ])
+  const [tripDate, setTripDate] = useState<Date>(new Date())
 
   const {
     handleSubmit,
@@ -44,25 +50,39 @@ export const StartTripForm: FC<StartTripFormProps> = ({ onChange }) => {
   })
 
   const onSubmit = (formData: any) => {
-    onChange?.({ rooms: formData.fields, date: currentDate })
+    onChange?.({
+      rooms: formData.fields,
+      date: variant === 'trips' ? tripDate : currentDate,
+    })
   }
 
   const setDate = (date: Date | Date[]) => {
     if (Array.isArray(date)) {
       setCurrentDate(date)
+    } else {
+      setTripDate(date)
     }
   }
 
   return (
     <div>
       <div className={s.calendar}>
-        <InputCalendar
-          label={t('hotel.calendar')}
-          variant={'double'}
-          onChange={setDate}
-          doubleValue={currentDate}
-          isMulti={true}
-        />
+        {variant === 'trips' ? (
+          <InputCalendar
+            label={t('hotel.calendar')}
+            variant={'right'}
+            onChange={setDate}
+            value={tripDate}
+          />
+        ) : (
+          <InputCalendar
+            label={t('hotel.calendar')}
+            variant={'double'}
+            onChange={setDate}
+            doubleValue={currentDate}
+            isMulti={true}
+          />
+        )}
       </div>
 
       <form>

@@ -7,7 +7,7 @@
   display: flex;
   box-shadow: 0 4px 12px 0 rgba(0, 60, 118, 0.05);
   position: relative;
-  z-index: 1;
+  z-index: 2;
 
   @include mobile-tablet {
     flex-direction: column;

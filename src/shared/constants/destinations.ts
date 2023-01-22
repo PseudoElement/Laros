@@ -3,4 +3,4 @@ export const defaultDescription =
 
 export const GREECE_ID = 2 // use this id to display static maps routes
 
-export const HOME_DESTS_IDS = [93, 91, 92, 42, 146, 137, 73, 59]
+export const HOME_DESTS_IDS = [93, 59, 137, 92, 91, 42, 146, 73]

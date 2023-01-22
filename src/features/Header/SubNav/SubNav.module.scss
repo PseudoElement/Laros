@@ -17,9 +17,9 @@
 }
 
 .item {
-  font-family: Lato;
+  font-family: $font-Lato;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   text-align: center;
   color: $color-white;
   border-right: 1px solid $color-white;

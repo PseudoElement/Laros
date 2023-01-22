@@ -312,6 +312,8 @@
     "contactInfo": "Contact info",
     "day": "Day",
     "days": "Day",
+    "night": "Night",
+    "nights": "Nights",
     "total": "in total",
     "person": "Pro person",
     "download": "Download the program",
@@ -583,6 +585,7 @@
     "Phone and email": "Address and working hours",
     "phone": "Phone and email"
   },
+
   "forms": {
     "inputLabel1": "Email",
     "inputLabel2": "Email Address",

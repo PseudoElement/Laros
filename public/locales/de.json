@@ -385,6 +385,8 @@
     "contactInfo": "Kontaktinformation",
     "day": "Tag",
     "days": "Tage",
+    "night": "Nacht",
+    "nights": "Nächte",
     "total": "Total",
     "person": "Pro person",
     "download": "Laden Sie das Programm herunter",
@@ -658,6 +660,7 @@
     "address": "Adresse und Arbeitszeiten",
     "phone": "Telefonnummer und E-Mail"
   },
+
   "forms": {
     "inputLabel1": "E-Mail",
     "inputLabel2": "E-Mail-Adresse",

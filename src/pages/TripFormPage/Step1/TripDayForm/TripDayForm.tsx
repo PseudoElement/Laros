@@ -221,7 +221,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
           <div className={s.sectionTitle}>{t('tripSteps.duration')}:</div>
 
           <div className={s.durationCounter}>
-            {duration} {t(getDayName(duration))}
+            {duration} {t(getDayName(duration, 'night'))}
             <div className={s.counter}>
               <Counter
                 min={1}

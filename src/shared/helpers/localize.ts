@@ -1,7 +1,7 @@
-export const getDayName = (count: number): string => {
+export const getDayName = (count: number, variant: 'day' | 'night'): string => {
   if (count === 1) {
-    return 'tripSteps.day'
+    return variant === 'day' ? 'tripSteps.day' : 'tripSteps.night'
   } else {
-    return 'tripSteps.days'
+    return variant === 'day' ? 'tripSteps.days' : 'tripSteps.nights'
   }
 }
