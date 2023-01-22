@@ -52,10 +52,7 @@ export const Sidebar: FC<SideBarProps> = ({
   const dispatch = useAppDispatch()
   const [editDate, setEditDate] = useState(false)
   const [editRooms, setEditRooms] = useState(false)
-  const [currentDate, setCurrentDate] = useState<Date[]>([
-    new Date(travel_date),
-    new Date(travel_date),
-  ])
+  const [currentDate, setCurrentDate] = useState<Date>(new Date(travel_date))
 
   // get total adults or total children in rooms
   function count(array: PeopleCapacity[], key: keyof PeopleCapacity) {
@@ -72,7 +69,7 @@ export const Sidebar: FC<SideBarProps> = ({
 
   // edit date
   const setDate = (date: Date | Date[]) => {
-    if (Array.isArray(date)) {
+    if (!Array.isArray(date)) {
       setCurrentDate(date)
     }
   }
@@ -97,7 +94,7 @@ export const Sidebar: FC<SideBarProps> = ({
     dispatch(
       updateForm({
         rooms: formData.fields,
-        date_start: Number(currentDate[0]),
+        date_start: Number(currentDate),
         // date_start: [Number(currentDate[0]), Number(currentDate[1])], //TODO fix when fix api
       })
     )
@@ -139,10 +136,9 @@ export const Sidebar: FC<SideBarProps> = ({
               <div className={s.calendar}>
                 <InputCalendar
                   label={t('forms.inputLabel20')}
-                  variant={'double'}
+                  variant={'right'}
                   onChange={setDate}
-                  doubleValue={currentDate}
-                  isMulti={true}
+                  value={currentDate}
                 />
               </div>
             )}

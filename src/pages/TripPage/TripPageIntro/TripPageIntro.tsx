@@ -30,7 +30,7 @@ export const TripPageIntro: FC<Trip> = ({
     dispatch(
       updateForm({
         rooms: fields.rooms,
-        date_start: Number(fields.date[0]),
+        date_start: Number(fields.date),
       })
     )
     push(`/trip_form/${id}`)
@@ -51,7 +51,7 @@ export const TripPageIntro: FC<Trip> = ({
           {description}
         </TruncatedText>
 
-        <StartTripForm onChange={handleClick} />
+        <StartTripForm onChange={handleClick} variant={'trips'} />
       </div>
 
       <div className={s.right}>

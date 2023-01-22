@@ -10,8 +10,10 @@
   position: relative;
   padding: 0 100px;
   max-width: 1360px;
+
   @include mobile {
     padding: 0 20px;
+    width: 100%;
   }
 }
 

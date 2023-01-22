@@ -216,7 +216,7 @@ export const PackageRequestForm: FC<PackageRequestFormProps> = ({
             render={({ field: { onChange, value } }) => (
               <>
                 <span className={s.dayString}>
-                  {value && `${t(getDayName(value))}`}
+                  {value && `${t(getDayName(value, 'day'))}`}
                 </span>
                 <Input
                   classname={s.counterInput}

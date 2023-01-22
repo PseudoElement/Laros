@@ -10,6 +10,14 @@
   border-radius: 8px;
   background-color: #ccc;
   overflow: hidden;
+
+  @include mobile {
+    width: 100%;
+  }
+
+  @include mobile-tablet {
+    width: 100%;
+  }
 }
 
 .hover {

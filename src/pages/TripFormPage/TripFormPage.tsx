@@ -38,6 +38,7 @@ export const TripFormPage: FC = () => {
   )
 
   const form = useAppSelector(state => state.order.form)
+  // console.log(new Date(form.date_start))
 
   // download trip pdf
   const handleDownload = () => {

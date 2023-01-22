@@ -159,6 +159,7 @@ export const InputCalendar: FC<InputCalendarPropsMain> = ({
       {showCalendar && (
         <div ref={ref}>
           <CalendarWrapper
+            locale={'de'}
             className={cn(s.wrapper, classname)}
             onChange={handleChange}
             value={date}
