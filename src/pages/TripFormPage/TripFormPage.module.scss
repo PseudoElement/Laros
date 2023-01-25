@@ -21,7 +21,6 @@
 
 .container {
   position: relative;
-  min-height: 1364px;
 }
 
 .content {
@@ -29,11 +28,15 @@
   background-color: $color-laros-light-grey;
   box-shadow: 0 4px 4px rgba(0, 60, 118, 0.15);
   border-radius: 16px;
-  margin: auto;
-  transform: translateY(-400px);
+  margin: -400px auto 80px;
   display: flex;
+  position: relative;
 }
 
+.formWrap {
+  height: 850px;
+  overflow-x: auto;
+}
 .form {
   width: 869px;
   background-color: $color-white;

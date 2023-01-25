@@ -38,6 +38,7 @@ export const TripFormPage: FC = () => {
   )
 
   const form = useAppSelector(state => state.order.form)
+  // console.log(new Date(form.date_start))
 
   // download trip pdf
   const handleDownload = () => {
@@ -91,60 +92,64 @@ export const TripFormPage: FC = () => {
             </div>
           </div>
 
-          <div className={s.crumbs}>
-            <div
-              className={cn(s.crumbStep, {
-                [s.activeCrumb]: step === Steps.FIRST,
-              })}
-              onClick={() => setStep(Steps.FIRST)}
-            >
-              <span className={s.stepIndex}>1</span>
-              <span className={s.crumbStep}>{t('tripSteps.step')} 1:</span>
-              <span className={s.stepName}>{t('tripSteps.details')}</span>
-            </div>
-
-            <div className={s.arrow}>
-              <ChevronRightIcon />
-            </div>
-
-            <div
-              className={cn(s.crumbStep, {
-                [s.activeCrumb]: step === Steps.SECOND,
-              })}
-            >
-              <span className={s.stepIndex}>2</span>
-              <span className={s.crumbStep}>{t('tripSteps.step')} 2:</span>
-              <span className={s.stepName}>{t('tripSteps.travellers')}</span>
-            </div>
-          </div>
-
-          <div className={s.info}>
-            <div className={s.infoTitle}>{trip?.name}</div>
-
-            <div className={s.infoLocation}>{trip?.offer_name}</div>
-
-            {trip.description ? (
-              <div className={s.infoDescription}>
-                <div dangerouslySetInnerHTML={{ __html: trip?.description }} />
+          <div className={cn(s.formWrap, ['scrollStyle'])}>
+            <div className={s.crumbs}>
+              <div
+                className={cn(s.crumbStep, {
+                  [s.activeCrumb]: step === Steps.FIRST,
+                })}
+                onClick={() => setStep(Steps.FIRST)}
+              >
+                <span className={s.stepIndex}>1</span>
+                <span className={s.crumbStep}>{t('tripSteps.step')} 1:</span>
+                <span className={s.stepName}>{t('tripSteps.details')}</span>
               </div>
-            ) : null}
-          </div>
 
-          {step === Steps.FIRST ? (
-            <Step1
-              setStep={setStep}
-              trip={trip}
-              airports={airports}
-              form={form}
-              transfers={transfers}
-            />
-          ) : (
-            <Step2
-              setStep={setStep}
-              capacity={getCapacity(form.rooms)}
-              countries={countriesToOptions(countries)}
-            />
-          )}
+              <div className={s.arrow}>
+                <ChevronRightIcon />
+              </div>
+
+              <div
+                className={cn(s.crumbStep, {
+                  [s.activeCrumb]: step === Steps.SECOND,
+                })}
+              >
+                <span className={s.stepIndex}>2</span>
+                <span className={s.crumbStep}>{t('tripSteps.step')} 2:</span>
+                <span className={s.stepName}>{t('tripSteps.travellers')}</span>
+              </div>
+            </div>
+
+            <div className={s.info}>
+              <div className={s.infoTitle}>{trip?.name}</div>
+
+              <div className={s.infoLocation}>{trip?.offer_name}</div>
+
+              {trip.description ? (
+                <div className={s.infoDescription}>
+                  <div
+                    dangerouslySetInnerHTML={{ __html: trip?.description }}
+                  />
+                </div>
+              ) : null}
+            </div>
+
+            {step === Steps.FIRST ? (
+              <Step1
+                setStep={setStep}
+                trip={trip}
+                airports={airports}
+                form={form}
+                transfers={transfers}
+              />
+            ) : (
+              <Step2
+                setStep={setStep}
+                capacity={getCapacity(form.rooms)}
+                countries={countriesToOptions(countries)}
+              />
+            )}
+          </div>
         </div>
 
         <Sidebar
