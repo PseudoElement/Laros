@@ -74,7 +74,7 @@ export const HotelCardBody: FC<Hotel> = ({
           <div className={s.bodySection}>
             <div className={s.label}>{t('hotelCard.from')}</div>
             <div className={s.price}>
-              {min_price ? min_price : '-'} CHF / {t('hotelCard.night')}
+              {min_price_chf ? min_price_chf : '-'} CHF / {t('hotelCard.night')}
             </div>
             <div className={s.label}>{t('hotelCard.person')}</div>
           </div>

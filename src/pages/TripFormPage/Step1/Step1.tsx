@@ -85,7 +85,7 @@ export const Step1: FC<Step1Props> = ({
     if (!watchDestinations) return
     try {
       const defaultTripDay = await getTripDay(
-        watchDestinations[watchDestinations?.length - 1].id
+        watchDestinations[watchDestinations?.length - 1].destination
       )
       if (defaultTripDay) {
         append({
@@ -192,7 +192,7 @@ export const Step1: FC<Step1Props> = ({
       {watchDestinations?.map((dest, index) => {
         return (
           <TripDayForm
-            key={dest.id}
+            key={index}
             index={index}
             onDelete={
               index === watchDestinations.length - 1 && index > 0

@@ -240,13 +240,13 @@ export const TripDayForm: FC<TripDayFormProps> = ({
           </div>
           <div className={s.description}>
             <div className={s.descriptionText}>
-              <div
+              {description.length ? <div
                 dangerouslySetInnerHTML={{
                   __html: isTruncated
                     ? truncate(description, { length: TRUNCATED_TEXT_SIZE })
                     : description,
                 }}
-              />
+              /> : <div>-</div>}
             </div>
             {isTruncated && description?.length > TRUNCATED_TEXT_SIZE && (
               <div onClick={() => setIsTruncated(false)} className={s.moreBtn}>
@@ -261,7 +261,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
             <span className={s.valueIcon}>
               <PinIcon />
             </span>
-            <div className={s.valueName}>{hotel?.name}</div>
+            <div className={s.valueName}>{hotel?.lrweb}</div>
             <span
               onMouseEnter={() => setIsShownCard(true)}
               onMouseLeave={() => setIsShownCard(false)}

@@ -2,6 +2,7 @@ import { StaticImageData } from 'next/image'
 import { Meta } from '.'
 import { Hotel } from './hotel'
 import { Destination } from './destinations'
+import { Transport } from './transport'
 
 export interface Trip {
   readonly id: number
@@ -17,7 +18,7 @@ export interface Trip {
   offer_date_end: string
   tags: Meta[]
   travel_types: string
-  transports: unknown[] // TODO check
+  transports: Transport[]
   near_destinations: Destination[]
   name: string
   is_active: boolean

@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import cn from 'classnames'
 
-import { ChevronRightIcon, ChevronLeftIcon } from 'components'
+import { ChevronRightIcon, ChevronLeftIcon, ResetIcon } from 'components'
 import { Step1 } from './Step1/Step1'
 import { Step2 } from './Step2/Step2'
 
@@ -86,9 +86,9 @@ export const TripFormPage: FC = () => {
               <ChevronLeftIcon />
               <div className={s.title}>{t('tripSteps.buttonBack')}</div>
             </div>
-            {/* <div>
+            <div>
               <ResetIcon /><div className={s.reset}>Reset all changes</div>
-            </div> */}
+            </div>
           </div>
 
           <div className={s.crumbs}>
