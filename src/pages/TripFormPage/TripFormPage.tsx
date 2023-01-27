@@ -33,7 +33,7 @@ export const TripFormPage: FC = () => {
   const dispatch = useAppDispatch()
   const t = useTranslate()
 
-  const [trip, airports, countries, isLoading, transfers] = useGetTripInfo(
+  const { trip, airports, countries, isLoading, transfers } = useGetTripInfo(
     Number(query.trip)
   )
 

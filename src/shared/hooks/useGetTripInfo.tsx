@@ -11,13 +11,14 @@ import { Transfer, TransferOptions } from 'shared/types/transport'
 
 export const useGetTripInfo = (
   id: number
-): [Trip | null, Destination[], Country[], boolean, TransferOptions[]] => {
+): { trip: Trip | null, airports: Destination[], countries: Country[], isLoading: boolean, transfers: TransferOptions[], transferValues: number[] } => {
   const [airports, setAirports] = useState<Destination[]>([])
   const [trip, setTrip] = useState<Trip | null>(null)
   const [countries, setCountries] = useState<Country[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const regions = useAppSelector((state) => state.destinations.destinations);
   const [transfers, setTransfers] = useState<TransferOptions[]>([])
+  const [transferValues, setTransferValues] = useState<number[]>([])
   useEffect(() => {
     if (!id) {
       return
@@ -101,5 +102,5 @@ export const useGetTripInfo = (
     loadAirports()
   }, [])
 
-  return [trip, airports, countries, isLoading, transfers]
+  return { trip, airports, countries, isLoading, transfers, transferValues }
 }
