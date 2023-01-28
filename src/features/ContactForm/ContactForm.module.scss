@@ -121,6 +121,7 @@
 
 .appointment {
   background-color: $color-olive;
+  cursor: pointer;
 }
 
 .socials {
@@ -156,7 +157,7 @@
 .contactMain {
   width: 543px;
 
-  @include mobile-laptop {
+  @include mobile-tablet {
     width: 100%;
   }
 }
@@ -213,6 +214,10 @@
 
         @include mobile {
           right: 10px;
+        }
+
+        @media (min-width: 1025px) and (max-width: 1170px) {
+          position: unset;
         }
       }
     }

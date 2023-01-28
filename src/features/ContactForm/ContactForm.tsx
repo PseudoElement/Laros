@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import { Controller, useForm } from 'react-hook-form'
 import cn from 'classnames'
 import { sendContactFormThunk } from 'store/slices/contactForm/thunk'
@@ -32,6 +33,7 @@ export const ContactForm: FC<ContactFormProps> = ({
 }) => {
   const { handleSubmit, control } = useForm()
   const dispatch = useAppDispatch()
+  const route = useRouter()
   const t = useTranslate()
 
   const onSubmit = (formData: any) => {
@@ -187,7 +189,10 @@ export const ContactForm: FC<ContactFormProps> = ({
       </div>
 
       <div className={cn(s.info, { [s.contactInfo]: contactPage })}>
-        <div className={cn(s.infoItem, s.appointment)}>
+        <div
+          className={cn(s.infoItem, s.appointment)}
+          onClick={() => route.push('https://meetings-eu1.hubspot.com/laros')}
+        >
           <div className={s.infoIcon}>
             <Image src={video} width={32} height={32} />
           </div>
