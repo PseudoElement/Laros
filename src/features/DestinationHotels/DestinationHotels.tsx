@@ -61,7 +61,7 @@ export const DestinationHotels: FC<DestinationHotelsProps> = ({ map }) => {
         <div className={s.loading}>{t('common.emptyText')}</div>
       )}
 
-      {isLoading ? (
+      {isLoading && page === 1 ? (
         <div className={s.loading}>{t('common.loadingText')}</div>
       ) : (
         <div className={s.hotels}>
