@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Destination } from 'shared/types/destinations'
-import { Trip, TripDestination } from 'shared/types/trip'
+import { Trip } from 'shared/types/trip'
 import { getTrip } from 'shared/api/routes/trips'
-import { tripFullMock } from 'shared/mocks/tripList'
 import { getCountries } from 'shared/api/routes/countries'
 import { getAirportDestinations, getTransports } from 'shared/api/routes/destinations'
 import { Country } from 'shared/types/country'
@@ -11,13 +10,19 @@ import { Transfer, TransferOptions } from 'shared/types/transport'
 
 export const useGetTripInfo = (
   id: number
-): [Trip | null, Destination[], Country[], boolean, TransferOptions[]] => {
+): { trip: Trip | null, airports: Destination[], countries: Country[], isLoading: boolean, transfers: TransferOptions[], transferValues: number[] } => {
   const [airports, setAirports] = useState<Destination[]>([])
   const [trip, setTrip] = useState<Trip | null>(null)
   const [countries, setCountries] = useState<Country[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const regions = useAppSelector((state) => state.destinations.destinations);
-  const [transfers, setTransfers] = useState<TransferOptions[]>([])
+  const [transfers, setTransfers] = useState<Record<number, TransferOptions>>([])
+  const [transferValues, setTransferValues] = useState<number[]>([])
+
+  const prepareTransfer = (transfers: Record<number, TransferOptions>): TransferOptions[] => {
+    console.log('transfers :', transfers);
+    return Object.keys(transfers).map((key) => transfers[Number(key)])
+  }
   useEffect(() => {
     if (!id) {
       return
@@ -53,14 +58,15 @@ export const useGetTripInfo = (
     }
   }
   useEffect(() => {
-    const loadTransfer = async (from: TripDestination, to: TripDestination) => {
+    const loadTransfer = async (from: number, to: number, index: number) => {
       let transfers: TransferOptions = {
         car: null,
         ferry: null,
         airport: null
       };
       try { // getTransfer from /api folder can be used // TODO
-        const { data } = await getTransports(from.destination, to.destination)
+        const { data } = await getTransports(from, to)
+        console.log('data :', data);
         const transports = data.data
         const ferryTransfer = transports.find((transport) => transport.type_name === Transfer.FERRY);
         const airportTransfer = transports.find((transport) => transport.type_name === Transfer.FLIGHT);
@@ -84,15 +90,26 @@ export const useGetTripInfo = (
       } catch (error) {
 
       }
-      setTransfers((prev) => [...prev, transfers])
+      setTransfers((prev) => ({ ...prev, [index]: transfers }))
     }
-    const destinations = trip?.destinations;
+    const destinations = trip?.destinations
+    if (destinations?.length && trip) {
+      loadTransfer(trip.dest_start, destinations[0].destination, 0)
+      console.log('tran first :', trip.dest_start, destinations[0].destination_name);
+    }
     if (destinations?.length) {
       destinations.forEach((dest, index) => {
-        if (index + 1 < length)
-          console.log(dest)
-        loadTransfer(dest, destinations[index + 1])
+
+        // omit start point destination and last destination
+        if (index + 1 < destinations.length) {
+          loadTransfer(dest.destination, destinations[index + 1].destination, index + 1)
+          console.log('tran :', index, dest.destination_name, destinations[index + 1].destination_name);
+        }
       })
+    }
+    if (destinations?.length && trip) {
+      loadTransfer(destinations[destinations.length - 1].destination, trip.dest_start, destinations.length)
+      console.log('tran last :', destinations[destinations.length - 1].destination_name, trip.dest_start);
     }
   }, [trip])
 
@@ -100,6 +117,7 @@ export const useGetTripInfo = (
     loadCountries()
     loadAirports()
   }, [])
+  console.log('transfers :', transfers);
 
-  return [trip, airports, countries, isLoading, transfers]
+  return { trip, airports, countries, isLoading, transfers: prepareTransfer(transfers), transferValues }
 }

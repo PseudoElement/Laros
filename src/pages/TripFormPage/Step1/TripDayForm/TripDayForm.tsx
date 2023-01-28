@@ -186,11 +186,14 @@ export const TripDayForm: FC<TripDayFormProps> = ({
         }
         options={transfers[index]}
         from={from}
-        to={destination.destination_name}
+        to={{
+          label: destination.destination_name,
+          value: destination.destination.toString()
+        }}
         value={null}
       />
 
-      <div className={s.content}>
+      {duration > 0 && <div className={s.content}>
         <div className={s.header}>
           <div className={s.day}>
             {' '}
@@ -322,7 +325,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
             </>
           )
         })}
-      </div>
+      </div>}
       <Modal {...locationModal} title='Changing location'>
         <ChangeLocationModal
           {...locationModal}

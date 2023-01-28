@@ -29,11 +29,11 @@ export enum Steps {
 
 export const TripFormPage: FC = () => {
   const [step, setStep] = useState(Steps.FIRST)
-  const { query, push } = useRouter()
+  const { query, push, reload } = useRouter()
   const dispatch = useAppDispatch()
   const t = useTranslate()
 
-  const [trip, airports, countries, isLoading, transfers] = useGetTripInfo(
+  const { trip, airports, countries, isLoading, transfers } = useGetTripInfo(
     Number(query.trip)
   )
 
@@ -87,9 +87,9 @@ export const TripFormPage: FC = () => {
               <ChevronLeftIcon />
               <div className={s.title}>{t('tripSteps.buttonBack')}</div>
             </div>
-            <div>
+            {/* <div onClick={() => reload(window.location.pathname)} >
               <ResetIcon /><div className={s.reset}>Reset all changes</div>
-            </div>
+            </div> */}
           </div>
 
           <div className={cn(s.formWrap, ['scrollStyle'])}>

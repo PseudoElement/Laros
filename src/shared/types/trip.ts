@@ -23,6 +23,7 @@ export interface Trip {
   name: string
   is_active: boolean
   island_hopping_fee: boolean
+  dest_start: number
   description: string | null
   tips: string | null
   route: string | null
