@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
 import s from './Transfer.module.scss'
 
 import { Button, Modal, Radio } from 'components'
@@ -20,7 +20,7 @@ import { Car, CarTransferType } from 'shared/types/car'
 
 interface TransferProps {
   from?: Option
-  to: string
+  to?: Option
   value: unknown
   options: TransferOptions
   onChange: (id: number, type: CarTransferType) => void
@@ -29,15 +29,16 @@ interface TransferProps {
 export const Transfer: FC<TransferProps> = ({
   options = {} as TransferOptions,
   from,
-  onChange,
   to,
+  onChange,
 }) => {
   const transferModal = useModal()
   const [transferType, setTransferType] = useState<string>('')
   const [carType, setCarType] = useState<CarTransferType>(
     CarTransferType.PICKUP
   )
-  const [availableTransfers, setAvailableTransfers] = useState<Option[]>([])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const availableTransfers = useMemo(() => transfersToOptions(options), [transfersToOptions, options])
   const [selectedTransfer, setSelectedTransfer] = useState<number>(
     Number(availableTransfers[0]?.value)
   )
@@ -51,7 +52,7 @@ export const Transfer: FC<TransferProps> = ({
   }
   const loadCars = async () => {
     try {
-      const { data } = await getCars({ destination: `${from?.value}, ${to}` })
+      const { data } = await getCars({ destination: `${from?.value}, ${to?.value}` })
       setCars(data.data)
     } catch (error) {
       console.log(error)
@@ -63,14 +64,13 @@ export const Transfer: FC<TransferProps> = ({
     car && setSelectedTransfer(car)
   }
   useEffect(() => {
-    setAvailableTransfers(transfersToOptions(options))
-  }, [options, carType])
-  useEffect(() => {
     availableTransfers[0]?.value && setTransferType(availableTransfers[0].value)
   }, [availableTransfers])
   useEffect(() => {
     onChange(selectedTransfer, carType)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedTransfer, carType])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function transfersToOptions(transfers: TransferOptions): Option[] {
     let options: Option[] = []
     if (transfers.ferry) {
@@ -120,7 +120,7 @@ export const Transfer: FC<TransferProps> = ({
         <div className={s.transferInfo}>
           <div className={s.transferTitle}>{t('worldwideTours.label13')}: </div>
           <div className={s.transferRoute}>
-            {from?.label ?? '?'} &gt; {to ?? '?'}
+            {from?.label ?? '?'} &gt; {to?.label ?? '?'}
           </div>
           <div className={s.transferType}>
             <div className={s.transferTypeIcon} />
@@ -136,7 +136,7 @@ export const Transfer: FC<TransferProps> = ({
                   <Radio
                     onChange={value => setTransferType(value)}
                     name=''
-                    options={transfersToOptions(options)}
+                    options={availableTransfers}
                     value={transferType}
                   />
                 ) : (

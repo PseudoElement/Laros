@@ -59,7 +59,7 @@ export const Step1: FC<Step1Props> = ({
     defaultValues: {
       dest_from: destinationToOption(airports).find((dest) => dest.label === 'Flughafen Zurich (ZRH)'),
       dest_to: destinationToOption(airports).find((dest) => dest.label === 'Flughafen Zurich (ZRH)'),
-      destinations: trip.destinations.filter((dest) => dest.duration > 0),
+      destinations: trip.destinations,
     },
   })
   const { append, remove } = useFieldArray({
@@ -233,7 +233,7 @@ export const Step1: FC<Step1Props> = ({
               trip.destinations.length - 1
             ].destination.toString(),
         }}
-        to={watchEndPoint?.label ?? ''}
+        to={watchEndPoint}
         options={endPointTransfer}
         value={null}
       />
