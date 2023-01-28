@@ -111,6 +111,7 @@ export const TripOffersPage: FC = () => {
       destination,
       duration,
       tags,
+      travel_types: Number(category),
       ordering: form.ordering?.value,
       page: 1,
     })
@@ -163,6 +164,10 @@ export const TripOffersPage: FC = () => {
 
   useEffect(() => {
     const subscription = watch(value => updateRequest(value))
+    setParams(prevState => ({
+      ...prevState,
+      travel_types: Number(category),
+    }))
     return () => subscription.unsubscribe()
   }, [category, watch])
 

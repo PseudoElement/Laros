@@ -8,7 +8,7 @@ export const getTripCategoriesThunk = createAsyncThunk<TripCategory[]>(
     const response = await getTripCategories()
     if (response.status === 200 && response.data.data.length) {
       const trips: TripCategory[] = response.data.data
-      return trips
+      return trips.sort((a, b) => a.id - b.id)
     }
     return []
   }
