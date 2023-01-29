@@ -10,6 +10,7 @@ import { TripDestination } from 'shared/types/trip'
 import { TRIP_PLAN_DESCRIPTION_SIZE } from 'shared/constants'
 
 import s from './TripPlan.module.scss'
+import { getTripDays } from '../../../../shared/helpers/transformers'
 
 interface TripPlanProps {
   tripDestination: TripDestination[]
@@ -24,37 +25,44 @@ export const TripPlan: FC<TripPlanProps> = ({ tripDestination }) => {
     push(`/trip_form/${id}`)
   }
 
+  const filteredTripDestination = tripDestination?.filter(
+    item => item.duration > 0
+  )
+
   return (
     <div className={s.wrapper}>
-      {tripDestination
-        ?.filter(item => item.duration > 0)
-        .map((item, index) => {
-          return (
-            <div className={s.card} key={item.id}>
-              <div className={s.cardWrap}>
-                <div className={s.destinationName}>
-                  <div className={s.daysTitle}>
-                    {t('pdfs.day')} {index + 1}
-                    <span>/{tripDestination.length}</span>
-                  </div>
-                  {item.destination_name}
+      {filteredTripDestination.map((item, index) => {
+        return (
+          <div className={s.card} key={item.id}>
+            <div className={s.cardWrap}>
+              <div className={s.destinationName}>
+                <div className={s.daysTitle}>
+                  {t('pdfs.day')} {getTripDays(filteredTripDestination, index)}
+                  <span>
+                    /
+                    {tripDestination.reduce((accumulator, currentValue) => {
+                      return accumulator + currentValue.duration
+                    }, 0) + 1}
+                  </span>
                 </div>
-                <TruncatedText
-                  className={s.description}
-                  limit={TRIP_PLAN_DESCRIPTION_SIZE}
-                >
-                  {item.description}
-                </TruncatedText>
+                {item.destination_name}
               </div>
-
-              <div className={s.image}>
-                {item.images.length ? (
-                  <Image src={item.images[0]} layout={'fill'} />
-                ) : null}
-              </div>
+              <TruncatedText
+                className={s.description}
+                limit={TRIP_PLAN_DESCRIPTION_SIZE}
+              >
+                {item.description}
+              </TruncatedText>
             </div>
-          )
-        })}
+
+            <div className={s.image}>
+              {item.images.length ? (
+                <Image src={item.images[0]} layout={'fill'} />
+              ) : null}
+            </div>
+          </div>
+        )
+      })}
 
       <div className={s.button}>
         <Button onClick={handlePush}>

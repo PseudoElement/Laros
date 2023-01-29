@@ -21,7 +21,7 @@ export const getTripDays = (
     .reduce((prev, next) => prev + next.duration, 1)
   if (duration === 1) {
     return start.toString()
-  } else return `${start}-${start + duration - 1}`
+  } else return `${start}-${start + duration}`
 }
 
 export const getTripDurationOptions = (durations: TripDuration): Option[] => {
