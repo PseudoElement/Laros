@@ -35,10 +35,10 @@ export const Explore: FC<ExploreProps> = ({ destinations }) => {
               style={
                 destination?.images.length
                   ? {
-                    backgroundImage: `url(${withDomain(
-                      destination.images[destination.images.length - 1]
-                    )})`,
-                  }
+                      backgroundImage: `url(${withDomain(
+                        destination.images[destination.images.length - 1]
+                      )})`,
+                    }
                   : { backgroundColor: '#9c9ea1' }
               }
               key={destination?.id}

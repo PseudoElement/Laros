@@ -57,8 +57,12 @@ export const Step1: FC<Step1Props> = ({
     Partial<OrderForm>
   >({
     defaultValues: {
-      dest_from: destinationToOption(airports).find((dest) => dest.label === 'Flughafen Zurich (ZRH)'),
-      dest_to: destinationToOption(airports).find((dest) => dest.label === 'Flughafen Zurich (ZRH)'),
+      dest_from: destinationToOption(airports).find(
+        dest => dest.label === 'Flughafen Zurich (ZRH)'
+      ),
+      dest_to: destinationToOption(airports).find(
+        dest => dest.label === 'Flughafen Zurich (ZRH)'
+      ),
       destinations: trip.destinations,
     },
   })
@@ -101,7 +105,8 @@ export const Step1: FC<Step1Props> = ({
         })
       } else {
         alert(
-          `No appropriate route found from  ${watchDestinations[watchDestinations?.length - 1].destination_name
+          `No appropriate route found from  ${
+            watchDestinations[watchDestinations?.length - 1].destination_name
           }`
         )
       }
@@ -207,14 +212,14 @@ export const Step1: FC<Step1Props> = ({
             capacity={form.rooms ?? []}
             destination={dest}
             day={getTripDays(watchDestinations, index)}
-            total={getTripDuration(watchDestinations)}
+            total={getTripDuration(watchDestinations) + 1}
             type={CarTransferType.PICKUP}
             from={
               trip.destinations[index - 1]
                 ? {
-                  label: trip.destinations[index - 1].destination_name,
-                  value: trip.destinations[index - 1].destination.toString(),
-                }
+                    label: trip.destinations[index - 1].destination_name,
+                    value: trip.destinations[index - 1].destination.toString(),
+                  }
                 : watchForm.dest_from ?? undefined
             }
             previousDestination={watchDestinations[index - 1] ?? null}
