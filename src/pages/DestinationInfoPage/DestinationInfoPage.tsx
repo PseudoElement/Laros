@@ -14,6 +14,7 @@ import { Trip } from 'shared/types/trip'
 import { Hotel } from 'shared/types/hotel'
 
 import s from './DestinationInfoPage.module.scss'
+import { HOME_DESTS_IDS } from 'shared/constants/destinations'
 
 export interface DestinationInfoPageProps {
   destination: Destination
@@ -25,6 +26,11 @@ export const DestinationInfoPage: FC<DestinationInfoPageProps> = ({
 
   const [hotels, setHotels] = useState<Hotel[]>([])
   const [trips, setTrips] = useState<Trip[]>([])
+
+  const getSliderImages = (destination: Destination) => {
+    // 0,1 images are for BG and card, for home areas the last photo is for card as well
+    return HOME_DESTS_IDS.includes(destination.id) ? destination.images.slice(2, destination.images.length - 2) : destination.images.slice(2)
+  }
 
   const tripsFilter = (trips: Trip[]) => {
     return trips.filter(
@@ -62,16 +68,14 @@ export const DestinationInfoPage: FC<DestinationInfoPageProps> = ({
       <div
         className={s.bg}
         style={{
-          backgroundImage: `url(${
-            destination?.images ? withDomain(destination.images[1]) : ''
-          })`,
+          backgroundImage: `url(${destination?.images ? withDomain(destination.images[1]) : ''
+            })`,
         }}
       />
       {destination ? <DestinationIntro {...destination} /> : null}
 
-      {destination?.images.length > 2 ? (
-        // @ts-ignore TODO
-        <Overview images={destination.images} overview={destination.overview} />
+      {getSliderImages(destination).length ? (
+        <Overview images={getSliderImages(destination)} overview={destination.overview ?? ''} />
       ) : null}
 
       {trips.length ? (
