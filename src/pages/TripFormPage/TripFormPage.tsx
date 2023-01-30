@@ -38,7 +38,6 @@ export const TripFormPage: FC = () => {
   )
 
   const form = useAppSelector(state => state.order.form)
-  // console.log(new Date(form.date_start))
 
   // download trip pdf
   const handleDownload = () => {
@@ -124,14 +123,6 @@ export const TripFormPage: FC = () => {
               <div className={s.infoTitle}>{trip?.name}</div>
 
               <div className={s.infoLocation}>{trip?.offer_name}</div>
-
-              {trip.description ? (
-                <div className={s.infoDescription}>
-                  <div
-                    dangerouslySetInnerHTML={{ __html: trip?.description }}
-                  />
-                </div>
-              ) : null}
             </div>
 
             {step === Steps.FIRST ? (
