@@ -74,6 +74,7 @@
     box-sizing: content-box;
     gap: 8px;
     overflow: auto;
+    width: 100%;
     font-weight: $fw-medium;
     padding-bottom: 8px;
   }
@@ -92,6 +93,7 @@
   overflow-x: auto;
   align-items: center;
   padding-bottom: 8px;
+  width: 100%;
 }
 
 .tab {

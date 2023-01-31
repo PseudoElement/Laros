@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 import { AddIcon, Button, InfoIcon, Select } from 'components'
 import { TripDayForm } from './TripDayForm'
+import { Transfer } from './Transfer'
 
 import { Controller, useFieldArray, useForm } from 'react-hook-form'
 import { calculateOrder, getTripDay } from 'shared/api/routes/order'
@@ -18,6 +19,8 @@ import { getTripDuration } from 'shared/helpers/trip'
 import { useAppDispatch } from 'shared/hooks/redux'
 import { useDebounce } from 'shared/hooks/useDebounce'
 import { updateForm } from 'store/slices/order/order'
+import { getTransfer } from 'shared/api/routes/transfer'
+import { dateToServerFormat } from 'shared/helpers/dateFormatter'
 
 import { CarTransferType } from 'shared/types/car'
 import { Destination } from 'shared/types/destinations'
@@ -27,14 +30,11 @@ import { Steps } from '../TripFormPage'
 import { TransferOptions } from 'shared/types/transport'
 
 import { ORDER_CALCULATION_DEBOUNCE } from 'shared/constants'
+import { DEFAULT_TRANSFER } from 'shared/constants/transfer'
 
 import airportIcon from '/public/assets/images/airport.svg?url'
 
 import s from './Step1.module.scss'
-import { Transfer } from './Transfer'
-import { getTransfer } from 'shared/api/routes/transfer'
-import { DEFAULT_TRANSFER } from 'shared/constants/transfer'
-import { dateToServerFormat } from 'shared/helpers/dateFormatter'
 
 interface Step1Props {
   setStep: (step: Steps) => void

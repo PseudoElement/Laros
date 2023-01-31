@@ -2,16 +2,26 @@
 
 .sidebar {
   background-color: $color-laros-light-grey;
-  border-radius: 16px;
+  padding-bottom: 40px;
+  min-width: 410px;
+
+  @include mobile-laptop {
+    min-width: 310px;
+  }
 }
+
 .sidebarWrap {
   width: 90%;
   margin: auto;
+
+  @media (max-width: 800px) {
+    padding: 0 10px;
+    width: 100%;
+  }
 }
 .map {
   height: 341px;
   background-color: $color-lazur;
-  border-radius: 0 16px 0 0;
   margin-bottom: 16px;
   overflow: hidden;
 }
@@ -20,10 +30,24 @@
   border-radius: 8px;
 }
 .section,
-.sectionTotal {
+.sectionTotal,
+.buttonSection {
   display: flex;
   align-items: center;
   padding: 8px 20px;
+  justify-content: space-between;
+}
+
+.buttonSection {
+  padding: 0;
+
+  @media (max-width: 1240px) {
+    display: block;
+    button {
+      width: 100%;
+      margin: 0 0 5px;
+    }
+  }
 }
 
 .sectionTotal {
@@ -53,6 +77,9 @@
 }
 
 // total prices styles
+.nextButton {
+  margin-right: 10px;
+}
 .uploadButton {
   font-size: 12px;
   font-weight: $fw-regular;
@@ -60,10 +87,12 @@
   color: $color-primary-black;
   border: 1px solid $color-purple;
   background-color: transparent;
-  margin-left: 10px;
-
+  width: 100%;
   span {
     margin-left: 5px;
+  }
+  @media (max-width: 1240px) {
+    width: 100%;
   }
 }
 

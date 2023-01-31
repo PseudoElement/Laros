@@ -416,7 +416,7 @@
     "windowTitle": "Ort ändern",
     "close": "Schliessen",
     "title": "Gebiete von",
-    "subTitle": "Um den Ort zu ändern, wählen Sie bitte eine der folgenden Varianten:",
+    "subTitle": "Um den Ort zu ändern, wählen Sie bitte eine der folgenden Varianten",
     "select": "Auswählen",
     "selected": "Ausgewählt",
     "back": "Zurück",
@@ -430,7 +430,7 @@
     "windowTitle": "Unterkunft ändern",
     "close": "Schliessen",
     "title": "Hotels von",
-    "subTitle": "Um die Unterkunft zu ändern, wählen Sie bitte eine der folgenden Varianten:",
+    "subTitle": "Um die Unterkunft zu ändern, wählen Sie bitte eine der folgenden Varianten",
     "price": "Preisspanne",
     "tags": "Stichwörter",
     "from": "Ab",
@@ -442,7 +442,7 @@
   "changingTransfer": {
     "windowTitle": "Transfervariante ändern",
     "close": "Schliessen",
-    "title": "Verfügbare Transfervarianten:",
+    "title": "Verfügbare Transfervarianten",
     "current": "Aktuell",
     "car": "Autotransfer",
     "tab1": "Economy",
@@ -737,7 +737,7 @@
     "forChanging": "für Umkleideraumtyp",
     "addLocation": "Hinzufügen von Standorten",
     "traveler": "Reisende",
-    "travelAgent": "Sind Sie Reiseveranstalter?",
+    "travelAgent": "Sind Sie Reiseveranstalter",
     "rooms": "Zimmer",
     "loadMore": "MEHR ANZEIGEN"
   }

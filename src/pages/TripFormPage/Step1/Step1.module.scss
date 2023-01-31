@@ -4,24 +4,40 @@
   padding: 24px 80px;
   display: flex;
   justify-content: space-between;
+
+  @include mobile-tablet {
+    padding: 20px 20px;
+  }
 }
 .select {
   width: 326px;
 }
+
 .selectLabel {
   font-size: 12px;
   font-weight: $fw-semibold;
   line-height: 14px;
   margin-bottom: 4px;
 }
+
 .endpoint {
   padding: 24px 0 24px 80px;
+
+  @include mobile-tablet {
+    padding: 20px 20px;
+  }
 }
+
 .addLocationSectionWrap {
   border-top: 1px solid $color-laros-light-grey;
   padding: 26px 80px;
   display: inline-block;
+
+  @include mobile-tablet {
+    padding: 0 20px;
+  }
 }
+
 .addLocationSection {
   display: flex;
   align-items: center;
@@ -40,4 +56,8 @@
 .actions {
   display: flex;
   padding: 24px 0 24px 80px;
+
+  @include mobile-tablet {
+    padding: 20px 20px;
+  }
 }

@@ -2,7 +2,12 @@
 
 .content {
   padding: 40px 85px 128px;
-  width: 1280px;
+  max-width: 1280px;
+  overflow: auto;
+
+  @include mobile {
+    padding: 20px;
+  }
 }
 .title {
   font-size: 16px;

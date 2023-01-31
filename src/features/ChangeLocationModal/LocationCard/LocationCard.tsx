@@ -3,6 +3,7 @@ import { Destination } from 'shared/types/destinations'
 import s from './LocationCard.module.scss'
 import cn from 'classnames'
 import { useTranslate } from '../../../shared/hooks/useTranslate'
+import {withDomain} from "../../../shared/helpers/withDomain";
 
 interface LocationCardProps extends Destination {
   isSelected: boolean
@@ -31,16 +32,18 @@ export const LocationCard: FC<LocationCardProps> = ({
       onMouseOut={() => setHover(false)}
       style={{
         background: hover
-          ? `linear-gradient(0deg, rgba(16, 30, 68, 0.9), rgba(16, 30, 68, 0.9)), url(${images[0]}), #FAFBFC`
+          ? `linear-gradient(0deg, rgba(16, 30, 68, 0.9), rgba(16, 30, 68, 0.9)), url(${withDomain(images[0])}), #FAFBFC`
           : images[0]
-            ? `linear-gradient(360deg, #1B242D 0%, rgba(27, 36, 45, 0) 35.75%), url(${images[0]}), #FAFBFC`
+            ? `linear-gradient(360deg, #1B242D 0%, rgba(27, 36, 45, 0) 35.75%), url(${withDomain(images[0])}), #FAFBFC`
             : '#d9d9d9',
       }}
       onClick={() => onCardClick(id)}
       className={cn(s.card, { [s.selected]: isSelected })}
     >
       <div className={s.title}>{name}</div>
-      <div className={s.description}><div dangerouslySetInnerHTML={{ __html: description ?? '' }} /></div>
+
+      <div className={cn(s.description, ['scrollStyle'])}><div dangerouslySetInnerHTML={{ __html: description ?? '' }} /></div>
+
       {!isSelected && (
         <div onClick={(e) => openLocation(e, id)} className={s.btn}>
           {t('changingLocation.select')}

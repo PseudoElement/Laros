@@ -76,10 +76,11 @@ export const ChangeHotelModal: FC<ChangeHotelProps> = ({
   }, [])
 
   return (
-    <div>
+    <div className={s.modalWrap}>
       <div className={s.modal}>
         <p className={s.title}>{t('changingRoomType.title')} Macedonia</p>
         <p className={s.text}>{t('changingRoomType.subTitle')}:</p>
+
         <form>
           <div className={s.select}>
             <Select
@@ -90,7 +91,8 @@ export const ChangeHotelModal: FC<ChangeHotelProps> = ({
               placeholder={t('forms.inputLabel22')}
             />
             <div className={s.range}>
-              <span>Price range</span>
+              <span>{t('forms.inputLabel13')}</span>
+
               <RangeMarks
                 value={price}
                 onChange={changePrice}
@@ -104,8 +106,9 @@ export const ChangeHotelModal: FC<ChangeHotelProps> = ({
 
           <div className={s.sorting}>
             <div className={s.tags}>
-              <span>{t('travelPlannerCategory.tags')}:</span>
-              <div className={s.tabs}>
+              <div>{t('travelPlannerCategory.tags')}:</div>
+
+              <div className={cn(s.tabs, ['scrollStyle'])}>
                 {tags.map(tab => (
                   <div
                     onClick={() => changeTabs(tab.id)}
@@ -118,20 +121,23 @@ export const ChangeHotelModal: FC<ChangeHotelProps> = ({
                   </div>
                 ))}
               </div>
-            </div>
 
-            <div className={s.direction}>
-              <span>{t('travelPlannerCategory.from')}</span>
-              <Select
-                onChange={value =>
-                  setParams(prev => ({
-                    ...prev,
-                    ordering: value.value as keyof Hotel,
-                  }))
-                }
-                classname={s.selectDirection}
-                options={direction}
-              />
+              <div className={s.direction}>
+                <span>{t('travelPlannerCategory.from')}</span>
+
+                <Select
+                    onChange={value =>
+                        setParams(prev => ({
+                          ...prev,
+                          ordering: value?.value as keyof Hotel,
+                        }))
+                    }
+                    isClearable={false}
+                    classname={s.selectDirection}
+                    options={direction}
+                    defaultValue={direction[0]}
+                />
+              </div>
             </div>
           </div>
 
@@ -149,6 +155,7 @@ export const ChangeHotelModal: FC<ChangeHotelProps> = ({
           </div>
         </form>
       </div>
+
       <div className={s.buttons}>
         <Button
           onClick={selectedHotel ? () => onSubmit(selectedHotel) : undefined}

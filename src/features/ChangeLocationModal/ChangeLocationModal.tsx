@@ -45,7 +45,9 @@ export const ChangeLocationModal: FC<ChangeLocationModalProps> = ({
         <div className={s.title}>
           {t('changingLocation.title')} {location}
         </div>
+
         <div className={s.description}>{t('changingLocation.subTitle')}:</div>
+
         <div className={s.cards}>
           {destinations.map((destination, idx) => (
             <LocationCard
@@ -58,6 +60,7 @@ export const ChangeLocationModal: FC<ChangeLocationModalProps> = ({
           ))}
         </div>
       </div>
+
       <Modal {...destinationInfoModal} title='Adding location'>
         <AddLocationModal {...destinationInfoModal} {...openedDestination} onClick={selectLocation} />
       </Modal>

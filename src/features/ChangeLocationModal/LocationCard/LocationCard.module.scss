@@ -5,7 +5,6 @@
   height: 200px;
   width: 310px;
   border-radius: 8px;
-  position: relative;
 
   &:hover .title {
     top: 44px;
@@ -34,9 +33,11 @@
   position: absolute;
   bottom: 16px;
 }
+
 .selected .title {
   bottom: 56px;
 }
+
 .description {
   display: none;
   font-weight: $fw-regular;
@@ -44,6 +45,7 @@
   height: 45px;
   overflow-y: scroll;
 }
+
 .selectedBtn,
 .btn {
   position: absolute;
@@ -56,15 +58,18 @@
   font-weight: $fw-bold;
   line-height: 14px;
 }
+
 .selectedBtn {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: $color-light-green;
 }
+
 .btn {
   display: none;
 }
+
 .placeholder {
   background-color: $color-placeholder;
   width: 100%;

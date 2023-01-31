@@ -1,16 +1,22 @@
-import Image from 'next/image'
 import { FC } from 'react'
+import Image from 'next/image'
+import cn from 'classnames'
+
+import { Button } from 'components'
+
+import { useTranslate } from 'shared/hooks/useTranslate'
+import { withDomain } from 'shared/helpers/withDomain'
+
 import { Currency } from 'shared/types'
 import { Room } from 'shared/types/hotel'
+
 import s from './RoomCard.module.scss'
-import cn from 'classnames'
-import { Button } from 'components/Button'
-import { useTranslate } from '../../../shared/hooks/useTranslate'
 
 interface RoomCardProps extends Room {
   onClick: (id: number) => void
   isSelected?: boolean
   isCurrent?: boolean
+  className?: string
 }
 export const RoomCard: FC<RoomCardProps> = ({
   isSelected,
@@ -22,6 +28,7 @@ export const RoomCard: FC<RoomCardProps> = ({
   price,
   change_price,
   description,
+  className,
 }) => {
   const t = useTranslate()
   const getBtnTitle = () => {
@@ -38,20 +45,22 @@ export const RoomCard: FC<RoomCardProps> = ({
       onClick(id)
     }
   }
+
   return (
     <div
-      className={cn(s.card, {
+      className={cn(s.card, className, {
         [s.selected]: isSelected,
         [s.current]: isCurrent,
       })}
     >
       {image ? (
-        <Image src={image} width={20} height={20} />
+        <Image src={withDomain(image)} width={20} height={20} />
       ) : (
         <div className={s.placeholder}></div>
       )}
-      <div className={s.content}>
+      <div className={cn(s.content, ['scrollStyle'])}>
         <div className={s.name}>{room_name}</div>
+
         <div className={s.price}>{`${price} ${Currency.CHF} / ${t(
           'common.nightPro'
         )}`}</div>
@@ -60,7 +69,9 @@ export const RoomCard: FC<RoomCardProps> = ({
             Currency.CHF
           } ${t('common.forChanging')}`}</div>
         )}
+
         {description && <div className={s.description}>{description}</div>}
+
         <Button
           onClick={() => selectRoom()}
           variant='outline'

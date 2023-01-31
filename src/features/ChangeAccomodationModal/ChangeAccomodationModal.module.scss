@@ -1,36 +1,51 @@
 @use 'styles/style.scss' as *;
 
+.modal {
+  padding: 32px 62px 25px;
+  width: 100%;
+
+  @include mobile {
+    padding: 20px;
+  }
+}
+
 .head {
-  min-width: 800px;
-  margin: 32px 0 0 85px;
+  width: 100%;
   padding-bottom: 40px;
   text-align: left;
 }
+
 .title {
   font-size: 16px;
   font-weight: $fw-bold;
   line-height: 20px;
   margin-bottom: 8px;
 }
+
 .rooms {
-  padding: 0 30px;
   width: 100%;
-  max-width: 1000px;
-  height: 400px;
-  overflow-y: scroll;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  & > div {
-    margin-bottom: 40px;
-  }
-  & > div:not(:first-child) {
-    margin-left: 24px;
-  }
+
 }
+.roomCard {
+  margin: 0 24px 24px 0;
+}
+
 .actions {
   width: 100%;
   border-top: 1px solid $color-modal-bg;
   display: flex;
   padding: 24px 0 24px 85px;
+
+  @include mobile {
+    padding: 0;
+    display: block;
+
+    button {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
 }

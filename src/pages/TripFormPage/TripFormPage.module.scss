@@ -17,30 +17,51 @@
     left: 0;
     right: 0;
   }
+
+  @media (max-width: 800px) {
+    display: none;
+  }
 }
 
 .container {
   position: relative;
+
+  @media (max-width: 800px) {
+    padding-top: 40px;
+  }
+  @include mobile {
+    padding-top: 0;
+  }
 }
 
 .content {
-  width: 1281px;
+  max-width: 1281px;
   background-color: $color-laros-light-grey;
   box-shadow: 0 4px 4px rgba(0, 60, 118, 0.15);
   border-radius: 16px;
   margin: -400px auto 80px;
   display: flex;
   position: relative;
+  overflow: hidden;
+
+  @media (max-width: 800px) {
+    border-radius: 0;
+    display: block;
+    margin: 0;
+    box-shadow: none;
+  }
 }
 
 .formWrap {
-  height: 850px;
+  max-height: 850px;
   overflow-x: auto;
 }
+
 .form {
-  width: 869px;
   background-color: $color-white;
   border-radius: 16px 0 0 16px;
+  width: 100%;
+
 }
 
 .header {
@@ -49,11 +70,14 @@
   justify-content: space-between;
   padding: 14px 40px 14px 46px;
   background-color: $color-laros-light-grey;
-  border-radius: 16px 0 0 0;
 
   & > div {
     display: flex;
     cursor: pointer;
+  }
+
+  @include mobile-tablet {
+    padding: 14px 10px;
   }
 }
 
@@ -76,11 +100,23 @@
   margin: 48px 0 15px 80px;
   display: flex;
   align-items: center;
+
+  @include mobile-tablet {
+    margin: 20px 10px;
+  }
+
+  @media (max-width: 550px) {
+    display: block;
+  }
 }
 
 .crumbStep {
   display: flex;
   cursor: pointer;
+
+  @media (max-width: 550px) {
+   margin-bottom: 10px;
+  }
 }
 
 .activeCrumb {
@@ -131,6 +167,10 @@
 
 .info {
   padding: 24px 0 24px 0;
+
+  @media (max-width: 800px) {
+    padding: 0 10px;
+  }
 }
 
 .infoTitle {
@@ -139,6 +179,10 @@
   font-weight: $fw-bold;
   line-height: 38px;
   margin-bottom: 4px;
+
+  @include mobile-tablet {
+    padding: 0 20px;
+  }
 }
 
 .infoLocation {
@@ -160,4 +204,8 @@
   font-size: 12px;
   font-weight: $fw-regular;
   line-height: 20px;
+
+  @include mobile-tablet {
+    padding: 0 20px;
+  }
 }

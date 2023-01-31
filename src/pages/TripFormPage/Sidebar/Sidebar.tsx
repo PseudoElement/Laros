@@ -38,6 +38,7 @@ export interface SideBarProps {
   total: number
   handleDownload?: () => void
   handleNextStep?: () => void
+  step: number
 }
 
 export const Sidebar: FC<SideBarProps> = ({
@@ -47,6 +48,7 @@ export const Sidebar: FC<SideBarProps> = ({
   total,
   handleDownload,
   handleNextStep,
+  step,
 }) => {
   const t = useTranslate()
   const dispatch = useAppDispatch()
@@ -278,8 +280,10 @@ export const Sidebar: FC<SideBarProps> = ({
         </div>
 
         {/* nex step and download buttons */}
-        <div className={s.section}>
-          <Button onClick={handleNextStep}>{t('tripSteps.next')}</Button>
+        <div className={s.buttonSection}>
+          {!step && (
+            <Button classname={s.nextButton} onClick={handleNextStep}>{t('tripSteps.next')}</Button>
+          )}
 
           <Button classname={s.uploadButton} onClick={handleDownload}>
             <Image alt='download' src={download} width={20} height={20} />
@@ -288,10 +292,11 @@ export const Sidebar: FC<SideBarProps> = ({
         </div>
 
         {/* text and link contact us */}
+        {!step &&
         <div className={s.link}>
           {t('tripSteps.contactUs')}
           <span onClick={handleContact}> {t('tripSteps.contactUs2')}</span>
-        </div>
+        </div>}
       </div>
 
       <Modal isOpen={contactUsModal.isOpen} onClose={contactUsModal.onClose}>

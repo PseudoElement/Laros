@@ -208,39 +208,51 @@ export const TripDayForm: FC<TripDayFormProps> = ({
             </div>
           )}
         </div>
+
         <div className={s.section}>
           <div className={s.sectionTitle}>{t('tripSteps.location')}:</div>
-          <div className={s.sectionValue}>
+
+          <div className={s.sectionWrap}>
+            <div className={s.sectionValue}>
             <span className={s.valueIcon}>
               <PinIcon />
             </span>
-            <div className={s.valueName}>{destination.destination_name}</div>
+              <div className={s.valueName}>{destination.destination_name}</div>
+            </div>
+
+            <Button onClick={() => loadNearLocations()} classname={s.editBtn}>
+              {t('tripSteps.edit')}
+            </Button>
           </div>
-          <Button onClick={() => loadNearLocations()} classname={s.editBtn}>
-            {t('tripSteps.edit')}
-          </Button>
+
         </div>
+
         <div className={s.section}>
           <div className={s.sectionTitle}>{t('tripSteps.duration')}:</div>
 
-          <div className={s.durationCounter}>
-            {duration} {t(getDayName(duration, 'night'))}
-            <div className={s.counter}>
-              <Counter
-                min={1}
-                value={duration}
-                onChange={num =>
-                  onChange(`destinations.${index}.duration`, num)
-                }
-              />
+          <div className={s.sectionWrap}>
+            <div className={s.durationCounter}>
+              {duration} {t(getDayName(duration, 'night'))}
+
+              <div className={s.counter}>
+                <Counter
+                    min={1}
+                    value={duration}
+                    onChange={num =>
+                        onChange(`destinations.${index}.duration`, num)
+                    }
+                />
+              </div>
             </div>
           </div>
+
         </div>
 
         <div className={cn(s.section, s.descriptionSection)}>
           <div className={cn(s.sectionTitle, s.descriptionTitle)}>
             {t('tripSteps.description')}:
           </div>
+
           <div className={s.description}>
             <div className={s.descriptionText}>
               {description.length ? <div
@@ -251,6 +263,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
                 }}
               /> : <div>-</div>}
             </div>
+
             {isTruncated && description?.length > TRUNCATED_TEXT_SIZE && (
               <div onClick={() => setIsTruncated(false)} className={s.moreBtn}>
                 {t('destinations.buttonMore')}
@@ -258,34 +271,45 @@ export const TripDayForm: FC<TripDayFormProps> = ({
             )}
           </div>
         </div>
+
         <div className={s.section}>
           <div className={s.sectionTitle}>{t('tripSteps.breakfast')}:</div>
-          <div className={cn(s.sectionValue, s.hotel)}>
+
+          <div className={s.sectionWrap}>
+            <div className={cn(s.sectionValue, s.hotel)}>
             <span className={s.valueIcon}>
               <PinIcon />
             </span>
-            <div className={s.valueName}>{hotel?.lrweb}</div>
-            <span
-              onMouseEnter={() => setIsShownCard(true)}
-              onMouseLeave={() => setIsShownCard(false)}
-              className={s.infoBtn}
+
+              <div className={s.valueName}>{hotel?.lrweb}</div>
+            </div>
+
+            <div
+                onMouseEnter={() => setIsShownCard(true)}
+                onMouseLeave={() => setIsShownCard(false)}
+                className={s.infoBtn}
             >
               <InfoIcon />
+
               <RegionCard
-                id={hotel?.id}
-                cardText={hotel?.description}
-                title={hotel?.lrweb}
-                link={`/hotels/${hotel?.id}`}
-                image={hotel?.images?.[0] || ''}
-                onClose={onClose}
-                isOpen={isShownCard}
+                  id={hotel?.id}
+                  cardText={hotel?.description}
+                  title={hotel?.lrweb}
+                  link={`/hotels/${hotel?.id}`}
+                  image={hotel?.images?.[0] || ''}
+                  onClose={onClose}
+                  isOpen={isShownCard}
+                  isTooltip={true}
+                  className={s.regionCard}
               />
-            </span>
+            </div>
+
+            <Button onClick={() => hotelModal.open()} classname={s.editBtn}>
+              {t('tripSteps.edit')}
+            </Button>
           </div>
-          <Button onClick={() => hotelModal.open()} classname={s.editBtn}>
-            {t('tripSteps.edit')}
-          </Button>
         </div>
+
         {clientRooms.map((room, index) => {
           return (
             <>
@@ -294,26 +318,31 @@ export const TripDayForm: FC<TripDayFormProps> = ({
                   {' '}
                   {t('tripSteps.room')} {index + 1}
                 </div>
-                <div
-                  onClick={() => changeRoom()}
-                  className={cn(s.sectionValue, s.changeRoom)}
-                >
-                  <PinIcon />
-                  <div className={s.valueName}>
-                    {room.room_name}
-                    <span className={s.pencil}>
+
+                <div className={s.sectionWrap}>
+                  <div
+                      onClick={() => changeRoom()}
+                      className={cn(s.sectionValue, s.changeRoom)}
+                  >
+                    <PinIcon />
+                    <div className={s.valueName}>
+                      {room.room_name}
+                      <span className={s.pencil}>
                       <PencilIcon />
                     </span>
+                    </div>
+                  </div>
+
+                  <div className={s.roomCapacityTitle}>
+                    {t('forms.inputLabel19')}:
+                  </div>
+                  <div className={cn(s.sectionValue, s.roomCapacity)}>
+                    {room.capacity}
                   </div>
                 </div>
-                <div className={s.roomCapacityTitle}>
-                  {t('forms.inputLabel19')}:
-                </div>
-                <div className={cn(s.sectionValue, s.roomCapacity)}>
-                  {room.capacity}
-                </div>
               </div>
-              <Modal {...accomodationModal} title='Changing accomodation'>
+
+              <Modal {...accomodationModal} title='Changing accomodation' classname={s.modal}>
                 <ChangeAccomodationModal
                   onSubmit={newRoom => submitRoomChange(index, newRoom)}
                   hotel={hotel.name}
@@ -326,7 +355,8 @@ export const TripDayForm: FC<TripDayFormProps> = ({
           )
         })}
       </div>}
-      <Modal {...locationModal} title='Changing location'>
+
+      <Modal {...locationModal} title='Changing location' classname={s.modal}>
         <ChangeLocationModal
           {...locationModal}
           onSubmit={id => changeLocation(id)}
@@ -336,7 +366,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
         />
       </Modal>
 
-      <Modal {...hotelModal} title={t('changingHotel.windowTitle')}>
+      <Modal {...hotelModal} title={t('changingHotel.windowTitle')} classname={s.modal}>
         <ChangeHotelModal
           onSubmit={id => сhangeHotel(id)}
           destination={destination.id}

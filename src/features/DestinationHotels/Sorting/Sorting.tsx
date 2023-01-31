@@ -139,6 +139,7 @@ const Sorting: FC<SortingProps> = ({ setParams, params, map }) => {
       <div className={s.sorting}>
         <div className={s.tags}>
           <div className={s.tag}>{t('hotels.tags')}:</div>
+
           <div className={cn(s.tabs, ['scrollStyle'])}>
             {tags.map(tab => (
               <div

@@ -1,10 +1,14 @@
 import { FC, useState } from 'react'
-import s from './ChangeAccomodationModal.module.scss'
-import { Modal } from 'components/Modal'
-import { Button } from 'components/Button'
-import { Room } from 'shared/types/hotel'
+import cn from 'classnames'
+
+import { Button } from 'components'
 import { RoomCard } from './RoomCard'
+
 import { useTranslate } from '../../shared/hooks/useTranslate'
+
+import { Room } from 'shared/types/hotel'
+
+import s from './ChangeAccomodationModal.module.scss'
 
 interface ChangeAccomodationModalProps {
   rooms: Room[]
@@ -23,7 +27,7 @@ export const ChangeAccomodationModal: FC<ChangeAccomodationModalProps> = ({
   const [selectedRoom, setSelectedRoom] = useState<number | null>(null)
   const t = useTranslate()
   const changeAccomodation = () => {
-    const newRoom = rooms.find((room) => room.id === selectedRoom)
+    const newRoom = rooms.find(room => room.id === selectedRoom)
     if (newRoom) {
       onSubmit(newRoom)
     } else {
@@ -31,6 +35,7 @@ export const ChangeAccomodationModal: FC<ChangeAccomodationModalProps> = ({
     }
     onClose()
   }
+
   return (
     <div className={s.modal}>
       <div className={s.head}>
@@ -39,21 +44,25 @@ export const ChangeAccomodationModal: FC<ChangeAccomodationModalProps> = ({
         </div>
         <div className={s.description}>{t('changingRoomType.subTitle')}:</div>
       </div>
-      <div className={s.rooms}>
+
+      <div className={cn(s.rooms, ['scrollStyle'])}>
         {rooms.map(room => (
           <RoomCard
             key={room.id}
             isCurrent={current === room.id}
             isSelected={selectedRoom === room.id}
             onClick={() => setSelectedRoom(room.id)}
+            className={s.roomCard}
             {...room}
           />
         ))}
       </div>
+
       <div className={s.actions}>
         <Button onClick={changeAccomodation}>
           {t('changingRoomType.save')}
         </Button>
+
         <Button onClick={onClose} variant='outline'>
           {t('changingRoomType.cancel')}
         </Button>

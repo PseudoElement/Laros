@@ -102,10 +102,10 @@ export const TripFormPage: FC = () => {
                 <span className={s.stepIndex}>1</span>
                 <span className={s.crumbStep}>{t('tripSteps.step')} 1:</span>
                 <span className={s.stepName}>{t('tripSteps.details')}</span>
-              </div>
 
-              <div className={s.arrow}>
-                <ChevronRightIcon />
+                <div className={s.arrow}>
+                  <ChevronRightIcon />
+                </div>
               </div>
 
               <div
@@ -150,6 +150,7 @@ export const TripFormPage: FC = () => {
           total={trip.price_chf}
           handleDownload={handleDownload}
           handleNextStep={handleNextStep}
+          step={step}
         />
       </div>
     </div>

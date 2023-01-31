@@ -1,11 +1,15 @@
 @use 'styles/style.scss' as *;
 
 .container {
-  height: 330px;
-  width: 741px;
+  min-height: 330px;
+  max-width: 741px;
   border-radius: 8px;
   padding: 24px 32px 24px 32px;
   background-color: $color-light-grey;
+
+  @include mobile-tablet {
+    padding: 10px;
+  }
 }
 .title {
   display: flex;
@@ -33,6 +37,15 @@
   flex-direction: column;
   align-items: start;
   padding: 8px 0 0 40px;
+
+  @include mobile {
+    display: block;
+    padding: 0 0 0 20px;
+    label {
+      display: block;
+      margin-top: 5px;
+    }
+  }
 }
 .radioLabel {
   font-size: 12px;

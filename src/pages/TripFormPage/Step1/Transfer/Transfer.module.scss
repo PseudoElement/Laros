@@ -7,6 +7,11 @@
 .transferBlock {
   width: 160px;
   padding: 24px 0 67px 80px;
+
+  @include mobile-tablet {
+    width: auto;
+    padding: 10px 20px;
+  }
 }
 .transferIcon {
   display: flex;
@@ -19,6 +24,10 @@
 }
 .transferInfo {
   padding: 24px;
+
+  @include mobile-tablet {
+    padding: 10px 20px;
+  }
 }
 .transferTitle {
   font-size: 12px;
