@@ -11,7 +11,7 @@ export type BlogType = {
 
 export type BlogPayload = {
   id: number
-  name: string
+  title: string
   image: string
   description: string
 }

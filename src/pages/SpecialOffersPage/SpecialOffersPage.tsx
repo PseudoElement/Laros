@@ -25,11 +25,13 @@ import { Tag } from 'shared/types/tag'
 import { TripFilterParams } from 'shared/types/trip'
 
 import s from './SpecialOffersPage.module.scss'
+import { useRouter } from 'next/router'
 
 export const SpecialOffersPage: FC = () => {
   const { control, watch } = useForm()
   const dispatch = useAppDispatch()
   const t = useTranslate()
+  const { push } = useRouter()
 
   const [params, setParams] = useState<Partial<TripFilterParams>>({
     offer: true,
@@ -101,6 +103,10 @@ export const SpecialOffersPage: FC = () => {
     const subscription = watch(value => updateRequest(value))
     return () => subscription.unsubscribe()
   }, [watch])
+
+  const handlePush = (id: number) => {
+    push(`/trips/${id}`)
+  }
 
   return (
     <div className={s.wrapper}>
@@ -205,7 +211,9 @@ export const SpecialOffersPage: FC = () => {
 
       <div className={cn(s.offers, s.grid)}>
         {!isLoading &&
-          trips.map((offer, idx) => <TripCard key={idx} {...offer} />)}
+          trips.map((offer, idx) => (
+            <TripCard key={idx} {...offer} onClick={handlePush} />
+          ))}
       </div>
     </div>
   )

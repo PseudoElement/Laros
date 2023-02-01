@@ -78,7 +78,7 @@ export const endpoints = {
     all: '/country/',
   },
   blogs: {
-    all: '/blog/',
-    one: (id: number) => `/blog/${id}`,
+    all: '/post/',
+    one: (id: number) => `/post/${id}`,
   },
 }
