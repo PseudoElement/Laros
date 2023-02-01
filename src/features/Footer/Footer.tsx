@@ -85,7 +85,8 @@ export const Footer: FC = () => {
               </div>
               <ul className={s.aboutInfoList}>
                 <li className={s.aboutItem}>
-                  <p className={s.link}>{t('navigation.footer.addressText')}
+                  <p className={s.link}>
+                    {t('navigation.footer.addressText')}
                     <span className={s.linkNum}>
                       {t('navigation.footer.address')}
                     </span>
@@ -139,27 +140,26 @@ export const Footer: FC = () => {
 
               <ul className={s.socialList}>
                 <li className={s.socialItem}>
-                  {/*TODO add link*/}
-                  <Link href='/#'>
-                    <a>
+                  <Link href={'https://www.instagram.com/larosreisen'}>
+                    <a target={'_blank'}>
                       <Image src={ig} width={13} height={13} alt='instagram' />
                     </a>
                   </Link>
                 </li>
 
                 <li className={s.socialItem}>
-                  {/*TODO add link*/}
-                  <Link href='/#'>
-                    <a>
+                  <Link href={'https://www.facebook.com/larosreisen'}>
+                    <a target={'_blank'}>
                       <Image src={fb} width={13} height={13} alt='facebook' />
                     </a>
                   </Link>
                 </li>
 
                 <li className={s.socialItem}>
-                  {/*TODO add link*/}
-                  <Link href='/#'>
-                    <a>
+                  <Link
+                    href={'https://www.linkedin.com/company/laros-reisen-gmbh'}
+                  >
+                    <a target={'_blank'}>
                       <Image src={lk} width={13} height={13} alt='linkedin' />
                     </a>
                   </Link>

@@ -19,7 +19,6 @@
   color: $color-laros-dark-grey;
 }
 .bodyHead {
-  width: 100%;
   border-bottom: 1px solid $color-laros-light-grey;
   padding: 0 24px;
 }
@@ -68,10 +67,10 @@
 }
 
 .bodyFooter {
-  width: 100%;
   display: flex;
   align-items: center;
   padding: 16px 24px;
+  flex-wrap: wrap;
   gap: 8px;
   height: 68px;
 }

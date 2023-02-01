@@ -7,6 +7,7 @@ export interface StaticTravelItem {
 }
 
 export interface Highlighted {
+  title: string
   text: string
   link: string
   images: string[] | StaticImageData[]

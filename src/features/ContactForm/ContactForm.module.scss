@@ -146,6 +146,10 @@
   display: flex;
   justify-content: space-between;
   width: 45%;
+
+  div {
+    cursor: pointer;
+  }
 }
 
 .contactContainer {

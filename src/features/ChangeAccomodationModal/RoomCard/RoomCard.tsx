@@ -23,7 +23,7 @@ export const RoomCard: FC<RoomCardProps> = ({
   id,
   isCurrent,
   onClick,
-  image,
+  images,
   room_name,
   price,
   change_price,
@@ -53,11 +53,12 @@ export const RoomCard: FC<RoomCardProps> = ({
         [s.current]: isCurrent,
       })}
     >
-      {image ? (
-        <Image src={withDomain(image)} width={20} height={20} />
+      {images.length ? (
+        <Image src={withDomain(images[0])} width={210} height={144} />
       ) : (
         <div className={s.placeholder}></div>
       )}
+
       <div className={cn(s.content, ['scrollStyle'])}>
         <div className={s.name}>{room_name}</div>
 
@@ -71,18 +72,18 @@ export const RoomCard: FC<RoomCardProps> = ({
         )}
 
         {description && <div className={s.description}>{description}</div>}
-
-        <Button
-          onClick={() => selectRoom()}
-          variant='outline'
-          classname={cn(s.button, {
-            [s.selectedBtn]: isSelected,
-            [s.currentBtn]: isCurrent,
-          })}
-        >
-          {getBtnTitle()}
-        </Button>
       </div>
+
+      <Button
+        onClick={() => selectRoom()}
+        variant='outline'
+        classname={cn(s.button, {
+          [s.selectedBtn]: isSelected,
+          [s.currentBtn]: isCurrent,
+        })}
+      >
+        {getBtnTitle()}
+      </Button>
     </div>
   )
 }

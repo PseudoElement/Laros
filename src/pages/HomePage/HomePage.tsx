@@ -12,13 +12,13 @@ import { ReactPlayer } from 'components'
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { getDestinationsThunk } from 'store/slices/destinations/thunk'
 import { getTripCategoriesThunk } from 'store/slices/trips/thunk'
+import { useGetBlogs } from 'shared/hooks/useGetBlogs'
 
 import { AboutItemsMock } from 'shared/mocks/whoweare'
 import { reviewsMock } from 'shared/mocks/reviews'
 import screenfull from 'screenfull'
 
 import s from './HomePage.module.scss'
-import { useGetBlogs } from '../../shared/hooks/useGetBlogs'
 
 export const HomePage: FC = () => {
   const [activeMenu, setActiveMenu] = useState<boolean>(false)
@@ -59,8 +59,9 @@ export const HomePage: FC = () => {
             stopOnUnmount
             height={'110%'}
             playing={videoIsFullscreen}
+            loop={true}
             muted
-            url={'https://www.youtube.com/watch?v=YnvOQji6zZ0&t=26s'}
+            url={'https://www.youtube.com/watch?v=H0ULmza3NTo'}
           />
         </div>
       </div>

@@ -29,7 +29,8 @@ export const StaticTravelMock: StaticTravelItem[] = [
     ],
     highlighted: [
       {
-        text: 'Justo, nulla sit egestas justo, faucibus consequat condimentum in. Nullam nam mi non eget nisi cursus eget. Nam at arcu, lectus ornare eu in. Faucibus duis in ac, interdum quam nisi ac bibendum cras. In quis ac eros, mauris etiam.',
+        title: 'Reisen zu zweit',
+        text: 'Lassen Sie uns gemeinsam die perfekte Reise für Sie und Ihre Reisebegleitung planen. Mit unserem Wissen sorgen wir für eindrucksvolle Reiseerlebnisse und übernehmen die Organisation bis in jedes Detail, damit Sie Ihren Urlaub vor Ort rundum und sorgenfrei geniessen können.',
         link: '/#',
         images: [
           '/assets/images/static_travel_plannerPage/05.png',
@@ -38,7 +39,10 @@ export const StaticTravelMock: StaticTravelItem[] = [
         ],
       },
       {
-        text: 'Justo, nulla sit egestas justo, faucibus consequat condimentum in. Nullam nam mi non eget nisi cursus eget. Nam at arcu, lectus ornare eu in. Faucibus duis in ac, interdum quam nisi ac bibendum cras. In quis ac eros, mauris etiam.',
+        title: 'Luxusvorschläge und exotische Reisen',
+        text:
+          'Wenn Sie Luxusurlaub lieben, können wir Ihnen einmalige Resorts auf den Malediven, den Seychellen oder in der Südsee empfehlen und buchen.\n' +
+          'Natürlich sollten Sie dabei auch Mykonos und Santorini nicht vergessen, da diese Inseln in Griechenland für Luxusurlaub bekannt sind! \n',
         link: '/#',
         images: [
           '/assets/images/static_travel_plannerPage/06.png',
@@ -47,7 +51,8 @@ export const StaticTravelMock: StaticTravelItem[] = [
         ],
       },
       {
-        text: ' Justo, nulla sit egestas justo, faucibus consequat condimentum in. Nullam nam mi non eget nisi cursus eget. Nam at arcu, lectus ornare eu in. Faucibus duis in ac, interdum quam nisi ac bibendum cras. In quis ac eros, mauris etiam. Justo, nulla sit egestas justo, faucibus consequat condimentum in. Nullam nam mi non eget nisi cursus eget. Nam at arcu, lectus ornare eu in. Faucibus duis in ac, interdum quam nisi ac bibendum cras. In quis ac eros, mauris etiam.',
+        title: 'Dschungelsafari',
+        text: 'Sind Sie fasziniert von der Wildnis und Sonne Afrikas? Möchten Sie einmal Tiger, Leoparden und Elefanten in ihrem natürlichen Lebensraum hautnah erleben? Dann ist eine Safari das ideale Angebot für Sie! Kenia, Südafrika und Namibia sind nur einige der Möglichkeiten für diesen Reisewunsch. Unsere persönliche Erfahrung wird Ihre Reise zu einem ganz besonderen Erlebnis machen',
         link: '/#',
         images: [
           '/assets/images/static_travel_plannerPage/12.png',
@@ -85,30 +90,35 @@ export const StaticTravelMock: StaticTravelItem[] = [
     ],
     highlighted: [
       {
-        text: 'Justo, nulla sit egestas justo, faucibus consequat condimentum in. Nullam nam mi non eget nisi cursus eget. Nam at arcu, lectus ornare eu in. Faucibus duis in ac, interdum quam nisi ac bibendum cras. In quis ac eros, mauris etiam.',
+        title: 'Reisen zu zweit',
+        text: 'Lassen Sie uns gemeinsam die perfekte Reise für Sie und Ihre Reisebegleitung planen. Mit unserem Wissen sorgen wir für eindrucksvolle Reiseerlebnisse und übernehmen die Organisation bis in jedes Detail, damit Sie Ihren Urlaub vor Ort rundum und sorgenfrei geniessen können.',
         link: '/#',
         images: [
-          '/assets/images/trip-planner/see.jpg',
-          '/assets/images/trip-planner/see.jpg',
-          '/assets/images/trip-planner/see.jpg',
+          '/assets/images/static_travel_plannerPage/05.png',
+          '/assets/images/static_travel_plannerPage/05.png',
+          '/assets/images/static_travel_plannerPage/05.png',
         ],
       },
       {
-        text: 'Justo, nulla sit egestas justo, faucibus consequat condimentum in. Nullam nam mi non eget nisi cursus eget. Nam at arcu, lectus ornare eu in. Faucibus duis in ac, interdum quam nisi ac bibendum cras. In quis ac eros, mauris etiam.',
+        title: 'Luxusvorschläge und exotische Reisen',
+        text:
+          'Wenn Sie Luxusurlaub lieben, können wir Ihnen einmalige Resorts auf den Malediven, den Seychellen oder in der Südsee empfehlen und buchen.\n' +
+          'Natürlich sollten Sie dabei auch Mykonos und Santorini nicht vergessen, da diese Inseln in Griechenland für Luxusurlaub bekannt sind! \n',
         link: '/#',
         images: [
-          '/assets/images/trip-planner/see.jpg',
-          '/assets/images/trip-planner/see.jpg',
-          '/assets/images/trip-planner/see.jpg',
+          '/assets/images/static_travel_plannerPage/06.png',
+          '/assets/images/static_travel_plannerPage/06.png',
+          '/assets/images/static_travel_plannerPage/06.png',
         ],
       },
       {
-        text: 'Justo, nulla sit egestas justo, faucibus consequat condimentum in. Nullam nam mi non eget nisi cursus eget. Nam at arcu, lectus ornare eu in. Faucibus duis in ac, interdum quam nisi ac bibendum cras. In quis ac eros, mauris etiam.',
+        title: 'Dschungelsafari',
+        text: 'Sind Sie fasziniert von der Wildnis und Sonne Afrikas? Möchten Sie einmal Tiger, Leoparden und Elefanten in ihrem natürlichen Lebensraum hautnah erleben? Dann ist eine Safari das ideale Angebot für Sie! Kenia, Südafrika und Namibia sind nur einige der Möglichkeiten für diesen Reisewunsch. Unsere persönliche Erfahrung wird Ihre Reise zu einem ganz besonderen Erlebnis machen',
         link: '/#',
         images: [
-          '/assets/images/trip-planner/see.jpg',
-          '/assets/images/trip-planner/see.jpg',
-          '/assets/images/trip-planner/see.jpg',
+          '/assets/images/static_travel_plannerPage/12.png',
+          '/assets/images/static_travel_plannerPage/12.png',
+          '/assets/images/static_travel_plannerPage/12.png',
         ],
       },
     ],
@@ -141,30 +151,35 @@ export const StaticTravelMock: StaticTravelItem[] = [
     ],
     highlighted: [
       {
-        text: 'Justo, nulla sit egestas justo, faucibus consequat condimentum in. Nullam nam mi non eget nisi cursus eget. Nam at arcu, lectus ornare eu in. Faucibus duis in ac, interdum quam nisi ac bibendum cras. In quis ac eros, mauris etiam.',
+        title: 'Reisen zu zweit',
+        text: 'Lassen Sie uns gemeinsam die perfekte Reise für Sie und Ihre Reisebegleitung planen. Mit unserem Wissen sorgen wir für eindrucksvolle Reiseerlebnisse und übernehmen die Organisation bis in jedes Detail, damit Sie Ihren Urlaub vor Ort rundum und sorgenfrei geniessen können.',
         link: '/#',
         images: [
-          '/assets/images/trip-planner/see.jpg',
-          '/assets/images/trip-planner/see.jpg',
-          '/assets/images/trip-planner/see.jpg',
+          '/assets/images/static_travel_plannerPage/05.png',
+          '/assets/images/static_travel_plannerPage/05.png',
+          '/assets/images/static_travel_plannerPage/05.png',
         ],
       },
       {
-        text: 'Justo, nulla sit egestas justo, faucibus consequat condimentum in. Nullam nam mi non eget nisi cursus eget. Nam at arcu, lectus ornare eu in. Faucibus duis in ac, interdum quam nisi ac bibendum cras. In quis ac eros, mauris etiam.',
+        title: 'Luxusvorschläge und exotische Reisen',
+        text:
+          'Wenn Sie Luxusurlaub lieben, können wir Ihnen einmalige Resorts auf den Malediven, den Seychellen oder in der Südsee empfehlen und buchen.\n' +
+          'Natürlich sollten Sie dabei auch Mykonos und Santorini nicht vergessen, da diese Inseln in Griechenland für Luxusurlaub bekannt sind! \n',
         link: '/#',
         images: [
-          '/assets/images/trip-planner/see.jpg',
-          '/assets/images/trip-planner/see.jpg',
-          '/assets/images/trip-planner/see.jpg',
+          '/assets/images/static_travel_plannerPage/06.png',
+          '/assets/images/static_travel_plannerPage/06.png',
+          '/assets/images/static_travel_plannerPage/06.png',
         ],
       },
       {
-        text: 'Justo, nulla sit egestas justo, faucibus consequat condimentum in. Nullam nam mi non eget nisi cursus eget. Nam at arcu, lectus ornare eu in. Faucibus duis in ac, interdum quam nisi ac bibendum cras. In quis ac eros, mauris etiam.',
+        title: 'Dschungelsafari',
+        text: 'Sind Sie fasziniert von der Wildnis und Sonne Afrikas? Möchten Sie einmal Tiger, Leoparden und Elefanten in ihrem natürlichen Lebensraum hautnah erleben? Dann ist eine Safari das ideale Angebot für Sie! Kenia, Südafrika und Namibia sind nur einige der Möglichkeiten für diesen Reisewunsch. Unsere persönliche Erfahrung wird Ihre Reise zu einem ganz besonderen Erlebnis machen',
         link: '/#',
         images: [
-          '/assets/images/trip-planner/see.jpg',
-          '/assets/images/trip-planner/see.jpg',
-          '/assets/images/trip-planner/see.jpg',
+          '/assets/images/static_travel_plannerPage/12.png',
+          '/assets/images/static_travel_plannerPage/12.png',
+          '/assets/images/static_travel_plannerPage/12.png',
         ],
       },
     ],

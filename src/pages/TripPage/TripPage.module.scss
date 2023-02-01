@@ -17,7 +17,7 @@
   padding: 80px;
 
   @include mobile {
-    padding: 60px 10px 10px 10px;
+    padding: 0;
   }
 
   @include tablet {
@@ -68,6 +68,10 @@
     left: 0;
     right: 0;
   }
+
+  @include mobile {
+    display: none;
+  }
 }
 
 .tabs {
@@ -75,6 +79,11 @@
   border-radius: 16px;
   box-shadow: 0 4px 4px rgba(0, 60, 118, 0.15);
   overflow: hidden;
+
+  @include mobile {
+    box-shadow: none;
+    border-radius: 0;
+  }
 }
 
 .tabList {
@@ -137,7 +146,18 @@
 .tabWrapper {
   display: flex;
 }
-
+.modalWrap {
+  [class*='modalContent'] {
+    max-width: 1300px;
+    margin: 0 20px;
+    @include mobile-tablet {
+      margin: 0;
+    }
+  }
+}
 .modal {
-  padding: 30px 30px 30px 0;
+  padding: 20px 30px 20px 20px;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
 }

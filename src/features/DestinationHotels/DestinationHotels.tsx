@@ -54,32 +54,34 @@ export const DestinationHotels: FC<DestinationHotelsProps> = ({ map }) => {
 
   return (
     <div className={s.container}>
-      <h3 className={s.title}>{t('hotels.sortTitle')}</h3>
-      <Sorting map={map} setParams={setParams} params={params} />
+      <div className={s.wrapper}>
+        <h3 className={s.title}>{t('hotels.sortTitle')}</h3>
+        <Sorting map={map} setParams={setParams} params={params} />
 
-      {!isLoading && !hotels.length && (
-        <div className={s.loading}>{t('common.emptyText')}</div>
-      )}
+        {!isLoading && !hotels.length && (
+          <div className={s.loading}>{t('common.emptyText')}</div>
+        )}
 
-      {isLoading && page === 1 ? (
-        <div className={s.loading}>{t('common.loadingText')}</div>
-      ) : (
-        <div className={s.hotels}>
-          {hotels.map(hotel => (
-            <HotelCard key={hotel.id} hotel={hotel} />
-          ))}
-        </div>
-      )}
+        {isLoading && page === 1 ? (
+          <div className={s.loading}>{t('common.loadingText')}</div>
+        ) : (
+          <div className={s.hotels}>
+            {hotels.map(hotel => (
+              <HotelCard key={hotel.id} hotel={hotel} />
+            ))}
+          </div>
+        )}
 
-      {!isLoading && Boolean(hotels.length) && showMoreButton && (
-        <Button
-          variant='secondary'
-          classname={s.button}
-          onClick={() => setPage(prevState => ++prevState)}
-        >
-          {t('common.loadMore')}
-        </Button>
-      )}
+        {!isLoading && Boolean(hotels.length) && showMoreButton && (
+          <Button
+            variant='secondary'
+            classname={s.button}
+            onClick={() => setPage(prevState => ++prevState)}
+          >
+            {t('common.loadMore')}
+          </Button>
+        )}
+      </div>
     </div>
   )
 }
