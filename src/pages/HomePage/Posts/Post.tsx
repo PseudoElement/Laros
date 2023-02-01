@@ -22,37 +22,55 @@ export const PostBlock: FC<PostBlockProps> = ({ posts }) => {
       <div className={s.contentWrapper}>
         {fullPost.map((post, idx) => (
           <div className={s.left} key={idx}>
-            <h3 className={s.title}>{t(post.title)}</h3>
-            <p className={s.subtitle}>{t(post.description)}</p>
+            <h3 className={s.mainTitle}>{t('homepage.ourBlogTitle')}</h3>
 
-            <Image
-              alt='Picture'
-              className={cls(s.image, s.fullPostImage)}
-              width={652}
-              height={384}
-              src={post.image}
+            <div className={s.imageWrapper}>
+              <Image
+                alt='Picture'
+                className={cls(s.image, s.fullPostImage)}
+                width={652}
+                height={384}
+                src={post.image}
+              />
+            </div>
+
+            <h3 className={s.title}>{t(post.title)}</h3>
+            <p
+              className={s.subtitle}
+              dangerouslySetInnerHTML={{
+                __html: t(post.description.split('. ')[0]),
+              }}
             />
           </div>
         ))}
 
         <div className={s.rightWrapper}>
           <div className={s.right}>
-            {post.map((post, idx) => (
-              <div className={s.post} key={idx}>
-                <div className={s.textBlock}>
-                  <h3 className={cls(s.title, s.postTitle)}>{t(post.title)}</h3>
-                  <p className={s.text}>{t(post.description)}</p>
-                </div>
+            {post.map((post, idx) => {
+              return (
+                <div className={s.post} key={idx}>
+                  <div className={s.textBlock}>
+                    <h3 className={cls(s.title, s.postTitle)}>
+                      {t(post.title)}
+                    </h3>
+                    <p
+                      className={s.text}
+                      dangerouslySetInnerHTML={{
+                        __html: t(post.description.split('. ')[0]),
+                      }}
+                    />
+                  </div>
 
-                <Image
-                  alt='Picture'
-                  className={cls(s.image, s.smallImage)}
-                  width={260}
-                  height={184}
-                  src={post.image}
-                />
-              </div>
-            ))}
+                  <Image
+                    alt='Picture'
+                    className={cls(s.image, s.smallImage)}
+                    width={260}
+                    height={184}
+                    src={post.image}
+                  />
+                </div>
+              )
+            })}
 
             <button className={s.button}>
               <Link className={s.link} href={'/blogs'}>
