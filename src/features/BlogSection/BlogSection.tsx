@@ -34,7 +34,10 @@ export const BlogSection: FC<BlogSection> = ({
       <div className={s.content}>
         <h2 className={s.mainTitle}>{t(title)}</h2>
         {read && <div className={s.read}>{`${read} ${t('blogs.time')}`}</div>}
-        <p className={s.description}>{t(description)}</p>
+        <p
+          dangerouslySetInnerHTML={{ __html: t(description) }}
+          className={s.description}
+        />
         {haveButton && (
           <Button
             variant='secondary'
