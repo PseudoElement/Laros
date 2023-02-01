@@ -29,6 +29,8 @@ export const Blog: FC = () => {
     }
   }, [blogId])
 
+  console.log(post)
+
   return (
     <>
       {post ? (
