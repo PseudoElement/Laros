@@ -22,12 +22,13 @@ const direction = [
 interface SortingProps {
   params: Partial<HotelFilterParams>
   setParams: Dispatch<SetStateAction<Partial<HotelFilterParams>>>
+  setPage: Dispatch<SetStateAction<number>>
   map: Destination & {
     destinations: Destination[]
   }
 }
 
-const Sorting: FC<SortingProps> = ({ setParams, params, map }) => {
+const Sorting: FC<SortingProps> = ({ setParams, params, map, setPage }) => {
   const [subRegions, setSubRegions] = useState<Option[]>([])
   const [tags, categories, accommodations] = useGetHotelFilters(false)
   const [price, setPrice] = useState([0, 50])
@@ -43,10 +44,15 @@ const Sorting: FC<SortingProps> = ({ setParams, params, map }) => {
     }))
   }
 
-  const onChangePrice = (value: number[]) => setPrice(value)
+  const onChangePrice = (value: number[]) => {
+    setPrice(value)
+    setPage(1)
+  }
 
-  const changeCategory = (value: Option) =>
+  const changeCategory = (value: Option) => {
     setParams(prev => ({ ...prev, category: value?.value }))
+    setPage(1)
+  }
 
   const changeTabs = (value: number) => {
     let newTags = params.tags?.split(',') ?? []
@@ -61,6 +67,7 @@ const Sorting: FC<SortingProps> = ({ setParams, params, map }) => {
       ...prev,
       tags: Boolean(newTags.length) ? newTags.join(',') : undefined,
     }))
+    setPage(1)
   }
 
   useEffect(() => {
@@ -84,6 +91,7 @@ const Sorting: FC<SortingProps> = ({ setParams, params, map }) => {
       price_gt: debouncePrice[0],
       price_lt: debouncePrice[1],
     }))
+    setPage(1)
   }, [debouncePrice])
 
   return (

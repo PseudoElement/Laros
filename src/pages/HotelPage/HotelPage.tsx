@@ -10,7 +10,7 @@ import { HotelSection } from 'features'
 import { withDomain } from 'shared/helpers/withDomain'
 import { getNearHotels } from 'shared/api/routes/hotels'
 import { getRooms } from 'shared/api/routes/rooms'
-import { getDestination } from 'shared/api/routes/destinations'
+import { getNearDestinations } from 'shared/api/routes/destinations'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
 
@@ -29,7 +29,7 @@ export const HotelPage: FC<HotelProps> = ({ hotelProp }) => {
   const [hotel, setHotel] = useState<Hotel | null>(null)
   const [rooms, setRooms] = useState<Room[]>([])
   const [nearHotels, setNearHotels] = useState<Hotel[]>([])
-  const [destination, setDestination] = useState<Destination[]>([])
+  const [nearDestinations, setNearDestinations] = useState<Destination[]>([])
 
   const loadNearHotels = async (hotelId: number) => {
     try {
@@ -49,10 +49,10 @@ export const HotelPage: FC<HotelProps> = ({ hotelProp }) => {
     }
   }
 
-  const loadDestination = async (hotelId: number) => {
+  const loadNearDestinations = async (hotelId: number) => {
     try {
-      const { data } = await getDestination(hotelId)
-      setDestination(data.data)
+      const { data } = await getNearDestinations(hotelId)
+      setNearDestinations(data.data)
     } catch (error) {
       console.error(error)
     }
@@ -66,7 +66,7 @@ export const HotelPage: FC<HotelProps> = ({ hotelProp }) => {
 
   useEffect(() => {
     if (hotel) {
-      loadDestination(hotel.id)
+      loadNearDestinations(hotel.id)
       loadNearHotels(hotel.id)
       loadRooms(hotel.id)
     }
@@ -100,8 +100,8 @@ export const HotelPage: FC<HotelProps> = ({ hotelProp }) => {
         />
       ) : null}
 
-      {destination.length ? (
-        <NearbyDestinations destination={destination} />
+      {nearDestinations.length > 0 ? (
+        <NearbyDestinations destination={nearDestinations} />
       ) : null}
     </div>
   )
