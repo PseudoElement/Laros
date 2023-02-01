@@ -21,12 +21,10 @@ import { OrderForm, PeopleCapacity } from 'shared/types/order'
 import bg from '/public/assets/images/tripFormBg.png'
 
 import s from './TripFormPage.module.scss'
-import { useDebounce } from 'shared/hooks/useDebounce'
-import { ORDER_CALCULATION_DEBOUNCE } from 'shared/constants'
-import { calculateOrder } from 'shared/api/routes/order'
-import { prepareOrderFormToApi } from 'shared/helpers/order'
 import { destinationToOption } from 'shared/helpers/destinations'
 import { useFieldArray, useForm } from 'react-hook-form'
+import { prepareOrderFormToApi, transfersToAPI } from 'shared/helpers/order'
+import { calculateOrder } from 'shared/api/routes/order'
 
 export enum Steps {
   FIRST,
@@ -36,41 +34,38 @@ export enum Steps {
 export const TripFormPage: FC = () => {
   const [step, setStep] = useState(Steps.FIRST)
   const [price, setPrice] = useState<number>(0)
-  const { query, push, reload } = useRouter()
+  const { query, push, reload, pathname } = useRouter()
   const dispatch = useAppDispatch()
+  const isHotelPage = pathname.includes('hotel')
   const t = useTranslate()
-  const { trip, airports, countries, isLoading, transfers } = useGetTripInfo(
-    Number(query.trip)
+  const { trip, airports, countries, isLoading, transfers, transferValues } = useGetTripInfo(
+    Number(query.trip), isHotelPage
   )
-
   const form = useAppSelector(state => state.order.form)
   const formHook = useForm<
     Partial<OrderForm>
   >({
     defaultValues: {
       dest_from: destinationToOption(airports).find(
-        dest => dest.label === 'Flughafen Zurich (ZRH)'
+        dest => dest.label === 'Flughafen Zürich (ZRH)'
       ),
+
       dest_to: destinationToOption(airports).find(
-        dest => dest.label === 'Flughafen Zurich (ZRH)'
+        dest => dest.label === 'Flughafen Zürich (ZRH)'
       ),
       destinations: trip?.destinations ?? [],
       travellers: [],
       date_start: form.date_start ?? Number(new Date()),
-      rooms: form.rooms ?? []
+      rooms: form.rooms ?? [],
+      transports: transferValues.map((tran) => transfersToAPI(tran))
     },
   })
   const { } = useFieldArray({
     control: formHook.control,
     name: 'destinations',
   })
-  const watchDestFrom = formHook.watch('dest_from')
-  const watchDestTo = formHook.watch('dest_to')
-  const watchDests = formHook.watch('destinations')
-  const watchRooms = formHook.watch('rooms')
 
 
-  // const calculationDebounce = useDebounce(watchOrder, ORDER_CALCULATION_DEBOUNCE)
 
   // download trip pdf
   const handleDownload = () => {
@@ -96,11 +91,14 @@ export const TripFormPage: FC = () => {
   }, [trip, dispatch])
 
   useEffect(() => {
+    formHook.setValue('transports', transferValues.map((tran) => transfersToAPI(tran)))
+  }, [transferValues])
+  useEffect(() => {
     formHook.setValue('dest_from', destinationToOption(airports).find(
-      dest => dest.label === 'Flughafen Zurich (ZRH)'
+      dest => dest.label === 'Flughafen Zürich (ZRH)'
     ))
     formHook.setValue('dest_to', destinationToOption(airports).find(
-      dest => dest.label === 'Flughafen Zurich (ZRH)'
+      dest => dest.label === 'Flughafen Zürich (ZRH)'
     ))
   }, [airports])
 
@@ -194,6 +192,7 @@ export const TripFormPage: FC = () => {
                 trip={trip}
                 airports={airports}
                 transfers={transfers}
+                transferValues={transferValues}
                 formHook={formHook}
               />
             ) : (
@@ -207,7 +206,7 @@ export const TripFormPage: FC = () => {
         </div>
 
         <Sidebar
-          route={trip?.route}
+          route={trip?.route ?? ''}
           travel_date={form.date_start}
           rooms={form.rooms}
           total={price}

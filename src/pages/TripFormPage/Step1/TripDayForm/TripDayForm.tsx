@@ -34,7 +34,7 @@ import { CarTransferType } from 'shared/types/car'
 import { OrderForm, PeopleCapacity } from 'shared/types/order'
 import { TripDestination } from 'shared/types/trip'
 import { Destination } from 'shared/types/destinations'
-import { TransferOptions } from 'shared/types/transport'
+import { TransferOptions, TransferValue } from 'shared/types/transport'
 
 import s from './TripDayForm.module.scss'
 import { getHotel } from 'shared/api/routes/hotels'
@@ -54,6 +54,7 @@ interface TripDayFormProps {
   capacity: PeopleCapacity[]
   previousDestination: TripDestination | null
   transfers: TransferOptions[]
+  transferValue: TransferValue
   onChange: UseFormSetValue<FieldValues>
   onDelete?: (index: number) => void
 }
@@ -71,6 +72,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
   index,
   previousDestination,
   transfers,
+  transferValue,
   onChange,
   onDelete,
 }) => {
@@ -193,7 +195,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
           label: destination.destination_name,
           value: destination.destination.toString()
         }}
-        value={null}
+        value={transferValue}
       />
 
       {duration > 0 && <div className={s.content}>

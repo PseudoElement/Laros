@@ -5,25 +5,29 @@ import { getTrip } from 'shared/api/routes/trips'
 import { getCountries } from 'shared/api/routes/countries'
 import { getAirportDestinations, getTransports } from 'shared/api/routes/destinations'
 import { Country } from 'shared/types/country'
-import { useAppSelector } from './redux'
-import { Transfer, TransferOptions } from 'shared/types/transport'
+import { Transfer, TransferOptions, TransferValue } from 'shared/types/transport'
+import { getTripDay } from 'shared/api/routes/order'
+import { getHotel } from 'shared/api/routes/hotels'
 
 export const useGetTripInfo = (
-  id: number
-): { trip: Trip | null, airports: Destination[], countries: Country[], isLoading: boolean, transfers: TransferOptions[], transferValues: number[] } => {
+  id: number, isHotelPage: boolean
+): { trip: Trip | null, airports: Destination[], countries: Country[], isLoading: boolean, transfers: TransferOptions[], transferValues: TransferValue[] } => {
   const [airports, setAirports] = useState<Destination[]>([])
   const [trip, setTrip] = useState<Trip | null>(null)
   const [countries, setCountries] = useState<Country[]>([])
-  const [isLoading, setIsLoading] = useState<boolean>(true)
-  const regions = useAppSelector((state) => state.destinations.destinations);
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const [transfers, setTransfers] = useState<Record<number, TransferOptions>>([])
-  const [transferValues, setTransferValues] = useState<number[]>([])
-
+  const [transferValues, setTransferValues] = useState<TransferValue[]>([])
+  const [isTransfersLoaded, setIsTransfersLoaded] = useState(false)
   const prepareTransfer = (transfers: Record<number, TransferOptions>): TransferOptions[] => {
     // console.log('transfers :', transfers);
     return Object.keys(transfers).map((key) => transfers[Number(key)])
   }
   useEffect(() => {
+    if (isHotelPage) {
+      setIsLoading(false)
+      return
+    }
     if (!id) {
       return
     }
@@ -57,6 +61,44 @@ export const useGetTripInfo = (
       console.error(error)
     }
   }
+  useEffect(() => {
+    const loadHotelTrip = async (id: number) => {
+      if (!id) {
+        return
+      }
+      try {
+        const { data } = await getHotel(id)
+        // @ts-ignore
+        if (data.data.destination) {
+          // @ts-ignore
+          const defaultTripDay = await getTripDay(data.data.destination)
+          console.log('defaultTripDay :', defaultTripDay);
+          if (defaultTripDay) {
+            // @ts-ignore
+            setTrip({
+              destinations: [{
+                id: defaultTripDay.location.id,
+                images: [],
+                destination_name: defaultTripDay.location.name,
+                hotel_name: defaultTripDay.hotel.name,
+                description: defaultTripDay.location.description,
+                duration: 1,
+                trip: 1, //
+                destination: defaultTripDay.location.id,
+                hotel: defaultTripDay.hotel,
+              }]
+            })
+          }
+        }
+      } catch (error) {
+        console.log('error :', error);
+
+      }
+    }
+    if (isHotelPage) {
+      loadHotelTrip(id)
+    }
+  }, [id, isHotelPage])
   useEffect(() => {
     const loadTransfer = async (from: number, to: number, index: number) => {
       let transfers: TransferOptions = {
@@ -111,13 +153,54 @@ export const useGetTripInfo = (
       loadTransfer(destinations[destinations.length - 1].destination, trip.dest_start, destinations.length)
       // console.log('tran last :', destinations[destinations.length - 1].destination_name, trip.dest_start);
     }
+    setIsTransfersLoaded(true)
+
   }, [trip])
 
+  useEffect(() => {
+    if (trip?.transports && isTransfersLoaded) {
+      let preselectedTransferValues: TransferValue[] = []
+      const preselectedEndTransfer = trip.transports.find((transport) => transport.from_dest_name === "Zürich"); // TODO
+
+      const preselectedTransfers: TransferValue[] = trip.destinations.map((dest, index) => {
+        if (dest?.rental?.length) {
+          return {
+            type: Transfer.CAR,
+            value: dest.rental[0]
+          }
+        } else {
+          const preselectedTransport = trip.transports.find((transport) => transport.from_dest_name === dest.destination_name)
+          if (preselectedTransport) {
+            return {
+              type: preselectedTransport.type_name,
+              value: preselectedTransport.id
+            }
+          } else {
+            return null
+          }
+        }
+      })
+      const preselectedStartTransfer = trip.transports.find((transport) => transport.from_dest_name === "Zürich");
+      if (preselectedStartTransfer) {
+        preselectedTransferValues = [{
+          type: preselectedStartTransfer.type_name,
+          value: preselectedStartTransfer.id
+        }]
+      }
+      preselectedTransferValues = [...preselectedTransferValues, ...preselectedTransfers]
+      if (preselectedEndTransfer) {
+        preselectedTransferValues = [...preselectedTransferValues, {
+          type: preselectedEndTransfer.type_name,
+          value: preselectedEndTransfer.id
+        }]
+      }
+      setTransferValues(preselectedTransferValues)
+    }
+  }, [trip, transfers, isTransfersLoaded])
   useEffect(() => {
     loadCountries()
     loadAirports()
   }, [])
-  // console.log('transfers :', transfers);
 
   return { trip, airports, countries, isLoading, transfers: prepareTransfer(transfers), transferValues }
 }

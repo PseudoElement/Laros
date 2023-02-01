@@ -22,3 +22,8 @@ export interface TransferOptions {
   airport: null | number
   ferry: null | number
 }
+
+export type TransferValue = {
+  type: Transfer
+  value: number | null
+} | null

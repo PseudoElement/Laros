@@ -3,9 +3,11 @@ import {
   OrderForm,
   OrderPayload,
   OrderPlaceAccomodation,
+  OrderTransport,
 } from 'shared/types/order'
 import { dateToServerFormat } from './dateFormatter'
 import { countPeople } from './trip'
+import { Transfer, TransferValue } from 'shared/types/transport'
 
 export const prepareOrder = (form: OrderForm): OrderPayload => {
   const destinations: OrderPlaceAccomodation[] = form.destinations.map(
@@ -30,8 +32,19 @@ export const prepareOrder = (form: OrderForm): OrderPayload => {
   }
 }
 
+export const transfersToAPI = (transfer: TransferValue): OrderTransport => {
+  if (!transfer || transfer.type === Transfer.CAR) {
+    return
+  }
+  return {
+    date: dateToServerFormat(new Date()),
+    transport: transfer.value,
+    rental: transfer.value === null,
+  }
+}
+
 export const prepareOrderFormToApi = (form: OrderForm): OrderPayload => {
-  // console.log('form :', form)
+  console.log('form :', form)
   const finalTravellers = form.travellers.map(traveller => {
     const fullName = traveller.name?.split(' ')
     return {
@@ -42,6 +55,7 @@ export const prepareOrderFormToApi = (form: OrderForm): OrderPayload => {
       nationality: traveller.nationality.value,
     }
   })
+
   const finalForm = {
     ...form,
     date_start: dateToServerFormat(form.date_start),
@@ -58,7 +72,7 @@ export const prepareOrderFormToApi = (form: OrderForm): OrderPayload => {
             room_id: room.id,
           })) ?? [],
         taxi: form.transports?.[index]?.rental ?? false,
-        rental: [1],
+        rental: [],
         // form.transports?.[index]?.transport[
         //   form.transports?.[index].transport
         // ],
@@ -69,12 +83,7 @@ export const prepareOrderFormToApi = (form: OrderForm): OrderPayload => {
     // for calculate API
     people:
       countPeople(form.rooms, 'adults') + countPeople(form.rooms, 'children'),
-    transports: [
-      {
-        transport: 1,
-        date: dateToServerFormat(new Date()),
-      },
-    ], // form.transports ?? [1] // TODO remove 1 when API will fix aiports
+    transports: form.transports.filter(tran => tran) ?? [], // form.transports ?? [1] // TODO remove 1 when API will fix aiports
   }
   return finalForm
 }

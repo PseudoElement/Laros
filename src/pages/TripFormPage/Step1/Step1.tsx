@@ -27,7 +27,7 @@ import { Destination } from 'shared/types/destinations'
 import { OrderForm } from 'shared/types/order'
 import { Trip } from 'shared/types/trip'
 import { Steps } from '../TripFormPage'
-import { TransferOptions } from 'shared/types/transport'
+import { TransferOptions, TransferValue } from 'shared/types/transport'
 
 import { DEFAULT_TRANSFER } from 'shared/constants/transfer'
 
@@ -40,6 +40,7 @@ interface Step1Props {
   trip: Trip
   airports: Destination[]
   transfers: TransferOptions[]
+  transferValues: TransferValue[]
   formHook: UseFormReturn<Partial<OrderForm>, any>
 }
 
@@ -48,6 +49,7 @@ export const Step1: FC<Step1Props> = ({ // TODO
   trip,
   airports,
   transfers,
+  transferValues,
   formHook: {
     watch,
     control,
@@ -213,6 +215,7 @@ export const Step1: FC<Step1Props> = ({ // TODO
             }
             previousDestination={watchDestinations[index - 1] ?? null}
             transfers={transfers}
+            transferValue={transferValues[index]}
           />
         )
       })}

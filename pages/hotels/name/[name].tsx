@@ -9,9 +9,17 @@ const Hotel: NextPage<HotelPageProps> = ({ hotel }) => {
 
 export async function getServerSideProps(context: any) {
   const { name } = context.query
-  const { data } = await getHotelByName(name)
-  //@ts-ignore
-  return { props: { hotel: data.data } }
+  try {
+    const { data } = await getHotelByName(name)
+    console.log('data :', data);
+    //@ts-ignore
+
+    return { props: { hotel: data?.data } }
+  } catch (error) {
+    console.log(error)
+  }
+
+
 }
 
 export default Hotel

@@ -26,7 +26,7 @@ export interface Trip {
   dest_start: number
   description: string | null
   tips: string | null
-  route: string | null
+  route?: string | null
   period: string | null
   offer: number | null
 }
@@ -41,6 +41,8 @@ export interface TripDestination {
   trip: number // id
   destination: number // id
   hotel: Hotel
+  rental?: number[] // car ids
+  transfers?: Transport[]
 }
 
 export enum TripSort {

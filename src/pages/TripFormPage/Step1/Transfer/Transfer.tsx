@@ -15,13 +15,13 @@ import exchange from '/public/assets/images/exchange.svg?url'
 import airport from '/public/assets/images/airportIcon.svg?url'
 
 import { Option } from 'shared/types'
-import { TransferOptions } from 'shared/types/transport'
+import { TransferOptions, TransferValue } from 'shared/types/transport'
 import { Car, CarTransferType } from 'shared/types/car'
 
 interface TransferProps {
   from?: Option
   to?: Option
-  value: unknown
+  value: TransferValue
   options: TransferOptions
   onChange: (id: number, type: CarTransferType) => void
 }
@@ -30,6 +30,7 @@ export const Transfer: FC<TransferProps> = ({
   options = {} as TransferOptions,
   from,
   to,
+  value,
   onChange,
 }) => {
   const transferModal = useModal()
@@ -40,7 +41,7 @@ export const Transfer: FC<TransferProps> = ({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const availableTransfers = useMemo(() => transfersToOptions(options), [transfersToOptions, options])
   const [selectedTransfer, setSelectedTransfer] = useState<number>(
-    Number(availableTransfers[0]?.value)
+    value?.value ?? Number(availableTransfers[0]?.value)
   )
   const [cars, setCars] = useState<Car[]>([])
   const t = useTranslate()
