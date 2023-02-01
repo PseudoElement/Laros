@@ -44,7 +44,7 @@ export const BlogItem: FC<BlogItemProps> = ({
 }
 
 export const BlogsPage: FC = () => {
-  const BLOGS_PAGINATION_PER_PAGE = 2
+  const BLOGS_PAGINATION_PER_PAGE = 10
   const [params, setParams] = useState({
     page: 1,
     size: BLOGS_PAGINATION_PER_PAGE,
@@ -85,14 +85,19 @@ export const BlogsPage: FC = () => {
             : null}
         </ul>
         {isButtonShowed && (
-          <Button
-            onClick={() =>
-              setParams(prevState => ({ ...prevState, page: prevState.page++ }))
-            }
-            variant='secondary'
-          >
-            {t('common.loadMore')}
-          </Button>
+          <div className={s.buttonWrapper}>
+            <Button
+              onClick={() =>
+                setParams(prevState => ({
+                  ...prevState,
+                  page: ++prevState.page,
+                }))
+              }
+              variant='secondary'
+            >
+              {t('common.loadMore')}
+            </Button>
+          </div>
         )}
         <div className={s.reviews}>
           <div className={s.title}>
