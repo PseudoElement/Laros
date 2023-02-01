@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import cn from 'classnames'
 
@@ -21,11 +21,13 @@ interface SendBrochuresModalProps {
   brochures: Brochure[]
   isOpen: boolean
   onClose: () => void
+  onFormSubmit?: () => void
 }
 export const SendBrochuresModal: FC<SendBrochuresModalProps> = ({
   brochures,
   isOpen,
   onClose,
+  onFormSubmit,
 }) => {
   const { handleSubmit, control } = useForm()
   const dispatch = useAppDispatch()
@@ -40,6 +42,7 @@ export const SendBrochuresModal: FC<SendBrochuresModalProps> = ({
       brochures: brochureIds,
     }
     dispatch(sendSendBrochureThunk(form as SendBrochureForm))
+    onFormSubmit && onFormSubmit()
   }
 
   return (
@@ -64,7 +67,7 @@ export const SendBrochuresModal: FC<SendBrochuresModalProps> = ({
                   classname={s.input}
                   onChange={onChange}
                   id='name'
-                  value={value}
+                  value={value || ''}
                   label={t('forms.inputLabel30')}
                 />
               )}
@@ -144,12 +147,12 @@ export const SendBrochuresModal: FC<SendBrochuresModalProps> = ({
             </div>
 
             <Controller
-              name='number'
+              name='phone'
               control={control}
               render={({ field: { onChange, value } }) => (
                 <div className={s.phoneInputWrap}>
                   <Input
-                    id='number'
+                    id='phone'
                     required
                     onChange={onChange}
                     value={value}
