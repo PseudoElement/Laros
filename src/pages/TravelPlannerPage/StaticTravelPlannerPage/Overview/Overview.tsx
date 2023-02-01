@@ -36,15 +36,6 @@ export const OverviewSection: FC<SliderProps> = ({ cards }) => {
   return (
     <div className={s.wrapper}>
       <div className={s.contentWrapper}>
-        <h3 className={s.subtitle}>Overview</h3>
-        <p className={s.text}>
-          Orci, diam at urna tellus pellentesque. Lacus turpis pharetra id eget
-          ullamcorper. Interdum risus, est, at viverra ullamcorper tortor,
-          sagittis, ut et. Massa molestie vel odio nunc, facilisi. Eu, porttitor
-          sagittis facilisis in iaculis molestie. Ultricies neque turpis ac non
-          pharetra, enim, ornare.
-        </p>
-
         <div className={s.slider}>
           <Swiper
             // @ts-ignore

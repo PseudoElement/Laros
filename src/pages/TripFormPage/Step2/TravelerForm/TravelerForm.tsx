@@ -9,6 +9,7 @@ import { genderOptions, titleOptions } from 'shared/constants/form'
 import s from './TravelerForm.module.scss'
 import { useTranslate } from '../../../../shared/hooks/useTranslate'
 import { Option } from 'shared/types'
+import cn from 'classnames'
 
 interface TravelerFormProps {
   control: any
@@ -16,7 +17,12 @@ interface TravelerFormProps {
   index: number
   countries: Option[]
 }
-export const TravelerForm: FC<TravelerFormProps> = ({ control, index, field, countries }) => {
+export const TravelerForm: FC<TravelerFormProps> = ({
+  control,
+  index,
+  field,
+  countries,
+}) => {
   const t = useTranslate()
 
   return (
@@ -81,7 +87,7 @@ export const TravelerForm: FC<TravelerFormProps> = ({ control, index, field, cou
           name={`travellers.[${index}].gender`}
           control={control}
           render={({ field: { onChange, value } }) => (
-            <div className={s.radio}>
+            <div className={cn(s.radio, s.hidden)}>
               <div className={s.radioLabel}>{t('worldwideTours.label9')}</div>
               <Radio
                 name='gender'

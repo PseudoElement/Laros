@@ -12,10 +12,11 @@
   overflow: hidden;
   min-height: 470px;
   border: 1px solid transparent;
+  min-width: 368px;
+  max-width: 450px;
 
-  @include mobile-tablet {
-    // width: 400px;
-    width: 100%;
+  @media (max-width: 420px) {
+    min-width: 290px;
   }
 }
 

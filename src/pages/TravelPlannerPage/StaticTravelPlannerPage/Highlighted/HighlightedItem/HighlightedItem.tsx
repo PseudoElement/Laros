@@ -13,12 +13,14 @@ import {
 
 interface HighlightedItemProps {
   text: string
+  title: string
   link: string
   images: string[] | StaticImageData[]
 }
 
 export const HighlightedItem: FC<HighlightedItemProps> = ({
   images,
+  title,
   link,
   text,
 }) => {
@@ -68,6 +70,8 @@ export const HighlightedItem: FC<HighlightedItemProps> = ({
           />
         </div>
       </div>
+
+      <div className={s.title}>{title}</div>
 
       <TruncatedText className={s.text} limit={JOB_CARD_TEXT_LIMIT}>
         {text}

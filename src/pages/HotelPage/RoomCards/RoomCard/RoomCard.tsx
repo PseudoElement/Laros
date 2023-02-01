@@ -9,7 +9,7 @@ import { Room } from 'shared/types/hotel'
 import s from './RoomCard.module.scss'
 
 export const RoomCard: FC<Room> = ({
-  image,
+  images,
   description,
   room_name,
   price,
@@ -26,8 +26,8 @@ export const RoomCard: FC<Room> = ({
   return (
     <div className={s.roomCard}>
       <div className={s.roomCardImage}>
-        {image ? (
-          <Image src={withDomain(image)} alt='' layout={'fill'} />
+        {images.length ? (
+          <Image src={withDomain(images[0])} alt='' layout={'fill'} />
         ) : null}
       </div>
 

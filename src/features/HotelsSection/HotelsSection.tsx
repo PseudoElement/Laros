@@ -3,11 +3,12 @@ import { FC } from 'react'
 import { HotelCard } from 'features'
 import { Slider } from 'components'
 
+import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
+import { TABLET_SCREEN } from 'shared/constants/screenResolutions'
+
 import { Hotel } from 'shared/types/hotel'
 
 import s from './HotelSection.module.scss'
-import { useWindowDimensions } from '../../shared/hooks/useWindowDimensions'
-import { TABLET_SCREEN } from '../../shared/constants/screenResolutions'
 
 interface HotelSection {
   hotels: Hotel[]
@@ -17,6 +18,7 @@ interface HotelSection {
 
 export const HotelSection: FC<HotelSection> = ({ hotels, title, subTitle }) => {
   const { width } = useWindowDimensions()
+
   return (
     <div className={s.hotelSection}>
       <div className={s.title}>{title}</div>
@@ -30,7 +32,9 @@ export const HotelSection: FC<HotelSection> = ({ hotels, title, subTitle }) => {
             withNavigation={width > TABLET_SCREEN}
             withPagination
             spaceBetween={30}
-            slidesPerView={width > 1200 ? undefined : width > 800 ? 2 : 1}
+            nextEl={s.nextButton}
+            prevEl={s.prevButton}
+            slidesPerView={width > 1310 ? undefined : width > 950 ? 2 : 1}
           >
             {hotels.map(hotel => (
               <HotelCard key={hotel.id} hotel={hotel} />

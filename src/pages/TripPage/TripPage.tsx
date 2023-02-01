@@ -20,6 +20,7 @@ import { Destination } from 'shared/types/destinations'
 import { Trip } from 'shared/types/trip'
 
 import s from './TripPage.module.scss'
+import cn from 'classnames'
 
 export interface TripPageProps {
   trip: Trip
@@ -124,8 +125,9 @@ export const TripPage: FC<TripPageProps> = ({ trip }) => {
             isOpen={isOpen}
             onClose={onClose}
             title={t('contactForm.formTitle')}
+            classname={s.modalWrap}
           >
-            <div className={s.modal}>
+            <div className={cn(s.modal, ['scrollStyle'])}>
               <ContactForm />
             </div>
           </Modal>

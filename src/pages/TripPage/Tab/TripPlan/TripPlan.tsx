@@ -5,12 +5,15 @@ import Image from 'next/image'
 import { Button, TruncatedText } from 'components'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
+import { getTripDays } from 'shared/helpers/transformers'
+import { withDomain } from 'shared/helpers/withDomain'
 
 import { TripDestination } from 'shared/types/trip'
 import { TRIP_PLAN_DESCRIPTION_SIZE } from 'shared/constants'
 
+import bed from '/public/assets/images/bed_black.svg?url'
+
 import s from './TripPlan.module.scss'
-import { getTripDays } from '../../../../shared/helpers/transformers'
 
 interface TripPlanProps {
   tripDestination: TripDestination[]
@@ -20,7 +23,7 @@ export const TripPlan: FC<TripPlanProps> = ({ tripDestination }) => {
   const { query, push } = useRouter()
   const { id } = query
   const t = useTranslate()
-
+  console.log(tripDestination)
   const handlePush = () => {
     push(`/trip_form/${id}`)
   }
@@ -47,17 +50,28 @@ export const TripPlan: FC<TripPlanProps> = ({ tripDestination }) => {
                 </div>
                 {item.destination_name}
               </div>
+
               <TruncatedText
                 className={s.description}
                 limit={TRIP_PLAN_DESCRIPTION_SIZE}
               >
                 {item.description}
               </TruncatedText>
+
+              <div className={s.hotelInfo}>
+                <div className={s.bedImage}>
+                  <Image src={bed} width={16} height={16} />
+                </div>
+
+                <div>
+                  {t('travelPlannerTripPlan.overnight')} {item.hotel.lrweb}
+                </div>
+              </div>
             </div>
 
             <div className={s.image}>
               {item.images.length ? (
-                <Image src={item.images[0]} layout={'fill'} />
+                <Image src={withDomain(item.images[1])} layout={'fill'} />
               ) : null}
             </div>
           </div>

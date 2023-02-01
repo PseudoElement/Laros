@@ -165,6 +165,7 @@ export const Step2: FC<Step2Props> = ({ setStep, capacity, countries }) => {
             />
           )}
         />
+
         <Controller
           name='address'
           control={control}
@@ -173,7 +174,7 @@ export const Step2: FC<Step2Props> = ({ setStep, capacity, countries }) => {
               placeholder={t('worldwideTours.label12')}
               onChange={onChange}
               value={value}
-              label={`${t('forms.inputLabel27')} 1`}
+              label={`${t('forms.inputLabel27')} 1*`}
               required
               shorten
             />
@@ -202,7 +203,7 @@ export const Step2: FC<Step2Props> = ({ setStep, capacity, countries }) => {
               placeholder={t('worldwideTours.label12')}
               onChange={onChange}
               value={value}
-              label={t('forms.inputLabel28')}
+              label={`${t('forms.inputLabel28')}*`}
               required
               shorten
             />

@@ -40,7 +40,7 @@ export const StartTripForm: FC<StartTripFormProps> = ({
     control,
   } = useForm({
     defaultValues: {
-      fields: [{ adults: 0, children: 0 }],
+      fields: [{ adults: 1, children: 0 }],
     },
   })
 
@@ -93,9 +93,14 @@ export const StartTripForm: FC<StartTripFormProps> = ({
                 <div className={s.optionTitle}>
                   {t('tripSteps.room')} {index + 1}
                 </div>
-                <div className={s.trash} onClick={() => remove(index)}>
+
+                <button
+                  className={s.trash}
+                  onClick={() => remove(index)}
+                  disabled={fields.length === 1}
+                >
                   <Image src={trash} alt='trash' width={25} height={25} />
-                </div>
+                </button>
               </div>
 
               <div className={s.numberInputWrap}>
@@ -103,6 +108,7 @@ export const StartTripForm: FC<StartTripFormProps> = ({
                   name={`fields.${index}.adults`}
                   control={control}
                   rules={{ required: true }}
+                  defaultValue={1}
                   render={({ field: { onChange, value } }) => (
                     <Input
                       type={'number'}
@@ -111,6 +117,7 @@ export const StartTripForm: FC<StartTripFormProps> = ({
                       value={value}
                       onChange={onChange}
                       classname={s.numberInput}
+                      min={1}
                     />
                   )}
                 />
@@ -140,7 +147,7 @@ export const StartTripForm: FC<StartTripFormProps> = ({
         className={s.addRoom}
         onClick={() =>
           append({
-            adults: 0,
+            adults: 1,
             children: 0,
           })
         }

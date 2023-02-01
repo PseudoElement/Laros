@@ -37,38 +37,43 @@
 }
 
 .wrap {
-  margin: 0 150px;
+  max-width: 1260px;
+  margin: 0 auto;
 
   @include mobile-tablet {
     margin: 0;
   }
-}
 
-@include mobile {
-  .hotelSlider {
-    [class*='swiper-slide'] {
-      display: flex;
-      justify-content: center;
-    }
-
-    [class*='swiperButtonNext'] {
-      right: 0;
-    }
-
-    [class*='swiperButtonPrev'] {
-      left: 0;
-    }
+  @media (min-width: 1600px) {
+    max-width: 80%;
+    margin: auto;
   }
 }
+.hotelSlider {
+  padding: 0 40px;
 
-@include tablet-laptop {
-  .hotelSlider {
-    [class*='swiperButtonNext'] {
-      right: -15px;
-    }
-
-    [class*='swiperButtonPrev'] {
-      left: -15px;
-    }
+  @media (max-width: 1310px) {
+    max-width: 1000px;
+    margin: auto;
   }
+
+  @media (min-width: 1310px) {
+    max-width: 100%;
+    margin: auto;
+  }
+
+  @media (max-width: 950px) {
+    max-width: 530px;
+    margin: auto;
+  }
+
+  @media (max-width: 470px) {
+    padding: 0;
+  }
+}
+.nextButton {
+  right: -20px;
+}
+.prevButton {
+  left: -20px;
 }

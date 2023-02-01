@@ -15,7 +15,9 @@
   border-radius: 8px;
   position: relative;
 }
-
+.title {
+  font-weight: bold;
+}
 .text {
   padding-bottom: 16px;
   font-weight: $fw-regular;

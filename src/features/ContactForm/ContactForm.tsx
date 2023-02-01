@@ -21,6 +21,7 @@ import send from '/public/assets/images/info/send.svg?url'
 import video from '/public/assets/images/info/video.svg?url'
 
 import s from './ContactForm.module.scss'
+import Link from 'next/link'
 
 type ContactFormProps = {
   contactPage?: boolean
@@ -233,16 +234,31 @@ export const ContactForm: FC<ContactFormProps> = ({
           </div>
           <div className={s.infoTitle}>{t('contactForm.socialMedia')}</div>
           <div className={s.infoDescription}>{t('contactForm.follow')}:</div>
+
           <div className={s.socialIcons}>
-            <div>
-              <Image src={inst} width={20} height={20} />
-            </div>
-            <div>
-              <Image src={fb} width={20} height={20} />
-            </div>
-            <div>
-              <Image src={linked} width={20} height={20} />
-            </div>
+            <Link href={'https://www.instagram.com/larosreisen'}>
+              <a target={'_blank'}>
+                <div>
+                  <Image src={inst} width={20} height={20} />
+                </div>
+              </a>
+            </Link>
+
+            <Link href={'https://www.facebook.com/larosreisen'}>
+              <a target={'_blank'}>
+                <div>
+                  <Image src={fb} width={20} height={20} />
+                </div>
+              </a>
+            </Link>
+
+            <Link href={'https://www.linkedin.com/company/laros-reisen-gmbh'}>
+              <a target={'_blank'}>
+                <div>
+                  <Image src={linked} width={20} height={20} />
+                </div>
+              </a>
+            </Link>
           </div>
         </div>
       </div>

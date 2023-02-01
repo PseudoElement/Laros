@@ -12,13 +12,15 @@ export const Highlighted: FC<HighlightedProps> = ({ highlighted }) => {
   const route = 1
   return (
     <div className={cls(s.wrapper)}>
-      <h3 className={s.title}>Highlighted trip proposalss</h3>
+      <h3 className={s.title}>Massgeschneiderte Individualreisen weltweit</h3>
+
       <div className={s.items}>
         {highlighted.map((item, idx) => (
           <HighlightedItem
             key={idx}
             // @ts-ignore
             link={`/destinations/${route}/${item.id}`}
+            title={item.title}
             text={item.text}
             images={item.images}
           />
