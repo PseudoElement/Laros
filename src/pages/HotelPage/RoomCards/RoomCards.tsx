@@ -3,8 +3,9 @@ import React, { FC } from 'react'
 import { RoomCard } from './RoomCard/RoomCard'
 import { Room } from 'shared/types/hotel'
 
+import { useTranslate } from 'shared/hooks/useTranslate'
+
 import s from './RoomCards.module.scss'
-import { useTranslate } from '../../../shared/hooks/useTranslate'
 
 interface RoomCardsProps {
   rooms: Room[]

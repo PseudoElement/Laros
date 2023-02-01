@@ -39,6 +39,7 @@ export const Counter: FC<CounterProps> = ({
           height={24}
         />
       </span>
+
       <span onClick={() => handleIncrement()}>
         <Image src={maxDisabled ? plusDisabled : plus} width={24} height={24} />
       </span>

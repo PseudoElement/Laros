@@ -10,7 +10,7 @@ export interface Room {
   season_price?: number
   description?: string // TODO check API
   change_price?: string // TODO check API
-  image: string
+  images: string
   price: number
 }
 

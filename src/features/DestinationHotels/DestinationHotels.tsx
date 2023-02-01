@@ -69,6 +69,7 @@ export const DestinationHotels: FC<DestinationHotelsProps> = ({ map }) => {
 
   return (
     <div className={s.container}>
+      <div className={s.wrapper}>
       <h3 className={s.title}>{t('hotels.sortTitle')}</h3>
       <Sorting
         map={map}
@@ -100,6 +101,7 @@ export const DestinationHotels: FC<DestinationHotelsProps> = ({ map }) => {
           {t('common.loadMore')}
         </Button>
       )}
+      </div>
     </div>
   )
 }
