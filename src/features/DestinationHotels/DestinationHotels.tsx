@@ -10,6 +10,7 @@ import { useGetHotels } from 'shared/hooks/useGetHotels'
 import { useTranslate } from 'shared/hooks/useTranslate'
 
 import s from './DestinationHotels.module.scss'
+import { useRouter } from 'next/router'
 
 interface DestinationHotelsProps {
   map: Destination & {
@@ -20,7 +21,13 @@ interface DestinationHotelsProps {
 export const DestinationHotels: FC<DestinationHotelsProps> = ({ map }) => {
   const HOTEL_PAGINATION_PER_PAGE = 50
 
-  const [params, setParams] = useState<Partial<HotelFilterParams>>({})
+  const { query } = useRouter()
+
+  const currentDestination = query.id
+
+  const [params, setParams] = useState<Partial<HotelFilterParams>>({
+    destination: currentDestination?.toString() ?? undefined,
+  })
   const [newHotels, isLoading, handleReady] = useGetHotels(params)
   const [hotels, setHotels] = useState<Hotel[]>([])
   const [page, setPage] = useState(1)
@@ -51,6 +58,13 @@ export const DestinationHotels: FC<DestinationHotelsProps> = ({ map }) => {
       return prevState.concat(...newHotels)
     })
   }, [newHotels])
+
+  useEffect(() => {
+    setParams(prevState => ({
+      ...prevState,
+      destination: currentDestination?.toString(),
+    }))
+  }, [currentDestination])
 
   return (
     <div className={s.container}>
