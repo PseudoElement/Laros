@@ -12,6 +12,7 @@ import { useTranslate } from 'shared/hooks/useTranslate'
 import { titleOptions } from 'shared/constants/form'
 
 import s from './Step1Form.module.scss'
+import { updateForm } from 'store/slices/voucher/voucher'
 
 interface Step1FormProps {
   setStep: (step: Steps) => void
@@ -26,14 +27,17 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
     window.scrollTo(0, 0)
     setStep(Steps.SECOND)
     dispatch(sendContactFormThunk(formData))
+    dispatch(updateForm(formData))
   }
 
   return (
     <div className={s.container}>
-      <div className={s.intro}>
-        <div className={s.introTitle}>{t('vouchers.pageTitle')}</div>
+      <div className={s.introWrapper}>
+        <div className={s.intro}>
+          <div className={s.introTitle}>{t('vouchers.pageTitle')}</div>
 
-        <div className={s.introDescription}>{t('vouchers.pageSubTitle')}</div>
+          <div className={s.introDescription}>{t('vouchers.pageSubTitle')}</div>
+        </div>
       </div>
 
       <div className={s.wrapper}>
@@ -118,59 +122,61 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
             )}
           />
 
-          <Controller
-            name='email'
-            control={control}
-            render={({ field: { onChange, value } }) => (
-              <Input
-                classname={s.input}
-                required
-                shorten
-                placeholder={t('forms.inputLabel1')}
-                type='email'
-                onChange={onChange}
-                id='name'
-                value={value}
-                label={t('forms.inputLabel1')}
-              />
-            )}
-          />
+          <div className={s.personDetals}>
+            <Controller
+              name='email'
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  classname={s.input}
+                  required
+                  shorten
+                  placeholder={t('forms.inputLabel1')}
+                  type='email'
+                  onChange={onChange}
+                  id='name'
+                  value={value}
+                  label={t('forms.inputLabel1')}
+                />
+              )}
+            />
 
-          <Controller
-            name='company'
-            control={control}
-            render={({ field: { onChange, value } }) => (
-              <Input
-                classname={s.input}
-                shorten
-                placeholder={t('vouchers.placeholder3')}
-                onChange={onChange}
-                id='name'
-                value={value}
-                label={t('vouchers.label5')}
-              />
-            )}
-          />
+            <Controller
+              name='company'
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  classname={s.input}
+                  shorten
+                  placeholder={t('vouchers.placeholder3')}
+                  onChange={onChange}
+                  id='name'
+                  value={value}
+                  label={t('vouchers.label5')}
+                />
+              )}
+            />
 
-          <Controller
-            name='phone'
-            control={control}
-            render={({ field: { onChange, value } }) => (
-              <Input
-                classname={s.input}
-                placeholder='+ 42 123 - 45- 67'
-                required
-                shorten
-                type='phone'
-                onChange={onChange}
-                id='name'
-                value={value}
-                label={t('vouchers.label6')}
-              />
-            )}
-          />
+            <Controller
+              name='phone'
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  classname={s.input}
+                  placeholder='+ 42 123 - 45- 67'
+                  required
+                  shorten
+                  type='phone'
+                  onChange={onChange}
+                  id='name'
+                  value={value}
+                  label={t('vouchers.label6')}
+                />
+              )}
+            />
 
-          <AddressInput control={control} />
+            <AddressInput control={control} />
+          </div>
         </div>
 
         <div className={s.recipientSection}>
