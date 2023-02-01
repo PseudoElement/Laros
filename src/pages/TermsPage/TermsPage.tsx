@@ -827,13 +827,14 @@ export const TermsPage: FC = () => {
                 bestimmte Daten über ihr Nutzerverhalten auf unserer Seite
                 speichern, damit etwa ein ihrer bisherigen Nutzung
                 entsprechendes Angebot gemacht werden kann. Dabei kann es sich
-                einmal umso genannte "Session-Cookies" handeln, die zum Ende
-                Ihres Besuches auf unserer Webseite automatisch gelöscht werden.
-                Es gibt aber auch Cookies, die dauerhaft auf Ihrem Computer
-                gespeichert werden, sofern sie diese nicht löschen. Dann ist es
-                uns möglich, Ihren Browser beim nächsten Aufruf unserer Webseite
-                wieder zu erkennen und ihnen Angebote zu machen, die ihrer
-                bisherigen Nutzung unserer Webseite entsprechen.
+                einmal umso genannte `&quot;`Session-Cookies `&quot;` handeln,
+                die zum Ende Ihres Besuches auf unserer Webseite automatisch
+                gelöscht werden. Es gibt aber auch Cookies, die dauerhaft auf
+                Ihrem Computer gespeichert werden, sofern sie diese nicht
+                löschen. Dann ist es uns möglich, Ihren Browser beim nächsten
+                Aufruf unserer Webseite wieder zu erkennen und ihnen Angebote zu
+                machen, die ihrer bisherigen Nutzung unserer Webseite
+                entsprechen.
               </li>
               <li>
                 Ihr Browser ermöglicht Ihnen, die Verwendung von Cookies ganz
