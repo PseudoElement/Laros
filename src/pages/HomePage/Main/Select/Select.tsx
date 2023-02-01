@@ -10,6 +10,7 @@ import { Destination } from 'shared/types/destinations'
 import arrow from '/public/assets/images/homepage/arrow.png'
 
 import s from './Select.module.scss'
+import { MAP_REGIONS_IDS } from 'shared/constants/destinations'
 
 export interface SelectBlockProps {
   setActiveMenu: (active: boolean) => void
@@ -27,9 +28,12 @@ export const SelectBlock: FC<SelectBlockProps> = ({
   const [searching, setSearching] = useState<string>('')
   const t = useTranslate()
 
-  const filtredItems = destinations.filter((item: any) =>
-    item.name.toLowerCase().includes(searching.toLowerCase())
-  )
+  const filtredItems = destinations
+    .filter((item: any) => MAP_REGIONS_IDS.includes(item.id))
+    .filter((item: any) =>
+      item.name.toLowerCase().includes(searching.toLowerCase())
+    )
+  console.log(filtredItems)
 
   const onClickItem = (id: number) => {
     setSelectedDestination(id)
