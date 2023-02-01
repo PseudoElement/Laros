@@ -24,9 +24,12 @@ export const HomePage: FC = () => {
   const [activeMenu, setActiveMenu] = useState<boolean>(false)
   const [videoIsFullscreen, setVideoIsFullscreen] = useState<boolean>(true)
   const videoRef = useRef<HTMLDivElement>(null)
-  const BLOGS_PER_PAGE = 3
-  const [blogs, isLoading, handleReady] = useGetBlogs({ size: BLOGS_PER_PAGE })
 
+  const BLOGS_PER_PAGE = 3
+  const [params, setParams] = useState({
+    size: BLOGS_PER_PAGE,
+  })
+  const [blogs, isLoading, handleReady] = useGetBlogs(params)
   const onFullScreen = () => {
     setVideoIsFullscreen(true)
     if (screenfull.isEnabled && videoRef.current) {
@@ -41,7 +44,9 @@ export const HomePage: FC = () => {
     dispatch(getDestinationsThunk())
     dispatch(getTripCategoriesThunk())
   }, [])
-
+  useEffect(() => {
+    handleReady()
+  }, [params])
   return (
     <div
       onMouseEnter={() => setVideoIsFullscreen(true)}

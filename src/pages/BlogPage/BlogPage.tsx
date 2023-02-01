@@ -46,7 +46,7 @@ export const Blog: FC = () => {
             </div>
             <div className={s.contentWrapper}>
               <BlogSection
-                title={post.name}
+                title={post.title}
                 description={post.description}
                 image={post.image}
               />

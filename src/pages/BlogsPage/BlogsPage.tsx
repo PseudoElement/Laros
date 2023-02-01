@@ -74,7 +74,7 @@ export const BlogsPage: FC = () => {
           {Boolean(blogs.length)
             ? blogs.map(blogData => (
                 <BlogItem
-                  title={blogData.name}
+                  title={blogData.title}
                   description={blogData.description}
                   key={blogData.id}
                   image={blogData.image}
