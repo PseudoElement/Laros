@@ -5,6 +5,7 @@ import {
   OrderPlaceAccomodation,
 } from 'shared/types/order'
 import { dateToServerFormat } from './dateFormatter'
+import { countPeople } from './trip'
 
 export const prepareOrder = (form: OrderForm): OrderPayload => {
   const destinations: OrderPlaceAccomodation[] = form.destinations.map(
@@ -30,6 +31,7 @@ export const prepareOrder = (form: OrderForm): OrderPayload => {
 }
 
 export const prepareOrderFormToApi = (form: OrderForm): OrderPayload => {
+  // console.log('form :', form)
   const finalTravellers = form.travellers.map(traveller => {
     const fullName = traveller.name?.split(' ')
     return {
@@ -48,12 +50,13 @@ export const prepareOrderFormToApi = (form: OrderForm): OrderPayload => {
     destinations: form.destinations.map((destination, index) => {
       return {
         destination: destination.destination,
-        hotel: destination.hotel.id,
+        hotel: destination.hotel?.id ?? null,
         duration: destination.duration,
-        rooms: destination.rooms.map(room => ({
-          ...form.rooms?.[0],
-          room_id: room.id,
-        })),
+        rooms:
+          destination?.rooms?.map(room => ({
+            ...form.rooms?.[0],
+            room_id: room.id,
+          })) ?? [],
         taxi: form.transports?.[index]?.rental ?? false,
         rental: [1],
         // form.transports?.[index]?.transport[
@@ -63,6 +66,9 @@ export const prepareOrderFormToApi = (form: OrderForm): OrderPayload => {
       }
     }),
     travellers: finalTravellers,
+    // for calculate API
+    people:
+      countPeople(form.rooms, 'adults') + countPeople(form.rooms, 'children'),
     transports: [
       {
         transport: 1,

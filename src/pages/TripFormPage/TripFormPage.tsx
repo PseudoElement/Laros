@@ -16,11 +16,17 @@ import { countriesToOptions } from 'shared/helpers/transformers'
 import { downloadFile } from 'shared/helpers/downloadFile'
 import { URL } from 'shared/api'
 
-import { PeopleCapacity } from 'shared/types/order'
+import { OrderForm, PeopleCapacity } from 'shared/types/order'
 
 import bg from '/public/assets/images/tripFormBg.png'
 
 import s from './TripFormPage.module.scss'
+import { useDebounce } from 'shared/hooks/useDebounce'
+import { ORDER_CALCULATION_DEBOUNCE } from 'shared/constants'
+import { calculateOrder } from 'shared/api/routes/order'
+import { prepareOrderFormToApi } from 'shared/helpers/order'
+import { destinationToOption } from 'shared/helpers/destinations'
+import { useFieldArray, useForm } from 'react-hook-form'
 
 export enum Steps {
   FIRST,
@@ -29,15 +35,42 @@ export enum Steps {
 
 export const TripFormPage: FC = () => {
   const [step, setStep] = useState(Steps.FIRST)
+  const [price, setPrice] = useState<number>(0)
   const { query, push, reload } = useRouter()
   const dispatch = useAppDispatch()
   const t = useTranslate()
-
   const { trip, airports, countries, isLoading, transfers } = useGetTripInfo(
     Number(query.trip)
   )
 
   const form = useAppSelector(state => state.order.form)
+  const formHook = useForm<
+    Partial<OrderForm>
+  >({
+    defaultValues: {
+      dest_from: destinationToOption(airports).find(
+        dest => dest.label === 'Flughafen Zurich (ZRH)'
+      ),
+      dest_to: destinationToOption(airports).find(
+        dest => dest.label === 'Flughafen Zurich (ZRH)'
+      ),
+      destinations: trip?.destinations ?? [],
+      travellers: [],
+      date_start: form.date_start ?? Number(new Date()),
+      rooms: form.rooms ?? []
+    },
+  })
+  const { } = useFieldArray({
+    control: formHook.control,
+    name: 'destinations',
+  })
+  const watchDestFrom = formHook.watch('dest_from')
+  const watchDestTo = formHook.watch('dest_to')
+  const watchDests = formHook.watch('destinations')
+  const watchRooms = formHook.watch('rooms')
+
+
+  // const calculationDebounce = useDebounce(watchOrder, ORDER_CALCULATION_DEBOUNCE)
 
   // download trip pdf
   const handleDownload = () => {
@@ -55,11 +88,41 @@ export const TripFormPage: FC = () => {
 
   useEffect(() => {
     if (trip) {
+      setPrice(trip.price_chf)
+      formHook.setValue('destinations', trip.destinations)
       dispatch(updateForm({ destinations: trip.destinations }))
       // TODO possible issue when user go to the step 2 and back
     }
   }, [trip, dispatch])
 
+  useEffect(() => {
+    formHook.setValue('dest_from', destinationToOption(airports).find(
+      dest => dest.label === 'Flughafen Zurich (ZRH)'
+    ))
+    formHook.setValue('dest_to', destinationToOption(airports).find(
+      dest => dest.label === 'Flughafen Zurich (ZRH)'
+    ))
+  }, [airports])
+
+  const loadPrice = async (form: OrderForm) => {
+    try {
+      const data = await calculateOrder(prepareOrderFormToApi(form))
+      setPrice(data.data.price)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
+  useEffect(() => {
+    const subscription = formHook.watch((value, { name, type }) => {
+      const formValue = formHook.getValues();
+      if (formValue.destinations?.length && formValue.dest_from) {
+        loadPrice(formValue as OrderForm)
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, [formHook.watch]);
   if (isLoading || !trip) {
     return <div>{t('common.loadingText')}</div>
   }
@@ -130,8 +193,8 @@ export const TripFormPage: FC = () => {
                 setStep={setStep}
                 trip={trip}
                 airports={airports}
-                form={form}
                 transfers={transfers}
+                formHook={formHook}
               />
             ) : (
               <Step2
@@ -147,7 +210,7 @@ export const TripFormPage: FC = () => {
           route={trip?.route}
           travel_date={form.date_start}
           rooms={form.rooms}
-          total={trip.price_chf}
+          total={price}
           handleDownload={handleDownload}
           handleNextStep={handleNextStep}
           step={step}

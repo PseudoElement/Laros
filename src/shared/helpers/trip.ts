@@ -1,4 +1,5 @@
 import { Room } from 'shared/types/hotel'
+import { PeopleCapacity } from 'shared/types/order'
 import { TripDestination } from 'shared/types/trip'
 
 export const getTripDuration = (destinations: TripDestination[]): number => {
@@ -24,4 +25,13 @@ export const findRooms = (rooms: Room[], people: number): Room[] => {
     }
     return foundRooms
   }
+}
+
+export function countPeople(
+  array: PeopleCapacity[],
+  key: keyof PeopleCapacity
+): number {
+  return array.reduce(function (r, a) {
+    return r + a[key]
+  }, 0)
 }

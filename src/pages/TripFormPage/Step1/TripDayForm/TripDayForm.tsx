@@ -74,6 +74,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
   onChange,
   onDelete,
 }) => {
+
   const [isTruncated, setIsTruncated] = useState(true)
   const [hotelRooms, setHotelRooms] = useState<Room[]>([])
   const [clientRooms, setClientRooms] = useState<Room[]>([])
@@ -159,16 +160,18 @@ export const TripDayForm: FC<TripDayFormProps> = ({
   }
 
   useEffect(() => {
-    const loadRooms = async () => {
-      try {
-        const rooms = await getRooms({ hotel: hotel.id })
-        setHotelRooms(rooms.data.data)
-      } catch (error) {
-        console.log(error)
+    if (hotel) {
+      const loadRooms = async () => {
+        try {
+          const rooms = await getRooms({ hotel: hotel.id })
+          setHotelRooms(rooms.data.data)
+        } catch (error) {
+          console.log(error)
+        }
       }
+      loadRooms()
     }
-    loadRooms()
-  }, [])
+  }, [hotel])
 
   useEffect(() => {
     setClientRooms(getClientsRoom(hotelRooms, capacity))
@@ -214,9 +217,9 @@ export const TripDayForm: FC<TripDayFormProps> = ({
 
           <div className={s.sectionWrap}>
             <div className={s.sectionValue}>
-            <span className={s.valueIcon}>
-              <PinIcon />
-            </span>
+              <span className={s.valueIcon}>
+                <PinIcon />
+              </span>
               <div className={s.valueName}>{destination.destination_name}</div>
             </div>
 
@@ -236,11 +239,11 @@ export const TripDayForm: FC<TripDayFormProps> = ({
 
               <div className={s.counter}>
                 <Counter
-                    min={1}
-                    value={duration}
-                    onChange={num =>
-                        onChange(`destinations.${index}.duration`, num)
-                    }
+                  min={1}
+                  value={duration}
+                  onChange={num =>
+                    onChange(`destinations.${index}.duration`, num)
+                  }
                 />
               </div>
             </div>
@@ -277,30 +280,30 @@ export const TripDayForm: FC<TripDayFormProps> = ({
 
           <div className={s.sectionWrap}>
             <div className={cn(s.sectionValue, s.hotel)}>
-            <span className={s.valueIcon}>
-              <PinIcon />
-            </span>
+              <span className={s.valueIcon}>
+                <PinIcon />
+              </span>
 
               <div className={s.valueName}>{hotel?.lrweb}</div>
             </div>
 
             <div
-                onMouseEnter={() => setIsShownCard(true)}
-                onMouseLeave={() => setIsShownCard(false)}
-                className={s.infoBtn}
+              onMouseEnter={() => setIsShownCard(true)}
+              onMouseLeave={() => setIsShownCard(false)}
+              className={s.infoBtn}
             >
               <InfoIcon />
 
               <RegionCard
-                  id={hotel?.id}
-                  cardText={hotel?.description}
-                  title={hotel?.lrweb}
-                  link={`/hotels/${hotel?.id}`}
-                  image={hotel?.images?.[0] || ''}
-                  onClose={onClose}
-                  isOpen={isShownCard}
-                  isTooltip={true}
-                  className={s.regionCard}
+                id={hotel?.id}
+                cardText={hotel?.description}
+                title={hotel?.lrweb}
+                link={`/hotels/${hotel?.id}`}
+                image={hotel?.images?.[0] || ''}
+                onClose={onClose}
+                isOpen={isShownCard}
+                isTooltip={true}
+                className={s.regionCard}
               />
             </div>
 
@@ -313,7 +316,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
         {clientRooms.map((room, index) => {
           return (
             <>
-              <div key={index} className={s.section}>
+              <div key={room.id} className={s.section}>
                 <div className={s.roomTitle}>
                   {' '}
                   {t('tripSteps.room')} {index + 1}
@@ -321,15 +324,15 @@ export const TripDayForm: FC<TripDayFormProps> = ({
 
                 <div className={s.sectionWrap}>
                   <div
-                      onClick={() => changeRoom()}
-                      className={cn(s.sectionValue, s.changeRoom)}
+                    onClick={() => changeRoom()}
+                    className={cn(s.sectionValue, s.changeRoom)}
                   >
                     <PinIcon />
                     <div className={s.valueName}>
                       {room.room_name}
                       <span className={s.pencil}>
-                      <PencilIcon />
-                    </span>
+                        <PencilIcon />
+                      </span>
                     </div>
                   </div>
 

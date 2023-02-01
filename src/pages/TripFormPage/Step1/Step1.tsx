@@ -5,7 +5,7 @@ import { AddIcon, Button, InfoIcon, Select } from 'components'
 import { TripDayForm } from './TripDayForm'
 import { Transfer } from './Transfer'
 
-import { Controller, useFieldArray, useForm } from 'react-hook-form'
+import { Controller, UseFormReturn, useFieldArray, useForm } from 'react-hook-form'
 import { calculateOrder, getTripDay } from 'shared/api/routes/order'
 import {
   getTripDays,
@@ -16,7 +16,7 @@ import { prepareOrder } from 'shared/helpers/order'
 import { useTranslate } from 'shared/hooks/useTranslate'
 import { destinationToOption } from 'shared/helpers/destinations'
 import { getTripDuration } from 'shared/helpers/trip'
-import { useAppDispatch } from 'shared/hooks/redux'
+import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { useDebounce } from 'shared/hooks/useDebounce'
 import { updateForm } from 'store/slices/order/order'
 import { getTransfer } from 'shared/api/routes/transfer'
@@ -29,7 +29,6 @@ import { Trip } from 'shared/types/trip'
 import { Steps } from '../TripFormPage'
 import { TransferOptions } from 'shared/types/transport'
 
-import { ORDER_CALCULATION_DEBOUNCE } from 'shared/constants'
 import { DEFAULT_TRANSFER } from 'shared/constants/transfer'
 
 import airportIcon from '/public/assets/images/airport.svg?url'
@@ -40,32 +39,26 @@ interface Step1Props {
   setStep: (step: Steps) => void
   trip: Trip
   airports: Destination[]
-  form: OrderForm
   transfers: TransferOptions[]
+  formHook: UseFormReturn<Partial<OrderForm>, any>
 }
 
-export const Step1: FC<Step1Props> = ({
+export const Step1: FC<Step1Props> = ({ // TODO
   setStep,
   trip,
   airports,
-  form,
   transfers,
+  formHook: {
+    watch,
+    control,
+    getValues,
+    setValue,
+    handleSubmit
+  }
 }) => {
   const dispatch = useAppDispatch()
   const t = useTranslate()
-  const { handleSubmit, control, setValue, getValues, watch } = useForm<
-    Partial<OrderForm>
-  >({
-    defaultValues: {
-      dest_from: destinationToOption(airports).find(
-        dest => dest.label === 'Flughafen Zurich (ZRH)'
-      ),
-      dest_to: destinationToOption(airports).find(
-        dest => dest.label === 'Flughafen Zurich (ZRH)'
-      ),
-      destinations: trip.destinations,
-    },
-  })
+  const form = useAppSelector((state) => state.order.form);
   const { append, remove } = useFieldArray({
     control,
     name: 'destinations',
@@ -73,10 +66,10 @@ export const Step1: FC<Step1Props> = ({
 
   const watchForm = watch()
   const watchDestinations = watch('destinations')
+  const updateDestinations = watch(['destinations'])
   const watchStartPoint = watch('dest_from')
   const watchEndPoint = watch('dest_to')
-  const calculationDebounce = useDebounce(watch, ORDER_CALCULATION_DEBOUNCE)
-
+  const [debuggers, setDebuggers] = useState(0)
   const airportOptions = provideOptionsWithIcon(
     destinationToOption(airports),
     airportIcon
@@ -105,8 +98,7 @@ export const Step1: FC<Step1Props> = ({
         })
       } else {
         alert(
-          `No appropriate route found from  ${
-            watchDestinations[watchDestinations?.length - 1].destination_name
+          `No appropriate route found from  ${watchDestinations[watchDestinations?.length - 1].destination_name
           }`
         )
       }
@@ -125,11 +117,6 @@ export const Step1: FC<Step1Props> = ({
   const loadTransfer = async (from: number, to: number) => {
     const response = await getTransfer(from, to)
     return response
-  }
-
-  const loadPrice = async () => {
-    const data = await calculateOrder(prepareOrder(form))
-    // TODO connect
   }
 
   const updateEndPointTransfer = (id: number) => {
@@ -160,6 +147,7 @@ export const Step1: FC<Step1Props> = ({
     }
   }, [watchEndPoint, watchDestinations])
 
+
   useEffect(() => {
     const loadTransfer = async (from: number, to: number) => {
       const response = await getTransfer(from, to)
@@ -172,6 +160,7 @@ export const Step1: FC<Step1Props> = ({
       )
     }
   }, [watchStartPoint, watchDestinations])
+
 
   if (!trip) return null
   return (
@@ -217,9 +206,9 @@ export const Step1: FC<Step1Props> = ({
             from={
               trip.destinations[index - 1]
                 ? {
-                    label: trip.destinations[index - 1].destination_name,
-                    value: trip.destinations[index - 1].destination.toString(),
-                  }
+                  label: trip.destinations[index - 1].destination_name,
+                  value: trip.destinations[index - 1].destination.toString(),
+                }
                 : watchForm.dest_from ?? undefined
             }
             previousDestination={watchDestinations[index - 1] ?? null}

@@ -30,6 +30,7 @@ import add from '/public/assets/images/plus.svg?url'
 import trash from '/public/assets/images/Trash.svg?url'
 
 import s from './Sidebar.module.scss'
+import { countPeople } from 'shared/helpers/trip'
 
 export interface SideBarProps {
   route: string | null
@@ -157,8 +158,8 @@ export const Sidebar: FC<SideBarProps> = ({
                 <div className={s.sectionWrap}>
                   <div className={s.label}>{t('forms.inputLabel32')}:</div>
                   <div className={s.content}>
-                    {count(rooms, 'adults')} {t('forms.inputNumber1')},{' '}
-                    {count(rooms, 'children')} {t('forms.inputNumber2')}
+                    {countPeople(rooms, 'adults')} {t('forms.inputNumber1')},{' '}
+                    {countPeople(rooms, 'children')} {t('forms.inputNumber2')}
                   </div>
                 </div>
 
@@ -268,7 +269,7 @@ export const Sidebar: FC<SideBarProps> = ({
           <div className={s.sectionWrap}>
             {rooms.length ? (
               <div className={s.label}>
-                {total * (count(rooms, 'adults') + count(rooms, 'children'))}{' '}
+                {total * (countPeople(rooms, 'adults') + countPeople(rooms, 'children'))}{' '}
                 CHF {t('tripSteps.total')}
               </div>
             ) : null}
@@ -293,10 +294,10 @@ export const Sidebar: FC<SideBarProps> = ({
 
         {/* text and link contact us */}
         {!step &&
-        <div className={s.link}>
-          {t('tripSteps.contactUs')}
-          <span onClick={handleContact}> {t('tripSteps.contactUs2')}</span>
-        </div>}
+          <div className={s.link}>
+            {t('tripSteps.contactUs')}
+            <span onClick={handleContact}> {t('tripSteps.contactUs2')}</span>
+          </div>}
       </div>
 
       <Modal isOpen={contactUsModal.isOpen} onClose={contactUsModal.onClose}>

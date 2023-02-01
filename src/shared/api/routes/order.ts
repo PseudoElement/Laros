@@ -23,7 +23,7 @@ export const createOrder = (form: OrderPayload): AxiosPromise<any> => {
 export const calculateOrder = (
   form: OrderPayload
 ): AxiosPromise<{ price: number }> => {
-  return api.post(endpoints.order.create, form)
+  return api.post(endpoints.order.calculate, form)
 }
 
 export const getTripDay = async (

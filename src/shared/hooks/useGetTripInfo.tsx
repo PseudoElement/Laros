@@ -20,7 +20,7 @@ export const useGetTripInfo = (
   const [transferValues, setTransferValues] = useState<number[]>([])
 
   const prepareTransfer = (transfers: Record<number, TransferOptions>): TransferOptions[] => {
-    console.log('transfers :', transfers);
+    // console.log('transfers :', transfers);
     return Object.keys(transfers).map((key) => transfers[Number(key)])
   }
   useEffect(() => {
@@ -66,7 +66,7 @@ export const useGetTripInfo = (
       };
       try { // getTransfer from /api folder can be used // TODO
         const { data } = await getTransports(from, to)
-        console.log('data :', data);
+        // console.log('data :', data);
         const transports = data.data
         const ferryTransfer = transports.find((transport) => transport.type_name === Transfer.FERRY);
         const airportTransfer = transports.find((transport) => transport.type_name === Transfer.FLIGHT);
@@ -95,7 +95,7 @@ export const useGetTripInfo = (
     const destinations = trip?.destinations
     if (destinations?.length && trip) {
       loadTransfer(trip.dest_start, destinations[0].destination, 0)
-      console.log('tran first :', trip.dest_start, destinations[0].destination_name);
+      // console.log('tran first :', trip.dest_start, destinations[0].destination_name);
     }
     if (destinations?.length) {
       destinations.forEach((dest, index) => {
@@ -103,13 +103,13 @@ export const useGetTripInfo = (
         // omit start point destination and last destination
         if (index + 1 < destinations.length) {
           loadTransfer(dest.destination, destinations[index + 1].destination, index + 1)
-          console.log('tran :', index, dest.destination_name, destinations[index + 1].destination_name);
+          // console.log('tran :', index, dest.destination_name, destinations[index + 1].destination_name);
         }
       })
     }
     if (destinations?.length && trip) {
       loadTransfer(destinations[destinations.length - 1].destination, trip.dest_start, destinations.length)
-      console.log('tran last :', destinations[destinations.length - 1].destination_name, trip.dest_start);
+      // console.log('tran last :', destinations[destinations.length - 1].destination_name, trip.dest_start);
     }
   }, [trip])
 
@@ -117,7 +117,7 @@ export const useGetTripInfo = (
     loadCountries()
     loadAirports()
   }, [])
-  console.log('transfers :', transfers);
+  // console.log('transfers :', transfers);
 
   return { trip, airports, countries, isLoading, transfers: prepareTransfer(transfers), transferValues }
 }
