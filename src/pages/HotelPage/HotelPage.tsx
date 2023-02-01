@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { FC, useEffect, useState } from 'react'
 import { HotelIntro } from './HotelIntro'
 import { Facility } from './Facility'
@@ -77,14 +76,13 @@ export const HotelPage: FC<HotelProps> = ({ hotelProp }) => {
       <div
         className={s.bg}
         style={{
-          backgroundImage: `url(${
-            hotel?.images ? withDomain(hotel.images[1]) : ''
-          })`,
+          backgroundImage: `url(${hotel?.images ? withDomain(hotel.images[1]) : ''
+            })`,
         }}
       />
       {hotel ? <HotelIntro {...hotel} /> : null}
 
-      {hotel?.images.length - 2 ? <HotelImages images={hotel.images} /> : null}
+      {hotel?.images && hotel?.images.length - 2 ? <HotelImages images={hotel.images} /> : null}
 
       {hotel?.facilities?.length ? (
         <Facility facilitiesAndAmenities={hotel.facilities} />
