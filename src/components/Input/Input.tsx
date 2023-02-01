@@ -22,6 +22,7 @@ interface InputProps {
   min?: number
   max?: number
 }
+
 export const Input: FC<InputProps> = ({
   label,
   value = '',
