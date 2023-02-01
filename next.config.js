@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const withVideos = require('next-videos')
+
 const nextConfig = {
   webpack(config) {
     config.module.rules.push({
@@ -31,4 +33,10 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
+module.exports = () => {
+  const plugins = [withVideos]
+  const config = plugins.reduce((acc, next) => next(acc), {
+    ...nextConfig,
+  })
+  return config
+}
