@@ -23,11 +23,13 @@ const DestinationItem: FC<DestinationItemProps> = ({ region }) => {
         [s.active]: isActive,
       })}
     >
-      <region.icon
-        className={cn(s.icon, {
-          [s.iconActive]: isActive,
-        })}
-      />
+      {region.icon && (
+        <region.icon
+          className={cn(s.icon, {
+            [s.iconActive]: isActive,
+          })}
+        />
+      )}
       <span className={s.title}>{region.name}</span>
     </div>
   )

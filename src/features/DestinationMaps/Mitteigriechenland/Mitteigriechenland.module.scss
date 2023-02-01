@@ -36,7 +36,7 @@
     height: 400px;
   }
 }
-.revies {
+.rovies {
   display: block;
   &::before {
     content: '';
@@ -50,11 +50,10 @@
   }
 }
 
-.reviesLocation {
+.roviesLocation {
   position: absolute;
   top: 35%;
   right: 46%;
-  background: $color-white;
   border-radius: 24px;
   padding: 0 4px;
 }
@@ -77,7 +76,6 @@
   position: absolute;
   top: 41%;
   right: 35%;
-  background: $color-white;
   border-radius: 24px;
   padding: 0 4px;
 }
@@ -100,7 +98,6 @@
   position: absolute;
   top: 59%;
   right: 25%;
-  background: $color-white;
   border-radius: 24px;
   padding: 0 4px;
 }

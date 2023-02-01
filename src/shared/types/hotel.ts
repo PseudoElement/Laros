@@ -27,6 +27,7 @@ export type HotelFilterParams = {
   facilities: string // '1,2,3'
   date: string
   page: number
+  size: number
 }
 
 export type Hotel = {
@@ -59,6 +60,7 @@ export type Hotel = {
 export type RoomFilterParams = {
   hotel: number
 }
+
 export interface Facility extends Meta {
   image: string
 }

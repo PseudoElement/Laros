@@ -25,7 +25,10 @@
   cursor: pointer;
   gap: 10px;
   width: 100%;
-  margin: 21px 0 21px 172px;
+  padding: 21px 0 21px 110px;
+  background: $color-white;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 }
 
 .arrow {
@@ -162,6 +165,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
+    padding: 0;
     li {
       list-style: none;
     }
@@ -179,8 +183,10 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
+    padding: 0;
     li {
       list-style: none;
+      display: flex;
     }
     .termsItem:before {
       content: '!';
@@ -197,4 +203,10 @@
   align-items: center;
   padding: 8px;
   width: 331px;
+}
+
+.adressPhoneForm{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }

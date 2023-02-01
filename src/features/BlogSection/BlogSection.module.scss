@@ -55,6 +55,7 @@
   .content {
     width: calc(100% - 600px);
     padding-top: 20px;
+    margin-right: 80px;
 
     & > *:not(:last-child) {
       margin-bottom: 32px;

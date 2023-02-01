@@ -52,6 +52,8 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
     }
     // @ts-ignore
     dispatch(updateForm(finalData))
+    window.scrollTo(0, 0)
+    setThankYou(true)
   }
   const selectPreviousAddress = () => {
     const prevAddress = {
@@ -61,7 +63,6 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
     }
     // @ts-ignore
     dispatch(updateForm(prevAddress))
-    setThankYou(true)
   }
 
   return (
@@ -119,24 +120,26 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
             {deliveryOption !== VoucherDelivery.EMAIL && (
               <div className={s.recepientSection}>
                 <div className={s.description}>{t('vouchers.text1')}</div>
-                <AddressInput control={control} />
-                <Controller
-                  name='phone'
-                  control={control}
-                  render={({ field: { onChange, value } }) => (
-                    <Input
-                      classname={s.input}
-                      placeholder='+ 42 123 - 45- 67'
-                      required
-                      shorten
-                      type='phone'
-                      onChange={onChange}
-                      id='name'
-                      value={value}
-                      label={t('vouchers.label6')}
-                    />
-                  )}
-                />
+                <div className={s.adressPhoneForm}>
+                  <AddressInput control={control} />
+                  <Controller
+                    name='phone'
+                    control={control}
+                    render={({ field: { onChange, value } }) => (
+                      <Input
+                        classname={s.input}
+                        placeholder='+ 42 123 - 45- 67'
+                        required
+                        shorten
+                        type='phone'
+                        onChange={onChange}
+                        id='name'
+                        value={value}
+                        label={t('vouchers.label6')}
+                      />
+                    )}
+                  />
+                </div>
                 <div className={s.previousBtn}>
                   {t('vouchers.text2')}{' '}
                   <span onClick={selectPreviousAddress} className={s.highlight}>

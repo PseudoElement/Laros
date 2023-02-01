@@ -25,9 +25,12 @@ export const Blog: FC = () => {
       const fetchPost = async () => {
         return await getPostById(blogId)
       }
-      fetchPost().then(post => setPost(post.data))
+      //@ts-ignore
+      fetchPost().then(post => setPost(post.data.data))
     }
   }, [blogId])
+
+  console.log(post)
 
   return (
     <>

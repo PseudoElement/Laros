@@ -2,11 +2,13 @@
 
 .container {
   position: relative;
-  width: 1040px;
+  width: 1280px;
   height: 720px;
   background: url('../../../../public/assets/images/destinations/Individual maps/Dodekannes Inseln.png')
     no-repeat center;
   font-weight: $fw-semibold;
+  margin-right: 300px;
+  transform: scale(0.9);
 }
 
 .wrapper {
@@ -25,15 +27,21 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1350px) {
   .container {
     transform: scale(0.7);
   }
 }
 
+@media screen and (max-width: 768px) {
+  .container {
+    transform: scale(0.6);
+  }
+}
+
 @media screen and (max-width: 425px) {
   .container {
-    transform: scale(0.3);
+    transform: scale(0.5);
     height: 400px;
   }
 }
@@ -56,7 +64,7 @@
   position: absolute;
   top: 23%;
   right: 40%;
-  background: $color-white;
+
   border-radius: 24px;
   padding: 0 4px;
 }
@@ -79,7 +87,7 @@
   position: absolute;
   top: 27%;
   right: 39%;
-  background: $color-white;
+
   border-radius: 24px;
   padding: 0 4px;
 }
@@ -102,7 +110,7 @@
   position: absolute;
   top: 32%;
   right: 38%;
-  background: $color-white;
+
   border-radius: 24px;
   padding: 0 4px;
 }
@@ -125,7 +133,7 @@
   position: absolute;
   top: 36%;
   right: 33%;
-  background: $color-white;
+
   border-radius: 24px;
   padding: 0 4px;
 }
@@ -148,7 +156,7 @@
   position: absolute;
   top: 40%;
   right: 30%;
-  background: $color-white;
+
   border-radius: 24px;
   padding: 0 4px;
 }
@@ -171,7 +179,7 @@
   position: absolute;
   top: 56%;
   right: 29%;
-  background: $color-white;
+
   border-radius: 24px;
   padding: 0 4px;
 }
@@ -194,7 +202,7 @@
   position: absolute;
   top: 50%;
   right: 20%;
-  background: $color-white;
+
   border-radius: 24px;
   padding: 0 4px;
 }
@@ -217,7 +225,7 @@
   position: absolute;
   top: 62%;
   right: 25%;
-  background: $color-white;
+
   border-radius: 24px;
   padding: 0 4px;
 }
@@ -240,7 +248,7 @@
   position: absolute;
   top: 59%;
   right: 12%;
-  background: $color-white;
+
   border-radius: 24px;
   padding: 0 4px;
 }
@@ -263,7 +271,7 @@
   position: absolute;
   top: 80%;
   right: 26%;
-  background: $color-white;
+
   border-radius: 24px;
   padding: 0 4px;
 }
@@ -286,7 +294,7 @@
   position: absolute;
   top: 88%;
   right: 40%;
-  background: $color-white;
+
   border-radius: 24px;
   padding: 0 4px;
 }
@@ -307,7 +315,7 @@
   position: absolute;
   top: 17%;
   right: 35%;
-  background: $color-white;
+
   border-radius: 24px;
   padding: 4px;
 }
@@ -328,7 +336,7 @@
   position: absolute;
   top: 46%;
   right: 32%;
-  background: $color-white;
+
   border-radius: 24px;
   padding: 4px;
 }
@@ -350,7 +358,7 @@
   position: absolute;
   top: 29%;
   right: 51%;
-  background: $color-white;
+
   border-radius: 24px;
   padding: 4px;
 }
@@ -372,7 +380,7 @@
   position: absolute;
   top: 67%;
   right: 7%;
-  background: $color-white;
+
   border-radius: 24px;
   padding: 4px;
 }
@@ -393,7 +401,7 @@
   position: absolute;
   top: 51%;
   right: 40%;
-  background: $color-white;
+
   border-radius: 24px;
   padding: 4px;
 }

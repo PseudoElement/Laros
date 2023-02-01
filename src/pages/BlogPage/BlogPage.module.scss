@@ -22,6 +22,7 @@
 
 .main {
   width: 89%;
+  max-width: 1300px;
   margin: 0 auto;
   background-color: $color-white;
   border-radius: 16px;
@@ -67,16 +68,22 @@
 
   [class*='blog'] {
     width: 100%;
+    max-width: unset;
   }
 
   [class*='content'] {
+    margin-right: 80px;
     @include mobile {
       width: 100%;
+      margin: 0 auto;
     }
 
     @include laptop {
       width: 60%;
-      margin-right: 15px;
+    }
+
+    @include mobile-tablet {
+      margin-right: 40px;
     }
   }
 

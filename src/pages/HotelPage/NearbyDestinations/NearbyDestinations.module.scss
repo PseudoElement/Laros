@@ -2,6 +2,7 @@
 
 .destination {
   padding: 80px;
+  background-color: $color-light-grey;
 
   @include mobile-tablet {
     padding: 7px;

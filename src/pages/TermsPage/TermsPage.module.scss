@@ -1,70 +1,134 @@
 @use '/src/styles/style.scss' as *;
 
 .page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  position: relative;
-}
-.title {
-  margin-top: 128px;
-  font-family: $font-Lato;
-  width: 1281px !important;
+  padding: 170px 0 0;
 
-  & > h2 {
-    font-size: 56px;
-  }
-  & > p {
-    margin-top: 16px;
+  @include mobile-tablet {
+    padding: 50px 0 0;
   }
 }
+
+.pageTitles {
+  max-width: 1280px;
+  margin: 0 auto 45px;
+  padding: 0 20px;
+}
+
+.title {
+  font-size: 56px;
+  font-weight: $fw-bold;
+  line-height: 67px;
+  text-align: left;
+  margin-bottom: 16px;
+
+  @include mobile {
+    font-size: 8vw;
+    line-height: 10vw;
+  }
+}
+.subTitle {
+  font-size: 12px;
+  font-weight: $fw-regular;
+  line-height: 20px;
+  text-align: left;
+}
+
 .container {
-  width: 1281px !important;
-  height: 600px;
-  background-color: $color-white;
-  border: 1px solid $color-white;
+  max-width: 1280px;
+  margin: 0 auto 100px;
   border-radius: 16px;
-  box-shadow: 0 4px 4px 0 rgba(0, 60, 118, 0.15);
-  margin-bottom: 105px;
-  margin-top: 46px;
+  box-shadow: 0 4px 4px 0 $color-layout-light-blue;
+  padding: 90px 110px;
+
+  @include mobile-tablet {
+    padding: 20px 0;
+    margin: 0;
+    box-shadow: none;
+  }
 }
+
 .tabs {
   display: flex;
-  position: relative;
-  cursor: pointer;
+
+  @include mobile {
+    display: block;
+  }
 }
+
 .selectedTab {
-  background-color: $color-white !important;
   border: none;
   border-left: 1px solid $color-secondary;
+
+  @include mobile {
+    border: none;
+    border-bottom: 1px solid $color-secondary;
+  }
 }
 .tab {
-  width: 320px;
-  height: 40px;
+  padding: 13px 32px;
   list-style: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 12px 32px;
-  margin-bottom: 4px;
-  gap: 8px;
-  background-color: $color-light-grey;
-  font-family: $font-Lato;
-  outline: none;
+  font-size: 12px;
+  font-weight: $fw-bold;
+  line-height: 14px;
+  text-align: left;
+  margin-bottom: 5px;
+  cursor: pointer;
+
+  @include mobile-tablet {
+    padding: 10px;
+  }
 }
 .tabList {
-  width: 302px;
-  height: 216px;
-  padding-top: 93px;
-  padding-left: 102px;
-  position: absolute;
+  max-width: 300px;
+  margin-right: 25px;
+
+  @include mobile-tablet {
+    padding: 0 20px;
+  }
+
+  @include mobile {
+    padding: 0 20px;
+    max-width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 .tabPanel {
-  width: 702px;
-  padding-top: 107px;
-  right: 120px;
-  font-size: 13px;
-  position: absolute;
-  white-space: normal;
+  font-size: 12px;
+  font-weight: $fw-regular;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+  text-align: left;
+  margin-top: 10px;
+  padding: 0 20px;
+
+  ol {
+    padding: 0 0 0 10px;
+    list-style: none;
+
+    li {
+      margin-bottom: 20px;
+    }
+  }
+  span {
+    font-weight: $fw-bold;
+    margin-right: 5px;
+  }
+  p {
+    font-weight: $fw-bold;
+    padding: 5px 0;
+  }
+  ul {
+    padding: 20px 20px 10px 20px;
+    list-style-type: disc;
+  }
+  a {
+    color: $color-white-blue;
+  }
+}
+.blockTitle {
+  font-weight: $fw-bold;
+  text-decoration: underline;
 }
