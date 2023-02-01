@@ -345,10 +345,10 @@ export const TripDayForm: FC<TripDayFormProps> = ({
                 </div>
               </div>
 
-              <Modal {...accomodationModal} title='Changing accomodation' classname={s.modal}>
+              <Modal {...accomodationModal} title={t('changingHotel.windowTitle')} classname={s.modal}>
                 <ChangeAccomodationModal
                   onSubmit={newRoom => submitRoomChange(index, newRoom)}
-                  hotel={hotel.name}
+                  hotel={hotel.lrweb}
                   rooms={hotelRooms}
                   current={room.id}
                   {...accomodationModal}
