@@ -241,7 +241,7 @@
   },
   "travelPlannerTripPlan": {
     "day": "Day",
-    "proPerson": "pro person",
+    "proPerson": "pro Person",
     "addRoom": "Add room",
     "startTripButton": "Start trip planning",
     "highlights": "Highlights",
