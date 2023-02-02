@@ -7,31 +7,28 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { ReactPlayer, TruncatedText } from 'components'
 import { SliderItem } from './SliderItem'
 
-import { Overview } from 'shared/types/staticTravel'
+import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
+
+import { Overview, StaticTravelItem } from 'shared/types/staticTravel'
 import { TRIP_PLAN_DESCRIPTION_SIZE } from 'shared/constants'
 
 import s from './Overview.module.scss'
-import { useWindowDimensions } from '../../../../shared/hooks/useWindowDimensions'
-import { useAppSelector } from '../../../../shared/hooks/redux'
-import { useRouter } from 'next/router'
 
-interface SliderProps {
-  cards: Overview[]
+interface OverviewSectionProps {
+  description?: string
+  overview: Overview
 }
-
-export const OverviewSection: FC<SliderProps> = ({ cards }) => {
+export const OverviewSection: FC<OverviewSectionProps> = ({
+  description,
+  overview,
+}) => {
   const [initialSlide, setInitialSlide] = useState<number>(0)
   const swiperRef = useRef<any>(null)
   const widthWindow = useWindowDimensions().width
-  const { query } = useRouter()
 
   useEffect(() => {
     swiperRef?.current?.swiper.slideTo(initialSlide)
   }, [initialSlide])
-
-  const travelPlannerCategory = useAppSelector(
-    state => state.trips.categories
-  ).find(page => page.id === (query.index && +query.index))
 
   return (
     <div className={s.wrapper}>
@@ -49,22 +46,22 @@ export const OverviewSection: FC<SliderProps> = ({ cards }) => {
               prevEl: '.prevEl',
             }}
           >
-            {cards.map((card, id) => (
+            {overview?.images?.map((image, id) => (
               <SwiperSlide onMouseEnter={() => setInitialSlide(id)} key={id}>
-                {!card.video ? (
-                  <div className={s.slideImage}>
-                    <Image layout={'fill'} src={card.preview} />
-                  </div>
-                ) : (
-                  <div className={s.videoWrapper}>
-                    <ReactPlayer
-                      playing={initialSlide === id}
-                      controls
-                      width={'100%'}
-                      url={card.video}
-                    />
-                  </div>
-                )}
+                {/*{!card.video ? (*/}
+                <div className={s.slideImage}>
+                  <Image layout={'fill'} src={image} />
+                </div>
+                {/*) : (*/}
+                {/*  <div className={s.videoWrapper}>*/}
+                {/*    <ReactPlayer*/}
+                {/*      playing={initialSlide === id}*/}
+                {/*      controls*/}
+                {/*      width={'100%'}*/}
+                {/*      url={card.video}*/}
+                {/*    />*/}
+                {/*  </div>*/}
+                {/*)}*/}
               </SwiperSlide>
             ))}
           </Swiper>
@@ -84,25 +81,25 @@ export const OverviewSection: FC<SliderProps> = ({ cards }) => {
         </div>
 
         <div className={s.sliderItems}>
-          {cards.map((card, id) => (
+          {overview?.images?.map((image, id) => (
             <SliderItem
               setInitialSlide={() => setInitialSlide(id)}
               active={initialSlide === id}
-              image={card?.preview}
-              isVideo={!!card.video}
+              image={image}
+              // isVideo={!!card.video}
               id={id}
               key={id}
             />
           ))}
         </div>
 
-        {travelPlannerCategory?.description ? (
+        {description ? (
           <TruncatedText
             className={s.text}
             limit={TRIP_PLAN_DESCRIPTION_SIZE}
             seeMoreClass={s.seeMore}
           >
-            {travelPlannerCategory.description}
+            {description}
           </TruncatedText>
         ) : null}
       </div>

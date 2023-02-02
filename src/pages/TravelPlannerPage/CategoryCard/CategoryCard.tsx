@@ -5,6 +5,7 @@ import cn from 'classnames'
 import { withDomain } from 'shared/helpers/withDomain'
 
 import s from './CategoryCard.module.scss'
+import { StaticTravelMock } from '../../../shared/mocks/staticTravel'
 
 interface CategoryCardProps {
   id: number
@@ -20,6 +21,8 @@ export const CategoryCard: FC<CategoryCardProps> = ({
   images,
   vertical = false,
 }) => {
+  const travelPlannerInfo = StaticTravelMock.find(page => page.id === id)
+
   return (
     <Link
       href={vertical ? `travel_planner/${id}` : `static_travel_planner/${id}`}
@@ -28,7 +31,9 @@ export const CategoryCard: FC<CategoryCardProps> = ({
         className={cn(s.card, { [s.vertical]: vertical })}
         style={{
           backgroundImage: `url(${
-            images.length ? withDomain(images[0]) : null
+            images.length && vertical
+              ? withDomain(images[0])
+              : travelPlannerInfo?.images[0]
           })`,
         }}
       >

@@ -14,7 +14,7 @@ import {
 interface HighlightedItemProps {
   text: string
   title: string
-  link: string
+  link?: string
   images: string[] | StaticImageData[]
 }
 

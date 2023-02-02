@@ -1,19 +1,20 @@
 import { StaticImageData } from 'next/image'
+import { TripCategory } from './trip'
 
-export interface StaticTravelItem {
+export interface StaticTravelItem extends TripCategory {
   id: number
-  overview: Overview[]
-  highlighted: Highlighted[]
+  highlighted?: Highlighted
+  overview: Overview
 }
 
 export interface Highlighted {
   title: string
   text: string
   link: string
-  images: string[] | StaticImageData[]
+  images: string[]
 }
 export interface Overview {
   id: number
-  preview: string | StaticImageData
+  images: string[]
   video?: string
 }
