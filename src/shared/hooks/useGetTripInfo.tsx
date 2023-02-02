@@ -173,7 +173,7 @@ export const useGetTripInfo = (
           if (preselectedTransport) {
             return {
               type: preselectedTransport.type_name,
-              value: preselectedTransport.id
+              value: preselectedTransport.transport
             }
           } else {
             return null
@@ -184,14 +184,14 @@ export const useGetTripInfo = (
       if (preselectedStartTransfer) {
         preselectedTransferValues = [{
           type: preselectedStartTransfer.type_name,
-          value: preselectedStartTransfer.id
+          value: preselectedStartTransfer.transport
         }]
       }
       preselectedTransferValues = [...preselectedTransferValues, ...preselectedTransfers]
       if (preselectedEndTransfer) {
         preselectedTransferValues = [...preselectedTransferValues, {
           type: preselectedEndTransfer.type_name,
-          value: preselectedEndTransfer.id
+          value: preselectedEndTransfer.transport
         }]
       }
       setTransferValues(preselectedTransferValues)

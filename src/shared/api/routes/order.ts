@@ -22,7 +22,7 @@ export const createOrder = (form: OrderPayload): AxiosPromise<any> => {
 
 export const calculateOrder = (
   form: OrderPayload
-): AxiosPromise<{ price: number }> => {
+): AxiosPromise<{ price_per_person_chf: number }> => {
   return api.post(endpoints.order.calculate, form)
 }
 
