@@ -8,7 +8,7 @@ import { AddressInput, ThankYouPage } from 'features'
 import { Steps } from '../VoucherPage'
 
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
-import { updateForm } from 'store/slices/voucher/voucher'
+import { updateForm, updateHistoryForm } from 'store/slices/voucher/voucher'
 import { useTranslate } from 'shared/hooks/useTranslate'
 
 import { VoucherDelivery } from 'shared/types/vouchers'
@@ -31,6 +31,7 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
   const [deliveryOption, setDeliveryOption] = useState<VoucherDelivery>(
     history.delivery
   )
+  console.log(form, history)
   const dispatch = useAppDispatch()
   const t = useTranslate()
 
@@ -57,12 +58,12 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
   }
   const selectPreviousAddress = () => {
     const prevAddress = {
-      zip_code: history.zip,
-      street: history.street,
-      region: history.region,
+      zip: form.zip_code,
+      region: form.city,
+      street: form.address,
     }
     // @ts-ignore
-    dispatch(updateForm(prevAddress))
+    dispatch(updateHistoryForm(prevAddress))
   }
 
   return (
