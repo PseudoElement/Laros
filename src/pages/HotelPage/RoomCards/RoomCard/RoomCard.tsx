@@ -12,7 +12,7 @@ export const RoomCard: FC<Room> = ({
   images,
   description,
   room_name,
-  price,
+  per_person_chf,
   title,
   id,
   destination_name,
@@ -34,7 +34,7 @@ export const RoomCard: FC<Room> = ({
       <div className={s.roomCardBody}>
         <div className={s.roomCardTitle}>{room_name}</div>
         <div className={s.roomCardInfo}>
-          {price} CHF / {t('common.nightPro')}
+          {per_person_chf} CHF / {t('common.nightPro')}
         </div>
         <div className={s.roomCardDescription}>{description}</div>
       </div>
