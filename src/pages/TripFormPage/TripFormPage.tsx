@@ -104,8 +104,9 @@ export const TripFormPage: FC = () => {
 
   const loadPrice = async (form: OrderForm) => {
     try {
-      const data = await calculateOrder(prepareOrderFormToApi(form))
-      setPrice(data.data.price)
+      const { data } = await calculateOrder(prepareOrderFormToApi(form))
+      // @ts-ignore
+      setPrice(data.data.price_per_person_chf)
     } catch (error) {
       console.log(error)
     }
@@ -114,8 +115,11 @@ export const TripFormPage: FC = () => {
 
   useEffect(() => {
     const subscription = formHook.watch((value, { name, type }) => {
+      console.log('value :', value);
+      console.log('name :', name);
       const formValue = formHook.getValues();
-      if (formValue.destinations?.length && formValue.dest_from) {
+      console.log('formValue :', formValue);
+      if (formValue.destinations?.length && formValue.dest_from && formValue.transports?.every((trans) => trans.transport !== null)) {
         loadPrice(formValue as OrderForm)
       }
     });
