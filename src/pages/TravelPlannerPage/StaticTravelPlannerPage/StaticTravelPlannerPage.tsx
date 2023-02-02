@@ -13,11 +13,9 @@ import s from './StaticTravelPlannerPage.module.scss'
 
 export const StaticTravelPlannerPage: FC = () => {
   const { query } = useRouter()
-
   const travelPlannerInfo = StaticTravelMock.find(
     page => page.id === (query.index && +query.index)
   )
-
   const travelPlannerCategory = useAppSelector(
     state => state.trips.categories
   ).find(page => page.id === (query.index && +query.index))
