@@ -22,6 +22,7 @@ export const HotelCardBody: FC<Hotel> = ({
   period,
   min_price,
   min_price_chf,
+  per_person_chf,
   lrweb,
   id,
   link,
@@ -74,7 +75,8 @@ export const HotelCardBody: FC<Hotel> = ({
           <div className={s.bodySection}>
             <div className={s.label}>{t('hotelCard.from')}</div>
             <div className={s.price}>
-              {min_price_chf ? min_price_chf : '-'} CHF / {t('hotelCard.night')}
+              {per_person_chf ? per_person_chf : '-'} CHF /{' '}
+              {t('hotelCard.night')}
             </div>
             <div className={s.label}>{t('hotelCard.person')}</div>
           </div>

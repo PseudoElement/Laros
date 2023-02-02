@@ -297,7 +297,7 @@
   },
   "travelPlannerTripPlan": {
     "day": "Tag",
-    "proPerson": "pro person",
+    "proPerson": "pro Person",
     "addRoom": "Zimmer hinzufügen",
     "startTripButton": "Reiseplanung starten",
     "highlights": "Highlights",
@@ -543,12 +543,12 @@
       "linksText": "WEBSITE-LINKS",
       "contactText": "KONTAKT",
       "addressText": "Hauptstrasse",
-      "address": "4147 Aesch",
+      "address": "94, 4147 Aesch",
       "telText": "Tel ",
       "telNumber": "061 756 80 80",
       "emailText": "E-Mail ",
       "email": "info@laros.ch",
-      "workingHoursText": "Geschäftszeiten",
+      "workingHoursText": "Öffnungszeiten",
       "moText": "Mo",
       "mo": "13:30 bis 18:00",
       "tu-frText": "Di-Fr",
@@ -658,7 +658,7 @@
     "room": "Zimmerkategorie",
     "transfer": "Transfer",
     "agency": "LAROS REISEN Gmbh",
-    "address": "Adresse und Arbeitszeiten",
+    "address": "Adresse und Öffnungszeiten",
     "phone": "Telefonnummer und E-Mail"
   },
 
