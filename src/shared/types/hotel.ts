@@ -49,6 +49,7 @@ export type Hotel = {
   max_capacity: string
   min_price: string
   min_price_chf: number
+  per_person_chf: number
   name: string
   opinion: string
   period: string | null
