@@ -57,21 +57,12 @@ export const HomePage: FC = () => {
         className={s.reactPlayerWrapper}
       >
         <div className={s.video}>
-          {/*<ReactPlayer*/}
-          {/*  controls={false}*/}
-          {/*  width={'110%'}*/}
-          {/*  stopOnUnmount*/}
-          {/*  height={'110%'}*/}
-          {/*  playing={videoIsFullscreen}*/}
-          {/*  loop={true}*/}
-          {/*  muted*/}
-          {/*  url={require('./homepagePreview.mp4')}*/}
-          {/*/>*/}
           <video
             className={s.video}
             src={require('./homepagePreview.mp4')}
             autoPlay
             muted
+            loop
           />
         </div>
       </div>
