@@ -6,6 +6,7 @@ import { Destination } from 'shared/types/destinations'
 import s from './ChangeLocationModal.module.scss'
 import { LocationCard } from './LocationCard'
 import { useTranslate } from '../../shared/hooks/useTranslate'
+
 interface ChangeLocationModalProps {
   destinations: Destination[]
   current: number
@@ -13,16 +14,21 @@ interface ChangeLocationModalProps {
   onSubmit: (hotel: number) => void
   onClose: () => void
 }
+
 export const ChangeLocationModal: FC<ChangeLocationModalProps> = ({
   destinations,
   location,
   current,
   onSubmit,
-  onClose
+  onClose,
 }) => {
-  const destinationInfoModal = useModal();
-  const [selectedLocation, setSelectedLocation] = useState<number | null>(current)
-  const [openedDestination, setOpenedDestination] = useState<Destination>(destinations[0])
+  const destinationInfoModal = useModal()
+  const [selectedLocation, setSelectedLocation] = useState<number | null>(
+    current
+  )
+  const [openedDestination, setOpenedDestination] = useState<Destination>(
+    destinations[0]
+  )
   const t = useTranslate()
 
   const openDestinationModal = (id: number) => {
@@ -61,8 +67,16 @@ export const ChangeLocationModal: FC<ChangeLocationModalProps> = ({
         </div>
       </div>
 
-      <Modal {...destinationInfoModal} title='Adding location'>
-        <AddLocationModal {...destinationInfoModal} {...openedDestination} onClick={selectLocation} />
+      <Modal
+        {...destinationInfoModal}
+        title='Adding location'
+        classname={s.destinationInfoModal}
+      >
+        <AddLocationModal
+          {...destinationInfoModal}
+          {...openedDestination}
+          onClick={selectLocation}
+        />
       </Modal>
     </>
   )
