@@ -219,7 +219,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           <div className={s.infoTitle}>{t('pdfs.phone')}</div>
           <div className={s.infoDescription}>
             <a href='tel:+410617568080' className={s.phone}>
-              + 41 061 756 80 80
+              61 756 80 80
             </a>
             {`\n\n`}
             <a href='mailto:info@laros.ch' className={s.mail}>

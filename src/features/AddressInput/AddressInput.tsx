@@ -5,12 +5,14 @@ import { PencilIcon } from 'components'
 
 import s from './AddressInput.module.scss'
 import { useTranslate } from '../../shared/hooks/useTranslate'
+import { useAppSelector } from 'shared/hooks/redux'
 interface AddressInputProps {
   control: Control
 }
 
 export const AddressInput: FC<AddressInputProps> = ({ control }) => {
   const t = useTranslate()
+  const { history } = useAppSelector(state => state.vouchers)
 
   return (
     <div className={s.address}>
@@ -25,7 +27,7 @@ export const AddressInput: FC<AddressInputProps> = ({ control }) => {
               id='street'
               required
               onChange={onChange}
-              value={value}
+              value={value || history.street}
               type='text'
               className={s.addressStreet}
             />
@@ -40,7 +42,7 @@ export const AddressInput: FC<AddressInputProps> = ({ control }) => {
               id='zip'
               required
               onChange={onChange}
-              value={value}
+              value={value || history.zip}
               type='text'
               className={s.addressZip}
             />
@@ -55,7 +57,7 @@ export const AddressInput: FC<AddressInputProps> = ({ control }) => {
               id='region'
               required
               onChange={onChange}
-              value={value}
+              value={value || history.region}
               type='text'
               className={s.addressRegion}
             />

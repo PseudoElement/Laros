@@ -2,7 +2,7 @@ import { StaticImageData } from 'next/image'
 import { Meta } from '.'
 import { Hotel } from './hotel'
 import { Destination } from './destinations'
-import { Transport } from './transport'
+import { Transfer, Transport } from './transport'
 
 export interface Trip {
   readonly id: number
@@ -18,7 +18,7 @@ export interface Trip {
   offer_date_end: string
   tags: Meta[]
   travel_types: string
-  transports: Transport[]
+  transports: TripTransport[]
   near_destinations: Destination[]
   name: string
   is_active: boolean
@@ -31,6 +31,14 @@ export interface Trip {
   offer: number | null
 }
 
+export interface TripTransport {
+  from_dest_name: string
+  id: number
+  to_dest_name: string
+  transport: number
+  trip: number
+  type_name: Transfer
+}
 export interface TripDestination {
   readonly id: number
   images: string[] // '/media/destination/img/xxx.png'

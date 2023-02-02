@@ -6,7 +6,6 @@ import { Highlighted } from './Highlighted'
 import { OverviewSection } from './Overview'
 
 import { useAppSelector } from 'shared/hooks/redux'
-import { withDomain } from 'shared/helpers/withDomain'
 
 import { StaticTravelMock } from 'shared/mocks/staticTravel'
 
@@ -14,11 +13,9 @@ import s from './StaticTravelPlannerPage.module.scss'
 
 export const StaticTravelPlannerPage: FC = () => {
   const { query } = useRouter()
-
   const travelPlannerInfo = StaticTravelMock.find(
     page => page.id === (query.index && +query.index)
   )
-
   const travelPlannerCategory = useAppSelector(
     state => state.trips.categories
   ).find(page => page.id === (query.index && +query.index))
@@ -28,32 +25,23 @@ export const StaticTravelPlannerPage: FC = () => {
       <div
         className={s.grayBackground}
         style={{
-          backgroundImage: `url(${
-            travelPlannerCategory?.images?.length
-              ? withDomain(travelPlannerCategory?.images[1])
-              : null
-          })`,
+          backgroundImage: `url(${travelPlannerInfo?.images[1]})`,
         }}
       />
 
       <div className={s.OverviewSection}>
         <h1 className={s.title}>{travelPlannerCategory?.name ?? null}</h1>
-        <OverviewSection
-          cards={
-            travelPlannerInfo?.overview
-              ? travelPlannerInfo.overview
-              : StaticTravelMock[0].overview
-          }
-        />
+        {travelPlannerInfo?.overview ? (
+          <OverviewSection
+            overview={travelPlannerInfo?.overview}
+            description={travelPlannerCategory?.description}
+          />
+        ) : null}
       </div>
 
-      <Highlighted
-        highlighted={
-          travelPlannerInfo?.highlighted
-            ? travelPlannerInfo.highlighted
-            : StaticTravelMock[0].highlighted
-        }
-      />
+      {travelPlannerInfo?.highlighted ? (
+        <Highlighted {...travelPlannerInfo.highlighted} />
+      ) : null}
 
       <div className={s.contactForm}>
         <ContactForm />

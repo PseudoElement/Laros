@@ -12,7 +12,7 @@ export interface Room {
   change_price?: string // TODO check API
   images: string
   price: number
-  per_person_chf?: number
+  per_person_chf: number
 }
 
 export type HotelFilterParams = {
@@ -49,6 +49,7 @@ export type Hotel = {
   max_capacity: string
   min_price: string
   min_price_chf: number
+  per_person_chf: number
   name: string
   opinion: string
   period: string | null
