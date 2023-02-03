@@ -2,8 +2,6 @@ import React, { FC, useEffect, useState } from 'react'
 import s from './BlogPage.module.scss'
 import { BlogPayload } from 'shared/types/blogs'
 import { ArrowIcon, Button } from 'components'
-import Image from 'next/image'
-import blog from '../../../public/assets/images/Blog/blog.png'
 import { Slider } from 'components'
 import { useRouter } from 'next/router'
 import { BlogSection } from 'features/BlogSection'
@@ -30,8 +28,6 @@ export const Blog: FC = () => {
     }
   }, [blogId])
 
-  console.log(post)
-
   return (
     <>
       {post ? (
@@ -53,53 +49,6 @@ export const Blog: FC = () => {
                 description={post.description}
                 image={post.image}
               />
-
-              <div className={s.mainContent}>
-                <h4 className={s.subSubTitle}>{t('blogs.blogTitle2')}</h4>
-                <p className={s.textContent}>{t('blogs.blogText2')}</p>
-                <p className={s.textContent}>{t('blogs.blogSubText')}</p>
-                <p className={s.textContent}>{t('blogs.blogText3')}</p>
-                <p className={s.textContent}>{t('blogs.blogSubText2')}</p>
-                <p className={s.textContent}>{t('blogs.blogSubText3')}</p>
-
-                <div className={s.gallery}>
-                  <div className={s.mainPhoto}>
-                    <Image
-                      src={blog.src}
-                      alt='Blog image'
-                      width={1070}
-                      height={404}
-                    />
-                  </div>
-                  <div className={s.subPhotos}>
-                    <div>
-                      <Image
-                        src={blog.src}
-                        alt='Blog image'
-                        width={1070}
-                        height={404}
-                      />
-                    </div>
-                    <div>
-                      <Image
-                        src={blog.src}
-                        alt='Blog image'
-                        width={1070}
-                        height={404}
-                      />
-                    </div>
-                    <div>
-                      <Image
-                        src={blog.src}
-                        alt='Blog image'
-                        width={1070}
-                        height={404}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <p className={s.textContent}>{t('blogs.blogSubText4')}</p>
-              </div>
             </div>
           </div>
         </div>
