@@ -29,18 +29,6 @@ export const StaticTravelMock: StaticTravelItem[] = [
       ],
       video: '',
     },
-
-    highlighted: {
-      title: 'Reisen zu zweit',
-      text: 'Lassen Sie uns gemeinsam die perfekte Reise für Sie und Ihre Reisebegleitung planen. Mit unserem Wissen sorgen wir für eindrucksvolle Reiseerlebnisse und übernehmen die Organisation bis in jedes Detail, damit Sie Ihren Urlaub vor Ort rundum und sorgenfrei geniessen können.',
-      link: '/#',
-      images: [
-        '/assets/images/static_travel_plannerPage/slider_6/slide_11.png',
-        '/assets/images/static_travel_plannerPage/slider_6/slide_20.png',
-        '/assets/images/static_travel_plannerPage/slider_6/slide_13.png',
-        '/assets/images/static_travel_plannerPage/slider_6/slide_15.png',
-      ],
-    },
   },
 
   {
@@ -102,17 +90,6 @@ export const StaticTravelMock: StaticTravelItem[] = [
       ],
       video: '',
     },
-    highlighted: {
-      title: 'Dschungelsafari',
-      text: 'Sind Sie fasziniert von der Wildnis und Sonne Afrikas? Möchten Sie einmal Tiger, Leoparden und Elefanten in ihrem natürlichen Lebensraum hautnah erleben? Dann ist eine Safari das ideale Angebot für Sie! Kenia, Südafrika und Namibia sind nur einige der Möglichkeiten für diesen Reisewunsch. Unsere persönliche Erfahrung wird Ihre Reise zu einem ganz besonderen Erlebnis machen',
-      link: '/#',
-      images: [
-        '/assets/images/static_travel_plannerPage/slider_6/slide_4.png',
-        '/assets/images/static_travel_plannerPage/slider_6/slide_5.png',
-        '/assets/images/static_travel_plannerPage/slider_6/slide_6.png',
-        '/assets/images/static_travel_plannerPage/slider_6/slide_7.png',
-      ],
-    },
   },
   {
     id: 8,
@@ -164,6 +141,17 @@ export const StaticTravelMock: StaticTravelItem[] = [
       ],
       video: '',
     },
+    highlighted: {
+      title: 'Reisen zu zweit',
+      text: 'Lassen Sie uns gemeinsam die perfekte Reise für Sie und Ihre Reisebegleitung planen. Mit unserem Wissen sorgen wir für eindrucksvolle Reiseerlebnisse und übernehmen die Organisation bis in jedes Detail, damit Sie Ihren Urlaub vor Ort rundum und sorgenfrei geniessen können.',
+      link: '/#',
+      images: [
+        '/assets/images/static_travel_plannerPage/slider_6/slide_11.png',
+        '/assets/images/static_travel_plannerPage/slider_6/slide_20.png',
+        '/assets/images/static_travel_plannerPage/slider_6/slide_13.png',
+        '/assets/images/static_travel_plannerPage/slider_6/slide_15.png',
+      ],
+    },
   },
   {
     id: 10,
@@ -214,6 +202,17 @@ export const StaticTravelMock: StaticTravelItem[] = [
         '/assets/images/static_travel_plannerPage/slider_11/slide_15.png',
       ],
       video: '',
+    },
+    highlighted: {
+      title: 'Dschungelsafari',
+      text: 'Sind Sie fasziniert von der Wildnis und Sonne Afrikas? Möchten Sie einmal Tiger, Leoparden und Elefanten in ihrem natürlichen Lebensraum hautnah erleben? Dann ist eine Safari das ideale Angebot für Sie! Kenia, Südafrika und Namibia sind nur einige der Möglichkeiten für diesen Reisewunsch. Unsere persönliche Erfahrung wird Ihre Reise zu einem ganz besonderen Erlebnis machen',
+      link: '/#',
+      images: [
+        '/assets/images/static_travel_plannerPage/slider_6/slide_4.png',
+        '/assets/images/static_travel_plannerPage/slider_6/slide_5.png',
+        '/assets/images/static_travel_plannerPage/slider_6/slide_6.png',
+        '/assets/images/static_travel_plannerPage/slider_6/slide_7.png',
+      ],
     },
   },
   {
