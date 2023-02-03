@@ -28,3 +28,11 @@
     margin: 0 0 8px 8px;
   }
 }
+
+.destinationInfoModal {
+  [class*='modalContent'] {
+    width: 90%;
+    max-width: 1280px;
+    height: 100%;
+  }
+}

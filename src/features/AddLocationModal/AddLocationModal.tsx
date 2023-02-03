@@ -8,6 +8,7 @@ import { Button, Modal } from 'components'
 import s from './AddLocationModal.module.scss'
 import { Destination } from 'shared/types/destinations'
 import { useTranslate } from '../../shared/hooks/useTranslate'
+import { withDomain } from '../../shared/helpers/withDomain'
 
 interface AddLocationModalProps extends Destination {
   onClick: (id: number) => void
@@ -23,6 +24,9 @@ export const AddLocationModal: FC<AddLocationModalProps> = ({
   description,
 }) => {
   const t = useTranslate()
+
+  const topSliderImages = images?.slice(1, 4)
+  const bottomSliderImages = images?.slice(4)
 
   const pagination = {
     clickable: true,
@@ -44,14 +48,17 @@ export const AddLocationModal: FC<AddLocationModalProps> = ({
             navigation
             className={s.bannerSliderSwiper}
           >
-            {images.map((image, id) => {
+            {topSliderImages.map((image, id) => {
               return (
                 <SwiperSlide
                   key={id}
                   className={s.bannerSliderSlide}
                   style={{
-                    backgroundImage: `url(${typeof image === 'string' ? image : image.src
-                      })`,
+                    backgroundImage: `url(${
+                      typeof image === 'string' ? withDomain(image) : image.src
+                    })`,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: 'cover',
                   }}
                 />
               )
@@ -62,7 +69,9 @@ export const AddLocationModal: FC<AddLocationModalProps> = ({
         <div className={s.bottom}>
           <div className={s.left}>
             <h2 className={s.title}>{name}</h2>
-            <p className={s.description}><div dangerouslySetInnerHTML={{ __html: description ?? '' }} /></p>
+            <p className={s.description}>
+              <div dangerouslySetInnerHTML={{ __html: description ?? '' }} />
+            </p>
             <span className={s.highlights}>
               {t('changingLocation.highlights')}:
             </span>
@@ -80,14 +89,19 @@ export const AddLocationModal: FC<AddLocationModalProps> = ({
                 }}
                 className={s.photosSwiper}
               >
-                {images.map((image, id) => {
+                {bottomSliderImages.map((image, id) => {
                   return (
                     <SwiperSlide key={id}>
                       <div
                         className={s.photosSliderItem}
                         style={{
-                          backgroundImage: `url(${typeof image === 'string' ? image : image.src
-                            })`,
+                          backgroundImage: `url(${
+                            typeof image === 'string'
+                              ? withDomain(image)
+                              : image.src
+                          })`,
+                          backgroundRepeat: 'no-repeat',
+                          backgroundSize: 'cover',
                         }}
                       />
                     </SwiperSlide>
