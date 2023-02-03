@@ -126,16 +126,16 @@ export const ChangeHotelModal: FC<ChangeHotelProps> = ({
                 <span>{t('travelPlannerCategory.from')}</span>
 
                 <Select
-                    onChange={value =>
-                        setParams(prev => ({
-                          ...prev,
-                          ordering: value?.value as keyof Hotel,
-                        }))
-                    }
-                    isClearable={false}
-                    classname={s.selectDirection}
-                    options={direction}
-                    defaultValue={direction[0]}
+                  onChange={value =>
+                    setParams(prev => ({
+                      ...prev,
+                      ordering: value?.value as keyof Hotel,
+                    }))
+                  }
+                  isClearable={false}
+                  classname={s.selectDirection}
+                  options={direction}
+                  defaultValue={direction[0]}
                 />
               </div>
             </div>

@@ -31,7 +31,7 @@ interface SortingProps {
 const Sorting: FC<SortingProps> = ({ setParams, params, map, setPage }) => {
   const [subRegions, setSubRegions] = useState<Option[]>([])
   const [tags, categories, accommodations] = useGetHotelFilters(false)
-  const [price, setPrice] = useState([0, 50])
+  const [price, setPrice] = useState([0, 300])
   const debouncePrice = useDebounce(price, 300)
   const t = useTranslate()
 
