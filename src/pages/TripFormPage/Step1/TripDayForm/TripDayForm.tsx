@@ -143,11 +143,17 @@ export const TripDayForm: FC<TripDayFormProps> = ({
   const changeRoom = () => {
     accomodationModal.open()
   }
-  const submitRoomChange = (index: number, newRoom: Room) => {
+  const submitRoomChange = (roomIndex: number, newRoom: Room) => {
+    console.log('newRoom :', newRoom);
     const newRooms = [...clientRooms]
-    newRooms[index] = newRoom
+    console.log('newRooms :', newRooms);
+    newRooms[roomIndex] = newRoom
     setClientRooms(newRooms)
     onChange('rooms_ids', newRooms)
+    onChange(
+      `destinations.[${index}].rooms`,
+      newRooms
+    )
   }
   const getClientsRoom = (
     rooms: Room[],

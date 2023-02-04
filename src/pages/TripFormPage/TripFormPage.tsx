@@ -25,6 +25,7 @@ import { destinationToOption } from 'shared/helpers/destinations'
 import { useFieldArray, useForm } from 'react-hook-form'
 import { prepareOrderFormToApi, transfersToAPI } from 'shared/helpers/order'
 import { calculateOrder } from 'shared/api/routes/order'
+import { useDebounce } from 'shared/hooks/useDebounce'
 
 export enum Steps {
   FIRST,
@@ -64,7 +65,7 @@ export const TripFormPage: FC = () => {
     control: formHook.control,
     name: 'destinations',
   })
-
+  const debounchedCalculation = useDebounce(formHook.watch, 3000)
 
 
   // download trip pdf
@@ -115,16 +116,14 @@ export const TripFormPage: FC = () => {
 
   useEffect(() => {
     const subscription = formHook.watch((value, { name, type }) => {
-      console.log('value :', value);
-      console.log('name :', name);
-      const formValue = formHook.getValues();
+      const formValue = value;
       console.log('formValue :', formValue);
-      if (formValue.destinations?.length && formValue.dest_from && formValue.transports?.every((trans) => trans.transport !== null)) {
+      if (formValue.destinations?.length && formValue.dest_from && formValue.transports?.every((trans) => trans?.transport)) {
         loadPrice(formValue as OrderForm)
       }
     });
     return () => subscription.unsubscribe();
-  }, [formHook.watch]);
+  }, [debounchedCalculation]);
   if (isLoading || !trip) {
     return <div>{t('common.loadingText')}</div>
   }
