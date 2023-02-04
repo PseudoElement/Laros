@@ -1,44 +1,17 @@
-// @ts-nocheck
-import {
-  OrderForm,
-  OrderPayload,
-  OrderPlaceAccomodation,
-  OrderTransport,
-} from 'shared/types/order'
+import { OrderForm, OrderPayload, OrderTransport } from 'shared/types/order'
 import { dateToServerFormat } from './dateFormatter'
 import { countPeople } from './trip'
 import { Transfer, TransferValue } from 'shared/types/transport'
 
-export const prepareOrder = (form: OrderForm): OrderPayload => {
-  const destinations: OrderPlaceAccomodation[] = form.destinations.map(
-    (destination, index) => {
-      return {
-        ...destination,
-        rooms: form.rooms.map(room => ({
-          ...room,
-          room_id: form.room_ids[index],
-        })),
-        taxi: form.transports.map(transport => transport.transport),
-        rental: form.transports[index].rental,
-      }
-    }
-  )
-  return {
-    ...form,
-    dest_start: form.dest_from,
-    dest_end: form.dest_to,
-    date_start: dateToServerFormat(form.date_start),
-    destinations: destinations,
-  }
-}
-
-export const transfersToAPI = (transfer: TransferValue): OrderTransport => {
+export const transfersToAPI = (
+  transfer: TransferValue
+): OrderTransport | undefined => {
   if (!transfer || transfer.type === Transfer.CAR) {
     return
   }
   return {
     date: dateToServerFormat(new Date()),
-    transport: transfer.value,
+    transport: transfer.value as number, // only car transfer can be null (rental)
     rental: transfer.value === null,
   }
 }
@@ -46,6 +19,7 @@ export const transfersToAPI = (transfer: TransferValue): OrderTransport => {
 export const prepareOrderFormToApi = (form: OrderForm): OrderPayload => {
   console.log('form :', form)
   const finalTravellers = form.travellers.map(traveller => {
+    // @ts-ignore
     const fullName = traveller.name?.split(' ')
     return {
       name: fullName?.[0],
@@ -55,7 +29,13 @@ export const prepareOrderFormToApi = (form: OrderForm): OrderPayload => {
       nationality: traveller.nationality.value,
     }
   })
-
+  const ferryFlightTransfers: OrderTransport[] = form.transports
+    .filter(tran => tran?.type !== Transfer.CAR)
+    .map(transfer => ({
+      transport: transfer!.value as number,
+      date: dateToServerFormat(new Date()),
+      rental: false,
+    }))
   const finalForm = {
     ...form,
     date_start: dateToServerFormat(form.date_start),
@@ -67,12 +47,21 @@ export const prepareOrderFormToApi = (form: OrderForm): OrderPayload => {
         hotel: destination.hotel?.id ?? null,
         duration: destination.duration,
         rooms:
+          // @ts-ignore
           destination?.rooms?.map(room => ({
             ...form.rooms?.[0],
             room_id: room.id,
           })) ?? [],
-        taxi: form.transports?.[index]?.rental ?? false,
-        rental: [],
+        taxi:
+          (form.transports[index + 1]?.type === Transfer.CAR &&
+            !form.transports[index]?.value) ??
+          false,
+        rental:
+          form.transports
+            .filter(
+              transport => transport?.type === Transfer.CAR && transport.value
+            )
+            .map(transport => transport?.value as number) ?? [],
         // form.transports?.[index]?.transport[
         //   form.transports?.[index].transport
         // ],
@@ -83,7 +72,8 @@ export const prepareOrderFormToApi = (form: OrderForm): OrderPayload => {
     // for calculate API
     people:
       countPeople(form.rooms, 'adults') + countPeople(form.rooms, 'children'),
-    transports: form.transports.filter(tran => tran) ?? [], // form.transports ?? [1] // TODO remove 1 when API will fix aiports
+    transports: ferryFlightTransfers ?? [],
   }
+  // @ts-ignore
   return finalForm
 }

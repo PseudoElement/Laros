@@ -58,7 +58,7 @@ export const TripFormPage: FC = () => {
       travellers: [],
       date_start: form.date_start ?? Number(new Date()),
       rooms: form.rooms ?? [],
-      transports: transferValues.map((tran) => transfersToAPI(tran))
+      transports: transferValues
     },
   })
   const { } = useFieldArray({
@@ -92,7 +92,7 @@ export const TripFormPage: FC = () => {
   }, [trip, dispatch])
 
   useEffect(() => {
-    formHook.setValue('transports', transferValues.map((tran) => transfersToAPI(tran)))
+    formHook.setValue('transports', transferValues)
   }, [transferValues])
   useEffect(() => {
     formHook.setValue('dest_from', destinationToOption(airports).find(
@@ -118,7 +118,7 @@ export const TripFormPage: FC = () => {
     const subscription = formHook.watch((value, { name, type }) => {
       const formValue = value;
       console.log('formValue :', formValue);
-      if (formValue.destinations?.length && formValue.dest_from && formValue.transports?.every((trans) => trans?.transport)) {
+      if (formValue.destinations?.length && formValue.dest_from && formValue.transports?.every((trans) => trans)) {
         loadPrice(formValue as OrderForm)
       }
     });

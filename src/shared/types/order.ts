@@ -1,6 +1,7 @@
 import { Option, ServerDate, Title } from '.'
 import { Destination } from './destinations'
 import { Hotel, Room } from './hotel'
+import { TransferValue } from './transport'
 import { TripDestination } from './trip'
 
 export interface PeopleCapacity {
@@ -39,7 +40,7 @@ export interface OrderForm {
   dest_from: Option
   dest_to: Option
   destinations: TripDestination[]
-  transports: OrderTransport[]
+  transports: TransferValue[]
   room_ids: Room[][] // TODO rename
   // Step 2:
   name: string

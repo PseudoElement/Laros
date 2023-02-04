@@ -72,7 +72,7 @@ export const useGetTripInfo = (
         if (data.data.destination) {
           // @ts-ignore
           const defaultTripDay = await getTripDay(data.data.destination)
-          console.log('defaultTripDay :', defaultTripDay);
+          // console.log('defaultTripDay :', defaultTripDay);
           if (defaultTripDay) {
             // @ts-ignore
             setTrip({
@@ -160,9 +160,9 @@ export const useGetTripInfo = (
   useEffect(() => {
     if (trip?.transports && isTransfersLoaded) {
       let preselectedTransferValues: TransferValue[] = []
-      const preselectedEndTransfer = trip.transports.find((transport) => transport.from_dest_name === "Zürich"); // TODO
+      const preselectedEndTransfer = trip.transports.findLast((transport) => transport.to_dest_name === "Zürich"); // TODO
 
-      const preselectedTransfers: TransferValue[] = trip.destinations.map((dest, index) => {
+      const preselectedTransfers: TransferValue[] = trip.destinations.slice(0, trip.destinations.length - 1).map((dest, index) => {
         if (dest?.rental?.length) {
           return {
             type: Transfer.CAR,
@@ -180,6 +180,7 @@ export const useGetTripInfo = (
           }
         }
       })
+      // add first transfer
       const preselectedStartTransfer = trip.transports.find((transport) => transport.from_dest_name === "Zürich");
       if (preselectedStartTransfer) {
         preselectedTransferValues = [{
@@ -187,7 +188,9 @@ export const useGetTripInfo = (
           value: preselectedStartTransfer.transport
         }]
       }
+      // add transfers between regions
       preselectedTransferValues = [...preselectedTransferValues, ...preselectedTransfers]
+      // add last transfer
       if (preselectedEndTransfer) {
         preselectedTransferValues = [...preselectedTransferValues, {
           type: preselectedEndTransfer.type_name,

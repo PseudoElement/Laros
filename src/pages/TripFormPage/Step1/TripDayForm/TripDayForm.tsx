@@ -34,7 +34,7 @@ import { CarTransferType } from 'shared/types/car'
 import { OrderForm, PeopleCapacity } from 'shared/types/order'
 import { TripDestination } from 'shared/types/trip'
 import { Destination } from 'shared/types/destinations'
-import { TransferOptions, TransferValue } from 'shared/types/transport'
+import { Transfer as TransferType, TransferOptions, TransferValue } from 'shared/types/transport'
 
 import s from './TripDayForm.module.scss'
 import { getHotel } from 'shared/api/routes/hotels'
@@ -166,7 +166,9 @@ export const TripDayForm: FC<TripDayFormProps> = ({
     }
     return roomsForClients
   }
-
+  const handleTrasnferChange = (id: number | null, type: TransferType) => {
+    onChange(`transports.${index}`, { value: id, type })
+  }
   useEffect(() => {
     if (hotel) {
       const loadRooms = async () => {
@@ -192,9 +194,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
   return (
     <div className={s.container}>
       <Transfer
-        onChange={(id: number, type: any) =>
-          onChange(`transfers.${index}`, { id, type })
-        }
+        onChange={handleTrasnferChange}
         options={transfers[index]}
         from={from}
         to={{

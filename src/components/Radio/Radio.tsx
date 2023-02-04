@@ -41,7 +41,6 @@ export const Radio: FC<RadioProps> = ({
               className={cn(s.radioButton)}
               name={name}
               value={option.value}
-              defaultChecked={value === option.value}
               checked={option.value === value}
               onChange={handleChange}
               onClick={() => onClick}

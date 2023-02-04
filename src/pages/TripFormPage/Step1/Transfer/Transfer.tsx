@@ -15,7 +15,7 @@ import exchange from '/public/assets/images/exchange.svg?url'
 import airport from '/public/assets/images/airportIcon.svg?url'
 
 import { Option } from 'shared/types'
-import { TransferOptions, TransferValue } from 'shared/types/transport'
+import { Transfer as TransferType, TransferOptions, TransferValue } from 'shared/types/transport'
 import { Car, CarTransferType } from 'shared/types/car'
 
 interface TransferProps {
@@ -23,7 +23,7 @@ interface TransferProps {
   to?: Option
   value: TransferValue
   options: TransferOptions
-  onChange: (id: number, type: CarTransferType) => void
+  onChange: (id: number | null, type: TransferType) => void
 }
 
 export const Transfer: FC<TransferProps> = ({
@@ -34,14 +34,13 @@ export const Transfer: FC<TransferProps> = ({
   onChange,
 }) => {
   const transferModal = useModal()
-  const [transferType, setTransferType] = useState<string>('')
   const [carType, setCarType] = useState<CarTransferType>(
     CarTransferType.PICKUP
   )
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const availableTransfers = useMemo(() => transfersToOptions(options), [transfersToOptions, options])
-  const [selectedTransfer, setSelectedTransfer] = useState<number>(
-    value?.value ?? Number(availableTransfers[0]?.value)
+  const [selectedTransfer, setSelectedTransfer] = useState<TransferValue>(
+    value
   )
   const [cars, setCars] = useState<Car[]>([])
   const t = useTranslate()
@@ -60,17 +59,55 @@ export const Transfer: FC<TransferProps> = ({
     }
     transferModal.open()
   }
+  const getSelectedOption = (value: number): TransferValue => {
+    if (options.airport === value) {
+      return ({
+        type: TransferType.FLIGHT,
+        value
+      })
+    }
+    if (options.car === value) {
+      return ({
+        type: TransferType.CAR,
+        value
+      })
+    }
+    if (options.ferry === value) {
+      return ({
+        type: TransferType.FERRY,
+        value
+      })
+    }
+    return ({
+      type: TransferType.CAR,
+      value: null
+    })
+  }
+  const handleTransferChange = (value: string) => {
+    console.log('value :', value);
+    switch (value) {
+      case 'rental':
+        onChange(null, TransferType.CAR)
+        break;
+
+      default:
+        const selectedOption = getSelectedOption(Number(value))
+        if (selectedOption) {
+          onChange(selectedOption.value, selectedOption.type)
+        }
+        break;
+    }
+
+  }
   const handleCarChange = (type: CarTransferType, car?: number) => {
     setCarType(type)
-    car && setSelectedTransfer(car)
+    !car && onChange(null, TransferType.CAR)
+    car && onChange(car, TransferType.CAR)
   }
   useEffect(() => {
-    availableTransfers[0]?.value && setTransferType(availableTransfers[0].value)
-  }, [availableTransfers])
-  useEffect(() => {
-    onChange(selectedTransfer, carType)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedTransfer, carType])
+    setSelectedTransfer(value)
+  }, [value])
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   function transfersToOptions(transfers: TransferOptions): Option[] {
     let options: Option[] = []
@@ -102,7 +139,7 @@ export const Transfer: FC<TransferProps> = ({
             carType === CarTransferType.PICKUP
               ? 'tripSteps.transfer.carPickUp'
               : 'tripSteps.transfer.carRental',
-          value: transfers.car.toString(),
+          value: transfers.car.toString() || 'rental',
           icon: car,
         },
       ]
@@ -135,10 +172,10 @@ export const Transfer: FC<TransferProps> = ({
               <>
                 {availableTransfers.length > 1 ? (
                   <Radio
-                    onChange={value => setTransferType(value)}
+                    onChange={value => handleTransferChange(value)}
                     name=''
                     options={availableTransfers}
-                    value={transferType}
+                    value={value?.value?.toString() ?? ''}
                   />
                 ) : (
                   <div className={s.transferValue}>

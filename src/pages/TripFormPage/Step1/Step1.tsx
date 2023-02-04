@@ -12,7 +12,6 @@ import {
   provideOptionsWithIcon,
 } from 'shared/helpers/transformers'
 
-import { prepareOrder } from 'shared/helpers/order'
 import { useTranslate } from 'shared/hooks/useTranslate'
 import { destinationToOption } from 'shared/helpers/destinations'
 import { getTripDuration } from 'shared/helpers/trip'
@@ -27,7 +26,7 @@ import { Destination } from 'shared/types/destinations'
 import { OrderForm } from 'shared/types/order'
 import { Trip } from 'shared/types/trip'
 import { Steps } from '../TripFormPage'
-import { TransferOptions, TransferValue } from 'shared/types/transport'
+import { Transfer as TransferType, TransferOptions, TransferValue } from 'shared/types/transport'
 
 import { DEFAULT_TRANSFER } from 'shared/constants/transfer'
 
@@ -121,14 +120,14 @@ export const Step1: FC<Step1Props> = ({ // TODO
     return response
   }
 
-  const updateEndPointTransfer = (id: number) => {
+  const updateEndPointTransfer = (id: number | null, type: TransferType) => {
     const prevTransfer = getValues('transports') ?? []
     setValue(`transports`, [
-      {
-        transport: id,
-        date: dateToServerFormat(new Date()), // TODO
+
+      ...prevTransfer, {
+        value: id,
+        type: type
       },
-      ...prevTransfer,
     ])
   }
 
@@ -221,7 +220,7 @@ export const Step1: FC<Step1Props> = ({ // TODO
       })}
 
       <Transfer
-        onChange={(id, type) => updateEndPointTransfer(id)}
+        onChange={(id, type) => updateEndPointTransfer(id, type)}
         from={{
           label:
             trip.destinations[trip.destinations.length - 1].destination_name,
