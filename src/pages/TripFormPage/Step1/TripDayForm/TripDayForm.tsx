@@ -23,7 +23,7 @@ import RegionCard from 'components/RegionCard/RegionCard'
 import { getDayName } from 'shared/helpers/localize'
 import { useModal } from 'shared/hooks/useModal'
 import { getRooms } from 'shared/api/routes/rooms'
-import { findRooms } from 'shared/helpers/trip'
+import { findRooms, getClientsRoom } from 'shared/helpers/trip'
 import { getNearDestinations } from 'shared/api/routes/destinations'
 import { getTripDayByDestination } from 'shared/api/routes/order'
 import { useTranslate } from 'shared/hooks/useTranslate'
@@ -155,17 +155,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
       newRooms
     )
   }
-  const getClientsRoom = (
-    rooms: Room[],
-    capacity: PeopleCapacity[]
-  ): Room[] => {
-    let roomsForClients: Room[] = []
-    for (let i = 0; i < capacity?.length; i++) {
-      const newRooms = findRooms(rooms, capacity[i].adults)
-      roomsForClients = [...roomsForClients, ...newRooms]
-    }
-    return roomsForClients
-  }
+
   const handleTrasnferChange = (id: number | null, type: TransferType) => {
     onChange(`transports.${index}`, { value: id, type })
   }

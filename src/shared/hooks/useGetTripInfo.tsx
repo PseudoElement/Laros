@@ -6,8 +6,9 @@ import { getCountries } from 'shared/api/routes/countries'
 import { getAirportDestinations, getTransports } from 'shared/api/routes/destinations'
 import { Country } from 'shared/types/country'
 import { Transfer, TransferOptions, TransferValue } from 'shared/types/transport'
-import { getTripDay } from 'shared/api/routes/order'
+import { getHotelTripDay, getTripDay } from 'shared/api/routes/order'
 import { getHotel } from 'shared/api/routes/hotels'
+import { useAppSelector } from './redux'
 
 export const useGetTripInfo = (
   id: number, isHotelPage: boolean
@@ -23,6 +24,7 @@ export const useGetTripInfo = (
     // console.log('transfers :', transfers);
     return Object.keys(transfers).map((key) => transfers[Number(key)])
   }
+  const form = useAppSelector((state) => state.order.form)
   useEffect(() => {
     if (isHotelPage) {
       setIsLoading(false)
@@ -67,28 +69,23 @@ export const useGetTripInfo = (
         return
       }
       try {
-        const { data } = await getHotel(id)
-        // @ts-ignore
-        if (data.data.destination) {
+        const defaultTripDay = await getHotelTripDay(id, form.rooms)
+        // console.log('defaultTripDay :', defaultTripDay);
+        if (defaultTripDay) {
           // @ts-ignore
-          const defaultTripDay = await getTripDay(data.data.destination)
-          // console.log('defaultTripDay :', defaultTripDay);
-          if (defaultTripDay) {
+          setTrip({
             // @ts-ignore
-            setTrip({
-              destinations: [{
-                id: defaultTripDay.location.id,
-                images: [],
-                destination_name: defaultTripDay.location.name,
-                hotel_name: defaultTripDay.hotel.name,
-                description: defaultTripDay.location.description,
-                duration: 1,
-                trip: 1, //
-                destination: defaultTripDay.location.id,
-                hotel: defaultTripDay.hotel,
-              }]
-            })
-          }
+            destinations: [{
+              id: defaultTripDay.location.id,
+              images: [],
+              destination_name: defaultTripDay.location.name,
+              description: defaultTripDay.location.description,
+              duration: 1,
+              trip: 1, //
+              destination: defaultTripDay.location.id,
+              hotel: defaultTripDay.hotel,
+            }]
+          })
         }
       } catch (error) {
         console.log('error :', error);
@@ -204,6 +201,7 @@ export const useGetTripInfo = (
     loadCountries()
     loadAirports()
   }, [])
+  console.log('trip res:', trip, isLoading, prepareTransfer(transfers), transferValues);
 
   return { trip, airports, countries, isLoading, transfers: prepareTransfer(transfers), transferValues }
 }

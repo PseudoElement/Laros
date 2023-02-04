@@ -27,6 +27,17 @@ export const findRooms = (rooms: Room[], people: number): Room[] => {
   }
 }
 
+export const getClientsRoom = (
+  rooms: Room[],
+  capacity: PeopleCapacity[]
+): Room[] => {
+  let roomsForClients: Room[] = []
+  for (let i = 0; i < capacity?.length; i++) {
+    const newRooms = findRooms(rooms, capacity[i].adults)
+    roomsForClients = [...roomsForClients, ...newRooms]
+  }
+  return roomsForClients
+}
 export function countPeople(
   array: PeopleCapacity[],
   key: keyof PeopleCapacity
