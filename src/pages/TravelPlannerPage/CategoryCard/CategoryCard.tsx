@@ -14,6 +14,7 @@ interface CategoryCardProps {
   description: string
   vertical?: boolean
 }
+
 export const CategoryCard: FC<CategoryCardProps> = ({
   id,
   name,

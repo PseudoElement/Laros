@@ -30,7 +30,9 @@ export const SliderItem: FC<SliderItemProps> = ({
   const t = useTranslate()
 
   const onClickButton = (id: number) => {
-    router.push(`/travel_planner/${id}`)
+    router.push(
+      id < 5 ? `/travel_planner/${id}` : `/static_travel_planner/${id}`
+    )
   }
 
   return (
