@@ -126,6 +126,11 @@
   line-height: 24px;
   color: $color-bg-black;
   white-space: normal;
+
+  p,
+  div {
+    margin-bottom: 15px;
+  }
 }
 
 .textContent:last-child {
@@ -203,6 +208,7 @@
   text-align: start;
   margin-bottom: 50px;
   margin-right: 0;
+  cursor: pointer;
   color: $color-bg-black;
 }
 

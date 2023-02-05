@@ -14,6 +14,7 @@ export type BlogPayload = {
   title: string
   image: string
   description: string
+  content: string
 }
 
 export type BlogsQueryParams = {
