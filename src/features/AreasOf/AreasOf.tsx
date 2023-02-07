@@ -32,17 +32,15 @@ export const AreasOf: FC<DestinationsProps> = ({
     isAreas ? push(`/areas/${id}`) : push(`/destinations/areas/${id}`)
   }
 
-  const region = destination.parent
-    ? useAppSelector(state =>
-        getRootRegion(state.destinations.destinations, destination?.parent)
-      )
-    : destination
+  const rootRegion = useAppSelector(state =>
+    getRootRegion(state.destinations.destinations, destination?.parent)
+  )
 
   return (
     <div className={cn(s.wrapper, className)}>
-      {region?.name && (
+      {rootRegion?.name && (
         <div className={s.title}>
-          {t('travelPlannerTripPlan.areasOfTitle')} {region.name}
+          {t('travelPlannerTripPlan.areasOfTitle')} {rootRegion?.name}
         </div>
       )}
 
