@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import cn from 'classnames'
+import { useFieldArray, useForm } from 'react-hook-form'
 
 import { ChevronRightIcon, ChevronLeftIcon, ResetIcon } from 'components'
 import { Step1 } from './Step1/Step1'
@@ -11,6 +12,10 @@ import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { updateForm } from 'store/slices/order/order'
 import { useTranslate } from 'shared/hooks/useTranslate'
 import { Sidebar } from './Sidebar/Sidebar'
+import { destinationToOption } from 'shared/helpers/destinations'
+import { prepareOrderFormToApi, transfersToAPI } from 'shared/helpers/order'
+import { calculateOrder } from 'shared/api/routes/order'
+import { useDebounce } from 'shared/hooks/useDebounce'
 
 import { countriesToOptions } from 'shared/helpers/transformers'
 import { downloadFile } from 'shared/helpers/downloadFile'
@@ -21,11 +26,6 @@ import { OrderForm, PeopleCapacity } from 'shared/types/order'
 import bg from '/public/assets/images/tripFormBg.png'
 
 import s from './TripFormPage.module.scss'
-import { destinationToOption } from 'shared/helpers/destinations'
-import { useFieldArray, useForm } from 'react-hook-form'
-import { prepareOrderFormToApi, transfersToAPI } from 'shared/helpers/order'
-import { calculateOrder } from 'shared/api/routes/order'
-import { useDebounce } from 'shared/hooks/useDebounce'
 
 export enum Steps {
   FIRST,
@@ -39,13 +39,10 @@ export const TripFormPage: FC = () => {
   const dispatch = useAppDispatch()
   const isHotelPage = pathname.includes('hotel')
   const t = useTranslate()
-  const { trip, airports, countries, isLoading, transfers, transferValues } = useGetTripInfo(
-    Number(query.trip), isHotelPage
-  )
+  const { trip, airports, countries, isLoading, transfers, transferValues } =
+    useGetTripInfo(Number(query.trip), isHotelPage)
   const form = useAppSelector(state => state.order.form)
-  const formHook = useForm<
-    Partial<OrderForm>
-  >({
+  const formHook = useForm<Partial<OrderForm>>({
     defaultValues: {
       dest_from: destinationToOption(airports).find(
         dest => dest.label === 'Flughafen Zürich (ZRH)'
@@ -58,15 +55,14 @@ export const TripFormPage: FC = () => {
       travellers: [],
       date_start: form.date_start ?? Number(new Date()),
       rooms: form.rooms ?? [],
-      transports: transferValues
+      transports: transferValues,
     },
   })
-  const { } = useFieldArray({
+  const {} = useFieldArray({
     control: formHook.control,
     name: 'destinations',
   })
   const debounchedCalculation = useDebounce(formHook.watch, 3000)
-
 
   // download trip pdf
   const handleDownload = () => {
@@ -95,12 +91,18 @@ export const TripFormPage: FC = () => {
     formHook.setValue('transports', transferValues)
   }, [transferValues])
   useEffect(() => {
-    formHook.setValue('dest_from', destinationToOption(airports).find(
-      dest => dest.label === 'Flughafen Zürich (ZRH)'
-    ))
-    formHook.setValue('dest_to', destinationToOption(airports).find(
-      dest => dest.label === 'Flughafen Zürich (ZRH)'
-    ))
+    formHook.setValue(
+      'dest_from',
+      destinationToOption(airports).find(
+        dest => dest.label === 'Flughafen Zürich (ZRH)'
+      )
+    )
+    formHook.setValue(
+      'dest_to',
+      destinationToOption(airports).find(
+        dest => dest.label === 'Flughafen Zürich (ZRH)'
+      )
+    )
   }, [airports])
 
   const loadPrice = async (form: OrderForm) => {
@@ -113,17 +115,20 @@ export const TripFormPage: FC = () => {
     }
   }
 
-
   useEffect(() => {
     const subscription = formHook.watch((value, { name, type }) => {
-      const formValue = value;
-      console.log('formValue :', formValue);
-      if (formValue.destinations?.length && formValue.dest_from && formValue.transports?.every((trans) => trans)) {
+      const formValue = value
+      console.log('formValue :', formValue)
+      if (
+        formValue.destinations?.length &&
+        formValue.dest_from &&
+        formValue.transports?.every(trans => trans)
+      ) {
         loadPrice(formValue as OrderForm)
       }
-    });
-    return () => subscription.unsubscribe();
-  }, [debounchedCalculation]);
+    })
+    return () => subscription.unsubscribe()
+  }, [debounchedCalculation])
   if (isLoading || !trip) {
     return <div>{t('common.loadingText')}</div>
   }

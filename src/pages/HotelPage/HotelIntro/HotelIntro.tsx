@@ -29,18 +29,17 @@ export const HotelIntro: FC<Hotel> = ({
   const t = useTranslate()
 
   const handleClick = (fields: FieldsType) => {
-
     Array.isArray(fields.date)
       ? dispatch(
-        updateForm({
-          rooms: fields.rooms,
-          date_start: Number(fields.date[0]),
-          // date_start: [Number(fields.date[0]), Number(fields.date[1])], //TODO fix when fix api
-        })
-      )
+          updateForm({
+            rooms: fields.rooms,
+            date_start: Number(fields.date[0]),
+            // date_start: [Number(fields.date[0]), Number(fields.date[1])], //TODO fix when fix api
+          })
+        )
       : null
-    // push(`/trip_form/hotel/${id}`) // TODO revert when trip planner is done
-    push(`/contact/`)
+    push(`/trip_form/hotel/${id}`) // TODO revert when trip planner is done
+    // push(`/contact/`)
   }
 
   return (

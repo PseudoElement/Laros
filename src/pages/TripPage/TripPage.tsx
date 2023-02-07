@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
+import cn from 'classnames'
 
 import { TripPlan } from './Tab/TripPlan'
 import { InsiderTips } from './Tab/InsiderTips'
@@ -20,7 +21,6 @@ import { Destination } from 'shared/types/destinations'
 import { Trip } from 'shared/types/trip'
 
 import s from './TripPage.module.scss'
-import cn from 'classnames'
 
 export interface TripPageProps {
   trip: Trip
