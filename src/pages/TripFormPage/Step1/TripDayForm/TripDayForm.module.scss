@@ -111,7 +111,6 @@
   align-items: flex-start;
 }
 .descriptionText {
-  height: 40px;
   font-size: 12px;
   font-weight: $fw-regular;
   line-height: 20px;
@@ -191,6 +190,7 @@
       height: 100%;
       overflow: hidden;
       overflow-y: auto;
+
       &::-webkit-scrollbar {
         height: 5px;
         width: 6px;

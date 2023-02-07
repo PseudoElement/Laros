@@ -94,13 +94,15 @@ export const StartTripForm: FC<StartTripFormProps> = ({
                   {t('tripSteps.room')} {index + 1}
                 </div>
 
-                <button
-                  className={s.trash}
-                  onClick={() => remove(index)}
-                  disabled={fields.length === 1}
-                >
-                  <Image src={trash} alt='trash' width={25} height={25} />
-                </button>
+                {fields.length > 1 && (
+                  <button
+                    className={s.trash}
+                    onClick={() => remove(index)}
+                    disabled={fields.length === 1}
+                  >
+                    <Image src={trash} alt='trash' width={25} height={25} />
+                  </button>
+                )}
               </div>
 
               <div className={s.numberInputWrap}>

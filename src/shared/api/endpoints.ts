@@ -5,6 +5,7 @@ export const endpoints = {
     send: '/brochure/delivery/',
   },
   contactForm: '/contact/request/',
+  contactWithOrder: '/contact/order/',
   voucherForm: '/voucher/create/',
   destinations: {
     get: '/destination/?size=300', // rename as in hotels TODO

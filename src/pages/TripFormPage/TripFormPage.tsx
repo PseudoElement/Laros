@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import cn from 'classnames'
+import { useFieldArray, useForm } from 'react-hook-form'
 
 import { ChevronRightIcon, ChevronLeftIcon, ResetIcon } from 'components'
 import { Step1 } from './Step1/Step1'
@@ -11,6 +12,10 @@ import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { updateForm } from 'store/slices/order/order'
 import { useTranslate } from 'shared/hooks/useTranslate'
 import { Sidebar } from './Sidebar/Sidebar'
+import { destinationToOption } from 'shared/helpers/destinations'
+import { prepareOrderFormToApi } from 'shared/helpers/order'
+import { calculateOrder } from 'shared/api/routes/order'
+import { useDebounce } from 'shared/hooks/useDebounce'
 
 import { countriesToOptions } from 'shared/helpers/transformers'
 import { downloadFile } from 'shared/helpers/downloadFile'
@@ -21,11 +26,6 @@ import { OrderForm, PeopleCapacity } from 'shared/types/order'
 import bg from '/public/assets/images/tripFormBg.png'
 
 import s from './TripFormPage.module.scss'
-import { destinationToOption } from 'shared/helpers/destinations'
-import { useFieldArray, useForm } from 'react-hook-form'
-import { prepareOrderFormToApi, transfersToAPI } from 'shared/helpers/order'
-import { calculateOrder } from 'shared/api/routes/order'
-import { useDebounce } from 'shared/hooks/useDebounce'
 
 export enum Steps {
   FIRST,
@@ -40,7 +40,7 @@ export const TripFormPage: FC = () => {
   const isHotelPage = pathname.includes('hotel')
   const t = useTranslate()
   const { trip, airports, countries, isLoading, transfers, transferValues } =
-    useGetTripInfo(Number(query.trip), isHotelPage)
+    useGetTripInfo(Number(query.trip), { isHotelPage })
 
   const airportsToShow = [203, 204, 192, 191]
 

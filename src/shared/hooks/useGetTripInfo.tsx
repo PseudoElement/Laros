@@ -10,9 +10,15 @@ import { getHotelTripDay, getTripDay } from 'shared/api/routes/order'
 import { getHotel } from 'shared/api/routes/hotels'
 import { useAppSelector } from './redux'
 
+interface GetTripParams {
+  isHotelPage?: boolean,
+  isFreezed?: boolean
+};
+
 export const useGetTripInfo = (
-  id: number, isHotelPage: boolean
+  id: number, params: GetTripParams
 ): { trip: Trip | null, airports: Destination[], countries: Country[], isLoading: boolean, transfers: TransferOptions[], transferValues: TransferValue[] } => {
+  const { isHotelPage, isFreezed } = params
   const [airports, setAirports] = useState<Destination[]>([])
   const [trip, setTrip] = useState<Trip | null>(null)
   const [countries, setCountries] = useState<Country[]>([])

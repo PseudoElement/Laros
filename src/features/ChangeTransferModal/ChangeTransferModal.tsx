@@ -52,6 +52,7 @@ export const ChangeTransferModal: FC<ChangeTransferModalProps> = ({
     <>
       <div className={s.container}>
         <div className={s.title}>{t('changingTransfer.title')}:</div>
+
         <div
           className={cn(s.current, {
             [s.selected]: transferType === CarTransferType.PICKUP,
@@ -59,14 +60,17 @@ export const ChangeTransferModal: FC<ChangeTransferModalProps> = ({
           onClick={() => setTransferType(CarTransferType.PICKUP)}
         >
           <div className={s.currentTitle}>{t('changingTransfer.current')}</div>
+
           <div className={s.currentModel}>
             {transferType === CarTransferType.PICKUP ? ConfirmMark : CarMark}
             <div className={s.currentName}>{t('changingTransfer.car')}</div>
           </div>
+
           <div className={s.currentDescription}>
             {t('changingTransfer.text1')}
           </div>
         </div>
+
         <div
           className={cn(s.cars, {
             [s.selected]: transferType === CarTransferType.RENTAL,
@@ -78,13 +82,15 @@ export const ChangeTransferModal: FC<ChangeTransferModalProps> = ({
               <div className={s.headerTitle}>
                 {t('changingTransfer.carRental')}
               </div>
+
               <div className={s.headerTerms}>
                 {t('changingTransfer.carRental')}{' '}
-                <span className={s.termsLink}>
+                <div className={s.termsLink}>
                   <Link href='/terms'>{t('changingTransfer.terms')}</Link>
-                </span>
+                </div>
               </div>
             </div>
+
             <div className={s.headerDescription}>
               {t('changingTransfer.text2')}
             </div>

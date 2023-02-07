@@ -344,6 +344,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
                     <div className={s.roomCapacityTitle}>
                       {t('forms.inputLabel19')}:
                     </div>
+
                     <div className={cn(s.sectionValue, s.roomCapacity)}>
                       {room.capacity}
                     </div>
@@ -391,6 +392,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
         <ChangeHotelModal
           onSubmit={id => сhangeHotel(id)}
           destination={destination.id}
+          destinationName={destination.destination_name}
           {...hotelModal}
         />
       </Modal>

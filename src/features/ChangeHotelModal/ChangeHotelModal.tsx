@@ -15,6 +15,7 @@ import s from './ChangeHotelModal.module.scss'
 
 interface ChangeHotelProps {
   destination: number
+  destinationName: string
   onSubmit: (id: number) => void
   isOpen: boolean
 }
@@ -23,6 +24,7 @@ export const ChangeHotelModal: FC<ChangeHotelProps> = ({
   destination,
   onSubmit,
   isOpen,
+  destinationName,
 }) => {
   const t = useTranslate()
 
@@ -78,7 +80,9 @@ export const ChangeHotelModal: FC<ChangeHotelProps> = ({
   return (
     <div className={s.modalWrap}>
       <div className={s.modal}>
-        <p className={s.title}>{t('changingRoomType.title')} Macedonia</p>
+        <p className={s.title}>
+          {t('changingRoomType.title')} {destinationName}
+        </p>
         <p className={s.text}>{t('changingRoomType.subTitle')}:</p>
 
         <form>

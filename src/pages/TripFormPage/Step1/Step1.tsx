@@ -1,12 +1,12 @@
 import { FC, useEffect, useState } from 'react'
 import Link from 'next/link'
 
-import { AddIcon, Button, InfoIcon, Select } from 'components'
+import { AddIcon, Button, InfoIcon, Modal, Select } from 'components'
 import { TripDayForm } from './TripDayForm'
 import { Transfer } from './Transfer'
 
 import { Controller, UseFormReturn, useFieldArray, useForm } from 'react-hook-form'
-import { calculateOrder, getTripDay } from 'shared/api/routes/order'
+import { calculateOrder, getTripDay, getTripDayByDestination } from 'shared/api/routes/order'
 import {
   getTripDays,
   provideOptionsWithIcon,
@@ -33,6 +33,9 @@ import { DEFAULT_TRANSFER } from 'shared/constants/transfer'
 import airportIcon from '/public/assets/images/airport.svg?url'
 
 import s from './Step1.module.scss'
+import { useModal } from 'shared/hooks/useModal'
+import { ChangeLocationModal } from 'features'
+import { getParentDestination } from 'store/slices/destinations/selectors'
 
 interface Step1Props {
   setStep: (step: Steps) => void
@@ -60,6 +63,8 @@ export const Step1: FC<Step1Props> = ({ // TODO
   const dispatch = useAppDispatch()
   const t = useTranslate()
   const form = useAppSelector((state) => state.order.form);
+  const destinations = useAppSelector((state) => state.destinations.destinations);
+  const tripParentRegion = useAppSelector((state) => getParentDestination(state, trip.destinations[trip.destinations.length - 1].destination))
   const { append, remove } = useFieldArray({
     control,
     name: 'destinations',
@@ -67,10 +72,8 @@ export const Step1: FC<Step1Props> = ({ // TODO
 
   const watchForm = watch()
   const watchDestinations = watch('destinations')
-  const updateDestinations = watch(['destinations'])
   const watchStartPoint = watch('dest_from')
   const watchEndPoint = watch('dest_to')
-  const [debuggers, setDebuggers] = useState(0)
   const airportOptions = provideOptionsWithIcon(
     destinationToOption(airports),
     airportIcon
@@ -78,34 +81,14 @@ export const Step1: FC<Step1Props> = ({ // TODO
 
   const [startPointTransfer, setStartPointTransfer] = useState(DEFAULT_TRANSFER)
   const [endPointTransfer, setEndPointTransfer] = useState(DEFAULT_TRANSFER)
+  const [nearDestinations, setNearDestinations] = useState<Destination[]>([])
+  const locationModal = useModal()
 
+  const changeLocation = async (id: number) => {
+    const data = getTripDayByDestination(id)
+  }
   const addLocation = async () => {
-    if (!watchDestinations) return
-    try {
-      const defaultTripDay = await getTripDay(
-        watchDestinations[watchDestinations?.length - 1].destination
-      )
-      if (defaultTripDay) {
-        append({
-          id: defaultTripDay.location.id,
-          images: [],
-          destination_name: defaultTripDay.location.name,
-          hotel_name: defaultTripDay.hotel.name,
-          description: defaultTripDay.location.description,
-          duration: 1,
-          trip: trip.id,
-          destination: defaultTripDay.location.id,
-          hotel: defaultTripDay.hotel,
-        })
-      } else {
-        alert(
-          `No appropriate route found from  ${watchDestinations[watchDestinations?.length - 1].destination_name
-          }`
-        )
-      }
-    } catch (error) {
-      console.error(error)
-    }
+    locationModal.open()
   }
 
   const onSubmit = (formData: any) => {
@@ -165,109 +148,125 @@ export const Step1: FC<Step1Props> = ({ // TODO
 
   if (!trip) return null
   return (
-    <div className={s.container}>
-      <div className={s.flights}>
-        <div className={s.select}>
-          <div className={s.selectLabel}>{t('tripSteps.label3')}:</div>
-          <Controller
-            name='dest_from'
-            control={control}
-            render={({ field: { onChange, value } }) => (
-              <Select
-                onChange={onChange}
-                value={value}
-                options={airportOptions}
-                placeholder={t('common.select')}
-              />
-            )}
-          />
-        </div>
-      </div>
-
-      {watchDestinations?.map((dest, index) => {
-        return (
-          <TripDayForm
-            key={index}
-            index={index}
-            onDelete={
-              index === watchDestinations.length - 1 && index > 0
-                ? id => remove(id)
-                : undefined
-            }
-            onChange={setValue}
-            form={form}
-            hotel={dest.hotel}
-            description={dest.description ?? t('tripSteps.noDescription')}
-            duration={dest.duration}
-            capacity={form.rooms ?? []}
-            destination={dest}
-            day={getTripDays(watchDestinations, index)}
-            total={getTripDuration(watchDestinations) + 1}
-            type={CarTransferType.PICKUP}
-            from={
-              trip.destinations[index - 1]
-                ? {
-                  label: trip.destinations[index - 1].destination_name,
-                  value: trip.destinations[index - 1].destination.toString(),
-                }
-                : watchForm.dest_from ?? undefined
-            }
-            previousDestination={watchDestinations[index - 1] ?? null}
-            transfers={transfers}
-            transferValue={transferValues[index]}
-          />
-        )
-      })}
-
-      <Transfer
-        onChange={(id, type) => updateEndPointTransfer(id, type)}
-        from={{
-          label:
-            trip.destinations[trip.destinations.length - 1].destination_name,
-          value:
-            trip.destinations[
-              trip.destinations.length - 1
-            ].destination.toString(),
-        }}
-        to={watchEndPoint}
-        options={endPointTransfer}
-        value={null}
-      />
-
-      <div className={s.endpoint}>
-        <div className={s.select}>
-          <div className={s.selectLabel}>{t('tripSteps.endPoint')}:</div>
-          <Controller
-            name='dest_to'
-            control={control}
-            render={({ field: { onChange, value } }) => (
-              <Select
-                onChange={onChange}
-                value={value}
-                options={airportOptions}
-                placeholder={t('common.select')}
-              />
-            )}
-          />
-        </div>
-      </div>
-
-      <div className={s.addLocationSectionWrap}>
-        <div className={s.addLocationSection} onClick={() => addLocation()}>
-          <AddIcon />
-          <div className={s.addLocationTitle}>{t('tripSteps.add')}</div>
-          <div className={s.addLocationInfo}>
-            <InfoIcon />
+    <>
+      <div className={s.container}>
+        <div className={s.flights}>
+          <div className={s.select}>
+            <div className={s.selectLabel}>{t('tripSteps.label3')}:</div>
+            <Controller
+              name='dest_from'
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <Select
+                  onChange={onChange}
+                  value={value}
+                  options={airportOptions}
+                  placeholder={t('common.select')}
+                />
+              )}
+            />
           </div>
         </div>
-      </div>
 
-      <div className={s.actions}>
-        <Button onClick={handleSubmit(onSubmit)}>{t('tripSteps.next')}</Button>
-        <Button variant='outline'>
-          <Link href={`/trips/${trip.id}`}>{t('tripSteps.cancel')}</Link>
-        </Button>
+        {watchDestinations?.map((dest, index) => {
+          return (
+            <TripDayForm
+              key={index}
+              index={index}
+              onDelete={
+                index === watchDestinations.length - 1 && index > 0
+                  ? id => remove(id)
+                  : undefined
+              }
+              onChange={setValue}
+              form={form}
+              hotel={dest.hotel}
+              description={dest.description ?? t('tripSteps.noDescription')}
+              duration={dest.duration}
+              capacity={form.rooms ?? []}
+              destination={dest}
+              day={getTripDays(watchDestinations, index)}
+              total={getTripDuration(watchDestinations) + 1}
+              type={CarTransferType.PICKUP}
+              from={
+                trip.destinations[index - 1]
+                  ? {
+                    label: trip.destinations[index - 1].destination_name,
+                    value: trip.destinations[index - 1].destination.toString(),
+                  }
+                  : watchForm.dest_from ?? undefined
+              }
+              previousDestination={watchDestinations[index - 1] ?? null}
+              transfers={transfers}
+              transferValue={transferValues[index]}
+            />
+          )
+        })}
+
+        <Transfer
+          onChange={(id, type) => updateEndPointTransfer(id, type)}
+          from={{
+            label:
+              trip.destinations[trip.destinations.length - 1].destination_name,
+            value:
+              trip.destinations[
+                trip.destinations.length - 1
+              ].destination.toString(),
+          }}
+          to={watchEndPoint}
+          options={endPointTransfer}
+          value={null}
+        />
+
+        <div className={s.endpoint}>
+          <div className={s.select}>
+            <div className={s.selectLabel}>{t('tripSteps.endPoint')}:</div>
+            <Controller
+              name='dest_to'
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <Select
+                  onChange={onChange}
+                  value={value}
+                  options={airportOptions}
+                  placeholder={t('common.select')}
+                />
+              )}
+            />
+          </div>
+        </div>
+
+        <div className={s.addLocationSectionWrap}>
+          <div className={s.addLocationSection} onClick={() => addLocation()}>
+            <AddIcon />
+            <div className={s.addLocationTitle}>{t('tripSteps.add')}</div>
+            <div className={s.addLocationInfo}>
+              <InfoIcon />
+            </div>
+          </div>
+        </div>
+
+        <div className={s.actions}>
+          <Button onClick={handleSubmit(onSubmit)}>{t('tripSteps.next')}</Button>
+          <Button variant='outline'>
+            <Link href={`/trips/${trip.id}`}>{t('tripSteps.cancel')}</Link>
+          </Button>
+        </div>
       </div>
-    </div>
+      <Modal
+        {...locationModal}
+        title={t('changingLocation.windowTitle')}
+        classname={s.modal}
+      >
+        <ChangeLocationModal
+          {...locationModal}
+          onSubmit={id => changeLocation(id)}
+          current={trip.destinations[trip.destinations.length - 1].destination}
+          location={tripParentRegion?.location_name ?? ''}
+          destinations={nearDestinations}
+        />
+      </Modal>
+
+    </>
   )
 }
