@@ -40,7 +40,7 @@ export const TripFormPage: FC = () => {
   const isHotelPage = pathname.includes('hotel')
   const t = useTranslate()
   const { trip, airports, countries, isLoading, transfers, transferValues } = useGetTripInfo(
-    Number(query.trip), isHotelPage
+    Number(query.trip), { isHotelPage }
   )
   const form = useAppSelector(state => state.order.form)
   const formHook = useForm<

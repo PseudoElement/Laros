@@ -17,15 +17,17 @@ import s from './TripPlan.module.scss'
 
 interface TripPlanProps {
   tripDestination: TripDestination[]
+  onStartTrip: () => void
 }
 
-export const TripPlan: FC<TripPlanProps> = ({ tripDestination }) => {
+export const TripPlan: FC<TripPlanProps> = ({ tripDestination, onStartTrip }) => {
   const { query, push } = useRouter()
   const { id } = query
   const t = useTranslate()
   const handlePush = () => {
     // push(`/trip_form/${id}`)
-    push('/contact')
+    // push('/contact')
+    onStartTrip()
   }
 
   const filteredTripDestination = tripDestination?.filter(
