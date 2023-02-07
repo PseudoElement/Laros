@@ -17,7 +17,6 @@ export const transfersToAPI = (
 }
 
 export const prepareOrderFormToApi = (form: OrderForm): OrderPayload => {
-  console.log('form :', form)
   const finalTravellers = form.travellers.map(traveller => {
     // @ts-ignore
     const fullName = traveller.name?.split(' ')
@@ -37,7 +36,15 @@ export const prepareOrderFormToApi = (form: OrderForm): OrderPayload => {
       rental: false,
     }))
   const finalForm = {
-    ...form,
+    name: form.name,
+    surname: form.surname,
+    email: form.email,
+    phone: form.phone,
+    address: form.address,
+    zip_code: form.zip_code,
+    is_travel_agent: form.is_travel_agent,
+    offer: form.offer,
+    comment: form.comment,
     date_start: dateToServerFormat(form.date_start),
     dest_start: Number(form.dest_from?.value),
     dest_end: Number(form.dest_to?.value),
@@ -57,11 +64,10 @@ export const prepareOrderFormToApi = (form: OrderForm): OrderPayload => {
             !form.transports[index]?.value) ??
           false,
         rental:
-          form.transports
-            .filter(
-              transport => transport?.type === Transfer.CAR && transport.value
-            )
-            .map(transport => transport?.value as number) ?? [],
+          form.transports[index + 1]?.type === Transfer.CAR &&
+          form.transports[index + 1]?.value
+            ? [form.transports[index + 1]?.value]
+            : [],
         // form.transports?.[index]?.transport[
         //   form.transports?.[index].transport
         // ],
