@@ -33,7 +33,6 @@ export const prepareOrderFormToApi = (form: OrderForm): OrderPayload => {
     .map(transfer => ({
       transport: transfer!.value as number,
       date: dateToServerFormat(new Date()),
-      rental: false,
     }))
   const finalForm = {
     name: form.name,
@@ -63,6 +62,10 @@ export const prepareOrderFormToApi = (form: OrderForm): OrderPayload => {
           (form.transports[index + 1]?.type === Transfer.CAR &&
             !form.transports[index]?.value) ??
           false,
+        // taxi: Boolean(
+        //   form.transports[index + 1]?.type === Transfer.CAR &&
+        //     form.transports[index]?.value
+        // ),
         rental:
           form.transports[index + 1]?.type === Transfer.CAR &&
           form.transports[index + 1]?.value
