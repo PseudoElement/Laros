@@ -18,45 +18,29 @@ import s from './HotelIntro.module.scss'
 export const HotelIntro: FC<Hotel> = ({
   description,
   rating,
-  name,
   tags,
   location,
   address,
-  opinion,
-  destination,
-  is_active,
-  link,
-  max_capacity,
-  period,
-  tripadvisor_id,
-  min_price_chf,
   lrweb,
   id,
-  category_name,
-  category,
-  images,
-  destination_name,
-  accommodations,
-  min_price,
-  facilities,
-  rooms,
 }) => {
   const dispatch = useAppDispatch()
   const { push } = useRouter()
   const t = useTranslate()
 
   const handleClick = (fields: FieldsType) => {
-    push(`/trip_form/hotel/${id}`)
 
     Array.isArray(fields.date)
       ? dispatch(
-          updateForm({
-            rooms: fields.rooms,
-            date_start: Number(fields.date[0]),
-            // date_start: [Number(fields.date[0]), Number(fields.date[1])], //TODO fix when fix api
-          })
-        )
+        updateForm({
+          rooms: fields.rooms,
+          date_start: Number(fields.date[0]),
+          // date_start: [Number(fields.date[0]), Number(fields.date[1])], //TODO fix when fix api
+        })
+      )
       : null
+    // push(`/trip_form/hotel/${id}`) // TODO revert when trip planner is done
+    push(`/contact/`)
   }
 
   return (

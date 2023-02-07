@@ -33,7 +33,8 @@ export const TripPageIntro: FC<Trip> = ({
         date_start: Number(fields.date),
       })
     )
-    push(`/trip_form/${id}`)
+    push('/contact/')
+    // push(`/trip_form/${id}`) // TODO revert when trip planner is done
   }
 
   return (
