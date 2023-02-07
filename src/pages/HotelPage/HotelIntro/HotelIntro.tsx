@@ -3,10 +3,10 @@ import { useRouter } from 'next/router'
 // @ts-ignore
 import ReactStars from 'react-rating-stars-component'
 
-import { FieldsType, StartTripForm, InfoTags } from 'features'
-import { Map, TruncatedText } from 'components'
+import { FieldsType, StartTripForm, InfoTags, ContactForm } from 'features'
+import { Map, Modal, TruncatedText } from 'components'
 
-import { useAppDispatch } from 'shared/hooks/redux'
+import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { updateForm } from 'store/slices/order/order'
 import { useTranslate } from 'shared/hooks/useTranslate'
 
@@ -14,9 +14,12 @@ import { Hotel } from 'shared/types/hotel'
 import { TRIP_PLAN_DESCRIPTION_SIZE } from 'shared/constants'
 
 import s from './HotelIntro.module.scss'
+import cn from 'classnames';
+import { useModal } from 'shared/hooks/useModal'
 
 export const HotelIntro: FC<Hotel> = ({
   description,
+  destination_name,
   rating,
   tags,
   location,
@@ -25,9 +28,10 @@ export const HotelIntro: FC<Hotel> = ({
   id,
 }) => {
   const dispatch = useAppDispatch()
+  const form = useAppSelector((state) => state.order.form);
   const { push } = useRouter()
   const t = useTranslate()
-
+  const { onClose, isOpen, open } = useModal()
   const handleClick = (fields: FieldsType) => {
 
     Array.isArray(fields.date)
@@ -40,50 +44,65 @@ export const HotelIntro: FC<Hotel> = ({
       )
       : null
     // push(`/trip_form/hotel/${id}`) // TODO revert when trip planner is done
-    push(`/contact/`)
+    // push(`/contact/`)
+    open()
+
   }
 
   return (
-    <div className={s.hotelIntro}>
-      <div className={s.left}>
-        <ReactStars
-          count={5}
-          value={rating}
-          size={24}
-          activeColor='#f2c94c'
-          edit={false}
-          classNames={s.rating}
-        />
+    <>
+      <div className={s.hotelIntro}>
+        <div className={s.left}>
+          <ReactStars
+            count={5}
+            value={rating}
+            size={24}
+            activeColor='#f2c94c'
+            edit={false}
+            classNames={s.rating}
+          />
 
-        <div className={s.address}>{address}</div>
+          <div className={s.address}>{address}</div>
 
-        <div className={s.name}>{lrweb}</div>
+          <div className={s.name}>{lrweb}</div>
 
-        {description ? (
-          <TruncatedText limit={TRIP_PLAN_DESCRIPTION_SIZE}>
-            {description}
-          </TruncatedText>
-        ) : null}
-
-        <div className={s.forms}>
-          <StartTripForm onChange={handleClick} />
-        </div>
-      </div>
-
-      <div className={s.right}>
-        <div className={s.map}>
-          <Map location={location} />
-        </div>
-
-        <div className={s.tagsPanel}>
-          {tags?.length ? (
-            <>
-              <div className={s.tagsTitle}>{t('hotel.tagsTitle')}:</div>
-              <InfoTags tags={tags} limit={4} />
-            </>
+          {description ? (
+            <TruncatedText limit={TRIP_PLAN_DESCRIPTION_SIZE}>
+              {description}
+            </TruncatedText>
           ) : null}
+
+          <div className={s.forms}>
+            <StartTripForm onChange={handleClick} />
+          </div>
+        </div>
+
+        <div className={s.right}>
+          <div className={s.map}>
+            <Map location={location} />
+          </div>
+
+          <div className={s.tagsPanel}>
+            {tags?.length ? (
+              <>
+                <div className={s.tagsTitle}>{t('hotel.tagsTitle')}:</div>
+                <InfoTags tags={tags} limit={4} />
+              </>
+            ) : null}
+          </div>
         </div>
       </div>
-    </div>
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        title={t('contactForm.formTitle')}
+        classname={s.modalWrap}
+      >
+        <div className={cn(s.modal, ['scrollStyle'])}>
+          {/* @ts-ignore */}
+          <ContactForm order={{ ...form, message: `Request for hotel ${lrweb}, located in ${destination_name}, hotel id - ${id}` }} />
+        </div>
+      </Modal>
+    </>
   )
 }

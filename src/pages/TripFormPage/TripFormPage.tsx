@@ -39,8 +39,9 @@ export const TripFormPage: FC = () => {
   const dispatch = useAppDispatch()
   const isHotelPage = pathname.includes('hotel')
   const t = useTranslate()
-  const { trip, airports, countries, isLoading, transfers, transferValues } =
-    useGetTripInfo(Number(query.trip), isHotelPage)
+  const { trip, airports, countries, isLoading, transfers, transferValues } = useGetTripInfo(
+    Number(query.trip), { isHotelPage }
+  )
   const form = useAppSelector(state => state.order.form)
   const formHook = useForm<Partial<OrderForm>>({
     defaultValues: {
@@ -114,6 +115,7 @@ export const TripFormPage: FC = () => {
       console.log(error)
     }
   }
+
 
   useEffect(() => {
     const subscription = formHook.watch((value, { name, type }) => {

@@ -96,3 +96,20 @@
 .tagsPanel {
   padding: 0 16px 30px;
 }
+
+.modalWrap {
+  [class*='modalContent'] {
+    max-width: 1300px;
+    margin: 0 20px;
+    @include mobile-tablet {
+      margin: 0;
+    }
+  }
+}
+.modal {
+  // todo this styles are duplicated
+  padding: 20px 30px 20px 20px;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+}
