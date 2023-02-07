@@ -82,10 +82,11 @@ export const Blog: FC = () => {
             prevEl='morePrev'
             classname={s.sliderCustom}
           >
-            {posts.map(post => (
+            {posts.map((post, idx) => (
               <div
                 className={s.article}
                 onClick={() => router.push(`/blogs/${post.id}`)}
+                key={idx}
               >
                 <h1 className={s.articleTitle}>{t(post.title)}</h1>
                 <p
