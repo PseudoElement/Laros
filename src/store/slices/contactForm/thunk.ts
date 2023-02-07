@@ -1,6 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { sendContactForm } from 'shared/api/routes/contactForm'
+import {
+  sendContactForm,
+  sendContactWithOrderForm,
+} from 'shared/api/routes/contactForm'
 import { ContactForm } from 'shared/types/contact'
+import { OrderPayload } from 'shared/types/order'
 
 export const sendContactFormThunk = createAsyncThunk<unknown, ContactForm>(
   'brochures/sendBrochures',
@@ -11,3 +15,13 @@ export const sendContactFormThunk = createAsyncThunk<unknown, ContactForm>(
     }
   }
 )
+
+export const sendContactOrderFormThunk = createAsyncThunk<
+  unknown,
+  { order: OrderPayload; form: ContactForm }
+>('brochures/sendBrochures', async ({ form, order }) => {
+  const response = await sendContactWithOrderForm(form, order)
+  if (response.status === 200) {
+    return response.data.data
+  }
+})

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { Controller, useForm } from 'react-hook-form'
 import cn from 'classnames'
-import { sendContactFormThunk } from 'store/slices/contactForm/thunk'
+import { sendContactFormThunk, sendContactOrderFormThunk } from 'store/slices/contactForm/thunk'
 
 import { Button, Input, Radio, InputCalendar } from 'components'
 
@@ -22,28 +22,40 @@ import video from '/public/assets/images/info/video.svg?url'
 
 import s from './ContactForm.module.scss'
 import Link from 'next/link'
+import { OrderPayload } from 'shared/types/order'
 
 type ContactFormProps = {
   contactPage?: boolean
   onFormSubmit?: () => void
+  order?: OrderPayload
 }
 
 export const ContactForm: FC<ContactFormProps> = ({
   contactPage,
   onFormSubmit,
+  order
 }) => {
   const { handleSubmit, control } = useForm()
   const dispatch = useAppDispatch()
   const route = useRouter()
   const t = useTranslate()
-
+  const onError = (error: any) => {
+    alert(`${Object.keys(error).join(', ')} are required`)
+  }
   const onSubmit = (formData: any) => {
     // TODO add types
     const form: ContactFormData = {
       ...formData,
     }
+    if (order) {
+      dispatch(sendContactOrderFormThunk({
+        form: form as ContactFormData,
+        order: order
+      }))
+    } else {
+      dispatch(sendContactFormThunk(form as ContactFormData))
 
-    dispatch(sendContactFormThunk(form as ContactFormData))
+    }
     onFormSubmit && onFormSubmit()
   }
   return (
@@ -120,7 +132,6 @@ export const ContactForm: FC<ContactFormProps> = ({
             <Controller
               name='number'
               control={control}
-              rules={{ required: true }}
               render={({ field: { onChange, value } }) => (
                 <Input
                   type='number'
@@ -137,28 +148,26 @@ export const ContactForm: FC<ContactFormProps> = ({
               <Controller
                 name='depature'
                 control={control}
-                rules={{ required: true }}
                 render={({ field: { onChange, value } }) => (
                   <InputCalendar
                     onChange={e => onChange(e)}
                     value={value}
                     label={t('worldwideTours.label3')}
                     error={false}
-                    handleIconClick={() => {}}
+                    handleIconClick={() => { }}
                   />
                 )}
               />
               <Controller
                 name='return'
                 control={control}
-                rules={{ required: true }}
                 render={({ field: { onChange, value } }) => (
                   <InputCalendar
                     onChange={e => onChange(e)}
                     value={value}
                     label={t('contactForm.return')}
                     error={false}
-                    handleIconClick={() => {}}
+                    handleIconClick={() => { }}
                   />
                 )}
               />
@@ -179,7 +188,7 @@ export const ContactForm: FC<ContactFormProps> = ({
             )}
           />
           <Button
-            onClick={handleSubmit(onSubmit)}
+            onClick={handleSubmit(onSubmit, onError)}
             type='submit'
             variant='secondary'
             classname={cn(s.sendBtn, { [s.contactBtn]: contactPage })}

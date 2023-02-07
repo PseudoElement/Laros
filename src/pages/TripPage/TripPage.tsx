@@ -16,6 +16,8 @@ import { useTranslate } from 'shared/hooks/useTranslate'
 import { useModal } from 'shared/hooks/useModal'
 import { getParentDestination } from 'store/slices/destinations/selectors'
 import { useAppSelector } from 'shared/hooks/redux'
+import { useGetTripInfo } from 'shared/hooks/useGetTripInfo'
+import { OrderPayload } from 'shared/types/order'
 
 import { Destination } from 'shared/types/destinations'
 import { Trip } from 'shared/types/trip'
@@ -32,7 +34,7 @@ export const TripPage: FC<TripPageProps> = ({ trip }) => {
   const [relatedTours, setRelatedTours] = useState<Trip[]>([])
   const [tripNearby, setTripNearby] = useState<Destination[]>([])
   const { isOpen, onClose, open } = useModal()
-
+  const form = useAppSelector((state) => state.order.form);
   const destination = useAppSelector(state =>
     getParentDestination(state, tripNearby[0]?.parent)
   )
@@ -67,16 +69,15 @@ export const TripPage: FC<TripPageProps> = ({ trip }) => {
       <div
         className={s.bg}
         style={{
-          backgroundImage: `url(${
-            trip?.images ? withDomain(trip.images[0]) : ''
-          })`,
+          backgroundImage: `url(${trip?.images ? withDomain(trip.images[0]) : ''
+            })`,
         }}
       />
 
       <div className={s.container}>
         <div className={s.card}>
           {trip.name ? (
-            <TripPageIntro {...trip} />
+            <TripPageIntro {...trip} onStartTrip={() => open()} />
           ) : (
             <div className={s.loader}>
               <p>{t('common.loadingText')}</p>
@@ -97,7 +98,7 @@ export const TripPage: FC<TripPageProps> = ({ trip }) => {
 
           <TabPanel>
             {trip?.destinations ? (
-              <TripPlan tripDestination={trip.destinations} />
+              <TripPlan tripDestination={trip.destinations} onStartTrip={() => open()} />
             ) : null}
           </TabPanel>
 
@@ -128,7 +129,8 @@ export const TripPage: FC<TripPageProps> = ({ trip }) => {
             classname={s.modalWrap}
           >
             <div className={cn(s.modal, ['scrollStyle'])}>
-              <ContactForm />
+              {/* @ts-ignore */}
+              <ContactForm order={{ ...form, ...trip }} />
             </div>
           </Modal>
         </Tabs>

@@ -10,9 +10,15 @@ import { getHotelTripDay, getTripDay } from 'shared/api/routes/order'
 import { getHotel } from 'shared/api/routes/hotels'
 import { useAppSelector } from './redux'
 
+interface GetTripParams {
+  isHotelPage?: boolean,
+  isFreezed?: boolean
+};
+
 export const useGetTripInfo = (
-  id: number, isHotelPage: boolean
+  id: number, params: GetTripParams
 ): { trip: Trip | null, airports: Destination[], countries: Country[], isLoading: boolean, transfers: TransferOptions[], transferValues: TransferValue[] } => {
+  const { isHotelPage, isFreezed } = params
   const [airports, setAirports] = useState<Destination[]>([])
   const [trip, setTrip] = useState<Trip | null>(null)
   const [countries, setCountries] = useState<Country[]>([])
@@ -119,13 +125,9 @@ export const useGetTripInfo = (
         if (carTransfer) {
           transfers.car = carTransfer.id
         }
-        // now the next logic is implemented on server side in Trasnfer API:
-        // const fromDestination = regions.find((dest) => dest.id === from.destination);
-        // const toDestination = regions.find((dest) => dest.id === to.destination);
-        // const parentDestination = regions.find((dest) => dest.id === fromDestination?.parent);
-        // if (fromDestination && toDestination && fromDestination.parent === toDestination.parent && parentDestination && parentDestination.is_island === false) {
-        //   transfers.car = toDestination.id
-        // } 
+        if (transports.length === 0) {
+          transfers.car = trip?.destinations[index].rental?.[0] ?? null
+        }
       } catch (error) {
 
       }
@@ -160,22 +162,22 @@ export const useGetTripInfo = (
       const preselectedEndTransfer = trip.transports.find((transport) => transport.to_dest_name === "Zürich"); // TODO
 
       const preselectedTransfers: TransferValue[] = trip.destinations.slice(0, trip.destinations.length - 1).map((dest, index) => {
-        if (dest?.rental?.length) {
+
+        const preselectedTransport = trip.transports.find((transport) => transport.from_dest_name === dest.destination_name && transport.to_dest_name === trip.destinations[index + 1].destination_name)
+        if (preselectedTransport) {
+          return {
+            type: preselectedTransport.type_name,
+            value: preselectedTransport.transport
+          }
+        } else if (dest?.rental?.length) {
           return {
             type: Transfer.CAR,
             value: dest.rental[0]
           }
         } else {
-          const preselectedTransport = trip.transports.find((transport) => transport.from_dest_name === dest.destination_name)
-          if (preselectedTransport) {
-            return {
-              type: preselectedTransport.type_name,
-              value: preselectedTransport.transport
-            }
-          } else {
-            return null
-          }
+          return null
         }
+
       })
       // add first transfer
       const preselectedStartTransfer = trip.transports.find((transport) => transport.from_dest_name === "Zürich");
@@ -201,7 +203,6 @@ export const useGetTripInfo = (
     loadCountries()
     loadAirports()
   }, [])
-  console.log('trip res:', trip, isLoading, prepareTransfer(transfers), transferValues);
 
   return { trip, airports, countries, isLoading, transfers: prepareTransfer(transfers), transferValues }
 }
