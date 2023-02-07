@@ -213,7 +213,7 @@ export const TripFormPage: FC = () => {
           travel_date={form.date_start}
           rooms={form.rooms}
           total={price}
-          handleDownload={handleDownload}
+          handleDownload={!isHotelPage ? handleDownload : undefined}
           handleNextStep={handleNextStep}
           step={step}
         />

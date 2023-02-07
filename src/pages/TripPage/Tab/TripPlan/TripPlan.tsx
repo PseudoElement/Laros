@@ -24,7 +24,8 @@ export const TripPlan: FC<TripPlanProps> = ({ tripDestination }) => {
   const { id } = query
   const t = useTranslate()
   const handlePush = () => {
-    push(`/trip_form/${id}`)
+    // push(`/trip_form/${id}`)
+    push('/contact')
   }
 
   const filteredTripDestination = tripDestination?.filter(

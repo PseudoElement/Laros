@@ -38,7 +38,7 @@ export const endpoints = {
     one: (id: number) => `/hotel/${id}`,
     oneByName: (name: string) => `/hotel/retrieve/${name}`,
     similar: (id: number) => `/hotel/similar/${id}`,
-    near: (id: number) => `/hotel/near/${id}`,
+    near: (id: number) => `/hotel/reachable/${id}`,
     accomodations: '/accomodations/',
     categories: '/category/',
     tags: {

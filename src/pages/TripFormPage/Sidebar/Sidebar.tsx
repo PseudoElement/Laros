@@ -57,13 +57,6 @@ export const Sidebar: FC<SideBarProps> = ({
   const [editRooms, setEditRooms] = useState(false)
   const [currentDate, setCurrentDate] = useState<Date>(new Date(travel_date))
 
-  // get total adults or total children in rooms
-  function count(array: PeopleCapacity[], key: keyof PeopleCapacity) {
-    return array.reduce(function (r, a) {
-      return r + a[key]
-    }, 0)
-  }
-
   // cancel edit
   const handleCancel = () => {
     setEditDate(false)
@@ -286,10 +279,10 @@ export const Sidebar: FC<SideBarProps> = ({
             <Button classname={s.nextButton} onClick={handleNextStep}>{t('tripSteps.next')}</Button>
           )}
 
-          <Button classname={s.uploadButton} onClick={handleDownload}>
+          {handleDownload ? <Button classname={s.uploadButton} onClick={handleDownload}>
             <Image alt='download' src={download} width={20} height={20} />
             <span>{t('tripSteps.download')}</span>
-          </Button>
+          </Button> : null}
         </div>
 
         {/* text and link contact us */}

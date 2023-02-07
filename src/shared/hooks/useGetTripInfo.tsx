@@ -157,7 +157,7 @@ export const useGetTripInfo = (
   useEffect(() => {
     if (trip?.transports && isTransfersLoaded) {
       let preselectedTransferValues: TransferValue[] = []
-      const preselectedEndTransfer = trip.transports.findLast((transport) => transport.to_dest_name === "Zürich"); // TODO
+      const preselectedEndTransfer = trip.transports.find((transport) => transport.to_dest_name === "Zürich"); // TODO
 
       const preselectedTransfers: TransferValue[] = trip.destinations.slice(0, trip.destinations.length - 1).map((dest, index) => {
         if (dest?.rental?.length) {
