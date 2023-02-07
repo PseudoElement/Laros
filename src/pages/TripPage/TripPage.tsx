@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
+import cn from 'classnames'
 
 import { TripPlan } from './Tab/TripPlan'
 import { InsiderTips } from './Tab/InsiderTips'
@@ -15,14 +16,13 @@ import { useTranslate } from 'shared/hooks/useTranslate'
 import { useModal } from 'shared/hooks/useModal'
 import { getParentDestination } from 'store/slices/destinations/selectors'
 import { useAppSelector } from 'shared/hooks/redux'
+import { useGetTripInfo } from 'shared/hooks/useGetTripInfo'
+import { OrderPayload } from 'shared/types/order'
 
 import { Destination } from 'shared/types/destinations'
 import { Trip } from 'shared/types/trip'
 
 import s from './TripPage.module.scss'
-import cn from 'classnames'
-import { useGetTripInfo } from 'shared/hooks/useGetTripInfo'
-import { OrderPayload } from 'shared/types/order'
 
 export interface TripPageProps {
   trip: Trip

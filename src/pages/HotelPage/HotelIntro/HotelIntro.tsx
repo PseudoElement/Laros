@@ -32,8 +32,8 @@ export const HotelIntro: FC<Hotel> = ({
   const { push } = useRouter()
   const t = useTranslate()
   const { onClose, isOpen, open } = useModal()
-  const handleClick = (fields: FieldsType) => {
 
+  const handleClick = (fields: FieldsType) => {
     Array.isArray(fields.date)
       ? dispatch(
         updateForm({

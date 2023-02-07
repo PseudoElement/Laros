@@ -15,7 +15,11 @@ import exchange from '/public/assets/images/exchange.svg?url'
 import airport from '/public/assets/images/airportIcon.svg?url'
 
 import { Option } from 'shared/types'
-import { Transfer as TransferType, TransferOptions, TransferValue } from 'shared/types/transport'
+import {
+  Transfer as TransferType,
+  TransferOptions,
+  TransferValue,
+} from 'shared/types/transport'
 import { Car, CarTransferType } from 'shared/types/car'
 
 interface TransferProps {
@@ -38,10 +42,11 @@ export const Transfer: FC<TransferProps> = ({
     CarTransferType.PICKUP
   )
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const availableTransfers = useMemo(() => transfersToOptions(options), [transfersToOptions, options])
-  const [selectedTransfer, setSelectedTransfer] = useState<TransferValue>(
-    value
+  const availableTransfers = useMemo(
+    () => transfersToOptions(options),
+    [transfersToOptions, options]
   )
+  const [selectedTransfer, setSelectedTransfer] = useState<TransferValue>(value)
   const [cars, setCars] = useState<Car[]>([])
   const t = useTranslate()
   const transfersToOptionsMock: TransferOptions = {
@@ -52,7 +57,9 @@ export const Transfer: FC<TransferProps> = ({
   }
   const loadCars = async () => {
     try {
-      const { data } = await getCars({ destination: `${from?.value}, ${to?.value}` })
+      const { data } = await getCars({
+        destination: `${from?.value}, ${to?.value}`,
+      })
       setCars(data.data)
     } catch (error) {
       console.log(error)
@@ -61,43 +68,42 @@ export const Transfer: FC<TransferProps> = ({
   }
   const getSelectedOption = (value: number): TransferValue => {
     if (options.airport === value) {
-      return ({
+      return {
         type: TransferType.FLIGHT,
-        value
-      })
+        value,
+      }
     }
     if (options.car === value) {
-      return ({
+      return {
         type: TransferType.CAR,
-        value
-      })
+        value,
+      }
     }
     if (options.ferry === value) {
-      return ({
+      return {
         type: TransferType.FERRY,
-        value
-      })
+        value,
+      }
     }
-    return ({
+    return {
       type: TransferType.CAR,
-      value: null
-    })
+      value: null,
+    }
   }
   const handleTransferChange = (value: string) => {
-    console.log('value :', value);
+    console.log('value :', value)
     switch (value) {
       case 'rental':
         onChange(null, TransferType.CAR)
-        break;
+        break
 
       default:
         const selectedOption = getSelectedOption(Number(value))
         if (selectedOption) {
           onChange(selectedOption.value, selectedOption.type)
         }
-        break;
+        break
     }
-
   }
   const handleCarChange = (type: CarTransferType, car?: number) => {
     setCarType(type)
@@ -190,7 +196,7 @@ export const Transfer: FC<TransferProps> = ({
                 )}
                 {options.car && (
                   <Button onClick={() => loadCars()} classname={s.editBtn}>
-                    Edit
+                    {t('tripSteps.edit')}
                   </Button>
                 )}
               </>
@@ -198,7 +204,8 @@ export const Transfer: FC<TransferProps> = ({
           </div>
         </div>
       </div>
-      <Modal {...transferModal} title='Changing transfer option'>
+
+      <Modal {...transferModal} title={t('changingTransfer.windowTitle')}>
         <ChangeTransferModal
           type={CarTransferType.RENTAL}
           onClick={handleCarChange}
