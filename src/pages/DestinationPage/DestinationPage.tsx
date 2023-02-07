@@ -24,6 +24,9 @@ export const DestinationPage: FC = () => {
   const t = useTranslate()
 
   const currentDestinationId = Number(query.id)
+
+  console.log(currentDestinationId)
+
   const currentDestinationDescription =
     destinations.filter(item => item.id === currentDestinationId)[0]
       ?.description || ''

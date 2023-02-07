@@ -34,7 +34,11 @@ import { CarTransferType } from 'shared/types/car'
 import { OrderForm, PeopleCapacity } from 'shared/types/order'
 import { TripDestination } from 'shared/types/trip'
 import { Destination } from 'shared/types/destinations'
-import { Transfer as TransferType, TransferOptions, TransferValue } from 'shared/types/transport'
+import {
+  Transfer as TransferType,
+  TransferOptions,
+  TransferValue,
+} from 'shared/types/transport'
 
 import s from './TripDayForm.module.scss'
 import { getHotel } from 'shared/api/routes/hotels'
@@ -76,7 +80,6 @@ export const TripDayForm: FC<TripDayFormProps> = ({
   onChange,
   onDelete,
 }) => {
-
   const [isTruncated, setIsTruncated] = useState(true)
   const [hotelRooms, setHotelRooms] = useState<Room[]>([])
   const [clientRooms, setClientRooms] = useState<Room[]>([])
@@ -144,16 +147,13 @@ export const TripDayForm: FC<TripDayFormProps> = ({
     accomodationModal.open()
   }
   const submitRoomChange = (roomIndex: number, newRoom: Room) => {
-    console.log('newRoom :', newRoom);
+    console.log('newRoom :', newRoom)
     const newRooms = [...clientRooms]
-    console.log('newRooms :', newRooms);
+    console.log('newRooms :', newRooms)
     newRooms[roomIndex] = newRoom
     setClientRooms(newRooms)
     onChange('rooms_ids', newRooms)
-    onChange(
-      `destinations.[${index}].rooms`,
-      newRooms
-    )
+    onChange(`destinations.[${index}].rooms`, newRooms)
   }
 
   const handleTrasnferChange = (id: number | null, type: TransferType) => {
@@ -189,175 +189,191 @@ export const TripDayForm: FC<TripDayFormProps> = ({
         from={from}
         to={{
           label: destination.destination_name,
-          value: destination.destination.toString()
+          value: destination.destination.toString(),
         }}
         value={transferValue}
       />
 
-      {duration > 0 && <div className={s.content}>
-        <div className={s.header}>
-          <div className={s.day}>
-            {' '}
-            {t('tripSteps.day')} {day}
-          </div>
-          <div className={s.dayTotal}>
-            {t('tripSteps.out')} {total}
-          </div>
-          {onDelete && (
-            <div onClick={() => onDelete(index)} className={s.deleteDay}>
-              <TrashIcon />
+      {duration > 0 && (
+        <div className={s.content}>
+          <div className={s.header}>
+            <div className={s.day}>
+              {' '}
+              {t('tripSteps.day')} {day}
             </div>
-          )}
-        </div>
-
-        <div className={s.section}>
-          <div className={s.sectionTitle}>{t('tripSteps.location')}:</div>
-
-          <div className={s.sectionWrap}>
-            <div className={s.sectionValue}>
-              <span className={s.valueIcon}>
-                <PinIcon />
-              </span>
-              <div className={s.valueName}>{destination.destination_name}</div>
+            <div className={s.dayTotal}>
+              {t('tripSteps.out')} {total}
             </div>
-
-            <Button onClick={() => loadNearLocations()} classname={s.editBtn}>
-              {t('tripSteps.edit')}
-            </Button>
-          </div>
-
-        </div>
-
-        <div className={s.section}>
-          <div className={s.sectionTitle}>{t('tripSteps.duration')}:</div>
-
-          <div className={s.sectionWrap}>
-            <div className={s.durationCounter}>
-              {duration} {t(getDayName(duration, 'night'))}
-
-              <div className={s.counter}>
-                <Counter
-                  min={1}
-                  value={duration}
-                  onChange={num =>
-                    onChange(`destinations.${index}.duration`, num)
-                  }
-                />
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div className={cn(s.section, s.descriptionSection)}>
-          <div className={cn(s.sectionTitle, s.descriptionTitle)}>
-            {t('tripSteps.description')}:
-          </div>
-
-          <div className={s.description}>
-            <div className={s.descriptionText}>
-              {description.length ? <div
-                dangerouslySetInnerHTML={{
-                  __html: isTruncated
-                    ? truncate(description, { length: TRUNCATED_TEXT_SIZE })
-                    : description,
-                }}
-              /> : <div>-</div>}
-            </div>
-
-            {isTruncated && description?.length > TRUNCATED_TEXT_SIZE && (
-              <div onClick={() => setIsTruncated(false)} className={s.moreBtn}>
-                {t('destinations.buttonMore')}
+            {onDelete && (
+              <div onClick={() => onDelete(index)} className={s.deleteDay}>
+                <TrashIcon />
               </div>
             )}
           </div>
-        </div>
 
-        <div className={s.section}>
-          <div className={s.sectionTitle}>{t('tripSteps.breakfast')}:</div>
+          <div className={s.section}>
+            <div className={s.sectionTitle}>{t('tripSteps.location')}:</div>
 
-          <div className={s.sectionWrap}>
-            <div className={cn(s.sectionValue, s.hotel)}>
-              <span className={s.valueIcon}>
-                <PinIcon />
-              </span>
-
-              <div className={s.valueName}>{hotel?.lrweb}</div>
-            </div>
-
-            <div
-              onMouseEnter={() => setIsShownCard(true)}
-              onMouseLeave={() => setIsShownCard(false)}
-              className={s.infoBtn}
-            >
-              <InfoIcon />
-
-              <RegionCard
-                id={hotel?.id}
-                cardText={hotel?.description}
-                title={hotel?.lrweb}
-                link={`/hotels/${hotel?.id}`}
-                image={hotel?.images?.[0] || ''}
-                onClose={onClose}
-                isOpen={isShownCard}
-                isTooltip={true}
-                className={s.regionCard}
-              />
-            </div>
-
-            <Button onClick={() => hotelModal.open()} classname={s.editBtn}>
-              {t('tripSteps.edit')}
-            </Button>
-          </div>
-        </div>
-
-        {clientRooms.map((room, index) => {
-          return (
-            <>
-              <div key={room.id} className={s.section}>
-                <div className={s.roomTitle}>
-                  {' '}
-                  {t('tripSteps.room')} {index + 1}
-                </div>
-
-                <div className={s.sectionWrap}>
-                  <div
-                    onClick={() => changeRoom()}
-                    className={cn(s.sectionValue, s.changeRoom)}
-                  >
-                    <PinIcon />
-                    <div className={s.valueName}>
-                      {room.room_name}
-                      <span className={s.pencil}>
-                        <PencilIcon />
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className={s.roomCapacityTitle}>
-                    {t('forms.inputLabel19')}:
-                  </div>
-                  <div className={cn(s.sectionValue, s.roomCapacity)}>
-                    {room.capacity}
-                  </div>
+            <div className={s.sectionWrap}>
+              <div className={s.sectionValue}>
+                <span className={s.valueIcon}>
+                  <PinIcon />
+                </span>
+                <div className={s.valueName}>
+                  {destination.destination_name}
                 </div>
               </div>
 
-              <Modal {...accomodationModal} title={t('changingHotel.windowTitle')} classname={s.modal}>
-                <ChangeAccomodationModal
-                  onSubmit={newRoom => submitRoomChange(index, newRoom)}
-                  hotel={hotel.lrweb}
-                  rooms={hotelRooms}
-                  current={room.id}
-                  {...accomodationModal}
-                />
-              </Modal>
-            </>
-          )
-        })}
-      </div>}
+              <Button onClick={() => loadNearLocations()} classname={s.editBtn}>
+                {t('tripSteps.edit')}
+              </Button>
+            </div>
+          </div>
 
-      <Modal {...locationModal} title='Changing location' classname={s.modal}>
+          <div className={s.section}>
+            <div className={s.sectionTitle}>{t('tripSteps.duration')}:</div>
+
+            <div className={s.sectionWrap}>
+              <div className={s.durationCounter}>
+                {duration} {t(getDayName(duration, 'night'))}
+                <div className={s.counter}>
+                  <Counter
+                    min={1}
+                    value={duration}
+                    onChange={num =>
+                      onChange(`destinations.${index}.duration`, num)
+                    }
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className={cn(s.section, s.descriptionSection)}>
+            <div className={cn(s.sectionTitle, s.descriptionTitle)}>
+              {t('tripSteps.description')}:
+            </div>
+
+            <div className={s.description}>
+              <div className={s.descriptionText}>
+                {description.length ? (
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: isTruncated
+                        ? truncate(description, { length: TRUNCATED_TEXT_SIZE })
+                        : description,
+                    }}
+                  />
+                ) : (
+                  <div>-</div>
+                )}
+              </div>
+
+              {isTruncated && description?.length > TRUNCATED_TEXT_SIZE && (
+                <div
+                  onClick={() => setIsTruncated(false)}
+                  className={s.moreBtn}
+                >
+                  {t('destinations.buttonMore')}
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className={s.section}>
+            <div className={s.sectionTitle}>{t('tripSteps.breakfast')}:</div>
+
+            <div className={s.sectionWrap}>
+              <div className={cn(s.sectionValue, s.hotel)}>
+                <span className={s.valueIcon}>
+                  <PinIcon />
+                </span>
+
+                <div className={s.valueName}>{hotel?.lrweb}</div>
+              </div>
+
+              <div
+                onMouseEnter={() => setIsShownCard(true)}
+                onMouseLeave={() => setIsShownCard(false)}
+                className={s.infoBtn}
+              >
+                <InfoIcon />
+
+                <RegionCard
+                  id={hotel?.id}
+                  cardText={hotel?.description}
+                  title={hotel?.lrweb}
+                  link={`/hotels/${hotel?.id}`}
+                  image={hotel?.images?.[0] || ''}
+                  onClose={onClose}
+                  isOpen={isShownCard}
+                  isTooltip={true}
+                  className={s.regionCard}
+                />
+              </div>
+
+              <Button onClick={() => hotelModal.open()} classname={s.editBtn}>
+                {t('tripSteps.edit')}
+              </Button>
+            </div>
+          </div>
+
+          {clientRooms.map((room, index) => {
+            return (
+              <>
+                <div key={room.id} className={s.section}>
+                  <div className={s.roomTitle}>
+                    {' '}
+                    {t('tripSteps.room')} {index + 1}
+                  </div>
+
+                  <div className={s.sectionWrap}>
+                    <div
+                      onClick={() => changeRoom()}
+                      className={cn(s.sectionValue, s.changeRoom)}
+                    >
+                      <PinIcon />
+                      <div className={s.valueName}>
+                        {room.room_name}
+                        <span className={s.pencil}>
+                          <PencilIcon />
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className={s.roomCapacityTitle}>
+                      {t('forms.inputLabel19')}:
+                    </div>
+                    <div className={cn(s.sectionValue, s.roomCapacity)}>
+                      {room.capacity}
+                    </div>
+                  </div>
+                </div>
+
+                <Modal
+                  {...accomodationModal}
+                  title={t('changingHotel.windowTitle')}
+                  classname={s.modal}
+                >
+                  <ChangeAccomodationModal
+                    onSubmit={newRoom => submitRoomChange(index, newRoom)}
+                    hotel={hotel.lrweb}
+                    rooms={hotelRooms}
+                    current={room.id}
+                    {...accomodationModal}
+                  />
+                </Modal>
+              </>
+            )
+          })}
+        </div>
+      )}
+
+      <Modal
+        {...locationModal}
+        title={t('changingLocation.windowTitle')}
+        classname={s.modal}
+      >
         <ChangeLocationModal
           {...locationModal}
           onSubmit={id => changeLocation(id)}
@@ -367,7 +383,11 @@ export const TripDayForm: FC<TripDayFormProps> = ({
         />
       </Modal>
 
-      <Modal {...hotelModal} title={t('changingHotel.windowTitle')} classname={s.modal}>
+      <Modal
+        {...hotelModal}
+        title={t('changingHotel.windowTitle')}
+        classname={s.modal}
+      >
         <ChangeHotelModal
           onSubmit={id => сhangeHotel(id)}
           destination={destination.id}

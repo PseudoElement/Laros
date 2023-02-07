@@ -53,3 +53,13 @@ export const isNotFinalDestination = (
 ): boolean => {
   return destinations.some(destination => destination.parent === id)
 }
+
+export const getRootRegion = (
+  destinations: Destination[],
+  id: number | null
+): Destination | undefined => {
+  const parentRegion = destinations.find(item => item.id === id)
+  return parentRegion?.parent
+    ? getRootRegion(destinations, parentRegion.parent)
+    : parentRegion
+}

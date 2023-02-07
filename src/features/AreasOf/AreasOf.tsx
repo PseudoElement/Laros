@@ -2,13 +2,15 @@ import { FC } from 'react'
 import { useRouter } from 'next/router'
 import cn from 'classnames'
 
-import { AreaCard, TruncatedText } from 'components'
+import { AreaCard } from 'components'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
 
 import { Destination } from 'shared/types/destinations'
 
 import s from './AreasOf.module.scss'
+import { useAppSelector } from 'shared/hooks/redux'
+import { getRootRegion } from 'store/slices/destinations/selectors'
 
 interface DestinationsProps {
   destinations: Destination[]
@@ -27,14 +29,20 @@ export const AreasOf: FC<DestinationsProps> = ({
   const t = useTranslate()
 
   const handlePush = (id: number) => {
-    isAreas ? push(`/areas/${id}`) : push(`destinations/areas/${id}`)
+    isAreas ? push(`/areas/${id}`) : push(`/destinations/areas/${id}`)
   }
+
+  const region = destination.parent
+    ? useAppSelector(state =>
+        getRootRegion(state.destinations.destinations, destination?.parent)
+      )
+    : destination
 
   return (
     <div className={cn(s.wrapper, className)}>
-      {destination.name && (
+      {region?.name && (
         <div className={s.title}>
-          {t('travelPlannerTripPlan.areasOfTitle')} {destination.name}
+          {t('travelPlannerTripPlan.areasOfTitle')} {region.name}
         </div>
       )}
 

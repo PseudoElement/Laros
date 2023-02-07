@@ -23,7 +23,6 @@ export const TripPlan: FC<TripPlanProps> = ({ tripDestination }) => {
   const { query, push } = useRouter()
   const { id } = query
   const t = useTranslate()
-  console.log(tripDestination)
   const handlePush = () => {
     push(`/trip_form/${id}`)
   }
