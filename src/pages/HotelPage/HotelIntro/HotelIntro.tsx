@@ -19,6 +19,7 @@ import { useModal } from 'shared/hooks/useModal'
 
 export const HotelIntro: FC<Hotel> = ({
   description,
+  destination_name,
   rating,
   tags,
   location,
@@ -99,7 +100,7 @@ export const HotelIntro: FC<Hotel> = ({
       >
         <div className={cn(s.modal, ['scrollStyle'])}>
           {/* @ts-ignore */}
-          <ContactForm order={{ ...form, message: `interested in hotel with id - ${id}` }} />
+          <ContactForm order={{ ...form, message: `Request for hotel ${lrweb}, located in ${destination_name}, hotel id - ${id}` }} />
         </div>
       </Modal>
     </>
