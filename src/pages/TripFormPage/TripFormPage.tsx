@@ -41,6 +41,9 @@ export const TripFormPage: FC = () => {
   const t = useTranslate()
   const { trip, airports, countries, isLoading, transfers, transferValues } =
     useGetTripInfo(Number(query.trip), isHotelPage)
+
+  const airportsToShow = [203, 204, 192, 191]
+
   const form = useAppSelector(state => state.order.form)
   const formHook = useForm<Partial<OrderForm>>({
     defaultValues: {
@@ -197,7 +200,9 @@ export const TripFormPage: FC = () => {
               <Step1
                 setStep={setStep}
                 trip={trip}
-                airports={airports}
+                airports={airports.filter(item =>
+                  airportsToShow.includes(item.id)
+                )}
                 transfers={transfers}
                 transferValues={transferValues}
                 formHook={formHook}
