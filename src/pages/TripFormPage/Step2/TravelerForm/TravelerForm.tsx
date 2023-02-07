@@ -71,6 +71,7 @@ export const TravelerForm: FC<TravelerFormProps> = ({
           <Controller
             name={`travellers.[${index}].nationality`}
             control={control}
+            rules={{ required: true }}
             render={({ field: { onChange, value } }) => (
               <Select
                 onChange={onChange}

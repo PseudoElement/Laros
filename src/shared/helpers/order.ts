@@ -31,7 +31,7 @@ export const prepareOrderFormToApi = (form: OrderForm): OrderPayload => {
   const ferryFlightTransfers: OrderTransport[] = form.transports
     .filter(tran => tran?.type !== Transfer.CAR)
     .map(transfer => ({
-      transport: transfer!.value as number,
+      transport: transfer?.value as number,
       date: dateToServerFormat(new Date()),
     }))
   const finalForm = {

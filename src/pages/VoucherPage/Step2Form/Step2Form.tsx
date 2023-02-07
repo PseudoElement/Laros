@@ -31,7 +31,6 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
   const [deliveryOption, setDeliveryOption] = useState<VoucherDelivery>(
     history.delivery
   )
-  console.log(form, history)
   const dispatch = useAppDispatch()
   const t = useTranslate()
 

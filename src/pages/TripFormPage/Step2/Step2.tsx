@@ -25,8 +25,11 @@ interface Step2Props {
 }
 
 export const Step2: FC<Step2Props> = ({ setStep, capacity, countries }) => {
-  console.log('capacity :', capacity)
-  const { handleSubmit, control } = useForm<Partial<OrderForm>>({
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<Partial<OrderForm>>({
     defaultValues: {
       travellers: Array(capacity).fill({
         full_name: '',
@@ -42,6 +45,25 @@ export const Step2: FC<Step2Props> = ({ setStep, capacity, countries }) => {
     control,
     name: 'travellers',
   })
+
+  const vocabulary: any = {
+    address: 'Adresszeile 1',
+    city: 'Stadt',
+    country: 'Land',
+    zip_code: 'Postleitzahl',
+    travellers: 'Reisende',
+  }
+
+  const onError = (error: any) => {
+    alert(
+      `${Object.keys(error)
+        .map(key => vocabulary[key])
+        .join(', ')} sind Pflichtfelder`
+    )
+    console.error('error', errors)
+    console.log(error)
+  }
+
   const onSubmit = (formData: Partial<OrderForm>) => {
     const finalForm = prepareOrderFormToApi({
       ...fullForm,
@@ -138,6 +160,7 @@ export const Step2: FC<Step2Props> = ({ setStep, capacity, countries }) => {
           <Controller
             name='country'
             control={control}
+            rules={{ required: true }}
             render={({ field: { onChange, value } }) => (
               <Select
                 onChange={onChange}
@@ -154,6 +177,7 @@ export const Step2: FC<Step2Props> = ({ setStep, capacity, countries }) => {
         <Controller
           name='city'
           control={control}
+          rules={{ required: true }}
           render={({ field: { onChange, value } }) => (
             <Input
               placeholder={t('worldwideTours.label12')}
@@ -169,6 +193,7 @@ export const Step2: FC<Step2Props> = ({ setStep, capacity, countries }) => {
         <Controller
           name='address'
           control={control}
+          rules={{ required: true }}
           render={({ field: { onChange, value } }) => (
             <Input
               placeholder={t('worldwideTours.label12')}
@@ -198,6 +223,7 @@ export const Step2: FC<Step2Props> = ({ setStep, capacity, countries }) => {
         <Controller
           name='zip_code'
           control={control}
+          rules={{ required: true }}
           render={({ field: { onChange, value } }) => (
             <Input
               placeholder={t('worldwideTours.label12')}
@@ -259,7 +285,7 @@ export const Step2: FC<Step2Props> = ({ setStep, capacity, countries }) => {
       </div>
 
       <div className={s.actions}>
-        <Button onClick={handleSubmit(onSubmit)}>
+        <Button onClick={handleSubmit(onSubmit, onError)}>
           {t('worldwideTours.submitButton')}
         </Button>
         <Button variant='outline'>{t('changingLocation.cancel')}</Button>
