@@ -9,13 +9,13 @@ import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
 import { slidesPerViewAbout } from 'shared/helpers/slidesPerView'
 
 import { aboutCards } from 'shared/mocks/aboutCards'
+import { TABLET_SCREEN } from 'shared/constants/screenResolutions'
 
 import slideImg1 from '/public/assets/images/aboutPage/about/about_us_photo_1.png'
 import slideImg2 from '/public/assets/images/aboutPage/about/about_us_photo_2.png'
 import slideImg3 from '/public/assets/images/aboutPage/about/about_us_photo_3.png'
 
 import s from './AboutPage.module.scss'
-import { TABLET_SCREEN } from '../../shared/constants/screenResolutions'
 
 export const AboutPage: FC = () => {
   const images = [slideImg1, slideImg2, slideImg3]

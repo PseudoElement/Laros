@@ -18,8 +18,8 @@ export const slidesPerViewHome = (width: number): number => {
 }
 
 export const slidesPerViewAbout = (width: number): number => {
-  if (width > DESKTOP_MIDDLE_SCREEN) return 2
-  if (width > DESKTOP_MIN_SCREEN) return 1.5
+  if (width > DESKTOP_MIDDLE_SCREEN) return 1.6
+  if (width > DESKTOP_MIN_SCREEN) return 1.6
   if (width > TABLET_SCREEN) return 1.2
   if (width < TABLET_SCREEN) return 1
   return 0
