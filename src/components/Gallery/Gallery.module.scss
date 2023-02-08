@@ -34,9 +34,12 @@
 
     .image {
       border-radius: 16px;
-      width: 1062px;
-      height: 624px;
+
       user-select: none;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      object-position: center;
     }
   }
 
