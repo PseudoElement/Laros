@@ -14,7 +14,7 @@ import { Hotel } from 'shared/types/hotel'
 import { TRIP_PLAN_DESCRIPTION_SIZE } from 'shared/constants'
 
 import s from './HotelIntro.module.scss'
-import cn from 'classnames';
+import cn from 'classnames'
 import { useModal } from 'shared/hooks/useModal'
 
 export const HotelIntro: FC<Hotel> = ({
@@ -28,7 +28,7 @@ export const HotelIntro: FC<Hotel> = ({
   id,
 }) => {
   const dispatch = useAppDispatch()
-  const form = useAppSelector((state) => state.order.form);
+  const form = useAppSelector(state => state.order.form)
   const { push } = useRouter()
   const t = useTranslate()
   const { onClose, isOpen, open } = useModal()
@@ -36,17 +36,16 @@ export const HotelIntro: FC<Hotel> = ({
   const handleClick = (fields: FieldsType) => {
     Array.isArray(fields.date)
       ? dispatch(
-        updateForm({
-          rooms: fields.rooms,
-          date_start: Number(fields.date[0]),
-          // date_start: [Number(fields.date[0]), Number(fields.date[1])], //TODO fix when fix api
-        })
-      )
+          updateForm({
+            rooms: fields.rooms,
+            date_start: Number(fields.date[0]),
+            // date_start: [Number(fields.date[0]), Number(fields.date[1])], //TODO fix when fix api
+          })
+        )
       : null
     // push(`/trip_form/hotel/${id}`) // TODO revert when trip planner is done
     // push(`/contact/`)
     open()
-
   }
 
   return (
@@ -92,6 +91,7 @@ export const HotelIntro: FC<Hotel> = ({
           </div>
         </div>
       </div>
+
       <Modal
         isOpen={isOpen}
         onClose={onClose}
@@ -100,7 +100,12 @@ export const HotelIntro: FC<Hotel> = ({
       >
         <div className={cn(s.modal, ['scrollStyle'])}>
           {/* @ts-ignore */}
-          <ContactForm order={{ ...form, message: `Request for hotel ${lrweb}, located in ${destination_name}, hotel id - ${id}` }} />
+          <ContactForm
+            order={{
+              ...form,
+              message: `Request for hotel ${lrweb}, located in ${destination_name}, hotel id - ${id}`,
+            }}
+          />
         </div>
       </Modal>
     </>
