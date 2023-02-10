@@ -80,7 +80,7 @@
   padding: 0 4px;
 }
 
-.lemmos {
+.lemnos {
   display: block;
   &::before {
     content: '';
@@ -94,10 +94,31 @@
   }
 }
 
-.lemmosLocation {
+.lemnosLocation {
   position: absolute;
   top: 33%;
   right: 38%;
+  border-radius: 24px;
+  padding: 0 4px;
+}
+.lesbos {
+  display: block;
+  &::before {
+    content: '';
+    display: inline-block;
+    margin-bottom: 3px;
+    margin-right: 5px;
+    width: 4px;
+    height: 4px;
+    background: $color-white-blue;
+    border-radius: 50%;
+  }
+}
+
+.lesbosLocation {
+  position: absolute;
+  top: 48%;
+  right: 25%;
   border-radius: 24px;
   padding: 0 4px;
 }

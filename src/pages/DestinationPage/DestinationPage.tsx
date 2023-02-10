@@ -49,7 +49,8 @@ export const DestinationPage: FC = () => {
 
     map.currentMap && setMap(map)
   }, [currentDestinationId, destinations, route])
-
+  console.log(map);
+  
   return (
     <>
       <div className={s.layoutWrapper}>

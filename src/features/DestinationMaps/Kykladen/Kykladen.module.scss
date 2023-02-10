@@ -4,8 +4,7 @@
   position: relative;
   width: 1040px;
   height: 720px;
-  background: url('../../../../public/assets/images/destinations/Individual maps/Kykladen Inseln.png')
-    no-repeat center;
+  background: url('../../../../public/assets/images/destinations/Individual maps/Kykladen Inseln.png') no-repeat center;
   font-weight: $fw-semibold;
 }
 
@@ -30,14 +29,17 @@
     transform: scale(0.7);
   }
 }
+
 @media screen and (max-width: 425px) {
   .container {
     transform: scale(0.3);
     height: 400px;
   }
 }
+
 .kea {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -53,13 +55,14 @@
 .keaLocation {
   position: absolute;
   top: 34%;
-  right: 51%;
+  right: 53%;
   border-radius: 24px;
   padding: 0 4px;
 }
 
 .andros {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -82,6 +85,7 @@
 
 .tinos {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -104,6 +108,7 @@
 
 .mykonos {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -118,14 +123,15 @@
 
 .mykonosLocation {
   position: absolute;
-  top: 40%;
-  right: 26%;
+  top: 41%;
+  right: 29%;
   border-radius: 24px;
   padding: 0 4px;
 }
 
 .serifos {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -148,6 +154,7 @@
 
 .antiparos {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -170,6 +177,7 @@
 
 .naxos {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -192,6 +200,7 @@
 
 .amorgos {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -207,14 +216,40 @@
 
 .amorgosLocation {
   position: absolute;
-  top: 60%;
-  right: 16%;
+  top: 59%;
+  right: 18%;
   border-radius: 24px;
   padding: 0 4px;
 }
 
+.schinoussa {
+  display: block;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-right: 0px;
+    width: 4px;
+    height: 4px;
+    background: $color-white-blue;
+    background: $color-white-blue;
+    border-radius: 50%;
+  }
+}
+
+.schinoussaLocation {
+  position: absolute;
+  top: 61%;
+  right: 27%;
+  border-radius: 24px;
+  padding: 0 4px;
+}
+
+
 .santorini {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -224,19 +259,24 @@
     height: 4px;
     background: $color-white-blue;
     border-radius: 50%;
+    position: absolute;
+    top: -2px;
+    right: 2px;
+    
   }
 }
 
 .santoriniLocation {
   position: absolute;
-  top: 64%;
-  right: 22%;
+  top: 79%;
+    right: 36%;
   border-radius: 24px;
   padding: 0 4px;
 }
 
 .antiparos {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -259,6 +299,7 @@
 
 .anafi {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -281,6 +322,7 @@
 
 .kithnos {
   display: block;
+
   &::after {
     content: '';
     display: inline-block;
@@ -295,14 +337,15 @@
 
 .kithnosLocation {
   position: absolute;
-  top: 44%;
-  right: 58%;
+  top: 43%;
+  right: 55%;
   border-radius: 24px;
   padding: 0 4px;
 }
 
 .sifnos {
   display: block;
+
   &::after {
     content: '';
     display: inline-block;
@@ -317,14 +360,15 @@
 
 .sifnosLocation {
   position: absolute;
-  top: 58%;
-  right: 54%;
+  top: 57%;
+  right: 50%;
   border-radius: 24px;
   padding: 0 4px;
 }
 
 .kimolos {
   display: block;
+
   &::after {
     content: '';
     display: inline-block;
@@ -339,14 +383,15 @@
 
 .kimolosLocation {
   position: absolute;
-  top: 63%;
-  right: 56%;
+  top: 62.5%;
+  right: 52.5%;
   border-radius: 24px;
   padding: 0 4px;
 }
 
 .milos {
   display: block;
+
   &::after {
     content: '';
     display: inline-block;
@@ -361,14 +406,15 @@
 
 .milosLocation {
   position: absolute;
-  top: 67%;
-  right: 59%;
+  top: 66%;
+  right: 56%;
   border-radius: 24px;
   padding: 0 4px;
 }
 
 .syros {
   display: block;
+
   &::before {
     content: '';
     display: block;
@@ -387,8 +433,31 @@
   padding: 4px;
 }
 
+.iraklia {
+  display: block;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 4px;
+    background: $color-white-blue;
+    border-radius: 50%;
+    transform: translate(55px, 10px);
+  }
+}
+
+.irakliaLocation {
+  position: absolute;
+  top: 60%;
+  right: 37%;
+  border-radius: 24px;
+  padding: 4px;
+}
+
 .paros {
   display: block;
+
   &::after {
     content: '';
     display: block;
@@ -409,6 +478,7 @@
 
 .koufonissi {
   display: block;
+
   &::after {
     content: '';
     display: block;
@@ -421,14 +491,15 @@
 
 .koufonissiLocation {
   position: absolute;
-  top: 57%;
-  right: 22%;
+  top: 58%;
+  right: 25%;
   border-radius: 24px;
   padding: 4px;
 }
 
 .ios {
   display: block;
+
   &::before {
     content: '';
     display: block;
@@ -442,14 +513,15 @@
 
 .iosLocation {
   position: absolute;
-  top: 69%;
-  right: 40%;
+  top: 68%;
+  right: 37%;
   border-radius: 24px;
   padding: 4px;
 }
 
 .folegandros {
   display: block;
+
   &::before {
     content: '';
     margin-left: auto;
@@ -463,14 +535,15 @@
 
 .folegandrosLocation {
   position: absolute;
-  top: 72%;
-  right: 50%;
+  top: 69%;
+  right: 46%;
   border-radius: 24px;
   padding: 4px;
 }
 
 .ikarita {
   display: block;
+
   &::after {
     content: '';
     display: inline-block;
@@ -493,22 +566,25 @@
 
 .sikinos {
   display: block;
+
   &::after {
-    content: '';
+    content: "";
     display: inline-block;
     margin-bottom: 3px;
     margin-left: 5px;
     width: 4px;
     height: 4px;
-    background: $color-white-blue;
+    background: #0abaee;
     border-radius: 50%;
+    position: absolute;
+    bottom: -8px;
   }
 }
 
 .sikinosLocation {
   position: absolute;
-  top: 67%;
-  right: 46%;
+  top: 65%;
+  right: 43%;
   border-radius: 24px;
   padding: 0 4px;
 }
