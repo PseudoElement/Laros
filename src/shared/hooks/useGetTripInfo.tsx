@@ -6,8 +6,7 @@ import { getCountries } from 'shared/api/routes/countries'
 import { getAirportDestinations, getTransports } from 'shared/api/routes/destinations'
 import { Country } from 'shared/types/country'
 import { Transfer, TransferOptions, TransferValue } from 'shared/types/transport'
-import { getHotelTripDay, getTripDay } from 'shared/api/routes/order'
-import { getHotel } from 'shared/api/routes/hotels'
+import { getHotelTripDay } from 'shared/api/routes/order'
 import { useAppSelector } from './redux'
 
 interface GetTripParams {
@@ -175,6 +174,10 @@ export const useGetTripInfo = (
             value: dest.rental[0]
           }
         } else {
+          return {
+            type: Transfer.CAR,
+            value: null
+          }
           return null
         }
 

@@ -10,7 +10,9 @@ export const getTripDuration = (destinations: TripDestination[]): number => {
 }
 
 export const findRooms = (rooms: Room[], people: number): Room[] => {
-  const sortedRooms = rooms.sort((a, b) => b.capacity - a.capacity)
+  const sortedRooms = rooms
+    .sort((a, b) => b.capacity - a.capacity)
+    .sort((a, b) => a.per_person_chf - b.per_person_chf)
   if (!rooms.length) return []
   if (sortedRooms.find(room => room.capacity === people)) {
     return [sortedRooms.find(room => room.capacity === people) as Room]

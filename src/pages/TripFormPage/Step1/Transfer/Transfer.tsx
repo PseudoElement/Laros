@@ -41,12 +41,13 @@ export const Transfer: FC<TransferProps> = ({
   const [carType, setCarType] = useState<CarTransferType>(
     CarTransferType.PICKUP
   )
+  const [selectedTransfer, setSelectedTransfer] = useState<TransferValue>(value)
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const availableTransfers = useMemo(
-    () => transfersToOptions(options),
-    [transfersToOptions, options]
+    () => transfersToOptions(options, selectedTransfer),
+    [transfersToOptions, options, selectedTransfer]
   )
-  const [selectedTransfer, setSelectedTransfer] = useState<TransferValue>(value)
   const [cars, setCars] = useState<Car[]>([])
   const t = useTranslate()
   const transfersToOptionsMock: TransferOptions = {
@@ -115,7 +116,7 @@ export const Transfer: FC<TransferProps> = ({
   }, [value])
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  function transfersToOptions(transfers: TransferOptions): Option[] {
+  function transfersToOptions(transfers: TransferOptions, value: TransferValue): Option[] {
     let options: Option[] = []
     if (transfers.ferry) {
       options = [
@@ -137,19 +138,19 @@ export const Transfer: FC<TransferProps> = ({
         },
       ]
     }
-    if (transfers.car) {
-      options = [
-        ...options,
-        {
-          label:
-            carType === CarTransferType.PICKUP
-              ? 'tripSteps.transfer.carPickUp'
-              : 'tripSteps.transfer.carRental',
-          value: transfers.car.toString() || 'rental',
-          icon: car,
-        },
-      ]
-    }
+    // if (transfers.car) {
+    options = [
+      ...options,
+      {
+        label:
+          value === null
+            ? 'tripSteps.transfer.carPickUp'
+            : 'tripSteps.transfer.carRental',
+        value: transfers?.car?.toString() || 'rental',
+        icon: car,
+      },
+    ]
+    // }
     return options
   }
 

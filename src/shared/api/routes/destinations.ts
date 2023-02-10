@@ -5,10 +5,10 @@ import { Transport } from 'shared/types/transport'
 import { api } from '..'
 import { endpoints } from '../endpoints'
 
-export const getDestinations = (): AxiosPromise<
-  AxiosPaginatedResponse<Destination>
-> => {
-  return api.get(endpoints.destinations.get)
+export const getDestinations = (
+  params?: any
+): AxiosPromise<AxiosPaginatedResponse<Destination>> => {
+  return api.get(endpoints.destinations.get, { params })
 }
 
 export const getDestination = (id: number): AxiosPromise<Destination> => {
