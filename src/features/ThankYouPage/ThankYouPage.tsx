@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 
@@ -10,7 +10,11 @@ import fireWorks from '/public/assets/images/fireworks.svg?url'
 
 import s from './ThankYouPage.module.scss'
 
-export const ThankYouPage = () => {
+interface ThankYouPageProps {
+  isCV?: boolean
+}
+
+export const ThankYouPage: FC<ThankYouPageProps> = ({ isCV }) => {
   const t = useTranslate()
   const { push } = useRouter()
 
@@ -23,7 +27,11 @@ export const ThankYouPage = () => {
 
       <div className={s.title}>{t('aboutModal.thanks')}</div>
 
-      <div className={s.subTitle}>{t('aboutModal.text')}</div>
+      {isCV ? (
+        <div className={s.subTitle}>{t('aboutModal.text2')}</div>
+      ) : (
+        <div className={s.subTitle}>{t('aboutModal.text')}</div>
+      )}
 
       <div className={s.button}>
         <Button onClick={handlePush}>{t('aboutModal.return')}</Button>

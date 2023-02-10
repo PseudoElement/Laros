@@ -3,7 +3,7 @@ import Image from 'next/image'
 import cn from 'classnames'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 
-import { Modal, Button, Input, Select } from 'components'
+import { Button, Input, Modal, Select } from 'components'
 import { ThankYouPage } from 'features'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
@@ -199,7 +199,7 @@ const ApplyModal: FC<ApplyModalProps> = ({
           </div>
         </div>
       ) : (
-        <ThankYouPage />
+        <ThankYouPage isCV />
       )}
     </Modal>
   )
