@@ -33,12 +33,12 @@ export const RoomCard: FC<RoomCardProps> = ({
   const t = useTranslate()
   const getBtnTitle = () => {
     if (isCurrent) {
-      return 'Current'
+      return t('changingRoomType.current')
     }
     if (isSelected) {
-      return 'Selected'
+      return t('brochures.buttonSelected')
     }
-    return 'Select'
+    return t('brochures.buttonSelect')
   }
   const selectRoom = () => {
     if (!isCurrent) {
