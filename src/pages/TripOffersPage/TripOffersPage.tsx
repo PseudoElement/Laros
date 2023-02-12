@@ -191,7 +191,7 @@ export const TripOffersPage: FC = () => {
         style={{
           backgroundImage: `url(${
             tripCategoryInfo?.images.length
-              ? withDomain(tripCategoryInfo?.images[1])
+              ? withDomain(tripCategoryInfo?.images[2])
               : null
           })`,
         }}

@@ -2,18 +2,10 @@
 @import '/src/styles/theme/breakpoints.scss';
 
 .overview {
-  padding: 80px 0 0;
-
-  @include laptop {
-    padding: 50px 0 0;
-  }
-
-  @include tablet {
-    padding: 40px 30px 0;
-  }
+  margin: 80px 0;
 
   @include mobile {
-    padding: 30px 10px 0;
+    margin: 30px 0;
   }
 }
 
@@ -43,32 +35,25 @@
 }
 
 .image {
-  width: 100%;
-  height: 500px;
+  width: 846px;
+  height: 498px;
   border-radius: 8px;
   overflow: hidden;
+  position: relative;
   background-color: $color-modal-bg;
-  img {
-    border-radius: 8px;
-  }
 
   @include mobile {
-    height: 200px;
+    width: 100%;
+    height: 400px;
+    padding: 0 20px;
   }
-
-  @media (min-width: 440px) and (max-width: 768px) {
+  @media (max-width: 600px) {
     height: 300px;
   }
-
-  @include tablet {
-    height: 400px;
+  @media (max-width: 500px) {
+    height: 250px;
   }
-}
-
-@include mobile-tablet {
-  .overviewSlider {
-    [class*='slider'] {
-      padding: 0;
-    }
+  @media (max-width: 400px) {
+    height: 200px;
   }
 }

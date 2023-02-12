@@ -4,10 +4,12 @@ import Image, { StaticImageData } from 'next/image'
 import { Gallery, SliderGalery } from 'components'
 
 import { withDomain } from 'shared/helpers/withDomain'
-import { slidesPerViewHotelImages } from '../../../shared/helpers/slidesPerView'
+import { slidesPerViewHotelImages } from 'shared/helpers/slidesPerView'
+import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
+
+import { TABLET_SCREEN } from 'shared/constants/screenResolutions'
 
 import s from './HotelImages.module.scss'
-import { useWindowDimensions } from '../../../shared/hooks/useWindowDimensions'
 
 interface HotelImagesProps {
   images: string[] | StaticImageData[] | HTMLImageElement[]
@@ -21,11 +23,13 @@ export const HotelImages: FC<HotelImagesProps> = ({ images }) => {
   const handleOpen = (index: number) => {
     setOpenGallery(index)
   }
+
   return (
     <div className={s.hotelImages}>
       {images?.length ? (
         <SliderGalery
           slidesPerView={slidesPerViewHotelImages(width)}
+          withNavigation={width > TABLET_SCREEN}
           onSlice={2}
         >
           {images.map((image, index) => (
@@ -39,6 +43,7 @@ export const HotelImages: FC<HotelImagesProps> = ({ images }) => {
           ))}
         </SliderGalery>
       ) : null}
+
       <Gallery
         images={images}
         isOpen={openGallery}
