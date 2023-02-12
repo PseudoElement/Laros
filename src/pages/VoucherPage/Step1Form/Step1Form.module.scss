@@ -242,12 +242,19 @@
 .inputVoucherName,
 .price {
   width: 100%;
-  max-width: 400px;
   height: 100%;
   border: none;
   padding-right: 25px;
   padding-bottom: 8px;
   border-radius: 0;
+
+  &:nth-child(2) {
+    max-width: 400px;
+
+    @include mobile-laptop {
+      max-width: 100%;
+    }
+  }
   @include mobile-laptop {
     max-width: 100%;
   }

@@ -8,10 +8,12 @@ import { AddressInput, ThankYouPage } from 'features'
 import { Steps } from '../VoucherPage'
 
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
-import { updateForm, updateHistoryForm } from 'store/slices/voucher/voucher'
+import { updateForm } from 'store/slices/voucher/voucher'
 import { useTranslate } from 'shared/hooks/useTranslate'
+import { sendContactFormThunk } from 'store/slices/voucher/thunk'
 
 import { VoucherDelivery } from 'shared/types/vouchers'
+import { EMAIL_VALIDATION } from 'shared/constants'
 
 import store from '/public/assets/images/voucherDelivery/store.svg?url'
 import mail from '/public/assets/images/voucherDelivery/mail.svg?url'
@@ -24,21 +26,50 @@ interface Step2FormProps {
 }
 
 export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
-  const { control, handleSubmit } = useForm()
+  const dispatch = useAppDispatch()
+  const t = useTranslate()
   const [thankYou, setThankYou] = useState(false)
 
   const { form, history } = useAppSelector(state => state.vouchers)
+
   const [deliveryOption, setDeliveryOption] = useState<VoucherDelivery>(
     history.delivery
   )
-  const dispatch = useAppDispatch()
-  const t = useTranslate()
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+  } = useForm()
 
   const paymentOptions = [
     { value: 'rechnung', label: 'Rechnung' },
     { value: 'barzahlung', label: 'Barzahlung' },
     { value: 'kreditkarte', label: 'Kreditkarte' },
   ]
+
+  const vocabulary: any = {
+    recepientEmail: 'E-Mail',
+    phone: 'Telefonnummer',
+    address: 'Adresse',
+  }
+
+  const onError = (error: any) => {
+    alert(
+      `${Object.keys(error)
+        .map(key => vocabulary[key])
+        .join(', ')}, sind Pflichtfelder`
+    )
+    console.error('error', errors)
+    console.log(error)
+  }
+
+  const selectPreviousAddress = () => {
+    setValue('address', form.address)
+    setValue('zip_code', form.zip_code)
+    setValue('city', form.city)
+  }
 
   const onSubmit: SubmitHandler<any> = async formData => {
     const finalData = {
@@ -50,19 +81,11 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
         region: formData.region,
       },
     }
+    dispatch(sendContactFormThunk(form))
     // @ts-ignore
     dispatch(updateForm(finalData))
     window.scrollTo(0, 0)
     setThankYou(true)
-  }
-  const selectPreviousAddress = () => {
-    const prevAddress = {
-      zip: form.zip_code,
-      region: form.city,
-      street: form.address,
-    }
-    // @ts-ignore
-    dispatch(updateHistoryForm(prevAddress))
   }
 
   return (
@@ -78,9 +101,11 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
           <div className={s.wrapper}>
             <div className={s.delivery}>
               <div className={s.title}>{t('vouchers.step2Title')}</div>
+
               <div className={s.deliveryDescription}>
                 {t('vouchers.step2SubTitle')}
               </div>
+
               <div className={s.deliveryOptions}>
                 <div
                   onClick={() => setDeliveryOption(VoucherDelivery.STORE)}
@@ -93,6 +118,7 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
                     {t('vouchers.store1')}
                   </div>
                 </div>
+
                 <div
                   onClick={() => setDeliveryOption(VoucherDelivery.POST)}
                   className={cn(s.deliveryOption, {
@@ -104,6 +130,7 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
                     {t('vouchers.store2')}
                   </div>
                 </div>
+
                 <div
                   onClick={() => setDeliveryOption(VoucherDelivery.EMAIL)}
                   className={cn(s.deliveryOption, {
@@ -122,9 +149,11 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
                 <div className={s.description}>{t('vouchers.text1')}</div>
                 <div className={s.adressPhoneForm}>
                   <AddressInput control={control} />
+
                   <Controller
                     name='phone'
                     control={control}
+                    rules={{ required: true }}
                     render={({ field: { onChange, value } }) => (
                       <Input
                         classname={s.input}
@@ -135,7 +164,7 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
                         onChange={onChange}
                         id='name'
                         value={value}
-                        label={t('vouchers.label6')}
+                        label={`${t('vouchers.label6')}*`}
                       />
                     )}
                   />
@@ -143,7 +172,7 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
                 <div className={s.previousBtn}>
                   {t('vouchers.text2')}{' '}
                   <span onClick={selectPreviousAddress} className={s.highlight}>
-                    {t('vouchers.text2')}
+                    {t('vouchers.text3')}
                   </span>
                 </div>
               </div>
@@ -151,9 +180,11 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
             {deliveryOption === VoucherDelivery.EMAIL && (
               <div className={s.emailSection}>
                 <div className={s.description}>{t('vouchers.text4')}</div>
+
                 <Controller
                   name='recepientEmail'
                   control={control}
+                  rules={{ required: true, pattern: EMAIL_VALIDATION }}
                   render={({ field: { onChange, value } }) => (
                     <Input
                       classname={s.input}
@@ -164,29 +195,19 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
                       onChange={onChange}
                       id='name'
                       value={value}
-                      label={t('forms.inputLabel1')}
+                      label={`${t('forms.inputLabel1')}*`}
                     />
                   )}
                 />
-                {/* TODO check why didn't work: */}
-                {history?.street && (
-                  <div className={s.previousBtn}>
-                    {t('vouchers.text2')}{' '}
-                    <span
-                      onClick={selectPreviousAddress}
-                      className={s.highlight}
-                    >
-                      {t('vouchers.text3')}
-                    </span>
-                  </div>
-                )}
               </div>
             )}
             <div className={s.paymentSection}>
               <div className={s.title}>{t('vouchers.payment')}</div>
               <div className={s.decription}>{t('vouchers.option')}</div>
+
               <div className={s.selectDiv}>
                 <div className={s.selectLabel}>{t('forms.inputLabel29')}</div>
+
                 <Controller
                   name='payment'
                   control={control}
@@ -196,6 +217,8 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
                       onChange={onChange}
                       value={value}
                       classname={s.select}
+                      placeholder={t('common.select')}
+                      defaultValue={paymentOptions[0]}
                     />
                   )}
                 />
@@ -217,7 +240,10 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
                 <li className={s.termsItem}>{t('vouchers.invoiceBlock3')}</li>
               </ul>
             </div>
-            <Button onClick={handleSubmit(onSubmit)} classname={s.submitBtn}>
+            <Button
+              onClick={handleSubmit(onSubmit, onError)}
+              classname={s.submitBtn}
+            >
               {t('vouchers.buttonDone')}
             </Button>
           </div>

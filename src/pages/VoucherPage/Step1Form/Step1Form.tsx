@@ -5,14 +5,14 @@ import { Button, Input, Radio } from 'components'
 import { AddressInput } from 'features'
 import { Steps } from '../VoucherPage'
 
-import { sendContactFormThunk } from 'store/slices/voucher/thunk'
 import { useAppDispatch } from 'shared/hooks/redux'
 import { useTranslate } from 'shared/hooks/useTranslate'
+import { updateForm } from 'store/slices/voucher/voucher'
 
 import { titleOptions } from 'shared/constants/form'
+import { EMAIL_VALIDATION } from 'shared/constants'
 
 import s from './Step1Form.module.scss'
-import { updateForm } from 'store/slices/voucher/voucher'
 
 interface Step1FormProps {
   setStep: (step: Steps) => void
@@ -20,13 +20,37 @@ interface Step1FormProps {
 
 export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
   const dispatch = useAppDispatch()
-  const { control, handleSubmit } = useForm()
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
   const t = useTranslate()
+
+  const vocabulary: any = {
+    sender: 'Die Daten der Person mit, die den Geschenkgutschein versendet',
+    title: 'Anrede',
+    email: 'E-Mail',
+    phone: 'Telefonnummer',
+    address: 'Adresse',
+    recipient: 'Empfängername',
+    from: 'Gutschein vom',
+    value: 'Wert des Gutscheins ein Muss mehr als 50 CHF betragen',
+  }
+
+  const onError = (error: any) => {
+    alert(
+      `${Object.keys(error)
+        .map(key => vocabulary[key])
+        .join(', ')}, sind Pflichtfelder`
+    )
+    console.error('error', errors)
+    console.log(error)
+  }
 
   const onSubmit: SubmitHandler<any> = formData => {
     window.scrollTo(0, 0)
     setStep(Steps.SECOND)
-    dispatch(sendContactFormThunk(formData))
     dispatch(updateForm(formData))
   }
 
@@ -67,6 +91,7 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
             <Controller
               name='value'
               control={control}
+              rules={{ required: true, min: 49 }}
               render={({ field: { onChange, value } }) => (
                 <Input
                   required
@@ -92,6 +117,7 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
           <Controller
             name='sender'
             control={control}
+            rules={{ required: true }}
             render={({ field: { onChange, value } }) => (
               <Input
                 classname={s.input}
@@ -101,7 +127,7 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
                 onChange={onChange}
                 id='name'
                 value={value}
-                label={t('vouchers.label3')}
+                label={`${t('vouchers.label3')}*`}
               />
             )}
           />
@@ -126,6 +152,7 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
             <Controller
               name='email'
               control={control}
+              rules={{ required: true, pattern: EMAIL_VALIDATION }}
               render={({ field: { onChange, value } }) => (
                 <Input
                   classname={s.input}
@@ -136,7 +163,7 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
                   onChange={onChange}
                   id='name'
                   value={value}
-                  label={t('forms.inputLabel1')}
+                  label={`${t('forms.inputLabel1')}*`}
                 />
               )}
             />
@@ -160,6 +187,7 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
             <Controller
               name='phone'
               control={control}
+              rules={{ required: true }}
               render={({ field: { onChange, value } }) => (
                 <Input
                   classname={s.input}
@@ -170,7 +198,7 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
                   onChange={onChange}
                   id='name'
                   value={value}
-                  label={t('vouchers.label6')}
+                  label={`${t('vouchers.label6')}*`}
                 />
               )}
             />
@@ -185,6 +213,7 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
           <Controller
             name='recipient'
             control={control}
+            rules={{ required: true }}
             render={({ field: { onChange, value } }) => (
               <Input
                 classname={s.input}
@@ -194,7 +223,7 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
                 onChange={onChange}
                 id='name'
                 value={value}
-                label={t('vouchers.label3')}
+                label={`${t('vouchers.label3')}*`}
               />
             )}
           />
@@ -206,6 +235,7 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
           <Controller
             name='from'
             control={control}
+            rules={{ required: true }}
             render={({ field: { onChange, value } }) => (
               <Input
                 classname={s.input}
@@ -215,13 +245,13 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
                 onChange={onChange}
                 id='name'
                 value={value}
-                label={t('vouchers.label8')}
+                label={`${t('vouchers.label8')}*`}
               />
             )}
           />
         </div>
 
-        <Button onClick={handleSubmit(onSubmit)} classname={s.nextBtn}>
+        <Button onClick={handleSubmit(onSubmit, onError)} classname={s.nextBtn}>
           {t('vouchers.buttonNext')}
         </Button>
       </div>

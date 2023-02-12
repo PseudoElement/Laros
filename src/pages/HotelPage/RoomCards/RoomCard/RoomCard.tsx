@@ -7,6 +7,7 @@ import { useTranslate } from 'shared/hooks/useTranslate'
 import { Room } from 'shared/types/hotel'
 
 import s from './RoomCard.module.scss'
+import { whiteSpace } from '../../../../shared/helpers/whiteSpace'
 
 export const RoomCard: FC<Room> = ({
   images,
@@ -33,10 +34,12 @@ export const RoomCard: FC<Room> = ({
 
       <div className={s.roomCardBody}>
         <div className={s.roomCardTitle}>{room_name}</div>
+
         <div className={s.roomCardInfo}>
           {per_person_chf} CHF / {t('common.nightPro')}
         </div>
-        <div className={s.roomCardDescription}>{description}</div>
+
+        <div className={s.roomCardDescription}>{whiteSpace(description)}</div>
       </div>
     </div>
   )

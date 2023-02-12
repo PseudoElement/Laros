@@ -33,7 +33,6 @@ export const Overview: FC<Overview> = ({ images, overview }) => {
       <div className={s.overviewSlider}>
         {images?.length ? (
           <SliderGalery
-            spaceBetween={8}
             onSlice={2}
             slidesPerView={slidesPerViewHotelImages(width)}
             withNavigation={width > TABLET_SCREEN}

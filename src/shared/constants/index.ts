@@ -12,3 +12,5 @@ export const LIMIT_NEARBY_DESTINATIONS = 3
 export const DEFAULT_LANG = 'en'
 export const ORDER_CALCULATION_DEBOUNCE = 1000
 export const JOB_CARD_TEXT_LIMIT = 370
+export const EMAIL_VALIDATION =
+  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/

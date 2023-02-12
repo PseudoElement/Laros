@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { useRouter } from 'next/router'
+import cn from 'classnames'
 // @ts-ignore
 import ReactStars from 'react-rating-stars-component'
 
@@ -9,13 +10,12 @@ import { Map, Modal, TruncatedText } from 'components'
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { updateForm } from 'store/slices/order/order'
 import { useTranslate } from 'shared/hooks/useTranslate'
+import { useModal } from 'shared/hooks/useModal'
 
 import { Hotel } from 'shared/types/hotel'
 import { TRIP_PLAN_DESCRIPTION_SIZE } from 'shared/constants'
 
 import s from './HotelIntro.module.scss'
-import cn from 'classnames'
-import { useModal } from 'shared/hooks/useModal'
 
 export const HotelIntro: FC<Hotel> = ({
   description,

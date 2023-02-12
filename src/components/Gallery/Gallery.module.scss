@@ -29,12 +29,9 @@
   .galleryModalSlide {
     position: relative;
     padding: 10px;
-    width: 1062px;
-    height: 624px;
 
     .image {
       border-radius: 16px;
-
       user-select: none;
       width: 100%;
       height: auto;
@@ -53,6 +50,7 @@
     right: 0;
     padding: 0;
     user-select: none;
+    border: 1px solid $color-white;
   }
 }
 .galleryWrap {
