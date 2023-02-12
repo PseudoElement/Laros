@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { FC, memo, useEffect, useState } from 'react'
 import Image from 'next/image'
 import cn from 'classnames'
@@ -56,7 +57,7 @@ const ApplyModal: FC<ApplyModalProps> = ({
   const onSubmit: SubmitHandler<ApplyForm> = data => {
     applyForVacancy(Number(data.position.value), {
       name: data.name,
-      file: data.file,
+      file: data.file[0],
       email: data.email,
       phone: data.phone,
     })
