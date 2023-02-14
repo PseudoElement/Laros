@@ -103,6 +103,7 @@ export const HotelIntro: FC<Hotel> = ({
           <ContactForm
             order={{
               ...form,
+              /* @ts-ignore */
               message: `Request for hotel ${lrweb}, located in ${destination_name}, hotel id - ${id}`,
             }}
           />
