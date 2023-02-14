@@ -6,7 +6,10 @@ import { AdvantageCard } from './AdvantageCard'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
 import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
-import { slidesPerViewAbout } from 'shared/helpers/slidesPerView'
+import {
+  slidesPerViewAbout,
+  slidesPerViewHotelImages,
+} from 'shared/helpers/slidesPerView'
 
 import { aboutCards } from 'shared/mocks/aboutCards'
 import { TABLET_SCREEN } from 'shared/constants/screenResolutions'
@@ -50,7 +53,7 @@ export const AboutPage: FC = () => {
       </div>
 
       <SliderGalery
-        slidesPerView={slidesPerViewAbout(width)}
+        slidesPerView={slidesPerViewHotelImages(width)}
         withNavigation={width > TABLET_SCREEN}
       >
         {images.map((item, index) => (

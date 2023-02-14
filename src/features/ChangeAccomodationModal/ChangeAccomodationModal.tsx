@@ -31,7 +31,7 @@ export const ChangeAccomodationModal: FC<ChangeAccomodationModalProps> = ({
     if (newRoom) {
       onSubmit(newRoom)
     } else {
-      alert('This room cant be chosen, sorry')
+      alert('Dieser Raum kann nicht ausgewählt werden, tut mir leid')
     }
     onClose()
   }

@@ -3,9 +3,11 @@ import { Control, Controller } from 'react-hook-form'
 
 import { PencilIcon } from 'components'
 
-import s from './AddressInput.module.scss'
-import { useTranslate } from '../../shared/hooks/useTranslate'
 import { useAppSelector } from 'shared/hooks/redux'
+import { useTranslate } from 'shared/hooks/useTranslate'
+
+import s from './AddressInput.module.scss'
+
 interface AddressInputProps {
   control: Control
 }
@@ -17,22 +19,26 @@ export const AddressInput: FC<AddressInputProps> = ({ control }) => {
   return (
     <div className={s.address}>
       <div className={s.addressTitle}>{t('vouchers.label7')}*</div>
+
       <div className={s.addressInputs}>
         <Controller
           name='address'
           control={control}
+          rules={{ required: true }}
           render={({ field: { onChange, value } }) => (
             <input
               placeholder={t('vouchers.placeholder4')}
               id='street'
               required
               onChange={onChange}
-              value={value || history.street}
+              value={value}
               type='text'
+              defaultValue={history.street}
               className={s.addressStreet}
             />
           )}
         />
+
         <Controller
           name='zip_code'
           control={control}
@@ -42,12 +48,14 @@ export const AddressInput: FC<AddressInputProps> = ({ control }) => {
               id='zip'
               required
               onChange={onChange}
-              value={value || history.zip}
+              value={value}
               type='text'
+              defaultValue={history.zip}
               className={s.addressZip}
             />
           )}
         />
+
         <Controller
           name='city'
           control={control}
@@ -57,16 +65,19 @@ export const AddressInput: FC<AddressInputProps> = ({ control }) => {
               id='region'
               required
               onChange={onChange}
-              value={value || history.region}
+              value={value}
               type='text'
+              defaultValue={history.region}
               className={s.addressRegion}
             />
           )}
         />
       </div>
+
       <span className={s.addressIcon1}>
         <PencilIcon />
       </span>
+
       <span className={s.addressIcon2}>
         <PencilIcon />
       </span>

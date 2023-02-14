@@ -20,12 +20,18 @@ export const voucher = createSlice({
   name: 'voucher',
   initialState,
   reducers: {
-    updateForm: (state: VoucherFormState, action: PayloadAction<VoucherForm>) => {
+    updateForm: (
+      state: VoucherFormState,
+      action: PayloadAction<VoucherForm>
+    ) => {
       state.form = { ...state.form, ...action.payload }
     },
-    updateHistoryForm: (state: VoucherFormState, action: PayloadAction<VoucherForm>) => {
-      state.history = {...state.history, ...action.payload}
-    }
+    updateHistoryForm: (
+      state: VoucherFormState,
+      action: PayloadAction<VoucherForm>
+    ) => {
+      state.history = { ...state.history, ...action.payload }
+    },
   },
 })
 export const { updateForm, updateHistoryForm } = voucher.actions
