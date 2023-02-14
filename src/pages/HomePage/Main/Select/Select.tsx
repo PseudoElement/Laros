@@ -29,7 +29,6 @@ export const SelectBlock: FC<SelectBlockProps> = ({
   const t = useTranslate()
 
   const filtredItems = destinations
-    .filter((item: any) => MAP_REGIONS_IDS.includes(item.id))
     .filter((item: any) =>
       item.name.toLowerCase().includes(searching.toLowerCase())
     )
@@ -101,7 +100,8 @@ export const SelectBlock: FC<SelectBlockProps> = ({
           </div>
         </div>
         <div className={s.link}>
-          <Link href={`/destinations/areas/${selectedDestination}`}>
+          <Link href={MAP_REGIONS_IDS.includes(selectedDestination) ?
+            `/destinations/areas/${selectedDestination}` : `areas/${selectedDestination}`}>
             <button className={s.button}>
               {t('homepage.textFieldButton')} !
             </button>
