@@ -9,6 +9,7 @@ export interface Trip {
   images: string[]
   price: number
   price_chf: number
+  price_per_person_chf: number
   destinations: TripDestination[]
   duration: string
   offer_name: string | null

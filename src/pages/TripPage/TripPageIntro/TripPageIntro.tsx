@@ -19,6 +19,7 @@ export const TripPageIntro: FC<Trip & { onStartTrip: () => void }> = ({
   name,
   tags,
   price,
+  price_per_person_chf,
   route,
   description,
   onStartTrip
@@ -43,7 +44,7 @@ export const TripPageIntro: FC<Trip & { onStartTrip: () => void }> = ({
       <div className={s.left}>
         <div className={s.name}>{name}</div>
         <div className={s.price}>
-          {price} CHF / {t('travelPlannerTripPlan.proPerson')}
+          {price_per_person_chf} CHF / {t('travelPlannerTripPlan.proPerson')}
         </div>
 
         <TruncatedText
