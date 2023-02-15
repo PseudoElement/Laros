@@ -17,10 +17,11 @@ import s from './TripPlan.module.scss'
 
 interface TripPlanProps {
   tripDestination: TripDestination[]
+  images: string[]
   onStartTrip: () => void
 }
 
-export const TripPlan: FC<TripPlanProps> = ({ tripDestination, onStartTrip }) => {
+export const TripPlan: FC<TripPlanProps> = ({ tripDestination, images, onStartTrip }) => {
   const { query, push } = useRouter()
   const { id } = query
   const t = useTranslate()
@@ -73,7 +74,7 @@ export const TripPlan: FC<TripPlanProps> = ({ tripDestination, onStartTrip }) =>
 
             <div className={s.image}>
               {item.images.length ? (
-                <Image src={withDomain(item.images[1])} layout={'fill'} />
+                <Image src={withDomain(images[index])} alt='' layout='fill' />
               ) : null}
             </div>
           </div>

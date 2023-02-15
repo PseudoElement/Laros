@@ -98,7 +98,7 @@ export const TripPage: FC<TripPageProps> = ({ trip }) => {
 
           <TabPanel>
             {trip?.destinations ? (
-              <TripPlan tripDestination={trip.destinations} onStartTrip={() => open()} />
+              <TripPlan images={trip.images.slice(1, trip.images.length - 1)} tripDestination={trip.destinations} onStartTrip={() => open()} />
             ) : null}
           </TabPanel>
 
