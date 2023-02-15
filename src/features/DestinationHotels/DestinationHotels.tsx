@@ -33,7 +33,7 @@ export const DestinationHotels: FC<DestinationHotelsProps> = ({ map }) => {
   const [hotels, setHotels] = useState<Hotel[]>([])
   const [page, setPage] = useState(1)
   const [showMoreButton, setShowMoreButton] = useState<boolean>(
-    newHotels.length === HOTEL_PAGINATION_PER_PAGE - 1
+    newHotels.length === HOTEL_PAGINATION_PER_PAGE
   )
   const t = useTranslate()
 
@@ -52,7 +52,7 @@ export const DestinationHotels: FC<DestinationHotelsProps> = ({ map }) => {
   }, [params])
 
   useEffect(() => {
-    setShowMoreButton(newHotels.length === HOTEL_PAGINATION_PER_PAGE - 1)
+    setShowMoreButton(newHotels.length === HOTEL_PAGINATION_PER_PAGE)
 
     setHotels(prevState => {
       if (params.page === 1) return newHotels
@@ -70,37 +70,37 @@ export const DestinationHotels: FC<DestinationHotelsProps> = ({ map }) => {
   return (
     <div className={s.container}>
       <div className={s.wrapper}>
-      <h3 className={s.title}>{t('hotels.sortTitle')}</h3>
-      <Sorting
-        map={map}
-        setParams={setParams}
-        params={params}
-        setPage={setPage}
-      />
+        <h3 className={s.title}>{t('hotels.sortTitle')}</h3>
+        <Sorting
+          map={map}
+          setParams={setParams}
+          params={params}
+          setPage={setPage}
+        />
 
-      {!isLoading && !hotels.length && (
-        <div className={s.loading}>{t('common.emptyText')}</div>
-      )}
+        {!isLoading && !hotels.length && (
+          <div className={s.loading}>{t('common.emptyText')}</div>
+        )}
 
-      {isLoading && page === 1 ? (
-        <div className={s.loading}>{t('common.loadingText')}</div>
-      ) : (
-        <div className={s.hotels}>
-          {hotels.map(hotel => (
-            <HotelCard key={hotel.id} hotel={hotel} />
-          ))}
-        </div>
-      )}
+        {isLoading && page === 1 ? (
+          <div className={s.loading}>{t('common.loadingText')}</div>
+        ) : (
+          <div className={s.hotels}>
+            {hotels.map(hotel => (
+              <HotelCard key={hotel.id} hotel={hotel} />
+            ))}
+          </div>
+        )}
 
-      {!isLoading && Boolean(hotels.length) && showMoreButton && (
-        <Button
-          variant='secondary'
-          classname={s.button}
-          onClick={() => setPage(prevState => ++prevState)}
-        >
-          {t('common.loadMore')}
-        </Button>
-      )}
+        {!isLoading && Boolean(hotels.length) && showMoreButton && (
+          <Button
+            variant='secondary'
+            classname={s.button}
+            onClick={() => setPage(prevState => ++prevState)}
+          >
+            {t('common.loadMore')}
+          </Button>
+        )}
       </div>
     </div>
   )
