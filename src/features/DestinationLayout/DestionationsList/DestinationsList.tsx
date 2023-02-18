@@ -44,7 +44,7 @@ export const DestionationsList: FC<DestionationsListProps> = ({
 
           return { ...destination, icon: mockDestination?.icon }
         })
-        .filter(destination => destination.name !== 'Saronische inseln')
+        // .filter(destination => destination.name !== 'Saronische inseln')
     : destinations.map(destination => {
         const mockDestination = mockRegions.find(
           region => region.name === destination.name

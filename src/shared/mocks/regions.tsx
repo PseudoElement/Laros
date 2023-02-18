@@ -8,6 +8,7 @@ import PeloponnesIcon from '/public/assets/images/destinations/Regions/Peloponne
 import SporadenIcon from '/public/assets/images/destinations/Regions/Sporaden.svg'
 import NordagaischeIcon from '/public/assets/images/destinations/Regions/Nordagaische.svg'
 import MitteigriechenlandIcon from '/public/assets/images/destinations/Regions/Mitteigriechenland.svg'
+import SaronischeIcon from '/public/assets/images/destinations/Regions/Saronische.svg'
 
 import CyrpusIcon from '/public/assets/images/destinations/Cyrpus.svg'
 import GreeceIcon from '/public/assets/images/destinations/Greece.svg'
@@ -15,10 +16,11 @@ import GreeceIcon from '/public/assets/images/destinations/Greece.svg'
 import { Region } from 'shared/types/region'
 
 import Greece from 'features/DestinationMaps/Greece/Greece'
-import Cyrpus from 'features/DestinationMaps/Cyrpus/Cyrpus'
+import Cyrpus from 'features/DestinationMaps/Cyrpus/Cyrpus' 
 
 import Euboa from 'features/DestinationMaps/Euboa/Euboa'
 import Sporaden from 'features/DestinationMaps/Sporaden/Sporaden'
+import Saronische from 'features/DestinationMaps/Saronische/Saronische'
 import Macedonia from 'features/DestinationMaps/Macedonia/Macedonia'
 import Ionische from 'features/DestinationMaps/Ionische/Ionische'
 import Peloponnes from 'features/DestinationMaps/Peloponnes/Peloponnes'
@@ -60,8 +62,8 @@ export const mockRegions: Region[] = [
     name: 'Sporaden inseln',
   },
   {
-    icon: IonischeIcon,
-    map: location => <Ionische location={location!} />,
+    icon: SaronischeIcon,
+    map: location => <Saronische location={location!} />,
     name: 'Saronische inseln',
   },
   {

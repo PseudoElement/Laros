@@ -22,10 +22,8 @@ export const DestinationPage: FC = () => {
   const { destinations } = useAppSelector(state => state.destinations)
   const [map, setMap] = useState<Map | null>(null)
   const t = useTranslate()
-
+  
   const currentDestinationId = Number(query.id)
-
-  console.log(currentDestinationId)
 
   const currentDestinationDescription =
     destinations.filter(item => item.id === currentDestinationId)[0]
@@ -49,8 +47,7 @@ export const DestinationPage: FC = () => {
 
     map.currentMap && setMap(map)
   }, [currentDestinationId, destinations, route])
-  console.log(map);
-  
+
   return (
     <>
       <div className={s.layoutWrapper}>

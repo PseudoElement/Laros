@@ -4,8 +4,7 @@
   position: relative;
   width: 1040px;
   height: 720px;
-  background: url('../../../../public/assets/images/destinations/Individual maps/Insel Kreta.png')
-    no-repeat center;
+  background: url('../../../../public/assets/images/destinations/Individual maps/Insel Kreta.png') no-repeat center;
   font-weight: $fw-semibold;
   margin-right: 300px;
 }
@@ -32,6 +31,7 @@
     margin-right: 200px;
   }
 }
+
 @media screen and (max-width: 425px) {
   .container {
     transform: scale(0.5);
@@ -39,8 +39,10 @@
     margin-top: -250px;
   }
 }
+
 .agiamarina {
   display: block;
+
   &::after {
     content: '';
     display: inline-block;
@@ -63,6 +65,7 @@
 
 .kalamaki {
   display: block;
+
   &::after {
     content: '';
     display: inline-block;
@@ -85,6 +88,7 @@
 
 .katozakros {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -107,6 +111,7 @@
 
 .falasarna {
   display: block;
+
   &::after {
     content: '';
     display: inline-block;
@@ -129,6 +134,7 @@
 
 .paleochora {
   display: block;
+
   &::after {
     content: '';
     display: inline-block;
@@ -151,6 +157,7 @@
 
 .georgioupolis {
   display: block;
+
   &::after {
     content: '';
     display: inline-block;
@@ -173,6 +180,7 @@
 
 .katostalos {
   display: block;
+
   &::after {
     content: '';
     display: block;
@@ -193,6 +201,7 @@
 
 .apokoronas {
   display: block;
+
   &::after {
     content: '';
     display: block;
@@ -213,6 +222,7 @@
 
 .sfakaki {
   display: block;
+
   &::after {
     content: '';
     display: block;
@@ -233,6 +243,7 @@
 
 .heraklion {
   display: block;
+
   &::after {
     content: '';
     display: block;
@@ -253,6 +264,7 @@
 
 .archanes {
   display: block;
+
   &::after {
     content: '';
     display: block;
@@ -273,6 +285,7 @@
 
 .agiagalini {
   display: block;
+
   &::after {
     content: '';
     display: block;
@@ -293,6 +306,7 @@
 
 .rounda {
   display: block;
+
   &::after {
     content: '';
     display: block;
@@ -313,6 +327,7 @@
 
 .makrigialosanalipsi {
   display: block;
+
   &::after {
     content: '';
     display: block;
@@ -333,6 +348,7 @@
 
 .kouremenos {
   display: block;
+
   &::after {
     content: '';
     display: block;
@@ -353,6 +369,7 @@
 
 .frangokastello {
   display: block;
+
   &::before {
     content: '';
     display: block;
@@ -374,6 +391,7 @@
 
 .rodakino {
   display: block;
+
   &::before {
     content: '';
     display: block;
@@ -395,6 +413,7 @@
 
 .zaros {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -417,6 +436,7 @@
 
 .chania {
   display: block;
+
   &::before {
     content: '';
     display: block;
@@ -437,6 +457,7 @@
 
 .almyrida {
   display: block;
+
   &::before {
     content: '';
     display: block;
@@ -457,6 +478,7 @@
 
 .kapetaniana {
   display: block;
+
   &::before {
     content: '';
     display: block;
@@ -477,6 +499,7 @@
 
 .anatoli {
   display: block;
+
   &::before {
     content: '';
     display: block;
@@ -484,12 +507,15 @@
     height: 4px;
     background: $color-white-blue;
     border-radius: 50%;
+    position: absolute;
+    top: -9px;
+    right: 4px;
   }
 }
 
 .anatoliLocation {
   position: absolute;
-  top: 77.5%;
+  top: 78%;
   right: 20%;
   border-radius: 24px;
   padding: 0 4px;
@@ -497,6 +523,7 @@
 
 .ferma {
   display: block;
+
   &::before {
     content: '';
     display: block;
@@ -517,6 +544,7 @@
 
 .rethymnon {
   display: block;
+
   &::after {
     content: '';
     margin-left: auto;
@@ -538,6 +566,7 @@
 
 .ierapetra {
   display: block;
+
   &::after {
     content: '';
     margin-left: auto;
@@ -546,13 +575,15 @@
     height: 4px;
     background: $color-white-blue;
     border-radius: 50%;
+    position: absolute;
+    bottom: -9px;
   }
 }
 
 .ierapetraLocation {
   position: absolute;
-  top: 74%;
-  right: 25%;
+  top: 73%;
+  right: 19%;
 
   border-radius: 24px;
   padding: 0 4px;
@@ -560,6 +591,7 @@
 
 .sitia {
   display: block;
+
   &::after {
     content: '';
     margin-left: auto;
@@ -581,6 +613,7 @@
 
 .panormos {
   display: block;
+
   &::before {
     content: '';
     margin: 0 auto;
@@ -602,6 +635,7 @@
 
 .plakias {
   display: block;
+
   &::before {
     content: '';
     margin: 0 auto;

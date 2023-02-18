@@ -4,8 +4,7 @@
   position: relative;
   width: 1040px;
   height: 680px;
-  background: url('../../../../public/assets/images/destinations/Macedonia/Macedonia.png')
-    no-repeat center;
+  background: url('../../../../public/assets/images/destinations/Macedonia/Macedonia.png') no-repeat center;
   font-weight: $fw-semibold;
 }
 
@@ -17,6 +16,7 @@
 
 .title {
   display: none;
+  font-size: 12px;
 }
 
 @media screen and (max-width: 1350px) {
@@ -30,6 +30,7 @@
     transform: scale(0.7);
   }
 }
+
 @media screen and (max-width: 425px) {
   .container {
     transform: scale(0.3);
@@ -40,11 +41,22 @@
 .lake {
   position: absolute;
   background-image: url('../../../../public/assets/images/destinations/lake.svg');
-  top: 33%;
-  right: 55%;
+  top: 35%;
+  right: 53%;
   background-size: 100% 100%;
-  height: 30px;
-  width: 80px;
+  height: 12px;
+  width: 30px;
+
+  >div {
+    width: 100px;
+    position: absolute;
+    top: -25px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #F5BC2E;
+    text-shadow: 0px 0px 10px #FFffff;
+  }
 }
 
 .mountain {
@@ -53,18 +65,65 @@
   right: 82%;
   background-image: url('../../../../public/assets/images/destinations/mountain.svg');
   background-size: 100% 100%;
-  height: 32px;
-  width: 32px;
+  height: 24px;
+  width: 24px;
+}
+
+.olymposMountain {
+  position: absolute;
+  top: 52%;
+  right: 66%;
+  background-image: url('../../../../public/assets/images/destinations/mountain.svg');
+  background-size: 100% 100%;
+  height: 24px;
+  width: 24px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #F5BC2E;
+
+  >span {
+    position: absolute;
+    top: 25px;
+    left: -19px;
+  }
+}
+
+.nestosMountain {
+  position: absolute;
+  top: 19%;
+  right: 40%;
+  background-image: url('../../../../public/assets/images/destinations/mountain.svg');
+  background-size: 100% 100%;
+  height: 24px;
+  width: 24px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #F5BC2E;
+
+  >span {
+    position: absolute;
+    top: 25px;
+    left: -45px;
+    width: 200px;
+  }
 }
 
 .prespes {
   display: block;
+  font-size: 16px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #F5BC2E;
+
   &::after {
     content: '';
     display: block;
     margin: 2px auto;
-    background: url('../../../../public/assets/images/destinations/lake.svg')
-      no-repeat center;
+    background: url('../../../../public/assets/images/destinations/lake.svg') no-repeat center;
     height: 16px;
   }
 }
@@ -79,12 +138,12 @@
 
 .nestosschucht {
   display: block;
+
   &::after {
     content: '';
     display: block;
     margin: 2px auto;
-    background: url('../../../../public/assets/images/destinations/mountain.svg')
-      no-repeat center;
+    background: url('../../../../public/assets/images/destinations/mountain.svg') no-repeat center;
     height: 16px;
   }
 }
@@ -99,6 +158,7 @@
 
 .chalkidiki {
   display: block;
+
   &::after {
     content: '';
     display: block;
@@ -120,6 +180,7 @@
 
 .alexandroupolis {
   display: block;
+
   &::before {
     content: '';
     display: block;
@@ -141,6 +202,7 @@
 
 .vergina {
   display: block;
+
   &::after {
     content: '';
     display: inline-block;
@@ -163,6 +225,7 @@
 
 .sirderochori {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -185,6 +248,7 @@
 
 .kastoria {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -207,6 +271,7 @@
 
 .sirerochori {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -229,6 +294,7 @@
 
 .nimfeo {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -251,6 +317,7 @@
 
 .edessa {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -273,6 +340,7 @@
 
 .florina {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -295,6 +363,7 @@
 
 .litochoro {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -317,6 +386,7 @@
 
 .loutraki {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -339,6 +409,7 @@
 
 .litochoro {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -361,6 +432,7 @@
 
 .name {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -383,6 +455,7 @@
 
 .stavroupolis {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -405,6 +478,7 @@
 
 .thessaloniki {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -427,6 +501,7 @@
 
 .chalkidki {
   display: block;
+
   &::after {
     content: '';
     display: block;
@@ -448,6 +523,7 @@
 
 .stavroupoli {
   display: block;
+
   &::before {
     content: '';
     display: block;
@@ -469,12 +545,18 @@
 
 .pindos {
   display: block;
+  font-size: 16px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #F5BC2E;
+
   &::before {
     content: '';
     display: block;
     margin: 0 auto;
-    background: url('../../../../public/assets/images/destinations/mountain.svg')
-      no-repeat center;
+    background: url('../../../../public/assets/images/destinations/mountain.svg') no-repeat center;
     height: 24px;
   }
 }
@@ -489,12 +571,12 @@
 
 .olympos {
   display: block;
+
   &::before {
     content: '';
     display: block;
     margin: 0 auto;
-    background: url('../../../../public/assets/images/destinations/mountain.svg')
-      no-repeat center;
+    background: url('../../../../public/assets/images/destinations/mountain.svg') no-repeat center;
     height: 24px;
   }
 }
@@ -509,6 +591,7 @@
 
 .afytos {
   display: block;
+
   &::before {
     content: '';
     display: block;
@@ -530,6 +613,7 @@
 
 .bergathos {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -552,6 +636,7 @@
 
 .kerkini {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -574,6 +659,7 @@
 
 .kavala {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -596,6 +682,7 @@
 
 .komotini {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -618,6 +705,7 @@
 
 .maronia {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -640,6 +728,7 @@
 
 .xanthi {
   display: block;
+
   &::before {
     content: '';
     display: block;
@@ -661,6 +750,7 @@
 
 .dadia {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -683,6 +773,7 @@
 
 .alexandropolis {
   display: block;
+
   &::before {
     content: '';
     display: block;

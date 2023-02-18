@@ -11,6 +11,7 @@ interface MacedoniaProps {
 
 const Macedonia: FC<MacedoniaProps> = ({ location }) => {
   const [isShownCard, setIsShownCard] = useState<number | null>(null)
+  console.log(location)
 
   return (
     <div className={s.container}>
@@ -23,7 +24,15 @@ const Macedonia: FC<MacedoniaProps> = ({ location }) => {
         />
       ))}
       <div className={s.mountain} />
-      <div className={s.lake} />
+      <div className={s.olymposMountain}>
+        <span>Olympos</span>
+      </div>
+      <div className={s.nestosMountain}>
+        <span>Nestos Schlucht</span>
+      </div>
+      <div className={s.lake}>
+        <div>Kerliki-see</div>
+      </div>
     </div>
   )
 }

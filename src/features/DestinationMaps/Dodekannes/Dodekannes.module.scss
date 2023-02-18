@@ -4,8 +4,7 @@
   position: relative;
   width: 1280px;
   height: 720px;
-  background: url('../../../../public/assets/images/destinations/Individual maps/Dodekannes Inseln.png')
-    no-repeat center;
+  background: url('../../../../public/assets/images/destinations/Individual maps/Dodekannes Inseln.png') no-repeat center;
   font-weight: $fw-semibold;
   margin-right: 300px;
   transform: scale(0.9);
@@ -48,6 +47,7 @@
 
 .arki {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -71,6 +71,7 @@
 
 .lipsi {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -94,6 +95,7 @@
 
 .leros {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -117,6 +119,7 @@
 
 .kalymnos {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -140,6 +143,7 @@
 
 .kos {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -163,6 +167,7 @@
 
 .tilos {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -186,6 +191,7 @@
 
 .symi {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -209,6 +215,7 @@
 
 .chalki {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -232,6 +239,7 @@
 
 .rhodos {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -255,6 +263,7 @@
 
 .karpathos {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -278,6 +287,7 @@
 
 .kasos {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -301,6 +311,7 @@
 
 .agathonissi {
   display: block;
+
   &::after {
     content: '';
     display: block;
@@ -322,6 +333,7 @@
 
 .nissiros {
   display: block;
+
   &::after {
     content: '';
     display: block;
@@ -343,6 +355,7 @@
 
 .patmos {
   display: block;
+
   &::before {
     content: '';
     margin-left: auto;
@@ -356,15 +369,15 @@
 
 .patmosLocation {
   position: absolute;
-  top: 29%;
-  right: 51%;
-
+  top: 18.8%;
+  right: 49.8%;
   border-radius: 24px;
   padding: 4px;
 }
 
 .kastelorizo {
   display: block;
+
   &::before {
     content: '';
     margin-left: auto;
@@ -387,6 +400,7 @@
 
 .astypalea {
   display: block;
+
   &::before {
     content: '';
     display: block;

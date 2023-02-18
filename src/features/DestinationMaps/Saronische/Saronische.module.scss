@@ -4,9 +4,7 @@
   position: relative;
   width: 1040px;
   height: 720px;
-  overflow: hidden;
-  background: url('../../../../public/assets/images/destinations/Individual maps/Ionische Inseln.png'),
-    no-repeat center;
+  background: url('../../../../public/assets/images/destinations/Individual maps/Saronische.png') no-repeat center;
   font-weight: $fw-semibold;
 }
 
@@ -31,17 +29,21 @@
     transform: scale(0.7);
   }
 }
+
 @media screen and (max-width: 425px) {
   .container {
     transform: scale(0.3);
     height: 400px;
   }
 }
-.skiathos {
+
+.poros {
   display: block;
+
   &::after {
     content: '';
     display: block;
+    margin: 2px auto;
     width: 4px;
     height: 4px;
     background: $color-white-blue;
@@ -49,16 +51,17 @@
   }
 }
 
-.skiathosLocation {
+.porosLocation {
   position: absolute;
-  top: 38%;
-  right: 36%;
+  top: 46%;
+  right: 40%;
   border-radius: 24px;
-  padding: 4px;
+  padding: 0 4px;
 }
 
-.alonissos {
+.hydra {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -71,36 +74,17 @@
   }
 }
 
-.alonissosLocation {
+.hydraLocation {
   position: absolute;
-  top: 39%;
-  right: 24%;
+  top: 56%;
+    right: 37%;
   border-radius: 24px;
   padding: 0 4px;
 }
 
-.skopelos {
+.spetses {
   display: block;
-  &::before {
-    content: '';
-    display: block;
-    width: 4px;
-    height: 4px;
-    background: $color-white-blue;
-    border-radius: 50%;
-  }
-}
 
-.skopelosLocation {
-  position: absolute;
-  top: 44%;
-  right: 31%;
-  border-radius: 24px;
-  padding: 4px;
-}
-
-.skyros {
-  display: block;
   &::before {
     content: '';
     display: inline-block;
@@ -113,33 +97,22 @@
   }
 }
 
-.skyrosLocation {
+.spetsesLocation {
   position: absolute;
-  top: 51%;
-  right: 15%;
+  top: 59.5%;
+  right: 44.5%;
   border-radius: 24px;
   padding: 0 4px;
 }
 
-.regionCardskiathos {
-  top: 20%;
+
+
+.regionCardportaria {
+  top: 100%;
+  left: 100%;
 }
 
-.regionCardalonissos {
-  top: 20%;
-}
-
-.regionCardskyros {
-  bottom: 100%;
-  left: -250px;
-}
-
-.regionCardalonissos {
-  bottom: 100%;
-  left: -250px;
-}
-
-@media (max-width: 1500px) {
-  .container {
-  }
+.regionCardzagora {
+  top: 100%;
+  left: 100%;
 }

@@ -8,6 +8,7 @@ import SubGr7 from '/public/assets/images/destinations/Greece/9.svg'
 import SubGr8 from '/public/assets/images/destinations/Greece/6.svg'
 import SubGr9 from '/public/assets/images/destinations/Greece/4.svg'
 import SubGr10 from '/public/assets/images/destinations/Greece/5.svg'
+import SubGr11 from '/public/assets/images/destinations/Greece/11.svg'
 
 export const mockMaps = {
   Greece: [
@@ -50,6 +51,10 @@ export const mockMaps = {
     {
       cardTitle: 'Dodekanes inseln',
       map: SubGr10,
+    },
+    {
+      cardTitle: 'Saronische inseln',
+      map: SubGr11,
     },
   ],
 }
