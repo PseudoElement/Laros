@@ -1,0 +1,114 @@
+@use 'styles/style.scss' as *;
+
+.fileLoad {
+  border-radius: 8px;
+  border: 1px solid $color-modal-header;
+  width: 280px;
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.scrap {
+  width: 56px;
+  height: 38px;
+  background-color: $color-modal-header;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px 0 0 8px;
+}
+
+.fileName {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+
+  font-size: 12px;
+  font-weight: $fw-regular;
+  line-height: 14px;
+  text-align: left;
+  color: $color-dark-blue;
+}
+.changeFile {
+  font-size: 10px;
+  font-weight: $fw-bold;
+  line-height: 12px;
+  text-align: left;
+  color: $color-primary;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.privacyPolicyBlock {
+  display: flex;
+  margin-top: 25px;
+}
+.privacyPolicy {
+  width: 350px;
+  font-size: 10px;
+  line-height: 12px;
+  color: $color-range-bg;
+  font-weight: $fw-light;
+
+  a {
+    color: $color-primary-black;
+  }
+
+  @media screen and (max-width: 850px) {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+}
+
+.label {
+  position: relative;
+  display: inline-block;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border: 1.4px dashed $color-primary;
+
+  .title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    outline: none;
+    max-width: 200px;
+    text-decoration: none;
+    font-size: 12px;
+    vertical-align: middle;
+    text-align: center;
+    border-radius: 4px;
+    line-height: 22px;
+    height: 40px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: none;
+    margin: 0;
+    transition: background-color 0.2s;
+  }
+
+  .fileInput {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    display: block;
+    width: 0;
+    height: 0;
+  }
+
+  .text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+    margin-left: 5px;
+  }
+}
+.fileTypes {
+  color: $color-modal-bg;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+}

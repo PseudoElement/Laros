@@ -10,7 +10,10 @@ import {
 
 import { getSelectedBrochures } from 'shared/helpers/brochures'
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
-import { toggleBrochure } from 'store/slices/brochures/brochures'
+import {
+  brochuresIsDownloadFalse,
+  toggleBrochure,
+} from 'store/slices/brochures/brochures'
 import { getBrochuresThunk } from 'store/slices/brochures/thunk'
 import { downloadFile } from 'shared/helpers/downloadFile'
 
@@ -19,6 +22,9 @@ import { useTranslate } from 'shared/hooks/useTranslate'
 import s from './BrochuresPage.module.scss'
 
 export const BrochuresPage: FC = () => {
+  const t = useTranslate()
+  const dispatch = useAppDispatch()
+
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState<boolean>(false)
   const [isSendModalOpen, setIsSendModalOpen] = useState<boolean>(false)
   const [thankYou, setThankYou] = useState(false)
@@ -28,8 +34,6 @@ export const BrochuresPage: FC = () => {
 
   const totalSelected = getSelectedBrochures(brochures)
   const totalCounter = totalSelected.length
-  const dispatch = useAppDispatch()
-  const t = useTranslate()
 
   const showThankYou = () => {
     setThankYou(prevState => !prevState)
@@ -37,17 +41,24 @@ export const BrochuresPage: FC = () => {
 
   useEffect(() => {
     dispatch(getBrochuresThunk())
+
+    return () => {
+      dispatch(brochuresIsDownloadFalse())
+    }
   }, [dispatch])
 
-  const onBrochureDownload = (id: number, file: string) => {
+  const onBrochureDownload = (id: number) => {
     if (isDownloadFormSent) {
-      totalSelected.forEach(brochure => {
-        downloadFile(brochure.file)
-      })
+      brochures
+        .filter(item => item.isSelected || item.id === id)
+        .forEach(brochure => {
+          downloadFile(brochure.file)
+        })
+      setIsDownloadModalOpen(false)
     } else {
-      dispatch(toggleBrochure({ id, selected: true }))
       setIsDownloadModalOpen(true)
     }
+    dispatch(toggleBrochure({ id, selected: true }))
   }
 
   return (
@@ -76,7 +87,7 @@ export const BrochuresPage: FC = () => {
           <div className={s.brochuresList}>
             {brochures.map(brochure => (
               <BrochureCard
-                onDownload={(id, file) => onBrochureDownload(id, file)}
+                onDownload={onBrochureDownload}
                 {...brochure}
                 onSelect={id => dispatch(toggleBrochure({ id }))}
                 key={brochure.id}

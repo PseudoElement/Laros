@@ -256,7 +256,6 @@ export const Step1: FC<Step1Props> = ({ // TODO
       <Modal
         {...locationModal}
         title={t('changingLocation.windowTitle')}
-        classname={s.modal}
       >
         <ChangeLocationModal
           {...locationModal}

@@ -5,7 +5,7 @@ import {
   VacancyRequest,
   VacancyFilterParams,
 } from 'shared/types/vacancy'
-import { api } from '..'
+import { api, URL } from '..'
 import { endpoints } from '../endpoints'
 
 export const getVacancies = (
@@ -18,5 +18,9 @@ export const getCurrentVacancy = (id: number): AxiosPromise<Vacancy> => {
 }
 
 export const applyForVacancy = (id: number, params: VacancyRequest) => {
-  return api.post(endpoints.vacancy.apply(id), params)
+  fetch(URL + `vacancy/${id}/apply/`, {
+    method: 'POST',
+    // @ts-ignore
+    body: params,
+  })
 }

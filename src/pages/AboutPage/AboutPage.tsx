@@ -6,10 +6,7 @@ import { AdvantageCard } from './AdvantageCard'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
 import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
-import {
-  slidesPerViewAbout,
-  slidesPerViewHotelImages,
-} from 'shared/helpers/slidesPerView'
+import { slidesPerViewHotelImages } from 'shared/helpers/slidesPerView'
 
 import { aboutCards } from 'shared/mocks/aboutCards'
 import { TABLET_SCREEN } from 'shared/constants/screenResolutions'
@@ -62,7 +59,7 @@ export const AboutPage: FC = () => {
             key={index}
             onClick={() => handleOpen(index)}
           >
-            <Image src={item} layout={'fill'} alt='Image' />
+            <Image src={item} layout={'fill'} alt='Image' priority />
           </div>
         ))}
       </SliderGalery>

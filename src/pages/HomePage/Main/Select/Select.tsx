@@ -28,11 +28,9 @@ export const SelectBlock: FC<SelectBlockProps> = ({
   const [searching, setSearching] = useState<string>('')
   const t = useTranslate()
 
-  const filtredItems = destinations
-    .filter((item: any) =>
-      item.name.toLowerCase().includes(searching.toLowerCase())
-    )
-  console.log(filtredItems)
+  const filtredItems = destinations.filter((item: any) =>
+    item.name.toLowerCase().includes(searching.toLowerCase())
+  )
 
   const onClickItem = (id: number) => {
     setSelectedDestination(id)
@@ -100,8 +98,13 @@ export const SelectBlock: FC<SelectBlockProps> = ({
           </div>
         </div>
         <div className={s.link}>
-          <Link href={MAP_REGIONS_IDS.includes(selectedDestination) ?
-            `/destinations/areas/${selectedDestination}` : `areas/${selectedDestination}`}>
+          <Link
+            href={
+              MAP_REGIONS_IDS.includes(selectedDestination)
+                ? `/destinations/areas/${selectedDestination}`
+                : `areas/${selectedDestination}`
+            }
+          >
             <button className={s.button}>
               {t('homepage.textFieldButton')} !
             </button>

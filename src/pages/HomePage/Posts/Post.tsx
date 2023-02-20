@@ -31,6 +31,7 @@ export const PostBlock: FC<PostBlockProps> = ({ posts }) => {
                 width={652}
                 height={384}
                 src={post.image}
+                priority
               />
             </div>
 
