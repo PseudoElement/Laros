@@ -62,6 +62,7 @@ export const TripCard: FC<TripCardProps> = ({
             src={withDomain(images[0])}
             layout={'fill'}
             alt='trip card image'
+            priority
           />
         ) : null}
 

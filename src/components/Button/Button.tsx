@@ -9,6 +9,7 @@ interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'outline'
   classname?: string
   onClick?: () => void
+  disabled?: boolean
 }
 
 export const Button: FC<ButtonProps> = ({
@@ -17,6 +18,7 @@ export const Button: FC<ButtonProps> = ({
   variant = 'primary',
   classname,
   onClick,
+  disabled,
 }) => {
   const buttonClass = cn(s.button, s[variant], classname)
   const handleButton = (e: MouseEvent<HTMLButtonElement>) => {
@@ -24,7 +26,12 @@ export const Button: FC<ButtonProps> = ({
     onClick?.()
   }
   return (
-    <button className={buttonClass} type={type} onClick={e => handleButton(e)}>
+    <button
+      className={buttonClass}
+      type={type}
+      onClick={e => handleButton(e)}
+      disabled={disabled}
+    >
       {children}
     </button>
   )

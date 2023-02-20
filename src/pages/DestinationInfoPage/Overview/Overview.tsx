@@ -8,8 +8,9 @@ import { withDomain } from 'shared/helpers/withDomain'
 import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
 import { slidesPerViewHotelImages } from 'shared/helpers/slidesPerView'
 
+import { TABLET_SCREEN } from 'shared/constants/screenResolutions'
+
 import s from './Overview.module.scss'
-import { TABLET_SCREEN } from '../../../shared/constants/screenResolutions'
 
 interface Overview {
   images: string[] | StaticImageData[] | HTMLImageElement[]
@@ -43,7 +44,12 @@ export const Overview: FC<Overview> = ({ images, overview }) => {
                 className={s.image}
                 onClick={() => handleOpen(index)}
               >
-                <Image layout={'fill'} src={withDomain(image)} alt='' />
+                <Image
+                  layout={'fill'}
+                  src={withDomain(image)}
+                  alt=''
+                  priority
+                />
               </div>
             ))}
           </SliderGalery>

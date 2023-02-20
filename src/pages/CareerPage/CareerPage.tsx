@@ -63,6 +63,7 @@ export const CareerPage: FC = () => {
         position={currentPosition}
         isOpen={isOpen}
         onClose={onClose}
+        className={s.modal}
       />
     </div>
   )

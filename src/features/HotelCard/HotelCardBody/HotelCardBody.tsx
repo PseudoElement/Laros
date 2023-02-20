@@ -50,6 +50,7 @@ export const HotelCardBody: FC<Hotel> = ({
             src={withDomain(images[0])}
             layout={'fill'}
             alt='Hotel image'
+            priority
           />
         ) : null}
       </div>

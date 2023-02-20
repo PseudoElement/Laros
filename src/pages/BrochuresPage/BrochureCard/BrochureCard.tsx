@@ -5,9 +5,9 @@ import cn from 'classnames'
 import { DownloadIcon } from 'components'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
+import { withDomain } from 'shared/helpers/withDomain'
 
 import s from './BrochureCard.module.scss'
-import { withDomain } from '../../../shared/helpers/withDomain'
 
 interface BrochureCardProps {
   readonly id: number
@@ -17,7 +17,7 @@ interface BrochureCardProps {
   file: string // TODO check
   isSelected?: boolean
   onSelect: (id: number) => void
-  onDownload: (id: number, file: string) => void
+  onDownload: (id: number) => void
 }
 
 export const BrochureCard: FC<BrochureCardProps> = ({
@@ -49,11 +49,7 @@ export const BrochureCard: FC<BrochureCardProps> = ({
         <div className={s.topic}>{t('brochures.brochuresLabel')}</div>
         <div className={s.name}>{name}</div>
 
-        <button
-          onClick={() => onDownload(id, file)}
-          className={s.icon}
-          disabled={!isSelected}
-        >
+        <button onClick={() => onDownload(id)} className={s.icon}>
           <DownloadIcon />
         </button>
       </div>

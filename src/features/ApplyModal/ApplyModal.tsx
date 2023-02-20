@@ -1,15 +1,14 @@
 //@ts-nocheck
 import { FC, memo, useEffect, useState } from 'react'
-import Image from 'next/image'
 import cn from 'classnames'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 
 import { Button, Input, Modal, Select } from 'components'
 import { ThankYouPage } from 'features'
+import { Upload } from './Upload/Upload'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
 
-import upload from '/public/assets/images/upload.svg?url'
 import { Vacancy } from 'shared/types/vacancy'
 import { Option } from 'shared/types'
 import { applyForVacancy } from 'shared/api/routes/vacancy'
@@ -31,6 +30,7 @@ interface ApplyForm {
   phone: string
   email: string
   file: File
+  checkbox: boolean
 }
 
 const ApplyModal: FC<ApplyModalProps> = ({
@@ -41,26 +41,31 @@ const ApplyModal: FC<ApplyModalProps> = ({
   className,
   onClose,
 }) => {
+  const t = useTranslate()
+  const [positions, setPositions] = useState<Option[]>([])
+  const [file, setFile] = useState<any>()
+  const [thankYou, setThankYou] = useState(false)
+
   const {
     handleSubmit,
     control,
     reset,
-    register,
-    getValues,
     setValue,
     formState: { errors },
-  } = useForm<ApplyForm>()
-  const [positions, setPositions] = useState<Option[]>([])
-  const [thankYou, setThankYou] = useState(false)
-  const t = useTranslate()
+  } = useForm<ApplyForm>({
+    defaultValues: {
+      checkbox: false,
+    },
+  })
 
   const onSubmit: SubmitHandler<ApplyForm> = data => {
-    applyForVacancy(Number(data.position.value), {
-      name: data.name,
-      file: data.file[0],
-      email: data.email,
-      phone: data.phone,
-    })
+    const formData = new FormData()
+    formData.append('name', data.name)
+    formData.append('email', data.email)
+    formData.append('phone', data.phone)
+    formData.append('file', file)
+
+    applyForVacancy(Number(data.position.value), formData)
 
     reset()
     setThankYou(true)
@@ -105,11 +110,28 @@ const ApplyModal: FC<ApplyModalProps> = ({
             )}
           />
 
-          <div className={s.contacts}>
-            <h2 className={s.contactTitle}>{t('aboutModal.info')}</h2>
+          <h2 className={s.contactTitle}>{t('aboutModal.info')}</h2>
+          <Controller
+            name='name'
+            defaultValue=''
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <Input
+                shorten
+                rules={{ required: true }}
+                id='name'
+                classname={s.input}
+                label={`${t('forms.inputLabel5')}*`}
+                placeholder={t('forms.inputLabel5')}
+                {...field}
+              />
+            )}
+          />
+
+          <div className={s.flex}>
             <Controller
-              name='name'
-              defaultValue=''
+              name='email'
               control={control}
               rules={{ required: true }}
               render={({ field }) => (
@@ -117,85 +139,61 @@ const ApplyModal: FC<ApplyModalProps> = ({
                   shorten
                   required
                   id='name'
-                  classname={cn(s.input, errors.name && s.error)}
-                  label={t('forms.inputLabel5')}
+                  withCounter
+                  type='email'
+                  placeholder={t('forms.email3')}
+                  classname={s.input}
+                  label={`${t('forms.inputLabel1')}*`}
                   {...field}
                 />
               )}
             />
-            <div className={s.flex}>
-              <Controller
-                name='email'
-                defaultValue=''
-                control={control}
-                rules={{ required: true }}
-                render={({ field }) => (
+
+            <Controller
+              name='phone'
+              defaultValue=''
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <div className={s.phoneInputWrap}>
                   <Input
-                    shorten
+                    id='name'
                     required
-                    id='name'
-                    withCounter
-                    type='email'
-                    classname={cn(s.input, errors.email && s.error)}
-                    label={t('forms.inputLabel1')}
-                    {...field}
-                  />
-                )}
-              />
-              <Controller
-                name='phone'
-                defaultValue=''
-                control={control}
-                render={({ field }) => (
-                  <Input
+                    onChange={onChange}
+                    value={value}
                     shorten
-                    id='name'
-                    classname={s.input}
                     type='phone'
                     label={t('forms.inputLabel6')}
-                    {...field}
+                    classname={cn(s.input, s.phoneInput)}
                   />
-                )}
-              />
-            </div>
+                  {!value && (
+                    <span className={s.phonePlaceholder}>
+                      <span>+41</span> 123 - 45 - 67
+                    </span>
+                  )}
+                </div>
+              )}
+            />
           </div>
 
           <div className={s.wrapperSending}>
-            <div className={s.wrapperCv}>
-              <p className={s.cv}>{t('aboutModal.cv')}</p>
-              <label className={s.label}>
-                <input
-                  accept='.doc, .docx, .pdf'
-                  type='file'
-                  className={s.fileInput}
-                  {...register('file')}
-                />
+            <p className={s.cv}>{t('aboutModal.cv')}</p>
 
-                <span className={s.title}>
-                  <Image alt='uploadIcon' src={upload} width={16} height={16} />
-                  <span className={s.text}>
-                    {getValues().phone
-                      ? getValues().phone
-                      : t('aboutModal.upload')}
-                  </span>
-                </span>
-              </label>
+            <div className={s.uploadWrap}>
+              <Upload file={file} setFile={setFile} control={control} />
 
-              <p className={s.fileTypes}>DOC, DOCX, PDF (2MB)</p>
-            </div>
+              <div className={s.buttons}>
+                <Button variant='outline' onClick={onClose}>
+                  {t('aboutModal.cancel')}
+                </Button>
 
-            <div className={s.buttons}>
-              <Button variant='outline' onClick={onClose}>
-                {t('aboutModal.cancel')}
-              </Button>
-
-              <Button
-                onClick={handleSubmit(onSubmit)}
-                variant='primary'
-                type='submit'
-              >
-                {t('aboutModal.submit')}
-              </Button>
+                <Button
+                  onClick={handleSubmit(onSubmit)}
+                  variant='primary'
+                  type='submit'
+                >
+                  {t('aboutModal.submit')}
+                </Button>
+              </div>
             </div>
           </div>
         </div>

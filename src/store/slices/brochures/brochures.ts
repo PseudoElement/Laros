@@ -27,6 +27,10 @@ export const brochures = createSlice({
       state.isDownloadFormSent = true
     },
 
+    brochuresIsDownloadFalse: (state: BrochuresState) => {
+      state.isDownloadFormSent = false
+    },
+
     toggleBrochure: (
       state: BrochuresState,
       action: PayloadAction<{ id: number; selected?: boolean }>
@@ -60,7 +64,11 @@ export const brochures = createSlice({
   },
 })
 
-export const { setBrochures, toggleBrochure, brochuresIsDownload } =
-  brochures.actions
+export const {
+  setBrochures,
+  toggleBrochure,
+  brochuresIsDownload,
+  brochuresIsDownloadFalse,
+} = brochures.actions
 
 export default brochures.reducer

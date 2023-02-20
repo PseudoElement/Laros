@@ -7,7 +7,6 @@ import { PostBlock } from './Posts'
 import { WhoWeAre } from './WhoWeAre'
 import { Comments } from './Comments'
 import { SelectComponent } from './SelectedType'
-import { ReactPlayer } from 'components'
 
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { getDestinationsThunk } from 'store/slices/destinations/thunk'
@@ -19,33 +18,37 @@ import { reviewsMock } from 'shared/mocks/reviews'
 import screenfull from 'screenfull'
 
 import s from './HomePage.module.scss'
+
 export const HomePage: FC = () => {
   const [activeMenu, setActiveMenu] = useState<boolean>(false)
   const [videoIsFullscreen, setVideoIsFullscreen] = useState<boolean>(true)
   const videoRef = useRef<HTMLDivElement>(null)
+  const dispatch = useAppDispatch()
+  const destinations = useAppSelector(state => state.destinations.destinations)
+  const travelTypes = useAppSelector(state => state.trips.categories)
 
   const BLOGS_PER_PAGE = 3
   const [params, setParams] = useState({
     size: BLOGS_PER_PAGE,
   })
   const [blogs, isLoading, handleReady] = useGetBlogs(params)
+
   const onFullScreen = () => {
     setVideoIsFullscreen(true)
     if (screenfull.isEnabled && videoRef.current) {
       screenfull.request(videoRef.current)
     }
   }
-  const dispatch = useAppDispatch()
-  const destinations = useAppSelector(state => state.destinations.destinations)
 
-  const travelTypes = useAppSelector(state => state.trips.categories)
   useEffect(() => {
     dispatch(getDestinationsThunk())
     dispatch(getTripCategoriesThunk())
   }, [])
+
   useEffect(() => {
     handleReady()
   }, [params])
+
   return (
     <div
       onMouseEnter={() => setVideoIsFullscreen(true)}

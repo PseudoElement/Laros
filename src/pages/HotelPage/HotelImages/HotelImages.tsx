@@ -38,7 +38,13 @@ export const HotelImages: FC<HotelImagesProps> = ({ images }) => {
               className={s.hotelImage}
               onClick={() => handleOpen(index)}
             >
-              <Image layout={'fill'} src={withDomain(image)} alt='' />
+              <Image
+                layout={'fill'}
+                src={withDomain(image)}
+                priority
+                alt=''
+                unoptimized={true}
+              />
             </div>
           ))}
         </SliderGalery>

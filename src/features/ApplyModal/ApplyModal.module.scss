@@ -1,5 +1,12 @@
 @use 'styles/style.scss' as *;
 
+.applyModal {
+  padding: 32px 80px;
+  @include mobile {
+    padding: 20px;
+  }
+}
+
 .select {
   width: 100%;
   margin-bottom: 52px;
@@ -7,88 +14,12 @@
 
 .buttons {
   display: flex;
-  align-self: end;
-  align-items: center;
   gap: 8px;
-  margin-bottom: 22px;
-}
 
-.label {
-  position: relative;
-  display: inline-block;
-  border-radius: 8px;
-  margin-bottom: 8px;
-  border: 1.4px dashed $color-primary;
-
-  .title {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    cursor: pointer;
-    outline: none;
-    max-width: 200px;
-    text-decoration: none;
-    font-size: 12px;
-    vertical-align: middle;
-    text-align: center;
-    border-radius: 4px;
-    line-height: 22px;
-    height: 40px;
-    padding: 10px;
-    box-sizing: border-box;
-    border: none;
-    margin: 0;
-    transition: background-color 0.2s;
-  }
-
-  .fileInput {
-    position: absolute;
-    z-index: -1;
-    opacity: 0;
+  @include mobile {
     display: block;
-    width: 0;
-    height: 0;
+    margin-top: 20px;
   }
-
-  .text {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 150px;
-    margin-left: 5px;
-  }
-}
-
-.flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 24px;
-  margin: 8px 0 32px 0;
-}
-
-.wrapperSending {
-  display: flex;
-  justify-content: space-between;
-}
-
-.applyModal {
-  padding: 32px 80px;
-}
-
-.fileTypes {
-  color: $color-modal-bg;
-  font-weight: 500;
-  font-size: 10px;
-  line-height: 12px;
-}
-
-.contactTitle {
-  font-weight: $fw-bold;
-  font-size: 16px;
-  line-height: 20px;
-  margin-bottom: 24px;
 }
 
 .cv {
@@ -98,8 +29,64 @@
   margin-bottom: 24px;
 }
 
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin: 8px 0 32px 0;
+
+  @include mobile {
+    display: block;
+  }
+}
+
+.uploadWrap {
+  display: flex;
+  justify-content: space-between;
+
+  @include mobile {
+    display: block;
+  }
+}
+
+.contactTitle {
+  font-weight: $fw-bold;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 24px;
+}
+
 .input {
   background-color: $color-white;
+
+  @include mobile {
+    width: 100%;
+  }
+}
+
+.phoneInputWrap {
+  position: relative;
+  width: 100%;
+}
+.phoneInput {
+  width: 100%;
+}
+
+.phonePlaceholder {
+  position: absolute;
+  top: 34px;
+  left: 18px;
+  color: $color-placeholder;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 17px;
+  text-align: left;
+  pointer-events: none;
+
+  span {
+    color: black;
+  }
 }
 
 .error {
