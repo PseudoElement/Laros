@@ -111,8 +111,8 @@
 
 .sub__gr20 {
   position: absolute;
-  margin-top: 336px;
-  margin-left: 236px;
+  margin-top: 342px;
+  margin-left: 202px;
   transition: 0.2s all ease-in;
   cursor: url('../../../../public/assets/images/destinations/cursor.png'), auto;
   pointer-events: none;
@@ -180,8 +180,8 @@
   transition: 0.2s all ease-in;
   cursor: url('../../../../public/assets/images/destinations/cursor.png'), auto;
   pointer-events: none;
-  top: 380px;
-  right: 271px;
+  top: 460px;
+  right: 368px;
   z-index: 1;
 
   path {
@@ -190,12 +190,6 @@
     &:hover {
       fill: #52B55F;
     }
-  }
-
-
-  >svg {
-    transform: scale(0.43);
-
   }
 
 
