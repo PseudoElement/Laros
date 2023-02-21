@@ -8,7 +8,7 @@ import {
   sendContactOrderFormThunk,
 } from 'store/slices/contactForm/thunk'
 
-import { Button, Input, Radio, InputCalendar } from 'components'
+import { Button, Input, InputCalendar, Radio } from 'components'
 
 import { genderOptions } from 'shared/constants/form'
 import { useAppDispatch } from 'shared/hooks/redux'
@@ -32,9 +32,11 @@ type ContactFormProps = {
   contactPage?: boolean
   onFormSubmit?: () => void
   order?: OrderPayload
+  tripContactForm?: boolean
 }
 
 export const ContactForm: FC<ContactFormProps> = ({
+  tripContactForm,
   contactPage,
   onFormSubmit,
   order,
@@ -71,7 +73,17 @@ export const ContactForm: FC<ContactFormProps> = ({
   return (
     <>
       {submitSuccessfully ? (
-        <ThankYouPage />
+        tripContactForm ? (
+          <ThankYouPage
+            description={t('travelPlanner.thankYouDescr')}
+            title={t('travelPlanner.thankYou')}
+          />
+        ) : (
+          <ThankYouPage
+            description={t('contactForm.thankYouDescr')}
+            title={t('contactForm.thankYou')}
+          />
+        )
       ) : (
         <div className={cn(s.container, { [s.contactContainer]: contactPage })}>
           <div className={cn(s.main, { [s.contactMain]: contactPage })}>

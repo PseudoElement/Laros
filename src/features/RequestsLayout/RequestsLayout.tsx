@@ -1,5 +1,5 @@
-import { FC, ReactNode, useEffect, useState } from 'react'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import { FC, ReactNode, useState } from 'react'
+import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
 import 'react-tabs/style/react-tabs.css'
 import { NextRouter, useRouter } from 'next/router'
 import Image from 'next/image'
@@ -18,7 +18,7 @@ import s from './RequestsLayout.module.scss'
 interface RequestsLayoutProps {
   children: ReactNode
 }
-export const RequestsLayout: FC<RequestsLayoutProps> = ({ children }) => {
+export const RequestsLayout: FC<RequestsLayoutProps> = () => {
   const router: NextRouter = useRouter()
   const [openModal, setOpenModal] = useState<boolean>(false)
   const [thankYou, setThankYou] = useState(false)
@@ -70,19 +70,21 @@ export const RequestsLayout: FC<RequestsLayoutProps> = ({ children }) => {
         </div>
 
         {thankYou ? (
-
-            <ThankYouPage />
+          <ThankYouPage
+            description={t('destinationWorldWide.thankYouDescr')}
+            title={t('destinationWorldWide.thankYou')}
+          />
         ) : (
-        <nav className={s.tabs__navigation}>
-          <Tabs
-            defaultIndex={0}
-            selectedTabClassName={s.selectedTab}
-            onSelect={index => console.log(index)}
-          >
-            <TabList className={s.tabList}>
-              <Tab className={s.tab}>{t('worldwideTours.Tab_1')}</Tab>
-              <Tab className={s.tab}>{t('worldwideTours.Tab_2')}</Tab>
-            </TabList>
+          <nav className={s.tabs__navigation}>
+            <Tabs
+              defaultIndex={0}
+              selectedTabClassName={s.selectedTab}
+              onSelect={index => console.log(index)}
+            >
+              <TabList className={s.tabList}>
+                <Tab className={s.tab}>{t('worldwideTours.Tab_1')}</Tab>
+                <Tab className={s.tab}>{t('worldwideTours.Tab_2')}</Tab>
+              </TabList>
 
               <TabPanel className={s.tabPanel}>
                 <FlightRequestForm onFormSubmit={showThankYou} />

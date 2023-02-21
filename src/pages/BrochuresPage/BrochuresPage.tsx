@@ -27,7 +27,7 @@ export const BrochuresPage: FC = () => {
 
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState<boolean>(false)
   const [isSendModalOpen, setIsSendModalOpen] = useState<boolean>(false)
-  const [thankYou, setThankYou] = useState(false)
+  const [thankYou, setThankYou] = useState(true)
   const { brochures, isDownloadFormSent } = useAppSelector(
     state => state.brochures
   )
@@ -96,7 +96,10 @@ export const BrochuresPage: FC = () => {
           </div>
         </div>
       ) : (
-        <ThankYouPage />
+        <ThankYouPage
+          description={t('brochures.thankYouDescr')}
+          title={t('brochures.thankYou')}
+        />
       )}
 
       <SendBrochuresModal
