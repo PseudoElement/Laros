@@ -198,7 +198,10 @@ const ApplyModal: FC<ApplyModalProps> = ({
           </div>
         </div>
       ) : (
-        <ThankYouPage isCV />
+        <ThankYouPage
+          description={t('career.thankYouDescr')}
+          title={t('career.thankYou')}
+        />
       )}
     </Modal>
   )

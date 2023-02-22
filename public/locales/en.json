@@ -117,7 +117,9 @@
     "thanks": "Thank you!",
     "text": "Enim fermentum faucibus arcu adipiscing mollis aliquet. In velit id amet quam et enim viverra. Malesuada facilisis amet leo at nisi.",
     "return": "Return to home page",
-    "noVacancies": "No Vacancies for now."
+    "noVacancies": "No Vacancies for now.",
+    "thankYou": "Thank you for your interest in our company.",
+    "thankYouDescr": "Our HR team has successfully received your CV. Good Luck!"
   },
   "aboutModal": {
     "modalTitle": "Apply to LAROS Reisen",
@@ -154,7 +156,9 @@
     "cancel": "Cancel",
     "buttonSend": "Send",
     "downloadModalTitle": "Downloading brochure",
-    "buttonDownload": "Download"
+    "buttonDownload": "Download",
+    "thankYou": "Thank you for your interest.",
+    "thankYouDescr": "Your brochure is on the way."
   },
   "destinations": {
     "selectRegion": "Please select the region on the map",
@@ -182,7 +186,9 @@
     "title": "Worldwide tours",
     "subTitle": "Turpis morbi nec enim id nulla vehicula condimentum. Curabitur fermentum vitae condimentum eu non imperdiet.",
     "flightRequestText": "Flight request",
-    "requestPackageText": "Request package"
+    "requestPackageText": "Request package",
+    "thankYou": "Thank you for your request!",
+    "thankYouDescr": "Laros Team is working on it and will be in touch soon.  Your next trip is just a click away :)"
   },
   "worldwideTours": {
     "WorldwideToursTitle": "Worldwide tours",
@@ -226,7 +232,9 @@
   "travelPlanner": {
     "title": "Travel planner",
     "subtitle": "Our top trip categories",
-    "moreCategoriesText": "More categories"
+    "moreCategoriesText": "More categories",
+    "thankYou": "Thank you for your request!",
+    "thankYouDescr": "Laros Team is working on it. Your next trip is just one click away :)"
   },
   "travelPlannerCategory": {
     "sortBy": "Sort by",
@@ -284,7 +292,9 @@
     "follow": "Follow us on",
     "mr": "Mr",
     "mrs": "Mrs",
-    "ms": "Ms"
+    "ms": "Ms",
+    "thankYou": "Thank you for your message!",
+    "thankYouDescr": "Laros Team will be in touch soon!"
   },
   "tripSteps": {
     "buttonBack": "Back to previous step",
@@ -535,7 +545,11 @@
     "invoiceBlock1": "Dispatch of voucher(s): after receipt of the invoice amount",
     "invoiceBlock2": "Dispatch of the invoice: the invoice will be sent to you separately by email from the selected branch after you have sent off the order form.",
     "invoiceBlock3": "Validity: The voucher can be redeemed after receipt of the invoice amount.",
-    "buttonDone": "Done"
+    "buttonDone": "Done",
+    "thankYou": "Thank you for your order.",
+    "thankYouDescr": "Laros Team is working on it. Your gift voucher is on its way!",
+    "thankYouStore": "Thank you for your order.",
+    "thankYouDescrStore": "Laros Team is working on it and let you know when you are able to visit Laros store for pick-up!"
   },
   "hotels": {
     "title": "Hotels",

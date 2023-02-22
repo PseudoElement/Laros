@@ -6,10 +6,13 @@ import { Map } from 'components'
 import { COMPANY_LOCATION } from 'shared/constants/companyInfo'
 
 import s from './ContactPage.module.scss'
+import { useTranslate } from '../../shared/hooks/useTranslate'
 
 export const ContactPage: FC = () => {
   const [thankYou, setThankYou] = useState(false)
   const [location] = useState(COMPANY_LOCATION)
+
+  const t = useTranslate()
 
   const showThankYou = () => {
     setThankYou(prevState => !prevState)
@@ -17,7 +20,7 @@ export const ContactPage: FC = () => {
 
   return (
     <>
-      <div className={s.headerBg}> </div>
+      <div className={s.headerBg}></div>
       <div className={s.container}>
         {!thankYou ? (
           <div className={s.content}>
@@ -29,7 +32,10 @@ export const ContactPage: FC = () => {
             </div>
           </div>
         ) : (
-          <ThankYouPage />
+          <ThankYouPage
+            description={t('contactForm.thankYouDescr')}
+            title={t('contactForm.thankYou')}
+          />
         )}
       </div>
     </>

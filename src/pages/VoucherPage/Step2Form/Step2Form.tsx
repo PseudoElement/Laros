@@ -3,7 +3,7 @@ import Image from 'next/image'
 import cn from 'classnames'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 
-import { ArrowIcon, Button, Select, Input } from 'components'
+import { ArrowIcon, Button, Input, Select } from 'components'
 import { AddressInput, ThankYouPage } from 'features'
 import { Steps } from '../VoucherPage'
 
@@ -87,6 +87,8 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
     window.scrollTo(0, 0)
     setThankYou(true)
   }
+
+  console.log(deliveryOption)
 
   return (
     <div className={s.container}>
@@ -248,8 +250,16 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
             </Button>
           </div>
         </>
+      ) : deliveryOption === 'store' ? (
+        <ThankYouPage
+          description={t('vouchers.thankYouDescrStore')}
+          title={t('vouchers.thankYouStore')}
+        />
       ) : (
-        <ThankYouPage />
+        <ThankYouPage
+          description={t('vouchers.thankYouDescr')}
+          title={t('vouchers.thankYou')}
+        />
       )}
     </div>
   )
