@@ -6,5 +6,5 @@ import { SubscribeResponse } from '../../types/subscribe'
 export const subscribeToNewsletter = (
   mail: string
 ): AxiosPromise<SubscribeResponse> => {
-  return api.post(endpoints.subscription, { mail })
+  return api.post(endpoints.subscription, { email: mail })
 }
