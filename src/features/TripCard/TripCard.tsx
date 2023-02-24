@@ -49,9 +49,9 @@ export const TripCard: FC<TripCardProps> = ({
   const t = useTranslate()
 
   const durationToString = (duration: number) => {
-    if (duration > 1) return `${duration} ${t('travelPlannerTripPlan.day')}`
+    if (duration > 1) return `${duration} ${t('travelPlannerTripPlan.days')}`
     if (duration == 1) return t('travelPlannerTripPlan.day')
-    return `- ${t('travelPlannerTripPlan.day')}`
+    return `- ${t('travelPlannerTripPlan.days')}`
   }
 
   return (
@@ -91,9 +91,8 @@ export const TripCard: FC<TripCardProps> = ({
 
             <div className={s.mainContainer2}>
               <div className={s.label}>{t('tripCard.from')}</div>
-              <div className={s.price}>{`${price ? price : '-'} ${
-                Currency.CHF
-              }`}</div>
+              <div className={s.price}>{`${price ? price : '-'} ${Currency.CHF
+                }`}</div>
               <div className={s.label}>{t('tripCard.person')}</div>
             </div>
           </div>
@@ -115,10 +114,10 @@ export const TripCard: FC<TripCardProps> = ({
           <div className={s.mainFooter}>
             {tags.length
               ? tags.slice(0, LIMIT_HOTEL_CARD_TAGS).map(tag => (
-                  <div key={tag.id} className={s.tag}>
-                    <TagCard {...tag} />
-                  </div>
-                ))
+                <div key={tag.id} className={s.tag}>
+                  <TagCard {...tag} />
+                </div>
+              ))
               : null}
           </div>
         </div>
