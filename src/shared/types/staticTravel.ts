@@ -1,9 +1,8 @@
-import { StaticImageData } from 'next/image'
 import { TripCategory } from './trip'
 
 export interface StaticTravelItem extends TripCategory {
   id: number
-  highlighted?: Highlighted
+  highlighted?: Highlighted[]
   overview: Overview
 }
 

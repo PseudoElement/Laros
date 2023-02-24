@@ -1,15 +1,11 @@
 import { FC, useEffect, useRef, useState } from 'react'
 import s from './HighlightedItem.module.scss'
 import cls from 'classnames'
-import Link from 'next/link'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Image, { StaticImageData } from 'next/image'
 import { Pagination } from 'swiper'
 import { TruncatedText } from '../../../../../components'
-import {
-  JOB_CARD_TEXT_LIMIT,
-  TRIP_PLAN_DESCRIPTION_SIZE,
-} from '../../../../../shared/constants'
+import { JOB_CARD_TEXT_LIMIT } from '../../../../../shared/constants'
 
 interface HighlightedItemProps {
   text: string
@@ -21,7 +17,6 @@ interface HighlightedItemProps {
 export const HighlightedItem: FC<HighlightedItemProps> = ({
   images,
   title,
-  link,
   text,
 }) => {
   const [initialSlide, setInitialSlide] = useState<number>(0)
@@ -42,7 +37,7 @@ export const HighlightedItem: FC<HighlightedItemProps> = ({
         >
           {images.map((image, id: number) => (
             <SwiperSlide onMouseEnter={() => setInitialSlide(id)} key={id}>
-              <Image height={203} width={510} layout={'fixed'} src={image} />
+              <Image height={203} width={543} layout={'fixed'} src={image} />
             </SwiperSlide>
           ))}
         </Swiper>
