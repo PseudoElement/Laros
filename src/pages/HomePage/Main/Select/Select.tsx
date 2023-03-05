@@ -1,16 +1,17 @@
 import React, { FC, useState } from 'react'
 import cls from 'classnames'
-import Link from 'next/link'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 import { useTranslate } from 'shared/hooks/useTranslate'
 
 import { Destination } from 'shared/types/destinations'
 
+import { MAP_REGIONS_IDS } from 'shared/constants/destinations'
+
 import arrow from '/public/assets/images/homepage/arrow.png'
 
 import s from './Select.module.scss'
-import { MAP_REGIONS_IDS } from 'shared/constants/destinations'
 
 export interface SelectBlockProps {
   setActiveMenu: (active: boolean) => void
@@ -23,6 +24,7 @@ export const SelectBlock: FC<SelectBlockProps> = ({
   activeMenu,
   destinations,
 }) => {
+  const { push } = useRouter()
   const [selectedDestination, setSelectedDestination] = useState<number>(0)
   const [value, setValue] = useState<string>('')
   const [searching, setSearching] = useState<string>('')
@@ -45,6 +47,16 @@ export const SelectBlock: FC<SelectBlockProps> = ({
     setValue(e)
     setSelectedDestination(0)
     setActiveMenu(true)
+  }
+
+  const handleGo = () => {
+    if (selectedDestination) {
+      push(
+        MAP_REGIONS_IDS.includes(selectedDestination)
+          ? `/destinations/areas/${selectedDestination}`
+          : `areas/${selectedDestination}`
+      )
+    }
   }
 
   return (
@@ -97,18 +109,11 @@ export const SelectBlock: FC<SelectBlockProps> = ({
               ))}
           </div>
         </div>
+
         <div className={s.link}>
-          <Link
-            href={
-              MAP_REGIONS_IDS.includes(selectedDestination)
-                ? `/destinations/areas/${selectedDestination}`
-                : `areas/${selectedDestination}`
-            }
-          >
-            <button className={s.button}>
-              {t('homepage.textFieldButton')} !
-            </button>
-          </Link>
+          <button className={s.button} onClick={handleGo}>
+            {t('homepage.textFieldButton')} !
+          </button>
         </div>
       </div>
     </div>

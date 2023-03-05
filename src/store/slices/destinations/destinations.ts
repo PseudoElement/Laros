@@ -15,6 +15,7 @@ const initialState: DestinationsState = {
 export const destinations = createSlice({
   name: 'destinations',
   initialState,
+
   reducers: {
     setCurrentDestination: (
       state: DestinationsState,

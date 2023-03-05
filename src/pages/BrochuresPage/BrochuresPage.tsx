@@ -10,14 +10,13 @@ import {
 
 import { getSelectedBrochures } from 'shared/helpers/brochures'
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
+import { getBrochuresThunk } from 'store/slices/brochures/thunk'
+import { downloadFile } from 'shared/helpers/downloadFile'
+import { useTranslate } from 'shared/hooks/useTranslate'
 import {
   brochuresIsDownloadFalse,
   toggleBrochure,
 } from 'store/slices/brochures/brochures'
-import { getBrochuresThunk } from 'store/slices/brochures/thunk'
-import { downloadFile } from 'shared/helpers/downloadFile'
-
-import { useTranslate } from 'shared/hooks/useTranslate'
 
 import s from './BrochuresPage.module.scss'
 
@@ -37,6 +36,8 @@ export const BrochuresPage: FC = () => {
 
   const showThankYou = () => {
     setThankYou(prevState => !prevState)
+    setIsSendModalOpen(false)
+    window.scrollTo(0, 0)
   }
 
   useEffect(() => {
@@ -63,7 +64,7 @@ export const BrochuresPage: FC = () => {
 
   return (
     <div className={s.brochuresPage}>
-      {!thankYou ? (
+      {thankYou ? (
         <div className={s.wrapper} key={s.title}>
           <div className={s.title}>{t('brochures.title')}</div>
 

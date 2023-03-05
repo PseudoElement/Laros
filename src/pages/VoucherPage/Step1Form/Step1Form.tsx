@@ -19,13 +19,14 @@ interface Step1FormProps {
 }
 
 export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
+  const t = useTranslate()
   const dispatch = useAppDispatch()
+
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm()
-  const t = useTranslate()
 
   const vocabulary: any = {
     sender: 'Die Daten der Person mit, die den Geschenkgutschein versendet',
@@ -45,7 +46,6 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
         .join(', ')}, sind Pflichtfelder`
     )
     console.error('error', errors)
-    console.log(error)
   }
 
   const onSubmit: SubmitHandler<any> = formData => {

@@ -23,10 +23,11 @@ import RegionCard from 'components/RegionCard/RegionCard'
 import { getDayName } from 'shared/helpers/localize'
 import { useModal } from 'shared/hooks/useModal'
 import { getRooms } from 'shared/api/routes/rooms'
-import { findRooms, getClientsRoom } from 'shared/helpers/trip'
+import { getClientsRoom } from 'shared/helpers/trip'
 import { getNearDestinations } from 'shared/api/routes/destinations'
 import { getTripDayByDestination } from 'shared/api/routes/order'
 import { useTranslate } from 'shared/hooks/useTranslate'
+import { getHotel } from 'shared/api/routes/hotels'
 
 import { TRUNCATED_TEXT_SIZE } from 'shared/constants'
 import { Hotel, Room } from 'shared/types/hotel'
@@ -34,6 +35,7 @@ import { CarTransferType } from 'shared/types/car'
 import { OrderForm, PeopleCapacity } from 'shared/types/order'
 import { TripDestination } from 'shared/types/trip'
 import { Destination } from 'shared/types/destinations'
+import { Option } from 'shared/types'
 import {
   Transfer as TransferType,
   TransferOptions,
@@ -41,8 +43,6 @@ import {
 } from 'shared/types/transport'
 
 import s from './TripDayForm.module.scss'
-import { getHotel } from 'shared/api/routes/hotels'
-import { Option } from 'shared/types'
 
 interface TripDayFormProps {
   form: OrderForm

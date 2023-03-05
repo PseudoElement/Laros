@@ -12,7 +12,7 @@ import { updateForm } from 'store/slices/voucher/voucher'
 import { useTranslate } from 'shared/hooks/useTranslate'
 import { sendContactFormThunk } from 'store/slices/voucher/thunk'
 
-import { VoucherDelivery } from 'shared/types/vouchers'
+import { VoucherDelivery, VoucherForm } from 'shared/types/vouchers'
 import { EMAIL_VALIDATION } from 'shared/constants'
 
 import store from '/public/assets/images/voucherDelivery/store.svg?url'
@@ -44,9 +44,9 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
   } = useForm()
 
   const paymentOptions = [
-    { value: 'rechnung', label: 'Rechnung' },
-    { value: 'barzahlung', label: 'Barzahlung' },
-    { value: 'kreditkarte', label: 'Kreditkarte' },
+    { value: 'qrcode', label: 'Rechnung' },
+    { value: 'cash', label: 'Barzahlung' },
+    { value: 'card', label: 'Kreditkarte' },
   ]
 
   const vocabulary: any = {
@@ -62,7 +62,6 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
         .join(', ')}, sind Pflichtfelder`
     )
     console.error('error', errors)
-    console.log(error)
   }
 
   const selectPreviousAddress = () => {
@@ -72,23 +71,32 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
   }
 
   const onSubmit: SubmitHandler<any> = async formData => {
-    const finalData = {
-      recepientEmail: formData.recepientEmail,
-      deliveryType: deliveryOption,
-      recepientAddress: {
-        zip_code: formData.zip_code,
-        street: formData.street,
-        region: formData.region,
-      },
+     const requestData: VoucherForm = {
+      value: form.value,
+      delivery: deliveryOption,
+      payment: formData.payment.value,
+      address: form.address,
+      city: form.city,
+      email: form.email,
+      phone: form.phone,
+      title: form.title,
+      name: form.name,
+      comment: form.comment,
+      recipient: form.recipient,
+      company: form.company,
+      recipient_address: formData.address,
+      recipient_city: formData.city,
+      recipient_email: formData.recepientEmail,
+      sender: form.sender,
+      zip_code: form.zip_code,
+      recipient_zip_code: formData.zip_code,
+      recipient_phone: formData.phone,
     }
-    dispatch(sendContactFormThunk(form))
-    // @ts-ignore
-    dispatch(updateForm(finalData))
+    dispatch(sendContactFormThunk(requestData))
+    dispatch(updateForm(requestData))
     window.scrollTo(0, 0)
     setThankYou(true)
   }
-
-  console.log(deliveryOption)
 
   return (
     <div className={s.container}>

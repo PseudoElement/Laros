@@ -1,41 +1,42 @@
 import { FC, useEffect, useState } from 'react'
 import Link from 'next/link'
+import { Controller, UseFormReturn, useFieldArray } from 'react-hook-form'
 
 import { AddIcon, Button, InfoIcon, Modal, Select } from 'components'
+import { ChangeLocationModal } from 'features'
 import { TripDayForm } from './TripDayForm'
 import { Transfer } from './Transfer'
 
-import { Controller, UseFormReturn, useFieldArray, useForm } from 'react-hook-form'
-import { calculateOrder, getTripDay, getTripDayByDestination } from 'shared/api/routes/order'
+import { getTripDayByDestination } from 'shared/api/routes/order'
+import { useTranslate } from 'shared/hooks/useTranslate'
+import { destinationToOption } from 'shared/helpers/destinations'
+import { getTripDuration } from 'shared/helpers/trip'
+import { getParentDestination } from 'store/slices/destinations/selectors'
+import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
+import { updateForm } from 'store/slices/order/order'
+import { getTransfer } from 'shared/api/routes/transfer'
+import { useModal } from 'shared/hooks/useModal'
 import {
   getTripDays,
   provideOptionsWithIcon,
 } from 'shared/helpers/transformers'
-
-import { useTranslate } from 'shared/hooks/useTranslate'
-import { destinationToOption } from 'shared/helpers/destinations'
-import { getTripDuration } from 'shared/helpers/trip'
-import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
-import { useDebounce } from 'shared/hooks/useDebounce'
-import { updateForm } from 'store/slices/order/order'
-import { getTransfer } from 'shared/api/routes/transfer'
-import { dateToServerFormat } from 'shared/helpers/dateFormatter'
 
 import { CarTransferType } from 'shared/types/car'
 import { Destination } from 'shared/types/destinations'
 import { OrderForm } from 'shared/types/order'
 import { Trip } from 'shared/types/trip'
 import { Steps } from '../TripFormPage'
-import { Transfer as TransferType, TransferOptions, TransferValue } from 'shared/types/transport'
+import {
+  Transfer as TransferType,
+  TransferOptions,
+  TransferValue,
+} from 'shared/types/transport'
 
 import { DEFAULT_TRANSFER } from 'shared/constants/transfer'
 
 import airportIcon from '/public/assets/images/airport.svg?url'
 
 import s from './Step1.module.scss'
-import { useModal } from 'shared/hooks/useModal'
-import { ChangeLocationModal } from 'features'
-import { getParentDestination } from 'store/slices/destinations/selectors'
 
 interface Step1Props {
   setStep: (step: Steps) => void
@@ -46,25 +47,25 @@ interface Step1Props {
   formHook: UseFormReturn<Partial<OrderForm>, any>
 }
 
-export const Step1: FC<Step1Props> = ({ // TODO
+export const Step1: FC<Step1Props> = ({
+  // TODO
   setStep,
   trip,
   airports,
   transfers,
   transferValues,
-  formHook: {
-    watch,
-    control,
-    getValues,
-    setValue,
-    handleSubmit
-  }
+  formHook: { watch, control, getValues, setValue, handleSubmit },
 }) => {
   const dispatch = useAppDispatch()
   const t = useTranslate()
-  const form = useAppSelector((state) => state.order.form);
-  const destinations = useAppSelector((state) => state.destinations.destinations);
-  const tripParentRegion = useAppSelector((state) => getParentDestination(state, trip.destinations[trip.destinations.length - 1].destination))
+  const form = useAppSelector(state => state.order.form)
+  const destinations = useAppSelector(state => state.destinations.destinations)
+  const tripParentRegion = useAppSelector(state =>
+    getParentDestination(
+      state,
+      trip.destinations[trip.destinations.length - 1].destination
+    )
+  )
   const { append, remove } = useFieldArray({
     control,
     name: 'destinations',
@@ -106,10 +107,10 @@ export const Step1: FC<Step1Props> = ({ // TODO
   const updateEndPointTransfer = (id: number | null, type: TransferType) => {
     const prevTransfer = getValues('transports') ?? []
     setValue(`transports`, [
-
-      ...prevTransfer, {
+      ...prevTransfer,
+      {
         value: id,
-        type: type
+        type: type,
       },
     ])
   }
@@ -131,7 +132,6 @@ export const Step1: FC<Step1Props> = ({ // TODO
     }
   }, [watchEndPoint, watchDestinations])
 
-
   useEffect(() => {
     const loadTransfer = async (from: number, to: number) => {
       const response = await getTransfer(from, to)
@@ -144,7 +144,6 @@ export const Step1: FC<Step1Props> = ({ // TODO
       )
     }
   }, [watchStartPoint, watchDestinations])
-
 
   if (!trip) return null
   return (
@@ -191,9 +190,10 @@ export const Step1: FC<Step1Props> = ({ // TODO
               from={
                 trip.destinations[index - 1]
                   ? {
-                    label: trip.destinations[index - 1].destination_name,
-                    value: trip.destinations[index - 1].destination.toString(),
-                  }
+                      label: trip.destinations[index - 1].destination_name,
+                      value:
+                        trip.destinations[index - 1].destination.toString(),
+                    }
                   : watchForm.dest_from ?? undefined
               }
               previousDestination={watchDestinations[index - 1] ?? null}
@@ -247,16 +247,15 @@ export const Step1: FC<Step1Props> = ({ // TODO
         </div>
 
         <div className={s.actions}>
-          <Button onClick={handleSubmit(onSubmit)}>{t('tripSteps.next')}</Button>
+          <Button onClick={handleSubmit(onSubmit)}>
+            {t('tripSteps.next')}
+          </Button>
           <Button variant='outline'>
             <Link href={`/trips/${trip.id}`}>{t('tripSteps.cancel')}</Link>
           </Button>
         </div>
       </div>
-      <Modal
-        {...locationModal}
-        title={t('changingLocation.windowTitle')}
-      >
+      <Modal {...locationModal} title={t('changingLocation.windowTitle')}>
         <ChangeLocationModal
           {...locationModal}
           onSubmit={id => changeLocation(id)}
@@ -265,7 +264,6 @@ export const Step1: FC<Step1Props> = ({ // TODO
           destinations={nearDestinations}
         />
       </Modal>
-
     </>
   )
 }

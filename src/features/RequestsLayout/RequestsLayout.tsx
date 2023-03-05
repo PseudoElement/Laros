@@ -77,7 +77,7 @@ export const RequestsLayout: FC<RequestsLayoutProps> = () => {
         ) : (
           <nav className={s.tabs__navigation}>
             <Tabs
-              defaultIndex={0}
+              defaultIndex={router.query.form === 'flights' ? 0 : 1}
               selectedTabClassName={s.selectedTab}
               onSelect={index => console.log(index)}
             >
