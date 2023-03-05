@@ -65,9 +65,11 @@ export const HotelPage: FC<HotelProps> = ({ hotelProp }) => {
 
   useEffect(() => {
     if (hotel) {
-      loadNearDestinations(hotel.id)
       loadNearHotels(hotel.id)
       loadRooms(hotel.id)
+    }
+    if (hotel?.destination) {
+      loadNearDestinations(hotel.destination)
     }
   }, [hotel])
 

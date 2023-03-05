@@ -11,7 +11,7 @@ export const endpoints = {
     get: '/destination/?size=300', // rename as in hotels TODO
     id: (id: number) => `/destination/${id}`,
     oneByName: (name: string) => `/destination/retrieve/${name}`,
-    near: (id: number) => `/destination/near/${id}`,
+    near: (id: number) => `/destination/same-parent/${id}`,
   },
   trips: {
     get: '/trip/',

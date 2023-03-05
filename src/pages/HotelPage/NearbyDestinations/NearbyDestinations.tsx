@@ -1,12 +1,15 @@
-import React, { FC } from 'react'
-import Link from 'next/link'
+import { FC } from 'react'
+
+import { AreaCard } from 'components'
+
+import { useTranslate } from 'shared/hooks/useTranslate'
 
 import { Destination } from 'shared/types/destinations'
 import { LIMIT_NEARBY_DESTINATIONS } from 'shared/constants'
 
+import { useRouter } from 'next/router'
+
 import s from './NearbyDestinations.module.scss'
-import { useTranslate } from '../../../shared/hooks/useTranslate'
-import { withDomain } from '../../../shared/helpers/withDomain'
 
 interface DestinationProps {
   destination: Destination[]
@@ -14,6 +17,11 @@ interface DestinationProps {
 
 export const NearbyDestinations: FC<DestinationProps> = ({ destination }) => {
   const t = useTranslate()
+  const { push } = useRouter()
+
+  const handlePush = (id: number) => {
+    push(`/destinations/${id}`)
+  }
 
   return (
     <div className={s.destination}>
@@ -22,22 +30,20 @@ export const NearbyDestinations: FC<DestinationProps> = ({ destination }) => {
       <div className={s.destinationSubTitle}>{t('hotel.nearbySubTitle')}</div>
 
       <div className={s.destinationWrap}>
-        {destination?.slice(0, LIMIT_NEARBY_DESTINATIONS).map((item, index) => {
-          return (
-            <Link key={index} href={`/destinations/${item.id}`}>
-              <div
-                style={{
-                  backgroundImage: `url(${
-                    item.images.length ? withDomain(item.images[0]) : null
-                  })`,
-                }}
+        {destination
+          ?.slice(0, LIMIT_NEARBY_DESTINATIONS)
+          .map((destination, index) => {
+            return (
+              <AreaCard
                 className={s.destinationItem}
-              >
-                <div className={s.destinationItemDescription}>{item.name}</div>
-              </div>
-            </Link>
-          )
-        })}
+                onClick={handlePush}
+                key={destination.id}
+                id={destination.id}
+                name={destination.name}
+                image={destination.images[0]}
+              />
+            )
+          })}
       </div>
     </div>
   )

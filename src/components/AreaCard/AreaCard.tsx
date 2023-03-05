@@ -1,5 +1,6 @@
 import { FC } from 'react'
-import Image, { StaticImageData } from 'next/image'
+import { StaticImageData } from 'next/image'
+import cn from 'classnames'
 
 import { withDomain } from 'shared/helpers/withDomain'
 
@@ -10,9 +11,10 @@ interface AreaCardProps {
   name: string | null
   id: number
   onClick?: (id: number) => void
+  className?: string
 }
 
-export const AreaCard: FC<AreaCardProps> = ({ image, onClick, id, name }) => {
+export const AreaCard: FC<AreaCardProps> = ({ image, onClick, id, name , className}) => {
   const handleClick = () => {
     onClick?.(id)
   }
@@ -20,7 +22,7 @@ export const AreaCard: FC<AreaCardProps> = ({ image, onClick, id, name }) => {
   return (
     <div
       onClick={handleClick}
-      className={s.image}
+      className={cn(s.image, className)}
       style={{
         backgroundImage: `url(${image ? withDomain(image) : ''})`,
       }}

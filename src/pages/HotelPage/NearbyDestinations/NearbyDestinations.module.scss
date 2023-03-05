@@ -36,11 +36,11 @@
 }
 
 .destinationItem {
-  height: 200px;
+  height: 250px;
   width: 30%;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: top left;
+  background-position: bottom left;
   border-radius: 12px;
   display: flex;
   align-items: end;
@@ -50,12 +50,4 @@
   @include mobile {
     width: 100%;
   }
-}
-
-.destinationItemDescription {
-  margin: 0 0 16px 24px;
-  color: $color-white;
-  font-size: 12px;
-  font-weight: $fw-bold;
-  line-height: 20px;
 }
