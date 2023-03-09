@@ -67,9 +67,8 @@ export const TripPage: FC<TripPageProps> = ({ trip }) => {
       <div
         className={s.bg}
         style={{
-          backgroundImage: `url(${
-            trip?.images ? withDomain(trip.images[0]) : ''
-          })`,
+          backgroundImage: `url(${trip?.images ? withDomain(trip.images[1]) : ''
+            })`,
         }}
       />
 

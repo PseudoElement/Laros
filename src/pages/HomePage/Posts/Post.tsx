@@ -7,12 +7,14 @@ import { useTranslate } from 'shared/hooks/useTranslate'
 
 import s from './Post.module.scss'
 import { BlogPayload } from '../../../shared/types/blogs'
+import { useRouter } from 'next/router'
 
 interface PostBlockProps {
   posts: BlogPayload[]
 }
 
 export const PostBlock: FC<PostBlockProps> = ({ posts }) => {
+  const { push } = useRouter()
   const fullPost = posts.filter((item, index) => index === 0)
   const post = posts.filter((item, index) => index !== 0 && index <= 2)
   const t = useTranslate()
@@ -21,7 +23,7 @@ export const PostBlock: FC<PostBlockProps> = ({ posts }) => {
     <div className={s.wrapper}>
       <div className={s.contentWrapper}>
         {fullPost.map((post, idx) => (
-          <div className={s.left} key={idx}>
+          <div className={s.left} key={idx} onClick={() => push(`/blogs/${post.id}/`)}>
             <h3 className={s.mainTitle}>{t('homepage.ourBlogTitle')}</h3>
 
             <div className={s.imageWrapper}>
@@ -49,7 +51,7 @@ export const PostBlock: FC<PostBlockProps> = ({ posts }) => {
           <div className={s.right}>
             {post.map((post, idx) => {
               return (
-                <div className={s.post} key={idx}>
+                <div className={s.post} key={idx} onClick={() => push(`/blogs/${post.id}/`)}>
                   <div className={s.textBlock}>
                     <h3 className={cls(s.title, s.postTitle)}>
                       {t(post.title)}

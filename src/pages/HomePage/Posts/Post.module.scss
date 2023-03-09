@@ -33,6 +33,7 @@
   border-top: #9c9ea1 dashed 1px;
   padding: 43px 0;
   align-items: center;
+  cursor: pointer;
   @include mobile-laptop {
     padding: 33px 10px;
   }
@@ -51,6 +52,7 @@
   margin-left: auto;
   margin-right: 24px;
   padding: 81px 0 100px 15px;
+  cursor: pointer;
   @include mobile-tablet {
     margin: 0;
     padding: 81px 0 40px;
