@@ -81,13 +81,13 @@
   padding-top: 70px;
   padding-bottom: 8px;
   font-weight: $fw-bold;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .subtitle {
   padding-bottom: 40px;
   font-weight: $fw-regular;
-  font-size: 12px;
+  font-size: 16px;
   opacity: 0.6;
   @include mobile {
     padding: 0 20px 40px 20px;
@@ -104,4 +104,5 @@
   left: 24px;
   z-index: 2;
   color: $color-white;
+  font-size: 16px;
 }

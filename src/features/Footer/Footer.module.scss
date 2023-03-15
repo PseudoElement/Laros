@@ -65,7 +65,7 @@
   position: relative;
   span {
     color: #1b242d;
-    font-size: 12px;
+    font-size: 16px;
   }
 
   @include mobile {
@@ -86,8 +86,8 @@
 }
 
 .link {
-  font-size: 12px;
-  line-height: 14px;
+  font-size: 16px;
+  line-height: 18px;
   margin-right: 30px;
   color: rgba(27, 36, 45, 0.55);
 }

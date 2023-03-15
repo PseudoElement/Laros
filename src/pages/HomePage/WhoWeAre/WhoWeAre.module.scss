@@ -30,7 +30,7 @@
 
 .text {
   font-weight: $fw-regular;
-  font-size: 12px;
+  font-size: 16px;
   padding-bottom: 46px;
   margin: 0 auto;
   width: 840px;
@@ -87,7 +87,8 @@
 
 .itemText {
   font-weight: $fw-regular;
-  font-size: 12px;
+  //font-size: 12px;
+  font-size: 16px;
   line-height: 20px;
   padding-bottom: 32px;
   opacity: 0.6;
@@ -96,6 +97,7 @@
 }
 
 .orange {
+  font-size: 16px;
   background-color: #f2c94c;
   color: $color-white;
 }
