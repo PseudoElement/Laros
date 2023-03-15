@@ -162,7 +162,7 @@ export const StartTripForm: FC<StartTripFormProps> = ({
         </div>
       </div>
 
-      <Button onClick={handleSubmit(onSubmit)}>{t('hotel.buttonStart')}</Button>
+      <Button classname={s.startTripButton} onClick={handleSubmit(onSubmit)}>{t('hotel.buttonStart')}</Button>
     </div>
   )
 }

@@ -10,9 +10,9 @@
 }
 
 .destinationTitle {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: $fw-bold;
-  line-height: 20px;
+  line-height: 24px;
   text-align: center;
 
   @include mobile-tablet {
@@ -21,9 +21,9 @@
 }
 
 .destinationSubTitle {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: $fw-regular;
-  line-height: 20px;
+  line-height: 24px;
   text-align: center;
   margin: 8px 0 48px;
 }
