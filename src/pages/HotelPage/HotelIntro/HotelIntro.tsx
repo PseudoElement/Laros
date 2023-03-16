@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 import { useRouter } from 'next/router'
 import cn from 'classnames'
 // @ts-ignore
@@ -34,11 +34,12 @@ export const HotelIntro: FC<Hotel> = ({
   const { onClose, isOpen, open } = useModal()
 
   const handleClick = (fields: FieldsType) => {
+    console.log('FIELDS DATE', fields.date)
     Array.isArray(fields.date)
       ? dispatch(
           updateForm({
             rooms: fields.rooms,
-            date_start: Number(fields.date[0]),
+            date_start: fields.date[0].toString(),
             // date_start: [Number(fields.date[0]), Number(fields.date[1])], //TODO fix when fix api
           })
         )

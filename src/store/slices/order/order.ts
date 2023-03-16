@@ -9,7 +9,7 @@ export type OrderFormState = {
 
 const initialState: OrderFormState = {
   form: {
-    date_start: Number(new Date()),
+    date_start: new Date().toUTCString(),
     transports: [] as TransferValue[],
     rooms: [
       {

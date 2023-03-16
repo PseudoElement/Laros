@@ -34,7 +34,7 @@ export interface OrderRoom extends PeopleCapacity {
 
 export interface OrderForm {
   // Start trip form:
-  date_start: number
+  date_start: string | Date
   rooms: PeopleCapacity[] // TODO rename
   // Step 1:
   dest_from: Option
