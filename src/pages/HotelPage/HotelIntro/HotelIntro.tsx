@@ -34,7 +34,6 @@ export const HotelIntro: FC<Hotel> = ({
   const { onClose, isOpen, open } = useModal()
 
   const handleClick = (fields: FieldsType) => {
-    console.log('FIELDS DATE', fields.date)
     Array.isArray(fields.date)
       ? dispatch(
           updateForm({
