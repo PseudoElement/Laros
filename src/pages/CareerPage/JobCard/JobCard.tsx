@@ -29,7 +29,6 @@ export const JobCard: FC<jobCardProps> = ({
       <h2 className={s.title}>{vacancy}</h2>
 
       <div className={s.time}>{time}</div>
-
       <TruncatedText limit={JOB_CARD_TEXT_LIMIT}>{description}</TruncatedText>
 
       <div className={s.buttons}>
