@@ -34,7 +34,6 @@ export const Overview: FC<Overview> = ({ images, overview }) => {
       <div className={s.overviewSlider}>
         {images?.length ? (
           <SliderGalery
-            onSlice={2}
             slidesPerView={slidesPerViewHotelImages(width)}
             withNavigation={width > TABLET_SCREEN}
           >
@@ -56,12 +55,7 @@ export const Overview: FC<Overview> = ({ images, overview }) => {
         ) : null}
       </div>
 
-      <Gallery
-        images={images}
-        isOpen={openGallery}
-        onClose={setOpenGallery}
-        onSlice={2}
-      />
+      <Gallery images={images} isOpen={openGallery} onClose={setOpenGallery} />
     </div>
   )
 }
