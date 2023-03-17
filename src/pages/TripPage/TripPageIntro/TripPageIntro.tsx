@@ -22,7 +22,7 @@ export const TripPageIntro: FC<Trip & { onStartTrip: () => void }> = ({
   price_per_person_chf,
   route,
   description,
-  onStartTrip
+  onStartTrip,
 }) => {
   const dispatch = useAppDispatch()
   const { push } = useRouter()
@@ -32,7 +32,7 @@ export const TripPageIntro: FC<Trip & { onStartTrip: () => void }> = ({
     dispatch(
       updateForm({
         rooms: fields.rooms,
-        date_start: Number(fields.date),
+        date_start: fields.date.toString(),
       })
     )
     onStartTrip()

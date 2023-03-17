@@ -174,7 +174,7 @@ export const ContactForm: FC<ContactFormProps> = ({
               {contactPage ? null : (
                 <>
                   <Controller
-                    name='depature'
+                    name='departure'
                     control={control}
                     render={({ field: { onChange, value } }) => (
                       <InputCalendar

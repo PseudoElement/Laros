@@ -34,7 +34,7 @@ import { countPeople } from 'shared/helpers/trip'
 
 export interface SideBarProps {
   route: string | null
-  travel_date: number
+  travel_date: number | string | Date
   rooms: PeopleCapacity[]
   total: number
   handleDownload?: () => void
@@ -90,7 +90,7 @@ export const Sidebar: FC<SideBarProps> = ({
     dispatch(
       updateForm({
         rooms: formData.fields,
-        date_start: Number(currentDate),
+        date_start: currentDate.toString(),
         // date_start: [Number(currentDate[0]), Number(currentDate[1])], //TODO fix when fix api
       })
     )
@@ -262,7 +262,9 @@ export const Sidebar: FC<SideBarProps> = ({
           <div className={s.sectionWrap}>
             {rooms.length ? (
               <div className={s.label}>
-                {total * (countPeople(rooms, 'adults') + countPeople(rooms, 'children'))}{' '}
+                {total *
+                  (countPeople(rooms, 'adults') +
+                    countPeople(rooms, 'children'))}{' '}
                 CHF {t('tripSteps.total')}
               </div>
             ) : null}
@@ -276,21 +278,26 @@ export const Sidebar: FC<SideBarProps> = ({
         {/* nex step and download buttons */}
         <div className={s.buttonSection}>
           {!step && (
-            <Button classname={s.nextButton} onClick={handleNextStep}>{t('tripSteps.next')}</Button>
+            <Button classname={s.nextButton} onClick={handleNextStep}>
+              {t('tripSteps.next')}
+            </Button>
           )}
 
-          {handleDownload ? <Button classname={s.uploadButton} onClick={handleDownload}>
-            <Image alt='download' src={download} width={20} height={20} />
-            <span>{t('tripSteps.download')}</span>
-          </Button> : null}
+          {handleDownload ? (
+            <Button classname={s.uploadButton} onClick={handleDownload}>
+              <Image alt='download' src={download} width={20} height={20} />
+              <span>{t('tripSteps.download')}</span>
+            </Button>
+          ) : null}
         </div>
 
         {/* text and link contact us */}
-        {!step &&
+        {!step && (
           <div className={s.link}>
             {t('tripSteps.contactUs')}
             <span onClick={handleContact}> {t('tripSteps.contactUs2')}</span>
-          </div>}
+          </div>
+        )}
       </div>
 
       <Modal isOpen={contactUsModal.isOpen} onClose={contactUsModal.onClose}>
