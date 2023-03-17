@@ -15,7 +15,9 @@ export function dateFormatter(
   return `${day} ${month}, ${year}`
 }
 
-export const dateToServerFormat = (date: number | Date): ServerDate => {
+export const dateToServerFormat = (
+  date: string | number | Date
+): ServerDate => {
   let time = new Date(date)
   const offset = time.getTimezoneOffset()
   const formattedDate = new Date(time.getTime() - offset * 60 * 1000)

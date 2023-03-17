@@ -56,7 +56,7 @@ export const TripFormPage: FC = () => {
       ),
       destinations: trip?.destinations ?? [],
       travellers: [],
-      date_start: form.date_start ?? Number(new Date()),
+      date_start: form.date_start.toString() ?? new Date().toUTCString(),
       rooms: form.rooms ?? [],
       transports: transferValues,
     },
