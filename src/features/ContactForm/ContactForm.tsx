@@ -207,7 +207,6 @@ export const ContactForm: FC<ContactFormProps> = ({
                 control={control}
                 render={({ field: { onChange, value } }) => (
                   <Input
-                    placeholder={t('worldwideTours.label12')}
                     onChange={onChange}
                     id='number'
                     value={value}
@@ -236,7 +235,9 @@ export const ContactForm: FC<ContactFormProps> = ({
               <div className={s.infoIcon}>
                 <Image src={video} width={32} height={32} />
               </div>
-              <div className={s.infoTitle}>{t('brochures.buttonSend')}</div>
+              <div className={s.infoTitle}>
+                {t('brochures.videoAppointment')}
+              </div>
               <div className={s.infoDescription}>
                 {t('contactForm.chooseTheDate')}
               </div>
@@ -248,7 +249,7 @@ export const ContactForm: FC<ContactFormProps> = ({
               <div className={s.infoTitle}>{t('pdfs.address')}</div>
               <div
                 className={s.infoDescription}
-              >{`Hauptstrasse 94,\nCH-4147 Aesch\n\nMo: 13:30 – 18:00 Uhr\nDi bis Fri: 09:00 – 12:00 und 13:30 – 18:00 Uhr
+              >{`Hauptstrasse 94,\nCH-4147 Aesch\n\nMo: 13:30 – 18:00 Uhr\nDi bis Fr: 09:00 – 12:00 und 13:30 – 18:00 Uhr
 `}</div>
             </div>
             <div className={cn(s.infoItem, s.contacts)}>
@@ -258,7 +259,7 @@ export const ContactForm: FC<ContactFormProps> = ({
               <div className={s.infoTitle}>{t('pdfs.phone')}</div>
               <div className={s.infoDescription}>
                 <a href='tel:+410617568080' className={s.phone}>
-                  61 756 80 80
+                  061 756 80 80
                 </a>
                 {`\n\n`}
                 <a href='mailto:info@laros.ch' className={s.mail}>

@@ -23,36 +23,52 @@ export const Footer: FC = () => {
         <div className={s.partners}>
           <div className={s.blockImg}>
             <span>
-              <Image
-                className={s.imgFirst}
-                width={200}
-                height={50}
-                src={airport}
-                alt='airport icon'
-              />
+              <a
+                href='https://www.airportparking.ch/index.cfm?method=booking.step-1'
+                target='_blank'
+                rel='noreferrer'
+              >
+                <Image
+                  className={s.imgFirst}
+                  width={200}
+                  height={50}
+                  src={airport}
+                  alt='airport icon'
+                />
+              </a>
             </span>
             <span className={s.imgSecond}>
-              <Image
-                src={reisegarantie}
-                width={200}
-                height={50}
-                alt='reise garantie icon'
-              />
+              <a
+                href='https://www.garantiefonds.ch/'
+                target='_blank'
+                rel='noreferrer'
+              >
+                <Image
+                  src={reisegarantie}
+                  width={200}
+                  height={50}
+                  alt='reise garantie icon'
+                />
+              </a>
             </span>
           </div>
 
           <div className={s.blockImg}>
             <span>
-              <Image
-                className={s.imgFirst}
-                width={200}
-                height={50}
-                src={srv}
-                alt='srv icon'
-              />
+              <a href='https://www.srv.ch/' target='_blank' rel='noreferrer'>
+                <Image
+                  className={s.imgFirst}
+                  width={200}
+                  height={50}
+                  src={srv}
+                  alt='srv icon'
+                />
+              </a>
             </span>
             <span className={s.imgSecond}>
-              <Image src={tps} width={200} height={50} alt='tps icon' />
+              <a href='https://tps.travel/' target='_blank' rel='noreferrer'>
+                <Image src={tps} width={200} height={50} alt='tps icon' />
+              </a>
             </span>
           </div>
         </div>
