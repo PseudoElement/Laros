@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import L, { Icon, LatLng, LatLngExpression, Layer } from 'leaflet'
 
 import {
@@ -22,6 +22,8 @@ import s from './Map.module.scss'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet-fullscreen/dist/Leaflet.fullscreen.js'
 import 'leaflet-fullscreen/dist/leaflet.fullscreen.css'
+import 'leaflet-styleeditor/src/css/Leaflet.StyleEditor.css'
+import 'leaflet-styleeditor/dist/javascript/Leaflet.StyleEditor'
 
 const icon = new Icon({
   iconUrl: mapPin,
@@ -45,6 +47,7 @@ const Map: React.FC<MapProps> = ({
   const [additionalRoutes, setAdditionalRoutes] = useState<Route>()
   const [location, setLocation] = useState<LatLngExpression>()
   const [center, setCenter] = useState<LatLngExpression>()
+  const mapRef = useRef<any>(null)
 
   useEffect(() => {
     if (!locationString) return
@@ -74,6 +77,13 @@ const Map: React.FC<MapProps> = ({
     )
   }, [route])
 
+  useEffect(() => {
+    if (mapRef.current !== null) {
+      // @ts-ignore
+      mapRef.current.addControl(L.control.styleEditor())
+    }
+  }, [mapRef.current])
+
   const pointToLayer = (
     center: Feature<Point, IconProperty>,
     latlng: LatLng
@@ -99,12 +109,12 @@ const Map: React.FC<MapProps> = ({
       {center ? (
         <MapContainer
           className={s.map}
+          ref={mapRef}
           fullscreenControl={true}
           center={center}
           zoom={zoom}
           scrollWheelZoom={false}
           zoomControl={false}
-
         >
           <TileLayer
             attribution='&copy; <a href="https://carto.com/attributions">OpenStreetMap</a> contributors'
