@@ -11,7 +11,6 @@ interface MacedoniaProps {
 
 const Macedonia: FC<MacedoniaProps> = ({ location }) => {
   const [isShownCard, setIsShownCard] = useState<number | null>(null)
-  console.log(location)
 
   return (
     <div className={s.container}>

@@ -18,6 +18,7 @@
     "framer-motion": "^7.5.2",
     "leaflet": "^1.9.2",
     "leaflet-fullscreen": "^1.0.2",
+    "leaflet-styleeditor": "^0.1.21",
     "lodash": "^4.17.21",
     "next": "12.3.1",
     "next-videos": "1.4.1",

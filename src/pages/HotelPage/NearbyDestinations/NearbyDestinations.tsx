@@ -20,7 +20,7 @@ export const NearbyDestinations: FC<DestinationProps> = ({ destination }) => {
   const { push } = useRouter()
 
   const handlePush = (id: number) => {
-    push(`/destinations/${id}`)
+    push(`/areas/${id}`)
   }
 
   return (
