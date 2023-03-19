@@ -30,12 +30,6 @@ type File = {
 export const Upload: FC<UploadProps> = ({ setFile, file, control }) => {
   const t = useTranslate()
 
-  // const fileHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //      if (event.target.files) {
-  //           setFile(event.target.files[0])
-  //      }
-  // }
-
   return (
     <div className={s.wrapperCv}>
       {file ? (
@@ -53,23 +47,17 @@ export const Upload: FC<UploadProps> = ({ setFile, file, control }) => {
           </div>
 
           <div className={s.privacyPolicyBlock}>
-            <>
-              <Controller
-                name='checkbox'
-                control={control}
-                rules={{
-                  required: { value: true, message: 'Checkbox is required' },
-                }}
-                render={({
-                  field: { onChange, value },
-                  fieldState: { error },
-                }) => (
-                  <>
-                    <Checkbox label={''} value={value} onChange={onChange} />
-                  </>
-                )}
-              />
-            </>
+            <Controller
+              name='checkbox'
+              control={control}
+              rules={{
+                required: { value: true, message: 'Checkbox is required' },
+              }}
+              render={({
+                field: { onChange, value },
+                fieldState: { error },
+              }) => <Checkbox label={''} value={value} onChange={onChange} />}
+            />
 
             <p className={s.privacyPolicy}>
               {t('worldwideTours.Privacy1')}{' '}

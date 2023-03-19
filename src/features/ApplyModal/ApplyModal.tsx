@@ -46,13 +46,7 @@ const ApplyModal: FC<ApplyModalProps> = ({
   const [file, setFile] = useState<any>()
   const [thankYou, setThankYou] = useState(false)
 
-  const {
-    handleSubmit,
-    control,
-    reset,
-    setValue,
-    formState: { errors, isValid },
-  } = useForm<ApplyForm>({
+  const { handleSubmit, control, reset, setValue } = useForm<ApplyForm>({
     defaultValues: {
       checkbox: false,
     },
@@ -64,7 +58,6 @@ const ApplyModal: FC<ApplyModalProps> = ({
     formData.append('email', data.email)
     formData.append('phone', data.phone)
     formData.append('file', file, `${file.name}`)
-
     applyForVacancy(Number(data.position.value), formData)
     reset()
     setThankYou(true)
@@ -120,17 +113,15 @@ const ApplyModal: FC<ApplyModalProps> = ({
             control={control}
             rules={{ required: { value: true, message: 'Name is required' } }}
             render={({ field }) => (
-              <>
-                <Input
-                  shorten
-                  required
-                  id='name'
-                  classname={s.input}
-                  label={`${t('forms.inputLabel5')}*`}
-                  placeholder={t('forms.inputLabel5')}
-                  {...field}
-                />
-              </>
+              <Input
+                shorten
+                required
+                id='name'
+                classname={s.input}
+                label={`${t('forms.inputLabel5')}*`}
+                placeholder={t('forms.inputLabel5')}
+                {...field}
+              />
             )}
           />
 
@@ -142,19 +133,17 @@ const ApplyModal: FC<ApplyModalProps> = ({
                 required: { value: true, message: 'Email is required' },
               }}
               render={({ field }) => (
-                <>
-                  <Input
-                    shorten
-                    required
-                    id='name'
-                    withCounter
-                    type='email'
-                    placeholder={t('forms.email3')}
-                    classname={s.input}
-                    label={`${t('forms.inputLabel1')}*`}
-                    {...field}
-                  />
-                </>
+                <Input
+                  shorten
+                  required
+                  id='name'
+                  withCounter
+                  type='email'
+                  placeholder={t('forms.email3')}
+                  classname={s.input}
+                  label={`${t('forms.inputLabel1')}*`}
+                  {...field}
+                />
               )}
             />
 
