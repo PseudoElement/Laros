@@ -50,7 +50,9 @@ export const Radio: FC<RadioProps> = ({
                 <Image src={option.icon} alt='icon' width={15} height={15} />
               </span>
             )}
-            <span className={s.label}>{t(option.label)}</span>
+            <span className={s.label}>
+              <span className={s.labelTextWrapper}>{t(option.label)}</span>
+            </span>
           </label>
         )
       })}

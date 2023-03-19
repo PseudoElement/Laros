@@ -7,7 +7,6 @@ import star1 from '/public/assets/images/1star.svg?url'
 export const titleOptions: Option[] = [
   { label: 'contactForm.mr', value: 'mr' },
   { label: 'contactForm.mrs', value: 'mrs' },
-  { label: 'contactForm.ms', value: 'ms' },
 ]
 export const genderOptions: Option[] = [
   { label: 'forms.radioLabel3', value: 'female' },
