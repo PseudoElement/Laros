@@ -248,8 +248,13 @@
   padding-bottom: 8px;
   border-radius: 0;
 
+  
+  :nth-child(1) {
+    white-space: normal;
+  }
+
   &:nth-child(2) {
-    max-width: 400px;
+    max-width: 425px;
 
     @include mobile-laptop {
       max-width: 100%;
