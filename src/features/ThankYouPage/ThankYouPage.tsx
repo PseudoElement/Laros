@@ -12,7 +12,7 @@ import s from './ThankYouPage.module.scss'
 
 interface ThankYouPageProps {
   title: string
-  description: string
+  description?: string
 }
 
 export const ThankYouPage: FC<ThankYouPageProps> = ({ title, description }) => {
@@ -22,12 +22,13 @@ export const ThankYouPage: FC<ThankYouPageProps> = ({ title, description }) => {
   const handlePush = () => {
     push('/')
   }
+
   return (
     <div className={s.thankYouPage}>
       <Image src={fireWorks} width={300} height={200} alt={'fireworks image'} />
 
       <div className={s.title}>{title}</div>
-      <div className={s.subTitle}>{description}</div>
+      {description && <div className={s.subTitle}>{description}</div>}
       <div className={s.button}>
         <Button onClick={handlePush}>{t('aboutModal.return')}</Button>
       </div>

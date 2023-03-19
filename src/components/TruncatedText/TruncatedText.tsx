@@ -14,15 +14,18 @@ interface TruncatedTextProps {
   className?: string
   more?: string
   seeMoreClass?: string
+  isTruncated: boolean
+  setIsTruncated: React.Dispatch<React.SetStateAction<boolean>>
 }
 export const TruncatedText: FC<TruncatedTextProps> = ({
+  isTruncated,
+  setIsTruncated,
   children,
   limit = TRUNCATION_LIMIT_DEFAULT,
   className,
   more = 'Mehr ansehen',
   seeMoreClass,
 }) => {
-  const [isTruncated, setIsTruncated] = useState<boolean>(true)
   const t = useTranslate()
 
   return (

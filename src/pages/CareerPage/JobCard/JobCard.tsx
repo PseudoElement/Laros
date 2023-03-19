@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 
 import { Button, TruncatedText } from 'components'
 
@@ -23,13 +23,20 @@ export const JobCard: FC<jobCardProps> = ({
   description,
 }) => {
   const t = useTranslate()
+  const [isTruncated, setIsTruncated] = useState<boolean>(true)
 
   return (
     <div className={s.cardWrapper}>
       <h2 className={s.title}>{vacancy}</h2>
 
       <div className={s.time}>{time}</div>
-      <TruncatedText limit={JOB_CARD_TEXT_LIMIT}>{description}</TruncatedText>
+      <TruncatedText
+        isTruncated={isTruncated}
+        setIsTruncated={setIsTruncated}
+        limit={JOB_CARD_TEXT_LIMIT}
+      >
+        {description}
+      </TruncatedText>
 
       <div className={s.buttons}>
         <Button
@@ -39,8 +46,12 @@ export const JobCard: FC<jobCardProps> = ({
           {t('career.modalTitle')}
         </Button>
 
-        <Button classname={s.infoButton} variant={'outline'}>
-          {t('career.moreInfo')}
+        <Button
+          classname={s.infoButton}
+          variant={'outline'}
+          onClick={() => setIsTruncated(prev => !prev)}
+        >
+          {isTruncated ? t('career.moreInfo') : t('career.close')}
         </Button>
       </div>
     </div>

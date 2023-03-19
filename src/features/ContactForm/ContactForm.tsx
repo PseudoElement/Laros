@@ -33,9 +33,11 @@ type ContactFormProps = {
   onFormSubmit?: () => void
   order?: OrderPayload
   tripContactForm?: boolean
+  staticPageContactForm?: boolean
 }
 
 export const ContactForm: FC<ContactFormProps> = ({
+  staticPageContactForm,
   tripContactForm,
   contactPage,
   onFormSubmit,
@@ -74,15 +76,9 @@ export const ContactForm: FC<ContactFormProps> = ({
     <>
       {submitSuccessfully ? (
         tripContactForm ? (
-          <ThankYouPage
-            description={t('travelPlanner.thankYouDescr')}
-            title={t('travelPlanner.thankYou')}
-          />
+          <ThankYouPage title={t('travelPlanner.thankYou')} />
         ) : (
-          <ThankYouPage
-            description={t('contactForm.thankYouDescr')}
-            title={t('contactForm.thankYou')}
-          />
+          <ThankYouPage title={t('contactForm.thankYou')} />
         )
       ) : (
         <div className={cn(s.container, { [s.contactContainer]: contactPage })}>
@@ -97,13 +93,15 @@ export const ContactForm: FC<ContactFormProps> = ({
                 control={control}
                 rules={{ required: true }}
                 render={({ field: { onChange, value } }) => (
-                  <Input
-                    placeholder={t('vouchers.placeholder1')}
-                    onChange={onChange}
-                    id='name'
-                    value={value}
-                    label={t('forms.inputLabel5')}
-                  />
+                  <>
+                    <Input
+                      placeholder={t('vouchers.placeholder1')}
+                      onChange={onChange}
+                      id='name'
+                      value={value}
+                      label={t('forms.inputLabel5')}
+                    />
+                  </>
                 )}
               />
               <Controller
@@ -176,6 +174,7 @@ export const ContactForm: FC<ContactFormProps> = ({
                   <Controller
                     name='departure'
                     control={control}
+                    rules={{ required: staticPageContactForm ? true : false }}
                     render={({ field: { onChange, value } }) => (
                       <InputCalendar
                         onChange={e => onChange(e)}
@@ -189,6 +188,7 @@ export const ContactForm: FC<ContactFormProps> = ({
                   <Controller
                     name='return'
                     control={control}
+                    rules={{ required: staticPageContactForm ? true : false }}
                     render={({ field: { onChange, value } }) => (
                       <InputCalendar
                         onChange={e => onChange(e)}
@@ -205,6 +205,7 @@ export const ContactForm: FC<ContactFormProps> = ({
               <Controller
                 name='message'
                 control={control}
+                rules={{ required: staticPageContactForm ? true : false }}
                 render={({ field: { onChange, value } }) => (
                   <Input
                     onChange={onChange}
@@ -249,8 +250,7 @@ export const ContactForm: FC<ContactFormProps> = ({
               <div className={s.infoTitle}>{t('pdfs.address')}</div>
               <div
                 className={s.infoDescription}
-              >{`Hauptstrasse 94,\nCH-4147 Aesch\n\nMo: 13:30 – 18:00 Uhr\nDi bis Fr: 09:00 – 12:00 und 13:30 – 18:00 Uhr
-`}</div>
+              >{`Hauptstrasse 94,\nCH-4147 Aesch\n\nMo: 13:30 – 18:00 Uhr\nDi bis Fr: 09:00 – 12:00 und 13:30 – 18:00 Uhr`}</div>
             </div>
             <div className={cn(s.infoItem, s.contacts)}>
               <div className={s.infoIcon}>

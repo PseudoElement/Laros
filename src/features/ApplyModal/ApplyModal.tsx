@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { FC, memo, useEffect, useState } from 'react'
+import React, { FC, memo, useEffect, useRef, useState } from 'react'
 import cn from 'classnames'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 
@@ -51,7 +51,7 @@ const ApplyModal: FC<ApplyModalProps> = ({
     control,
     reset,
     setValue,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<ApplyForm>({
     defaultValues: {
       checkbox: false,
@@ -63,12 +63,15 @@ const ApplyModal: FC<ApplyModalProps> = ({
     formData.append('name', data.name)
     formData.append('email', data.email)
     formData.append('phone', data.phone)
-    formData.append('file', file)
+    formData.append('file', file, `${file.name}`)
 
     applyForVacancy(Number(data.position.value), formData)
-
     reset()
     setThankYou(true)
+  }
+
+  const onError = (error: any) => {
+    alert(`${Object.keys(error).join(', ')} are required`)
   }
 
   useEffect(() => {
@@ -115,17 +118,19 @@ const ApplyModal: FC<ApplyModalProps> = ({
             name='name'
             defaultValue=''
             control={control}
-            rules={{ required: true }}
+            rules={{ required: { value: true, message: 'Name is required' } }}
             render={({ field }) => (
-              <Input
-                shorten
-                rules={{ required: true }}
-                id='name'
-                classname={s.input}
-                label={`${t('forms.inputLabel5')}*`}
-                placeholder={t('forms.inputLabel5')}
-                {...field}
-              />
+              <>
+                <Input
+                  shorten
+                  required
+                  id='name'
+                  classname={s.input}
+                  label={`${t('forms.inputLabel5')}*`}
+                  placeholder={t('forms.inputLabel5')}
+                  {...field}
+                />
+              </>
             )}
           />
 
@@ -133,19 +138,23 @@ const ApplyModal: FC<ApplyModalProps> = ({
             <Controller
               name='email'
               control={control}
-              rules={{ required: true }}
+              rules={{
+                required: { value: true, message: 'Email is required' },
+              }}
               render={({ field }) => (
-                <Input
-                  shorten
-                  required
-                  id='name'
-                  withCounter
-                  type='email'
-                  placeholder={t('forms.email3')}
-                  classname={s.input}
-                  label={`${t('forms.inputLabel1')}*`}
-                  {...field}
-                />
+                <>
+                  <Input
+                    shorten
+                    required
+                    id='name'
+                    withCounter
+                    type='email'
+                    placeholder={t('forms.email3')}
+                    classname={s.input}
+                    label={`${t('forms.inputLabel1')}*`}
+                    {...field}
+                  />
+                </>
               )}
             />
 
@@ -153,6 +162,9 @@ const ApplyModal: FC<ApplyModalProps> = ({
               name='phone'
               defaultValue=''
               control={control}
+              rules={{
+                required: { value: true, message: 'Phone is required' },
+              }}
               render={({ field: { onChange, value } }) => (
                 <div className={s.phoneInputWrap}>
                   <Input
@@ -187,7 +199,7 @@ const ApplyModal: FC<ApplyModalProps> = ({
                 </Button>
 
                 <Button
-                  onClick={handleSubmit(onSubmit)}
+                  onClick={handleSubmit(onSubmit, onError)}
                   variant='primary'
                   type='submit'
                 >
