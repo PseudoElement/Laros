@@ -14,8 +14,8 @@ interface TruncatedTextProps {
   className?: string
   more?: string
   seeMoreClass?: string
-  isTruncated: boolean
-  setIsTruncated: React.Dispatch<React.SetStateAction<boolean>>
+  isTruncated?: boolean
+  setIsTruncated?: React.Dispatch<React.SetStateAction<boolean>>
 }
 export const TruncatedText: FC<TruncatedTextProps> = ({
   isTruncated,
@@ -27,6 +27,7 @@ export const TruncatedText: FC<TruncatedTextProps> = ({
   seeMoreClass,
 }) => {
   const t = useTranslate()
+  const [isTruncatedInner, setIsTruncatedInner] = useState<boolean>(true)
 
   return (
     <div className={cn(s.truncatedText, className)}>
@@ -39,9 +40,14 @@ export const TruncatedText: FC<TruncatedTextProps> = ({
       {children && children.length > limit && (
         <div
           className={cn(s.seeMore, seeMoreClass)}
-          onClick={() => setIsTruncated(prev => !prev)}
+          onClick={() =>
+            setIsTruncated
+              ? setIsTruncated(prev => !prev)
+              : setIsTruncatedInner(prev => !prev)
+          }
         >
           {isTruncated ? more : t('career.close')}
+          {isTruncated ? null : isTruncatedInner ? more : t('career.close')}
         </div>
       )}
     </div>
