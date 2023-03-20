@@ -191,7 +191,7 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
               render={({ field: { onChange, value } }) => (
                 <Input
                   classname={s.input}
-                  placeholder='+ 42 123 - 45- 67'
+                  placeholder='+ 41 123 - 45- 67'
                   required
                   shorten
                   type='phone'

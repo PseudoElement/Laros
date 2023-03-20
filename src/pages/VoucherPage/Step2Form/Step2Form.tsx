@@ -43,11 +43,13 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
     setValue,
   } = useForm()
 
-  const paymentOptions = [
-    { value: 'qrcode', label: 'Rechnung' },
-    { value: 'cash', label: 'Barzahlung' },
-    { value: 'card', label: 'Kreditkarte' },
-  ]
+  const paymentOptions =
+    deliveryOption === VoucherDelivery.EMAIL
+      ? [{ value: 'qrcode', label: 'Rechnung' }]
+      : [
+          { value: 'qrcode', label: 'Rechnung' },
+          { value: 'cash', label: 'Barzahlung' },
+        ]
 
   const vocabulary: any = {
     recepientEmail: 'E-Mail',
@@ -71,7 +73,7 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
   }
 
   const onSubmit: SubmitHandler<any> = async formData => {
-     const requestData: VoucherForm = {
+    const requestData: VoucherForm = {
       value: form.value,
       delivery: deliveryOption,
       payment: formData.payment.value,
