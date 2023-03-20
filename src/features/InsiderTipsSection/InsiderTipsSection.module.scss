@@ -1,0 +1,35 @@
+@use 'styles/style.scss' as *;
+
+.insiderTipsSection {
+  @include container;
+  padding: 80px 0;
+  background-color: $color-light-grey;
+
+  @include tablet-laptop {
+    padding: 30px 30px;
+  }
+
+  @include mobile {
+    padding: 30px 10px 20px;
+  }
+
+}
+
+.title {
+  font-size: 16px;
+  font-weight: $fw-bold;
+  line-height: 20px;
+  text-align: center;
+  margin-bottom: 32px;
+
+  @include mobile-tablet {
+    margin-bottom: 8px;
+  }
+}
+
+.insiderTips {
+  white-space: pre-wrap;
+  font-size: 12px;
+  font-weight: $fw-regular;
+  line-height: 20px;
+}

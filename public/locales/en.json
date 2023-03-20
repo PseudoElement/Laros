@@ -179,6 +179,7 @@
   "areaPage": {
     "OverviewTitle": "Overview",
     "pre-definedTrips": "Pre-defined trips in",
+    "insiderTipsTitle": "Insider tips",
     "HotelsInTitle": "Hotels in",
     "HotelsInSubTitle": "At ultrices rhoncus sit vel viverra viverra. Arcu pellentesque gravida in orci, pretium nulla volutpat leo."
   },
@@ -601,7 +602,6 @@
     "Phone and email": "Address and working hours",
     "phone": "Phone and email"
   },
-
   "forms": {
     "inputLabel1": "Email",
     "inputLabel2": "Email Address",

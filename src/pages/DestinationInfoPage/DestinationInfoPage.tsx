@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 
-import { HotelSection, DestinationIntro } from 'features'
+import { HotelSection, DestinationIntro, InsiderTipsSection } from 'features'
 import { Trips } from './Trips/Trips'
 import { Overview } from './Overview/Overview'
 
@@ -93,9 +93,9 @@ export const DestinationInfoPage: FC<DestinationInfoPageProps> = ({
       ) : null}
 
       {destination?.tips ? (
-        <div
-          className={s.insiderTips}
-          dangerouslySetInnerHTML={{ __html: destination.tips }}
+        <InsiderTipsSection
+          title={t('areaPage.insiderTipsTitle')}
+          content={destination.tips}
         />
       ) : null}
 
