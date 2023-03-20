@@ -194,7 +194,6 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
                   placeholder='+ 42 123 - 45- 67'
                   required
                   shorten
-                  type='phone'
                   onChange={onChange}
                   id='name'
                   value={value}

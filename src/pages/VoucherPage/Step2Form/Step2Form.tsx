@@ -14,6 +14,10 @@ import { sendContactFormThunk } from 'store/slices/voucher/thunk'
 
 import { VoucherDelivery, VoucherForm } from 'shared/types/vouchers'
 import { EMAIL_VALIDATION } from 'shared/constants'
+import {
+  paymentOptionsPerDelivery,
+  paymentOptionsPerEmail,
+} from 'shared/constants/payment'
 
 import store from '/public/assets/images/voucherDelivery/store.svg?url'
 import mail from '/public/assets/images/voucherDelivery/mail.svg?url'
@@ -43,12 +47,6 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
     setValue,
   } = useForm()
 
-  const paymentOptions = [
-    { value: 'qrcode', label: 'Rechnung' },
-    { value: 'cash', label: 'Barzahlung' },
-    { value: 'card', label: 'Kreditkarte' },
-  ]
-
   const vocabulary: any = {
     recepientEmail: 'E-Mail',
     phone: 'Telefonnummer',
@@ -71,7 +69,7 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
   }
 
   const onSubmit: SubmitHandler<any> = async formData => {
-     const requestData: VoucherForm = {
+    const requestData: VoucherForm = {
       value: form.value,
       delivery: deliveryOption,
       payment: formData.payment.value,
@@ -170,7 +168,6 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
                         placeholder='+ 42 123 - 45- 67'
                         required
                         shorten
-                        type='phone'
                         onChange={onChange}
                         id='name'
                         value={value}
@@ -223,12 +220,16 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
                   control={control}
                   render={({ field: { onChange, value } }) => (
                     <Select
-                      options={paymentOptions}
+                      options={
+                        deliveryOption === VoucherDelivery.EMAIL
+                          ? paymentOptionsPerEmail
+                          : paymentOptionsPerDelivery
+                      }
                       onChange={onChange}
                       value={value}
                       classname={s.select}
                       placeholder={t('common.select')}
-                      defaultValue={paymentOptions[0]}
+                      defaultValue={paymentOptionsPerDelivery[0]}
                     />
                   )}
                 />
