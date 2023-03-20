@@ -63,7 +63,7 @@ export const Step1: FC<Step1Props> = ({
   const tripParentRegion = useAppSelector(state =>
     getParentDestination(
       state,
-      trip.destinations[trip.destinations.length - 1].destination
+      trip.destinations[trip.destinations.length - 1].destination_id
     )
   )
   const { append, remove } = useFieldArray({
@@ -126,7 +126,7 @@ export const Step1: FC<Step1Props> = ({
       watchEndPoint
     ) {
       loadTransfer(
-        watchDestinations[watchDestinations?.length - 1].destination,
+        watchDestinations[watchDestinations?.length - 1].destination_id,
         Number(watchEndPoint.value)
       )
     }
@@ -140,7 +140,7 @@ export const Step1: FC<Step1Props> = ({
     if (watchDestinations && watchDestinations[0] && watchStartPoint) {
       loadTransfer(
         Number(watchStartPoint.value),
-        watchDestinations[0].destination
+        watchDestinations[0].destination_id
       )
     }
   }, [watchStartPoint, watchDestinations])
@@ -192,7 +192,7 @@ export const Step1: FC<Step1Props> = ({
                   ? {
                       label: trip.destinations[index - 1].destination_name,
                       value:
-                        trip.destinations[index - 1].destination.toString(),
+                        trip.destinations[index - 1].destination_id.toString(),
                     }
                   : watchForm.dest_from ?? undefined
               }
@@ -211,7 +211,7 @@ export const Step1: FC<Step1Props> = ({
             value:
               trip.destinations[
                 trip.destinations.length - 1
-              ].destination.toString(),
+              ].destination_id.toString(),
           }}
           to={watchEndPoint}
           options={endPointTransfer}
@@ -259,7 +259,9 @@ export const Step1: FC<Step1Props> = ({
         <ChangeLocationModal
           {...locationModal}
           onSubmit={id => changeLocation(id)}
-          current={trip.destinations[trip.destinations.length - 1].destination}
+          current={
+            trip.destinations[trip.destinations.length - 1].destination_id
+          }
           location={tripParentRegion?.location_name ?? ''}
           destinations={nearDestinations}
         />

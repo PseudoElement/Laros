@@ -189,7 +189,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
         from={from}
         to={{
           label: destination.destination_name,
-          value: destination.destination.toString(),
+          value: destination.destination_id.toString(),
         }}
         value={transferValue}
       />

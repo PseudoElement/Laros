@@ -48,7 +48,7 @@ export interface TripDestination {
   description: string | null
   duration: number
   trip: number // id
-  destination: number // id
+  destination_id: number // id
   hotel: Hotel
   rental?: number[] // car ids
   transfers?: Transport[]
