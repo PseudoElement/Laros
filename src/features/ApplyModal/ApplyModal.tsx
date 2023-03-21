@@ -111,7 +111,7 @@ const ApplyModal: FC<ApplyModalProps> = ({
             name='name'
             defaultValue=''
             control={control}
-            rules={{ required: { value: true, message: 'Name is required' } }}
+            rules={{ required: true }}
             render={({ field }) => (
               <Input
                 shorten
@@ -130,7 +130,7 @@ const ApplyModal: FC<ApplyModalProps> = ({
               name='email'
               control={control}
               rules={{
-                required: { value: true, message: 'Email is required' },
+                required: true,
               }}
               render={({ field }) => (
                 <Input
@@ -152,7 +152,7 @@ const ApplyModal: FC<ApplyModalProps> = ({
               defaultValue=''
               control={control}
               rules={{
-                required: { value: true, message: 'Phone is required' },
+                required: true,
               }}
               render={({ field: { onChange, value } }) => (
                 <div className={s.phoneInputWrap}>

@@ -51,7 +51,7 @@ export const Upload: FC<UploadProps> = ({ setFile, file, control }) => {
               name='checkbox'
               control={control}
               rules={{
-                required: { value: true, message: 'Checkbox is required' },
+                required: true,
               }}
               render={({
                 field: { onChange, value },
@@ -75,7 +75,7 @@ export const Upload: FC<UploadProps> = ({ setFile, file, control }) => {
         <Controller
           name='file'
           control={control}
-          rules={{ required: { value: true, message: 'File is required' } }}
+          rules={{ required: true }}
           render={({ field: { onChange }, fieldState: { error } }) => (
             <>
               <label className={s.label}>
