@@ -15,7 +15,7 @@ interface TruncatedTextProps {
   more?: string
   seeMoreClass?: string
   isTruncated?: boolean
-  setIsTruncated?: React.Dispatch<React.SetStateAction<boolean>>
+  setIsTruncated?: (value: boolean ) => void
 }
 export const TruncatedText: FC<TruncatedTextProps> = ({
   isTruncated,
