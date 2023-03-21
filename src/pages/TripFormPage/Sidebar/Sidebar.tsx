@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import React, { FC, useState } from 'react'
 import Image from 'next/image'
 import { Controller, useFieldArray, useForm } from 'react-hook-form'
 
@@ -37,12 +37,14 @@ export interface SideBarProps {
   travel_date: number | string | Date
   rooms: PeopleCapacity[]
   total: number
+  discountedPrice: number | null
   handleDownload?: () => void
   handleNextStep?: () => void
   step: number
 }
 
 export const Sidebar: FC<SideBarProps> = ({
+  discountedPrice,
   route,
   travel_date,
   rooms,
@@ -262,15 +264,33 @@ export const Sidebar: FC<SideBarProps> = ({
           <div className={s.sectionWrap}>
             {rooms.length ? (
               <div className={s.label}>
-                {total *
-                  (countPeople(rooms, 'adults') +
-                    countPeople(rooms, 'children'))}{' '}
-                CHF {t('tripSteps.total')}
+                {discountedPrice ? (
+                  <>
+                    {discountedPrice *
+                      (countPeople(rooms, 'adults') +
+                        countPeople(rooms, 'children'))}{' '}
+                    CHF {t('tripSteps.total')}
+                  </>
+                ) : (
+                  <>
+                    {total *
+                      (countPeople(rooms, 'adults') +
+                        countPeople(rooms, 'children'))}{' '}
+                    CHF {t('tripSteps.total')}
+                  </>
+                )}
               </div>
             ) : null}
 
             <div className={s.content}>
-              {total} CHF / {t('tripSteps.person')}
+              {discountedPrice ? (
+                <>
+                  <span>{total}</span> {discountedPrice} CHF /{' '}
+                  {t('tripSteps.person')}
+                </>
+              ) : (
+                `${total} CHF / ${t('tripSteps.person')}`
+              )}
             </div>
           </div>
         </div>
