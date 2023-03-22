@@ -37,14 +37,14 @@ export interface SideBarProps {
   travel_date: number | string | Date
   rooms: PeopleCapacity[]
   total: number
-  discountedPrice: number | null
+  dirtyPrice: number | null
   handleDownload?: () => void
   handleNextStep?: () => void
   step: number
 }
 
 export const Sidebar: FC<SideBarProps> = ({
-  discountedPrice,
+  dirtyPrice,
   route,
   travel_date,
   rooms,
@@ -264,28 +264,17 @@ export const Sidebar: FC<SideBarProps> = ({
           <div className={s.sectionWrap}>
             {rooms.length ? (
               <div className={s.label}>
-                {discountedPrice ? (
-                  <>
-                    {discountedPrice *
-                      (countPeople(rooms, 'adults') +
-                        countPeople(rooms, 'children'))}{' '}
-                    CHF {t('tripSteps.total')}
-                  </>
-                ) : (
-                  <>
-                    {total *
-                      (countPeople(rooms, 'adults') +
-                        countPeople(rooms, 'children'))}{' '}
-                    CHF {t('tripSteps.total')}
-                  </>
-                )}
+                {total *
+                  (countPeople(rooms, 'adults') +
+                    countPeople(rooms, 'children'))}{' '}
+                CHF {t('tripSteps.total')}
               </div>
             ) : null}
 
             <div className={s.content}>
-              {discountedPrice ? (
+              {dirtyPrice ? (
                 <>
-                  <span>{total}</span> {discountedPrice} CHF /{' '}
+                  <span>{dirtyPrice}</span> {total} CHF /{' '}
                   {t('tripSteps.person')}
                 </>
               ) : (
