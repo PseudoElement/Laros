@@ -49,7 +49,7 @@ export const prepareOrderFormToApi = (form: OrderForm): OrderPayload => {
     dest_end: Number(form.dest_to?.value),
     destinations: form.destinations.map((destination, index) => {
       return {
-        destination: destination.destination,
+        destination: destination.destination_name,
         hotel: destination.hotel?.id ?? null,
         duration: destination.duration,
         rooms:

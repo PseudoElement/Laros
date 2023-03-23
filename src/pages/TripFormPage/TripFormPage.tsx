@@ -34,7 +34,8 @@ export enum Steps {
 
 export const TripFormPage: FC = () => {
   const [step, setStep] = useState(Steps.FIRST)
-  const [price, setPrice] = useState<number>(0)
+  const [finalPrice, setFinalPrice] = useState<number>(0)
+  const [dirtyPrice, setDirtyPrice] = useState<number | null>(null)
   const { query, push, reload, pathname } = useRouter()
   const dispatch = useAppDispatch()
   const isHotelPage = pathname.includes('hotel')
@@ -83,7 +84,11 @@ export const TripFormPage: FC = () => {
 
   useEffect(() => {
     if (trip) {
-      setPrice(trip.price_chf)
+      setFinalPrice(trip.price_per_person_chf)
+      trip.offer_discount &&
+        setDirtyPrice(
+          trip.price_per_person_chf + parseFloat(trip.offer_discount)
+        )
       formHook.setValue('destinations', trip.destinations)
       dispatch(updateForm({ destinations: trip.destinations }))
       // TODO possible issue when user go to the step 2 and back
@@ -93,6 +98,7 @@ export const TripFormPage: FC = () => {
   useEffect(() => {
     formHook.setValue('transports', transferValues)
   }, [transferValues])
+
   useEffect(() => {
     formHook.setValue(
       'dest_from',
@@ -112,7 +118,7 @@ export const TripFormPage: FC = () => {
     try {
       const { data } = await calculateOrder(prepareOrderFormToApi(form))
       // @ts-ignore
-      setPrice(data.data.price_per_person_chf)
+      setFinalPrice(data.data.price_per_person_chf)
     } catch (error) {
       console.log(error)
     }
@@ -131,6 +137,7 @@ export const TripFormPage: FC = () => {
     })
     return () => subscription.unsubscribe()
   }, [debounchedCalculation])
+
   if (isLoading || !trip) {
     return <div>{t('common.loadingText')}</div>
   }
@@ -221,7 +228,8 @@ export const TripFormPage: FC = () => {
           route={trip?.route ?? ''}
           travel_date={form.date_start}
           rooms={form.rooms}
-          total={price}
+          total={finalPrice}
+          dirtyPrice={dirtyPrice}
           handleDownload={!isHotelPage ? handleDownload : undefined}
           handleNextStep={handleNextStep}
           step={step}

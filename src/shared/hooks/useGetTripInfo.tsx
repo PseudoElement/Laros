@@ -107,8 +107,9 @@ export const useGetTripInfo = (
                 description: defaultTripDay.location.description,
                 duration: 1,
                 trip: 1, //
-                destination: defaultTripDay.location.id,
+                destination_id: defaultTripDay.location.id,
                 hotel: defaultTripDay.hotel,
+                hotel_name: '',
               },
             ],
           })
@@ -159,7 +160,7 @@ export const useGetTripInfo = (
     }
     const destinations = trip?.destinations
     if (destinations?.length && trip) {
-      loadTransfer(trip.dest_start, destinations[0].destination, 0)
+      loadTransfer(trip.dest_start, destinations[0].destination_id, 0)
       // console.log('tran first :', trip.dest_start, destinations[0].destination_name);
     }
     if (destinations?.length) {
@@ -167,8 +168,8 @@ export const useGetTripInfo = (
         // omit start point destination and last destination
         if (index + 1 < destinations.length) {
           loadTransfer(
-            dest.destination,
-            destinations[index + 1].destination,
+            dest.destination_id,
+            destinations[index + 1].destination_id,
             index + 1
           )
           // console.log('tran :', index, dest.destination_name, destinations[index + 1].destination_name);
@@ -177,7 +178,7 @@ export const useGetTripInfo = (
     }
     if (destinations?.length && trip) {
       loadTransfer(
-        destinations[destinations.length - 1].destination,
+        destinations[destinations.length - 1].destination_id,
         trip.dest_start,
         destinations.length
       )

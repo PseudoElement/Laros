@@ -71,6 +71,10 @@
   font-weight: $fw-bold;
   line-height: 17px;
   height: 20px;
+  span {
+    text-decoration: line-through;
+    color: rgb(168, 168, 168);
+  }
 }
 .pencil {
   cursor: pointer;
