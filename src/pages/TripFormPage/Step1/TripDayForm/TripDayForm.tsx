@@ -183,16 +183,19 @@ export const TripDayForm: FC<TripDayFormProps> = ({
 
   return (
     <div className={s.container}>
-      <Transfer
-        onChange={handleTrasnferChange}
-        options={transfers[index]}
-        from={from}
-        to={{
-          label: destination.destination_name,
-          value: destination.destination_id.toString(),
-        }}
-        value={transferValue}
-      />
+      {/* hide transfer within the same destionation */}
+      {destination.destination_id.toString() !== from?.value ? (
+        <Transfer
+          onChange={handleTrasnferChange}
+          options={transfers[index]}
+          from={from}
+          to={{
+            label: destination.destination_name,
+            value: destination.destination_id.toString(),
+          }}
+          value={transferValue}
+        />
+      ) : null}
 
       {duration > 0 && (
         <div className={s.content}>
