@@ -6,6 +6,8 @@ import cn from 'classnames'
 
 import { useClickOutside } from 'shared/hooks/useClickOutside'
 import { useTranslate } from 'shared/hooks/useTranslate'
+import { useAppSelector } from 'shared/hooks/redux'
+import { getDestination } from 'store/slices/destinations/selectors'
 
 import Polis from '/public/assets/images/destinations/Polis.svg'
 
@@ -40,6 +42,9 @@ const RegionCard: FC<RegionCardProps> = ({
   const ref = useRef<HTMLDivElement>(null)
   const t = useTranslate()
 
+  const destination = useAppSelector(state => getDestination(state, id))
+  const currentTitle = destination?.title ?? title
+
   useClickOutside(ref, () => onClose && ref.current && onClose())
 
   return (
@@ -59,11 +64,13 @@ const RegionCard: FC<RegionCardProps> = ({
               <Polis />
             )}
           </div>
-          <h3 className={s.cart_title}>{title}</h3>
-          <div
-            dangerouslySetInnerHTML={{ __html: cardText }}
-            className={clsx(s.description, isTooltip && s.descriptionTooltip)}
-          />
+          <div className={s.cart_info}>
+            <h3 className={s.cart_title}>{currentTitle}</h3>
+            <div
+              dangerouslySetInnerHTML={{ __html: cardText }}
+              className={clsx(s.description, isTooltip && s.descriptionTooltip)}
+            />
+          </div>
 
           {!isTooltip && (
             <div className={s.link__blockDestinationMap}>

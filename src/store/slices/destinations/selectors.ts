@@ -63,3 +63,12 @@ export const getRootRegion = (
     ? getRootRegion(destinations, parentRegion.parent)
     : parentRegion
 }
+
+export const getDestination = (
+  state: RootState,
+  id: number
+): Destination | undefined => {
+  return state.destinations.destinations.find(
+    (item: Destination) => item.id === id
+  )
+}

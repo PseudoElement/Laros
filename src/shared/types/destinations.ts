@@ -6,6 +6,7 @@ export interface Destination {
   location_name: string
   name: string
   fee: number
+  title: string | null
   description: string | null
   highlights: string[] | null
   location: string | null //'SRID=4326;POINT (21.986157 38.873375)'
