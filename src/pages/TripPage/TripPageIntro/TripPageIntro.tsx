@@ -36,7 +36,7 @@ export const TripPageIntro: FC<Trip & { onStartTrip: () => void }> = ({
       })
     )
     onStartTrip()
-    push(`/trip_form/${id}`)
+    // push(`/trip_form/${id}`)
   }
 
   return (
