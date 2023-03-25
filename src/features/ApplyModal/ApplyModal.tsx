@@ -162,7 +162,7 @@ const ApplyModal: FC<ApplyModalProps> = ({
                     onChange={onChange}
                     value={value}
                     shorten
-                    type='phone'
+                    type='text'
                     label={t('forms.inputLabel6')}
                     classname={cn(s.input, s.phoneInput)}
                   />

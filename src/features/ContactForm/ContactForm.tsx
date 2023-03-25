@@ -145,7 +145,7 @@ export const ContactForm: FC<ContactFormProps> = ({
                   rules={{ required: true }}
                   render={({ field: { onChange, value } }) => (
                     <Input
-                      type='phone'
+                      type='text'
                       placeholder=''
                       onChange={e => onChange(e)}
                       id='phone'

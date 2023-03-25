@@ -38,6 +38,25 @@ export const Input: FC<InputProps> = ({
   max,
 }) => {
   switch (type) {
+    case 'phone':
+      return (
+        <div className={cn(s.input, { [s.shorten]: shorten }, classname)}>
+          {<div className={s.label}>{label}</div>}
+          <MaskedInput
+            mask={NUMBER_REG_EXP}
+            guide={true}
+            showMask={false}
+            className={s.field}
+            placeholder={placeholder}
+            id={id}
+            onChange={e => onChange(e.target.value)}
+            value={value}
+          />
+          <span className={s.icon}>
+            <PencilIcon />
+          </span>
+        </div>
+      )
     case 'email':
       return (
         <div className={cn(s.input, { [s.shorten]: shorten }, classname)}>
