@@ -2,10 +2,10 @@
 
 .container {
   position: relative;
-  background: url('../../../../public/assets/images/destinations/Cyrpus/Cyrpus.png')
-    center;
+  background: url('../../../../public/assets/images/destinations/Cyrpus/Cyrpus.png') center;
   width: 832px;
   height: 488px;
+  transform: scale(0.9);
 }
 
 .wrapper {
@@ -29,6 +29,7 @@
     transform: scale(0.7);
   }
 }
+
 @media screen and (max-width: 425px) {
   .container {
     transform: scale(0.3);
@@ -47,6 +48,7 @@
 
 .polis {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -69,6 +71,7 @@
 
 .goudi {
   display: block;
+
   &::after {
     content: '';
     display: inline-block;
@@ -91,6 +94,7 @@
 
 .lysos {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -113,6 +117,7 @@
 
 .miliou {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -135,6 +140,7 @@
 
 .paphos {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -157,6 +163,7 @@
 
 .omodos {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -179,6 +186,7 @@
 
 .kakopetria {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -201,6 +209,7 @@
 
 .kalavassos {
   display: block;
+
   &::after {
     content: '';
     display: inline-block;
@@ -223,6 +232,7 @@
 
 .lemesos {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -245,6 +255,7 @@
 
 .tochni {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -267,6 +278,7 @@
 
 .chirokita {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -289,6 +301,7 @@
 
 .lefkosia {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -311,6 +324,7 @@
 
 .larnaca {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -333,6 +347,7 @@
 
 .agianapa {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -345,17 +360,12 @@
   }
 }
 
-.regionCardagianapa {
-  bottom: 100%;
-  left: -250px;
-}
-
-.regionCardlarnaca {
-  bottom: 100%;
-  left: -250px;
-}
-
+.regionCardagianapa,
+.regionCardlarnaca,
 .regionCardchirokita {
-  bottom: 100%;
   left: -250px;
+}
+
+.regionCardlefkosia {
+  bottom: 0%;
 }

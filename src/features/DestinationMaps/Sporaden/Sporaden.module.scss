@@ -4,8 +4,7 @@
   position: relative;
   width: 1040px;
   height: 720px;
-  background: url('../../../../public/assets/images/destinations/Individual maps/Sporaden Inseln.png')
-    no-repeat center;
+  background: url('../../../../public/assets/images/destinations/Individual maps/Sporaden Inseln.png') no-repeat center;
   font-weight: $fw-semibold;
 }
 
@@ -30,14 +29,17 @@
     transform: scale(0.7);
   }
 }
+
 @media screen and (max-width: 425px) {
   .container {
     transform: scale(0.3);
     height: 400px;
   }
 }
+
 .igoumenitsa {
   display: block;
+
   &::after {
     content: '';
     display: block;
@@ -59,6 +61,7 @@
 
 .aristi {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -78,8 +81,10 @@
   border-radius: 24px;
   padding: 0 4px;
 }
+
 .papingo {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -102,6 +107,7 @@
 
 .ioannina {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -124,6 +130,7 @@
 
 .parga {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -146,6 +153,7 @@
 
 .ammoudia {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -168,6 +176,7 @@
 
 .elati {
   display: block;
+
   &::before {
     content: '';
     display: block;
@@ -188,6 +197,7 @@
 
 .kastraki {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -210,6 +220,7 @@
 
 .makrinitsa {
   display: block;
+
   &::after {
     content: '';
     display: inline-block;
@@ -232,6 +243,7 @@
 
 .volos {
   display: block;
+
   &::after {
     content: '';
     display: inline-block;
@@ -254,6 +266,7 @@
 
 .portaria {
   display: block;
+
   &::after {
     content: '';
     display: block;
@@ -274,6 +287,7 @@
 
 .zagora {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -296,6 +310,7 @@
 
 .vizitsa {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -318,6 +333,7 @@
 
 .nafpaktos {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -340,6 +356,7 @@
 
 .delphi {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -362,6 +379,7 @@
 
 .athen {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -381,8 +399,10 @@
   border-radius: 24px;
   padding: 0 4px;
 }
+
 .chalkida {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -403,12 +423,11 @@
   padding: 0 4px;
 }
 
+.regionCardigoumenitsa,
+.regionCardaristi,
+.regionCardpapingo,
 .regionCardportaria {
   top: 100%;
-  left: 100%;
-}
-
-.regionCardzagora {
-  top: 100%;
+  bottom: auto;
   left: 100%;
 }

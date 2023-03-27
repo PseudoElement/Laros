@@ -31,14 +31,17 @@
     transform: scale(0.7);
   }
 }
+
 @media screen and (max-width: 425px) {
   .container {
     transform: scale(0.3);
     height: 400px;
   }
 }
+
 .skiathos {
   display: block;
+
   &::after {
     content: '';
     display: block;
@@ -59,6 +62,7 @@
 
 .alonissos {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -81,6 +85,7 @@
 
 .skopelos {
   display: block;
+
   &::before {
     content: '';
     display: block;
@@ -101,6 +106,7 @@
 
 .skyros {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -123,10 +129,7 @@
 
 .regionCardskiathos {
   top: 20%;
-}
-
-.regionCardalonissos {
-  top: 20%;
+  bottom: auto;
 }
 
 .regionCardskyros {
@@ -135,11 +138,7 @@
 }
 
 .regionCardalonissos {
-  bottom: 100%;
+  top: 20%;
+  bottom: auto;
   left: -250px;
-}
-
-@media (max-width: 1500px) {
-  .container {
-  }
 }

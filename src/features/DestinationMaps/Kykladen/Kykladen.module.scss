@@ -589,39 +589,22 @@
   padding: 0 4px;
 }
 
-.regionCardandros {
-  top: 20%;
-}
-
-.regionCardamorgos {
-  bottom: 100%;
-  left: -250px;
-}
-
-.regionCardtinos {
-  top: 20%;
-}
-
+.regionCardandros,
+.regionCardtinos,
 .regionCardkea {
   top: 20%;
+  bottom: auto;
 }
 
 .regionCardmykonos {
   top: 100%;
+  bottom: auto;
   left: -250px;
 }
 
-.regionCardkoufonissi {
-  bottom: 100%;
-  left: -250px;
-}
-
-.regionCardsantorini {
-  bottom: 100%;
-  left: -250px;
-}
-
+.regionCardkoufonissi,
+.regionCardsantorini,
+.regionCardamorgos,
 .regionCardanafi {
-  bottom: 100%;
   left: -250px;
 }

@@ -420,82 +420,31 @@
   padding: 4px;
 }
 
-.regionCardarki {
-  top: 20%;
-}
-
-.regionCardlipsi {
-  top: 20%;
-}
-
-.regionCardleros {
-  top: 20%;
-}
-
-.regionCardpatmos {
-  top: 20%;
-}
-
+.regionCardarki,
+.regionCardlipsi,
+.regionCardleros,
+.regionCardpatmos,
 .regionCardkos {
   top: 20%;
+  bottom: auto;
 }
 
-.regionCardagathonissi {
-  top: 100%;
-  left: -250px;
-}
-
-.regionCardarki {
-  top: 100%;
-  left: -250px;
-}
-
-.regionCardlipsi {
-  top: 100%;
-  left: -250px;
-}
-
-.regionCardleros {
-  top: 100%;
-  left: -250px;
-}
-
-.regionCardkalymnos {
-  top: 100%;
-  left: -250px;
-}
-
-.regionCardkos {
-  top: 100%;
-  left: -250px;
-}
-
+.regionCardagathonissi,
+.regionCardarki,
+.regionCardlipsi,
+.regionCardleros,
+.regionCardkalymnos,
+.regionCardkos,
 .regionCardnissiros {
   top: 100%;
+  bottom: auto;
   left: -250px;
 }
 
-.regionCardkarpathos {
-  bottom: 100%;
-  left: -250px;
-}
-
-.regionCardchalki {
-  bottom: 100%;
-  left: -250px;
-}
-
-.regionCardsymi {
-  bottom: 100%;
-  left: -250px;
-}
-
-.regionCardrhodos {
-  bottom: 100%;
-  left: -250px;
-}
-
+.regionCardkarpathos,
+.regionCardchalki,
+.regionCardsymi,
+.regionCardrhodos,
 .regionCardkastelorizo {
-  bottom: 100%;
   left: -250px;
 }

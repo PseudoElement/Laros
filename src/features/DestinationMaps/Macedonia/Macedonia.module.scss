@@ -106,7 +106,7 @@
     position: absolute;
     top: 25px;
     left: -45px;
-    width: 200px;
+    width: 115px;
   }
 }
 
@@ -793,57 +793,20 @@
   padding: 4px;
 }
 
-.regionCardkerkini {
-  top: 20%;
-}
-
+.regionCardkerkini,
 .regionCardloutraki {
-  top: 20%;
-}
-
-.regionCardxanthi {
-  top: 20%;
-}
-
-.regionCardkomotini {
-  top: 20%;
-}
-
-.regionCarddadia {
   top: 100%;
-  left: -250px;
+  bottom: auto;
 }
 
-.regionCardxanthi {
-  top: 100%;
-  left: -250px;
-}
-
+.regionCardkomotini,
+.regionCarddadia,
+.regionCardxanthi,
+.regionCardstavroupolis,
+.regionCardalexandroupolis,
+.regionCardmaronia,
 .regionCardkavala {
   top: 100%;
-  left: -250px;
-}
-
-.regionCardstavroupolis {
-  top: 100%;
-  left: -250px;
-}
-
-.regionCardalexandroupolis {
-  top: 100%;
-  left: -250px;
-}
-
-.regionCardkavala {
-  top: 20%;
-}
-
-.regionCardkomotini {
-  top: 100%;
-  left: -250px;
-}
-
-.regionCardmaronia {
-  top: 100%;
+  bottom: auto;
   left: -250px;
 }
