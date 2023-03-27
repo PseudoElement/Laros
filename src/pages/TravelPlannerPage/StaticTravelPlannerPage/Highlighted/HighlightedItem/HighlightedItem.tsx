@@ -43,26 +43,15 @@ export const HighlightedItem: FC<HighlightedItemProps> = ({
         </Swiper>
 
         <div className={s.pagination}>
-          <div
-            onClick={() => setInitialSlide(0)}
-            className={cls(s.paginationItem, {
-              [s.activePagination]: initialSlide === 0,
-            })}
-          />
-
-          <div
-            onClick={() => setInitialSlide(1)}
-            className={cls(s.paginationItem, {
-              [s.activePagination]: initialSlide === 1,
-            })}
-          />
-
-          <div
-            onClick={() => setInitialSlide(2)}
-            className={cls(s.paginationItem, {
-              [s.activePagination]: initialSlide === 2,
-            })}
-          />
+          {images.map((image, id: number) => (
+            <div
+              onClick={() => setInitialSlide(id)}
+              key={id}
+              className={cls(s.paginationItem, {
+                [s.activePagination]: initialSlide === id,
+              })}
+            />
+          ))}
         </div>
       </div>
 
