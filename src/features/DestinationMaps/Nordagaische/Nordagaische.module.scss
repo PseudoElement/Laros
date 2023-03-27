@@ -4,8 +4,7 @@
   position: relative;
   width: 1040px;
   height: 720px;
-  background: url('../../../../public/assets/images/destinations/Individual maps/Nordagaische Inseln.png')
-    no-repeat center;
+  background: url('../../../../public/assets/images/destinations/Individual maps/Nordagaische Inseln.png') no-repeat center;
   font-weight: $fw-semibold;
 }
 
@@ -30,14 +29,17 @@
     transform: scale(0.7);
   }
 }
+
 @media screen and (max-width: 425px) {
   .container {
     transform: scale(0.3);
     height: 400px;
   }
 }
+
 .thassos {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -60,6 +62,7 @@
 
 .samothrake {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -82,6 +85,7 @@
 
 .lemnos {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -101,8 +105,10 @@
   border-radius: 24px;
   padding: 0 4px;
 }
+
 .lesbos {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -125,6 +131,7 @@
 
 .fourni {
   display: block;
+
   &::before {
     content: '';
     display: block;
@@ -146,6 +153,7 @@
 
 .lesbosmytilene {
   display: block;
+
   &::before {
     content: '';
     display: block;
@@ -166,6 +174,7 @@
 
 .chios {
   display: block;
+
   &::before {
     content: '';
     display: inline-block;
@@ -188,6 +197,7 @@
 
 .ikaria {
   display: block;
+
   &::after {
     content: '';
     display: block;
@@ -208,6 +218,7 @@
 
 .samos {
   display: block;
+
   &::after {
     content: '';
     display: block;
@@ -226,29 +237,16 @@
   padding: 4px;
 }
 
-.regionCardlemmos {
-  top: 20%;
-}
-
-.regionCardsamothrake {
-  top: 20%;
-}
-
+.regionCardlemmos,
+.regionCardsamothrake,
 .regionCardthassos {
   top: 20%;
+  bottom: auto;
 }
 
-.regionCardsamos {
-  bottom: 100%;
-  left: -250px;
-}
-
-.regionCardikaria {
-  bottom: 100%;
-  left: -250px;
-}
-
+.regionCardsamos,
+.regionCardikaria,
+.regionCardlesbos,
 .regionCardfourni {
-  bottom: 100%;
   left: -250px;
 }

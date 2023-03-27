@@ -557,40 +557,23 @@
   padding: 4px;
 }
 
-.regionCardpatras {
+.regionCardpatras,
+.regionCardkalogria,
+.regionCardlechaio,
+.regionCardkorinth,
+.regionCardnapflio,
+.regionCardvitina,
+.regionCardolympia {
   top: 20%;
-}
-
-.regionCardkalogria {
-  top: 20%;
-}
-
-.regionCardlechaio {
-  top: 20%;
-}
-
-.regionCardkorinth {
-  top: 20%;
+  bottom: auto;
 }
 
 .regionCardaltepidaurus {
   top: 100%;
+  bottom: auto;
   left: -250px;
 }
 
-.regionCardnapflio {
-  top: 20%;
-}
-
-.regionCardvitina {
-  top: 20%;
-}
-
-.regionCardolympia {
-  top: 20%;
-}
-
 .regionCardmonemvassia {
-  bottom: 100%;
   left: -250px;
 }
