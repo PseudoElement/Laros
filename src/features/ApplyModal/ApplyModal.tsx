@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { FC, memo, useEffect, useState } from 'react'
+import React, { FC, memo, useEffect, useRef, useState } from 'react'
 import cn from 'classnames'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 
@@ -46,13 +46,7 @@ const ApplyModal: FC<ApplyModalProps> = ({
   const [file, setFile] = useState<any>()
   const [thankYou, setThankYou] = useState(false)
 
-  const {
-    handleSubmit,
-    control,
-    reset,
-    setValue,
-    formState: { errors },
-  } = useForm<ApplyForm>({
+  const { handleSubmit, control, reset, setValue } = useForm<ApplyForm>({
     defaultValues: {
       checkbox: false,
     },
@@ -63,12 +57,14 @@ const ApplyModal: FC<ApplyModalProps> = ({
     formData.append('name', data.name)
     formData.append('email', data.email)
     formData.append('phone', data.phone)
-    formData.append('file', file)
-
+    formData.append('file', file, `${file.name}`)
     applyForVacancy(Number(data.position.value), formData)
-
     reset()
     setThankYou(true)
+  }
+
+  const onError = (error: any) => {
+    alert(`${Object.keys(error).join(', ')} are required`)
   }
 
   useEffect(() => {
@@ -119,7 +115,7 @@ const ApplyModal: FC<ApplyModalProps> = ({
             render={({ field }) => (
               <Input
                 shorten
-                rules={{ required: true }}
+                required
                 id='name'
                 classname={s.input}
                 label={`${t('forms.inputLabel5')}*`}
@@ -133,7 +129,9 @@ const ApplyModal: FC<ApplyModalProps> = ({
             <Controller
               name='email'
               control={control}
-              rules={{ required: true }}
+              rules={{
+                required: true,
+              }}
               render={({ field }) => (
                 <Input
                   shorten
@@ -153,6 +151,9 @@ const ApplyModal: FC<ApplyModalProps> = ({
               name='phone'
               defaultValue=''
               control={control}
+              rules={{
+                required: true,
+              }}
               render={({ field: { onChange, value } }) => (
                 <div className={s.phoneInputWrap}>
                   <Input
@@ -161,7 +162,7 @@ const ApplyModal: FC<ApplyModalProps> = ({
                     onChange={onChange}
                     value={value}
                     shorten
-                    type='phone'
+                    type='text'
                     label={t('forms.inputLabel6')}
                     classname={cn(s.input, s.phoneInput)}
                   />
@@ -187,7 +188,7 @@ const ApplyModal: FC<ApplyModalProps> = ({
                 </Button>
 
                 <Button
-                  onClick={handleSubmit(onSubmit)}
+                  onClick={handleSubmit(onSubmit, onError)}
                   variant='primary'
                   type='submit'
                 >

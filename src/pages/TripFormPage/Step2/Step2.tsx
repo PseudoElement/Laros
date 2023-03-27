@@ -148,7 +148,7 @@ export const Step2: FC<Step2Props> = ({ setStep, capacity, countries }) => {
               placeholder='+41'
               onChange={onChange}
               value={value}
-              type='phone'
+              type='text'
               label={t('forms.inputLabel24')}
               shorten
             />

@@ -156,7 +156,7 @@ export const SendBrochuresModal: FC<SendBrochuresModalProps> = ({
                     required
                     onChange={onChange}
                     value={value}
-                    type='phone'
+                    type='text'
                     label={t('forms.inputLabel6')}
                     classname={cn(s.input, s.phoneInput)}
                   />

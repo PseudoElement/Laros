@@ -42,13 +42,13 @@ export const StaticTravelPlannerPage: FC = () => {
       {travelPlannerInfo?.highlighted ? (
         <div className={s.proposalsWrapper}>
           {travelPlannerInfo.highlighted.map((item, idx) => (
-            <Highlighted  key={idx} {...item} />
+            <Highlighted key={idx} {...item} />
           ))}
         </div>
       ) : null}
 
       <div className={s.contactForm}>
-        <ContactForm />
+        <ContactForm staticPageContactForm />
       </div>
     </>
   )
