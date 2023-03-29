@@ -27,6 +27,7 @@ import s from './ContactForm.module.scss'
 import Link from 'next/link'
 import { OrderPayload } from 'shared/types/order'
 import { ThankYouPage } from '../ThankYouPage'
+import { vocabulary } from 'shared/constants/vocabulary'
 
 type ContactFormProps = {
   contactPage?: boolean
@@ -50,7 +51,11 @@ export const ContactForm: FC<ContactFormProps> = ({
   const t = useTranslate()
 
   const onError = (error: any) => {
-    alert(`${Object.keys(error).join(', ')} are required`)
+    alert(
+      `${Object.keys(error)
+        .map(key => vocabulary[key])
+        .join(', ')} sind Pflichtfelder`
+    )
   }
 
   const onSubmit = (formData: any) => {
@@ -99,7 +104,7 @@ export const ContactForm: FC<ContactFormProps> = ({
                       onChange={onChange}
                       id='name'
                       value={value}
-                      label={t('forms.inputLabel5')}
+                      label={`${t('forms.inputLabel5')}*`}
                     />
                   </>
                 )}
@@ -133,7 +138,7 @@ export const ContactForm: FC<ContactFormProps> = ({
                     onChange={onChange}
                     id='email'
                     value={value}
-                    label={t('forms.inputLabel1')}
+                    label={`${t('forms.inputLabel1')}*`}
                   />
                 )}
               />

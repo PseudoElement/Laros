@@ -24,6 +24,7 @@ import mail from '/public/assets/images/voucherDelivery/mail.svg?url'
 import post from '/public/assets/images/voucherDelivery/post.svg?url'
 
 import s from './Step2Form.module.scss'
+import { vocabulary } from 'shared/constants/vocabulary'
 
 interface Step2FormProps {
   setStep: (step: Steps) => void
@@ -46,12 +47,6 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
     formState: { errors },
     setValue,
   } = useForm()
-
-  const vocabulary: any = {
-    recepientEmail: 'E-Mail',
-    phone: 'Telefonnummer',
-    address: 'Adresse',
-  }
 
   const onError = (error: any) => {
     alert(

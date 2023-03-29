@@ -14,6 +14,7 @@ import { Option } from 'shared/types'
 import { applyForVacancy } from 'shared/api/routes/vacancy'
 
 import s from './ApplyModal.module.scss'
+import { vocabulary } from 'shared/constants/vocabulary'
 
 interface ApplyModalProps {
   position: number | null
@@ -64,7 +65,11 @@ const ApplyModal: FC<ApplyModalProps> = ({
   }
 
   const onError = (error: any) => {
-    alert(`${Object.keys(error).join(', ')} are required`)
+    alert(
+      `${Object.keys(error)
+        .map(key => vocabulary[key])
+        .join(', ')} sind Pflichtfelder`
+    )
   }
 
   useEffect(() => {
@@ -163,7 +168,7 @@ const ApplyModal: FC<ApplyModalProps> = ({
                     value={value}
                     shorten
                     type='text'
-                    label={t('forms.inputLabel6')}
+                    label={`${t('forms.inputLabel6')}*`}
                     classname={cn(s.input, s.phoneInput)}
                   />
                   {!value && (
@@ -177,7 +182,7 @@ const ApplyModal: FC<ApplyModalProps> = ({
           </div>
 
           <div className={s.wrapperSending}>
-            <p className={s.cv}>{t('aboutModal.cv')}</p>
+            <p className={s.cv}>{`${t('aboutModal.cv')}*`}</p>
 
             <div className={s.uploadWrap}>
               <Upload file={file} setFile={setFile} control={control} />

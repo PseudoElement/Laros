@@ -17,6 +17,7 @@ import { updateForm } from 'store/slices/order/order'
 import { prepareOrderFormToApi } from 'shared/helpers/order'
 
 import s from './Step2.module.scss'
+import { vocabulary } from 'shared/constants/vocabulary'
 
 interface Step2Props {
   setStep: (step: Steps) => void
@@ -45,14 +46,6 @@ export const Step2: FC<Step2Props> = ({ setStep, capacity, countries }) => {
     control,
     name: 'travellers',
   })
-
-  const vocabulary: any = {
-    address: 'Adresszeile 1',
-    city: 'Stadt',
-    country: 'Land',
-    zip_code: 'Postleitzahl',
-    travellers: 'Reisende',
-  }
 
   const onError = (error: any) => {
     alert(

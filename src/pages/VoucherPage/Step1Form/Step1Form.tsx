@@ -13,6 +13,7 @@ import { titleOptions } from 'shared/constants/form'
 import { EMAIL_VALIDATION } from 'shared/constants'
 
 import s from './Step1Form.module.scss'
+import { vocabulary } from 'shared/constants/vocabulary'
 
 interface Step1FormProps {
   setStep: (step: Steps) => void
@@ -28,22 +29,11 @@ export const Step1Form: FC<Step1FormProps> = ({ setStep }) => {
     formState: { errors },
   } = useForm()
 
-  const vocabulary: any = {
-    sender: 'Die Daten der Person mit, die den Geschenkgutschein versendet',
-    title: 'Anrede',
-    email: 'E-Mail',
-    phone: 'Telefonnummer',
-    address: 'Adresse',
-    recipient: 'Empfängername',
-    from: 'Gutschein vom',
-    value: 'Wert des Gutscheins ein Muss mehr als 50 CHF betragen',
-  }
-
   const onError = (error: any) => {
     alert(
       `${Object.keys(error)
         .map(key => vocabulary[key])
-        .join(', ')}, sind Pflichtfelder`
+        .join(', ')} sind Pflichtfelder`
     )
     console.error('error', errors)
   }
