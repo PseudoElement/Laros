@@ -33,9 +33,9 @@ export const Step2: FC<Step2Props> = ({ setStep, capacity, countries }) => {
   } = useForm<Partial<OrderForm>>({
     defaultValues: {
       travellers: Array(capacity).fill({
-        full_name: '',
+        name: '',
         dob: new Date(),
-        title: 'Mr',
+        title: '',
         nationality: '',
       }),
     },

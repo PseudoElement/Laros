@@ -39,7 +39,7 @@ export const Radio: FC<RadioProps> = ({
             <input
               type='radio'
               className={cn(s.radioButton)}
-              name={name}
+              // name={name}
               value={option.value}
               checked={option.value === value}
               onChange={handleChange}

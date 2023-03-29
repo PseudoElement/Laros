@@ -53,14 +53,15 @@ export const TravelerForm: FC<TravelerFormProps> = ({
         <Controller
           name={`travellers.[${index}].title`}
           control={control}
+          rules={{ required: true }}
           render={({ field: { onChange, value } }) => (
             <div className={s.radio}>
-              <div className={s.radioLabel}>{t('contactForm.label1')}*</div>
+              <div className={s.radioLabel}>{t('worldwideTours.label9')}*</div>
               <Radio
-                name='salutation*'
+                name='gender*'
                 onChange={onChange}
                 value={value}
-                options={titleOptions}
+                options={genderOptions}
               />
             </div>
           )}
