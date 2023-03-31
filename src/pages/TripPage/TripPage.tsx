@@ -32,7 +32,7 @@ export const TripPage: FC<TripPageProps> = ({ trip }) => {
   const [relatedTours, setRelatedTours] = useState<Trip[]>([])
   const [tripNearby, setTripNearby] = useState<Destination[]>([])
   const { isOpen, onClose, open } = useModal()
-  const form = useAppSelector((state) => state.order.form);
+  const form = useAppSelector(state => state.order.form)
   const destination = useAppSelector(state =>
     getParentDestination(state, tripNearby[0]?.parent)
   )
@@ -67,8 +67,9 @@ export const TripPage: FC<TripPageProps> = ({ trip }) => {
       <div
         className={s.bg}
         style={{
-          backgroundImage: `url(${trip?.images ? withDomain(trip.images[1]) : ''
-            })`,
+          backgroundImage: `url(${
+            trip?.images ? withDomain(trip.images[1]) : ''
+          })`,
         }}
       />
 
@@ -97,7 +98,7 @@ export const TripPage: FC<TripPageProps> = ({ trip }) => {
           <TabPanel>
             {trip?.destinations ? (
               <TripPlan
-                images={trip.images.slice(1, trip.images.length - 1)}
+                images={trip.images.slice(2, trip.images.length)}
                 tripDestination={trip.destinations}
                 onStartTrip={() => open()}
               />
