@@ -14,7 +14,7 @@ import { TRIP_PLAN_DESCRIPTION_SIZE } from 'shared/constants'
 
 import s from './tripPageIntro.module.scss'
 
-export const TripPageIntro: FC<Trip & { onStartTrip: () => void }> = ({
+export const TripPageIntro: FC<Trip> = ({
   id,
   name,
   tags,
@@ -22,7 +22,6 @@ export const TripPageIntro: FC<Trip & { onStartTrip: () => void }> = ({
   price_per_person_chf,
   route,
   description,
-  onStartTrip,
 }) => {
   const dispatch = useAppDispatch()
   const { push } = useRouter()
@@ -35,8 +34,7 @@ export const TripPageIntro: FC<Trip & { onStartTrip: () => void }> = ({
         date_start: fields.date.toString(),
       })
     )
-    onStartTrip()
-    // push(`/trip_form/${id}`)
+    push(`/trip_form/${id}`)
   }
 
   return (

@@ -76,7 +76,7 @@ export const TripPage: FC<TripPageProps> = ({ trip }) => {
       <div className={s.container}>
         <div className={s.card}>
           {trip.name ? (
-            <TripPageIntro {...trip} onStartTrip={() => open()} />
+            <TripPageIntro {...trip} />
           ) : (
             <div className={s.loader}>
               <p>{t('common.loadingText')}</p>
