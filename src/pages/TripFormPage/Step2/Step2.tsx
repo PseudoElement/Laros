@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { Controller, useFieldArray, useForm } from 'react-hook-form'
 import Link from 'next/link'
 
@@ -28,6 +28,7 @@ interface Step2Props {
 export const Step2: FC<Step2Props> = ({ setStep, capacity, countries }) => {
   const {
     handleSubmit,
+    setValue,
     control,
     formState: { errors },
   } = useForm<Partial<OrderForm>>({
@@ -46,6 +47,18 @@ export const Step2: FC<Step2Props> = ({ setStep, capacity, countries }) => {
     control,
     name: 'travellers',
   })
+
+  useEffect(() => {
+    setValue(
+      'travellers',
+      Array(capacity).fill({
+        name: '',
+        dob: new Date(),
+        title: '',
+        nationality: '',
+      })
+    )
+  }, [capacity, setValue])
 
   const onError = (error: any) => {
     alert(
