@@ -230,6 +230,7 @@ export const TripFormPage: FC = () => {
           rooms={form.rooms}
           total={finalPrice}
           dirtyPrice={dirtyPrice}
+          is_early_booking={trip.is_early_booking}
           handleDownload={!isHotelPage ? handleDownload : undefined}
           handleNextStep={handleNextStep}
           step={step}

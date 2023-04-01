@@ -23,6 +23,7 @@ export interface Trip {
   near_destinations: Destination[]
   name: string
   is_active: boolean
+  is_early_booking: boolean
   island_hopping_fee: boolean
   dest_start: number
   description: string | null

@@ -38,17 +38,19 @@ export interface SideBarProps {
   rooms: PeopleCapacity[]
   total: number
   dirtyPrice: number | null
+  is_early_booking: boolean
   handleDownload?: () => void
   handleNextStep?: () => void
   step: number
 }
 
 export const Sidebar: FC<SideBarProps> = ({
-  dirtyPrice,
   route,
   travel_date,
   rooms,
   total,
+  dirtyPrice,
+  is_early_booking,
   handleDownload,
   handleNextStep,
   step,
@@ -283,6 +285,11 @@ export const Sidebar: FC<SideBarProps> = ({
             </div>
           </div>
         </div>
+        {is_early_booking && (
+          <div className={s.earlyBookingMessage}>
+            {t('tripSteps.earlyBookingMessage')}
+          </div>
+        )}
 
         {/* nex step and download buttons */}
         <div className={s.buttonSection}>

@@ -51,7 +51,7 @@
 }
 
 .sectionTotal {
-  padding: 16px 20px;
+  padding: 16px 20px 8px;
   margin-top: 8px;
   border-top: 1px solid $color-placeholder;
 }
@@ -75,6 +75,11 @@
     text-decoration: line-through;
     color: rgb(168, 168, 168);
   }
+}
+.earlyBookingMessage {
+  font-weight: bold;
+  padding: 5px;
+  font-size: 12px;
 }
 .pencil {
   cursor: pointer;
