@@ -394,7 +394,8 @@
     "warning": "Bitte beachten Sie, dass dies eine dynamische Preisgestaltung ist. Der endgültige Preis wird von unserem Team berechnet.",
     "noDescription": "Keine Beschreibung",
     "endPoint": "Endpunkt",
-    "out": "aus"
+    "out": "aus",
+    "allocatedRooms": "Die Zimmerzuteilung wurde entsprechend der Hotelkapazität angepasst"
   },
   "changingRoomType": {
     "windowTitle": "Zimmerkategorie ändern",

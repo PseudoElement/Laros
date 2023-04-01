@@ -62,7 +62,11 @@
     display: block;
   }
 }
-
+.allocationAlert {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+}
 .sectionTitle,
 .roomTitle {
   max-width: 160px;

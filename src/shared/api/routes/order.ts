@@ -54,7 +54,7 @@ export const getHotelTripDay = async (
       const { data } = await getRooms({ hotel: hotel.id }) // TODO add capacity params
       const rooms = data.data
       if (rooms.length) {
-        newRooms = getClientsRoom(rooms, capacity)
+        newRooms = getClientsRoom(rooms, capacity).roomsForClients
       } else return null // in any case we return null, meaning that there is no trip place from this location
     } else return null
 

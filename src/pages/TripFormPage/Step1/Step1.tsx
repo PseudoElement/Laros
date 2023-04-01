@@ -93,7 +93,6 @@ export const Step1: FC<Step1Props> = ({
   }
 
   const onSubmit = (formData: any) => {
-    console.log('formData :', formData)
     // TODO add type
     dispatch(updateForm(formData))
     setStep(Steps.SECOND)

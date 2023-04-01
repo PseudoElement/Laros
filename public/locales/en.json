@@ -338,7 +338,8 @@
     "warning": "Prices are dynamic, Final price will be calculated by our team",
     "noDescription": "No description",
     "endPoint": "End point",
-    "out": "out of"
+    "out": "out of",
+    "allocatedRooms": "The rooms allocation has been adjusted according to the hotel capacity"
   },
   "changingRoomType": {
     "windowTitle": "Changing accomodation",

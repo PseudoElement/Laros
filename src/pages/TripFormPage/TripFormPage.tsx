@@ -124,6 +124,7 @@ export const TripFormPage: FC = () => {
     }
   }
 
+
   useEffect(() => {
     const subscription = formHook.watch((value, { name, type }) => {
       const formValue = value

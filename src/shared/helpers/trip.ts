@@ -28,17 +28,25 @@ export const findRooms = (rooms: Room[], people: number): Room[] => {
     return foundRooms
   }
 }
-
 export const getClientsRoom = (
   rooms: Room[],
   capacity: PeopleCapacity[]
-): Room[] => {
+): { roomsForClients: Room[]; isAllocated: boolean } => {
   let roomsForClients: Room[] = []
+  let isAllocated: boolean = false
+  const maxCapacity = rooms.reduce((acc, el) => {
+    if (el.capacity > acc) acc = el.capacity
+    return acc // check if we can't allocate the rooms according to the user preferences (used to show an alert).
+  }, 0)
+
+  if (capacity.some(room => room.adults + room.children > maxCapacity)) {
+    isAllocated = true
+  }
   for (let i = 0; i < capacity?.length; i++) {
     const newRooms = findRooms(rooms, capacity[i].adults)
     roomsForClients = [...roomsForClients, ...newRooms]
   }
-  return roomsForClients
+  return { roomsForClients, isAllocated }
 }
 export function countPeople(
   array: PeopleCapacity[],

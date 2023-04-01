@@ -83,6 +83,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
   const [isTruncated, setIsTruncated] = useState(true)
   const [hotelRooms, setHotelRooms] = useState<Room[]>([])
   const [clientRooms, setClientRooms] = useState<Room[]>([])
+  const [isRoomsAllocated, setIsRoomsAllocated] = useState<boolean>(false)
   const [nearDestinations, setNearDestinations] = useState<Destination[]>([])
   const [isShownCard, setIsShownCard] = useState(false)
   const onClose = () => setIsShownCard(false)
@@ -164,6 +165,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
       const loadRooms = async () => {
         try {
           const rooms = await getRooms({ hotel: hotel.id })
+          console.log('Rooms', rooms)
           setHotelRooms(rooms.data.data)
         } catch (error) {
           console.log(error)
@@ -174,11 +176,13 @@ export const TripDayForm: FC<TripDayFormProps> = ({
   }, [hotel])
 
   useEffect(() => {
-    setClientRooms(getClientsRoom(hotelRooms, capacity))
-    onChange(
-      `destinations.[${index}].rooms`,
-      getClientsRoom(hotelRooms, capacity)
+    const { isAllocated, roomsForClients } = getClientsRoom(
+      hotelRooms,
+      capacity
     )
+    setIsRoomsAllocated(isAllocated)
+    setClientRooms(roomsForClients)
+    onChange(`destinations.[${index}].rooms`, roomsForClients)
   }, [hotelRooms, capacity, onChange])
 
   return (
@@ -370,6 +374,11 @@ export const TripDayForm: FC<TripDayFormProps> = ({
               </>
             )
           })}
+          {isRoomsAllocated && (
+            <div className={s.allocationAlert}>
+              {t('tripSteps.allocatedRooms')}
+            </div>
+          )}
         </div>
       )}
 
