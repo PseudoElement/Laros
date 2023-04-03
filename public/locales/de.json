@@ -602,7 +602,7 @@
     "useText3": "Barauszahlung, Umtausch und nachträgliche Rückzahlung für bereits gebuchte Reisen sind ausgeschlossen.",
     "invoiceBlock": "Versand von  Geschenkgutscheinen & Rechnung",
     "invoiceBlock1": "Versand des/der Geschenkgutschein(e): nach Eingang des Rechnungsbetrages",
-    "invoiceBlock2": "Rechnungsversand: Nach dem Absenden des Bestellformulars.",
+    "invoiceBlock2": "Rechnungsversand: Nach dem Absenden des Bestellformulars wird Ihnen die Rechnung per separater E-Mail",
     "invoiceBlock3": "Gültigkeit: Der Gutschein wird nach Zahlung des Rechnungsbetrages gültig.",
     "buttonDone": "Absenden",
     "thankYou": "Vielen Dank für Ihre Bestellung.",
