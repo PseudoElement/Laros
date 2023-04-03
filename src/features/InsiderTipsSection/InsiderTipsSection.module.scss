@@ -12,7 +12,6 @@
   @include mobile {
     padding: 30px 10px 20px;
   }
-
 }
 
 .title {
@@ -28,6 +27,8 @@
 }
 
 .insiderTips {
+  display: flex;
+  justify-content: center;
   white-space: pre-wrap;
   font-size: 12px;
   font-weight: $fw-regular;
