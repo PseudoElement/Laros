@@ -27,7 +27,8 @@
   align-items: center;
 
   @include tablet-laptop {
-    margin: 40px 30px 40px 30px;
+    max-width: 1000px;
+    margin: -130px auto 30px;
     min-height: 0;
   }
 

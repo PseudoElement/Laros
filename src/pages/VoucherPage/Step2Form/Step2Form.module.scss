@@ -2,7 +2,7 @@
 
 .container {
   border-radius: 16px;
-  width: 1281px;
+  max-width: 1281px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,7 +11,8 @@
   background: $color-laros-light-grey;
 
   @include tablet-laptop {
-    margin: 40px 30px 40px 30px;
+    max-width: 1000px;
+    margin: -130px auto 30px;
     min-height: 0;
   }
 
@@ -28,6 +29,10 @@
   width: 100%;
   border-radius: 0 0 8px 8px;
   text-align: left;
+
+  @include mobile-tablet {
+    padding: 100px 100px 130px;
+  }
 }
 
 .nav {
@@ -68,6 +73,11 @@
   display: flex;
   gap: 15px;
   margin: 24px 0 24px 0;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .deliveryOption {
@@ -133,7 +143,7 @@
   margin-top: 24px;
   gap: 8px;
   background-color: $color-white;
-  width: 435px;
+  max-width: 435px;
   height: 70px;
   padding: 8px;
 }
@@ -212,7 +222,7 @@
   justify-content: center;
   align-items: center;
   padding: 8px;
-  width: 331px;
+  max-width: 331px;
 }
 
 .adressPhoneForm{
