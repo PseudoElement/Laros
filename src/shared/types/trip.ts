@@ -74,6 +74,7 @@ export interface TripFilterParams {
   ordering: TripSort
   offer: boolean
   page: number
+  size: number
 }
 
 export interface TripCategory extends Meta {

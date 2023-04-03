@@ -5,7 +5,7 @@ import { Trips } from './Trips/Trips'
 import { Overview } from './Overview/Overview'
 
 import { getHotels } from 'shared/api/routes/hotels'
-import { getTripsNearby } from 'shared/api/routes/trips'
+import { getTrips } from 'shared/api/routes/trips'
 import { useTranslate } from 'shared/hooks/useTranslate'
 import { withDomain } from 'shared/helpers/withDomain'
 
@@ -42,7 +42,11 @@ export const DestinationInfoPage: FC<DestinationInfoPageProps> = ({
 
   const loadTripNearby = async (id: number) => {
     try {
-      const { data } = await getTripsNearby(id)
+      const { data } = await getTrips({
+        destination: `${destination.id}`,
+        page: 1,
+        size: 3,
+      })
       setTrips(tripsFilter(data.data))
     } catch (error) {
       console.error('error', error)
