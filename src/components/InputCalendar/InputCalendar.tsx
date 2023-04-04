@@ -1,4 +1,4 @@
-import { useRef, useState, FC } from 'react'
+import { useRef, useState, FC, useEffect } from 'react'
 import CalendarWrapper from 'react-calendar'
 import cn from 'classnames'
 import 'react-calendar/dist/Calendar.css'
@@ -52,7 +52,6 @@ export const InputCalendar: FC<InputCalendarPropsMain> = ({
   const [date, setDate] = useState<Date | null>(value ?? new Date())
   const [error, setError] = useState<boolean>(false)
   const [showCalendar, setShowCalendar] = useState<boolean>(false)
-  const [clickCounter, setClickCounter] = useState<number>(0)
   const [doubleDate, setDoubleDate] = useState<Date[] | null>([
     new Date(),
     new Date(),
@@ -78,16 +77,10 @@ export const InputCalendar: FC<InputCalendarPropsMain> = ({
 
     if (isMulti && Array.isArray(e)) {
       setDoubleDate([...e])
-    }
-
-    setClickCounter(clickCounter + 1) // TODO improve code
-
-    if (clickCounter == 1) {
       setShowCalendar(false)
-      setClickCounter(0)
-    } else {
-      setClickCounter(clickCounter + 1)
     }
+
+    !isMulti && setShowCalendar(false)
   }
 
   const CalendarDouble = (
