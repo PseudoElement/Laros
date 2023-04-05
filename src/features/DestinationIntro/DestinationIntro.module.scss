@@ -127,3 +127,13 @@
     margin-right: 0;
   }
 }
+
+.title {
+  margin-top: 16px;
+  margin-bottom: 6px;
+  font-weight: bold;
+
+  @include mobile-tablet {
+    margin-top: 0;
+  }
+}

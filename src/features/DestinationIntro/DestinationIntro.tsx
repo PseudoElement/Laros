@@ -28,6 +28,7 @@ export const DestinationIntro: FC<Destination> = ({
   is_island,
   fee,
   is_active,
+  title,
 }) => {
   const t = useTranslate()
 
@@ -36,6 +37,7 @@ export const DestinationIntro: FC<Destination> = ({
       <div className={s.introLeftContainer}>
         <div className={s.address}>{location_name}</div>
         <div className={s.name}>{name}</div>
+        <div className={s.title}>{title}</div>
 
         {description ? (
           <TruncatedText limit={TRIP_PLAN_DESCRIPTION_SIZE}>
