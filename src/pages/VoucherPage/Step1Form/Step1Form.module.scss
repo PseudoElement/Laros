@@ -224,7 +224,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: $font-Lato;
+  font-family: $font-Century-Gothic;
 
   @include mobile-laptop {
     flex-direction: column;
@@ -249,7 +249,6 @@
   padding-bottom: 8px;
   border-radius: 0;
 
-  
   :nth-child(1) {
     white-space: normal;
   }

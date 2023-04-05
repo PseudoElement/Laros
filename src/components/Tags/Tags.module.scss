@@ -1,7 +1,7 @@
 @use '/src/styles/style.scss' as *;
 
 .tags {
-  font-family: $font-Lato;
+  font-family: $font-Century-Gothic;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -23,8 +23,6 @@
   @include mobile {
     grid-template-rows: 1fr 1fr 1fr;
   }
-
-
 }
 
 .label {
