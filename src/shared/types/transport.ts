@@ -3,6 +3,12 @@ export enum Transfer {
   FERRY = 'Ferry',
   CAR = 'Car',
 }
+
+export enum TransferNumericTypes {
+  FLIGHT,
+  FERRY,
+  CAR,
+}
 export interface Transport {
   id: number
   from_dest_name: string

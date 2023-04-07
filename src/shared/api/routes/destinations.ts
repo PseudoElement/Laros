@@ -4,6 +4,7 @@ import { Destination } from 'shared/types/destinations'
 import { Transport } from 'shared/types/transport'
 import { api } from '..'
 import { endpoints } from '../endpoints'
+import { TransferNumericTypes } from 'shared/types/transport'
 
 export const getDestinations = (
   params?: any
@@ -39,5 +40,21 @@ export const getTransports = (
   // TOOD move to separate file
   return api.get(endpoints.transport.all, {
     params: { from_dest: destination_from, to_dest: destination_to },
+  })
+}
+export const getTransportToFirstDest = (
+  destination_to: number,
+  type: TransferNumericTypes = TransferNumericTypes.FLIGHT
+): AxiosPromise<AxiosPaginatedResponse<Transport>> => {
+  return api.get(endpoints.transport.all, {
+    params: { to_dest: destination_to, type: type },
+  })
+}
+export const getTransportFromLastDest = (
+  destination_from: number,
+  type: TransferNumericTypes = TransferNumericTypes.FLIGHT
+): AxiosPromise<AxiosPaginatedResponse<Transport>> => {
+  return api.get(endpoints.transport.all, {
+    params: { from_dest: destination_from, type: type },
   })
 }

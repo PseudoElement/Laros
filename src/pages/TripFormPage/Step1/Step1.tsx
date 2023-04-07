@@ -9,7 +9,11 @@ import { Transfer } from './Transfer'
 
 import { getTripDayByDestination } from 'shared/api/routes/order'
 import { useTranslate } from 'shared/hooks/useTranslate'
-import { destinationToOption } from 'shared/helpers/destinations'
+import {
+  destinationToOption,
+  destinationToOptionFromLastDest,
+  destinationToOptionToFirstDest,
+} from 'shared/helpers/destinations'
 import { getTripDuration } from 'shared/helpers/trip'
 import { getParentDestination } from 'store/slices/destinations/selectors'
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
@@ -31,12 +35,17 @@ import {
   TransferOptions,
   TransferValue,
 } from 'shared/types/transport'
+import { Option } from 'shared/types'
 
 import { DEFAULT_TRANSFER } from 'shared/constants/transfer'
 
 import airportIcon from '/public/assets/images/airport.svg?url'
 
 import s from './Step1.module.scss'
+import {
+  getTransportFromLastDest,
+  getTransportToFirstDest,
+} from 'shared/api/routes/destinations'
 
 interface Step1Props {
   setStep: (step: Steps) => void
@@ -45,6 +54,10 @@ interface Step1Props {
   transfers: TransferOptions[]
   transferValues: TransferValue[]
   formHook: UseFormReturn<Partial<OrderForm>, any>
+}
+export interface StartEndLocations {
+  startPointId: number | undefined
+  endPointId: number | undefined
 }
 
 export const Step1: FC<Step1Props> = ({
@@ -78,6 +91,14 @@ export const Step1: FC<Step1Props> = ({
   const airportOptions = provideOptionsWithIcon(
     destinationToOption(airports),
     airportIcon
+  )
+
+  const [airportStartOptions, setAirportStartOptions] =
+    useState<Option[]>(airportOptions)
+  const [airportEndOptions, setAirportEndOptions] =
+    useState<Option[]>(airportOptions)
+  const [startEndLocations, setStartEndLocations] = useState<StartEndLocations>(
+    { startPointId: undefined, endPointId: undefined }
   )
 
   const [startPointTransfer, setStartPointTransfer] = useState(DEFAULT_TRANSFER)
@@ -144,6 +165,61 @@ export const Step1: FC<Step1Props> = ({
     }
   }, [watchStartPoint, watchDestinations])
 
+  useEffect(() => {
+    const getIdByName = (value: any, string: string): number => {
+      return string.split('.').reduce((acc, property) => acc[property], value)
+    }
+    const subscription = watch((value, { name }) => {
+      if (name === 'destinations.0.destination_id') {
+        setStartEndLocations(prev => ({
+          ...prev,
+          startPointId: getIdByName(value, name),
+        }))
+      }
+      if (
+        name === `destinations.${value.destinations!.length - 1}.destination_id`
+      ) {
+        setStartEndLocations(prev => ({
+          ...prev,
+          endPointId: getIdByName(value, name),
+        }))
+      }
+    })
+    return () => subscription.unsubscribe()
+  }, [watch])
+
+  useEffect(() => {
+    const loadTransfer = async (to: number) => {
+      const response = await getTransportToFirstDest(to)
+      const flights = response.data.data
+      setAirportStartOptions(
+        provideOptionsWithIcon(
+          destinationToOptionToFirstDest(flights),
+          airportIcon
+        )
+      )
+    }
+    if (startEndLocations.startPointId) {
+      loadTransfer(startEndLocations.startPointId)
+    }
+  }, [startEndLocations.startPointId])
+
+  useEffect(() => {
+    const loadTransfer = async (from: number) => {
+      const response = await getTransportFromLastDest(from)
+      const flights = response.data.data
+      setAirportEndOptions(
+        provideOptionsWithIcon(
+          destinationToOptionFromLastDest(flights),
+          airportIcon
+        )
+      )
+    }
+    if (startEndLocations.endPointId) {
+      loadTransfer(startEndLocations.endPointId)
+    }
+  }, [startEndLocations.endPointId])
+
   if (!trip) return null
   return (
     <>
@@ -158,7 +234,7 @@ export const Step1: FC<Step1Props> = ({
                 <Select
                   onChange={onChange}
                   value={value}
-                  options={airportOptions}
+                  options={airportStartOptions}
                   placeholder={t('common.select')}
                 />
               )}
@@ -227,7 +303,7 @@ export const Step1: FC<Step1Props> = ({
                 <Select
                   onChange={onChange}
                   value={value}
-                  options={airportOptions}
+                  options={airportEndOptions}
                   placeholder={t('common.select')}
                 />
               )}

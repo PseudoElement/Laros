@@ -96,14 +96,24 @@ export const TripDayForm: FC<TripDayFormProps> = ({
   const loadNearLocations = async () => {
     if (previousDestination) {
       try {
-        const { data } = await getNearDestinations(previousDestination.id)
+        const { data } = await getNearDestinations(
+          previousDestination.destination_id
+        )
         setNearDestinations(data.data)
         locationModal.open()
       } catch (error) {
         console.log(error)
       }
-    } else alert('First location cannot be changed')
+    } else
+      try {
+        const { data } = await getNearDestinations(Number(from!.value))
+        setNearDestinations(data.data)
+        locationModal.open()
+      } catch (error) {
+        console.log(error)
+      }
   }
+
   const сhangeHotel = async (id: number) => {
     try {
       const { data: newHotel } = await getHotel(id)
@@ -125,7 +135,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
       const newTripDay = await getTripDayByDestination(newLocation)
       if (newTripDay) {
         onChange(`destinations.${index}.hotel`, newTripDay.hotel)
-        onChange(`destinations.${index}.destination`, newTripDay.location.id)
+        onChange(`destinations.${index}.destination_id`, newTripDay.location.id)
         onChange(
           `destinations.${index}.destination_name`,
           newTripDay.location.name
