@@ -205,7 +205,7 @@ export const Step2Form: FC<Step2FormProps> = ({ setStep }) => {
             )}
             <div className={s.paymentSection}>
               <div className={s.title}>{t('vouchers.payment')}</div>
-              <div className={s.decription}>{t('vouchers.option')}</div>
+              <div className={s.description}>{t('vouchers.option')}</div>
 
               <div className={s.selectDiv}>
                 <div className={s.selectLabel}>{t('forms.inputLabel29')}</div>

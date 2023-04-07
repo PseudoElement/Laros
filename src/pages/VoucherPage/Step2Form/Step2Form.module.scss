@@ -52,7 +52,7 @@
 
 .goBack {
   font-weight: $fw-regular;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 20px;
 }
 
@@ -63,10 +63,10 @@
   margin-bottom: 9px;
 }
 
-.deliveryDescriptions {
+.deliveryDescription {
   font-weight: $fw-medium;
-  font-size: 12px;
-  line-height: 14px;
+  font-size: 16px;
+  line-height: 16px;
 }
 
 .deliveryOptions {
@@ -102,8 +102,8 @@
 
 .deliveryOptionTitle {
   font-weight: $fw-medium;
-  font-size: 12px;
-  line-height: 14px;
+  font-size: 14px;
+  line-height: 16px;
   text-align: center;
   color: $color-laros-dark-grey;
 }
@@ -132,8 +132,8 @@
 
   & > .description {
     font-weight: $fw-medium;
-    font-size: 12px;
-    line-height: 14px;
+    font-size: 16px;
+    line-height: 16px;
   }
 }
 

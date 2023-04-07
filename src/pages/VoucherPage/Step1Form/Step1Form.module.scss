@@ -79,7 +79,7 @@
 
 .introDescription {
   margin-top: 16px;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: $fw-regular;
   line-height: 20px;
   padding-bottom: 80px;
@@ -119,9 +119,9 @@
 
 .billingDescription {
   text-align: left;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: $fw-medium;
-  line-height: 14px;
+  line-height: 16px;
   margin-bottom: 16px;
 }
 
@@ -144,7 +144,7 @@
 }
 
 .radioLabel {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: $fw-medium;
   color: $color-placeholder;
   margin-right: 25px;
@@ -186,8 +186,8 @@
 
 .selectLabel {
   font-weight: 500;
-  font-size: 12px;
-  line-height: 14px;
+  font-size: 16px;
+  line-height: 16px;
   color: $color-laros-dark-grey;
   text-align: left;
 }
