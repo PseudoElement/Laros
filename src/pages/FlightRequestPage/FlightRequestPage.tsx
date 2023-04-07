@@ -27,6 +27,9 @@ import {
 } from 'shared/types/requestForm'
 
 import s from './FlightRequestPage.module.scss'
+import { convertErrorsForAlert } from 'shared/helpers/convertErrorsForAlert'
+import { isNotChoosenNationality } from 'shared/helpers/isNotChoosenNationality'
+import { vocabulary } from 'shared/constants/vocabulary'
 
 export enum FlightClass {
   First,
@@ -71,12 +74,20 @@ export const FlightRequestForm: FC<FlightRequestFormProps> = ({
   const onSubmit: SubmitHandler<
     TravellerAddressForm & (FlightRequestFormType | PackageRequestFormType)
   > = data => {
+    //In react-hook-form error that nationality object defines incorrectly
+    if (isNotChoosenNationality(data)) {
+      alert(vocabulary?.travellersData)
+      return
+    }
     dispatch(
       sendFlightRequestThunk(
         data as FlightRequestFormType & TravellerAddressForm
       )
     )
     onFormSubmit()
+  }
+  const onError = (error: any) => {
+    alert(convertErrorsForAlert(error))
   }
 
   useEffect(() => {
@@ -109,7 +120,9 @@ export const FlightRequestForm: FC<FlightRequestFormProps> = ({
     <div className={s.wrapper}>
       <div className={s.row}>
         <div className={s.selectWrapper}>
-          <div className={s.selectLabel}>{t('worldwideTours.label1')}:</div>
+          <div className={s.selectLabel}>
+            {`${t('worldwideTours.label1')}*`}:
+          </div>
           <Controller
             name='departFrom'
             control={control}
@@ -128,7 +141,9 @@ export const FlightRequestForm: FC<FlightRequestFormProps> = ({
         </div>
 
         <div className={s.selectWrapper}>
-          <div className={s.selectLabel}>{t('worldwideTours.label2')}:</div>
+          <div className={s.selectLabel}>
+            {`${t('worldwideTours.label2')}*`}:
+          </div>
           <Controller
             name='arrivalTo'
             control={control}
@@ -151,6 +166,7 @@ export const FlightRequestForm: FC<FlightRequestFormProps> = ({
         <Controller
           name='earliestDeparture'
           control={control}
+          rules={{ required: true }}
           render={({ field: { onChange } }) => (
             <InputCalendar
               required
@@ -165,6 +181,7 @@ export const FlightRequestForm: FC<FlightRequestFormProps> = ({
         <Controller
           name='latestReturn'
           control={control}
+          rules={{ required: true }}
           render={({ field: { onChange } }) => (
             <InputCalendar
               required
@@ -254,6 +271,7 @@ export const FlightRequestForm: FC<FlightRequestFormProps> = ({
         <Controller
           name='email'
           control={control}
+          rules={{ required: true }}
           render={({ field: { onChange, value } }) => (
             <Input
               required
@@ -261,7 +279,7 @@ export const FlightRequestForm: FC<FlightRequestFormProps> = ({
               classname={s.input}
               onChange={onChange}
               value={value}
-              label={t('forms.inputLabel2')}
+              label={`${t('forms.inputLabel2')}*`}
               placeholder={t('forms.email3')}
             />
           )}
@@ -284,7 +302,7 @@ export const FlightRequestForm: FC<FlightRequestFormProps> = ({
 
       <div className={s.footer}>
         <Button
-          onClick={handleSubmit(onSubmit)}
+          onClick={handleSubmit(onSubmit, onError)}
           type='submit'
           classname={s.submitButton}
         >

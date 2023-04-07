@@ -51,7 +51,7 @@ export const boardTypes: CheckBox[] = [
 ]
 export const REQUEST_FORMS: Traveller = {
   name: '',
-  nationality: { label: 'not chosen', value: 0 },
+  nationality: { label: '', value: 0 },
   gender: 'Male',
   birth: '',
   address: '',

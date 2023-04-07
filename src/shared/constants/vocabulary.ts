@@ -15,4 +15,14 @@ export const vocabulary: any = {
   from: 'Gutschein vom',
   value: 'Wert des Gutscheins ein Muss mehr als 50 CHF betragen',
   recepientEmail: 'E-Mail',
+  adults: 'Erwachsene',
+  arrivalTo: 'Ankunft in',
+  departFrom: 'Abreise von',
+  boardType: 'Verpflegungsart ',
+  earliestDeparture: 'Früheste Abreise',
+  latestReturn: 'Späteste Rückreise',
+  totalTripBudget: 'Reisepreis insgesamt',
+  transferType: 'Übertragung',
+  travellersData:
+    'Vor- und Nachname, Staatsangehörigkeit, Geschlecht, Geburtsdatum, Adresszeile 1, Adresszeile 2',
 }

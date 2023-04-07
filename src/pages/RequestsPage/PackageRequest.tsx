@@ -37,6 +37,9 @@ import {
 } from 'shared/constants/form'
 
 import s from '../FlightRequestPage/FlightRequestPage.module.scss'
+import { convertErrorsForAlert } from 'shared/helpers/convertErrorsForAlert'
+import { vocabulary } from 'shared/constants/vocabulary'
+import { isNotChoosenNationality } from 'shared/helpers/isNotChoosenNationality'
 
 export interface PackageRequestFormProps {
   onFormSubmit: () => void
@@ -55,6 +58,7 @@ export const PackageRequestForm: FC<PackageRequestFormProps> = ({
     handleSubmit,
     watch,
     control,
+
     formState: {},
   } = useForm<PackageRequestFormType & TravellerAddressForm>({
     defaultValues: {
@@ -91,8 +95,16 @@ export const PackageRequestForm: FC<PackageRequestFormProps> = ({
 
   // push data
   const onSubmit = (data: PackageRequestFormType) => {
+    //In react-hook-form error that nationality object defines incorrectly
+    if (isNotChoosenNationality(data)) {
+      alert(vocabulary?.travellersData)
+      return
+    }
     dispatch(sendPackageRequestThunk(data))
     onFormSubmit()
+  }
+  const onError = (error: any) => {
+    alert(convertErrorsForAlert(error))
   }
 
   // get select options from Depart from, Arrival to
@@ -109,10 +121,13 @@ export const PackageRequestForm: FC<PackageRequestFormProps> = ({
       {/* 1-st row  */}
       <div className={s.row}>
         <div className={s.selectWrapper}>
-          <div className={s.selectLabel}>{t('worldwideTours.label1')}:</div>
+          <div className={s.selectLabel}>
+            {`${t('worldwideTours.label1')}*`}:
+          </div>
           <Controller
             name='departFrom'
             control={control}
+            rules={{ required: true }}
             render={({ field: { onChange } }) => (
               <Select
                 classname={s.select}
@@ -127,10 +142,13 @@ export const PackageRequestForm: FC<PackageRequestFormProps> = ({
         </div>
 
         <div className={s.selectWrapper}>
-          <div className={s.selectLabel}>{t('worldwideTours.label2')}</div>
+          <div className={s.selectLabel}>{`${t(
+            'worldwideTours.label2'
+          )}*`}</div>
           <Controller
             name='arrivalTo'
             control={control}
+            rules={{ required: true }}
             render={({ field: { onChange } }) => (
               <Select
                 classname={s.select}
@@ -150,8 +168,10 @@ export const PackageRequestForm: FC<PackageRequestFormProps> = ({
         <Controller
           name='earliestDeparture'
           control={control}
+          rules={{ required: true }}
           render={({ field: { onChange } }) => (
             <InputCalendar
+              required
               classname={s.inputCalendarCustom}
               variant={'top'}
               onChange={onChange}
@@ -163,8 +183,10 @@ export const PackageRequestForm: FC<PackageRequestFormProps> = ({
         <Controller
           name='latestReturn'
           control={control}
+          rules={{ required: true }}
           render={({ field: { onChange } }) => (
             <InputCalendar
+              required
               classname={s.inputCalendarCustom}
               variant={'top'}
               onChange={onChange}
@@ -277,9 +299,12 @@ export const PackageRequestForm: FC<PackageRequestFormProps> = ({
       {/* 6th row */}
       <div className={cn(s.row, s.optionsRow)}>
         <div className={s.checkboxGroup}>
-          <div className={s.checkboxLabel}>{t('worldwideTours.boardType')}</div>
+          <div className={s.checkboxLabel}>{`${t(
+            'worldwideTours.boardType'
+          )}*`}</div>
           <div className={s.checkbox}>
             <Controller
+              rules={{ required: true }}
               name='boardType'
               control={control}
               defaultValue={DEFAULT_BOARD_TYPE}
@@ -297,11 +322,12 @@ export const PackageRequestForm: FC<PackageRequestFormProps> = ({
           <Controller
             name='totalTripBudget'
             control={control}
+            rules={{ required: true }}
             render={({ field: { onChange, value = 0 } }) => (
               <div className={s.selectCHF}>
-                <div className={s.inputLabel}>
-                  {t('worldwideTours.label15')}
-                </div>
+                <div className={s.inputLabel}>{`${t(
+                  'worldwideTours.label15'
+                )}*`}</div>
                 <Input
                   label={'CHF'}
                   onChange={onChange}
@@ -335,6 +361,7 @@ export const PackageRequestForm: FC<PackageRequestFormProps> = ({
         <Controller
           name='email'
           control={control}
+          rules={{ required: true }}
           defaultValue={'user@example.com'}
           render={({ field: { onChange, value } }) => (
             <Input
@@ -342,7 +369,7 @@ export const PackageRequestForm: FC<PackageRequestFormProps> = ({
               classname={s.input}
               onChange={onChange}
               value={value}
-              label={t('forms.inputLabel2')}
+              label={`${t('forms.inputLabel2')}*`}
               placeholder={t('forms.email3')}
             />
           )}
@@ -365,7 +392,7 @@ export const PackageRequestForm: FC<PackageRequestFormProps> = ({
 
       <div className={s.footer}>
         <Button
-          onClick={handleSubmit(onSubmit)}
+          onClick={handleSubmit(onSubmit, onError)}
           type='submit'
           classname={s.submitButton}
         >

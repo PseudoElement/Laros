@@ -8,7 +8,7 @@ export const DEFAULT_TRANSFER_TYPE = transferOptions[0].value // private
 
 export const DEFAULT_TRAVELLER: Traveller = {
   name: '',
-  nationality: { label: 'not chosen', value: 'not chosen' },
+  nationality: { label: '', value: '' },
   gender: 'male',
   birth: '',
   country: { label: '', value: '' },
