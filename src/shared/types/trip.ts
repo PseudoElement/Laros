@@ -11,6 +11,7 @@ export interface Trip {
   price_chf: number
   price_per_person_chf: number
   destinations: TripDestination[]
+  end_dest: EndTripDestination
   duration: string
   offer_name: string | null
   offer_discount: string | null
@@ -36,6 +37,7 @@ export interface Trip {
 export interface TripTransport {
   from_dest_name: string
   id: number
+  date: string
   to_dest_name: string
   transport: number
   trip: number
@@ -51,7 +53,7 @@ export interface TripDestination {
   trip: number // id
   destination_id: number // id
   hotel: Hotel
-  rental?: number[] // car ids
+  rental?: RentalInfo[] // cars info
   transfers?: Transport[]
 }
 
@@ -105,4 +107,27 @@ export interface TripDuration {
   data: { min_duration: number; max_duration: number }
   message: string
   status: string
+}
+
+export interface EndTripDestination {
+  date_end: string;
+  date_start: string;
+  destination_id: number;
+  destination_name: string;
+}
+
+export interface RentalInfo {
+  base_price: number;
+  capacity: number;
+  date_end: string;
+  date_start: string;
+  destination_id: number;
+  destination_name: string;
+  duration: number;
+  group: string;
+  id: number;
+  model: string;
+  multiplier: number;
+  per_person: number;
+  price: number;
 }

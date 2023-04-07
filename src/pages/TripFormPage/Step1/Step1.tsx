@@ -72,7 +72,6 @@ export const Step1: FC<Step1Props> = ({
   const dispatch = useAppDispatch()
   const t = useTranslate()
   const form = useAppSelector(state => state.order.form)
-  const destinations = useAppSelector(state => state.destinations.destinations)
   const tripParentRegion = useAppSelector(state =>
     getParentDestination(
       state,
@@ -290,7 +289,7 @@ export const Step1: FC<Step1Props> = ({
           }}
           to={watchEndPoint}
           options={endPointTransfer}
-          value={null}
+          value={transferValues[transferValues.length - 1]}
         />
 
         <div className={s.endpoint}>

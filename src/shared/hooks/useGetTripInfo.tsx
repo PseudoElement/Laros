@@ -154,7 +154,7 @@ export const useGetTripInfo = (
           transfers.car = carTransfer.id
         }
         if (transports.length === 0) {
-          transfers.car = trip?.destinations[index].rental?.[0] ?? null
+          transfers.car = trip?.destinations[index].rental?.[0].id ?? null
         }
       } catch (error) {}
       setTransfers(prev => ({ ...prev, [index]: transfers }))
@@ -191,9 +191,6 @@ export const useGetTripInfo = (
   useEffect(() => {
     if (trip?.transports && isTransfersLoaded) {
       let preselectedTransferValues: TransferValue[] = []
-      const preselectedEndTransfer = trip.transports.find(
-        transport => transport.to_dest_name === 'Zürich'
-      ) // TODO
 
       const preselectedTransfers: TransferValue[] = trip.destinations
         .slice(0, trip.destinations.length - 1)
@@ -207,12 +204,12 @@ export const useGetTripInfo = (
           if (preselectedTransport) {
             return {
               type: preselectedTransport.type_name,
-              value: preselectedTransport.transport,
+              value: preselectedTransport.id,
             }
           } else if (dest?.rental?.length) {
             return {
               type: Transfer.CAR,
-              value: dest.rental[0],
+              value: dest.rental[0].id,
             }
           } else {
             return {
@@ -230,7 +227,7 @@ export const useGetTripInfo = (
         preselectedTransferValues = [
           {
             type: preselectedStartTransfer.type_name,
-            value: preselectedStartTransfer.transport,
+            value: preselectedStartTransfer.id,
           },
         ]
       }
@@ -240,18 +237,22 @@ export const useGetTripInfo = (
         ...preselectedTransfers,
       ]
       // add last transfer
+      const preselectedEndTransfer = trip.transports.find(
+        transport => transport.to_dest_name === trip.end_dest.destination_name
+      )
       if (preselectedEndTransfer) {
         preselectedTransferValues = [
           ...preselectedTransferValues,
           {
             type: preselectedEndTransfer.type_name,
-            value: preselectedEndTransfer.transport,
+            value: preselectedEndTransfer.id,
           },
         ]
       }
       setTransferValues(preselectedTransferValues)
     }
   }, [trip, transfers, isTransfersLoaded])
+
   useEffect(() => {
     loadCountries()
     loadAirports()

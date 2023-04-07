@@ -2,6 +2,7 @@ import { OrderForm, OrderPayload, OrderTransport } from 'shared/types/order'
 import { dateToServerFormat } from './dateFormatter'
 import { countPeople } from './trip'
 import { Transfer, TransferValue } from 'shared/types/transport'
+import { calculateDateByDurations } from './calculateDateByDurations'
 
 export const transfersToAPI = (
   transfer: TransferValue
@@ -28,12 +29,19 @@ export const prepareOrderFormToApi = (form: OrderForm): OrderPayload => {
       nationality: traveller.nationality.value,
     }
   })
+  
   const ferryFlightTransfers: OrderTransport[] = form.transports
-    .filter(tran => tran?.type !== Transfer.CAR)
-    .map(transfer => ({
-      transport: transfer?.value as number,
-      date: dateToServerFormat(new Date()),
-    }))
+    .map((transfer, index) => {
+      const transportStartDate = calculateDateByDurations(form.date_start, form.destinations, index);
+
+      return {
+        transport: transfer?.value as number,
+        date: dateToServerFormat(transportStartDate),
+        rental: transfer?.type === Transfer.CAR
+      }
+    })
+    .filter(transfer => !transfer.rental);
+  
   const finalForm = {
     name: form.name,
     surname: form.surname,

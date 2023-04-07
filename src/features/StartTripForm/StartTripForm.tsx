@@ -49,7 +49,7 @@ export const StartTripForm: FC<StartTripFormProps> = ({
     name: 'fields',
   })
 
-  const onSubmit = (formData: any) => {
+  const onSubmit = (formData: { fields: PeopleCapacity[] }) => {
     onChange?.({
       rooms: formData.fields,
       date: variant === 'trips' ? tripDate : currentDate,
