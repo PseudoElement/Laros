@@ -54,6 +54,7 @@ export interface TripDestination {
   destination_id: number // id
   hotel: Hotel
   rental?: RentalInfo[] // cars info
+  taxi?: DestinationTaxi[]
   transfers?: Transport[]
 }
 
@@ -107,6 +108,21 @@ export interface TripDuration {
   data: { min_duration: number; max_duration: number }
   message: string
   status: string
+}
+
+export interface DestinationTaxi {
+  base_price: number
+  capacity: number
+  date: string
+  destination_id: number
+  destination_name: string
+  direction_name: string
+  multiplier: number
+  per_person: number
+  price: number
+  taxi: string
+  type: number
+  type_name: string
 }
 
 export interface EndTripDestination {

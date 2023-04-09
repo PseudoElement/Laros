@@ -110,7 +110,6 @@ export const useGetTripInfo = (
                 destination_id: defaultTripDay.location.id,
                 hotel: defaultTripDay.hotel,
                 hotel_name: defaultTripDay.hotel.name,
-
               },
             ],
           })

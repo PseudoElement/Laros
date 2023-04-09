@@ -43,6 +43,7 @@ import {
 } from 'shared/types/transport'
 
 import s from './TripDayForm.module.scss'
+import { Taxi } from '../Taxi'
 
 interface TripDayFormProps {
   form: OrderForm
@@ -86,6 +87,15 @@ export const TripDayForm: FC<TripDayFormProps> = ({
   const [isRoomsAllocated, setIsRoomsAllocated] = useState<boolean>(false)
   const [nearDestinations, setNearDestinations] = useState<Destination[]>([])
   const [isShownCard, setIsShownCard] = useState(false)
+
+  const arrivalTaxi = destination.taxi?.find(
+    taxi => taxi.direction_name === 'ARRIVAL'
+  )
+  const departurelTaxi = destination.taxi?.find(
+    taxi =>
+      taxi.direction_name === 'DEPARTURE' || taxi.direction_name === 'LAYOVER'
+  )
+
   const onClose = () => setIsShownCard(false)
 
   const locationModal = useModal()
@@ -210,6 +220,13 @@ export const TripDayForm: FC<TripDayFormProps> = ({
           value={transferValue}
         />
       ) : null}
+
+      {arrivalTaxi && (
+        <Taxi
+          destination_name={arrivalTaxi.destination_name}
+          type_name={arrivalTaxi.type_name}
+        />
+      )}
 
       {duration > 0 && (
         <div className={s.content}>
@@ -390,6 +407,13 @@ export const TripDayForm: FC<TripDayFormProps> = ({
             </div>
           )}
         </div>
+      )}
+
+      {departurelTaxi && (
+        <Taxi
+          destination_name={departurelTaxi.destination_name}
+          type_name={departurelTaxi.type_name}
+        />
       )}
 
       <Modal

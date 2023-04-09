@@ -116,7 +116,10 @@ export const Transfer: FC<TransferProps> = ({
   }, [value])
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  function transfersToOptions(transfers: TransferOptions, value: TransferValue): Option[] {
+  function transfersToOptions(
+    transfers: TransferOptions,
+    value: TransferValue
+  ): Option[] {
     let options: Option[] = []
     if (transfers.ferry) {
       options = [

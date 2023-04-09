@@ -1,0 +1,57 @@
+@use 'styles/style.scss' as *;
+
+.taxiContainer {
+  display: flex;
+  background-color: $color-laros-light-grey;
+}
+
+.taxiBlock {
+  width: 160px;
+  padding-top: 24px;
+  padding-left: 80px;
+
+  @include mobile-tablet {
+    width: auto;
+    padding: 10px 20px;
+  }
+}
+
+.taxiIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 56px;
+  border-radius: 8px;
+  background-color: $color-purple;
+}
+
+.taxiInfo {
+  padding: 24px;
+
+  @include mobile-tablet {
+    padding: 10px 20px;
+  }
+}
+
+.taxiTitle {
+  font-size: 12px;
+  font-weight: $fw-regular;
+  line-height: 14px;
+  color: $color-bg-black;
+  margin-bottom: 4px;
+}
+
+.taxiRoute {
+  font-size: 14px;
+  font-weight: $fw-medium;
+  line-height: 17px;
+  color: $color-bg-black;
+  margin-bottom: 10px;
+}
+
+.taxiOption {
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+}
