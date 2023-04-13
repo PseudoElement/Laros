@@ -177,7 +177,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
     onChange(`destinations.[${index}].rooms`, newRooms)
   }
 
-  const handleTrasnferChange = (id: number | null, type: TransferType) => {
+  const handleTransferChange = (id: number | null, type: TransferType) => {
     onChange(`transports.${index}`, { value: id, type })
   }
   useEffect(() => {
@@ -185,7 +185,6 @@ export const TripDayForm: FC<TripDayFormProps> = ({
       const loadRooms = async () => {
         try {
           const rooms = await getRooms({ hotel: hotel.id })
-          console.log('Rooms', rooms)
           setHotelRooms(rooms.data.data)
         } catch (error) {
           console.log(error)
@@ -210,7 +209,8 @@ export const TripDayForm: FC<TripDayFormProps> = ({
       {/* hide transfer within the same destionation */}
       {destination.destination_id.toString() !== from?.value ? (
         <Transfer
-          onChange={handleTrasnferChange}
+          destinationIndex={index}
+          onChange={handleTransferChange}
           options={transfers[index]}
           from={from}
           to={{

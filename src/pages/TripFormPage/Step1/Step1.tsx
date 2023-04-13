@@ -42,10 +42,14 @@ import { DEFAULT_TRANSFER } from 'shared/constants/transfer'
 import airportIcon from '/public/assets/images/airport.svg?url'
 
 import s from './Step1.module.scss'
+
+import { defineRangeForChangingCars } from 'shared/helpers/carsRange'
+
 import {
   getTransportFromLastDest,
   getTransportToFirstDest,
 } from 'shared/api/routes/destinations'
+
 
 interface Step1Props {
   setStep: (step: Steps) => void
@@ -72,6 +76,12 @@ export const Step1: FC<Step1Props> = ({
   const dispatch = useAppDispatch()
   const t = useTranslate()
   const form = useAppSelector(state => state.order.form)
+
+  const { destinationIndex, transferCarNumber } = useAppSelector(
+    state => state.order.changedCarData
+  )
+  const destinations = useAppSelector(state => state.destinations.destinations)
+
   const tripParentRegion = useAppSelector(state =>
     getParentDestination(
       state,
@@ -82,7 +92,6 @@ export const Step1: FC<Step1Props> = ({
     control,
     name: 'destinations',
   })
-
   const watchForm = watch()
   const watchDestinations = watch('destinations')
   const watchStartPoint = watch('dest_from')
@@ -165,6 +174,22 @@ export const Step1: FC<Step1Props> = ({
   }, [watchStartPoint, watchDestinations])
 
   useEffect(() => {
+
+    const { afterIndex, beforeIndex } = defineRangeForChangingCars(
+      watchForm,
+      destinationIndex!
+    )
+    const updatedTransport = watchForm.transports?.map((transport, index) => {
+      if (index > beforeIndex && index < afterIndex) {
+        return { ...transport, value: transferCarNumber }
+      } else {
+        return transport
+      }
+    })
+    //@ts-ignore
+    setValue('transports', updatedTransport)
+  }, [transferCarNumber, destinationIndex])
+  
     const getIdByName = (value: any, string: string): number => {
       return string.split('.').reduce((acc, property) => acc[property], value)
     }

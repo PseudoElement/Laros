@@ -21,6 +21,8 @@ import {
   TransferValue,
 } from 'shared/types/transport'
 import { Car, CarTransferType } from 'shared/types/car'
+import { useAppDispatch } from 'shared/hooks/redux'
+import { changeTransferCarData } from 'store/slices/order/order'
 
 interface TransferProps {
   from?: Option
@@ -28,6 +30,7 @@ interface TransferProps {
   value: TransferValue
   options: TransferOptions
   onChange: (id: number | null, type: TransferType) => void
+  destinationIndex?: number
 }
 
 export const Transfer: FC<TransferProps> = ({
@@ -36,12 +39,14 @@ export const Transfer: FC<TransferProps> = ({
   to,
   value,
   onChange,
+  destinationIndex,
 }) => {
   const transferModal = useModal()
   const [carType, setCarType] = useState<CarTransferType>(
     CarTransferType.PICKUP
   )
   const [selectedTransfer, setSelectedTransfer] = useState<TransferValue>(value)
+  const dispatch = useAppDispatch()
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const availableTransfers = useMemo(
@@ -92,7 +97,6 @@ export const Transfer: FC<TransferProps> = ({
     }
   }
   const handleTransferChange = (value: string) => {
-    console.log('value :', value)
     switch (value) {
       case 'rental':
         onChange(null, TransferType.CAR)
@@ -107,6 +111,12 @@ export const Transfer: FC<TransferProps> = ({
     }
   }
   const handleCarChange = (type: CarTransferType, car?: number) => {
+    dispatch(
+      changeTransferCarData({
+        destinationIndex: destinationIndex ?? null,
+        transferCarNumber: car ?? null,
+      })
+    )
     setCarType(type)
     !car && onChange(null, TransferType.CAR)
     car && onChange(car, TransferType.CAR)
