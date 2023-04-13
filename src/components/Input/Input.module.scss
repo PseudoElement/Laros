@@ -6,11 +6,14 @@
   height: 40px;
   border: 1px solid $color-laros-light-grey;
   border-radius: 8px;
-  padding-top: 8px;
-  background-color: $color-white;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  :focus {
+    border-radius: 8px;
+    height: 100%;
+    border: 2px solid $color-white-blue;
+  }
 }
 
 .shorten {
@@ -35,18 +38,27 @@
   height: 40px;
 }
 .label {
+  position: absolute;
   font-size: 16px;
   font-weight: $fw-medium;
   color: $color-checkbox-gray;
   white-space: nowrap;
-  padding: 0 8px 8px 8px;
+  padding: 0 8px 8px 24px;
+}
+.touched {
+  color: $color-white-blue;
+  font-size: 10px;
+  top: 0px;
+  transition: all 0.2s;
 }
 
 .field {
   width: 100%;
   font-size: 14px;
   font-weight: $fw-semibold;
-  padding: 0 0 4px 24px;
+  padding: 5px 0 4px 24px;
+  z-index: 1;
+  background-color: transparent;
   &::placeholder {
     color: $color-checkbox-gray;
     font-size: 14px;

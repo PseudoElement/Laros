@@ -37,6 +37,15 @@ type ContactFormProps = {
   staticPageContactForm?: boolean
 }
 
+export interface ControllersState {
+  name: boolean
+  gender: boolean
+  email: boolean
+  phone: boolean
+  number: boolean
+  message: boolean
+}
+
 export const ContactForm: FC<ContactFormProps> = ({
   staticPageContactForm,
   tripContactForm,
@@ -45,11 +54,18 @@ export const ContactForm: FC<ContactFormProps> = ({
   order,
 }) => {
   const [submitSuccessfully, setSubmitSuccessfully] = useState(false)
+  const [focusedInputs, setFocusedInputs] = useState<ControllersState>({
+    name: false,
+    gender: false,
+    email: false,
+    phone: false,
+    number: false,
+    message: false,
+  })
   const { handleSubmit, control } = useForm()
   const dispatch = useAppDispatch()
   const route = useRouter()
   const t = useTranslate()
-
   const onError = (error: any) => {
     alert(
       `${Object.keys(error)
@@ -97,10 +113,12 @@ export const ContactForm: FC<ContactFormProps> = ({
                 name='name'
                 control={control}
                 rules={{ required: true }}
-                render={({ field: { onChange, value } }) => (
+                render={({ field: { onChange, value, name } }) => (
                   <>
                     <Input
-                      placeholder={t('vouchers.placeholder1')}
+                      setFocusedInputs={setFocusedInputs}
+                      focusedInputs={focusedInputs}
+                      name={name}
                       onChange={onChange}
                       id='name'
                       value={value}
@@ -132,10 +150,12 @@ export const ContactForm: FC<ContactFormProps> = ({
                 name='email'
                 control={control}
                 rules={{ required: true }}
-                render={({ field: { onChange, value } }) => (
+                render={({ field: { onChange, value, name } }) => (
                   <Input
+                    setFocusedInputs={setFocusedInputs}
+                    focusedInputs={focusedInputs}
+                    name={name}
                     type='email'
-                    placeholder={t('forms.inputLabel1')}
                     onChange={onChange}
                     id='email'
                     value={value}
@@ -150,10 +170,12 @@ export const ContactForm: FC<ContactFormProps> = ({
                   name='phone'
                   control={control}
                   rules={{ required: true }}
-                  render={({ field: { onChange, value } }) => (
+                  render={({ field: { onChange, value, name } }) => (
                     <Input
+                      setFocusedInputs={setFocusedInputs}
+                      focusedInputs={focusedInputs}
+                      name={name}
                       type='text'
-                      placeholder=''
                       onChange={e => onChange(e)}
                       id='phone'
                       value={value}
@@ -166,8 +188,11 @@ export const ContactForm: FC<ContactFormProps> = ({
                 <Controller
                   name='number'
                   control={control}
-                  render={({ field: { onChange, value } }) => (
+                  render={({ field: { onChange, value, name } }) => (
                     <Input
+                      setFocusedInputs={setFocusedInputs}
+                      focusedInputs={focusedInputs}
+                      name={name}
                       type='number'
                       onChange={onChange}
                       id='number'
@@ -215,8 +240,11 @@ export const ContactForm: FC<ContactFormProps> = ({
                 name='message'
                 control={control}
                 rules={{ required: staticPageContactForm ? true : false }}
-                render={({ field: { onChange, value } }) => (
+                render={({ field: { onChange, value, name } }) => (
                   <Input
+                    setFocusedInputs={setFocusedInputs}
+                    focusedInputs={focusedInputs}
+                    name={name}
                     onChange={onChange}
                     id='number'
                     value={value}
