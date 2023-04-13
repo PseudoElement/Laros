@@ -24,7 +24,7 @@
 .title {
   font-size: 24px;
   font-weight: $fw-semibold;
-
+  color: $color-primary-black;
   @include mobile {
     margin-top: 10px;
     padding-left: 10px;
@@ -34,7 +34,7 @@
 
 .description {
   font-size: 12px;
-  font-weight: $fw-regular;
+  font-weight: $fw-medium;
   color: $color-checkbox-gray;
   margin-top: 8px;
 
@@ -60,7 +60,7 @@
 .radioLabel {
   font-size: 12px;
   font-weight: $fw-medium;
-  color: $color-placeholder;
+  color: $color-laros-dark-grey;
   margin-right: 25px;
 }
 
@@ -71,6 +71,13 @@
   font-style: normal;
   font-weight: $fw-semibold;
   font-size: 14px;
+}
+.input {
+  border: 1px solid $color-laros-dark-grey;
+
+  .field::placeholder {
+    font-weight: $fw-medium;
+  }
 }
 
 .info {

@@ -105,6 +105,7 @@ export const ContactForm: FC<ContactFormProps> = ({
                       id='name'
                       value={value}
                       label={`${t('forms.inputLabel5')}*`}
+                      classname={s.input}
                     />
                   </>
                 )}
@@ -139,6 +140,7 @@ export const ContactForm: FC<ContactFormProps> = ({
                     id='email'
                     value={value}
                     label={`${t('forms.inputLabel1')}*`}
+                    classname={s.input}
                   />
                 )}
               />
@@ -156,6 +158,7 @@ export const ContactForm: FC<ContactFormProps> = ({
                       id='phone'
                       value={value}
                       label={t('forms.inputLabel6')}
+                      classname={s.input}
                     />
                   )}
                 />
@@ -170,6 +173,7 @@ export const ContactForm: FC<ContactFormProps> = ({
                       id='number'
                       value={value}
                       label={t('contactForm.exact')}
+                      classname={s.input}
                     />
                   )}
                 />
@@ -217,6 +221,7 @@ export const ContactForm: FC<ContactFormProps> = ({
                     id='number'
                     value={value}
                     label={t('forms.inputLabel7')}
+                    classname={s.input}
                   />
                 )}
               />
