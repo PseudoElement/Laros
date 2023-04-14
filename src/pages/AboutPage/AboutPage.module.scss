@@ -134,6 +134,9 @@
   overflow: hidden;
   position: relative;
   background-color: $color-modal-bg;
+  img {
+    object-fit: cover;
+  }
 
   @include mobile {
     width: 100%;
