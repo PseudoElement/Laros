@@ -189,7 +189,8 @@ export const Step1: FC<Step1Props> = ({
     //@ts-ignore
     setValue('transports', updatedTransport)
   }, [transferCarNumber, destinationIndex])
-  
+
+  useEffect(() => {
     const getIdByName = (value: any, string: string): number => {
       return string.split('.').reduce((acc, property) => acc[property], value)
     }
@@ -289,10 +290,10 @@ export const Step1: FC<Step1Props> = ({
               from={
                 trip.destinations[index - 1]
                   ? {
-                      label: trip.destinations[index - 1].destination_name,
-                      value:
-                        trip.destinations[index - 1].destination_id.toString(),
-                    }
+                    label: trip.destinations[index - 1].destination_name,
+                    value:
+                      trip.destinations[index - 1].destination_id.toString(),
+                  }
                   : watchForm.dest_from ?? undefined
               }
               previousDestination={watchDestinations[index - 1] ?? null}
