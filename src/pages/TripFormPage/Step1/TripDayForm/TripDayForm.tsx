@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { truncate } from 'lodash'
 import cn from 'classnames'
 import { FieldValues, UseFormSetValue } from 'react-hook-form'
@@ -168,9 +168,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
     accomodationModal.open()
   }
   const submitRoomChange = (roomIndex: number, newRoom: Room) => {
-    console.log('newRoom :', newRoom)
     const newRooms = [...clientRooms]
-    console.log('newRooms :', newRooms)
     newRooms[roomIndex] = newRoom
     setClientRooms(newRooms)
     onChange('rooms_ids', newRooms)
@@ -354,8 +352,8 @@ export const TripDayForm: FC<TripDayFormProps> = ({
 
           {clientRooms.map((room, index) => {
             return (
-              <>
-                <div key={room.id} className={s.section}>
+              <React.Fragment key={room.id}>
+                <div className={s.section}>
                   <div className={s.roomTitle}>
                     {' '}
                     {t('tripSteps.room')} {index + 1}
@@ -398,7 +396,7 @@ export const TripDayForm: FC<TripDayFormProps> = ({
                     {...accomodationModal}
                   />
                 </Modal>
-              </>
+              </React.Fragment>
             )
           })}
           {isRoomsAllocated && (

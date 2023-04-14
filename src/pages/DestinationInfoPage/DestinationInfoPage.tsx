@@ -44,8 +44,6 @@ export const DestinationInfoPage: FC<DestinationInfoPageProps> = ({
     try {
       const { data } = await getTrips({
         destination: `${destination.id}`,
-        page: 1,
-        size: 3,
       })
       setTrips(tripsFilter(data.data))
     } catch (error) {
