@@ -239,7 +239,7 @@ export const ContactForm: FC<ContactFormProps> = ({
               <Controller
                 name='message'
                 control={control}
-                rules={{ required: staticPageContactForm ? true : false }}
+                rules={{ required: true }}
                 render={({ field: { onChange, value, name } }) => (
                   <Input
                     setFocusedInputs={setFocusedInputs}

@@ -3,6 +3,7 @@ export const vocabulary: any = {
   email: 'E-Mail',
   phone: 'Telefonnummer',
   file: 'Datei',
+  message: 'Nachricht',
   gender: 'Gender',
   address: 'Adresszeile 1',
   city: 'Stadt',
