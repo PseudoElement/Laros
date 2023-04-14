@@ -15,8 +15,9 @@ export function defineRangeForChangingCars(
       (transport?.type !== Transfer.CAR && index > destinationIndex!) ||
       index === arr.length - 1
   )
+  // @ts-ignore
   const beforeIndex = watchForm.transports!.findLastIndex(
-    (transport, index) =>
+    (transport: any, index: any) =>
       (transport?.type !== Transfer.CAR && index < destinationIndex!) ||
       index === 0
   )
