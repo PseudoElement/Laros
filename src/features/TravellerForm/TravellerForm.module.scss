@@ -46,7 +46,7 @@
     color: $color-primary-black;
   }
 
-  > * {
+  >* {
     padding-left: 0;
   }
 
@@ -109,7 +109,7 @@
 }
 
 .travellerNumber {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 17px;
   color: $color-checkbox-gray;
 }
@@ -144,7 +144,7 @@
   width: 49%;
   padding-left: 17px;
   margin-bottom: 23px;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 17px;
   color: $color-primary-black;
 
@@ -241,7 +241,7 @@
 .rightAddress {
   width: 49%;
 
-  .travellerAddressWrapper > * {
+  .travellerAddressWrapper>* {
     width: 100%;
   }
 

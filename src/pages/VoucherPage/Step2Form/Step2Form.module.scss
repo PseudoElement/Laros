@@ -94,7 +94,8 @@
 
   &.activeOption {
     border: 2px solid $color-light-green;
-    & > div {
+
+    &>div {
       color: $color-black;
     }
   }
@@ -102,7 +103,7 @@
 
 .deliveryOptionTitle {
   font-weight: $fw-medium;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 16px;
   text-align: center;
   color: $color-laros-dark-grey;
@@ -124,13 +125,13 @@
 .paymentSection {
   margin-top: 40px;
 
-  & > .title {
+  &>.title {
     font-weight: $fw-bold;
     font-size: 16px;
     line-height: 19px;
   }
 
-  & > .description {
+  &>.description {
     font-weight: $fw-medium;
     font-size: 16px;
     line-height: 16px;
@@ -155,18 +156,22 @@
   color: $color-black;
   text-align: left;
 }
+
 .select {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: $fw-regular;
   line-height: 14px;
   text-align: left;
+
   [class$='-option'] {
     border-radius: 0;
   }
+
   [class$='-control'] {
     background-color: $color-white;
     border: none;
   }
+
   [class$='-multiValue'] {
     border-radius: 8px;
     background-color: $color-laros-light-grey;
@@ -174,21 +179,26 @@
     font-weight: $fw-regular;
     line-height: 20px;
   }
+
   [class$='-placeholder'] {
     color: $color-primary-black;
   }
 }
+
 .termsSection {
   margin-top: 64px;
+
   .list {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
     padding: 0;
+
     li {
       list-style: none;
     }
+
     .termsItem:before {
       content: '✓';
       margin-right: 10px;
@@ -198,16 +208,19 @@
 
 .shippingSection {
   margin: 56px 0 64px 0;
+
   .list {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
     padding: 0;
+
     li {
       list-style: none;
       display: flex;
     }
+
     .termsItem:before {
       content: '!';
       margin-right: 10px;

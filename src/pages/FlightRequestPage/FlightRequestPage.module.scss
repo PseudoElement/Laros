@@ -71,7 +71,7 @@
   min-width: 206px;
 }
 
-.counterInput > div:first-child {
+.counterInput>div:first-child {
   padding: 0 0 0 16px;
 }
 
@@ -310,7 +310,7 @@
     }
 
     span:nth-child(3) {
-      font-size: 14px;
+      font-size: 16px;
       font-weight: $fw-medium;
       text-align: center;
       max-width: 80%;
@@ -355,7 +355,7 @@
 
   .dayString {
     position: absolute;
-    font-size: 14px;
+    font-size: 16px;
     max-width: 50px;
     top: 15px;
     right: 70px;

@@ -3,7 +3,7 @@
 .radioButton {
   display: none;
 
-  & + span {
+  &+span {
     position: relative;
     padding-left: calc($checkbox-size + 9px);
 
@@ -28,7 +28,8 @@
       transition-property: color, border-color, background-color;
     }
   }
-  &:checked + span::before {
+
+  &:checked+span::before {
     content: '';
     margin: 1.7px;
     background-color: $color-primary;
@@ -39,17 +40,20 @@
 .radio {
   margin-right: 25px;
 }
+
 .icon {
   margin-top: 2px;
   margin-left: 8px;
 }
+
 .label {
   margin-left: 8px;
   font-family: $font-Century-Gothic;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: $fw-medium;
   color: $color-black;
 }
+
 .labelTextWrapper {
   display: inline-block;
 }

@@ -1,5 +1,6 @@
 @use '../../../../styles/style' as *;
 @import '/src/styles/theme/breakpoints.scss';
+
 .wrapper {
   width: 634px;
   background-color: $color-white;
@@ -8,6 +9,7 @@
   padding: 20px;
   position: relative;
   z-index: 100;
+
   @include mobile {
     width: 100%;
   }
@@ -44,7 +46,7 @@
   display: flex;
   align-items: center;
   font-weight: $fw-medium;
-  font-size: 14px;
+  font-size: 16px;
   font-style: normal;
 }
 
@@ -62,7 +64,7 @@
 
   font-style: normal;
   font-weight: $fw-medium;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .link {
@@ -80,7 +82,7 @@
   border-radius: 8px;
   border: none;
   padding: 0 24px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: $fw-light;
   cursor: pointer;
   background-color: $color-yellow;
@@ -115,6 +117,7 @@
   background-position: 11px;
   padding-left: 30px;
 }
+
 .listItem:hover {
   background-color: #f2f5f8;
 }

@@ -58,7 +58,7 @@
   border: none;
   padding: 0 24px;
   font-family: $font-Century-Gothic;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
   color: #fff;
 }
@@ -116,12 +116,12 @@
     align-items: center;
     flex-direction: column;
 
-    & > h3 {
+    &>h3 {
       font-family: $font-Century-Gothic;
       color: $color-black;
     }
 
-    & > p {
+    &>p {
       padding-top: 8px;
     }
   }
@@ -133,7 +133,7 @@
     justify-content: center;
     align-items: center;
 
-    & > div {
+    &>div {
       margin: 12px;
     }
   }

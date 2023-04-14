@@ -10,10 +10,12 @@
   margin-bottom: 8px;
   background-color: $color-white;
 }
+
 .addressInputs {
   display: flex;
   flex-wrap: wrap;
 }
+
 .addressTitle {
   font-family: $font-Century-Gothic;
   font-size: 12px;
@@ -27,7 +29,7 @@
 .addressStreet,
 .addressRegion {
   font-family: $font-Century-Gothic;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: $fw-semibold;
   padding: 0 25px 8px 8px;
   width: 50%;
@@ -36,15 +38,18 @@
     color: $color-placeholder;
   }
 }
+
 .addressRegion {
   padding-top: 8px;
   width: 100%;
 }
+
 .addressIcon1 {
   position: absolute;
   right: 6px;
   bottom: 27px;
 }
+
 .addressIcon2 {
   position: absolute;
   bottom: 0;

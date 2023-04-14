@@ -47,6 +47,7 @@
   justify-content: center;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
+
   @include mobile-laptop {
     padding-top: 40px;
   }
@@ -136,7 +137,7 @@
   }
 
   @include mobile {
-    & > div * {
+    &>div * {
       margin-right: 5px;
       margin-left: 0;
     }
@@ -162,6 +163,7 @@
     margin-top: 15px;
     margin-bottom: 30px;
   }
+
   @include tablet-laptop {
     margin-top: 15px;
     margin-bottom: 40px;
@@ -193,7 +195,7 @@
 }
 
 .select {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: $fw-regular;
   line-height: 14px;
   text-align: left;
@@ -233,7 +235,7 @@
   @include mobile {
     flex-direction: column;
 
-    & > div * {
+    &>div * {
       white-space: break-spaces;
       text-align: left;
     }
@@ -260,6 +262,7 @@
       max-width: 100%;
     }
   }
+
   @include mobile-laptop {
     max-width: 100%;
   }

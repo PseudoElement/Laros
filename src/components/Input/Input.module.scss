@@ -9,6 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   :focus {
     border-radius: 8px;
     height: 100%;
@@ -23,12 +24,15 @@
   justify-content: start;
   align-items: center;
   flex-wrap: wrap;
+
   & .field {
     padding: 0;
   }
+
   & .label {
     padding: 0 0 8px;
   }
+
   & .icon {
     bottom: 6px;
   }
@@ -37,6 +41,7 @@
 .numberInput {
   height: 40px;
 }
+
 .label {
   position: absolute;
   font-size: 16px;
@@ -45,6 +50,7 @@
   white-space: nowrap;
   padding: 0 8px 8px 24px;
 }
+
 .touched {
   color: $color-white-blue;
   font-size: 10px;
@@ -54,14 +60,15 @@
 
 .field {
   width: 100%;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: $fw-semibold;
   padding: 5px 0 4px 24px;
   z-index: 1;
   background-color: transparent;
+
   &::placeholder {
     color: $color-checkbox-gray;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: $fw-regular;
     line-height: 17px;
   }
@@ -72,6 +79,7 @@
   bottom: 8px;
   right: 9px;
 }
+
 .counter {
   position: absolute;
   right: 8px;

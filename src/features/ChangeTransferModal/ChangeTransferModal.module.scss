@@ -10,21 +10,25 @@
     height: 5px;
     width: 6px;
   }
+
   &::-webkit-scrollbar-track {
     background: $color-layout-light-blue;
     border-radius: 2px;
   }
+
   &::-webkit-scrollbar-thumb {
     background-color: $color-layout-light-blue-2;
     border-radius: 24px;
   }
 }
+
 .title {
   font-size: 16px;
   font-weight: $fw-bold;
   line-height: 20px;
   margin-bottom: 18px;
 }
+
 .current {
   height: 134px;
   min-width: 371px;
@@ -34,10 +38,12 @@
   margin-bottom: 16px;
   background-color: $color-laros-light-grey;
 }
+
 .selected {
   background-color: $color-white;
   border: 1px solid $color-light-green;
 }
+
 .currentTitle {
   font-size: 12px;
   font-weight: $fw-bold;
@@ -45,11 +51,13 @@
   color: $color-checkbox-gray;
   margin-bottom: 8px;
 }
+
 .currentModel {
   display: flex;
   align-items: center;
   margin-bottom: 8px;
 }
+
 .headerIcon,
 .currentIcon {
   background-color: $color-laros-light-grey;
@@ -60,18 +68,21 @@
   justify-content: center;
   align-items: center;
 }
+
 .currentName,
 .headerTitle {
   margin-left: 16px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: $fw-bold;
   line-height: 17px;
 }
+
 .currentDescription {
   font-size: 12px;
   font-weight: $fw-regular;
   line-height: 20px;
 }
+
 .cars {
   width: 766px;
   border-radius: 8px;
@@ -80,9 +91,11 @@
   height: 100%;
   margin-bottom: 24px;
 }
+
 .header {
   margin-bottom: 24px;
 }
+
 .headerContainer {
   height: 32px;
 
@@ -90,22 +103,27 @@
   align-items: center;
   margin-bottom: 8px;
 }
+
 .headerIcon {
   background-color: $color-bg-black;
 }
+
 .headerTerms {
   margin-left: auto;
   font-size: 12px;
   font-weight: $fw-medium;
   line-height: 20px;
 }
+
 .termsLink {
   color: $color-secondary;
 }
+
 .carsList {
   overflow-y: scroll;
   max-height: 300px;
 }
+
 .tabList {
   display: flex;
   justify-content: center;
@@ -114,6 +132,7 @@
   padding-top: 0;
   margin: 0;
 }
+
 .tab {
   outline: none;
   display: flex;
@@ -121,13 +140,15 @@
   align-items: center;
   width: 100px;
   height: 35px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: $fw-regular;
   line-height: 17px;
 }
+
 .selectedTab {
   font-weight: $fw-bold;
   position: relative;
+
   &::after {
     position: absolute;
     content: '';
@@ -138,6 +159,7 @@
     bottom: 0;
   }
 }
+
 .actions {
   display: flex;
 }

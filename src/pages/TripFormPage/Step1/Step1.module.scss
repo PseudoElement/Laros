@@ -9,6 +9,7 @@
     padding: 20px 20px;
   }
 }
+
 .select {
   width: 326px;
 }
@@ -43,16 +44,19 @@
   align-items: center;
   cursor: pointer;
 }
+
 .addLocationTitle {
   margin-left: 8px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: $fw-medium;
   line-height: 20px;
 }
+
 .addLocationInfo {
   margin-left: 8px;
   padding-top: 4px;
 }
+
 .actions {
   display: flex;
   padding: 24px 0 24px 80px;

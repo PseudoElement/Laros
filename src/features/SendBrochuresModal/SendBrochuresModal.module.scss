@@ -20,7 +20,7 @@
 
 .title {
   font-family: $font-Century-Gothic;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: $fw-regular;
 }
 
@@ -33,11 +33,12 @@
     flex-wrap: wrap;
     gap: 10px;
   }
+
   @media (max-width: 400px) {
     justify-content: center;
   }
 
-  & > div {
+  &>div {
     margin-right: 12px;
   }
 }
@@ -66,7 +67,7 @@
     color: $color-primary-black;
   }
 
-  > * {
+  >* {
     padding-left: 0;
 
     @include mobile {
@@ -84,15 +85,14 @@
   position: relative;
 }
 
-.phoneInput {
-}
+.phoneInput {}
 
 .phonePlaceholder {
   position: absolute;
   top: 34px;
   left: 18px;
   color: $color-placeholder;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 17px;
   text-align: left;
@@ -119,18 +119,22 @@
     padding: 0 0 10px 0;
   }
 }
+
 .radioButtons {
   @include mobile {
     display: block;
+
     label {
       display: block;
       margin-top: 10px;
+
       span {
         margin-left: 0;
       }
     }
   }
 }
+
 .radioLabel {
   font-family: $font-Century-Gothic;
   font-size: 12px;
@@ -152,7 +156,7 @@
   @include mobile {
     height: 110px;
 
-    & > div {
+    &>div {
       display: flex;
       flex-direction: column;
     }
@@ -176,7 +180,7 @@
 .adressStreet,
 .addressRegion {
   font-family: $font-Century-Gothic;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: $fw-semibold;
   padding: 0 8px 8px 8px;
   width: 50%;

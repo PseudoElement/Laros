@@ -1,4 +1,5 @@
 @use '/src/styles/style.scss' as *;
+
 .brochuresPage {
   padding: 0 80px;
 
@@ -6,6 +7,7 @@
     padding: 0;
   }
 }
+
 .wrapper {
   background-color: $color-white;
   border: 1px solid $color-white;
@@ -18,9 +20,11 @@
   @include laptop {
     padding: 80px 20px 0;
   }
+
   @include mobile-laptop {
     padding: 0 65px 0;
   }
+
   @include mobile-tablet {
     padding: 0 20px 0;
     margin: 50px 0;
@@ -41,6 +45,7 @@
   @include mobile {
     font-size: 30px;
   }
+
   @media (max-width: 500px) {
     text-align: center;
   }
@@ -52,13 +57,16 @@
   font-weight: $fw-regular;
   line-height: 20px;
   padding-left: 4%;
+
   @include mobile-laptop {
     width: 70%;
     margin-bottom: 20px;
   }
+
   @include mobile {
     margin-bottom: 20px;
   }
+
   @media (max-width: 500px) {
     text-align: center;
     width: 90%;
@@ -83,7 +91,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: $fw-regular;
   color: $color-placeholder;
   border: 1px solid $color-laros-light-grey;
@@ -92,10 +100,12 @@
     max-width: 0;
     min-width: 0;
   }
+
   @include laptop {
     max-width: 350px;
     min-width: 0;
   }
+
   @include mobile-tablet {
     max-width: 350px;
     min-width: 0;
@@ -111,6 +121,7 @@
   font-weight: $fw-bold;
   width: 92%;
   margin: 0 auto 24px;
+
   @media (max-width: 1400px) {
     text-align: center;
   }

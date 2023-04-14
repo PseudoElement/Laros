@@ -11,27 +11,32 @@
     padding: 10px;
   }
 }
+
 .title {
   display: flex;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: $fw-semibold;
   line-height: 16.8px;
   color: $color-laros-dark-grey;
   margin-bottom: 20px;
 }
+
 .icon {
   margin-right: 12px;
 }
+
 .form {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  & > div {
+
+  &>div {
     width: 326px;
     margin-bottom: 16px;
   }
 }
+
 .radio {
   display: flex;
   flex-direction: column;
@@ -41,18 +46,21 @@
   @include mobile {
     display: block;
     padding: 0 0 0 20px;
+
     label {
       display: block;
       margin-top: 5px;
     }
   }
 }
+
 .radioLabel {
   font-size: 12px;
   font-weight: $fw-medium;
   color: $color-placeholder;
   margin: 0 25px 12px 0;
 }
+
 .selectWrapper {
   background-color: $color-white;
   padding: 12px 16px 0 16px;
@@ -60,15 +68,18 @@
   border: 1px solid $color-laros-light-grey;
   border-radius: 8px;
 }
+
 .select {
   [class$='-control'] {
     background-color: $color-white;
     border: none;
   }
+
   [class$='-placeholder'] {
     color: $color-laros-dark-grey;
   }
 }
+
 .selectLabel {
   font-size: 12px;
   font-weight: $fw-bold;

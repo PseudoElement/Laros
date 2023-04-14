@@ -46,7 +46,7 @@
 .services {
   display: flex;
   font-weight: $fw-medium;
-  font-size: 14px;
+  font-size: 16px;
   align-items: center;
   gap: 32px;
   margin-bottom: 28px;
@@ -143,6 +143,7 @@
     width: 100%;
     flex-direction: column;
   }
+
   .price {
     flex-direction: column;
     align-items: flex-start;

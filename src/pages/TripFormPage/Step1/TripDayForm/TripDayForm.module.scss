@@ -3,11 +3,13 @@
 .container {
   width: 100%;
 }
+
 .header {
   display: flex;
   align-items: center;
   margin-bottom: 21px;
 }
+
 .editBtn {
   width: 69px;
   color: $color-bg-black;
@@ -23,6 +25,7 @@
     margin-top: 5px;
   }
 }
+
 .content {
   padding: 40px 64px 24px 80px;
 
@@ -30,18 +33,21 @@
     padding: 20px 20px;
   }
 }
+
 .day {
   font-size: 18px;
   font-weight: $fw-bold;
   line-height: 22px;
 }
+
 .dayTotal {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: $fw-medium;
   line-height: 17px;
   color: $color-laros-dark-grey;
   margin-left: 8px;
 }
+
 .section {
   padding-top: 13px;
   display: flex;
@@ -52,6 +58,7 @@
     display: block;
   }
 }
+
 .sectionWrap {
   display: flex;
   align-items: center;
@@ -62,11 +69,13 @@
     display: block;
   }
 }
+
 .allocationAlert {
   color: red;
   text-align: center;
   margin-top: 10px;
 }
+
 .sectionTitle,
 .roomTitle {
   max-width: 160px;
@@ -76,9 +85,11 @@
   line-height: 14px;
   white-space: pre-wrap;
 }
+
 .changeRoom {
   cursor: pointer;
 }
+
 .sectionValue {
   position: relative;
   height: 40px;
@@ -89,9 +100,11 @@
   align-items: center;
   flex: 1;
 }
+
 .valueName {
   margin-left: 12px;
 }
+
 .durationCounter {
   height: 26px;
   display: flex;
@@ -102,24 +115,29 @@
     margin: 0;
   }
 }
+
 .counter {
   padding-top: 7px;
   margin-left: 16px;
 }
+
 .description {
   display: flex;
   flex-direction: column;
   max-width: 541px;
 }
+
 .descriptionSection {
   align-items: flex-start;
 }
+
 .descriptionText {
   font-size: 12px;
   font-weight: $fw-regular;
   line-height: 20px;
   margin-bottom: 8px;
 }
+
 .moreBtn {
   font-size: 12px;
   font-weight: $fw-regular;
@@ -139,15 +157,18 @@
   width: 16px;
   position: relative;
 }
+
 .regionCard {
   bottom: 25px;
   left: -250px;
 }
+
 .roomTitle {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: $fw-bold;
   line-height: 17px;
 }
+
 .roomCapacityTitle {
   margin-left: 16px;
   font-size: 12px;
@@ -168,11 +189,13 @@
     margin: 10px 0 0 0;
   }
 }
+
 .pencil {
   position: absolute;
   top: 11px;
   right: 17px;
 }
+
 .deleteDay {
   height: 40px;
   width: 72px;
@@ -183,6 +206,7 @@
   border-radius: 8px;
   margin-left: auto;
 }
+
 .modal {
   padding: 0 20px;
 
@@ -199,10 +223,12 @@
         height: 5px;
         width: 6px;
       }
+
       &::-webkit-scrollbar-track {
         background: $color-layout-light-blue;
         border-radius: 2px;
       }
+
       &::-webkit-scrollbar-thumb {
         background-color: $color-layout-light-blue-2;
         border-radius: 24px;
@@ -212,6 +238,7 @@
     @include laptop-desktop {
       margin: 0 20px;
     }
+
     @include mobile {
       margin: 0;
       min-height: 100%;

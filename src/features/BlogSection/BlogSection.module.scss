@@ -46,7 +46,7 @@
   }
 
   .description {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 24px;
     color: $color-black;
     text-align: justify;
@@ -57,7 +57,7 @@
     padding-top: 20px;
     margin-right: 80px;
 
-    & > *:not(:last-child) {
+    &>*:not(:last-child) {
       margin-bottom: 32px;
 
       @include mobile-tablet {
@@ -81,12 +81,12 @@
     top: 100px;
     image-rendering: optimizeSpeed;
 
-    & > span {
+    &>span {
       border-radius: 8px;
       image-rendering: optimizeSpeed;
     }
 
-    & > div {
+    &>div {
       width: 515px;
       height: 508px;
       background-color: $color-modal-header;
@@ -99,7 +99,7 @@
   &:nth-child(even) {
     flex-direction: row-reverse;
 
-    .image > div {
+    .image>div {
       left: 0;
     }
   }
@@ -126,7 +126,7 @@
 }
 
 .read {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 24px;
   color: $color-placeholder;
 }

@@ -2,6 +2,7 @@
 
 .applyModal {
   padding: 32px 80px;
+
   @include mobile {
     padding: 20px;
   }
@@ -69,6 +70,7 @@
   position: relative;
   width: 100%;
 }
+
 .phoneInput {
   width: 100%;
 }
@@ -78,7 +80,7 @@
   top: 34px;
   left: 18px;
   color: $color-placeholder;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 17px;
   text-align: left;

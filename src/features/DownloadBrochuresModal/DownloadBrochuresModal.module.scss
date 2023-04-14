@@ -12,6 +12,7 @@
     padding: 20px;
     height: auto;
   }
+
   @include mobile {
     width: 100%;
     padding: 20px;
@@ -20,6 +21,7 @@
     overflow-x: auto;
   }
 }
+
 .content {
   display: flex;
 
@@ -28,11 +30,13 @@
     width: 100%;
   }
 }
+
 .card {
   height: 288px;
   width: 240px;
   border-radius: 16px;
 }
+
 .form {
   width: 404px;
   margin-left: 32px;
@@ -45,12 +49,14 @@
     margin: 0;
   }
 }
+
 .title {
   padding: 8px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: $fw-semibold;
   margin-bottom: 16px;
 }
+
 .input {
   height: 63px;
   width: 100%;
@@ -69,7 +75,7 @@
     color: $color-primary-black;
   }
 
-  > * {
+  >* {
     padding-left: 0;
   }
 
@@ -91,18 +97,22 @@
     padding: 0 0 10px 10px;
   }
 }
+
 .radioButtons {
   @media (max-width: 400px) {
     display: block;
+
     label {
       display: block;
       margin-top: 10px;
+
       span {
         margin-left: 0;
       }
     }
   }
 }
+
 .radioLabel {
   font-family: $font-Century-Gothic;
   font-size: 12px;
@@ -110,21 +120,25 @@
   color: $color-placeholder;
   margin-right: 25px;
 }
+
 .actions {
   position: absolute;
   bottom: 0;
   right: 0;
   display: flex;
   margin-bottom: 20px;
+
   @include mobile {
     position: static;
   }
 }
+
 .icon {
   margin-top: 2px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 800;
 }
+
 .downloadBtn {
   width: 190px;
   margin-left: 20px;
@@ -135,6 +149,7 @@
     padding: 10px;
   }
 }
+
 .downloadText {
   margin-left: 11px;
 }
