@@ -12,6 +12,8 @@ import { useTranslate } from 'shared/hooks/useTranslate'
 import s from './DestinationHotels.module.scss'
 import { useRouter } from 'next/router'
 
+import { Loader } from 'components/Loader'
+
 interface DestinationHotelsProps {
   map: Destination & {
     destinations: Destination[]
@@ -83,7 +85,7 @@ export const DestinationHotels: FC<DestinationHotelsProps> = ({ map }) => {
         )}
 
         {isLoading && page === 1 ? (
-          <div className={s.loading}>{t('common.loadingText')}</div>
+          <Loader />
         ) : (
           <div className={s.hotels}>
             {hotels.map(hotel => (

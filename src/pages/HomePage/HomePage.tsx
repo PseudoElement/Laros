@@ -19,6 +19,8 @@ import screenfull from 'screenfull'
 
 import s from './HomePage.module.scss'
 
+import { Loader } from 'components/Loader'
+
 export const HomePage: FC = () => {
   const [activeMenu, setActiveMenu] = useState<boolean>(false)
   const [videoIsFullscreen, setVideoIsFullscreen] = useState<boolean>(true)
@@ -86,7 +88,11 @@ export const HomePage: FC = () => {
       </div>
 
       <Explore destinations={destinations} />
-      {Boolean(blogs.length) && <PostBlock posts={blogs} />}
+      {!isLoading ? (
+        Boolean(blogs.length) && <PostBlock posts={blogs} />
+      ) : (
+        <Loader />
+      )}
 
       <div className={s.commentsWrapper}>
         <Comments comments={reviewsMock} />

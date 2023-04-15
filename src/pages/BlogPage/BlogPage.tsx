@@ -12,33 +12,54 @@ import { getBlogs, getPostById } from 'shared/api/routes/blogs'
 
 import s from './BlogPage.module.scss'
 
+import { Loader } from 'components/Loader'
+
 export const Blog: FC = () => {
   const router = useRouter()
   const blogId = Number(router.query.id)
   const [post, setPost] = useState<BlogPayload>()
+  const [isLoading, setLoading] = useState<Boolean>(false)
   const [posts, setPosts] = useState<BlogPayload[]>([])
   const t = useTranslate()
   const { width } = useWindowDimensions()
 
+  const fetchPost = async () => {
+    setLoading(true)
+    try {
+      const data = await getPostById(blogId)
+      setLoading(false)
+      return data
+    } catch (error) {
+      console.log(error)
+      setLoading(false)
+    }
+  }
+
+  const fetchPosts = async () => {
+    setLoading(true)
+    try {
+      const data = await getBlogs({})
+      setLoading(false)
+      return data
+    } catch (error) {
+      console.log(error)
+      setLoading(false)
+    }
+  }
+
   useEffect(() => {
     if (blogId) {
-      const fetchPost = async () => {
-        return await getPostById(blogId)
-      }
       //@ts-ignore
       fetchPost().then(post => setPost(post.data.data))
     }
   }, [blogId])
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      return await getBlogs({})
-    }
     //@ts-ignore
     fetchPosts().then(post => setPosts(post.data.data))
   }, [])
 
-  return (
+  return !isLoading ? (
     <>
       {post ? (
         <div className={s.wrapper}>
@@ -101,6 +122,16 @@ export const Blog: FC = () => {
         </div>
       ) : null}
       <ContactFooterHero />
+    </>
+  ) : (
+    <>
+      <div className={s.wrapper}>
+        <div className={s.contentWrapper}>
+          <div className={s.sliderContainer}>
+            <Loader />
+          </div>
+        </div>
+      </div>
     </>
   )
 }

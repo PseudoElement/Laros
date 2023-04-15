@@ -33,6 +33,8 @@ import gridIcon from '/public/assets/images/grid.svg?url'
 
 import s from './TripOffersPage.module.scss'
 
+import { Loader } from 'components/Loader'
+
 enum View {
   LIST,
   GRID,
@@ -317,7 +319,7 @@ export const TripOffersPage: FC = () => {
       {!isLoading && !trips.length && (
         <div className={s.loading}>{t('common.emptyText')}</div>
       )}
-      {isLoading && <div className={s.loading}>{t('common.loadingText')}</div>}
+      {isLoading && <Loader />}
       <div className={cn(s.offers, view === View.GRID ? s.grid : s.list)}>
         {(!isLoading || page > 1) &&
           trips.map((offer, idx) => {
