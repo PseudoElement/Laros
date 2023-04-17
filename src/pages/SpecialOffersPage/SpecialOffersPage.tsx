@@ -27,6 +27,8 @@ import { TripFilterParams } from 'shared/types/trip'
 import s from './SpecialOffersPage.module.scss'
 import { useRouter } from 'next/router'
 
+import { Loader } from 'components/Loader'
+
 export const SpecialOffersPage: FC = () => {
   const { control, watch } = useForm()
   const dispatch = useAppDispatch()
@@ -207,7 +209,7 @@ export const SpecialOffersPage: FC = () => {
         <div className={s.loading}>{t('common.emptyText')}</div>
       )}
 
-      {isLoading && <div className={s.loading}>{t('common.loadingText')}</div>}
+      {isLoading && <Loader />}
 
       <div className={cn(s.offers, s.grid)}>
         {!isLoading &&

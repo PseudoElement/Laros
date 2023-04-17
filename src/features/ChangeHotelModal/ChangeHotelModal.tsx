@@ -13,6 +13,8 @@ import { useTranslate } from 'shared/hooks/useTranslate'
 
 import s from './ChangeHotelModal.module.scss'
 
+import { Loader } from 'components/Loader'
+
 interface ChangeHotelProps {
   destination: number
   destinationName: string
@@ -146,7 +148,7 @@ export const ChangeHotelModal: FC<ChangeHotelProps> = ({
           </div>
 
           <div className={s.cards}>
-            {!isLoading &&
+            {!isLoading ? (
               hotels.map((item, idx) => {
                 return (
                   <HotelChangingCard
@@ -155,7 +157,10 @@ export const ChangeHotelModal: FC<ChangeHotelProps> = ({
                     hotel={item}
                   />
                 )
-              })}
+              })
+            ) : (
+              <Loader />
+            )}
           </div>
         </form>
       </div>

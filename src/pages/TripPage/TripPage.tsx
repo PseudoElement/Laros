@@ -22,6 +22,8 @@ import { Trip } from 'shared/types/trip'
 
 import s from './TripPage.module.scss'
 
+import { Loader } from 'components/Loader'
+
 export interface TripPageProps {
   trip: Trip
 }
@@ -75,13 +77,7 @@ export const TripPage: FC<TripPageProps> = ({ trip }) => {
 
       <div className={s.container}>
         <div className={s.card}>
-          {trip.name ? (
-            <TripPageIntro {...trip} />
-          ) : (
-            <div className={s.loader}>
-              <p>{t('common.loadingText')}</p>
-            </div>
-          )}
+          {trip.name ? <TripPageIntro {...trip} /> : <Loader />}
         </div>
 
         <Tabs className={s.tabs}>

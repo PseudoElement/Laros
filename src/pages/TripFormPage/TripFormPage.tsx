@@ -27,6 +27,8 @@ import bg from '/public/assets/images/tripFormBg.png'
 
 import s from './TripFormPage.module.scss'
 
+import { Loader } from 'components/Loader'
+
 export enum Steps {
   FIRST,
   SECOND,
@@ -124,7 +126,6 @@ export const TripFormPage: FC = () => {
     }
   }
 
-
   useEffect(() => {
     const subscription = formHook.watch((value, { name, type }) => {
       const formValue = value
@@ -140,7 +141,11 @@ export const TripFormPage: FC = () => {
   }, [debounchedCalculation])
 
   if (isLoading || !trip) {
-    return <div>{t('common.loadingText')}</div>
+    return (
+      <div className={s.info}>
+        <Loader />
+      </div>
+    )
   }
 
   return (

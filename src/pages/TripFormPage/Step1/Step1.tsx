@@ -50,7 +50,6 @@ import {
   getTransportToFirstDest,
 } from 'shared/api/routes/destinations'
 
-
 interface Step1Props {
   setStep: (step: Steps) => void
   trip: Trip
@@ -174,7 +173,6 @@ export const Step1: FC<Step1Props> = ({
   }, [watchStartPoint, watchDestinations])
 
   useEffect(() => {
-
     const { afterIndex, beforeIndex } = defineRangeForChangingCars(
       watchForm,
       destinationIndex!
@@ -290,10 +288,10 @@ export const Step1: FC<Step1Props> = ({
               from={
                 trip.destinations[index - 1]
                   ? {
-                    label: trip.destinations[index - 1].destination_name,
-                    value:
-                      trip.destinations[index - 1].destination_id.toString(),
-                  }
+                      label: trip.destinations[index - 1].destination_name,
+                      value:
+                        trip.destinations[index - 1].destination_id.toString(),
+                    }
                   : watchForm.dest_from ?? undefined
               }
               previousDestination={watchDestinations[index - 1] ?? null}

@@ -14,6 +14,8 @@ import { TABLET_SCREEN } from 'shared/constants/screenResolutions'
 import { BlogPayload } from 'shared/types/blogs'
 import { useGetBlogs } from 'shared/hooks/useGetBlogs'
 
+import { Loader } from 'components/Loader'
+
 interface BlogItemProps {
   id: number
   title: string
@@ -64,7 +66,7 @@ export const BlogsPage: FC = () => {
 
   useEffect(() => handleReady(true), [params])
 
-  return (
+  return !isLoading ? (
     <>
       <div className={s.page}>
         <div className={s.pictures}>
@@ -118,6 +120,14 @@ export const BlogsPage: FC = () => {
           </div>
         </div>
         <ContactFooterHero />
+      </div>
+    </>
+  ) : (
+    <>
+      <div className={s.page}>
+        <div className={s.pictures}>
+          <Loader />
+        </div>
       </div>
     </>
   )
