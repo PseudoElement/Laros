@@ -7,14 +7,11 @@ import {
   sendContactFormThunk,
   sendContactOrderFormThunk,
 } from 'store/slices/contactForm/thunk'
-
 import { Button, Input, InputCalendar, Radio } from 'components'
-
 import { genderOptions } from 'shared/constants/form'
 import { useAppDispatch } from 'shared/hooks/redux'
 import { ContactForm as ContactFormData } from 'shared/types/contact'
 import { useTranslate } from 'shared/hooks/useTranslate'
-
 import fb from '/public/assets/images/socials/facebook.svg?url'
 import inst from '/public/assets/images/socials/instagram.svg?url'
 import linked from '/public/assets/images/socials/linkedin.svg?url'
@@ -22,28 +19,17 @@ import map from '/public/assets/images/info/map.svg?url'
 import userPlus from '/public/assets/images/info/user-plus.svg?url'
 import send from '/public/assets/images/info/send.svg?url'
 import video from '/public/assets/images/info/video.svg?url'
-
 import s from './ContactForm.module.scss'
 import Link from 'next/link'
 import { OrderPayload } from 'shared/types/order'
 import { ThankYouPage } from '../ThankYouPage'
 import { vocabulary } from 'shared/constants/vocabulary'
-
 type ContactFormProps = {
   contactPage?: boolean
   onFormSubmit?: () => void
   order?: OrderPayload
   tripContactForm?: boolean
   staticPageContactForm?: boolean
-}
-
-export interface ControllersState {
-  name: boolean
-  gender: boolean
-  email: boolean
-  phone: boolean
-  number: boolean
-  message: boolean
 }
 
 export const ContactForm: FC<ContactFormProps> = ({
@@ -54,18 +40,11 @@ export const ContactForm: FC<ContactFormProps> = ({
   order,
 }) => {
   const [submitSuccessfully, setSubmitSuccessfully] = useState(false)
-  const [focusedInputs, setFocusedInputs] = useState<ControllersState>({
-    name: false,
-    gender: false,
-    email: false,
-    phone: false,
-    number: false,
-    message: false,
-  })
   const { handleSubmit, control } = useForm()
   const dispatch = useAppDispatch()
   const route = useRouter()
   const t = useTranslate()
+
   const onError = (error: any) => {
     alert(
       `${Object.keys(error)
@@ -73,7 +52,6 @@ export const ContactForm: FC<ContactFormProps> = ({
         .join(', ')} sind Pflichtfelder`
     )
   }
-
   const onSubmit = (formData: any) => {
     // TODO add types
     const form: ContactFormData = {
@@ -92,7 +70,6 @@ export const ContactForm: FC<ContactFormProps> = ({
     onFormSubmit && onFormSubmit()
     setSubmitSuccessfully(true)
   }
-
   return (
     <>
       {submitSuccessfully ? (
@@ -113,12 +90,10 @@ export const ContactForm: FC<ContactFormProps> = ({
                 name='name'
                 control={control}
                 rules={{ required: true }}
-                render={({ field: { onChange, value, name } }) => (
+                render={({ field: { onChange, value } }) => (
                   <>
                     <Input
-                      setFocusedInputs={setFocusedInputs}
-                      focusedInputs={focusedInputs}
-                      name={name}
+                      placeholder={t('vouchers.placeholder1')}
                       onChange={onChange}
                       id='name'
                       value={value}
@@ -150,12 +125,10 @@ export const ContactForm: FC<ContactFormProps> = ({
                 name='email'
                 control={control}
                 rules={{ required: true }}
-                render={({ field: { onChange, value, name } }) => (
+                render={({ field: { onChange, value } }) => (
                   <Input
-                    setFocusedInputs={setFocusedInputs}
-                    focusedInputs={focusedInputs}
-                    name={name}
                     type='email'
+                    placeholder={t('forms.inputLabel1')}
                     onChange={onChange}
                     id='email'
                     value={value}
@@ -164,18 +137,15 @@ export const ContactForm: FC<ContactFormProps> = ({
                   />
                 )}
               />
-
               {contactPage ? (
                 <Controller
                   name='phone'
                   control={control}
                   rules={{ required: true }}
-                  render={({ field: { onChange, value, name } }) => (
+                  render={({ field: { onChange, value } }) => (
                     <Input
-                      setFocusedInputs={setFocusedInputs}
-                      focusedInputs={focusedInputs}
-                      name={name}
                       type='text'
+                      placeholder=''
                       onChange={e => onChange(e)}
                       id='phone'
                       value={value}
@@ -188,11 +158,8 @@ export const ContactForm: FC<ContactFormProps> = ({
                 <Controller
                   name='number'
                   control={control}
-                  render={({ field: { onChange, value, name } }) => (
+                  render={({ field: { onChange, value } }) => (
                     <Input
-                      setFocusedInputs={setFocusedInputs}
-                      focusedInputs={focusedInputs}
-                      name={name}
                       type='number'
                       onChange={onChange}
                       id='number'
@@ -215,7 +182,7 @@ export const ContactForm: FC<ContactFormProps> = ({
                         value={value}
                         label={t('worldwideTours.label3')}
                         error={false}
-                        handleIconClick={() => {}}
+                        handleIconClick={() => { }}
                       />
                     )}
                   />
@@ -229,22 +196,18 @@ export const ContactForm: FC<ContactFormProps> = ({
                         value={value}
                         label={t('contactForm.return')}
                         error={false}
-                        handleIconClick={() => {}}
+                        handleIconClick={() => { }}
                       />
                     )}
                   />
                 </>
               )}
-
               <Controller
                 name='message'
                 control={control}
-                rules={{ required: true }}
-                render={({ field: { onChange, value, name } }) => (
+                rules={{ required: staticPageContactForm ? true : false }}
+                render={({ field: { onChange, value } }) => (
                   <Input
-                    setFocusedInputs={setFocusedInputs}
-                    focusedInputs={focusedInputs}
-                    name={name}
                     onChange={onChange}
                     id='number'
                     value={value}
@@ -263,7 +226,6 @@ export const ContactForm: FC<ContactFormProps> = ({
               </Button>
             </div>
           </div>
-
           <div className={cn(s.info, { [s.contactInfo]: contactPage })}>
             <div
               className={cn(s.infoItem, s.appointment)}
@@ -305,7 +267,6 @@ export const ContactForm: FC<ContactFormProps> = ({
                 </a>
               </div>
             </div>
-
             <div className={cn(s.infoItem, s.socials)}>
               <div className={s.infoIcon}>
                 <Image src={userPlus} width={32} height={32} />
@@ -314,7 +275,6 @@ export const ContactForm: FC<ContactFormProps> = ({
               <div className={s.infoDescription}>
                 {t('contactForm.follow')}:
               </div>
-
               <div className={s.socialIcons}>
                 <Link href={'https://www.instagram.com/larosreisen'}>
                   <a target={'_blank'}>
@@ -323,7 +283,6 @@ export const ContactForm: FC<ContactFormProps> = ({
                     </div>
                   </a>
                 </Link>
-
                 <Link href={'https://www.facebook.com/larosreisen'}>
                   <a target={'_blank'}>
                     <div>
@@ -331,7 +290,6 @@ export const ContactForm: FC<ContactFormProps> = ({
                     </div>
                   </a>
                 </Link>
-
                 <Link
                   href={'https://www.linkedin.com/company/laros-reisen-gmbh'}
                 >

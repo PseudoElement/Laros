@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction } from 'react'
+import { FC } from 'react'
 
 import { PencilIcon } from 'components/icons'
 
@@ -7,8 +7,6 @@ import MaskedInput from 'react-text-mask' // TODO add types
 import { NUMBER_REG_EXP } from 'shared/constants/regExp'
 import cn from 'classnames'
 import { Counter } from 'components/Counter'
-import { FieldValues, UseFormSetFocus } from 'react-hook-form'
-import { ControllersState } from 'features'
 
 interface InputProps {
   label: string
@@ -23,15 +21,9 @@ interface InputProps {
   withCounter?: boolean
   min?: number
   max?: number
-  name?: string
-  setFocusedInputs?: (prev: any) => void
-  focusedInputs?: ControllersState
 }
 
 export const Input: FC<InputProps> = ({
-  setFocusedInputs,
-  name,
-  focusedInputs,
   label,
   value = '',
   type = 'text',
@@ -45,17 +37,6 @@ export const Input: FC<InputProps> = ({
   min,
   max,
 }) => {
-  const onFocus = () => {
-    setFocusedInputs?.((prev: ControllersState) => ({ ...prev, [name!]: true }))
-  }
-  const onBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
-    !e.target.value &&
-      setFocusedInputs?.((prev: ControllersState) => ({
-        ...prev,
-        [name!]: false,
-      }))
-  }
-
   switch (type) {
     case 'phone':
       return (
@@ -79,13 +60,8 @@ export const Input: FC<InputProps> = ({
     case 'email':
       return (
         <div className={cn(s.input, { [s.shorten]: shorten }, classname)}>
-          {/*@ts-ignore*/}
-          <div className={cn(s.label, { [s.touched]: focusedInputs?.[name] })}>
-            {label}
-          </div>
+          {<div className={s.label}>{label}</div>}
           <input
-            onFocus={onFocus}
-            onBlur={onBlur}
             required={required}
             placeholder={placeholder}
             value={value}
@@ -93,7 +69,6 @@ export const Input: FC<InputProps> = ({
             className={s.field}
             type={type}
           />
-
           <span className={s.icon}>
             <PencilIcon />
           </span>
@@ -139,20 +114,11 @@ export const Input: FC<InputProps> = ({
     default:
       return (
         <div className={cn(s.input, { [s.shorten]: shorten }, classname)}>
-          {/*@ts-ignore*/}
-          <div className={cn(s.label, { [s.touched]: focusedInputs?.[name] })}>
-            {label}
-          </div>
-
+          {<div className={s.label}>{label}</div>}
           <input
-            onFocus={onFocus}
-            onBlur={onBlur}
             placeholder={placeholder}
             value={value}
-            onChange={e => {
-              onChange(e.target.value)
-              console.log('NAME', name)
-            }}
+            onChange={e => onChange(e.target.value)}
             className={s.field}
             type={type}
           />
