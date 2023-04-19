@@ -24,6 +24,8 @@ import Link from 'next/link'
 import { OrderPayload } from 'shared/types/order'
 import { ThankYouPage } from '../ThankYouPage'
 import { vocabulary } from 'shared/constants/vocabulary'
+import InputDynamicLabel from 'components/InputDynamicLabel/InputDynamicLabel'
+
 type ContactFormProps = {
   contactPage?: boolean
   onFormSubmit?: () => void
@@ -91,16 +93,13 @@ export const ContactForm: FC<ContactFormProps> = ({
                 control={control}
                 rules={{ required: true }}
                 render={({ field: { onChange, value } }) => (
-                  <>
-                    <Input
-                      placeholder={t('vouchers.placeholder1')}
-                      onChange={onChange}
-                      id='name'
-                      value={value}
-                      label={`${t('forms.inputLabel5')}*`}
-                      classname={s.input}
-                    />
-                  </>
+                  <InputDynamicLabel
+                    onChange={onChange}
+                    id='name'
+                    value={value}
+                    required
+                    label={`${t('forms.inputLabel5')}`}
+                  />
                 )}
               />
               <Controller
@@ -126,14 +125,12 @@ export const ContactForm: FC<ContactFormProps> = ({
                 control={control}
                 rules={{ required: true }}
                 render={({ field: { onChange, value } }) => (
-                  <Input
-                    type='email'
-                    placeholder={t('forms.inputLabel1')}
+                  <InputDynamicLabel
                     onChange={onChange}
                     id='email'
                     value={value}
-                    label={`${t('forms.inputLabel1')}*`}
-                    classname={s.input}
+                    required
+                    label={`${t('forms.inputLabel1')}`}
                   />
                 )}
               />
@@ -143,14 +140,11 @@ export const ContactForm: FC<ContactFormProps> = ({
                   control={control}
                   rules={{ required: true }}
                   render={({ field: { onChange, value } }) => (
-                    <Input
-                      type='text'
-                      placeholder=''
-                      onChange={e => onChange(e)}
+                    <InputDynamicLabel
+                      onChange={onChange}
                       id='phone'
                       value={value}
-                      label={t('forms.inputLabel6')}
-                      classname={s.input}
+                      label={`${t('forms.inputLabel16')}`}
                     />
                   )}
                 />
@@ -182,7 +176,7 @@ export const ContactForm: FC<ContactFormProps> = ({
                         value={value}
                         label={t('worldwideTours.label3')}
                         error={false}
-                        handleIconClick={() => { }}
+                        handleIconClick={() => {}}
                       />
                     )}
                   />
@@ -196,7 +190,7 @@ export const ContactForm: FC<ContactFormProps> = ({
                         value={value}
                         label={t('contactForm.return')}
                         error={false}
-                        handleIconClick={() => { }}
+                        handleIconClick={() => {}}
                       />
                     )}
                   />
@@ -207,12 +201,11 @@ export const ContactForm: FC<ContactFormProps> = ({
                 control={control}
                 rules={{ required: staticPageContactForm ? true : false }}
                 render={({ field: { onChange, value } }) => (
-                  <Input
+                  <InputDynamicLabel
                     onChange={onChange}
-                    id='number'
+                    id='message'
                     value={value}
-                    label={t('forms.inputLabel7')}
-                    classname={s.input}
+                    label={`${t('forms.inputLabel17')}`}
                   />
                 )}
               />

@@ -1,0 +1,48 @@
+@use 'styles/style.scss' as *;
+.wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 424px;
+  border: 1px solid $color-laros-dark-grey;
+  font-size: 16px;
+  border-radius: 8px;
+  height: 40px;
+  .label {
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    transform: translate(0, -50%);
+    font-size: 16px;
+    font-weight: $fw-medium;
+    color: $color-checkbox-gray;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .touchedLabel {
+    top: -7px;
+    left: 0;
+    color: $color-white-blue;
+    font-weight: $fw-semibold;
+    font-size: 12px;
+  }
+  .field {
+    position: relative;
+    background: transparent;
+    z-index: 1;
+    padding-left: 8px;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: $fw-semibold;
+    &:focus {
+      border: 1px solid $color-white-blue;
+    }
+  }
+  .icon {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 5px;
+  }
+}
