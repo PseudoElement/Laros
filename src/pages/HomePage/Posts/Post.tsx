@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect, useRef } from 'react'
 import cls from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -16,14 +16,27 @@ interface PostBlockProps {
 export const PostBlock: FC<PostBlockProps> = ({ posts }) => {
   const { push } = useRouter()
   const fullPost = posts.filter((item, index) => index === 0)
-  const post = posts.filter((item, index) => index !== 0 && index <= 2)
+
+  const postsRef = useRef(null)
+  const filteredPosts = posts.filter((item, index) => index !== 0 && index <= 2)
+
   const t = useTranslate()
+
+  useEffect(() => {
+    //@ts-ignore
+    const span: HTMLSpanElement = postsRef.current?.querySelector('span')
+    span.removeAttribute('style')
+  }, [])
 
   return (
     <div className={s.wrapper}>
       <div className={s.contentWrapper}>
         {fullPost.map((post, idx) => (
-          <div className={s.left} key={idx} onClick={() => push(`/blogs/${post.id}/`)}>
+          <div
+            className={s.left}
+            key={idx}
+            onClick={() => push(`/blogs/${post.id}/`)}
+          >
             <h3 className={s.mainTitle}>{t('homepage.ourBlogTitle')}</h3>
 
             <div className={s.imageWrapper}>
@@ -47,11 +60,15 @@ export const PostBlock: FC<PostBlockProps> = ({ posts }) => {
           </div>
         ))}
 
-        <div className={s.rightWrapper}>
+        <div ref={postsRef} className={s.rightWrapper}>
           <div className={s.right}>
-            {post.map((post, idx) => {
+            {filteredPosts.map((post, idx) => {
               return (
-                <div className={s.post} key={idx} onClick={() => push(`/blogs/${post.id}/`)}>
+                <div
+                  className={s.post}
+                  key={idx}
+                  onClick={() => push(`/blogs/${post.id}/`)}
+                >
                   <div className={s.textBlock}>
                     <h3 className={cls(s.title, s.postTitle)}>
                       {t(post.title)}
@@ -61,7 +78,7 @@ export const PostBlock: FC<PostBlockProps> = ({ posts }) => {
                       dangerouslySetInnerHTML={{
                         __html: t(post.description.split('. ')[0]),
                       }}
-                    />
+                    ></p>
                   </div>
 
                   <Image

@@ -102,24 +102,21 @@ export const Footer: FC = () => {
               <ul className={s.aboutInfoList}>
                 <li className={s.aboutItem}>
                   <p className={s.link}>
-                    {t('navigation.footer.addressText')}
-                    <span className={s.linkNum}>
-                      {t('navigation.footer.address')}
-                    </span>
+                    {`${t('navigation.footer.addressText')} ${t(
+                      'navigation.footer.address'
+                    )}`}
                   </p>
                 </li>
                 <li className={s.aboutItem}>
                   <p className={s.link}>
-                    {t('navigation.footer.telText')}:
-                    <span className={s.linkNum}>
-                      {t('navigation.footer.telNumber')}
-                    </span>
+                    {t('navigation.footer.telText')}:{' '}
+                    {t('navigation.footer.telNumber')}
                   </p>
                 </li>
                 <li className={s.aboutItem}>
                   <p className={s.link}>
-                    {t('navigation.footer.emailText')}:{' '}
-                    {t('navigation.footer.email')}
+                    {`${t('navigation.footer.emailText')}: 
+                    ${t('navigation.footer.email')}`}
                   </p>
                 </li>
               </ul>
@@ -132,18 +129,16 @@ export const Footer: FC = () => {
               <ul className={s.aboutInfoList}>
                 <li className={s.aboutItem}>
                   <p className={s.link}>
-                    {t('navigation.footer.moText')}:
-                    <span className={s.linkNum}>
-                      {t('navigation.footer.mo')}
-                    </span>
+                    {`${t('navigation.footer.moText')}: ${t(
+                      'navigation.footer.mo'
+                    )}`}
                   </p>
                 </li>
                 <li className={s.aboutItem}>
                   <p className={s.link}>
-                    {t('navigation.footer.tu-frText')}:
-                    <span className={s.linkNum}>
-                      {t('navigation.footer.tu-fr')}
-                    </span>
+                    {`${t('navigation.footer.tu-frText')}: ${t(
+                      'navigation.footer.tu-fr'
+                    )}`}
                   </p>
                 </li>
               </ul>

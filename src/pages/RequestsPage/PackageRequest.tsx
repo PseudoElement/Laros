@@ -36,7 +36,8 @@ import {
   transferOptions,
 } from 'shared/constants/form'
 
-import s from '../FlightRequestPage/FlightRequestPage.module.scss'
+import s from '../FlightRequestPage/FlightRequestPage.module.scss' ///Here's using styles from another component
+// import s from './RequestsPackage.module.scss'
 import { convertErrorsForAlert } from 'shared/helpers/convertErrorsForAlert'
 import { vocabulary } from 'shared/constants/vocabulary'
 import { isNotChoosenNationality } from 'shared/helpers/isNotChoosenNationality'
@@ -52,6 +53,7 @@ export const PackageRequestForm: FC<PackageRequestFormProps> = ({
   const dispatch: AppDispatch = useAppDispatch()
   const [adultsCount, setAdultsCount] = useState<number>(1)
   const [childrenCount, setChildrenCount] = useState<number>(0)
+  const [babyCount, setBabyCount] = useState<number>(0)
   const [travellersCount, setTravellerCount] = useState<number>(0)
 
   const {
@@ -73,6 +75,7 @@ export const PackageRequestForm: FC<PackageRequestFormProps> = ({
 
   const watchAdultsCount = watch('adults', adultsCount)
   const watchChildrenCount = watch('children', 0)
+  const watchBabyCount = watch('baby', 0)
 
   useEffect(() => {
     if (watchAdultsCount != adultsCount) {
@@ -87,7 +90,13 @@ export const PackageRequestForm: FC<PackageRequestFormProps> = ({
         : remove(travellersCount - 1)
       setChildrenCount(watchChildrenCount)
     }
-  }, [watchAdultsCount, watchChildrenCount])
+    if (watchBabyCount != babyCount) {
+      watchBabyCount > babyCount
+        ? append(DEFAULT_TRAVELLER)
+        : remove(travellersCount - 1)
+      setBabyCount(watchBabyCount)
+    }
+  }, [watchAdultsCount, watchChildrenCount, watchBabyCount])
 
   useEffect(() => {
     setTravellerCount(adultsCount + childrenCount)
@@ -229,7 +238,24 @@ export const PackageRequestForm: FC<PackageRequestFormProps> = ({
               />
             )}
           />
+          <Controller
+            name='baby'
+            defaultValue={babyCount}
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <Input
+                classname={s.counterInput}
+                withCounter={true}
+                onChange={onChange}
+                value={value}
+                label={t('forms.inputNumberBaby')}
+                type={'number'}
+              />
+            )}
+          />
         </div>
+      </div>
+      <div className={s.row}>
         <div className={s.travelDurationCounter}>
           <Controller
             name='travelDuration'

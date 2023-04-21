@@ -55,7 +55,7 @@ export const FlightRequestForm: FC<FlightRequestFormProps> = ({
     handleSubmit,
     watch,
     control,
-    formState: { },
+    formState: {},
   } = useForm<
     TravellerAddressForm & (FlightRequestFormType | PackageRequestFormType)
   >({
@@ -72,7 +72,6 @@ export const FlightRequestForm: FC<FlightRequestFormProps> = ({
   const watchAdultsCount = watch('adults', DEFAULT_ADULTS_COUNT)
   const watchChildrenCount = watch('children', 0)
   const watchBabyCount = watch('baby', 0)
-
 
   const onSubmit: SubmitHandler<
     TravellerAddressForm & (FlightRequestFormType | PackageRequestFormType)
@@ -99,7 +98,7 @@ export const FlightRequestForm: FC<FlightRequestFormProps> = ({
       watchAdultsCount > adultsCount
         ? append(REQUEST_FORMS)
         : // if adults count are decreased, we remove traveller field array
-        remove(travellersCount - 1)
+          remove(travellersCount - 1)
       setAdultsCount(watchAdultsCount)
     }
 
@@ -199,7 +198,7 @@ export const FlightRequestForm: FC<FlightRequestFormProps> = ({
               onChange={onChange}
               label={t('worldwideTours.label4')}
               error={false}
-              handleIconClick={() => { }}
+              handleIconClick={() => {}}
             />
           )}
         />
