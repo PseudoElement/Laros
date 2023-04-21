@@ -33,7 +33,7 @@
 
 .subtitle {
   width: 766px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: $fw-regular;
 
   @include mobile-tablet {
@@ -122,7 +122,7 @@
   align-items: center;
   justify-content: space-between;
 
-  &>div {
+  & > div {
     width: 100%;
     max-width: calc(1004px / 3);
     margin-right: 10px;

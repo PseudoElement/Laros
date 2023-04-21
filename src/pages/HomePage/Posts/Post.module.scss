@@ -99,7 +99,7 @@
 
 .text {
   font-weight: $fw-regular;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 20px;
   padding-bottom: 16px;
 }
@@ -111,7 +111,7 @@
 
 .date {
   font-weight: $fw-regular;
-  font-size: 12px;
+  font-size: 14px;
   color: #9c9ea1;
   @include mobile {
     padding-bottom: 5px;

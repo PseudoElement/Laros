@@ -19,6 +19,7 @@ export const booleanOptions: Option[] = [
 
 export const classOptions: Option[] = [
   { label: 'forms.radioLabel1', value: 'econom' },
+  { label: 'forms.radioLabelEconomyPlus', value: 'econom_plus' },
   { label: 'forms.radioLabel2', value: 'business' },
   { label: 'forms.radioLabel7', value: 'first' },
 ]
@@ -48,6 +49,7 @@ export const boardTypes: CheckBox[] = [
   { label: 'forms.radioLabel13', value: 'full', status: false },
   { label: 'forms.radioLabel14', value: 'half', status: false },
   { label: 'forms.radioLabel15', value: 'bnb', status: false },
+  { label: 'forms.radioNoMeals', value: 'no_meals', status: false },
 ]
 export const REQUEST_FORMS: Traveller = {
   name: '',

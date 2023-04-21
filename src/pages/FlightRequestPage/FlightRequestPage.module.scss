@@ -60,10 +60,6 @@
   }
 }
 
-.counterRow div:first-child {
-  margin-right: 14px;
-}
-
 .counterInput {
   padding-top: 0;
   height: 48px;
@@ -71,7 +67,7 @@
   min-width: 206px;
 }
 
-.counterInput>div:first-child {
+.counterInput > div:first-child {
   padding: 0 0 0 16px;
 }
 
@@ -325,6 +321,7 @@
   justify-content: start;
   margin-bottom: 68px;
   padding: 0;
+  gap: 10px;
 
   @media screen and (max-width: 1024px) {
     width: 70%;

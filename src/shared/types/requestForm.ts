@@ -18,6 +18,7 @@ export interface FlightRequestFormType {
   class: string
   adults: number
   children: number
+  baby: number
   email: string
   comment: string
   travellers: Traveller[]
@@ -35,6 +36,7 @@ export interface PackageRequestFormType {
   totalTripBudget?: number
   adults: number
   children: number
+  baby: number
   email: string
   comment?: string
   travellers: Traveller[]

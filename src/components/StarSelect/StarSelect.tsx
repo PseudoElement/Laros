@@ -13,6 +13,7 @@ import { Option, StarSelectOption } from 'shared/types'
 import arrow from '/public/assets/images/arrow.svg?url'
 
 import s from './StarSelect.module.scss'
+import { useTranslate } from 'shared/hooks/useTranslate'
 
 interface OptionsProps {
   options: StarSelectOption[]
@@ -78,6 +79,7 @@ export const StarSelectComponent: FC<OptionsProps> = ({
   }
 
   const Control: FC<SelectControlProps> = props => {
+    const t = useTranslate()
     return (
       <components.Control {...props}>
         {props.getValue().map((item, idx) => {
@@ -85,18 +87,18 @@ export const StarSelectComponent: FC<OptionsProps> = ({
             <div key={idx} className={s.iconWrap}>
               {item.icon
                 ? item.icon.map((item, index) => (
-                    <span key={index} className={s.icon}>
-                      <Image
-                        src={item}
-                        width={controlIconSize}
-                        height={controlIconSize}
-                        alt='icon'
-                      />
-                    </span>
-                  ))
+                  <span key={index} className={s.icon}>
+                    <Image
+                      src={item}
+                      width={controlIconSize}
+                      height={controlIconSize}
+                      alt='icon'
+                    />
+                  </span>
+                ))
                 : null}
               {withStar && item.icon && (
-                <span className={s.starText}>{item.icon.length} star</span>
+                <span className={s.starText}>{item.icon.length} {t(`worldwideTours.${item.icon.length === 1 ? 'star' : 'stars'}`)}</span>
               )}
             </div>
           )

@@ -63,7 +63,7 @@
 
 .subTitle {
   color: $color-white;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: $fw-regular;
   line-height: 20px;
   position: relative;
@@ -149,7 +149,7 @@
   justify-content: space-between;
   gap: 10px;
 
-  &>div {
+  & > div {
     width: 100%;
     max-width: calc(1004px / 3);
   }

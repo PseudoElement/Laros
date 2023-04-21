@@ -48,13 +48,14 @@ export const FlightRequestForm: FC<FlightRequestFormProps> = ({
   const DEFAULT_ADULTS_COUNT = 2 // more to shared/ folder
   const [adultsCount, setAdultsCount] = useState(DEFAULT_ADULTS_COUNT)
   const [childrenCount, setChildrenCount] = useState(0)
-  let travellersCount = adultsCount + childrenCount
+  const [babyCount, setBabyCount] = useState(0)
+  let travellersCount = adultsCount + childrenCount + babyCount
 
   const {
     handleSubmit,
     watch,
     control,
-    formState: {},
+    formState: { },
   } = useForm<
     TravellerAddressForm & (FlightRequestFormType | PackageRequestFormType)
   >({
@@ -70,6 +71,8 @@ export const FlightRequestForm: FC<FlightRequestFormProps> = ({
 
   const watchAdultsCount = watch('adults', DEFAULT_ADULTS_COUNT)
   const watchChildrenCount = watch('children', 0)
+  const watchBabyCount = watch('baby', 0)
+
 
   const onSubmit: SubmitHandler<
     TravellerAddressForm & (FlightRequestFormType | PackageRequestFormType)
@@ -96,7 +99,7 @@ export const FlightRequestForm: FC<FlightRequestFormProps> = ({
       watchAdultsCount > adultsCount
         ? append(REQUEST_FORMS)
         : // if adults count are decreased, we remove traveller field array
-          remove(travellersCount - 1)
+        remove(travellersCount - 1)
       setAdultsCount(watchAdultsCount)
     }
 
@@ -106,7 +109,13 @@ export const FlightRequestForm: FC<FlightRequestFormProps> = ({
         : remove(travellersCount - 1)
       setChildrenCount(watchChildrenCount)
     }
-  }, [watchAdultsCount, watchChildrenCount])
+    if (watchBabyCount != babyCount) {
+      watchBabyCount > babyCount
+        ? append(REQUEST_FORMS)
+        : remove(travellersCount - 1)
+      setBabyCount(watchBabyCount)
+    }
+  }, [watchAdultsCount, watchChildrenCount, watchBabyCount])
 
   const airportOptions = async (inputValue: string) => {
     const { data } = await getAirports(inputValue)
@@ -190,7 +199,7 @@ export const FlightRequestForm: FC<FlightRequestFormProps> = ({
               onChange={onChange}
               label={t('worldwideTours.label4')}
               error={false}
-              handleIconClick={() => {}}
+              handleIconClick={() => { }}
             />
           )}
         />
@@ -243,6 +252,21 @@ export const FlightRequestForm: FC<FlightRequestFormProps> = ({
               onChange={onChange}
               value={value}
               label={t('forms.inputNumber2')}
+              type={'number'}
+            />
+          )}
+        />
+        <Controller
+          name='baby'
+          defaultValue={babyCount}
+          control={control}
+          render={({ field: { onChange, value } }) => (
+            <Input
+              classname={s.counterInput}
+              withCounter={true}
+              onChange={onChange}
+              value={value}
+              label={t('forms.inputNumberBaby')}
               type={'number'}
             />
           )}
