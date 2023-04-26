@@ -539,8 +539,8 @@
     "footer": {
       "linksText": "WEBSITE-LINKS",
       "contactText": "KONTAKT",
-      "addressText": "",
-      "address": "Hauptstrasse 94 \n\n CH-4147 Aesch",
+      "address": "Hauptstrasse 94",
+      "addressCode": "CH-4147 Aesch",
       "telText": "Tel",
       "telNumber": "061 756 80 80",
       "emailText": "E-Mail",
