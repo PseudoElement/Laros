@@ -10,8 +10,9 @@
   @include mobile-laptop {
     margin-bottom: 20px;
   }
-  @media (max-width: 390px) {
-    max-width: 310px;
+  @include mobile {
+    width: 47%;
+    height: 100%;
   }
 }
 
@@ -19,7 +20,12 @@
   position: relative;
   width: 100%;
   height: 338px;
-
+  @include mobile {
+    height: 238px;
+  }
+  @media (max-width: 390px) {
+    height: 160px;
+  }
   img {
     border-radius: 16px 16px 0 0;
   }
@@ -75,7 +81,10 @@
   bottom: 30px;
   font-size: 18px;
   color: $color-primary;
+  background: transparent;
   cursor: pointer;
-  background-color: transparent;
   border: none;
+  @include mobile {
+    top: 14px;
+  }
 }
