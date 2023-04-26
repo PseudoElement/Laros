@@ -21,6 +21,9 @@
   line-height: 20px;
   text-align: left;
   margin-top: 8px;
+  @include mobile {
+    display: none;
+  }
 }
 
 .images {
@@ -30,7 +33,9 @@
   margin-top: 40px;
 
   @include mobile {
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
   }
 
   @include tablet {

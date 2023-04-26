@@ -17,6 +17,10 @@
   background-repeat: no-repeat;
   background-position: top left;
 
+  @include mobile {
+    width: 48%;
+  }
+
   //&:nth-child(3n) {
   //  width: 40%;
   //
