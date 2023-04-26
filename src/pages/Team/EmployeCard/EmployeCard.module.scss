@@ -10,7 +10,7 @@
   }
 
   @media (max-width: 560px) {
-    width: 100%;
+    width: 42%;
   }
 }
 
@@ -25,6 +25,9 @@
   margin-top: 24px;
   margin-right: auto;
   margin-left: auto;
+  @media (max-width: 560px) {
+    text-align: center;
+  }
 }
 
 .name {
