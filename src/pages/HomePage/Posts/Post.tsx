@@ -22,12 +22,6 @@ export const PostBlock: FC<PostBlockProps> = ({ posts }) => {
 
   const t = useTranslate()
 
-  useEffect(() => {
-    //@ts-ignore
-    const span: HTMLSpanElement = postsRef.current?.querySelector('span')
-    span.removeAttribute('style')
-  }, [])
-
   return (
     <div className={s.wrapper}>
       <div className={s.contentWrapper}>
