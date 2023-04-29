@@ -10,7 +10,7 @@ interface SliderItemProps {
   image: string | StaticImageData | undefined
   isVideo?: boolean
   active?: boolean
-  setInitialSlide: (id: number) => void
+  setActiveSlide: (id: number) => void
   id: number
 }
 
@@ -20,12 +20,12 @@ export const SliderItem: FC<SliderItemProps> = ({
   image,
   active,
   id,
-  setInitialSlide,
+  setActiveSlide,
 }) => {
   return (
     <div
-      style={{ backgroundImage: `url(${image})` }}
-      onClick={() => setInitialSlide(id)}
+      style={{ backgroundImage: `url(${image})`, minWidth: 100 }}
+      onClick={() => setActiveSlide(id)}
       className={cls(className, s.wrapper, {
         [s.active]: active,
       })}

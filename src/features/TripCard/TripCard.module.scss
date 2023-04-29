@@ -3,6 +3,7 @@
 
 .tripCard {
   min-height: 590px;
+  width: 368px;
   background-color: $color-white;
   border-radius: 16px;
   display: flex;
@@ -12,13 +13,12 @@
   height: 100%;
 
   @include mobile-tablet {
-    width: 300px;
-    max-width: 100%;
     min-height: unset;
   }
 
-  @include laptop {
-    max-width: 368px;
+  @media (max-width: 390px) {
+    width: 300px;
+    height: 450px;
   }
 }
 
@@ -121,12 +121,17 @@
 
 .mainFooter {
   display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 16px 24px;
   align-items: center;
   flex-grow: 1;
-}
 
-.tag {
+  @media (max-width: 390px) {
+    padding: 5px;
+  }
+}
+.tag:not(:last-child) {
   margin-right: 8px;
 }
 

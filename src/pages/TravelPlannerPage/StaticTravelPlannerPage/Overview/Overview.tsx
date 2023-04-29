@@ -22,13 +22,27 @@ export const OverviewSection: FC<OverviewSectionProps> = ({
   description,
   overview,
 }) => {
-  const [initialSlide, setInitialSlide] = useState<number>(0)
+  const [activeSlide, setActiveSlide] = useState<number>(0)
   const swiperRef = useRef<any>(null)
   const widthWindow = useWindowDimensions().width
 
+  const changeSlide = (type: 'prev' | 'next'): void => {
+    switch (type) {
+      case 'prev':
+        if (activeSlide === 0) return
+        setActiveSlide(activeSlide - 1)
+        break
+      case 'next':
+        if (activeSlide === overview.images.length - 1) return
+        setActiveSlide(activeSlide + 1)
+        break
+    }
+  }
+
   useEffect(() => {
-    swiperRef?.current?.swiper.slideTo(initialSlide)
-  }, [initialSlide])
+    console.log(activeSlide)
+    swiperRef?.current?.swiper.slideTo(activeSlide)
+  }, [activeSlide])
 
   return (
     <div className={s.wrapper}>
@@ -45,9 +59,10 @@ export const OverviewSection: FC<OverviewSectionProps> = ({
               nextEl: '.nextEl',
               prevEl: '.prevEl',
             }}
+            onSlideChange={sliderInfo => setActiveSlide(sliderInfo.activeIndex)}
           >
             {overview?.images?.map((image, id) => (
-              <SwiperSlide onMouseEnter={() => setInitialSlide(id)} key={id}>
+              <SwiperSlide key={id}>
                 {/*{!card.video ? (*/}
                 <div className={s.slideImage}>
                   <Image layout={'fill'} src={image} />
@@ -55,7 +70,7 @@ export const OverviewSection: FC<OverviewSectionProps> = ({
                 {/*) : (*/}
                 {/*  <div className={s.videoWrapper}>*/}
                 {/*    <ReactPlayer*/}
-                {/*      playing={initialSlide === id}*/}
+                {/*      playing={activeSlide === id}*/}
                 {/*      controls*/}
                 {/*      width={'100%'}*/}
                 {/*      url={card.video}*/}
@@ -69,11 +84,11 @@ export const OverviewSection: FC<OverviewSectionProps> = ({
           {widthWindow > 768 ? (
             <div className={s.sliderNavigation}>
               <div
-                onClick={() => setInitialSlide(initialSlide - 1)}
+                onClick={() => changeSlide('prev')}
                 className={cn(s.prevEl, 'prevEl', 'swiper-button-prev')}
               />
               <div
-                onClick={() => setInitialSlide(initialSlide + 1)}
+                onClick={() => changeSlide('next')}
                 className={cn(s.nextEl, 'nextEl', 'swiper-button-next')}
               />
             </div>
@@ -83,8 +98,8 @@ export const OverviewSection: FC<OverviewSectionProps> = ({
         <div className={s.sliderItems}>
           {overview?.images?.map((image, id) => (
             <SliderItem
-              setInitialSlide={() => setInitialSlide(id)}
-              active={initialSlide === id}
+              setActiveSlide={() => setActiveSlide(id)}
+              active={activeSlide === id}
               image={image}
               // isVideo={!!card.video}
               id={id}

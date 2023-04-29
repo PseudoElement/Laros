@@ -320,7 +320,7 @@ export const TripOffersPage: FC = () => {
         <div className={s.loading}>{t('common.emptyText')}</div>
       )}
       {isLoading && <Loader />}
-      <div className={cn(s.offers, view === View.GRID ? s.grid : s.list)}>
+      <div className={cn(s.offers)}>
         {(!isLoading || page > 1) &&
           trips.map((offer, idx) => {
             return (

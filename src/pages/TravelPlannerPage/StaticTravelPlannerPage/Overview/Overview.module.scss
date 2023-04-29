@@ -35,13 +35,17 @@
   @include mobile {
     height: 330px;
   }
+  @media (max-width: 500px) {
+    height: 220px;
+  }
 }
 .sliderItems {
   display: flex;
-  justify-content: center;
+  overflow-x: scroll;
   gap: 11px;
   margin-top: 0;
   padding-bottom: 32px;
+  padding: 10px;
 }
 .slideImage {
   height: 400px;
@@ -53,6 +57,9 @@
 
   @include mobile {
     height: 300px;
+  }
+  @media (max-width: 500px) {
+    height: 200px;
   }
 }
 .contentWrapper {

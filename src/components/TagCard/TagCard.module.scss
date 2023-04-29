@@ -1,12 +1,20 @@
 @use 'styles/style' as *;
 
 .tagCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: $fw-regular;
   font-size: 16px;
   line-height: 16px;
+  height: 49px;
   text-transform: capitalize;
+  text-align: center;
   color: $color-white;
   padding: 4px 8px;
   background: $color-blue-label;
   border-radius: 16px;
+  @media (max-width: 390px) {
+    font-size: 12px;
+  }
 }
