@@ -40,7 +40,6 @@ export const OverviewSection: FC<OverviewSectionProps> = ({
   }
 
   useEffect(() => {
-    console.log(activeSlide)
     swiperRef?.current?.swiper.slideTo(activeSlide)
   }, [activeSlide])
 
