@@ -26,13 +26,13 @@ export const OverviewSection: FC<OverviewSectionProps> = ({
   const swiperRef = useRef<any>(null)
   const widthWindow = useWindowDimensions().width
 
-  const changeSlide = (type: 'prev' | 'next'): void => {
+  const changeSlide = (type: 1 | -1): void => {
     switch (type) {
-      case 'prev':
+      case 1:
         if (activeSlide === 0) return
         setActiveSlide(activeSlide - 1)
         break
-      case 'next':
+      case -1:
         if (activeSlide === overview.images.length - 1) return
         setActiveSlide(activeSlide + 1)
         break
@@ -83,11 +83,11 @@ export const OverviewSection: FC<OverviewSectionProps> = ({
           {widthWindow > 768 ? (
             <div className={s.sliderNavigation}>
               <div
-                onClick={() => changeSlide('prev')}
+                onClick={() => changeSlide(1)}
                 className={cn(s.prevEl, 'prevEl', 'swiper-button-prev')}
               />
               <div
-                onClick={() => changeSlide('next')}
+                onClick={() => changeSlide(-1)}
                 className={cn(s.nextEl, 'nextEl', 'swiper-button-next')}
               />
             </div>
